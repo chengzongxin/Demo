@@ -18,6 +18,9 @@ PODS:
   - Masonry (1.1.0)
   - MJExtension (3.2.2)
   - ReactiveObjC (3.1.1)
+  - SDWebImage (5.9.4):
+    - SDWebImage/Core (= 5.9.4)
+  - SDWebImage/Core (5.9.4)
 
 DEPENDENCIES:
   - AFNetworking
@@ -25,6 +28,7 @@ DEPENDENCIES:
   - Masonry
   - MJExtension
   - ReactiveObjC
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
@@ -33,6 +37,7 @@ SPEC REPOS:
     - Masonry
     - MJExtension
     - ReactiveObjC
+    - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -40,7 +45,8 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
 
-PODFILE CHECKSUM: 844611022d81833bae69c48c3d73ac570da87be8
+PODFILE CHECKSUM: f5137be4f1ee58d51c83304cdbf15bd67bbdad55
 
 COCOAPODS: 1.10.0

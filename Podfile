@@ -11,6 +11,7 @@ target 'Demo' do
   pod 'ReactiveObjC'
   pod 'MJExtension'
   pod 'LookinServer', :configurations => ['Debug']
+  pod 'SDWebImage'
 
   target 'DemoTests' do
     inherit! :search_paths

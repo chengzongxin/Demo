@@ -7,10 +7,17 @@
 
 #import <Foundation/Foundation.h>
 #import "THKViewModel.h"
+#import "TDecDetailFirstModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKCompanyDetailBannerViewModel : THKViewModel
+
+@property (nonatomic, strong) TDecDetailFirstModel *model;
+
+@property (nonatomic, strong) id mainViewModel;
+@property (nonatomic, strong) id rollModel;
+@property (nonatomic, strong) id entryModel;
 
 @end
 
