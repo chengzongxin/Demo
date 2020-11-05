@@ -18,13 +18,6 @@
 		160107072553DD8100FE4B77 /* DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107062553DD8100FE4B77 /* DemoUITests.m */; };
 		1601076C2553EA2800FE4B77 /* THKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601076B2553EA2700FE4B77 /* THKView.m */; };
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
-		164CF8B02553F07800FF02E0 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 164CF8A72553F07800FF02E0 /* data.json */; };
-		164CF8B12553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8AA2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m */; };
-		164CF8B22553F07800FF02E0 /* THKCompanyDetailBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8AB2553F07800FF02E0 /* THKCompanyDetailBannerView.m */; };
-		164CF8B32553F07800FF02E0 /* TDecDetailFirstModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8AE2553F07800FF02E0 /* TDecDetailFirstModel.m */; };
-		164CF8BB2553F34A00FF02E0 /* THKCompanyDetailBannerMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8BA2553F34A00FF02E0 /* THKCompanyDetailBannerMainView.m */; };
-		164CF8C42553F36200FF02E0 /* THKCompanyDetailBannerRollingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8C32553F36200FF02E0 /* THKCompanyDetailBannerRollingView.m */; };
-		164CF8CA2553F36E00FF02E0 /* THKCompanyDetailBannerEntryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8C92553F36E00FF02E0 /* THKCompanyDetailBannerEntryView.m */; };
 		164CF93A2553F4E600FF02E0 /* UIView+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D32553F4E500FF02E0 /* UIView+TMUI.m */; };
 		164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D52553F4E500FF02E0 /* UIColor+TMUI.m */; };
 		164CF93C2553F4E600FF02E0 /* UIImage+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D62553F4E500FF02E0 /* UIImage+TMUI.m */; };
@@ -124,19 +117,6 @@
 		1601076B2553EA2700FE4B77 /* THKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKView.m; sourceTree = "<group>"; };
 		160107702553EA3300FE4B77 /* THKViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKViewModel.m; sourceTree = "<group>"; };
 		160107712553EA3300FE4B77 /* THKViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewModel.h; sourceTree = "<group>"; };
-		164CF8A72553F07800FF02E0 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		164CF8A92553F07800FF02E0 /* THKCompanyDetailBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerView.h; sourceTree = "<group>"; };
-		164CF8AA2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerViewModel.m; sourceTree = "<group>"; };
-		164CF8AB2553F07800FF02E0 /* THKCompanyDetailBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerView.m; sourceTree = "<group>"; };
-		164CF8AC2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerViewModel.h; sourceTree = "<group>"; };
-		164CF8AE2553F07800FF02E0 /* TDecDetailFirstModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDecDetailFirstModel.m; sourceTree = "<group>"; };
-		164CF8AF2553F07800FF02E0 /* TDecDetailFirstModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDecDetailFirstModel.h; sourceTree = "<group>"; };
-		164CF8B92553F34A00FF02E0 /* THKCompanyDetailBannerMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerMainView.h; sourceTree = "<group>"; };
-		164CF8BA2553F34A00FF02E0 /* THKCompanyDetailBannerMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerMainView.m; sourceTree = "<group>"; };
-		164CF8C22553F36200FF02E0 /* THKCompanyDetailBannerRollingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerRollingView.h; sourceTree = "<group>"; };
-		164CF8C32553F36200FF02E0 /* THKCompanyDetailBannerRollingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerRollingView.m; sourceTree = "<group>"; };
-		164CF8C82553F36E00FF02E0 /* THKCompanyDetailBannerEntryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerEntryView.h; sourceTree = "<group>"; };
-		164CF8C92553F36E00FF02E0 /* THKCompanyDetailBannerEntryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerEntryView.m; sourceTree = "<group>"; };
 		164CF8D12553F4E500FF02E0 /* UIImage+TMUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TMUI.h"; sourceTree = "<group>"; };
 		164CF8D22553F4E500FF02E0 /* UIColor+TMUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TMUI.h"; sourceTree = "<group>"; };
 		164CF8D32553F4E500FF02E0 /* UIView+TMUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TMUI.m"; sourceTree = "<group>"; };
@@ -298,7 +278,6 @@
 				160106F02553DD8000FE4B77 /* Info.plist */,
 				160106F12553DD8000FE4B77 /* main.m */,
 				160107372553DFDC00FE4B77 /* PrefixHeader.pch */,
-				164CF8A62553F07800FF02E0 /* tbt_dec */,
 				160107692553EA1A00FE4B77 /* BaseSection */,
 				164CF8CE2553F4E500FF02E0 /* TMUIKit */,
 			);
@@ -332,58 +311,6 @@
 				160107702553EA3300FE4B77 /* THKViewModel.m */,
 			);
 			path = BaseSection;
-			sourceTree = "<group>";
-		};
-		164CF8A62553F07800FF02E0 /* tbt_dec */ = {
-			isa = PBXGroup;
-			children = (
-				164CF8A72553F07800FF02E0 /* data.json */,
-				164CF8A82553F07800FF02E0 /* THKCompanyDetailBanner */,
-				164CF8AD2553F07800FF02E0 /* Model */,
-			);
-			path = tbt_dec;
-			sourceTree = "<group>";
-		};
-		164CF8A82553F07800FF02E0 /* THKCompanyDetailBanner */ = {
-			isa = PBXGroup;
-			children = (
-				164CF8B82553F2D600FF02E0 /* View */,
-				164CF8B72553F2D600FF02E0 /* ViewModel */,
-			);
-			path = THKCompanyDetailBanner;
-			sourceTree = "<group>";
-		};
-		164CF8AD2553F07800FF02E0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				164CF8AE2553F07800FF02E0 /* TDecDetailFirstModel.m */,
-				164CF8AF2553F07800FF02E0 /* TDecDetailFirstModel.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		164CF8B72553F2D600FF02E0 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				164CF8AC2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.h */,
-				164CF8AA2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		164CF8B82553F2D600FF02E0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				164CF8A92553F07800FF02E0 /* THKCompanyDetailBannerView.h */,
-				164CF8AB2553F07800FF02E0 /* THKCompanyDetailBannerView.m */,
-				164CF8B92553F34A00FF02E0 /* THKCompanyDetailBannerMainView.h */,
-				164CF8BA2553F34A00FF02E0 /* THKCompanyDetailBannerMainView.m */,
-				164CF8C22553F36200FF02E0 /* THKCompanyDetailBannerRollingView.h */,
-				164CF8C32553F36200FF02E0 /* THKCompanyDetailBannerRollingView.m */,
-				164CF8C82553F36E00FF02E0 /* THKCompanyDetailBannerEntryView.h */,
-				164CF8C92553F36E00FF02E0 /* THKCompanyDetailBannerEntryView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		164CF8CE2553F4E500FF02E0 /* TMUIKit */ = {
@@ -801,7 +728,6 @@
 				164CF9482553F4E600FF02E0 /* dataNoExist@3x.png in Resources */,
 				164CF9602553F4E600FF02E0 /* noGift@2x.png in Resources */,
 				164CF9512553F4E600FF02E0 /* photoDetailErr@3x.png in Resources */,
-				164CF8B02553F07800FF02E0 /* data.json in Resources */,
 				164CF94C2553F4E600FF02E0 /* noComment@2x.png in Resources */,
 				164CF9692553F4E600FF02E0 /* searchBarLeftIcon@3x.png in Resources */,
 				164CF9552553F4E600FF02E0 /* noComment@3x.png in Resources */,
@@ -948,12 +874,9 @@
 				164CF9672553F4E600FF02E0 /* TMSearchPresentationAnimatedTransition.m in Sources */,
 				164CF96D2553F4E600FF02E0 /* TMUIHelper.m in Sources */,
 				164CF9402553F4E600FF02E0 /* TMCityPicker.m in Sources */,
-				164CF8B22553F07800FF02E0 /* THKCompanyDetailBannerView.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
-				164CF8CA2553F36E00FF02E0 /* THKCompanyDetailBannerEntryView.m in Sources */,
 				164CF96C2553F4E600FF02E0 /* TMUIWeakObjectContainer.m in Sources */,
-				164CF8B32553F07800FF02E0 /* TDecDetailFirstModel.m in Sources */,
 				164CF9422553F4E600FF02E0 /* TMContentPicker.m in Sources */,
 				164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */,
 				164CF9622553F4E600FF02E0 /* TMActionSheet.m in Sources */,
@@ -967,11 +890,8 @@
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				164CF9452553F4E600FF02E0 /* TMEmptyContentItem.m in Sources */,
 				164CF9412553F4E600FF02E0 /* TMNormalPicker.m in Sources */,
-				164CF8BB2553F34A00FF02E0 /* THKCompanyDetailBannerMainView.m in Sources */,
-				164CF8B12553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m in Sources */,
 				164CF9432553F4E600FF02E0 /* TMContentAlert.m in Sources */,
 				164CF93A2553F4E600FF02E0 /* UIView+TMUI.m in Sources */,
-				164CF8C42553F36200FF02E0 /* THKCompanyDetailBannerRollingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
