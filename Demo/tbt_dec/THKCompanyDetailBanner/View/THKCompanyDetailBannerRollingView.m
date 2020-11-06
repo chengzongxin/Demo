@@ -12,10 +12,21 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *collectionViewlayout;
 @property (nonatomic, copy) NSArray <TDecDetailVideoModel *>*viewModel;
+// 定时器
+@property (nonatomic, strong) NSTimer *timer;
+// UICollectionView当前的Row
+@property (nonatomic, assign) NSInteger currentIndex;
+
+@property (nonatomic, assign) BOOL isAutoScrolling;
 @end
 
 @implementation THKCompanyDetailBannerRollingView
 TMUI_PropertySyntheSize(viewModel);
+
+- (void)dealloc {
+    [self removeTimer];
+    NSLog(@"THKCompanyDetailBannerRollingView---------------->:dealloc");
+}
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -23,16 +34,120 @@ TMUI_PropertySyntheSize(viewModel);
         self.backgroundColor = UIColorRGBA(0, 0, 0, 0.4);
         self.layer.cornerRadius = 8;
         [self addSubview:self.collectionView];
-        
+        [self bindEvent];
+        [self addTimer];
     }
     return self;
 }
+
+- (void)bindEvent {
+    @weakify(self);
+    [[RACObserve(self, currentIndex) takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        NSLog(@"%@",x);
+        if (self.currentIndex > 800) {
+            self.currentIndex = 0;
+            [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        }
+    }];
+    // 后台进前台通知 UIApplicationDidBecomeActiveNotification
+    [[[NSNotificationCenter.defaultCenter rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self);
+        [self resumeTimer];
+    }];
+    // 进入后台通知 UIApplicationDidEnterBackgroundNotification
+    [[[NSNotificationCenter.defaultCenter rac_addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil] takeUntil:self.rac_willDeallocSignal] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self);
+        [self pauseTimer];
+    }];
+}
+
 
 - (void)bindViewModel{
     [self.collectionView reloadData];
 }
 
+- (void)addTimer {
+    if (self.timer) {
+        return;
+    }
+    
+    @weakify(self);
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        @strongify(self);
+        [self timerScheduledAction];
+    }];
+    self.isAutoScrolling = YES;
+}
 
+- (void)removeTimer {
+    if (!self.timer) {
+        return;
+    }
+    
+    if (self.timer.isValid) {
+        [self.timer invalidate];
+    }
+    
+    self.timer = nil;
+}
+
+#pragma mark - Public
+
+- (void)resumeTimer {
+    if (!self.timer) {
+        return;
+    }
+    if (self.isAutoScrolling) {
+        return;
+    }
+    [self.timer setFireDate:[NSDate distantPast]];
+    self.isAutoScrolling = YES;
+}
+
+- (void)pauseTimer {
+    if (!self.timer) {
+        return;
+    }
+    if (!self.isAutoScrolling) {
+        return;
+    }
+    [self.timer setFireDate:[NSDate distantFuture]];
+    self.isAutoScrolling = NO;
+}
+
+
+#pragma mark - Private
+
+// 定时器回调方法
+- (void)timerScheduledAction {
+    if (!self) {
+        return;
+    }
+    NSInteger toIndex = self.currentIndex + 1;
+    
+    if (toIndex < 0 || toIndex >= [self.collectionView numberOfItemsInSection:0]) {
+        return;
+    }
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]
+                                atScrollPosition:UICollectionViewScrollPositionNone
+                                        animated:YES];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (self.viewModel.count <= 1) return;
+    
+    CGFloat height = scrollView.frame.size.height;
+    NSInteger currentIndex = ceil(scrollView.contentOffset.y/height);
+    if (currentIndex == self.currentIndex) {
+        return;
+    }
+    
+    self.currentIndex = currentIndex;
+}
 
 #pragma mark - Delegate
 
@@ -41,7 +156,7 @@ TMUI_PropertySyntheSize(viewModel);
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.viewModel.count;
+    return self.viewModel.count > 1 ? self.viewModel.count * 1000 : self.viewModel.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,10 +174,11 @@ TMUI_PropertySyntheSize(viewModel);
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.backgroundColor = [UIColor clearColor];
-        _collectionView.scrollsToTop = YES;
+//        _collectionView.scrollsToTop = YES;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.pagingEnabled = YES;
+        _collectionView.scrollEnabled = NO;
         [_collectionView registerClass:[THKCompanyDetailBannerRollingCell class] forCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingCell class])];
     }
     return _collectionView;
