@@ -7,7 +7,9 @@
 
 #import "THKCompanyDetailBannerRollingView.h"
 #import "TDecDetailFirstModel.h"
-#import "THKCompanyDetailBannerRollingCell.h"
+#import "THKCompanyDetailBannerRollingLiveCell.h"
+#import "THKCompanyDetailBannerRollingAppointmentCell.h"
+
 @interface THKCompanyDetailBannerRollingView () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *collectionViewlayout;
@@ -160,10 +162,18 @@ TMUI_PropertySyntheSize(viewModel);
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    THKCompanyDetailBannerRollingCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingCell class]) forIndexPath:indexPath];
-        
-//    cell.backgroundColor = [UIColor tmui_randomColor];
-    return cell;
+    
+    int index = indexPath.item % (int)self.viewModel.count;
+    
+    if (index == 1) {
+        THKCompanyDetailBannerRollingLiveCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingLiveCell class]) forIndexPath:indexPath];
+            
+        return cell;
+    }else{
+        THKCompanyDetailBannerRollingAppointmentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingAppointmentCell class]) forIndexPath:indexPath];
+            
+        return cell;
+    }
 }
 
 
@@ -179,7 +189,10 @@ TMUI_PropertySyntheSize(viewModel);
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.pagingEnabled = YES;
         _collectionView.scrollEnabled = NO;
-        [_collectionView registerClass:[THKCompanyDetailBannerRollingCell class] forCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingCell class])];
+        [_collectionView registerClass:[THKCompanyDetailBannerRollingLiveCell class]
+            forCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingLiveCell class])];
+        [_collectionView registerClass:[THKCompanyDetailBannerRollingAppointmentCell class]
+            forCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingAppointmentCell class])];
     }
     return _collectionView;
 }

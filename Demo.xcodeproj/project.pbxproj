@@ -77,12 +77,15 @@
 		164CF96B2553F4E600FF02E0 /* TMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF92D2553F4E600FF02E0 /* TMSearchBar.m */; };
 		164CF96C2553F4E600FF02E0 /* TMUIWeakObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF9302553F4E600FF02E0 /* TMUIWeakObjectContainer.m */; };
 		164CF96D2553F4E600FF02E0 /* TMUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF9382553F4E600FF02E0 /* TMUIHelper.m */; };
+		166FDD0F25552F2F0089574E /* THKCompanyDetailBannerRollingLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166FDD0E25552F2F0089574E /* THKCompanyDetailBannerRollingLiveCell.m */; };
+		166FDD1525552F570089574E /* THKCompanyDetailBannerRollingAppointmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166FDD1425552F570089574E /* THKCompanyDetailBannerRollingAppointmentCell.m */; };
+		166FDD1A255535EE0089574E /* ico_headPortrait_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 166FDD19255535EE0089574E /* ico_headPortrait_60@2x.png */; };
 		16D94B602554224500D4A554 /* UIImage+TCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D94B5E2554224500D4A554 /* UIImage+TCategory.m */; };
 		16D94B6D2554235900D4A554 /* CompanyDetailBanner_video@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D94B652554235900D4A554 /* CompanyDetailBanner_video@3x.png */; };
 		16D94B6E2554235900D4A554 /* CompanyDetailBanner_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D94B662554235900D4A554 /* CompanyDetailBanner_video@2x.png */; };
 		16D94B6F2554235900D4A554 /* CompanyDetailBanner_img@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D94B672554235900D4A554 /* CompanyDetailBanner_img@3x.png */; };
 		16D94B702554235900D4A554 /* CompanyDetailBanner_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D94B682554235900D4A554 /* CompanyDetailBanner_img@2x.png */; };
-		16D94B852554261900D4A554 /* THKCompanyDetailBannerRollingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D94B842554261900D4A554 /* THKCompanyDetailBannerRollingCell.m */; };
+		16D94B852554261900D4A554 /* THKCompanyDetailBannerRollingBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D94B842554261900D4A554 /* THKCompanyDetailBannerRollingBaseCell.m */; };
 		16D94BA52554276900D4A554 /* THKCompanyDetailBannerVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D94BA12554276800D4A554 /* THKCompanyDetailBannerVideoCell.m */; };
 		16D94BA62554276900D4A554 /* THKCompanyDetailBannerImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D94BA22554276800D4A554 /* THKCompanyDetailBannerImageCell.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
@@ -231,6 +234,11 @@
 		164CF9372553F4E600FF02E0 /* TMAssociatedPropertyMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAssociatedPropertyMacro.h; sourceTree = "<group>"; };
 		164CF9382553F4E600FF02E0 /* TMUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMUIHelper.m; sourceTree = "<group>"; };
 		164CF9392553F4E600FF02E0 /* TMUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMUIKit.h; sourceTree = "<group>"; };
+		166FDD0D25552F2F0089574E /* THKCompanyDetailBannerRollingLiveCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerRollingLiveCell.h; sourceTree = "<group>"; };
+		166FDD0E25552F2F0089574E /* THKCompanyDetailBannerRollingLiveCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerRollingLiveCell.m; sourceTree = "<group>"; };
+		166FDD1325552F570089574E /* THKCompanyDetailBannerRollingAppointmentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerRollingAppointmentCell.h; sourceTree = "<group>"; };
+		166FDD1425552F570089574E /* THKCompanyDetailBannerRollingAppointmentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerRollingAppointmentCell.m; sourceTree = "<group>"; };
+		166FDD19255535EE0089574E /* ico_headPortrait_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ico_headPortrait_60@2x.png"; sourceTree = "<group>"; };
 		16D94B5A25541BA600D4A554 /* THKCompanyDetailBannerCellProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerCellProtocol.h; sourceTree = "<group>"; };
 		16D94B5E2554224500D4A554 /* UIImage+TCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+TCategory.m"; sourceTree = "<group>"; };
 		16D94B5F2554224500D4A554 /* UIImage+TCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TCategory.h"; sourceTree = "<group>"; };
@@ -238,8 +246,8 @@
 		16D94B662554235900D4A554 /* CompanyDetailBanner_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CompanyDetailBanner_video@2x.png"; sourceTree = "<group>"; };
 		16D94B672554235900D4A554 /* CompanyDetailBanner_img@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CompanyDetailBanner_img@3x.png"; sourceTree = "<group>"; };
 		16D94B682554235900D4A554 /* CompanyDetailBanner_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CompanyDetailBanner_img@2x.png"; sourceTree = "<group>"; };
-		16D94B832554261900D4A554 /* THKCompanyDetailBannerRollingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerRollingCell.h; sourceTree = "<group>"; };
-		16D94B842554261900D4A554 /* THKCompanyDetailBannerRollingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerRollingCell.m; sourceTree = "<group>"; };
+		16D94B832554261900D4A554 /* THKCompanyDetailBannerRollingBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerRollingBaseCell.h; sourceTree = "<group>"; };
+		16D94B842554261900D4A554 /* THKCompanyDetailBannerRollingBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerRollingBaseCell.m; sourceTree = "<group>"; };
 		16D94BA12554276800D4A554 /* THKCompanyDetailBannerVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerVideoCell.m; sourceTree = "<group>"; };
 		16D94BA22554276800D4A554 /* THKCompanyDetailBannerImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerImageCell.m; sourceTree = "<group>"; };
 		16D94BA32554276900D4A554 /* THKCompanyDetailBannerVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerVideoCell.h; sourceTree = "<group>"; };
@@ -680,6 +688,7 @@
 				16D94B662554235900D4A554 /* CompanyDetailBanner_video@2x.png */,
 				16D94B672554235900D4A554 /* CompanyDetailBanner_img@3x.png */,
 				16D94B682554235900D4A554 /* CompanyDetailBanner_img@2x.png */,
+				166FDD19255535EE0089574E /* ico_headPortrait_60@2x.png */,
 			);
 			path = png;
 			sourceTree = "<group>";
@@ -691,8 +700,12 @@
 				16D94BA12554276800D4A554 /* THKCompanyDetailBannerVideoCell.m */,
 				16D94BA42554276900D4A554 /* THKCompanyDetailBannerImageCell.h */,
 				16D94BA22554276800D4A554 /* THKCompanyDetailBannerImageCell.m */,
-				16D94B832554261900D4A554 /* THKCompanyDetailBannerRollingCell.h */,
-				16D94B842554261900D4A554 /* THKCompanyDetailBannerRollingCell.m */,
+				16D94B832554261900D4A554 /* THKCompanyDetailBannerRollingBaseCell.h */,
+				16D94B842554261900D4A554 /* THKCompanyDetailBannerRollingBaseCell.m */,
+				166FDD0D25552F2F0089574E /* THKCompanyDetailBannerRollingLiveCell.h */,
+				166FDD0E25552F2F0089574E /* THKCompanyDetailBannerRollingLiveCell.m */,
+				166FDD1325552F570089574E /* THKCompanyDetailBannerRollingAppointmentCell.h */,
+				166FDD1425552F570089574E /* THKCompanyDetailBannerRollingAppointmentCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -842,6 +855,7 @@
 				164CF9652553F4E600FF02E0 /* icon_gold_coin@2x.png in Resources */,
 				164CF9612553F4E600FF02E0 /* noLike@2x.png in Resources */,
 				164CF9492553F4E600FF02E0 /* dataNoExist@2x.png in Resources */,
+				166FDD1A255535EE0089574E /* ico_headPortrait_60@2x.png in Resources */,
 				16D94B6F2554235900D4A554 /* CompanyDetailBanner_img@3x.png in Resources */,
 				16D94B6E2554235900D4A554 /* CompanyDetailBanner_video@2x.png in Resources */,
 				164CF95A2553F4E600FF02E0 /* noPublishUgc@2x.png in Resources */,
@@ -1005,7 +1019,7 @@
 				164CF9402553F4E600FF02E0 /* TMCityPicker.m in Sources */,
 				164CF8B22553F07800FF02E0 /* THKCompanyDetailBannerView.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
-				16D94B852554261900D4A554 /* THKCompanyDetailBannerRollingCell.m in Sources */,
+				16D94B852554261900D4A554 /* THKCompanyDetailBannerRollingBaseCell.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
 				164CF8CA2553F36E00FF02E0 /* THKCompanyDetailBannerEntryView.m in Sources */,
 				164CF96C2553F4E600FF02E0 /* TMUIWeakObjectContainer.m in Sources */,
@@ -1026,10 +1040,12 @@
 				164CF9452553F4E600FF02E0 /* TMEmptyContentItem.m in Sources */,
 				164CF9412553F4E600FF02E0 /* TMNormalPicker.m in Sources */,
 				164CF8BB2553F34A00FF02E0 /* THKCompanyDetailBannerMainView.m in Sources */,
+				166FDD1525552F570089574E /* THKCompanyDetailBannerRollingAppointmentCell.m in Sources */,
 				164CF8B12553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m in Sources */,
 				164CF9432553F4E600FF02E0 /* TMContentAlert.m in Sources */,
 				164CF93A2553F4E600FF02E0 /* UIView+TMUI.m in Sources */,
 				164CF8C42553F36200FF02E0 /* THKCompanyDetailBannerRollingView.m in Sources */,
+				166FDD0F25552F2F0089574E /* THKCompanyDetailBannerRollingLiveCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
