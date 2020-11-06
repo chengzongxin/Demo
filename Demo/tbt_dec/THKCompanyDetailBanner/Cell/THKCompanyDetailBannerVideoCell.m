@@ -30,6 +30,7 @@
 - (void)setup{
     self.player = [[AVPlayer alloc] init];
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    self.player.muted = YES; // 静音
     [self.contentView.layer addSublayer:self.playerLayer];
     
     // 视频循环播放
