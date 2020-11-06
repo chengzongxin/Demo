@@ -58,7 +58,9 @@
     
     self.userInteractionEnabled = YES;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+    [self addGestureRecognizer:tap];
     [tap.rac_gestureSignal subscribe:self.tapVideoImageEntrySubject];
+    
 }
 
 TMUI_PropertyLazyLoad(RACSubject, tapVideoImageEntrySubject);

@@ -35,12 +35,6 @@ TMUI_PropertySyntheSize(viewModel);
 - (void)bindViewModel{
     [self.collectionView reloadData];
     
-    _tapItemSubject = [RACSubject subject];
-//    @weakify(self);
-//    [[RACSignal rac_signalForSelector:@selector(collectionView:didSelectItemAtIndexPath:)] subscribeNext:^(RACTuple * _Nullable x) {
-//        @strongify(self);
-//        [self.tapItemSubject sendNext:x];
-//    }];
 }
 
 #pragma mark - Delegate
@@ -73,7 +67,7 @@ TMUI_PropertySyntheSize(viewModel);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [self.tapItemSubject sendNext:indexPath];
 }
 
 
@@ -107,5 +101,7 @@ TMUI_PropertySyntheSize(viewModel);
     }
     return _collectionViewlayout;
 }
+
+TMUI_PropertyLazyLoad(RACSubject, tapItemSubject);
 
 @end

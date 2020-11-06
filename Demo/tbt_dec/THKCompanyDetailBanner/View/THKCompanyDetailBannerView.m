@@ -73,9 +73,9 @@ TMUI_PropertySyntheSize(viewModel);
     [self.entryView bindViewModel:self.viewModel.entryModel];
     
     // 添加入口
-//    [self.mainView.tapItemSubject subscribe:self.viewModel.tapItemSubject];
+    [self.mainView.tapItemSubject subscribe:self.viewModel.tapItemSubject];
     [self.rollingView.tapRemindSignal subscribe:self.viewModel.tapRemindLiveSubject];
-//    [self.entryView.tapVideoImageEntrySubject subscribe:self.viewModel.tapVideoImageTagSubject];
+    [self.entryView.tapVideoImageEntrySubject subscribe:self.viewModel.tapVideoImageTagSubject];
 }
 
 #pragma mark - Event Respone
