@@ -19,6 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) id rollModel;
 @property (nonatomic, strong) id entryModel;
 
+@property (nonatomic, strong, readonly) RACSubject *tapItemSubject;
+@property (nonatomic, strong, readonly) RACSubject *tapRemindLiveSubject;
+@property (nonatomic, strong, readonly) RACSubject *tapVideoImageTagSubject;
+
 @end
 
 NS_ASSUME_NONNULL_END

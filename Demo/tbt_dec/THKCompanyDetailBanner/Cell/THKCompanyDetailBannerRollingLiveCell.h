@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel *remindLiveLabel;
 
+@property (nonatomic, strong) RACSubject *tapRemindSubject;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -7,6 +7,14 @@
 
 #import "THKCompanyDetailBannerViewModel.h"
 
+@interface THKCompanyDetailBannerViewModel ()
+
+@property (nonatomic, strong) RACSubject *tapItemSubject;
+@property (nonatomic, strong) RACSubject *tapRemindLiveSubject;
+@property (nonatomic, strong) RACSubject *tapVideoImageTagSubject;
+
+@end
+
 @implementation THKCompanyDetailBannerViewModel
 
 - (id)mainViewModel{
@@ -26,5 +34,9 @@
 - (id)entryModel{
     return self.model.decShortName;
 }
+
+TMUI_PropertyLazyLoad(RACSubject, tapItemSubject);
+TMUI_PropertyLazyLoad(RACSubject, tapRemindLiveSubject);
+TMUI_PropertyLazyLoad(RACSubject, tapVideoImageTagSubject);
 
 @end

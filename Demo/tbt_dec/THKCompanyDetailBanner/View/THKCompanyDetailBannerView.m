@@ -67,14 +67,15 @@ TMUI_PropertySyntheSize(viewModel);
 - (void)bindViewModel{
     [super bindViewModel];
     
+    // 设置model
     [self.mainView bindViewModel:self.viewModel.mainViewModel];
     [self.rollingView bindViewModel:self.viewModel.rollModel];
     [self.entryView bindViewModel:self.viewModel.entryModel];
     
-    
-//    RAC(self.mainView,viewModel) = RACObserve(self.viewModel, mainViewModel);
-//    RAC(self.rollingView,viewModel) = RACObserve(self.viewModel, rollModel);
-//    RAC(self.entryView,viewModel) = RACObserve(self.viewModel, entryModel);
+    // 添加入口
+//    [self.mainView.tapItemSubject subscribe:self.viewModel.tapItemSubject];
+    [self.rollingView.tapRemindSignal subscribe:self.viewModel.tapRemindLiveSubject];
+//    [self.entryView.tapVideoImageEntrySubject subscribe:self.viewModel.tapVideoImageTagSubject];
 }
 
 #pragma mark - Event Respone

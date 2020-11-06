@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKCompanyDetailBannerEntryView : THKView
 
+@property (nonatomic, strong) RACSubject *tapVideoImageEntrySubject;
+
 @end
 
 NS_ASSUME_NONNULL_END

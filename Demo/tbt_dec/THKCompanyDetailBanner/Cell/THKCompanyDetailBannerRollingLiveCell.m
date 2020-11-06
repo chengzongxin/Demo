@@ -22,6 +22,13 @@
     self.imageView.layer.masksToBounds = YES;
     
     [self.contentView addSubview:self.remindLiveLabel];
+    
+    self.remindLiveLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+    [self.remindLiveLabel addGestureRecognizer:tap];
+    
+    _tapRemindSubject = [RACSubject subject];
+    [tap.rac_gestureSignal subscribe:_tapRemindSubject];
 }
 
 - (void)makeConstraints{

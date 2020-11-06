@@ -35,6 +35,20 @@
         make.top.left.equalTo(self.view);
         make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width, 300));
     }];
+    
+    
+    
+    [bannerVM.tapRemindLiveSubject subscribeNext:^(id  _Nullable x) {
+        NSLog(@"bannerVM.tapRemindLiveSubject = %@",x);
+    }];
+    
+    [bannerVM.tapItemSubject subscribeNext:^(id  _Nullable x) {
+        NSLog(@"bannerVM.tapItemSubject = %@",x);
+    }];
+    
+    [bannerVM.tapVideoImageTagSubject subscribeNext:^(id  _Nullable x) {
+        NSLog(@"bannerVM.tapVideoImageTagSubject = %@",x);
+    }];
 }
 
 

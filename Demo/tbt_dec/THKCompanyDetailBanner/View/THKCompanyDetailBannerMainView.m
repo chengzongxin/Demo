@@ -34,6 +34,13 @@ TMUI_PropertySyntheSize(viewModel);
 
 - (void)bindViewModel{
     [self.collectionView reloadData];
+    
+    _tapItemSubject = [RACSubject subject];
+//    @weakify(self);
+//    [[RACSignal rac_signalForSelector:@selector(collectionView:didSelectItemAtIndexPath:)] subscribeNext:^(RACTuple * _Nullable x) {
+//        @strongify(self);
+//        [self.tapItemSubject sendNext:x];
+//    }];
 }
 
 #pragma mark - Delegate
@@ -63,6 +70,10 @@ TMUI_PropertySyntheSize(viewModel);
     NSLog(@"cell.url = %@",cell.url);
     cell.backgroundColor = [UIColor tmui_randomColor];
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
 }
 
 

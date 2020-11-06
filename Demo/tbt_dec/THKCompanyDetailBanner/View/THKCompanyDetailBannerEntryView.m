@@ -55,7 +55,13 @@
 
 - (void)bindViewModel{
     NSLog(@"entry %@",self.viewModel);
+    
+    self.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
+    [tap.rac_gestureSignal subscribe:self.tapVideoImageEntrySubject];
 }
+
+TMUI_PropertyLazyLoad(RACSubject, tapVideoImageEntrySubject);
 
 
 

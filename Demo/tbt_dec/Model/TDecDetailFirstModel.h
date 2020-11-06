@@ -229,7 +229,7 @@ typedef struct TDecActivityRemaingTime {
  */
 @property (nonatomic, assign) BOOL hasPhone,hasRegister,hasIM,hasIntention,needRemind;
 
-@property (nonatomic, assign, readonly) NSInteger toolBarStyle;//toolBar的样式 参考：TDecDetailToolBarStyle
+//@property (nonatomic, assign, readonly) NSInteger toolBarStyle;//toolBar的样式 参考：TDecDetailToolBarStyle
 
 @property (nonatomic, strong) NSString *intentionUrl;
 

@@ -66,7 +66,7 @@ TMUI_PropertySyntheSize(viewModel);
 
 
 - (void)bindViewModel{
-    [self.collectionView reloadData];
+//    [self.collectionView reloadData];
 }
 
 - (void)addTimer {
@@ -75,7 +75,7 @@ TMUI_PropertySyntheSize(viewModel);
     }
     
     @weakify(self);
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 repeats:YES block:^(NSTimer * _Nonnull timer) {
         @strongify(self);
         [self timerScheduledAction];
     }];
@@ -165,9 +165,15 @@ TMUI_PropertySyntheSize(viewModel);
     
     int index = indexPath.item % (int)self.viewModel.count;
     
-    if (index == 1) {
+    if (index == 0 || index == 1) {
         THKCompanyDetailBannerRollingLiveCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingLiveCell class]) forIndexPath:indexPath];
-            
+//        [cell.tapRemindSubject subscribe:self.tapRemindSignal];
+//        [[cell.tapRemindSubject takeUntil:cell.rac_prepareForReuseSignal] subscribe:self.tapRemindSignal];
+        @weakify(self);
+        [[cell.tapRemindSubject takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(id  _Nullable x) {
+            @strongify(self);
+            [self.tapRemindSignal sendNext:x];
+        }];
         return cell;
     }else{
         THKCompanyDetailBannerRollingAppointmentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKCompanyDetailBannerRollingAppointmentCell class]) forIndexPath:indexPath];
@@ -209,5 +215,7 @@ TMUI_PropertySyntheSize(viewModel);
     }
     return _collectionViewlayout;
 }
+
+TMUI_PropertyLazyLoad(RACSubject, tapRemindSignal);
 
 @end
