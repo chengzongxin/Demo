@@ -18,6 +18,8 @@
 		160107072553DD8100FE4B77 /* DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107062553DD8100FE4B77 /* DemoUITests.m */; };
 		1601076C2553EA2800FE4B77 /* THKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601076B2553EA2700FE4B77 /* THKView.m */; };
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
+		1632EB8025555812007722E9 /* CompanyDetailBanner_roll_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1632EB7E25555812007722E9 /* CompanyDetailBanner_roll_bg@3x.png */; };
+		1632EB8125555812007722E9 /* CompanyDetailBanner_roll_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1632EB7F25555812007722E9 /* CompanyDetailBanner_roll_bg@2x.png */; };
 		164CF8B02553F07800FF02E0 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 164CF8A72553F07800FF02E0 /* data.json */; };
 		164CF8B12553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8AA2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m */; };
 		164CF8B22553F07800FF02E0 /* THKCompanyDetailBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8AB2553F07800FF02E0 /* THKCompanyDetailBannerView.m */; };
@@ -135,6 +137,8 @@
 		1601076B2553EA2700FE4B77 /* THKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKView.m; sourceTree = "<group>"; };
 		160107702553EA3300FE4B77 /* THKViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKViewModel.m; sourceTree = "<group>"; };
 		160107712553EA3300FE4B77 /* THKViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewModel.h; sourceTree = "<group>"; };
+		1632EB7E25555812007722E9 /* CompanyDetailBanner_roll_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CompanyDetailBanner_roll_bg@3x.png"; sourceTree = "<group>"; };
+		1632EB7F25555812007722E9 /* CompanyDetailBanner_roll_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CompanyDetailBanner_roll_bg@2x.png"; sourceTree = "<group>"; };
 		164CF8A72553F07800FF02E0 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		164CF8A92553F07800FF02E0 /* THKCompanyDetailBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerView.h; sourceTree = "<group>"; };
 		164CF8AA2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerViewModel.m; sourceTree = "<group>"; };
@@ -689,6 +693,8 @@
 				16D94B672554235900D4A554 /* CompanyDetailBanner_img@3x.png */,
 				16D94B682554235900D4A554 /* CompanyDetailBanner_img@2x.png */,
 				166FDD19255535EE0089574E /* ico_headPortrait_60@2x.png */,
+				1632EB7F25555812007722E9 /* CompanyDetailBanner_roll_bg@2x.png */,
+				1632EB7E25555812007722E9 /* CompanyDetailBanner_roll_bg@3x.png */,
 			);
 			path = png;
 			sourceTree = "<group>";
@@ -855,6 +861,7 @@
 				164CF9652553F4E600FF02E0 /* icon_gold_coin@2x.png in Resources */,
 				164CF9612553F4E600FF02E0 /* noLike@2x.png in Resources */,
 				164CF9492553F4E600FF02E0 /* dataNoExist@2x.png in Resources */,
+				1632EB8125555812007722E9 /* CompanyDetailBanner_roll_bg@2x.png in Resources */,
 				166FDD1A255535EE0089574E /* ico_headPortrait_60@2x.png in Resources */,
 				16D94B6F2554235900D4A554 /* CompanyDetailBanner_img@3x.png in Resources */,
 				16D94B6E2554235900D4A554 /* CompanyDetailBanner_video@2x.png in Resources */,
@@ -872,6 +879,7 @@
 				164CF9692553F4E600FF02E0 /* searchBarLeftIcon@3x.png in Resources */,
 				164CF9552553F4E600FF02E0 /* noComment@3x.png in Resources */,
 				164CF9472553F4E600FF02E0 /* navBackBlack@3x.png in Resources */,
+				1632EB8025555812007722E9 /* CompanyDetailBanner_roll_bg@3x.png in Resources */,
 				164CF94F2553F4E600FF02E0 /* noSearchResult@2x.png in Resources */,
 				164CF9642553F4E600FF02E0 /* icon_gold_coin@3x.png in Resources */,
 				164CF9522553F4E600FF02E0 /* noSearchResult@3x.png in Resources */,

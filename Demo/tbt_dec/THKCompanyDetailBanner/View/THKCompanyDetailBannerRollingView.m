@@ -33,13 +33,23 @@ TMUI_PropertySyntheSize(viewModel);
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = UIColorRGBA(0, 0, 0, 0.4);
-        self.layer.cornerRadius = 8;
-        [self addSubview:self.collectionView];
+        [self setup];
         [self bindEvent];
         [self addTimer];
     }
     return self;
+}
+
+- (void)setup{
+    self.backgroundColor = UIColorRGBA(0, 0, 0, 0.4);
+    UIImageView *bgImgV = [[UIImageView alloc] initWithImage:kImgAtBundle(@"CompanyDetailBanner_roll_bg")];
+    [self addSubview:bgImgV];
+    [bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.top.bottom.equalTo(self);
+        make.width.mas_equalTo(61);
+    }];
+    self.layer.cornerRadius = 8;
+    [self addSubview:self.collectionView];
 }
 
 - (void)bindEvent {
