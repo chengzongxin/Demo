@@ -377,22 +377,22 @@
 		164CF8A62553F07800FF02E0 /* tbt_dec */ = {
 			isa = PBXGroup;
 			children = (
-				164CF8A72553F07800FF02E0 /* data.json */,
-				16D94B642554235900D4A554 /* png */,
-				164CF8A82553F07800FF02E0 /* THKCompanyDetailBanner */,
+				164CF8A82553F07800FF02E0 /* Banner */,
 				164CF8AD2553F07800FF02E0 /* Model */,
 			);
 			path = tbt_dec;
 			sourceTree = "<group>";
 		};
-		164CF8A82553F07800FF02E0 /* THKCompanyDetailBanner */ = {
+		164CF8A82553F07800FF02E0 /* Banner */ = {
 			isa = PBXGroup;
 			children = (
+				164CF8A72553F07800FF02E0 /* data.json */,
+				16D94B642554235900D4A554 /* png */,
 				164CF8B82553F2D600FF02E0 /* View */,
 				164CF8B72553F2D600FF02E0 /* ViewModel */,
 				16D94B7B255425AE00D4A554 /* Cell */,
 			);
-			path = THKCompanyDetailBanner;
+			path = Banner;
 			sourceTree = "<group>";
 		};
 		164CF8AD2553F07800FF02E0 /* Model */ = {

@@ -11,7 +11,6 @@
 #import "TestViewController.h"
 
 @interface ViewController ()
-@property (nonatomic, strong) TDecDetailFirstModel *model;
 
 @end
 
@@ -21,13 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSString *path = [NSBundle.mainBundle pathForResource:@"data.json" ofType:nil];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    NSString *str = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    TDecDetailFirstModel *model = [TDecDetailFirstModel mj_objectWithKeyValues:str];
-    _model = model;
-    
-    THKCompanyDetailBannerViewModel *bannerVM = [[THKCompanyDetailBannerViewModel alloc] initWithModel:model];
+    THKCompanyDetailBannerViewModel *bannerVM = [[THKCompanyDetailBannerViewModel alloc] init];
     THKCompanyDetailBannerView *banner = [[THKCompanyDetailBannerView alloc] init];
     [banner bindViewModel:bannerVM];
     [self.view addSubview:banner];

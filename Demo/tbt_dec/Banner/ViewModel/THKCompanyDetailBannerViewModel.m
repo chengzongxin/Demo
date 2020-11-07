@@ -17,6 +17,19 @@
 
 @implementation THKCompanyDetailBannerViewModel
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        NSString *path = [NSBundle.mainBundle pathForResource:@"data.json" ofType:nil];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        NSString *str = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        TDecDetailFirstModel *model = [TDecDetailFirstModel mj_objectWithKeyValues:str];
+        self.model = model;
+    }
+    return self;
+}
+
 - (id)mainViewModel{
     NSMutableArray *arr = [NSMutableArray array];
     [arr addObjectsFromArray:self.model.videoList];
