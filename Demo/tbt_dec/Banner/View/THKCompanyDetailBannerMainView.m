@@ -61,8 +61,6 @@ TMUI_PropertySyntheSize(viewModel);
         cell.url = model.imgUrl;
     }
     
-    NSLog(@"cell.url = %@",cell.url);
-    cell.backgroundColor = [UIColor tmui_randomColor];
     return cell;
 }
 
