@@ -20,6 +20,7 @@
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
 		1632EB8025555812007722E9 /* CompanyDetailBanner_roll_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1632EB7E25555812007722E9 /* CompanyDetailBanner_roll_bg@3x.png */; };
 		1632EB8125555812007722E9 /* CompanyDetailBanner_roll_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1632EB7F25555812007722E9 /* CompanyDetailBanner_roll_bg@2x.png */; };
+		1632EC0925556FB2007722E9 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1632EC0825556FB2007722E9 /* TestViewController.m */; };
 		164CF8B02553F07800FF02E0 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 164CF8A72553F07800FF02E0 /* data.json */; };
 		164CF8B12553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8AA2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m */; };
 		164CF8B22553F07800FF02E0 /* THKCompanyDetailBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8AB2553F07800FF02E0 /* THKCompanyDetailBannerView.m */; };
@@ -139,6 +140,8 @@
 		160107712553EA3300FE4B77 /* THKViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewModel.h; sourceTree = "<group>"; };
 		1632EB7E25555812007722E9 /* CompanyDetailBanner_roll_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CompanyDetailBanner_roll_bg@3x.png"; sourceTree = "<group>"; };
 		1632EB7F25555812007722E9 /* CompanyDetailBanner_roll_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CompanyDetailBanner_roll_bg@2x.png"; sourceTree = "<group>"; };
+		1632EC0725556FB2007722E9 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		1632EC0825556FB2007722E9 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		164CF8A72553F07800FF02E0 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		164CF8A92553F07800FF02E0 /* THKCompanyDetailBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCompanyDetailBannerView.h; sourceTree = "<group>"; };
 		164CF8AA2553F07800FF02E0 /* THKCompanyDetailBannerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCompanyDetailBannerViewModel.m; sourceTree = "<group>"; };
@@ -325,6 +328,8 @@
 				160106E32553DD8000FE4B77 /* SceneDelegate.m */,
 				160106E52553DD8000FE4B77 /* ViewController.h */,
 				160106E62553DD8000FE4B77 /* ViewController.m */,
+				1632EC0725556FB2007722E9 /* TestViewController.h */,
+				1632EC0825556FB2007722E9 /* TestViewController.m */,
 				160106E82553DD8000FE4B77 /* Main.storyboard */,
 				160106EB2553DD8000FE4B77 /* Assets.xcassets */,
 				160106ED2553DD8000FE4B77 /* LaunchScreen.storyboard */,
@@ -1043,6 +1048,7 @@
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
 				16D94B602554224500D4A554 /* UIImage+TCategory.m in Sources */,
 				164CF9632553F4E600FF02E0 /* TMToast.m in Sources */,
+				1632EC0925556FB2007722E9 /* TestViewController.m in Sources */,
 				164CF93E2553F4E600FF02E0 /* TMDatePicker.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				164CF9452553F4E600FF02E0 /* TMEmptyContentItem.m in Sources */,

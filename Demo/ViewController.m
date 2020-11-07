@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "THKCompanyDetailBannerView.h"
 #import "TDecDetailFirstModel.h"
+#import "TestViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) TDecDetailFirstModel *model;
@@ -49,6 +50,10 @@
     [bannerVM.tapVideoImageTagSubject subscribeNext:^(id  _Nullable x) {
         NSLog(@"bannerVM.tapVideoImageTagSubject = %@",x);
     }];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self presentViewController:TestViewController.new animated:YES completion:nil];
 }
 
 
