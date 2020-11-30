@@ -13,7 +13,7 @@
 //#define kHeaderImageViewHeight ((227.0 / 375.0) * self.view.bounds.size.width)
 //#define kHeaderHeight (kHeaderImageViewHeight + 56.0 + 8.0)
 
-static const CGFloat kHeaderViewHeight = 100;
+//static const CGFloat kHeaderViewHeight = 100;
 static const CGFloat kSliderBarHeight = 50;
 
 
@@ -22,12 +22,14 @@ static const CGFloat kSliderBarHeight = 50;
 // component
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) TDCCaseDetailContentView *contentView;
-@property (nonatomic, strong) UIView *headerView;
+//@property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) THKSegmentControl *slideBar;
 
 // delegate
 @property (nonatomic, strong) NSArray <UIViewController *>*childVCs;
 @property (nonatomic, strong) NSArray <NSString *>*titles;
+@property (nonatomic, assign) CGFloat headerHeight;
+@property (nonatomic, weak) UIView *headerView;
 
 // private
 @property (nonatomic, assign) NSInteger currentIndex;
@@ -61,6 +63,13 @@ static const CGFloat kSliderBarHeight = 50;
 - (void)fetchDataSource{
     self.childVCs = [self childViewControllers];
     self.titles = [self titlesForChildViewControllers];
+    if ([self respondsToSelector:@selector(heightForHeader)]) {
+        self.headerHeight = [self heightForHeader];
+    }
+    if ([self respondsToSelector:@selector(viewForHeader)]) {
+        self.headerView = [self viewForHeader];
+    }
+    
     [self.pageViewController setViewControllers:@[self.childVCs[self.currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
@@ -75,13 +84,13 @@ static const CGFloat kSliderBarHeight = 50;
 
 // 设置约束
 - (void)makeConstraints{
-    self.contentView.contentInset = UIEdgeInsetsMake(kHeaderViewHeight+kSliderBarHeight, 0, 0, 0);
+    self.contentView.contentInset = UIEdgeInsetsMake(self.headerHeight+kSliderBarHeight, 0, 0, 0);
     self.contentView.contentSize = self.view.bounds.size;
     
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView);
-        make.top.mas_equalTo(-kHeaderViewHeight-kSliderBarHeight);
-        make.height.mas_equalTo(kHeaderViewHeight);
+        make.top.mas_equalTo(-self.headerHeight-kSliderBarHeight);
+        make.height.mas_equalTo(self.headerHeight);
         make.width.mas_equalTo(self.view.bounds.size.width);
     }];
     
@@ -103,13 +112,6 @@ static const CGFloat kSliderBarHeight = 50;
 
 #pragma mark - Event Respone
 - (void)btnClick:(THKSegmentControl *)control{
-//    control.selectedIndex
-//    NSUInteger index = btn.tag;
-    
-//    UIButton *preBtn = _headerView.subviews[self.currentIndex];
-//    preBtn.selected = NO;
-//    btn.selected = YES;
-    
     NSUInteger index = control.selectedIndex;
     UIPageViewControllerNavigationDirection direction;
     if (index > self.currentIndex) {
@@ -134,7 +136,16 @@ static const CGFloat kSliderBarHeight = 50;
     return nil;
 }
 
-- (void)pageContentViewController:(THKPageContentViewController *)pageVC from:(NSInteger)fromVC to:(NSInteger)toVC{}
+- (CGFloat)heightForHeader{
+    self.contentView.bounces = NO;
+    return 0;
+}
+
+- (UIView *)viewForHeader{
+    return UIView.new;
+}
+
+- (void)pageContentViewControllerDidScrolFrom:(NSInteger)fromVC to:(NSInteger)toVC {}
 
 #pragma mark ==========内部代理方法 PageVCDelegate==========
 //这个方法是返回前一个页面,如果返回为nil,那么UIPageViewController就会认为当前页面是第一个页面不可以向前滚动或翻页
@@ -235,14 +246,6 @@ static const CGFloat kSliderBarHeight = 50;
     }
     
     return _pageViewController;
-}
-
-- (UIView *)headerView{
-    if (!_headerView) {
-        _headerView = [[UIView alloc] initWithFrame:CGRectZero];
-        _headerView.backgroundColor = UIColor.orangeColor;
-    }
-    return _headerView;
 }
 
 - (THKSegmentControl *)slideBar {

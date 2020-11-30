@@ -41,4 +41,14 @@
     return @[@"热门",@"最新",@"涉及",@"案例"];
 }
 
+- (CGFloat)heightForHeader{
+    return 100;
+}
+
+- (UIView *)viewForHeader{
+    UIView *view = UIView.new;
+    view.backgroundColor = UIColor.orangeColor;
+    return view;
+}
+
 @end

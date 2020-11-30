@@ -15,6 +15,11 @@
 
 - (NSArray <NSString *> *)titlesForChildViewControllers;
 
+@optional
+- (CGFloat)heightForHeader;
+
+- (UIView *)viewForHeader;
+
 @end
 
 @protocol THKPageContentViewControllerDelegate <NSObject>
