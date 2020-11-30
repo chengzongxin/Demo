@@ -22,6 +22,10 @@
     [tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
     tableView.rowHeight = 88;
     [self.view addSubview:tableView];
+    
+    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

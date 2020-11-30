@@ -30,11 +30,15 @@
     
     NSArray *vcArray = [[vcClass.rac_sequence map:^id _Nullable(Class cls) {
         UIViewController *vc = [[cls alloc] init];
-        vc.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
+//        vc.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
         return vc;
     }] array];
     
     return vcArray;
+}
+
+- (NSArray<NSString *> *)titlesForChildViewControllers{
+    return @[@"热门",@"最新",@"涉及",@"案例"];
 }
 
 @end

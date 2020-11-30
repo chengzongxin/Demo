@@ -13,11 +13,13 @@
 @required
 - (NSArray <UIViewController *> *)childViewControllers;
 
+- (NSArray <NSString *> *)titlesForChildViewControllers;
+
 @end
 
 @protocol THKPageContentViewControllerDelegate <NSObject>
 
-- (void)pageContentViewController:(THKPageContentViewController *)pageVC from:(NSInteger)fromVC to:(NSInteger)toVC;
+- (void)pageContentViewControllerDidScrolFrom:(NSInteger)fromVC to:(NSInteger)toVC;
 
 
 @end

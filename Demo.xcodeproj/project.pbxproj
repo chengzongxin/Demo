@@ -77,6 +77,9 @@
 		164CF96B2553F4E600FF02E0 /* TMSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF92D2553F4E600FF02E0 /* TMSearchBar.m */; };
 		164CF96C2553F4E600FF02E0 /* TMUIWeakObjectContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF9302553F4E600FF02E0 /* TMUIWeakObjectContainer.m */; };
 		164CF96D2553F4E600FF02E0 /* TMUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF9382553F4E600FF02E0 /* TMUIHelper.m */; };
+		1653258225748191007BD950 /* THKSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1653258125748191007BD950 /* THKSegmentControl.m */; };
+		165325A425748D06007BD950 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325A225748D06007BD950 /* UIView+Frame.m */; };
+		165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325AD25748E5F007BD950 /* UIColor+HexString.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
 		C22508FBFE83E454C360C944 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D168DD537E7BC7FA0C76927 /* Pods_Demo.framework */; };
@@ -224,6 +227,14 @@
 		164CF9372553F4E600FF02E0 /* TMAssociatedPropertyMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMAssociatedPropertyMacro.h; sourceTree = "<group>"; };
 		164CF9382553F4E600FF02E0 /* TMUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMUIHelper.m; sourceTree = "<group>"; };
 		164CF9392553F4E600FF02E0 /* TMUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMUIKit.h; sourceTree = "<group>"; };
+		1653258025748191007BD950 /* THKSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKSegmentControl.h; sourceTree = "<group>"; };
+		1653258125748191007BD950 /* THKSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKSegmentControl.m; sourceTree = "<group>"; };
+		1653258925748B8C007BD950 /* Define_Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define_Block.h; sourceTree = "<group>"; };
+		165325A225748D06007BD950 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		165325A325748D06007BD950 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		165325A825748E28007BD950 /* THKColorsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKColorsDefine.h; sourceTree = "<group>"; };
+		165325AC25748E5F007BD950 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		165325AD25748E5F007BD950 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B271C6912A85D06F5128169 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,8 +347,11 @@
 		160107692553EA1A00FE4B77 /* BaseSection */ = {
 			isa = PBXGroup;
 			children = (
+				1653258625748B8C007BD950 /* CommonDefine */,
 				160106E52553DD8000FE4B77 /* THKPageContentViewController.h */,
 				160106E62553DD8000FE4B77 /* THKPageContentViewController.m */,
+				1653258025748191007BD950 /* THKSegmentControl.h */,
+				1653258125748191007BD950 /* THKSegmentControl.m */,
 				163AB06E2571086D005C25B2 /* TDCCaseDetailContentView.h */,
 				163AB06D2571086D005C25B2 /* TDCCaseDetailContentView.m */,
 				1601076A2553EA2700FE4B77 /* THKView.h */,
@@ -607,6 +621,19 @@
 				164CF9382553F4E600FF02E0 /* TMUIHelper.m */,
 			);
 			path = TMUICore;
+			sourceTree = "<group>";
+		};
+		1653258625748B8C007BD950 /* CommonDefine */ = {
+			isa = PBXGroup;
+			children = (
+				165325A325748D06007BD950 /* UIView+Frame.h */,
+				165325A225748D06007BD950 /* UIView+Frame.m */,
+				1653258925748B8C007BD950 /* Define_Block.h */,
+				165325A825748E28007BD950 /* THKColorsDefine.h */,
+				165325AC25748E5F007BD950 /* UIColor+HexString.h */,
+				165325AD25748E5F007BD950 /* UIColor+HexString.m */,
+			);
+			path = CommonDefine;
 			sourceTree = "<group>";
 		};
 		863C150325C51CDA1727051D /* Pods */ = {
@@ -904,6 +931,7 @@
 				164CF93F2553F4E600FF02E0 /* TMMultiDataPicker.m in Sources */,
 				160106E72553DD8000FE4B77 /* THKPageContentViewController.m in Sources */,
 				164CF93D2553F4E600FF02E0 /* TMPopoverView.m in Sources */,
+				165325A425748D06007BD950 /* UIView+Frame.m in Sources */,
 				164CF9662553F4E600FF02E0 /* TMSearchingController.m in Sources */,
 				164CF9682553F4E600FF02E0 /* TMSearchController.m in Sources */,
 				164CF9672553F4E600FF02E0 /* TMSearchPresentationAnimatedTransition.m in Sources */,
@@ -912,6 +940,7 @@
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				163AB07B257122DF005C25B2 /* Table1ViewController.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
+				1653258225748191007BD950 /* THKSegmentControl.m in Sources */,
 				164CF96C2553F4E600FF02E0 /* TMUIWeakObjectContainer.m in Sources */,
 				164CF9422553F4E600FF02E0 /* TMContentPicker.m in Sources */,
 				164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */,
@@ -929,6 +958,7 @@
 				163AB087257122FD005C25B2 /* NormalViewController.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				163AB09925713675005C25B2 /* ViewController.m in Sources */,
+				165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */,
 				164CF9452553F4E600FF02E0 /* TMEmptyContentItem.m in Sources */,
 				164CF9412553F4E600FF02E0 /* TMNormalPicker.m in Sources */,
 				164CF9432553F4E600FF02E0 /* TMContentAlert.m in Sources */,

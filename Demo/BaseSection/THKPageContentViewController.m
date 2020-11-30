@@ -7,18 +7,30 @@
 
 #import "THKPageContentViewController.h"
 #import "TDCCaseDetailContentView.h"
+#import "THKSegmentControl.h"
+#import "THKColorsDefine.h"
 
-#define kHeaderImageViewHeight ((227.0 / 375.0) * self.view.bounds.size.width)
-#define kHeaderHeight (kHeaderImageViewHeight + 56.0 + 8.0)
+//#define kHeaderImageViewHeight ((227.0 / 375.0) * self.view.bounds.size.width)
+//#define kHeaderHeight (kHeaderImageViewHeight + 56.0 + 8.0)
+
+static const CGFloat kHeaderViewHeight = 100;
+static const CGFloat kSliderBarHeight = 50;
+
 
 @interface THKPageContentViewController () <UIScrollViewDelegate,UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 
+// component
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) TDCCaseDetailContentView *contentView;
 @property (nonatomic, strong) UIView *headerView;
-@property (nonatomic, strong) NSArray <UIViewController *>*childVCs;
-@property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, strong) THKSegmentControl *slideBar;
 
+// delegate
+@property (nonatomic, strong) NSArray <UIViewController *>*childVCs;
+@property (nonatomic, strong) NSArray <NSString *>*titles;
+
+// private
+@property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, strong) UIViewController *preVC;
 @property (nonatomic, strong) UIViewController *toVC;
 
@@ -31,49 +43,74 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self thk_addSubviews];
+    [self initial];
+    
+    [self fetchDataSource];
+    
+    [self addSubviews];
+    
+    [self makeConstraints];
 }
 
-// 子视图布局
-- (void)thk_addSubviews {
-    
+- (void)initial{
+    self.currentIndex = 0;
     self.dataSource = self;
     self.delegate = self;
-    
-    [self addChildViewController:self.pageViewController];
-    [self.view addSubview:self.contentView];
-    [self.contentView addSubview:self.headerView];
-    [self.contentView addSubview:self.pageViewController.view];
-    [self.pageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.headerView.mas_bottom);
-        make.left.bottom.right.equalTo(self.view);
-    }];
-    self.contentView.contentInset = UIEdgeInsetsMake(kHeaderHeight, 0, 0, 0);
-    self.contentView.contentSize = self.view.bounds.size;
-    
-    [self setupChildViewController];
 }
 
-- (void)setupChildViewController{
+- (void)fetchDataSource{
     self.childVCs = [self childViewControllers];
-    self.currentIndex = 0;
-    UIButton *btn = self.headerView.subviews[self.currentIndex];
-    btn.selected = YES;
+    self.titles = [self titlesForChildViewControllers];
     [self.pageViewController setViewControllers:@[self.childVCs[self.currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
+// 子视图布局
+- (void)addSubviews {
+    [self.view addSubview:self.contentView];
+    [self.contentView addSubview:self.headerView];
+    [self.contentView addSubview:self.slideBar];
+    [self.contentView addSubview:self.pageViewController.view];
+    [self addChildViewController:self.pageViewController];
+}
+
+// 设置约束
+- (void)makeConstraints{
+    self.contentView.contentInset = UIEdgeInsetsMake(kHeaderViewHeight+kSliderBarHeight, 0, 0, 0);
+    self.contentView.contentSize = self.view.bounds.size;
+    
+    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView);
+        make.top.mas_equalTo(-kHeaderViewHeight-kSliderBarHeight);
+        make.height.mas_equalTo(kHeaderViewHeight);
+        make.width.mas_equalTo(self.view.bounds.size.width);
+    }];
+    
+    [self.slideBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.contentView);
+        make.top.equalTo(self.headerView.mas_bottom);
+        make.height.mas_equalTo(kSliderBarHeight);
+        make.width.mas_equalTo(self.view.bounds.size.width);
+    }];
+    
+    [self.pageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.slideBar.mas_bottom);
+        make.left.bottom.right.equalTo(self.view);
+    }];
+    
+}
 
 #pragma mark - Public
 
 #pragma mark - Event Respone
-- (void)btnClick:(UIButton *)btn{
-    NSUInteger index = btn.tag;
+- (void)btnClick:(THKSegmentControl *)control{
+//    control.selectedIndex
+//    NSUInteger index = btn.tag;
     
-    UIButton *preBtn = _headerView.subviews[self.currentIndex];
-    preBtn.selected = NO;
-    btn.selected = YES;
+//    UIButton *preBtn = _headerView.subviews[self.currentIndex];
+//    preBtn.selected = NO;
+//    btn.selected = YES;
     
-    
+    NSUInteger index = control.selectedIndex;
     UIPageViewControllerNavigationDirection direction;
     if (index > self.currentIndex) {
         direction = UIPageViewControllerNavigationDirectionForward;
@@ -86,16 +123,20 @@
 
 
 #pragma mark - Delegate
-// 给子类实现
+#pragma mark ==========外部代理方法 给子类实现==========
 - (NSArray<__kindof UIViewController *> *)childViewControllers{
-    return self.childVCs;
+    NSAssert(0, @"childViewControllers 方法未实现");
+    return nil;
 }
 
-- (void)pageContentViewController:(THKPageContentViewController *)pageVC from:(NSInteger)fromVC to:(NSInteger)toVC{
-    
+- (NSArray<NSString *> *)titlesForChildViewControllers{
+    NSAssert(0, @"titlesForChildViewControllers 方法未实现");
+    return nil;
 }
 
-#pragma mark ==========PageVCDelegate==========
+- (void)pageContentViewController:(THKPageContentViewController *)pageVC from:(NSInteger)fromVC to:(NSInteger)toVC{}
+
+#pragma mark ==========内部代理方法 PageVCDelegate==========
 //这个方法是返回前一个页面,如果返回为nil,那么UIPageViewController就会认为当前页面是第一个页面不可以向前滚动或翻页
 
 #pragma mark 返回上一个ViewController对象
@@ -130,12 +171,10 @@
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers{
-//    NSLog(@"%@",pendingViewControllers);
     self.toVC = pendingViewControllers.firstObject;
 }
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed{
-//    NSLog(@"%@",previousViewControllers);
     self.preVC = previousViewControllers.firstObject;
     
     if (!self.preVC || !self.toVC || self.preVC == self.toVC) return;
@@ -143,13 +182,12 @@
     NSInteger preIndex = [self indexOfViewController:self.preVC];
     NSInteger toIndex = [self indexOfViewController:self.toVC];
     
-    UIButton *preBtn = self.headerView.subviews[preIndex];
-    UIButton *toBtn = self.headerView.subviews[toIndex];
-
-    preBtn.selected = NO;
-    toBtn.selected = YES;
+    if ([self respondsToSelector:@selector(pageContentViewControllerDidScrolFrom:to:)]) {
+        [self pageContentViewControllerDidScrolFrom:preIndex to:toIndex];
+    }
+    
+    self.slideBar.selectedIndex = toIndex;
     self.currentIndex = toIndex;
-    NSLog(@"%zd-%zd",preIndex,toIndex);
 }
 
 
@@ -173,8 +211,6 @@
 
 
 #pragma mark - Getters and Setters
-
-
 - (TDCCaseDetailContentView *)contentView {
     if (_contentView == nil) {
         _contentView = [[TDCCaseDetailContentView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
@@ -203,19 +239,27 @@
 
 - (UIView *)headerView{
     if (!_headerView) {
-        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, - kHeaderHeight, self.view.bounds.size.width, kHeaderHeight)];
+        _headerView = [[UIView alloc] initWithFrame:CGRectZero];
         _headerView.backgroundColor = UIColor.orangeColor;
-    
-        for (int i = 0; i< 4; i ++) {
-            UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-            btn.backgroundColor = UIColor.whiteColor;
-            btn.frame = CGRectMake(i * (60 + 10), kHeaderHeight - 44, 60, 44);
-            [btn setTitle:@(i).stringValue forState:UIControlStateNormal];
-            btn.tag = i;
-            [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-            [_headerView addSubview:btn];
-        }    }
+    }
     return _headerView;
+}
+
+- (THKSegmentControl *)slideBar {
+    if (!_slideBar) {
+        CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, kSliderBarHeight);
+        _slideBar = [[THKSegmentControl alloc] initWithFrame:frame titles:self.titles];
+        _slideBar.backgroundColor = [UIColor whiteColor];
+        _slideBar.indicatorView.backgroundColor = THKColor_TextImportantColor;
+        _slideBar.indicatorView.layer.cornerRadius = 0.0;
+        [_slideBar setTitleFont:[UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium] forState:UIControlStateNormal];
+        [_slideBar setTitleFont:[UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium] forState:UIControlStateSelected];
+        [_slideBar setTitleColor:THKColor_TextWeakColor forState:UIControlStateNormal];
+        [_slideBar setTitleColor:THKColor_TextImportantColor forState:UIControlStateSelected];
+        [_slideBar addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventValueChanged];
+    }
+    
+    return _slideBar;
 }
 
 
