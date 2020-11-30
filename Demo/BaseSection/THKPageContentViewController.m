@@ -147,6 +147,9 @@ static const CGFloat kSliderBarHeight = 50;
 
 - (void)pageContentViewControllerDidScrolFrom:(NSInteger)fromVC to:(NSInteger)toVC {}
 
+- (void)pageContentViewControllerDidScroll:(UIScrollView *)scrollView {}
+
+
 #pragma mark ==========内部代理方法 PageVCDelegate==========
 //这个方法是返回前一个页面,如果返回为nil,那么UIPageViewController就会认为当前页面是第一个页面不可以向前滚动或翻页
 
@@ -201,6 +204,9 @@ static const CGFloat kSliderBarHeight = 50;
     self.currentIndex = toIndex;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self pageContentViewControllerDidScroll:scrollView];
+}
 
 #pragma mark - Private
 
@@ -228,7 +234,7 @@ static const CGFloat kSliderBarHeight = 50;
         _contentView.backgroundColor = [UIColor whiteColor];
         _contentView.showsHorizontalScrollIndicator = NO;
         _contentView.lockArea = 88;
-//        _contentView.otherDelegate = self;
+        //        _contentView.otherDelegate = self;
         _contentView.t_delegate = self;
     }
     return _contentView;
@@ -239,8 +245,8 @@ static const CGFloat kSliderBarHeight = 50;
     if (!_pageViewController) {
         NSDictionary *options = @{UIPageViewControllerOptionInterPageSpacingKey : @(10)};
         _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-                                                               navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                                                             options:options];
+                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+                                                                            options:options];
         _pageViewController.dataSource = self;
         _pageViewController.delegate = self;
     }

@@ -26,6 +26,7 @@
 
 - (void)pageContentViewControllerDidScrolFrom:(NSInteger)fromVC to:(NSInteger)toVC;
 
+- (void)pageContentViewControllerDidScroll:(UIScrollView *)scrollView;
 
 @end
 
