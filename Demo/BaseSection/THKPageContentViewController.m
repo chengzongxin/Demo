@@ -191,7 +191,7 @@ static const CGFloat kSliderBarHeight = 50;
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed{
     self.preVC = previousViewControllers.firstObject;
     
-    if (!self.preVC || !self.toVC || self.preVC == self.toVC) return;
+    if (!completed || !self.preVC || !self.toVC || self.preVC == self.toVC) return;
     
     NSInteger preIndex = [self indexOfViewController:self.preVC];
     NSInteger toIndex = [self indexOfViewController:self.toVC];

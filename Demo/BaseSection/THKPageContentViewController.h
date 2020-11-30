@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 @class THKPageContentViewController;
+@class THKSegmentControl;
 
 @protocol THKPageContentViewControllerDataSource <NSObject>
 
@@ -19,6 +20,8 @@
 - (CGFloat)heightForHeader;
 
 - (UIView *)viewForHeader;
+
+- (void)segmentControlConfigBlock:(void (^)(THKSegmentControl *control))configBlock;
 
 @end
 
