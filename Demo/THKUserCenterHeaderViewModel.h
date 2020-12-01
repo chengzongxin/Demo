@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSAttributedString *befollowAttrText;
 
 // layout
-- (CGFloat)viewHeight;
 @property (nonatomic, assign) CGFloat bgImageH;
 @property (nonatomic, assign) CGFloat avatarTop;
 @property (nonatomic, assign) CGFloat avatarH;
@@ -42,6 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat followCountW;
 @property (nonatomic, assign) CGFloat fansCountW;
 @property (nonatomic, assign) CGFloat beFollowCountW;
+
+- (CGFloat)viewHeight;
 
 @end
 

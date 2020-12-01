@@ -138,12 +138,12 @@ TMUI_PropertySyntheSize(viewModel);
     
     [self.ecologicalView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.storeButton.mas_bottom).offset(_viewModel.ecologicalTop);
-        make.left.right.equalTo(self).inset(20);
+        make.left.right.equalTo(self).inset(16);
         make.height.mas_equalTo(_viewModel.ecologicalH);
     }];
     
     [self.serviceInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self).inset(20);
+        make.left.right.equalTo(self).inset(16);
         make.top.equalTo(self.ecologicalView.mas_bottom).offset(_viewModel.serviceTop);
         make.height.mas_equalTo(_viewModel.serviceH);
     }];
@@ -192,6 +192,7 @@ TMUI_PropertySyntheSize(viewModel);
     if (!_bgImageView) {
         _bgImageView = [[UIImageView alloc] init];
         _bgImageView.image = [UIImage imageNamed:@"dec_banner_def"];
+        _bgImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _bgImageView;
 }
@@ -213,6 +214,7 @@ TMUI_PropertySyntheSize(viewModel);
         _avatarImageView.layer.borderColor = UIColor.whiteColor.CGColor;
         _avatarImageView.layer.borderWidth = 2;
         _avatarImageView.layer.masksToBounds = YES;
+        _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _avatarImageView;
 }
@@ -248,6 +250,7 @@ TMUI_PropertySyntheSize(viewModel);
         _tagButton.titleLabel.font = UIFont(12);
         _tagButton.backgroundColor = UIColorHexString(@"#F0F1F5");
         _tagButton.layer.cornerRadius = _viewModel.tagH/2?:12;
+        _tagButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
     }
     return _tagButton;
 }
@@ -308,6 +311,8 @@ TMUI_PropertySyntheSize(viewModel);
         } range:NSMakeRange(7, 1)];
         [_storeButton setAttributedTitle:attrStr forState:UIControlStateNormal];
         _storeButton.titleLabel.font = UIFont(12);
+        _storeButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+        _storeButton.contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
     }
     return _storeButton;
 }
@@ -316,6 +321,9 @@ TMUI_PropertySyntheSize(viewModel);
     if (!_ecologicalView) {
         _ecologicalView = [[UIImageView alloc] init];
         _ecologicalView.image = [UIImage imageNamed:@"dec_banner_def"];
+        _ecologicalView.contentMode = UIViewContentModeScaleAspectFill;
+        _ecologicalView.layer.cornerRadius = 4;
+        _ecologicalView.layer.masksToBounds = YES;
     }
     return _ecologicalView;
 }

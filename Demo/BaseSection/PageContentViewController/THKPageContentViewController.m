@@ -43,16 +43,12 @@ static const CGFloat kSliderBarHeight = 50;
     [super viewDidLoad];
     
     [self initial];
-    // delay
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        [self fetchDataSource];
-        
-        [self addSubviews];
-        
-        [self makeConstraints];
-    });
+    [self fetchDataSource];
+    
+    [self addSubviews];
+    
+    [self makeConstraints];
 }
 
 
@@ -66,11 +62,13 @@ static const CGFloat kSliderBarHeight = 50;
 - (void)fetchDataSource{
     self.childVCs = [self childViewControllers];
     self.titles = [self titlesForChildViewControllers];
-    if ([self respondsToSelector:@selector(heightForHeader)]) {
-        self.headerHeight = [self heightForHeader];
-    }
+    
     if ([self respondsToSelector:@selector(viewForHeader)]) {
         self.headerView = [self viewForHeader];
+    }
+    
+    if ([self respondsToSelector:@selector(heightForHeader)]) {
+        self.headerHeight = [self heightForHeader];
     }
     
     [self.pageViewController setViewControllers:@[self.childVCs[self.currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];

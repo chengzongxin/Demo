@@ -48,7 +48,8 @@
 }
 
 - (CGFloat)heightForHeader{
-    return 600;
+    THKUserCenterHeaderViewModel *viewModel = [[THKUserCenterHeaderViewModel alloc] init];
+    return viewModel.viewHeight;
 }
 
 - (UIView *)viewForHeader{

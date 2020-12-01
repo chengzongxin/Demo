@@ -61,10 +61,24 @@
 #pragma mark Public Method
 
 - (CGFloat)viewHeight{
-    
-    
-    
-    return 0;
+    CGFloat height = 0;
+    height += _avatarTop;
+    height += _avatarH;
+    height += _nameTop;
+    height += _nameH;
+    height += _tagTop;
+    height += _tagH;
+    height += _signatureTop;
+    height += _signatureH;
+    height += _followCountTop;
+    height += _followCountH;
+    height += _storeTop;
+    height += _storeH;
+    height += _ecologicalTop;
+    height += _ecologicalH;
+    height += _serviceTop;
+    height += _serviceH;
+    return height;
 }
 
 
