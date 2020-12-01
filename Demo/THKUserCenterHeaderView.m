@@ -13,6 +13,8 @@
 @property (nonatomic, strong, readwrite) THKUserCenterHeaderViewModel *viewModel;
 /// 背景主图
 @property (nonatomic, strong) UIImageView *bgImageView;
+/// 圆角视图
+@property (nonatomic, strong) UIView *cornerView;
 /// 头像
 @property (nonatomic, strong) UIImageView *avatarImageView;
 /// 名字
@@ -46,6 +48,7 @@ TMUI_PropertySyntheSize(viewModel);
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
 - (void)thk_setupViews {
     [self addSubview:self.bgImageView];
+    [self addSubview:self.cornerView];
     [self addSubview:self.avatarImageView];
     [self addSubview:self.nameLabel];
     [self addSubview:self.tagButton];
@@ -66,6 +69,12 @@ TMUI_PropertySyntheSize(viewModel);
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self);
         make.height.mas_equalTo(_viewModel.bgImageH);
+    }];
+    
+    [self.cornerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self);
+        make.top.equalTo(self).offset(165);
+        make.height.mas_equalTo(40);
     }];
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -187,6 +196,15 @@ TMUI_PropertySyntheSize(viewModel);
     return _bgImageView;
 }
 
+- (UIView *)cornerView{
+    if (!_cornerView) {
+        _cornerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 40)];
+        _cornerView.backgroundColor = UIColor.whiteColor;
+        _cornerView.layer.cornerRadius = 12;
+    }
+    return _cornerView;
+}
+
 - (UIImageView *)avatarImageView{
     if (!_avatarImageView) {
         _avatarImageView = [[UIImageView alloc] init];
@@ -205,6 +223,7 @@ TMUI_PropertySyntheSize(viewModel);
         _followButton = [[UIButton alloc] init];
         _followButton.backgroundColor = UIColor.grayColor;
         [_followButton setTitle:@"+ 关注" forState:UIControlStateNormal];
+        _followButton.titleLabel.font = UIFontMedium(16);
         [_followButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
         _followButton.backgroundColor = UIColorHexString(@"#24C77E");
         _followButton.layer.cornerRadius = 6;
@@ -281,8 +300,13 @@ TMUI_PropertySyntheSize(viewModel);
 - (UIButton *)storeButton{
     if (!_storeButton) {
         _storeButton = [[UIButton alloc] init];
-        [_storeButton setTitle:@"TA的店铺 >" forState:UIControlStateNormal];
-        [_storeButton setTitleColor:UIColorHexString(@"#111111") forState:UIControlStateNormal];
+        [_storeButton setImage:[UIImage imageNamed:@"user_tag_icon"] forState:UIControlStateNormal];
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:@"TA的店铺  ＞" attributes:@{NSFontAttributeName:UIFont(12),NSForegroundColorAttributeName:UIColorHexString(@"#111111")}];
+        [attrStr addAttributes:@{NSFontAttributeName:UIFont(10),
+                                 NSForegroundColorAttributeName:UIColorHexString(@"#878B99"),
+                                 NSBaselineOffsetAttributeName:@1
+        } range:NSMakeRange(7, 1)];
+        [_storeButton setAttributedTitle:attrStr forState:UIControlStateNormal];
         _storeButton.titleLabel.font = UIFont(12);
     }
     return _storeButton;

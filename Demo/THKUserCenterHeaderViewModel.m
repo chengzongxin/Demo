@@ -46,12 +46,12 @@
 - (void)bindWithModel:(id)model{
     [super bindWithModel:model];
     
-    self.name = @"永安设计";
+    self.name = @"装修界的电动小马达";
     self.tagName = @"设计机构";
     self.signature = @"123个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名";
     self.followAttrText = [self attrWithText:@"关注" number:2434];
     self.fansAttrText = [self attrWithText:@"粉丝" number:332];
-    self.befollowAttrText = [self attrWithText:@"获赞和收藏" number:4432];
+    self.befollowAttrText = [self attrWithText:@"获赞与收藏" number:4432];
     self.followCountW = [self widthForAttributeString:self.followAttrText];
     self.fansCountW = [self widthForAttributeString:self.fansAttrText];
     self.beFollowCountW = [self widthForAttributeString:self.befollowAttrText];
