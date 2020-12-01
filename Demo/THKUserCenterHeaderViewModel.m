@@ -34,6 +34,8 @@
     _followCountH = 20;
     _storeTop = 16;
     _storeH = 20;
+    _ecologicalTop = 23;
+    _ecologicalH = 60;
     _serviceTop = 30;
     _serviceH = 237;
     

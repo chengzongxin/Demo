@@ -33,6 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat followCountH;
 @property (nonatomic, assign) CGFloat storeTop;
 @property (nonatomic, assign) CGFloat storeH;
+@property (nonatomic, assign) CGFloat ecologicalTop;
+@property (nonatomic, assign) CGFloat ecologicalH;
 @property (nonatomic, assign) CGFloat serviceTop;
 @property (nonatomic, assign) CGFloat serviceH;
 

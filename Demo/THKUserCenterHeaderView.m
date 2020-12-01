@@ -66,17 +66,17 @@ TMUI_PropertySyntheSize(viewModel);
 - (void)makeConstraints{
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self);
-        make.height.mas_equalTo(100);
+        make.height.mas_equalTo(_viewModel.bgImageH);
     }];
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self).offset(70);
+        make.top.equalTo(self).offset(_viewModel.avatarTop);
         make.left.equalTo(self).inset(20);
-        make.size.mas_equalTo(CGSizeMake(60, 60));
+        make.size.mas_equalTo(CGSizeMake(_viewModel.avatarH, _viewModel.avatarH));
     }];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.avatarImageView.mas_bottom).offset(10);
+        make.top.equalTo(self.avatarImageView.mas_bottom).offset(_viewModel.nameTop);
         make.left.equalTo(self.avatarImageView);
     }];
     
@@ -100,43 +100,44 @@ TMUI_PropertySyntheSize(viewModel);
     
     [self.signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self).inset(20);
-        make.top.equalTo(self.nameLabel.mas_bottom).offset(10);
+        make.top.equalTo(self.nameLabel.mas_bottom).offset(_viewModel.signatureTop);
+        make.height.mas_equalTo(_viewModel.signatureH);
     }];
     
     [self.followCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.avatarImageView);
-        make.top.equalTo(self.signatureLabel.mas_bottom).offset(10);
-        make.size.mas_equalTo(CGSizeMake(60, 20));
+        make.top.equalTo(self.signatureLabel.mas_bottom).offset(_viewModel.followCountTop);
+        make.size.mas_equalTo(CGSizeMake(60, _viewModel.followCountH));
     }];
     
     [self.fansCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.followCountButton.mas_right).offset(20);
         make.top.equalTo(self.signatureLabel.mas_bottom).offset(10);
-        make.size.mas_equalTo(CGSizeMake(60, 20));
+        make.size.mas_equalTo(CGSizeMake(60, _viewModel.followCountH));
     }];
     
     [self.beFollowCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.fansCountButton.mas_right).offset(20);
         make.top.equalTo(self.signatureLabel.mas_bottom).offset(10);
-        make.size.mas_equalTo(CGSizeMake(60, 20));
+        make.size.mas_equalTo(CGSizeMake(60, _viewModel.followCountH));
     }];
     
     [self.storeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.avatarImageView);
-        make.top.equalTo(self.followCountButton.mas_bottom).offset(20);
+        make.top.equalTo(self.followCountButton.mas_bottom).offset(_viewModel.storeTop);
         make.size.mas_equalTo(CGSizeMake(100, 20));
     }];
     
     [self.ecologicalView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.storeButton.mas_bottom).offset(_viewModel.ecologicalTop);
         make.left.right.equalTo(self).inset(20);
-        make.top.equalTo(self.storeButton.mas_bottom).offset(20);
-        make.height.mas_equalTo(100);
+        make.height.mas_equalTo(_viewModel.ecologicalH);
     }];
     
     [self.serviceInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self).inset(20);
-        make.top.equalTo(self.ecologicalView.mas_bottom).offset(20);
-        make.height.mas_equalTo(200);
+        make.top.equalTo(self.ecologicalView.mas_bottom).offset(_viewModel.serviceTop);
+        make.height.mas_equalTo(_viewModel.serviceH);
     }];
 }
 
