@@ -22,6 +22,12 @@
     // Do any additional setup after loading the view.
 }
 
+-  (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (NSArray<__kindof UIViewController *> *)childViewControllers{
     NSArray *vcClass = @[Table1ViewController.class,
                          Table2ViewController.class,

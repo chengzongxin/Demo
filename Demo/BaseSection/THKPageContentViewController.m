@@ -9,11 +9,9 @@
 #import "TDCCaseDetailContentView.h"
 #import "THKSegmentControl.h"
 #import "THKColorsDefine.h"
+#import "THKCommonDefine.h"
 
-//#define kHeaderImageViewHeight ((227.0 / 375.0) * self.view.bounds.size.width)
-//#define kHeaderHeight (kHeaderImageViewHeight + 56.0 + 8.0)
 
-//static const CGFloat kHeaderViewHeight = 100;
 static const CGFloat kSliderBarHeight = 50;
 
 
@@ -22,7 +20,6 @@ static const CGFloat kSliderBarHeight = 50;
 // component
 @property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) TDCCaseDetailContentView *contentView;
-//@property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) THKSegmentControl *slideBar;
 
 // delegate
@@ -48,7 +45,7 @@ static const CGFloat kSliderBarHeight = 50;
     [self initial];
     // delay
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [self fetchDataSource];
         
@@ -239,7 +236,7 @@ static const CGFloat kSliderBarHeight = 50;
         _contentView = [[TDCCaseDetailContentView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         _contentView.backgroundColor = [UIColor whiteColor];
         _contentView.showsHorizontalScrollIndicator = NO;
-        _contentView.lockArea = 88;
+        _contentView.lockArea = kTNavigationBarHeight()+kSliderBarHeight;
         //        _contentView.otherDelegate = self;
         _contentView.t_delegate = self;
     }
