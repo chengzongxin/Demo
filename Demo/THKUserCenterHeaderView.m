@@ -6,9 +6,11 @@
 //
 
 #import "THKUserCenterHeaderView.h"
+#import "UIButton+Convenient.h"
 
 @interface THKUserCenterHeaderView ()
 
+@property (nonatomic, strong, readwrite) THKUserCenterHeaderViewModel *viewModel;
 /// 背景主图
 @property (nonatomic, strong) UIImageView *bgImageView;
 /// 头像
@@ -28,7 +30,7 @@
 /// 粉丝数量
 @property (nonatomic, strong) UIButton *fansCountButton;
 /// 获赞和收藏
-@property (nonatomic, strong) UIButton *followedCountButton;
+@property (nonatomic, strong) UIButton *beFollowCountButton;
 /// TA的店铺
 @property (nonatomic, strong) UIButton *storeButton;
 /// 生态大会
@@ -39,7 +41,7 @@
 @end
 
 @implementation THKUserCenterHeaderView
-
+TMUI_PropertySyntheSize(viewModel);
 
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
 - (void)thk_setupViews {
@@ -53,13 +55,15 @@
     [self addSubview:self.signatureLabel];
     [self addSubview:self.followCountButton];
     [self addSubview:self.fansCountButton];
-    [self addSubview:self.followedCountButton];
+    [self addSubview:self.beFollowCountButton];
     [self addSubview:self.storeButton];
     [self addSubview:self.ecologicalView];
     [self addSubview:self.serviceInfoView];
+    
+    [self makeConstraints];
 }
 
-- (void)bindViewModel{
+- (void)makeConstraints{
     [self.bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self);
         make.height.mas_equalTo(100);
@@ -111,7 +115,7 @@
         make.size.mas_equalTo(CGSizeMake(60, 20));
     }];
     
-    [self.followedCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.beFollowCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.fansCountButton.mas_right).offset(20);
         make.top.equalTo(self.signatureLabel.mas_bottom).offset(10);
         make.size.mas_equalTo(CGSizeMake(60, 20));
@@ -136,6 +140,23 @@
     }];
 }
 
+- (void)bindViewModel{
+    @weakify(self);
+    [RACObserve(self.viewModel, model) subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self updateUI];
+    }];
+}
+
+- (void)updateUI{
+    self.nameLabel.text = self.viewModel.name;
+    self.tagButton.text = self.viewModel.tagName;
+    self.signatureLabel.text = self.viewModel.signature;
+    self.followCountButton.text = self.viewModel.followText;
+    self.fansCountButton.text = self.viewModel.fansText;
+    self.beFollowCountButton.text = self.viewModel.befollowText;
+}
+
 #pragma mark - Public
 
 #pragma mark - Event Respone
@@ -143,6 +164,7 @@
 #pragma mark - Delegate
 
 #pragma mark - Private
+
 
 #pragma mark - Getters and Setters
 - (UIImageView *)bgImageView{
@@ -164,7 +186,6 @@
 - (UILabel *)nameLabel{
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] init];
-        _nameLabel.text = @"永安设计";
     }
     return _nameLabel;
 }
@@ -172,7 +193,6 @@
 - (UIButton *)tagButton{
     if (!_tagButton) {
         _tagButton = [[UIButton alloc] init];
-        [_tagButton setTitle:@"v 设计机构 >" forState:UIControlStateNormal];
     }
     return _tagButton;
 }
@@ -198,7 +218,6 @@
     if (!_signatureLabel) {
         _signatureLabel = [[UILabel alloc] init];
         _signatureLabel.numberOfLines = 0;
-        _signatureLabel.text = @"个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名";
     }
     return _signatureLabel;
 }
@@ -215,17 +234,15 @@
 - (UIButton *)fansCountButton{
     if (!_fansCountButton) {
         _fansCountButton = [[UIButton alloc] init];
-        [_fansCountButton setTitle:@"粉丝 2434" forState:UIControlStateNormal];
     }
     return _fansCountButton;
 }
 
 - (UIButton *)followedCountButton{
-    if (!_followedCountButton) {
-        _followedCountButton = [[UIButton alloc] init];
-        [_followedCountButton setTitle:@"获赞和收藏 2434" forState:UIControlStateNormal];
+    if (!_beFollowCountButton) {
+        _beFollowCountButton = [[UIButton alloc] init];
     }
-    return _followedCountButton;
+    return _beFollowCountButton;
 }
 
 - (UIButton *)storeButton{

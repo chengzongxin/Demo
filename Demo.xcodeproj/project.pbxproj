@@ -25,6 +25,7 @@
 		163AB087257122FD005C25B2 /* NormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AB086257122FD005C25B2 /* NormalViewController.m */; };
 		163AB08D2571234F005C25B2 /* Table3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AB08C2571234F005C25B2 /* Table3ViewController.m */; };
 		163AB09925713675005C25B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AB09825713675005C25B2 /* ViewController.m */; };
+		164626862576411600867201 /* UIButton+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 164626852576411600867201 /* UIButton+Convenient.m */; };
 		164CF93A2553F4E600FF02E0 /* UIView+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D32553F4E500FF02E0 /* UIView+TMUI.m */; };
 		164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D52553F4E500FF02E0 /* UIColor+TMUI.m */; };
 		164CF93C2553F4E600FF02E0 /* UIImage+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D62553F4E500FF02E0 /* UIImage+TMUI.m */; };
@@ -143,6 +144,8 @@
 		163AB08C2571234F005C25B2 /* Table3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Table3ViewController.m; sourceTree = "<group>"; };
 		163AB09725713675005C25B2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		163AB09825713675005C25B2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		164626842576411600867201 /* UIButton+Convenient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Convenient.h"; sourceTree = "<group>"; };
+		164626852576411600867201 /* UIButton+Convenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Convenient.m"; sourceTree = "<group>"; };
 		164CF8D12553F4E500FF02E0 /* UIImage+TMUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TMUI.h"; sourceTree = "<group>"; };
 		164CF8D22553F4E500FF02E0 /* UIColor+TMUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TMUI.h"; sourceTree = "<group>"; };
 		164CF8D32553F4E500FF02E0 /* UIView+TMUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TMUI.m"; sourceTree = "<group>"; };
@@ -627,6 +630,8 @@
 				165325A825748E28007BD950 /* THKColorsDefine.h */,
 				165325AC25748E5F007BD950 /* UIColor+HexString.h */,
 				165325AD25748E5F007BD950 /* UIColor+HexString.m */,
+				164626842576411600867201 /* UIButton+Convenient.h */,
+				164626852576411600867201 /* UIButton+Convenient.m */,
 			);
 			path = CommonDefine;
 			sourceTree = "<group>";
@@ -1002,6 +1007,7 @@
 				164CF9432553F4E600FF02E0 /* TMContentAlert.m in Sources */,
 				164CF93A2553F4E600FF02E0 /* UIView+TMUI.m in Sources */,
 				163AB07525711A8D005C25B2 /* TableViewController.m in Sources */,
+				164626862576411600867201 /* UIButton+Convenient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
