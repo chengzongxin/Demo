@@ -21,6 +21,22 @@
 @implementation THKUserCenterHeaderViewModel
 
 - (void)initialize{
+    _bgImageH = 180;
+    _avatarTop = 150;
+    _avatarH = 72;
+    _nameTop = 16;
+    _nameH = 30;
+    _tagTop = 9;
+    _tagH = 24;
+    _signatureTop = 12;
+    _signatureH = 17;
+    _followCountTop = 12;
+    _followCountH = 20;
+    _storeTop = 16;
+    _storeH = 20;
+    _serviceTop = 30;
+    _serviceH = 237;
+    
     [self bindWithModel:@""];
 }
 
@@ -34,6 +50,16 @@
     self.followText = @"11关注 2434";
     self.fansText = @"1粉丝 2434";
     self.beFollowText = @"2获赞和收藏 2434";
+}
+
+
+#pragma mark Public Method
+
+- (CGFloat)viewHeight{
+    
+    
+    
+    return 0;
 }
 
 @end

@@ -226,7 +226,6 @@ TMUI_PropertySyntheSize(viewModel);
 - (UIButton *)followCountButton{
     if (!_followCountButton) {
         _followCountButton = [[UIButton alloc] init];
-        [_followCountButton setTitle:@"关注 2434" forState:UIControlStateNormal];
     }
     return _followCountButton;
 }
