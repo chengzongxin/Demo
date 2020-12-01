@@ -10,7 +10,7 @@
 #import "Table2ViewController.h"
 #import "Table3ViewController.h"
 #import "NormalViewController.h"
-
+#import "THKUserCenterHeaderView.h"
 @interface ViewController ()
 
 @end
@@ -48,12 +48,12 @@
 }
 
 - (CGFloat)heightForHeader{
-    return 300;
+    return 600;
 }
 
 - (UIView *)viewForHeader{
-    UIView *view = UIView.new;
-    view.backgroundColor = UIColor.orangeColor;
+    THKUserCenterHeaderViewModel *viewModel = [[THKUserCenterHeaderViewModel alloc] init];
+    THKUserCenterHeaderView *view = [[THKUserCenterHeaderView alloc] initWithViewModel:viewModel];
     return view;
 }
 

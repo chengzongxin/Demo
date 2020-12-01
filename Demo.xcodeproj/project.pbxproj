@@ -80,6 +80,8 @@
 		1653258225748191007BD950 /* THKSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1653258125748191007BD950 /* THKSegmentControl.m */; };
 		165325A425748D06007BD950 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325A225748D06007BD950 /* UIView+Frame.m */; };
 		165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325AD25748E5F007BD950 /* UIColor+HexString.m */; };
+		16C532D625761E8C00210A3C /* THKUserCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */; };
+		16C532DC25761EA800210A3C /* THKUserCenterHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
 		C22508FBFE83E454C360C944 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D168DD537E7BC7FA0C76927 /* Pods_Demo.framework */; };
@@ -236,6 +238,10 @@
 		165325AC25748E5F007BD950 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		165325AD25748E5F007BD950 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		16C532C125761C5200210A3C /* THKCommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCommonDefine.h; sourceTree = "<group>"; };
+		16C532D425761E8C00210A3C /* THKUserCenterHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKUserCenterHeaderView.h; sourceTree = "<group>"; };
+		16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserCenterHeaderView.m; sourceTree = "<group>"; };
+		16C532DA25761EA800210A3C /* THKUserCenterHeaderViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKUserCenterHeaderViewModel.h; sourceTree = "<group>"; };
+		16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserCenterHeaderViewModel.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B271C6912A85D06F5128169 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +311,10 @@
 				160106E32553DD8000FE4B77 /* SceneDelegate.m */,
 				163AB09725713675005C25B2 /* ViewController.h */,
 				163AB09825713675005C25B2 /* ViewController.m */,
+				16C532D425761E8C00210A3C /* THKUserCenterHeaderView.h */,
+				16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */,
+				16C532DA25761EA800210A3C /* THKUserCenterHeaderViewModel.h */,
+				16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */,
 				16C532CD25761E3600210A3C /* ChildVC */,
 				160106E82553DD8000FE4B77 /* Main.storyboard */,
 				160106EB2553DD8000FE4B77 /* Assets.xcassets */,
@@ -957,6 +967,7 @@
 				164CF93F2553F4E600FF02E0 /* TMMultiDataPicker.m in Sources */,
 				160106E72553DD8000FE4B77 /* THKPageContentViewController.m in Sources */,
 				164CF93D2553F4E600FF02E0 /* TMPopoverView.m in Sources */,
+				16C532DC25761EA800210A3C /* THKUserCenterHeaderViewModel.m in Sources */,
 				165325A425748D06007BD950 /* UIView+Frame.m in Sources */,
 				164CF9662553F4E600FF02E0 /* TMSearchingController.m in Sources */,
 				164CF9682553F4E600FF02E0 /* TMSearchController.m in Sources */,
@@ -968,6 +979,7 @@
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
 				1653258225748191007BD950 /* THKSegmentControl.m in Sources */,
 				164CF96C2553F4E600FF02E0 /* TMUIWeakObjectContainer.m in Sources */,
+				16C532D625761E8C00210A3C /* THKUserCenterHeaderView.m in Sources */,
 				164CF9422553F4E600FF02E0 /* TMContentPicker.m in Sources */,
 				164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */,
 				163AB08D2571234F005C25B2 /* Table3ViewController.m in Sources */,
