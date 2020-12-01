@@ -45,7 +45,6 @@ TMUI_PropertySyntheSize(viewModel);
 
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
 - (void)thk_setupViews {
-    self.backgroundColor = UIColor.grayColor;
     [self addSubview:self.bgImageView];
     [self addSubview:self.avatarImageView];
     [self addSubview:self.nameLabel];
@@ -71,8 +70,14 @@ TMUI_PropertySyntheSize(viewModel);
     
     [self.avatarImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(_viewModel.avatarTop);
-        make.left.equalTo(self).inset(20);
+        make.left.equalTo(self).inset(16);
         make.size.mas_equalTo(CGSizeMake(_viewModel.avatarH, _viewModel.avatarH));
+    }];
+    
+    [self.followButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(186);
+        make.right.equalTo(self).inset(16);
+        make.size.mas_equalTo(CGSizeMake(80, 36));
     }];
     
     [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -81,26 +86,20 @@ TMUI_PropertySyntheSize(viewModel);
     }];
     
     [self.tagButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.nameLabel.mas_right).offset(10);
-        make.centerY.equalTo(self.nameLabel.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(80, 20));
+        make.left.equalTo(self.avatarImageView);
+        make.top.equalTo(self.nameLabel.mas_bottom).offset(_viewModel.tagTop);
+        make.size.mas_equalTo(CGSizeMake(80, _viewModel.tagH));
     }];
     
     [self.tipsButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.tagButton.mas_right).offset(10);
-        make.centerY.equalTo(self.nameLabel.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(20, 20));
-    }];
-    
-    [self.followButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self).inset(10);
-        make.centerY.equalTo(self.nameLabel.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(100, 20));
+        make.centerY.equalTo(self.tagButton.mas_centerY);
+        make.size.mas_equalTo(CGSizeMake(16, 16));
     }];
     
     [self.signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self).inset(20);
-        make.top.equalTo(self.nameLabel.mas_bottom).offset(_viewModel.signatureTop);
+        make.left.right.equalTo(self).inset(16);
+        make.top.equalTo(self.tagButton.mas_bottom).offset(_viewModel.signatureTop);
         make.height.mas_equalTo(_viewModel.signatureH);
     }];
     
@@ -153,9 +152,21 @@ TMUI_PropertySyntheSize(viewModel);
     self.nameLabel.text = self.viewModel.name;
     self.tagButton.text = self.viewModel.tagName;
     self.signatureLabel.text = self.viewModel.signature;
-    self.followCountButton.text = self.viewModel.followText;
-    self.fansCountButton.text = self.viewModel.fansText;
-    self.beFollowCountButton.text = self.viewModel.befollowText;
+    self.followCountButton.attrText = self.viewModel.followAttrText;
+    self.fansCountButton.attrText = self.viewModel.fansAttrText;
+    self.beFollowCountButton.attrText = self.viewModel.befollowAttrText;
+    
+    [self.followCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(_viewModel.followCountW);
+    }];
+    
+    [self.fansCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(_viewModel.fansCountW);
+    }];
+    
+    [self.beFollowCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(_viewModel.beFollowCountW);
+    }];
 }
 
 #pragma mark - Public
@@ -180,13 +191,32 @@ TMUI_PropertySyntheSize(viewModel);
     if (!_avatarImageView) {
         _avatarImageView = [[UIImageView alloc] init];
         _avatarImageView.image = [UIImage imageNamed:@"com_preload_head_img"];
+        _avatarImageView.layer.cornerRadius = _viewModel.avatarH/2 ?: 36;
+        _avatarImageView.layer.borderColor = UIColor.whiteColor.CGColor;
+        _avatarImageView.layer.borderWidth = 2;
+        _avatarImageView.layer.masksToBounds = YES;
     }
     return _avatarImageView;
+}
+
+
+- (UIButton *)followButton{
+    if (!_followButton) {
+        _followButton = [[UIButton alloc] init];
+        _followButton.backgroundColor = UIColor.grayColor;
+        [_followButton setTitle:@"+ 关注" forState:UIControlStateNormal];
+        [_followButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+        _followButton.backgroundColor = UIColorHexString(@"#24C77E");
+        _followButton.layer.cornerRadius = 6;
+    }
+    return _followButton;
 }
 
 - (UILabel *)nameLabel{
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = UIFontMedium(22);
+        _nameLabel.textColor = UIColorHexString(@"111111");
     }
     return _nameLabel;
 }
@@ -194,6 +224,11 @@ TMUI_PropertySyntheSize(viewModel);
 - (UIButton *)tagButton{
     if (!_tagButton) {
         _tagButton = [[UIButton alloc] init];
+        [_tagButton setImage:[UIImage imageNamed:@"user_tag_icon"] forState:UIControlStateNormal];
+        [_tagButton setTitleColor:UIColorHexString(@"#878B99") forState:UIControlStateNormal];
+        _tagButton.titleLabel.font = UIFont(12);
+        _tagButton.backgroundColor = UIColorHexString(@"#F0F1F5");
+        _tagButton.layer.cornerRadius = _viewModel.tagH/2?:12;
     }
     return _tagButton;
 }
@@ -202,23 +237,21 @@ TMUI_PropertySyntheSize(viewModel);
     if (!_tipsButton) {
         _tipsButton = [[UIButton alloc] init];
         [_tipsButton setTitle:@"?" forState:UIControlStateNormal];
+        [_tipsButton setTitleColor:UIColorHexString(@"#BABDC6") forState:UIControlStateNormal];
+        _tipsButton.titleLabel.font = UIFont(12);
+        _tipsButton.layer.cornerRadius = 8;
+        _tipsButton.layer.borderColor = UIColorHexString(@"#BABDC6").CGColor;
+        _tipsButton.layer.borderWidth = 0.5;
     }
     return _tipsButton;
-}
-
-- (UIButton *)followButton{
-    if (!_followButton) {
-        _followButton = [[UIButton alloc] init];
-        _followButton.backgroundColor = UIColor.grayColor;
-        [_tipsButton setTitle:@"关注" forState:UIControlStateNormal];
-    }
-    return _followButton;
 }
 
 - (UILabel *)signatureLabel{
     if (!_signatureLabel) {
         _signatureLabel = [[UILabel alloc] init];
         _signatureLabel.numberOfLines = 0;
+        _signatureLabel.textColor = UIColorHexString(@"#878B99");
+        _signatureLabel.font = UIFont(12);
     }
     return _signatureLabel;
 }
@@ -238,7 +271,7 @@ TMUI_PropertySyntheSize(viewModel);
     return _fansCountButton;
 }
 
-- (UIButton *)followedCountButton{
+- (UIButton *)beFollowCountButton{
     if (!_beFollowCountButton) {
         _beFollowCountButton = [[UIButton alloc] init];
     }
@@ -248,7 +281,9 @@ TMUI_PropertySyntheSize(viewModel);
 - (UIButton *)storeButton{
     if (!_storeButton) {
         _storeButton = [[UIButton alloc] init];
-        [_storeButton setTitle:@"TA的店铺" forState:UIControlStateNormal];
+        [_storeButton setTitle:@"TA的店铺 >" forState:UIControlStateNormal];
+        [_storeButton setTitleColor:UIColorHexString(@"#111111") forState:UIControlStateNormal];
+        _storeButton.titleLabel.font = UIFont(12);
     }
     return _storeButton;
 }

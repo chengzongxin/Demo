@@ -14,9 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong, readonly) NSString *tagName;
 @property (nonatomic, strong, readonly) NSString *signature;
-@property (nonatomic, strong, readonly) NSString *followText;
-@property (nonatomic, strong, readonly) NSString *fansText;
-@property (nonatomic, strong, readonly) NSString *befollowText;
+@property (nonatomic, strong, readonly) NSAttributedString *followAttrText;
+@property (nonatomic, strong, readonly) NSAttributedString *fansAttrText;
+@property (nonatomic, strong, readonly) NSAttributedString *befollowAttrText;
 
 // layout
 - (CGFloat)viewHeight;
@@ -37,6 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat ecologicalH;
 @property (nonatomic, assign) CGFloat serviceTop;
 @property (nonatomic, assign) CGFloat serviceH;
+
+// calculate
+@property (nonatomic, assign) CGFloat followCountW;
+@property (nonatomic, assign) CGFloat fansCountW;
+@property (nonatomic, assign) CGFloat beFollowCountW;
 
 @end
 
