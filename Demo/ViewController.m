@@ -42,7 +42,7 @@
 }
 
 - (CGFloat)heightForHeader{
-    return 100;
+    return 300;
 }
 
 - (UIView *)viewForHeader{
