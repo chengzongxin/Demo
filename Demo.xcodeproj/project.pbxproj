@@ -305,16 +305,7 @@
 				160106E32553DD8000FE4B77 /* SceneDelegate.m */,
 				163AB09725713675005C25B2 /* ViewController.h */,
 				163AB09825713675005C25B2 /* ViewController.m */,
-				163AB07325711A8D005C25B2 /* TableViewController.h */,
-				163AB07425711A8D005C25B2 /* TableViewController.m */,
-				163AB079257122DF005C25B2 /* Table1ViewController.h */,
-				163AB07A257122DF005C25B2 /* Table1ViewController.m */,
-				163AB07F257122EA005C25B2 /* Table2ViewController.h */,
-				163AB080257122EA005C25B2 /* Table2ViewController.m */,
-				163AB08B2571234E005C25B2 /* Table3ViewController.h */,
-				163AB08C2571234F005C25B2 /* Table3ViewController.m */,
-				163AB085257122FD005C25B2 /* NormalViewController.h */,
-				163AB086257122FD005C25B2 /* NormalViewController.m */,
+				16C532CD25761E3600210A3C /* ChildVC */,
 				160106E82553DD8000FE4B77 /* Main.storyboard */,
 				160106EB2553DD8000FE4B77 /* Assets.xcassets */,
 				160106ED2553DD8000FE4B77 /* LaunchScreen.storyboard */,
@@ -348,17 +339,9 @@
 		160107692553EA1A00FE4B77 /* BaseSection */ = {
 			isa = PBXGroup;
 			children = (
+				16C532CB25761DE300210A3C /* PageContentViewController */,
 				1653258625748B8C007BD950 /* CommonDefine */,
-				160106E52553DD8000FE4B77 /* THKPageContentViewController.h */,
-				160106E62553DD8000FE4B77 /* THKPageContentViewController.m */,
-				1653258025748191007BD950 /* THKSegmentControl.h */,
-				1653258125748191007BD950 /* THKSegmentControl.m */,
-				163AB06E2571086D005C25B2 /* TDCCaseDetailContentView.h */,
-				163AB06D2571086D005C25B2 /* TDCCaseDetailContentView.m */,
-				1601076A2553EA2700FE4B77 /* THKView.h */,
-				1601076B2553EA2700FE4B77 /* THKView.m */,
-				160107712553EA3300FE4B77 /* THKViewModel.h */,
-				160107702553EA3300FE4B77 /* THKViewModel.m */,
+				16C532CC25761E1600210A3C /* BaseViewModel */,
 			);
 			path = BaseSection;
 			sourceTree = "<group>";
@@ -636,6 +619,47 @@
 				165325AD25748E5F007BD950 /* UIColor+HexString.m */,
 			);
 			path = CommonDefine;
+			sourceTree = "<group>";
+		};
+		16C532CB25761DE300210A3C /* PageContentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				160106E52553DD8000FE4B77 /* THKPageContentViewController.h */,
+				160106E62553DD8000FE4B77 /* THKPageContentViewController.m */,
+				1653258025748191007BD950 /* THKSegmentControl.h */,
+				1653258125748191007BD950 /* THKSegmentControl.m */,
+				163AB06E2571086D005C25B2 /* TDCCaseDetailContentView.h */,
+				163AB06D2571086D005C25B2 /* TDCCaseDetailContentView.m */,
+			);
+			path = PageContentViewController;
+			sourceTree = "<group>";
+		};
+		16C532CC25761E1600210A3C /* BaseViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1601076A2553EA2700FE4B77 /* THKView.h */,
+				1601076B2553EA2700FE4B77 /* THKView.m */,
+				160107712553EA3300FE4B77 /* THKViewModel.h */,
+				160107702553EA3300FE4B77 /* THKViewModel.m */,
+			);
+			path = BaseViewModel;
+			sourceTree = "<group>";
+		};
+		16C532CD25761E3600210A3C /* ChildVC */ = {
+			isa = PBXGroup;
+			children = (
+				163AB07325711A8D005C25B2 /* TableViewController.h */,
+				163AB07425711A8D005C25B2 /* TableViewController.m */,
+				163AB079257122DF005C25B2 /* Table1ViewController.h */,
+				163AB07A257122DF005C25B2 /* Table1ViewController.m */,
+				163AB07F257122EA005C25B2 /* Table2ViewController.h */,
+				163AB080257122EA005C25B2 /* Table2ViewController.m */,
+				163AB08B2571234E005C25B2 /* Table3ViewController.h */,
+				163AB08C2571234F005C25B2 /* Table3ViewController.m */,
+				163AB085257122FD005C25B2 /* NormalViewController.h */,
+				163AB086257122FD005C25B2 /* NormalViewController.m */,
+			);
+			path = ChildVC;
 			sourceTree = "<group>";
 		};
 		863C150325C51CDA1727051D /* Pods */ = {
