@@ -43,6 +43,7 @@
 
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
 - (void)thk_setupViews {
+    self.backgroundColor = UIColor.grayColor;
     [self addSubview:self.bgImageView];
     [self addSubview:self.avatarImageView];
     [self addSubview:self.nameLabel];
@@ -94,7 +95,7 @@
     }];
     
     [self.signatureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.avatarImageView);
+        make.left.right.equalTo(self).inset(20);
         make.top.equalTo(self.nameLabel.mas_bottom).offset(10);
     }];
     
@@ -118,7 +119,7 @@
     
     [self.storeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.avatarImageView);
-        make.top.equalTo(self.followButton.mas_bottom).offset(20);
+        make.top.equalTo(self.followCountButton.mas_bottom).offset(20);
         make.size.mas_equalTo(CGSizeMake(100, 20));
     }];
     
