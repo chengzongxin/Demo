@@ -42,19 +42,56 @@
     [self bindWithModel:@""];
 }
 
-
+// 更新数据和约束
 - (void)bindWithModel:(id)model{
     [super bindWithModel:model];
     
     self.name = @"装修界的电动小马达";
     self.tagName = @"设计机构";
-    self.signature = @"123个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名";
+    self.signature =  @"123个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名";
     self.followAttrText = [self attrWithText:@"关注" number:2434];
     self.fansAttrText = [self attrWithText:@"粉丝" number:332];
     self.befollowAttrText = [self attrWithText:@"获赞与收藏" number:4432];
     self.followCountW = [self widthForAttributeString:self.followAttrText];
     self.fansCountW = [self widthForAttributeString:self.fansAttrText];
     self.beFollowCountW = [self widthForAttributeString:self.befollowAttrText];
+    
+    // 更新高度约束
+    if (self.signature.length > 0) {
+        _signatureH = [self widthForString:self.signature font:UIFont(12)];
+    }else{
+        _signatureTop = 0;
+        _signatureH = 0;
+    }
+    // 店铺
+    BOOL showStore = YES;
+    if (showStore) {
+        _storeTop = 16;
+        _storeH = 20;
+    }else{
+        _storeTop = 0;
+        _storeH = 0;
+    }
+    
+    // 生态大会
+    BOOL showEcologic = YES;
+    if (showEcologic) {
+        _ecologicalTop = 23;
+        _ecologicalH = 60;
+    }else{
+        _ecologicalTop = 0;
+        _ecologicalH = 0;
+    }
+    
+    // 服务信息
+    BOOL showService = YES;
+    if (showService) {
+        _serviceTop = 30;
+        _serviceH = 237;
+    }else{
+        _serviceTop = 0;
+        _serviceH = 0;
+    }
 }
 
 
@@ -90,6 +127,16 @@
     [string addAttributes:@{NSFontAttributeName:UIFont(12),NSForegroundColorAttributeName:UIColorHexString(@"#878B99")} range:range];
     
     return string;
+}
+
+- (CGFloat)widthForString:(NSString *)string font:(UIFont *)font{
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 3;
+    NSDictionary *attrs = @{NSParagraphStyleAttributeName:style,
+                            NSFontAttributeName:font
+    };
+    NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:string attributes:attrs];
+    return ceilf([attrStr boundingRectWithSize:CGSizeMake(UIScreen.mainScreen.bounds.size.width - 16*2, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading context:nil].size.height);
 }
 
 - (CGFloat)widthForAttributeString:(NSAttributedString *)attrStr{

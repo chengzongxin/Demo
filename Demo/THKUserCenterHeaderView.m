@@ -136,7 +136,7 @@ TMUI_PropertySyntheSize(viewModel);
     [self.storeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.avatarImageView);
         make.top.equalTo(self.followCountButton.mas_bottom).offset(_viewModel.storeTop);
-        make.size.mas_equalTo(CGSizeMake(100, 20));
+        make.size.mas_equalTo(CGSizeMake(100, _viewModel.storeH));
     }];
     
     [self.ecologicalView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -167,18 +167,41 @@ TMUI_PropertySyntheSize(viewModel);
     self.followCountButton.attrText = self.viewModel.followAttrText;
     self.fansCountButton.attrText = self.viewModel.fansAttrText;
     self.beCollectCountButton.attrText = self.viewModel.befollowAttrText;
-    
+    // 更新约束
+    // 关注
     [self.followCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(_viewModel.followCountW);
     }];
-    
+    // 粉丝
     [self.fansCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(_viewModel.fansCountW);
     }];
     
+    // 被点赞收藏
     [self.beCollectCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(_viewModel.beFollowCountW);
     }];
+    // 签名
+    [self.signatureLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.tagButton.mas_bottom).offset(_viewModel.signatureTop);
+        make.height.mas_equalTo(_viewModel.signatureH);
+    }];
+    // 店铺
+    [self.storeButton mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.followCountButton.mas_bottom).offset(_viewModel.storeTop);
+        make.size.mas_equalTo(CGSizeMake(100, _viewModel.storeH));
+    }];
+    // 生态
+    [self.ecologicalView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.storeButton.mas_bottom).offset(_viewModel.ecologicalTop);
+        make.height.mas_equalTo(_viewModel.ecologicalH);
+    }];
+    // 服务信息
+    [self.serviceInfoView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.ecologicalView.mas_bottom).offset(_viewModel.serviceTop);
+        make.height.mas_equalTo(_viewModel.serviceH);
+    }];
+    
 }
 
 #pragma mark - Public
@@ -361,6 +384,7 @@ TMUI_PropertySyntheSize(viewModel);
         _storeButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
         _storeButton.contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
         [_storeButton addTarget:self action:@selector(clickStoreButton)];
+        _storeButton.layer.masksToBounds = YES;
     }
     return _storeButton;
 }
