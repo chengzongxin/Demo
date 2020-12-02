@@ -81,6 +81,9 @@
 		1653258225748191007BD950 /* THKSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1653258125748191007BD950 /* THKSegmentControl.m */; };
 		165325A425748D06007BD950 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325A225748D06007BD950 /* UIView+Frame.m */; };
 		165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325AD25748E5F007BD950 /* UIColor+HexString.m */; };
+		16A7DEE82577310000F1BABD /* BeCollectThumbupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */; };
+		16A7DEF02577310800F1BABD /* BeCollectThumbupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */; };
+		16A7DEF62577330B00F1BABD /* UIViewController+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DEF52577330B00F1BABD /* UIViewController+Convenient.m */; };
 		16C532D625761E8C00210A3C /* THKUserCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */; };
 		16C532DC25761EA800210A3C /* THKUserCenterHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
@@ -240,6 +243,11 @@
 		165325A825748E28007BD950 /* THKColorsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKColorsDefine.h; sourceTree = "<group>"; };
 		165325AC25748E5F007BD950 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		165325AD25748E5F007BD950 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		16A7DEE62577310000F1BABD /* BeCollectThumbupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeCollectThumbupView.h; sourceTree = "<group>"; };
+		16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeCollectThumbupView.m; sourceTree = "<group>"; };
+		16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeCollectThumbupView.xib; sourceTree = "<group>"; };
+		16A7DEF42577330B00F1BABD /* UIViewController+Convenient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Convenient.h"; sourceTree = "<group>"; };
+		16A7DEF52577330B00F1BABD /* UIViewController+Convenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Convenient.m"; sourceTree = "<group>"; };
 		16C532C125761C5200210A3C /* THKCommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCommonDefine.h; sourceTree = "<group>"; };
 		16C532D425761E8C00210A3C /* THKUserCenterHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKUserCenterHeaderView.h; sourceTree = "<group>"; };
 		16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserCenterHeaderView.m; sourceTree = "<group>"; };
@@ -318,6 +326,7 @@
 				16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */,
 				16C532DA25761EA800210A3C /* THKUserCenterHeaderViewModel.h */,
 				16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */,
+				16A7DEE52577309D00F1BABD /* Subviews */,
 				16C532CD25761E3600210A3C /* ChildVC */,
 				160106E82553DD8000FE4B77 /* Main.storyboard */,
 				160106EB2553DD8000FE4B77 /* Assets.xcassets */,
@@ -632,8 +641,20 @@
 				165325AD25748E5F007BD950 /* UIColor+HexString.m */,
 				164626842576411600867201 /* UIButton+Convenient.h */,
 				164626852576411600867201 /* UIButton+Convenient.m */,
+				16A7DEF42577330B00F1BABD /* UIViewController+Convenient.h */,
+				16A7DEF52577330B00F1BABD /* UIViewController+Convenient.m */,
 			);
 			path = CommonDefine;
+			sourceTree = "<group>";
+		};
+		16A7DEE52577309D00F1BABD /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				16A7DEE62577310000F1BABD /* BeCollectThumbupView.h */,
+				16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */,
+				16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		16C532CB25761DE300210A3C /* PageContentViewController */ = {
@@ -829,6 +850,7 @@
 				164CF94A2553F4E600FF02E0 /* navBackBlack@2x.png in Resources */,
 				164CF9592553F4E600FF02E0 /* noPublishUgc@3x.png in Resources */,
 				164CF9482553F4E600FF02E0 /* dataNoExist@3x.png in Resources */,
+				16A7DEF02577310800F1BABD /* BeCollectThumbupView.xib in Resources */,
 				164CF9602553F4E600FF02E0 /* noGift@2x.png in Resources */,
 				164CF9512553F4E600FF02E0 /* photoDetailErr@3x.png in Resources */,
 				164CF94C2553F4E600FF02E0 /* noComment@2x.png in Resources */,
@@ -975,6 +997,7 @@
 				16C532DC25761EA800210A3C /* THKUserCenterHeaderViewModel.m in Sources */,
 				165325A425748D06007BD950 /* UIView+Frame.m in Sources */,
 				164CF9662553F4E600FF02E0 /* TMSearchingController.m in Sources */,
+				16A7DEE82577310000F1BABD /* BeCollectThumbupView.m in Sources */,
 				164CF9682553F4E600FF02E0 /* TMSearchController.m in Sources */,
 				164CF9672553F4E600FF02E0 /* TMSearchPresentationAnimatedTransition.m in Sources */,
 				164CF96D2553F4E600FF02E0 /* TMUIHelper.m in Sources */,
@@ -999,6 +1022,7 @@
 				164CF9632553F4E600FF02E0 /* TMToast.m in Sources */,
 				164CF93E2553F4E600FF02E0 /* TMDatePicker.m in Sources */,
 				163AB087257122FD005C25B2 /* NormalViewController.m in Sources */,
+				16A7DEF62577330B00F1BABD /* UIViewController+Convenient.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				163AB09925713675005C25B2 /* ViewController.m in Sources */,
 				165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */,

@@ -7,6 +7,9 @@
 
 #import "THKUserCenterHeaderView.h"
 #import "UIButton+Convenient.h"
+#import "TMContentAlert.h"
+#import "BeCollectThumbupView.h"
+#import "UIViewController+Convenient.h"
 
 @interface THKUserCenterHeaderView ()
 
@@ -32,7 +35,7 @@
 /// 粉丝数量
 @property (nonatomic, strong) UIButton *fansCountButton;
 /// 获赞和收藏
-@property (nonatomic, strong) UIButton *beFollowCountButton;
+@property (nonatomic, strong) UIButton *beCollectCountButton;
 /// TA的店铺
 @property (nonatomic, strong) UIButton *storeButton;
 /// 生态大会
@@ -57,7 +60,7 @@ TMUI_PropertySyntheSize(viewModel);
     [self addSubview:self.signatureLabel];
     [self addSubview:self.followCountButton];
     [self addSubview:self.fansCountButton];
-    [self addSubview:self.beFollowCountButton];
+    [self addSubview:self.beCollectCountButton];
     [self addSubview:self.storeButton];
     [self addSubview:self.ecologicalView];
     [self addSubview:self.serviceInfoView];
@@ -124,7 +127,7 @@ TMUI_PropertySyntheSize(viewModel);
         make.size.mas_equalTo(CGSizeMake(60, _viewModel.followCountH));
     }];
     
-    [self.beFollowCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.beCollectCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.fansCountButton.mas_right).offset(20);
         make.top.equalTo(self.signatureLabel.mas_bottom).offset(10);
         make.size.mas_equalTo(CGSizeMake(60, _viewModel.followCountH));
@@ -163,7 +166,7 @@ TMUI_PropertySyntheSize(viewModel);
     self.signatureLabel.text = self.viewModel.signature;
     self.followCountButton.attrText = self.viewModel.followAttrText;
     self.fansCountButton.attrText = self.viewModel.fansAttrText;
-    self.beFollowCountButton.attrText = self.viewModel.befollowAttrText;
+    self.beCollectCountButton.attrText = self.viewModel.befollowAttrText;
     
     [self.followCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(_viewModel.followCountW);
@@ -173,7 +176,7 @@ TMUI_PropertySyntheSize(viewModel);
         make.width.mas_equalTo(_viewModel.fansCountW);
     }];
     
-    [self.beFollowCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.beCollectCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(_viewModel.beFollowCountW);
     }];
 }
@@ -181,7 +184,20 @@ TMUI_PropertySyntheSize(viewModel);
 #pragma mark - Public
 
 #pragma mark - Event Respone
-
+- (void)clickBeCollect{
+    BeCollectThumbupView *alert = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(BeCollectThumbupView.class) owner:self options:nil].lastObject;
+    
+    [TMContentAlert showFromViewController:[UIViewController getCurrentVC] loadContentView:^(__kindof UIViewController * _Nonnull toShowVc) {
+        [toShowVc.view addSubview:alert];
+        alert.frame = toShowVc.view.bounds;
+        alert.alpha = 0;
+    } didShowBlock:^{
+        //alpha渐变显示
+        [UIView animateWithDuration:0.15 animations:^{
+            alert.alpha = 1;
+        }];
+    }];
+}
 #pragma mark - Delegate
 
 #pragma mark - Private
@@ -293,11 +309,12 @@ TMUI_PropertySyntheSize(viewModel);
     return _fansCountButton;
 }
 
-- (UIButton *)beFollowCountButton{
-    if (!_beFollowCountButton) {
-        _beFollowCountButton = [[UIButton alloc] init];
+- (UIButton *)beCollectCountButton{
+    if (!_beCollectCountButton) {
+        _beCollectCountButton = [[UIButton alloc] init];
+        [_beCollectCountButton addTarget:self action:@selector(clickBeCollect) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _beFollowCountButton;
+    return _beCollectCountButton;
 }
 
 - (UIButton *)storeButton{
