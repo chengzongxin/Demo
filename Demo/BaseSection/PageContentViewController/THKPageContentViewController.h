@@ -38,5 +38,8 @@
 @property (nonatomic, weak) id<THKPageContentViewControllerDataSource> dataSource;
 @property (nonatomic, weak) id<THKPageContentViewControllerDelegate> delegate;
 
+// 刷新数据
+- (void)reloadData;
+
 @end
 

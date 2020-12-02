@@ -13,6 +13,9 @@
 #import "THKUserCenterHeaderView.h"
 @interface ViewController ()
 
+@property (nonatomic, strong) NSArray *vcs;
+@property (nonatomic, strong) NSArray *titles;
+
 @end
 
 @implementation ViewController
@@ -20,6 +23,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.vcs = [[@[Table1ViewController.class,
+                       Table2ViewController.class,
+                       Table3ViewController.class,
+                       NormalViewController.class].rac_sequence map:^id _Nullable(Class cls) {
+                            return [[cls alloc] init];
+                       }] array];
+        self.titles = @[@"热门",@"最新",@"涉及",@"案例"];
+        
+        [self reloadData];
+    });
 }
 
 -  (void)viewWillAppear:(BOOL)animated{
@@ -29,22 +44,11 @@
 }
 
 - (NSArray<__kindof UIViewController *> *)childViewControllers{
-    NSArray *vcClass = @[Table1ViewController.class,
-                         Table2ViewController.class,
-                         Table3ViewController.class,
-                         NormalViewController.class];
-    
-    NSArray *vcArray = [[vcClass.rac_sequence map:^id _Nullable(Class cls) {
-        UIViewController *vc = [[cls alloc] init];
-//        vc.view.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
-        return vc;
-    }] array];
-    
-    return vcArray;
+    return self.vcs;
 }
 
 - (NSArray<NSString *> *)titlesForChildViewControllers{
-    return @[@"热门",@"最新",@"涉及",@"案例"];
+    return self.titles;
 }
 
 - (CGFloat)heightForHeader{

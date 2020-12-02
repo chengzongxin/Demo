@@ -43,20 +43,20 @@ static const CGFloat kSliderBarHeight = 50;
     [super viewDidLoad];
     
     [self initial];
-    
-    [self fetchDataSource];
-    
-    [self addSubviews];
-    
-    [self makeConstraints];
 }
-
-
 
 - (void)initial{
     self.currentIndex = 0;
     self.dataSource = self;
     self.delegate = self;
+}
+
+- (void)reloadData{
+    [self fetchDataSource];
+    
+    [self addSubviews];
+    
+    [self makeConstraints];
 }
 
 - (void)fetchDataSource{
