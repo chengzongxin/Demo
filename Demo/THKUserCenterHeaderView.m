@@ -198,6 +198,31 @@ TMUI_PropertySyntheSize(viewModel);
         }];
     }];
 }
+
+- (void)clickTagButton{
+    NSLog(@"%s",__func__);
+}
+
+- (void)clickTipsButton{
+    NSLog(@"%s",__func__);
+}
+
+- (void)clickFollowButton{
+    NSLog(@"%s",__func__);
+}
+
+- (void)clickFollowCountButton{
+    NSLog(@"%s",__func__);
+}
+
+- (void)clickFansCountButton{
+    NSLog(@"%s",__func__);
+}
+
+- (void)clickStoreButton{
+    NSLog(@"%s",__func__);
+}
+
 #pragma mark - Delegate
 
 #pragma mark - Private
@@ -245,6 +270,7 @@ TMUI_PropertySyntheSize(viewModel);
         [_followButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
         _followButton.backgroundColor = UIColorHexString(@"#24C77E");
         _followButton.layer.cornerRadius = 6;
+        [_followButton addTarget:self action:@selector(clickFollowButton)];
     }
     return _followButton;
 }
@@ -267,6 +293,7 @@ TMUI_PropertySyntheSize(viewModel);
         _tagButton.backgroundColor = UIColorHexString(@"#F0F1F5");
         _tagButton.layer.cornerRadius = _viewModel.tagH/2?:12;
         _tagButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+        [_tagButton addTarget:self action:@selector(clickTagButton)];
     }
     return _tagButton;
 }
@@ -280,6 +307,7 @@ TMUI_PropertySyntheSize(viewModel);
         _tipsButton.layer.cornerRadius = 8;
         _tipsButton.layer.borderColor = UIColorHexString(@"#BABDC6").CGColor;
         _tipsButton.layer.borderWidth = 0.5;
+        [_tipsButton addTarget:self action:@selector(clickTipsButton)];
     }
     return _tipsButton;
 }
@@ -298,6 +326,7 @@ TMUI_PropertySyntheSize(viewModel);
 - (UIButton *)followCountButton{
     if (!_followCountButton) {
         _followCountButton = [[UIButton alloc] init];
+        [_followCountButton addTarget:self action:@selector(clickFollowCountButton)];
     }
     return _followCountButton;
 }
@@ -305,6 +334,7 @@ TMUI_PropertySyntheSize(viewModel);
 - (UIButton *)fansCountButton{
     if (!_fansCountButton) {
         _fansCountButton = [[UIButton alloc] init];
+        [_fansCountButton addTarget:self action:@selector(clickFansCountButton)];
     }
     return _fansCountButton;
 }
@@ -312,7 +342,7 @@ TMUI_PropertySyntheSize(viewModel);
 - (UIButton *)beCollectCountButton{
     if (!_beCollectCountButton) {
         _beCollectCountButton = [[UIButton alloc] init];
-        [_beCollectCountButton addTarget:self action:@selector(clickBeCollect) forControlEvents:UIControlEventTouchUpInside];
+        [_beCollectCountButton addTarget:self action:@selector(clickBeCollect)];
     }
     return _beCollectCountButton;
 }
@@ -330,6 +360,7 @@ TMUI_PropertySyntheSize(viewModel);
         _storeButton.titleLabel.font = UIFont(12);
         _storeButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
         _storeButton.contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+        [_storeButton addTarget:self action:@selector(clickStoreButton)];
     }
     return _storeButton;
 }

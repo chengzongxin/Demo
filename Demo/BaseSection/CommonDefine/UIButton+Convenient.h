@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *text;
 @property (nonatomic, strong) NSAttributedString *attrText;
 
+- (void)addTarget:(id)target action:(SEL)action;
+
 @end
 
 NS_ASSUME_NONNULL_END
