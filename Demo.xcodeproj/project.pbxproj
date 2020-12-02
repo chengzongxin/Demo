@@ -81,6 +81,8 @@
 		1653258225748191007BD950 /* THKSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1653258125748191007BD950 /* THKSegmentControl.m */; };
 		165325A425748D06007BD950 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325A225748D06007BD950 /* UIView+Frame.m */; };
 		165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325AD25748E5F007BD950 /* UIColor+HexString.m */; };
+		1674DC522577759E00B2644A /* THKUserSocialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674DC512577759E00B2644A /* THKUserSocialView.m */; };
+		1674DC58257778F300B2644A /* THKUserSocialViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674DC57257778F300B2644A /* THKUserSocialViewModel.m */; };
 		16A7DEE82577310000F1BABD /* BeCollectThumbupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */; };
 		16A7DEF02577310800F1BABD /* BeCollectThumbupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */; };
 		16A7DEF62577330B00F1BABD /* UIViewController+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DEF52577330B00F1BABD /* UIViewController+Convenient.m */; };
@@ -243,6 +245,10 @@
 		165325A825748E28007BD950 /* THKColorsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKColorsDefine.h; sourceTree = "<group>"; };
 		165325AC25748E5F007BD950 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		165325AD25748E5F007BD950 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		1674DC502577759E00B2644A /* THKUserSocialView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKUserSocialView.h; sourceTree = "<group>"; };
+		1674DC512577759E00B2644A /* THKUserSocialView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserSocialView.m; sourceTree = "<group>"; };
+		1674DC56257778F300B2644A /* THKUserSocialViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKUserSocialViewModel.h; sourceTree = "<group>"; };
+		1674DC57257778F300B2644A /* THKUserSocialViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserSocialViewModel.m; sourceTree = "<group>"; };
 		16A7DEE62577310000F1BABD /* BeCollectThumbupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeCollectThumbupView.h; sourceTree = "<group>"; };
 		16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeCollectThumbupView.m; sourceTree = "<group>"; };
 		16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeCollectThumbupView.xib; sourceTree = "<group>"; };
@@ -326,6 +332,10 @@
 				16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */,
 				16C532DA25761EA800210A3C /* THKUserCenterHeaderViewModel.h */,
 				16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */,
+				1674DC502577759E00B2644A /* THKUserSocialView.h */,
+				1674DC512577759E00B2644A /* THKUserSocialView.m */,
+				1674DC56257778F300B2644A /* THKUserSocialViewModel.h */,
+				1674DC57257778F300B2644A /* THKUserSocialViewModel.m */,
 				16A7DEE52577309D00F1BABD /* Subviews */,
 				16C532CD25761E3600210A3C /* ChildVC */,
 				160106E82553DD8000FE4B77 /* Main.storyboard */,
@@ -1003,6 +1013,8 @@
 				164CF96D2553F4E600FF02E0 /* TMUIHelper.m in Sources */,
 				164CF9402553F4E600FF02E0 /* TMCityPicker.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
+				1674DC522577759E00B2644A /* THKUserSocialView.m in Sources */,
+				1674DC58257778F300B2644A /* THKUserSocialViewModel.m in Sources */,
 				163AB07B257122DF005C25B2 /* Table1ViewController.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
 				1653258225748191007BD950 /* THKSegmentControl.m in Sources */,

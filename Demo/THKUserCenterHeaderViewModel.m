@@ -12,9 +12,7 @@
 @property (nonatomic, strong, readwrite) NSString *name;
 @property (nonatomic, strong, readwrite) NSString *tagName;
 @property (nonatomic, strong, readwrite) NSString *signature;
-@property (nonatomic, strong, readwrite) NSAttributedString *followAttrText;
-@property (nonatomic, strong, readwrite) NSAttributedString *fansAttrText;
-@property (nonatomic, strong, readwrite) NSAttributedString *befollowAttrText;
+@property (nonatomic, strong, readwrite) THKUserSocialViewModel *socailViewModel;
 
 @end
 
@@ -30,8 +28,8 @@
     _tagH = 24;
     _signatureTop = 12;
     _signatureH = 17;
-    _followCountTop = 12;
-    _followCountH = 20;
+    _socialTop = 12;
+    _socialH = 20;
     _storeTop = 16;
     _storeH = 20;
     _ecologicalTop = 23;
@@ -44,17 +42,16 @@
 
 // 更新数据和约束
 - (void)bindWithModel:(id)model{
-    [super bindWithModel:model];
     
     self.name = @"装修界的电动小马达";
     self.tagName = @"设计机构";
     self.signature =  @"123个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名，个性签名";
-    self.followAttrText = [self attrWithText:@"关注" number:2434];
-    self.fansAttrText = [self attrWithText:@"粉丝" number:332];
-    self.befollowAttrText = [self attrWithText:@"获赞与收藏" number:4432];
-    self.followCountW = [self widthForAttributeString:self.followAttrText];
-    self.fansCountW = [self widthForAttributeString:self.fansAttrText];
-    self.beFollowCountW = [self widthForAttributeString:self.befollowAttrText];
+    
+    THKUserSocialViewModel *socialVM = [[THKUserSocialViewModel alloc] init];
+    socialVM.followCount = 2432;
+    socialVM.fansCount = 2332;
+    socialVM.beThumbupAndColloctCount = 111134;
+    self.socailViewModel = socialVM;
     
     // 更新高度约束
     if (self.signature.length > 0) {
@@ -92,6 +89,9 @@
         _serviceTop = 0;
         _serviceH = 0;
     }
+    
+    
+    [super bindWithModel:model];
 }
 
 
@@ -107,8 +107,8 @@
     height += _tagH;
     height += _signatureTop;
     height += _signatureH;
-    height += _followCountTop;
-    height += _followCountH;
+    height += _socialTop;
+    height += _socialH;
     height += _storeTop;
     height += _storeH;
     height += _ecologicalTop;
@@ -142,5 +142,4 @@
 - (CGFloat)widthForAttributeString:(NSAttributedString *)attrStr{
     return ceilf([attrStr boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading context:nil].size.width);
 }
-
 @end

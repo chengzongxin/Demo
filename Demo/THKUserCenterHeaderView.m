@@ -6,10 +6,8 @@
 //
 
 #import "THKUserCenterHeaderView.h"
+#import "THKUserSocialView.h"
 #import "UIButton+Convenient.h"
-#import "TMContentAlert.h"
-#import "BeCollectThumbupView.h"
-#import "UIViewController+Convenient.h"
 
 @interface THKUserCenterHeaderView ()
 
@@ -30,12 +28,8 @@
 @property (nonatomic, strong) UIButton *followButton;
 /// 用户签名
 @property (nonatomic, strong) UILabel *signatureLabel;
-/// 关注数量
-@property (nonatomic, strong) UIButton *followCountButton;
-/// 粉丝数量
-@property (nonatomic, strong) UIButton *fansCountButton;
-/// 获赞和收藏
-@property (nonatomic, strong) UIButton *beCollectCountButton;
+/// 用户社交组件
+@property (nonatomic, strong) THKUserSocialView *socialView;
 /// TA的店铺
 @property (nonatomic, strong) UIButton *storeButton;
 /// 生态大会
@@ -58,9 +52,7 @@ TMUI_PropertySyntheSize(viewModel);
     [self addSubview:self.tipsButton];
     [self addSubview:self.followButton];
     [self addSubview:self.signatureLabel];
-    [self addSubview:self.followCountButton];
-    [self addSubview:self.fansCountButton];
-    [self addSubview:self.beCollectCountButton];
+    [self addSubview:self.socialView];
     [self addSubview:self.storeButton];
     [self addSubview:self.ecologicalView];
     [self addSubview:self.serviceInfoView];
@@ -115,27 +107,15 @@ TMUI_PropertySyntheSize(viewModel);
         make.height.mas_equalTo(_viewModel.signatureH);
     }];
     
-    [self.followCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.avatarImageView);
-        make.top.equalTo(self.signatureLabel.mas_bottom).offset(_viewModel.followCountTop);
-        make.size.mas_equalTo(CGSizeMake(60, _viewModel.followCountH));
-    }];
-    
-    [self.fansCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.followCountButton.mas_right).offset(20);
-        make.top.equalTo(self.signatureLabel.mas_bottom).offset(10);
-        make.size.mas_equalTo(CGSizeMake(60, _viewModel.followCountH));
-    }];
-    
-    [self.beCollectCountButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.fansCountButton.mas_right).offset(20);
-        make.top.equalTo(self.signatureLabel.mas_bottom).offset(10);
-        make.size.mas_equalTo(CGSizeMake(60, _viewModel.followCountH));
+    [self.socialView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self).inset(16);
+        make.top.equalTo(self.signatureLabel.mas_bottom).offset(_viewModel.socialTop);
+        make.height.mas_equalTo(_viewModel.socialH);
     }];
     
     [self.storeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.avatarImageView);
-        make.top.equalTo(self.followCountButton.mas_bottom).offset(_viewModel.storeTop);
+        make.top.equalTo(self.socialView.mas_bottom).offset(_viewModel.storeTop);
         make.size.mas_equalTo(CGSizeMake(100, _viewModel.storeH));
     }];
     
@@ -164,23 +144,8 @@ TMUI_PropertySyntheSize(viewModel);
     self.nameLabel.text = self.viewModel.name;
     self.tagButton.text = self.viewModel.tagName;
     self.signatureLabel.text = self.viewModel.signature;
-    self.followCountButton.attrText = self.viewModel.followAttrText;
-    self.fansCountButton.attrText = self.viewModel.fansAttrText;
-    self.beCollectCountButton.attrText = self.viewModel.befollowAttrText;
-    // 更新约束
-    // 关注
-    [self.followCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(_viewModel.followCountW);
-    }];
-    // 粉丝
-    [self.fansCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(_viewModel.fansCountW);
-    }];
+    [self.socialView bindViewModel:self.viewModel.socailViewModel];
     
-    // 被点赞收藏
-    [self.beCollectCountButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(_viewModel.beFollowCountW);
-    }];
     // 签名
     [self.signatureLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.tagButton.mas_bottom).offset(_viewModel.signatureTop);
@@ -188,7 +153,7 @@ TMUI_PropertySyntheSize(viewModel);
     }];
     // 店铺
     [self.storeButton mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.followCountButton.mas_bottom).offset(_viewModel.storeTop);
+        make.top.equalTo(self.socialView.mas_bottom).offset(_viewModel.storeTop);
         make.size.mas_equalTo(CGSizeMake(100, _viewModel.storeH));
     }];
     // 生态
@@ -207,21 +172,6 @@ TMUI_PropertySyntheSize(viewModel);
 #pragma mark - Public
 
 #pragma mark - Event Respone
-- (void)clickBeCollect{
-    BeCollectThumbupView *alert = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(BeCollectThumbupView.class) owner:self options:nil].lastObject;
-    
-    [TMContentAlert showFromViewController:[UIViewController getCurrentVC] loadContentView:^(__kindof UIViewController * _Nonnull toShowVc) {
-        [toShowVc.view addSubview:alert];
-        alert.frame = toShowVc.view.bounds;
-        alert.alpha = 0;
-    } didShowBlock:^{
-        //alpha渐变显示
-        [UIView animateWithDuration:0.15 animations:^{
-            alert.alpha = 1;
-        }];
-    }];
-}
-
 - (void)clickTagButton{
     NSLog(@"%s",__func__);
 }
@@ -234,13 +184,6 @@ TMUI_PropertySyntheSize(viewModel);
     NSLog(@"%s",__func__);
 }
 
-- (void)clickFollowCountButton{
-    NSLog(@"%s",__func__);
-}
-
-- (void)clickFansCountButton{
-    NSLog(@"%s",__func__);
-}
 
 - (void)clickStoreButton{
     NSLog(@"%s",__func__);
@@ -345,29 +288,11 @@ TMUI_PropertySyntheSize(viewModel);
     return _signatureLabel;
 }
 
-
-- (UIButton *)followCountButton{
-    if (!_followCountButton) {
-        _followCountButton = [[UIButton alloc] init];
-        [_followCountButton addTarget:self action:@selector(clickFollowCountButton)];
+- (THKUserSocialView *)socialView{
+    if (!_socialView) {
+        _socialView = [[THKUserSocialView alloc] init];
     }
-    return _followCountButton;
-}
-
-- (UIButton *)fansCountButton{
-    if (!_fansCountButton) {
-        _fansCountButton = [[UIButton alloc] init];
-        [_fansCountButton addTarget:self action:@selector(clickFansCountButton)];
-    }
-    return _fansCountButton;
-}
-
-- (UIButton *)beCollectCountButton{
-    if (!_beCollectCountButton) {
-        _beCollectCountButton = [[UIButton alloc] init];
-        [_beCollectCountButton addTarget:self action:@selector(clickBeCollect)];
-    }
-    return _beCollectCountButton;
+    return _socialView;
 }
 
 - (UIButton *)storeButton{
