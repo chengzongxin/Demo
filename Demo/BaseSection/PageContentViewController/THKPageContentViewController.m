@@ -18,7 +18,8 @@ static const CGFloat kSliderBarHeight = 50;
 @interface THKPageContentViewController () <UIScrollViewDelegate,UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 
 // component
-@property (nonatomic, strong) UIPageViewController *pageViewController;
+//@property (nonatomic, strong) UIPageViewController *pageViewController;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
 @property (nonatomic, strong) TDCCaseDetailContentView *contentView;
 @property (nonatomic, strong) THKSegmentControl *slideBar;
 
@@ -71,7 +72,9 @@ static const CGFloat kSliderBarHeight = 50;
         self.headerHeight = [self heightForHeader];
     }
     
-    [self.pageViewController setViewControllers:@[self.childVCs[self.currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+//    [self.pageViewController setViewControllers:@[self.childVCs[self.currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    [self.contentScrollView addSubview:self.childVCs[self.currentIndex].view];
+    self.contentScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.childVCs.count, 0);
 }
 
 // 子视图布局
@@ -79,8 +82,9 @@ static const CGFloat kSliderBarHeight = 50;
     [self.view addSubview:self.contentView];
     [self.contentView addSubview:self.headerView];
     [self.contentView addSubview:self.slideBar];
-    [self.contentView addSubview:self.pageViewController.view];
-    [self addChildViewController:self.pageViewController];
+    [self.contentView addSubview:self.contentScrollView];
+//    [self.contentView addSubview:self.pageViewController.view];
+//    [self addChildViewController:self.pageViewController];
 }
 
 // 设置约束
@@ -102,7 +106,12 @@ static const CGFloat kSliderBarHeight = 50;
         make.width.mas_equalTo(self.view.bounds.size.width);
     }];
     
-    [self.pageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+//    [self.pageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.slideBar.mas_bottom);
+//        make.left.bottom.right.equalTo(self.view);
+//    }];
+    
+    [self.contentScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.slideBar.mas_bottom);
         make.left.bottom.right.equalTo(self.view);
     }];
@@ -121,7 +130,24 @@ static const CGFloat kSliderBarHeight = 50;
         direction = UIPageViewControllerNavigationDirectionReverse;
     }
     self.currentIndex = index;
-    [self.pageViewController setViewControllers:@[self.childVCs[index]] direction:direction animated:YES completion:nil];
+    
+    CGFloat x = index * [UIScreen mainScreen].bounds.size.width;
+    
+    [self.contentScrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+    
+//    [self.pageViewController setViewControllers:@[self.childVCs[index]] direction:direction animated:YES completion:nil];
+    UIViewController *vc = self.childVCs[index];
+    if (vc.view.superview) {
+        [vc viewWillAppear:YES];
+        return;
+    }
+    
+    vc.view.frame = CGRectMake(x, 0, [UIScreen mainScreen].bounds.size.width  , self.contentScrollView.bounds.size.height);
+    [self.contentScrollView addSubview:vc.view];
+    
+//    CGFloat x = index * [UIScreen mainScreen].bounds.size.width;
+    self.contentScrollView.contentOffset = CGPointMake(x, 0);
+    // 显示VC
 }
 
 
@@ -209,6 +235,16 @@ static const CGFloat kSliderBarHeight = 50;
     [self pageContentViewControllerDidScroll:scrollView];
 }
 
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if (scrollView == self.contentScrollView) {
+        // 获取当前角标
+        NSInteger i = scrollView.contentOffset.x / UIScreen.mainScreen.bounds.size.width;
+        
+        self.slideBar.selectedIndex = i;
+    }
+}
+
 #pragma mark - Private
 
 #pragma mark 数组元素值，得到下标值
@@ -241,18 +277,47 @@ static const CGFloat kSliderBarHeight = 50;
     return _contentView;
 }
 
-- (UIPageViewController *)pageViewController {
-    
-    if (!_pageViewController) {
-        NSDictionary *options = @{UIPageViewControllerOptionInterPageSpacingKey : @(10)};
-        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                                                            options:options];
-        _pageViewController.dataSource = self;
-        _pageViewController.delegate = self;
+//- (UIPageViewController *)pageViewController {
+//
+//    if (!_pageViewController) {
+//        NSDictionary *options = @{UIPageViewControllerOptionInterPageSpacingKey : @(10)};
+//        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+//                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+//                                                                            options:options];
+//        _pageViewController.dataSource = self;
+//        _pageViewController.delegate = self;
+//    }
+//
+//    return _pageViewController;
+//}
+
+- (UIScrollView *)contentScrollView{
+    if (!_contentScrollView) {
+        // 创建contentScrollView
+        _contentScrollView = [[UIScrollView alloc] init];
+//        CGFloat y = CGRectGetMaxY(self.titleScrollView.frame);
+//        CGFloat height = self.view.bounds.size.height - y;
+//        if (self.header) {
+//            height = ScreenH - (kStatusH + kNavbarH + _titleScrollView.height);
+//        }
+//        contentScrollView.frame = CGRectMake(0, y, self.view.bounds.size.width, height);
+//        [self.containerView addSubview:contentScrollView];
+//        _contentScrollView = contentScrollView;
+        
+        // 设置contentScrollView的属性
+        // 分页
+        _contentScrollView.pagingEnabled = YES;
+        // 弹簧
+        _contentScrollView.bounces = YES;
+        // 指示器
+        _contentScrollView.showsHorizontalScrollIndicator = NO;
+        _contentScrollView.showsVerticalScrollIndicator = NO;
+        
+        // 设置代理.目的:监听内容滚动视图 什么时候滚动完成
+        _contentScrollView.delegate = self;
+        _contentScrollView.tag = 888;
     }
-    
-    return _pageViewController;
+    return _contentScrollView;
 }
 
 - (THKSegmentControl *)slideBar {
