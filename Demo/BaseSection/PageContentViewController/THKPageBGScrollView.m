@@ -13,7 +13,7 @@
     BOOL _isObserving;
     BOOL _isScrollingToTop;
     BOOL _shouldScrollHeader;
-    
+    BOOL _shouldScrollThisTime;
     __weak UIScrollView *_currentScrollView;
 }
 
@@ -57,15 +57,18 @@ static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
     }
     CGPoint point = [gestureRecognizer velocityInView:self];
     if (fabs(point.x) > fabs(point.y)) {
+        _shouldScrollThisTime = NO;
         return NO;
     }
     
     _shouldScrollHeader = [gestureRecognizer locationInView:self].y < 0;
     //if (_lock && point.y > 0 && !_shouldScrollHeader) {
     if (_lock && point.y > 0) {
+        _shouldScrollThisTime = NO;
         return NO;
     }
     
+    _shouldScrollThisTime = YES;
     return YES;
 }
 
@@ -125,10 +128,14 @@ static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
             }
         } else {
             UIScrollView *scrollView = object;
-            _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
+            _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top) && (self.contentOffset.y >= -_lockArea);
             //NSLog(@"observeValueForKeyPath scrollView.contentOffset.y=%f",scrollView.contentOffset.y);
             if (self.contentOffset.y < -_lockArea && _lock && diff < 0) {
                 [self scrollView:scrollView setContentOffset:old];
+            }
+            // 此次禁止滑动，但是子scrollView已经滑到顶部时，需要滑动bgScrollView
+            if (_shouldScrollThisTime == NO && _lock == NO && diff) {
+                [self scrollView:self setContentOffset:CGPointMake(self.contentOffset.x, self.contentOffset.y - diff)];
             }
 
             if (!_lock && ((self.contentOffset.y > -self.contentInset.top) || self.bounces)) {
