@@ -83,6 +83,7 @@
 		165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325AD25748E5F007BD950 /* UIColor+HexString.m */; };
 		1674DC522577759E00B2644A /* THKUserSocialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674DC512577759E00B2644A /* THKUserSocialView.m */; };
 		1674DC58257778F300B2644A /* THKUserSocialViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674DC57257778F300B2644A /* THKUserSocialViewModel.m */; };
+		16A6908D2581BE8000CA756A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A6908C2581BE8000CA756A /* RootViewController.m */; };
 		16A7DEE82577310000F1BABD /* BeCollectThumbupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */; };
 		16A7DEF02577310800F1BABD /* BeCollectThumbupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */; };
 		16A7DEF62577330B00F1BABD /* UIViewController+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DEF52577330B00F1BABD /* UIViewController+Convenient.m */; };
@@ -249,6 +250,8 @@
 		1674DC512577759E00B2644A /* THKUserSocialView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserSocialView.m; sourceTree = "<group>"; };
 		1674DC56257778F300B2644A /* THKUserSocialViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKUserSocialViewModel.h; sourceTree = "<group>"; };
 		1674DC57257778F300B2644A /* THKUserSocialViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserSocialViewModel.m; sourceTree = "<group>"; };
+		16A6908B2581BE8000CA756A /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		16A6908C2581BE8000CA756A /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		16A7DEE62577310000F1BABD /* BeCollectThumbupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeCollectThumbupView.h; sourceTree = "<group>"; };
 		16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeCollectThumbupView.m; sourceTree = "<group>"; };
 		16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BeCollectThumbupView.xib; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				160106E32553DD8000FE4B77 /* SceneDelegate.m */,
 				163AB09725713675005C25B2 /* ViewController.h */,
 				163AB09825713675005C25B2 /* ViewController.m */,
+				16A6908B2581BE8000CA756A /* RootViewController.h */,
+				16A6908C2581BE8000CA756A /* RootViewController.m */,
 				16C532D425761E8C00210A3C /* THKUserCenterHeaderView.h */,
 				16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */,
 				16C532DA25761EA800210A3C /* THKUserCenterHeaderViewModel.h */,
@@ -1019,6 +1024,7 @@
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
 				1653258225748191007BD950 /* THKSegmentControl.m in Sources */,
 				164CF96C2553F4E600FF02E0 /* TMUIWeakObjectContainer.m in Sources */,
+				16A6908D2581BE8000CA756A /* RootViewController.m in Sources */,
 				16C532D625761E8C00210A3C /* THKUserCenterHeaderView.m in Sources */,
 				164CF9422553F4E600FF02E0 /* TMContentPicker.m in Sources */,
 				164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */,

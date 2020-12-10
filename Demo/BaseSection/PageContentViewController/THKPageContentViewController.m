@@ -125,21 +125,34 @@ static const CGFloat kSliderBarHeight = 50;
 }
 
 - (void)addChildViewAtIndex:(NSInteger)index animate:(BOOL)animate{
+    if (self.currentIndex == index && self.contentScrollView.subviews.count) {
+        return;
+    }
+    
     self.slideBar.selectedIndex = index;
     UIViewController *childVC = self.childVCs[index];
     if (childVC.isViewLoaded) {
         [childVC beginAppearanceTransition:YES animated:YES];
         [childVC endAppearanceTransition];
-        return;
+        
+        if (self.currentIndex != index) {
+            UIViewController *preVC = self.childVCs[self.currentIndex];
+            [preVC viewWillDisappear:YES];
+            [preVC viewDidDisappear:YES];
+        }
+        
+    }else{
+        CGFloat x = index * [UIScreen mainScreen].bounds.size.width;
+        childVC.view.frame = CGRectMake(x, 0, [UIScreen mainScreen].bounds.size.width , self.contentScrollView.bounds.size.height);
+        [childVC beginAppearanceTransition:YES animated:YES];
+        [self.contentScrollView addSubview:childVC.view];
+        self.contentScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.childVCs.count, 0);
+        [self addChildViewController:childVC];
+        [self.contentScrollView setContentOffset:CGPointMake(x, 0) animated:animate];
+        [childVC endAppearanceTransition];
     }
-    CGFloat x = index * [UIScreen mainScreen].bounds.size.width;
-    childVC.view.frame = CGRectMake(x, 0, [UIScreen mainScreen].bounds.size.width , self.contentScrollView.bounds.size.height);
-    [childVC beginAppearanceTransition:YES animated:YES];
-    [self.contentScrollView addSubview:childVC.view];
-    self.contentScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.childVCs.count, 0);
-    [self addChildViewController:childVC];
-    [self.contentScrollView setContentOffset:CGPointMake(x, 0) animated:animate];
-    [childVC endAppearanceTransition];
+    
+    self.currentIndex = index;
 }
 
 #pragma mark - Public
@@ -159,21 +172,8 @@ static const CGFloat kSliderBarHeight = 50;
     BOOL animate = abs((int)(index - self.currentIndex)) > 1 ? NO : YES;
     [self.contentScrollView setContentOffset:CGPointMake(x, 0) animated:animate];
     
-    self.currentIndex = index;
 //    [self.pageViewController setViewControllers:@[self.childVCs[index]] direction:direction animated:YES completion:nil];
-    UIViewController *vc = self.childVCs[index];
-    if (vc.isViewLoaded) {
-        [vc beginAppearanceTransition:YES animated:YES];
-        [vc endAppearanceTransition];
-        return;
-    }
-    
-    vc.view.frame = CGRectMake(x, 0, [UIScreen mainScreen].bounds.size.width, self.contentScrollView.bounds.size.height);
-    
-    [vc beginAppearanceTransition:YES animated:YES];
-    [self.contentScrollView addSubview:vc.view];
-    [vc endAppearanceTransition];
-    // 显示VC
+    [self addChildViewAtIndex:index animate:animate];
 }
 
 
