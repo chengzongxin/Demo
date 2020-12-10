@@ -6,7 +6,7 @@
 //
 
 #import "THKPageContentViewController.h"
-#import "TDCCaseDetailContentView.h"
+#import "THKPageBGScrollView.h"
 #import "THKSegmentControl.h"
 #import "THKColorsDefine.h"
 #import "THKCommonDefine.h"
@@ -18,9 +18,8 @@ static const CGFloat kSliderBarHeight = 50;
 @interface THKPageContentViewController () <UIScrollViewDelegate,UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 
 // component
-//@property (nonatomic, strong) UIPageViewController *pageViewController;
 @property (nonatomic, strong) UIScrollView *contentScrollView;
-@property (nonatomic, strong) TDCCaseDetailContentView *contentView;
+@property (nonatomic, strong) THKPageBGScrollView *contentView;
 @property (nonatomic, strong) THKSegmentControl *slideBar;
 
 // delegate
@@ -73,8 +72,6 @@ static const CGFloat kSliderBarHeight = 50;
     if ([self respondsToSelector:@selector(heightForHeader)]) {
         self.headerHeight = [self heightForHeader];
     }
-    
-//    [self.pageViewController setViewControllers:@[self.childVCs[self.currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 }
 
 // 子视图布局
@@ -106,15 +103,6 @@ static const CGFloat kSliderBarHeight = 50;
         make.width.mas_equalTo(self.view.bounds.size.width);
     }];
     
-//    [self.pageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.slideBar.mas_bottom);
-//        make.left.bottom.right.equalTo(self.view);
-//    }];
-    
-//    [self.contentScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.slideBar.mas_bottom);
-//        make.left.bottom.right.equalTo(self.view);
-//    }];
     [self.contentScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.slideBar.mas_bottom).priorityHigh();
         make.left.right.equalTo(self.view);
@@ -125,6 +113,10 @@ static const CGFloat kSliderBarHeight = 50;
 }
 
 - (void)addChildViewAtIndex:(NSInteger)index animate:(BOOL)animate{
+    if (self.childVCs.count == 0 || self.childVCs.count != self.titles.count) {
+        return;
+    }
+    
     if (self.currentIndex == index && self.contentScrollView.subviews.count) {
         return;
     }
@@ -155,8 +147,15 @@ static const CGFloat kSliderBarHeight = 50;
     self.currentIndex = index;
 }
 
+
 #pragma mark - Public
 
+- (void)scrollTo:(UIViewController *)vc{
+    if (![vc isKindOfClass:[UIViewController class]]) return;
+    
+    NSUInteger index = [self indexOfViewController:vc];
+    [self addChildViewAtIndex:index animate:NO];
+}
 #pragma mark - Event Respone
 - (void)btnClick:(THKSegmentControl *)control{
     NSUInteger index = control.selectedIndex;
@@ -293,9 +292,9 @@ static const CGFloat kSliderBarHeight = 50;
 
 
 #pragma mark - Getters and Setters
-- (TDCCaseDetailContentView *)contentView {
+- (THKPageBGScrollView *)contentView {
     if (_contentView == nil) {
-        _contentView = [[TDCCaseDetailContentView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        _contentView = [[THKPageBGScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         _contentView.backgroundColor = [UIColor whiteColor];
         _contentView.showsHorizontalScrollIndicator = NO;
         _contentView.lockArea = kTNavigationBarHeight()+kSliderBarHeight;
@@ -305,32 +304,10 @@ static const CGFloat kSliderBarHeight = 50;
     return _contentView;
 }
 
-//- (UIPageViewController *)pageViewController {
-//
-//    if (!_pageViewController) {
-//        NSDictionary *options = @{UIPageViewControllerOptionInterPageSpacingKey : @(10)};
-//        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-//                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-//                                                                            options:options];
-//        _pageViewController.dataSource = self;
-//        _pageViewController.delegate = self;
-//    }
-//
-//    return _pageViewController;
-//}
-
 - (UIScrollView *)contentScrollView{
     if (!_contentScrollView) {
         // 创建contentScrollView
         _contentScrollView = [[UIScrollView alloc] init];
-//        CGFloat y = CGRectGetMaxY(self.titleScrollView.frame);
-//        CGFloat height = self.view.bounds.size.height - y;
-//        if (self.header) {
-//            height = ScreenH - (kStatusH + kNavbarH + _titleScrollView.height);
-//        }
-//        contentScrollView.frame = CGRectMake(0, y, self.view.bounds.size.width, height);
-//        [self.containerView addSubview:contentScrollView];
-//        _contentScrollView = contentScrollView;
         
         // 设置contentScrollView的属性
         // 分页

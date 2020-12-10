@@ -1,14 +1,13 @@
 //
-//  TDCCaseDetailContentView.m
-//  HouseKeeper
+//  THKPageBGScrollView.m
+//  Demo
 //
-//  Created by jerry.jiang on 16/10/25.
-//  Copyright © 2016年 binxun. All rights reserved.
+//  Created by Joe.cheng on 2020/12/10.
 //
 
-#import "TDCCaseDetailContentView.h"
+#import "THKPageBGScrollView.h"
 
-@interface TDCCaseDetailContentView () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
+@interface THKPageBGScrollView () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     BOOL _lock;
     BOOL _isObserving;
@@ -17,11 +16,14 @@
     
     __weak UIScrollView *_currentScrollView;
 }
+
 @property (nonatomic, strong) NSMutableArray<UIScrollView *> *observedViews;
+
 
 @end
 
-@implementation TDCCaseDetailContentView
+@implementation THKPageBGScrollView
+
 
 static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
 
@@ -217,10 +219,6 @@ static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
-    if ([self.otherDelegate respondsToSelector:@selector(caseDetailContentViewIsScrollerToTop:)]) {
-        [self.otherDelegate caseDetailContentViewIsScrollerToTop:self];
-    }
-    
     if ([self.t_delegate respondsToSelector:@selector(scrollViewShouldScrollToTop:)]) {
         BOOL res = [self.t_delegate scrollViewShouldScrollToTop:scrollView];
         if (res) {
@@ -232,4 +230,5 @@ static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
     _isScrollingToTop = YES;
     return YES;
 }
+
 @end

@@ -7,7 +7,8 @@
 
 #import <UIKit/UIKit.h>
 @class THKPageContentViewController;
-@class THKSegmentControl;
+#import "THKPageBGScrollView.h"
+#import "THKSegmentControl.h"
 
 @protocol THKPageContentViewControllerDataSource <NSObject>
 
@@ -38,8 +39,19 @@
 @property (nonatomic, weak) id<THKPageContentViewControllerDataSource> dataSource;
 @property (nonatomic, weak) id<THKPageContentViewControllerDelegate> delegate;
 
+@property (nonatomic, assign, readonly) NSInteger currentIndex;
+
+
+
+// component
+@property (nonatomic, strong, readonly) THKPageBGScrollView *contentView;
+@property (nonatomic, strong, readonly) THKSegmentControl *slideBar;
+@property (nonatomic, strong, readonly) UIScrollView *contentScrollView;
+
 // 刷新数据
 - (void)reloadData;
+
+- (void)scrollTo:(UIViewController *)vc;
 
 @end
 
