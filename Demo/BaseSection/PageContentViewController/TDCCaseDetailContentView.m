@@ -90,7 +90,7 @@ static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
                     options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
                     context:kTDCScrollViewKVOContext];
 
-    _lock = (scrollView.contentOffset.y > -scrollView.contentInset.top);
+    _lock = (scrollView.contentOffset.y >= -scrollView.contentInset.top);
     //NSLog(@"addObserverToView scrollView.contentOffset.y=%f",scrollView.contentOffset.y);
 }
 
