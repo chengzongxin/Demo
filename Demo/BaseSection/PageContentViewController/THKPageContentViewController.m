@@ -58,6 +58,8 @@ static const CGFloat kSliderBarHeight = 50;
     [self addSubviews];
     
     [self makeConstraints];
+    
+    [self addChildViewAtIndex:self.currentIndex animate:NO];
 }
 
 - (void)fetchDataSource{
@@ -73,8 +75,6 @@ static const CGFloat kSliderBarHeight = 50;
     }
     
 //    [self.pageViewController setViewControllers:@[self.childVCs[self.currentIndex]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    [self.contentScrollView addSubview:self.childVCs[self.currentIndex].view];
-    self.contentScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.childVCs.count, 0);
 }
 
 // 子视图布局
@@ -111,11 +111,35 @@ static const CGFloat kSliderBarHeight = 50;
 //        make.left.bottom.right.equalTo(self.view);
 //    }];
     
+//    [self.contentScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.slideBar.mas_bottom);
+//        make.left.bottom.right.equalTo(self.view);
+//    }];
     [self.contentScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.slideBar.mas_bottom);
-        make.left.bottom.right.equalTo(self.view);
+        make.top.equalTo(self.slideBar.mas_bottom).priorityHigh();
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(self.view.bounds.size.height-kTNavigationBarHeight()-kSliderBarHeight);
     }];
     
+    [self.view layoutIfNeeded];
+}
+
+- (void)addChildViewAtIndex:(NSInteger)index animate:(BOOL)animate{
+    self.slideBar.selectedIndex = index;
+    UIViewController *childVC = self.childVCs[index];
+    if (childVC.isViewLoaded) {
+        [childVC beginAppearanceTransition:YES animated:YES];
+        [childVC endAppearanceTransition];
+        return;
+    }
+    CGFloat x = index * [UIScreen mainScreen].bounds.size.width;
+    childVC.view.frame = CGRectMake(x, 0, [UIScreen mainScreen].bounds.size.width , self.contentScrollView.bounds.size.height);
+    [childVC beginAppearanceTransition:YES animated:YES];
+    [self.contentScrollView addSubview:childVC.view];
+    self.contentScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.childVCs.count, 0);
+    [self addChildViewController:childVC];
+    [self.contentScrollView setContentOffset:CGPointMake(x, 0) animated:animate];
+    [childVC endAppearanceTransition];
 }
 
 #pragma mark - Public
@@ -129,24 +153,26 @@ static const CGFloat kSliderBarHeight = 50;
     } else {
         direction = UIPageViewControllerNavigationDirectionReverse;
     }
-    self.currentIndex = index;
     
     CGFloat x = index * [UIScreen mainScreen].bounds.size.width;
     
-    [self.contentScrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+    BOOL animate = abs((int)(index - self.currentIndex)) > 1 ? NO : YES;
+    [self.contentScrollView setContentOffset:CGPointMake(x, 0) animated:animate];
     
+    self.currentIndex = index;
 //    [self.pageViewController setViewControllers:@[self.childVCs[index]] direction:direction animated:YES completion:nil];
     UIViewController *vc = self.childVCs[index];
-    if (vc.view.superview) {
-        [vc viewWillAppear:YES];
+    if (vc.isViewLoaded) {
+        [vc beginAppearanceTransition:YES animated:YES];
+        [vc endAppearanceTransition];
         return;
     }
     
-    vc.view.frame = CGRectMake(x, 0, [UIScreen mainScreen].bounds.size.width  , self.contentScrollView.bounds.size.height);
-    [self.contentScrollView addSubview:vc.view];
+    vc.view.frame = CGRectMake(x, 0, [UIScreen mainScreen].bounds.size.width, self.contentScrollView.bounds.size.height);
     
-//    CGFloat x = index * [UIScreen mainScreen].bounds.size.width;
-    self.contentScrollView.contentOffset = CGPointMake(x, 0);
+    [vc beginAppearanceTransition:YES animated:YES];
+    [self.contentScrollView addSubview:vc.view];
+    [vc endAppearanceTransition];
     // 显示VC
 }
 
@@ -242,6 +268,8 @@ static const CGFloat kSliderBarHeight = 50;
         NSInteger i = scrollView.contentOffset.x / UIScreen.mainScreen.bounds.size.width;
         
         self.slideBar.selectedIndex = i;
+        
+        [self addChildViewAtIndex:i animate:NO];
     }
 }
 
