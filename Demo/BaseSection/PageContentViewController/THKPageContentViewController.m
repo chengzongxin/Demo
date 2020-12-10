@@ -6,8 +6,6 @@
 //
 
 #import "THKPageContentViewController.h"
-#import "THKPageBGScrollView.h"
-#import "THKSegmentControl.h"
 #import "THKColorsDefine.h"
 #import "THKCommonDefine.h"
 
@@ -18,9 +16,9 @@ static const CGFloat kSliderBarHeight = 50;
 @interface THKPageContentViewController () <UIScrollViewDelegate,UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 
 // component
-@property (nonatomic, strong) UIScrollView *contentScrollView;
 @property (nonatomic, strong) THKPageBGScrollView *contentView;
 @property (nonatomic, strong) THKSegmentControl *slideBar;
+@property (nonatomic, strong) UIScrollView *contentScrollView;
 
 // delegate
 @property (nonatomic, strong) NSArray <UIViewController *>*childVCs;
@@ -29,7 +27,7 @@ static const CGFloat kSliderBarHeight = 50;
 @property (nonatomic, weak) UIView *headerView;
 
 // private
-@property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, assign, readwrite) NSInteger currentIndex;
 @property (nonatomic, strong) UIViewController *preVC;
 @property (nonatomic, strong) UIViewController *toVC;
 
@@ -80,8 +78,6 @@ static const CGFloat kSliderBarHeight = 50;
     [self.contentView addSubview:self.headerView];
     [self.contentView addSubview:self.slideBar];
     [self.contentView addSubview:self.contentScrollView];
-//    [self.contentView addSubview:self.pageViewController.view];
-//    [self addChildViewController:self.pageViewController];
 }
 
 // 设置约束
@@ -147,7 +143,6 @@ static const CGFloat kSliderBarHeight = 50;
     self.currentIndex = index;
 }
 
-
 #pragma mark - Public
 
 - (void)scrollTo:(UIViewController *)vc{
@@ -156,6 +151,7 @@ static const CGFloat kSliderBarHeight = 50;
     NSUInteger index = [self indexOfViewController:vc];
     [self addChildViewAtIndex:index animate:NO];
 }
+
 #pragma mark - Event Respone
 - (void)btnClick:(THKSegmentControl *)control{
     NSUInteger index = control.selectedIndex;
@@ -308,8 +304,6 @@ static const CGFloat kSliderBarHeight = 50;
     if (!_contentScrollView) {
         // 创建contentScrollView
         _contentScrollView = [[UIScrollView alloc] init];
-        
-        // 设置contentScrollView的属性
         // 分页
         _contentScrollView.pagingEnabled = YES;
         // 弹簧
