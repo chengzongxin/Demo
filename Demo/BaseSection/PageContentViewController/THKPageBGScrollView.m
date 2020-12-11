@@ -120,6 +120,11 @@ static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
         CGFloat diff = old.y - new.y;
 
         if (diff == 0.0 || !_isObserving) { return; }
+        // 当前不是scrollView，需要滑动
+        if ([self currentViewNotScroll] && diff) {
+            [self scrollView:self setContentOffset:CGPointMake(self.contentOffset.x, self.contentOffset.y - diff)];
+            return;
+        }
         if (object == self) {
             if (diff > 0 && _lock && !_shouldScrollHeader) {
                 [self scrollView:self setContentOffset:old];
@@ -236,6 +241,26 @@ static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
     }
     _isScrollingToTop = YES;
     return YES;
+}
+
+- (BOOL)currentViewNotScroll{
+    UIScrollView *contentScrollView = self.observedViews.lastObject ;
+    if ([contentScrollView isMemberOfClass:UIScrollView.class]) {
+//        NSInteger i = contentScrollView.contentOffset.x / contentScrollView.bounds.size.width;
+        UIView *visibleView = nil;
+        for (UIView *view in contentScrollView.subviews) {
+            if (fabs(view.frame.origin.x - contentScrollView.contentOffset.x) < 50) {
+                visibleView = view;
+            }
+        }
+        
+        if (visibleView.tag == 777) {
+            return YES;
+        }else{
+            return NO;
+        }
+    }
+    return NO;
 }
 
 @end
