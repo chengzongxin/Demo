@@ -9,6 +9,7 @@
 @class THKPageContentViewController;
 #import "THKPageBGScrollView.h"
 #import "THKSegmentControl.h"
+#import "THKViewController.h"
 
 @protocol THKPageContentViewControllerDataSource <NSObject>
 
@@ -34,7 +35,7 @@
 
 @end
 
-@interface THKPageContentViewController : UIViewController <THKPageContentViewControllerDataSource,THKPageContentViewControllerDelegate>
+@interface THKPageContentViewController : THKViewController <THKPageContentViewControllerDataSource,THKPageContentViewControllerDelegate>
 
 @property (nonatomic, weak) id<THKPageContentViewControllerDataSource> dataSource;
 @property (nonatomic, weak) id<THKPageContentViewControllerDelegate> delegate;
