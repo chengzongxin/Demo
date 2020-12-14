@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"123";
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"reload" style:UIBarButtonItemStyleDone target:self action:@selector(reload)];
     
 //    [self.navigationController.navigationBar setBackgroundImage:UIImage.new forBarMetrics:UIBarMetricsDefault];
     
@@ -43,6 +43,22 @@
         
         [self reloadData];
     });
+}
+
+- (void)reload{
+    self.vcs = [[@[Table1ViewController.class,
+                   Table2ViewController.class,
+                   Table3ViewController.class,
+                   NormalViewController.class,
+                   Table1ViewController.class,
+                   Table2ViewController.class,
+                   Table3ViewController.class,
+                   NormalViewController.class].rac_sequence map:^id _Nullable(Class cls) {
+        return [[cls alloc] init];
+    }] array];
+    self.titles = @[@"热门",@"最新",@"涉及",@"案例",@"热门",@"最新",@"涉及",@"案例"];
+    
+    [self reloadData];
 }
 
 -  (void)viewWillAppear:(BOOL)animated{
@@ -60,10 +76,13 @@
 }
 
 - (CGFloat)heightForSliderBar{
-    return 50;
+    return self.vcs.count * 10;
 }
 
+
 - (void)segmentControlConfig:(THKSegmentControl *)control{
+    control.frame = CGRectMake(0, 0, self.view.bounds.size.width, 88);
+    control.autoAlignmentCenter = YES;
     control.backgroundColor = [UIColor orangeColor];
     control.indicatorView.backgroundColor = UIColor.blueColor;
     control.indicatorView.layer.cornerRadius = 0.0;
@@ -75,7 +94,7 @@
 
 - (CGFloat)heightForHeader{
     THKUserCenterHeaderViewModel *viewModel = [[THKUserCenterHeaderViewModel alloc] init];
-    return viewModel.viewHeight;
+    return viewModel.viewHeight + self.vcs.count * 10;
 }
 
 - (UIView *)viewForHeader{
@@ -83,5 +102,6 @@
     THKUserCenterHeaderView *view = [[THKUserCenterHeaderView alloc] initWithViewModel:viewModel];
     return view;
 }
+
 
 @end

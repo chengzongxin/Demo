@@ -38,6 +38,10 @@ static const CGFloat kSliderBarHeight = 50;
 
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
 
+- (void)dealloc{
+    [self clear];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -50,7 +54,28 @@ static const CGFloat kSliderBarHeight = 50;
     self.delegate = self;
 }
 
+- (void)clear{
+    [self initial];
+    
+    [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    _contentView = nil;
+    _headerView = nil;
+    _slideBar = nil;
+    _contentScrollView = nil;
+    _childVCs = nil;
+    _titles = nil;
+    _headerView = nil;
+    _preVC = nil;
+    _toVC = nil;
+    _headerHeight = 0;
+    _sliderBarHeight = 0;
+}
+
 - (void)reloadData{
+    [self clear];
+    
     [self fetchDataSource];
     
     [self addSubviews];
