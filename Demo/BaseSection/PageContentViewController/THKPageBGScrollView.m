@@ -122,7 +122,6 @@ static void * const kTDCScrollViewKVOContext = (void*)&kTDCScrollViewKVOContext;
         if (diff == 0.0 || !_isObserving) { return; }
         // 当前不是scrollView，需要滑动
         if (_currentScrollView.tag == 888 && diff) {
-            NSLog(@"not scroll is scroll");
             [self scrollView:self setContentOffset:CGPointMake(self.contentOffset.x, self.contentOffset.y - diff)];
             return;
         }

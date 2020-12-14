@@ -23,7 +23,9 @@
 
 - (UIView *)viewForHeader;
 
-- (void)segmentControlConfigBlock:(void (^)(THKSegmentControl *control))configBlock;
+- (CGFloat)heightForSliderBar;
+
+- (void)segmentControlConfig:(THKSegmentControl *)control;
 
 @end
 

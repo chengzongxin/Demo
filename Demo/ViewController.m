@@ -59,6 +59,20 @@
     return self.titles;
 }
 
+- (CGFloat)heightForSliderBar{
+    return 50;
+}
+
+- (void)segmentControlConfig:(THKSegmentControl *)control{
+    control.backgroundColor = [UIColor orangeColor];
+    control.indicatorView.backgroundColor = UIColor.blueColor;
+    control.indicatorView.layer.cornerRadius = 0.0;
+    [control setTitleFont:[UIFont systemFontOfSize:20 weight:UIFontWeightMedium] forState:UIControlStateNormal];
+    [control setTitleFont:[UIFont systemFontOfSize:30 weight:UIFontWeightMedium] forState:UIControlStateSelected];
+    [control setTitleColor:UIColor.grayColor forState:UIControlStateNormal];
+    [control setTitleColor:UIColor.greenColor forState:UIControlStateSelected];
+}
+
 - (CGFloat)heightForHeader{
     THKUserCenterHeaderViewModel *viewModel = [[THKUserCenterHeaderViewModel alloc] init];
     return viewModel.viewHeight;

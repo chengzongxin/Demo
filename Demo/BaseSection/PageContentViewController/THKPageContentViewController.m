@@ -25,6 +25,7 @@ static const CGFloat kSliderBarHeight = 50;
 @property (nonatomic, strong) NSArray <NSString *>*titles;
 @property (nonatomic, assign) CGFloat headerHeight;
 @property (nonatomic, weak) UIView *headerView;
+@property (nonatomic, assign) CGFloat sliderBarHeight;
 
 // private
 @property (nonatomic, assign, readwrite) NSInteger currentIndex;
@@ -63,12 +64,25 @@ static const CGFloat kSliderBarHeight = 50;
     self.childVCs = [self childViewControllers];
     self.titles = [self titlesForChildViewControllers];
     
-    if ([self respondsToSelector:@selector(viewForHeader)]) {
-        self.headerView = [self viewForHeader];
+    if ([self.dataSource respondsToSelector:@selector(viewForHeader)]) {
+        self.headerView = [self.dataSource viewForHeader];
     }
     
-    if ([self respondsToSelector:@selector(heightForHeader)]) {
-        self.headerHeight = [self heightForHeader];
+    if ([self.dataSource respondsToSelector:@selector(heightForHeader)]) {
+        self.headerHeight = [self.dataSource heightForHeader];
+    }
+    
+    if ([self respondsToSelector:@selector(heightForSliderBar)]) {
+        self.sliderBarHeight = [self.dataSource heightForSliderBar];
+    }
+    
+    if ([self.dataSource respondsToSelector:@selector(segmentControlConfig:)]){
+        [self.dataSource segmentControlConfig:self.slideBar];
+        self.sliderBarHeight = self.slideBar.frame.size.height;
+    }
+    
+    if (self.sliderBarHeight == 0) {
+        self.sliderBarHeight = kSliderBarHeight;
     }
 }
 
@@ -82,12 +96,12 @@ static const CGFloat kSliderBarHeight = 50;
 
 // 设置约束
 - (void)makeConstraints{
-    self.contentView.contentInset = UIEdgeInsetsMake(self.headerHeight+kSliderBarHeight, 0, 0, 0);
+    self.contentView.contentInset = UIEdgeInsetsMake(self.headerHeight+self.sliderBarHeight, 0, 0, 0);
     self.contentView.contentSize = self.view.bounds.size;
     
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView);
-        make.top.mas_equalTo(-self.headerHeight-kSliderBarHeight);
+        make.top.mas_equalTo(-self.headerHeight-self.sliderBarHeight);
         make.height.mas_equalTo(self.headerHeight);
         make.width.mas_equalTo(self.view.bounds.size.width);
     }];
@@ -95,14 +109,14 @@ static const CGFloat kSliderBarHeight = 50;
     [self.slideBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView);
         make.top.equalTo(self.headerView.mas_bottom);
-        make.height.mas_equalTo(kSliderBarHeight);
+        make.height.mas_equalTo(self.sliderBarHeight);
         make.width.mas_equalTo(self.view.bounds.size.width);
     }];
     
     [self.contentScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.slideBar.mas_bottom).priorityHigh();
         make.left.right.equalTo(self.view);
-        make.height.mas_equalTo(self.view.bounds.size.height-kTNavigationBarHeight()-kSliderBarHeight);
+        make.height.mas_equalTo(self.view.bounds.size.height-kTNavigationBarHeight()-self.sliderBarHeight);
     }];
     
     [self.view layoutIfNeeded];
@@ -138,6 +152,10 @@ static const CGFloat kSliderBarHeight = 50;
         [self addChildViewController:childVC];
         [self.contentScrollView setContentOffset:CGPointMake(x, 0) animated:animate];
         [childVC endAppearanceTransition];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(pageContentViewControllerDidScrolFrom:to:)]) {
+        [self.delegate pageContentViewControllerDidScrolFrom:self.currentIndex to:index];
     }
     
     self.currentIndex = index;
@@ -253,7 +271,9 @@ static const CGFloat kSliderBarHeight = 50;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self pageContentViewControllerDidScroll:scrollView];
+    if ([self.delegate respondsToSelector:@selector(pageContentViewControllerDidScroll:)]) {
+        [self.delegate pageContentViewControllerDidScroll:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -293,7 +313,7 @@ static const CGFloat kSliderBarHeight = 50;
         _contentView = [[THKPageBGScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
         _contentView.backgroundColor = [UIColor whiteColor];
         _contentView.showsHorizontalScrollIndicator = NO;
-        _contentView.lockArea = kTNavigationBarHeight()+kSliderBarHeight;
+        _contentView.lockArea = kTNavigationBarHeight()+self.sliderBarHeight;
         //        _contentView.otherDelegate = self;
         _contentView.t_delegate = self;
     }
@@ -321,7 +341,7 @@ static const CGFloat kSliderBarHeight = 50;
 
 - (THKSegmentControl *)slideBar {
     if (!_slideBar) {
-        CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, kSliderBarHeight);
+        CGRect frame = CGRectMake(0, 0, self.view.bounds.size.width, self.sliderBarHeight);
         _slideBar = [[THKSegmentControl alloc] initWithFrame:frame titles:self.titles];
         _slideBar.backgroundColor = [UIColor whiteColor];
         _slideBar.indicatorView.backgroundColor = THKColor_TextImportantColor;
