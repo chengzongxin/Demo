@@ -23,8 +23,8 @@
 		163AB087257122FD005C25B2 /* NormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AB086257122FD005C25B2 /* NormalViewController.m */; };
 		163AB08D2571234F005C25B2 /* Table3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AB08C2571234F005C25B2 /* Table3ViewController.m */; };
 		163AB09925713675005C25B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AB09825713675005C25B2 /* ViewController.m */; };
-		164497DF2588933800E63F26 /* THKPageBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164497DD2588933800E63F26 /* THKPageBGScrollView.m */; };
-		164497E02588933800E63F26 /* THKPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164497DE2588933800E63F26 /* THKPageContentViewController.m */; };
+		164497F82588962F00E63F26 /* THKPageBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164497F52588962F00E63F26 /* THKPageBGScrollView.m */; };
+		164497F92588962F00E63F26 /* THKPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164497F62588962F00E63F26 /* THKPageContentViewController.m */; };
 		164626862576411600867201 /* UIButton+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 164626852576411600867201 /* UIButton+Convenient.m */; };
 		164CF93A2553F4E600FF02E0 /* UIView+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D32553F4E500FF02E0 /* UIView+TMUI.m */; };
 		164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D52553F4E500FF02E0 /* UIColor+TMUI.m */; };
@@ -150,10 +150,10 @@
 		163AB08C2571234F005C25B2 /* Table3ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Table3ViewController.m; sourceTree = "<group>"; };
 		163AB09725713675005C25B2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		163AB09825713675005C25B2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		164497DB2588933700E63F26 /* THKPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageContentViewController.h; sourceTree = "<group>"; };
-		164497DC2588933800E63F26 /* THKPageBGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageBGScrollView.h; sourceTree = "<group>"; };
-		164497DD2588933800E63F26 /* THKPageBGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageBGScrollView.m; sourceTree = "<group>"; };
-		164497DE2588933800E63F26 /* THKPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageContentViewController.m; sourceTree = "<group>"; };
+		164497F42588962F00E63F26 /* THKPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageContentViewController.h; sourceTree = "<group>"; };
+		164497F52588962F00E63F26 /* THKPageBGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageBGScrollView.m; sourceTree = "<group>"; };
+		164497F62588962F00E63F26 /* THKPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageContentViewController.m; sourceTree = "<group>"; };
+		164497F72588962F00E63F26 /* THKPageBGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageBGScrollView.h; sourceTree = "<group>"; };
 		164626842576411600867201 /* UIButton+Convenient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Convenient.h"; sourceTree = "<group>"; };
 		164626852576411600867201 /* UIButton+Convenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Convenient.m"; sourceTree = "<group>"; };
 		164CF8D12553F4E500FF02E0 /* UIImage+TMUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TMUI.h"; sourceTree = "<group>"; };
@@ -693,10 +693,10 @@
 		16C532CB25761DE300210A3C /* PageContentViewController */ = {
 			isa = PBXGroup;
 			children = (
-				164497DC2588933800E63F26 /* THKPageBGScrollView.h */,
-				164497DD2588933800E63F26 /* THKPageBGScrollView.m */,
-				164497DB2588933700E63F26 /* THKPageContentViewController.h */,
-				164497DE2588933800E63F26 /* THKPageContentViewController.m */,
+				164497F72588962F00E63F26 /* THKPageBGScrollView.h */,
+				164497F52588962F00E63F26 /* THKPageBGScrollView.m */,
+				164497F42588962F00E63F26 /* THKPageContentViewController.h */,
+				164497F62588962F00E63F26 /* THKPageContentViewController.m */,
 				1653258025748191007BD950 /* THKSegmentControl.h */,
 				1653258125748191007BD950 /* THKSegmentControl.m */,
 			);
@@ -1033,12 +1033,12 @@
 				164CF9662553F4E600FF02E0 /* TMSearchingController.m in Sources */,
 				16A7DEE82577310000F1BABD /* BeCollectThumbupView.m in Sources */,
 				164CF9682553F4E600FF02E0 /* TMSearchController.m in Sources */,
-				164497E02588933800E63F26 /* THKPageContentViewController.m in Sources */,
+				164497F92588962F00E63F26 /* THKPageContentViewController.m in Sources */,
 				164CF9672553F4E600FF02E0 /* TMSearchPresentationAnimatedTransition.m in Sources */,
 				164CF96D2553F4E600FF02E0 /* TMUIHelper.m in Sources */,
 				164CF9402553F4E600FF02E0 /* TMCityPicker.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
-				164497DF2588933800E63F26 /* THKPageBGScrollView.m in Sources */,
+				164497F82588962F00E63F26 /* THKPageBGScrollView.m in Sources */,
 				1674DC522577759E00B2644A /* THKUserSocialView.m in Sources */,
 				1674DC58257778F300B2644A /* THKUserSocialViewModel.m in Sources */,
 				16F3B6D725877AF100E5ADE4 /* THKTransitionAnimator.m in Sources */,
