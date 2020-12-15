@@ -113,8 +113,7 @@ static const CGFloat kSliderBarHeight = 44;
 
 // 子视图布局
 - (void)addSubviews {
-    [self.view addSubview:self.contentView];
-    self.contentView.layer.zPosition = -1;
+    [self.view insertSubview:self.contentView atIndex:0];
     [self.contentView addSubview:self.headerView];
     [self.contentView addSubview:self.slideBar];
     [self.contentView addSubview:self.contentScrollView];
