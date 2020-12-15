@@ -12,9 +12,9 @@
 @property (nonatomic, strong, readwrite) UIImageView *contentImageView;
 
 
-@property (nonatomic, strong) UIColor *shadowColor;
-@property (nonatomic, assign) CGSize shadowOffset;
-@property (nonatomic, assign) CGFloat radius;
+//@property (nonatomic, strong) UIColor *shadowColor;
+//@property (nonatomic, assign) CGSize shadowOffset;
+//@property (nonatomic, assign) CGFloat radius;
 @end
 
 @implementation THKShadowImageView
@@ -44,17 +44,25 @@
 }
 
 
-- (void)setLayerShadow:(UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius {
-    self.shadowColor = color;
-    self.shadowOffset = offset;
-    self.radius = radius;
+- (void)setLayerShadow:(UIColor *)color opacity:(CGFloat)opacity offset:(CGSize)offset radius:(CGFloat)radius {
+    [self setLayerShadow:color opacity:opacity offset:offset radius:radius spread:0];
+}
+
+- (void)setLayerShadow:(UIColor *)color opacity:(CGFloat)opacity offset:(CGSize)offset radius:(CGFloat)radius spread:(CGFloat)spread{
     self.layer.masksToBounds = NO;
     self.layer.shadowColor = color.CGColor;
     self.layer.shadowOffset = offset;
     self.layer.shadowRadius = radius;
-    self.layer.shadowOpacity = 1;
+    self.layer.shadowOpacity = opacity;
     self.layer.shouldRasterize = YES;
     self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    if (spread == 0){
+        self.layer.shadowPath = nil;
+    } else {
+        CGFloat dx = -spread;
+        CGRect rect = CGRectInset(self.bounds, dx, dx);
+        self.layer.shadowPath = [UIBezierPath bezierPathWithRect:rect].CGPath;
+    }
 }
 
 - (void)setLayerCorner:(CGFloat)corner borderColor:(UIColor *)color borderWidth:(CGFloat)borderWidth{

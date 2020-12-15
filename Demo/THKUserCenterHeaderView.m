@@ -242,7 +242,7 @@ TMUI_PropertySyntheSize(viewModel);
         _avatarImageView.contentImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAvatar:)];
         [_avatarImageView.contentImageView addGestureRecognizer:tap];
-        [_avatarImageView setLayerShadow:[UIColor.blackColor colorWithAlphaComponent:0.1] offset:CGSizeMake(2, 2) radius:2];
+        [_avatarImageView setLayerShadow:UIColorHexString(@"#A9A8BA") opacity:0.6 offset:CGSizeMake(0, 2) radius:2];
     }
     return _avatarImageView;
 }
