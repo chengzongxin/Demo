@@ -52,7 +52,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Vst-s4-Uwn" kind="relationship" relationship="rootViewController" id="pZY-Sn-Zye"/>
+                        <segue destination="Jak-dd-51I" kind="relationship" relationship="rootViewController" id="dxM-5Z-gF6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55L-kZ-a4N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

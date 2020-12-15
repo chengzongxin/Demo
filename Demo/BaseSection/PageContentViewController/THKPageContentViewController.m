@@ -10,7 +10,7 @@
 #import "THKCommonDefine.h"
 
 
-static const CGFloat kSliderBarHeight = 50;
+static const CGFloat kSliderBarHeight = 44;
 
 
 @interface THKPageContentViewController () <UIScrollViewDelegate,UIPageViewControllerDataSource,UIPageViewControllerDelegate>
@@ -38,9 +38,10 @@ static const CGFloat kSliderBarHeight = 50;
 
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
 
-- (void)dealloc{
-    [self clear];
-}
+// MARK: TODO ,crash
+//- (void)dealloc{
+//    [self clear];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -370,12 +371,13 @@ static const CGFloat kSliderBarHeight = 50;
         _slideBar = [[THKSegmentControl alloc] initWithFrame:frame titles:self.titles];
         _slideBar.backgroundColor = [UIColor whiteColor];
         _slideBar.indicatorView.backgroundColor = THKColor_TextImportantColor;
-        _slideBar.indicatorView.layer.cornerRadius = 0.0;
-        [_slideBar setTitleFont:[UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium] forState:UIControlStateNormal];
-        [_slideBar setTitleFont:[UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium] forState:UIControlStateSelected];
-        [_slideBar setTitleColor:THKColor_TextWeakColor forState:UIControlStateNormal];
+        [_slideBar setTitleFont:[UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium] forState:UIControlStateNormal];
+        [_slideBar setTitleFont:[UIFont systemFontOfSize:14.0 weight:UIFontWeightMedium] forState:UIControlStateSelected];
+        [_slideBar setTitleColor:UIColorHex(#BABDC6) forState:UIControlStateNormal];
         [_slideBar setTitleColor:THKColor_TextImportantColor forState:UIControlStateSelected];
         [_slideBar addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventValueChanged];
+        _slideBar.indicatorView.height = 3;
+        _slideBar.indicatorView.y -= 3; // 需要放到最后设置
     }
     
     return _slideBar;

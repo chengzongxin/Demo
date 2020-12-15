@@ -81,20 +81,20 @@
 
 
 - (void)segmentControlConfig:(THKSegmentControl *)control{
-    control.frame = CGRectMake(0, 0, self.view.bounds.size.width, 88);
+    control.frame = CGRectMake(0, 0, self.view.bounds.size.width, 44);
     control.autoAlignmentCenter = YES;
     control.backgroundColor = [UIColor orangeColor];
     control.indicatorView.backgroundColor = UIColor.blueColor;
     control.indicatorView.layer.cornerRadius = 0.0;
-    [control setTitleFont:[UIFont systemFontOfSize:20 weight:UIFontWeightMedium] forState:UIControlStateNormal];
-    [control setTitleFont:[UIFont systemFontOfSize:30 weight:UIFontWeightMedium] forState:UIControlStateSelected];
+    [control setTitleFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium] forState:UIControlStateNormal];
+    [control setTitleFont:[UIFont systemFontOfSize:14 weight:UIFontWeightMedium] forState:UIControlStateSelected];
     [control setTitleColor:UIColor.grayColor forState:UIControlStateNormal];
     [control setTitleColor:UIColor.greenColor forState:UIControlStateSelected];
 }
 
 - (CGFloat)heightForHeader{
     THKUserCenterHeaderViewModel *viewModel = [[THKUserCenterHeaderViewModel alloc] init];
-    return viewModel.viewHeight + self.vcs.count * 20;
+    return viewModel.viewHeight + self.vcs.count * 100;
 }
 
 - (UIView *)viewForHeader{
