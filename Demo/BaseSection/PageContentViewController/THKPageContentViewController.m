@@ -122,7 +122,12 @@ static const CGFloat kSliderBarHeight = 44;
 
 // 设置约束
 - (void)makeConstraints{
-    self.contentView.contentInset = UIEdgeInsetsMake(self.headerHeight+self.sliderBarHeight, 0, 0, 0);
+    UIEdgeInsets contentInset = UIEdgeInsetsMake(self.headerHeight+self.sliderBarHeight, 0, 0, 0);
+    self.contentView.contentInset = contentInset;
+    if (contentInset.top > self.view.bounds.size.height) {
+        // 当contentInset.top很高的时候，scrollview会自动滚动，这里需要重新定位到顶部
+        self.contentView.contentOffset = CGPointMake(0, -contentInset.top);
+    }
     self.contentView.contentSize = self.view.bounds.size;
     
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
