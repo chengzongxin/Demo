@@ -13,6 +13,7 @@
 #import "UIView+YYAdd.h"
 #import "CALayer+Shadow.h"
 #import "UIImage+THKCorner.h"
+#import "THKShadowImageView.h"
 
 @interface THKUserCenterHeaderView ()
 
@@ -22,7 +23,7 @@
 /// 圆角视图
 @property (nonatomic, strong) UIView *cornerView;
 /// 头像
-@property (nonatomic, strong) UIImageView *avatarImageView;
+@property (nonatomic, strong) THKShadowImageView *avatarImageView;
 /// 名字
 @property (nonatomic, strong) UILabel *nameLabel;
 /// 设计机构
@@ -185,7 +186,7 @@ TMUI_PropertySyntheSize(viewModel);
 //    topvc.modalPresentationStyle = UIModalPresentationCustom;
 //    topvc.transitioningDelegate = vc;
 //    [topvc presentViewController:vc animated:YES completion:nil];
-    [THKShowBigImageViewController showBigImageWithImageView:tap.view];
+    [THKShowBigImageViewController showBigImageWithImageView:tap.view.superview];
 }
 
 - (void)clickTagButton{
@@ -229,37 +230,19 @@ TMUI_PropertySyntheSize(viewModel);
     return _cornerView;
 }
 
-- (UIImageView *)avatarImageView{
+- (THKShadowImageView *)avatarImageView{
     if (!_avatarImageView) {
-        _avatarImageView = [[UIImageView alloc] init];
-        _avatarImageView.image = [UIImage imageNamed:@"com_preload_head_img"];
-        _avatarImageView.layer.cornerRadius = _viewModel.avatarH/2 ?: 36;
-        _avatarImageView.layer.borderColor = UIColor.whiteColor.CGColor;
-        _avatarImageView.layer.borderWidth = 2;
-        _avatarImageView.layer.masksToBounds = YES;
-        _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
-        _avatarImageView.userInteractionEnabled = YES;
+        _avatarImageView = [[THKShadowImageView alloc] init];
+        _avatarImageView.contentImageView.image = [UIImage imageNamed:@"com_preload_head_img"];
+        _avatarImageView.contentImageView.layer.cornerRadius = _viewModel.avatarH/2 ?: 36;
+        _avatarImageView.contentImageView.layer.borderColor = UIColor.whiteColor.CGColor;
+        _avatarImageView.contentImageView.layer.borderWidth = 2;
+        _avatarImageView.contentImageView.layer.masksToBounds = YES;
+        _avatarImageView.contentImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _avatarImageView.contentImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAvatar:)];
-        [_avatarImageView addGestureRecognizer:tap];
-        
-//        UIImage *img = [UIImage imageNamed:@"com_preload_head_img"];
-//        UIImage *img = [UIImage imageWithLayer:_avatarImageView.layer cornerRadius:THKRectRadiusMake(18, 18, 18, 18)];
-//        _avatarImageView.image = img;
-//        _avatarImageView.layer.masksToBounds = NO;
-////        [_avatarImageView.layer applyShadow:UIColor.blackColor alpha:0.5 x:10 y:10 blue:5 spread:10];
-//        
-////        [self.avatarImageView setNeedsDisplay];
-////        UIImage *img = [_avatarImageView snapshotImage];
-////        _avatarImageView.image = img;
-////        _avatarImageView.layer.masksToBounds = NO;
-//        [_avatarImageView setLayerShadow:[UIColor.blackColor colorWithAlphaComponent:0.5] offset:CGSizeMake(5, 5) radius:5];
-        
-        
-        // shadow
-        //        CALayer *shadowLayer = CALayer.layer;
-        //        shadowLayer.frame = CGRectMake(0, 0, 72, 72);
-//        [shadowLayer setLayerShadow:[UIColor.blackColor colorWithAlphaComponent:0.5] offset:CGSizeMake(5, 5) radius:5];
-//        [_avatarImageView.layer insertSublayer:shadowLayer below:_avatarImageView.layer];
+        [_avatarImageView.contentImageView addGestureRecognizer:tap];
+        [_avatarImageView setLayerShadow:[UIColor.blackColor colorWithAlphaComponent:0.1] offset:CGSizeMake(2, 2) radius:2];
     }
     return _avatarImageView;
 }

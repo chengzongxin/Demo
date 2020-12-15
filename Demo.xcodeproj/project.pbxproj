@@ -32,6 +32,7 @@
 		1644981D2588A96F00E63F26 /* CALayer+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644981B2588A96F00E63F26 /* CALayer+Extension.m */; };
 		164498292588AA7A00E63F26 /* UIImage+THKCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 164498272588AA7A00E63F26 /* UIImage+THKCorner.m */; };
 		1644982F2588AA9800E63F26 /* THKCornerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644982D2588AA9800E63F26 /* THKCornerModel.m */; };
+		1644983F2588B2A500E63F26 /* THKShadowImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644983E2588B2A500E63F26 /* THKShadowImageView.m */; };
 		164626862576411600867201 /* UIButton+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 164626852576411600867201 /* UIButton+Convenient.m */; };
 		164CF93A2553F4E600FF02E0 /* UIView+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D32553F4E500FF02E0 /* UIView+TMUI.m */; };
 		164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D52553F4E500FF02E0 /* UIColor+TMUI.m */; };
@@ -176,6 +177,8 @@
 		164498282588AA7A00E63F26 /* UIImage+THKCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+THKCorner.h"; sourceTree = "<group>"; };
 		1644982D2588AA9800E63F26 /* THKCornerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCornerModel.m; sourceTree = "<group>"; };
 		1644982E2588AA9800E63F26 /* THKCornerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCornerModel.h; sourceTree = "<group>"; };
+		1644983D2588B2A500E63F26 /* THKShadowImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKShadowImageView.h; sourceTree = "<group>"; };
+		1644983E2588B2A500E63F26 /* THKShadowImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKShadowImageView.m; sourceTree = "<group>"; };
 		164626842576411600867201 /* UIButton+Convenient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Convenient.h"; sourceTree = "<group>"; };
 		164626852576411600867201 /* UIButton+Convenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Convenient.m"; sourceTree = "<group>"; };
 		164CF8D12553F4E500FF02E0 /* UIImage+TMUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TMUI.h"; sourceTree = "<group>"; };
@@ -739,6 +742,8 @@
 				16A7DEE62577310000F1BABD /* BeCollectThumbupView.h */,
 				16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */,
 				16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */,
+				1644983D2588B2A500E63F26 /* THKShadowImageView.h */,
+				1644983E2588B2A500E63F26 /* THKShadowImageView.m */,
 			);
 			path = Subviews;
 			sourceTree = "<group>";
@@ -1089,6 +1094,7 @@
 				16A7DEE82577310000F1BABD /* BeCollectThumbupView.m in Sources */,
 				164CF9682553F4E600FF02E0 /* TMSearchController.m in Sources */,
 				164497F92588962F00E63F26 /* THKPageContentViewController.m in Sources */,
+				1644983F2588B2A500E63F26 /* THKShadowImageView.m in Sources */,
 				164CF9672553F4E600FF02E0 /* TMSearchPresentationAnimatedTransition.m in Sources */,
 				164CF96D2553F4E600FF02E0 /* TMUIHelper.m in Sources */,
 				164CF9402553F4E600FF02E0 /* TMCityPicker.m in Sources */,
