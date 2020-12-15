@@ -25,6 +25,13 @@
 		163AB09925713675005C25B2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AB09825713675005C25B2 /* ViewController.m */; };
 		164497F82588962F00E63F26 /* THKPageBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164497F52588962F00E63F26 /* THKPageBGScrollView.m */; };
 		164497F92588962F00E63F26 /* THKPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164497F62588962F00E63F26 /* THKPageContentViewController.m */; };
+		164497FF2588991A00E63F26 /* UIView+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 164497FD2588991A00E63F26 /* UIView+YYAdd.m */; };
+		1644980A25889B8E00E63F26 /* CALayer+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644980825889B8E00E63F26 /* CALayer+YYAdd.m */; };
+		1644981325889C5000E63F26 /* YYCGUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644981125889C5000E63F26 /* YYCGUtilities.m */; };
+		1644981C2588A96F00E63F26 /* CALayer+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644981A2588A96F00E63F26 /* CALayer+Shadow.m */; };
+		1644981D2588A96F00E63F26 /* CALayer+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644981B2588A96F00E63F26 /* CALayer+Extension.m */; };
+		164498292588AA7A00E63F26 /* UIImage+THKCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 164498272588AA7A00E63F26 /* UIImage+THKCorner.m */; };
+		1644982F2588AA9800E63F26 /* THKCornerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644982D2588AA9800E63F26 /* THKCornerModel.m */; };
 		164626862576411600867201 /* UIButton+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 164626852576411600867201 /* UIButton+Convenient.m */; };
 		164CF93A2553F4E600FF02E0 /* UIView+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D32553F4E500FF02E0 /* UIView+TMUI.m */; };
 		164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 164CF8D52553F4E500FF02E0 /* UIColor+TMUI.m */; };
@@ -154,6 +161,21 @@
 		164497F52588962F00E63F26 /* THKPageBGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageBGScrollView.m; sourceTree = "<group>"; };
 		164497F62588962F00E63F26 /* THKPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageContentViewController.m; sourceTree = "<group>"; };
 		164497F72588962F00E63F26 /* THKPageBGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageBGScrollView.h; sourceTree = "<group>"; };
+		164497FD2588991A00E63F26 /* UIView+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YYAdd.m"; sourceTree = "<group>"; };
+		164497FE2588991A00E63F26 /* UIView+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YYAdd.h"; sourceTree = "<group>"; };
+		164498032588996D00E63F26 /* YYKitMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYKitMacro.h; sourceTree = "<group>"; };
+		1644980825889B8E00E63F26 /* CALayer+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+YYAdd.m"; sourceTree = "<group>"; };
+		1644980925889B8E00E63F26 /* CALayer+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+YYAdd.h"; sourceTree = "<group>"; };
+		1644981125889C5000E63F26 /* YYCGUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCGUtilities.m; sourceTree = "<group>"; };
+		1644981225889C5000E63F26 /* YYCGUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCGUtilities.h; sourceTree = "<group>"; };
+		164498182588A96F00E63F26 /* CALayer+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Extension.h"; sourceTree = "<group>"; };
+		164498192588A96F00E63F26 /* CALayer+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Shadow.h"; sourceTree = "<group>"; };
+		1644981A2588A96F00E63F26 /* CALayer+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Shadow.m"; sourceTree = "<group>"; };
+		1644981B2588A96F00E63F26 /* CALayer+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Extension.m"; sourceTree = "<group>"; };
+		164498272588AA7A00E63F26 /* UIImage+THKCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+THKCorner.m"; sourceTree = "<group>"; };
+		164498282588AA7A00E63F26 /* UIImage+THKCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+THKCorner.h"; sourceTree = "<group>"; };
+		1644982D2588AA9800E63F26 /* THKCornerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCornerModel.m; sourceTree = "<group>"; };
+		1644982E2588AA9800E63F26 /* THKCornerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCornerModel.h; sourceTree = "<group>"; };
 		164626842576411600867201 /* UIButton+Convenient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Convenient.h"; sourceTree = "<group>"; };
 		164626852576411600867201 /* UIButton+Convenient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Convenient.m"; sourceTree = "<group>"; };
 		164CF8D12553F4E500FF02E0 /* UIImage+TMUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+TMUI.h"; sourceTree = "<group>"; };
@@ -368,6 +390,7 @@
 				160106F12553DD8000FE4B77 /* main.m */,
 				160107372553DFDC00FE4B77 /* PrefixHeader.pch */,
 				160107692553EA1A00FE4B77 /* BaseSection */,
+				1644980725889B8100E63F26 /* Category */,
 				164CF8CE2553F4E500FF02E0 /* TMUIKit */,
 			);
 			path = Demo;
@@ -399,6 +422,36 @@
 				16C532CC25761E1600210A3C /* BaseViewModel */,
 			);
 			path = BaseSection;
+			sourceTree = "<group>";
+		};
+		1644980725889B8100E63F26 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				164498172588A96F00E63F26 /* CALayer */,
+				164498282588AA7A00E63F26 /* UIImage+THKCorner.h */,
+				164498272588AA7A00E63F26 /* UIImage+THKCorner.m */,
+				1644982E2588AA9800E63F26 /* THKCornerModel.h */,
+				1644982D2588AA9800E63F26 /* THKCornerModel.m */,
+				1644981225889C5000E63F26 /* YYCGUtilities.h */,
+				1644981125889C5000E63F26 /* YYCGUtilities.m */,
+				1644980925889B8E00E63F26 /* CALayer+YYAdd.h */,
+				1644980825889B8E00E63F26 /* CALayer+YYAdd.m */,
+				164497FE2588991A00E63F26 /* UIView+YYAdd.h */,
+				164497FD2588991A00E63F26 /* UIView+YYAdd.m */,
+				164498032588996D00E63F26 /* YYKitMacro.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		164498172588A96F00E63F26 /* CALayer */ = {
+			isa = PBXGroup;
+			children = (
+				164498182588A96F00E63F26 /* CALayer+Extension.h */,
+				164498192588A96F00E63F26 /* CALayer+Shadow.h */,
+				1644981A2588A96F00E63F26 /* CALayer+Shadow.m */,
+				1644981B2588A96F00E63F26 /* CALayer+Extension.m */,
+			);
+			path = CALayer;
 			sourceTree = "<group>";
 		};
 		164CF8CE2553F4E500FF02E0 /* TMUIKit */ = {
@@ -1031,6 +1084,8 @@
 				16C532DC25761EA800210A3C /* THKUserCenterHeaderViewModel.m in Sources */,
 				165325A425748D06007BD950 /* UIView+Frame.m in Sources */,
 				164CF9662553F4E600FF02E0 /* TMSearchingController.m in Sources */,
+				164498292588AA7A00E63F26 /* UIImage+THKCorner.m in Sources */,
+				1644981C2588A96F00E63F26 /* CALayer+Shadow.m in Sources */,
 				16A7DEE82577310000F1BABD /* BeCollectThumbupView.m in Sources */,
 				164CF9682553F4E600FF02E0 /* TMSearchController.m in Sources */,
 				164497F92588962F00E63F26 /* THKPageContentViewController.m in Sources */,
@@ -1038,7 +1093,9 @@
 				164CF96D2553F4E600FF02E0 /* TMUIHelper.m in Sources */,
 				164CF9402553F4E600FF02E0 /* TMCityPicker.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
+				1644981325889C5000E63F26 /* YYCGUtilities.m in Sources */,
 				164497F82588962F00E63F26 /* THKPageBGScrollView.m in Sources */,
+				1644980A25889B8E00E63F26 /* CALayer+YYAdd.m in Sources */,
 				1674DC522577759E00B2644A /* THKUserSocialView.m in Sources */,
 				1674DC58257778F300B2644A /* THKUserSocialViewModel.m in Sources */,
 				16F3B6D725877AF100E5ADE4 /* THKTransitionAnimator.m in Sources */,
@@ -1062,10 +1119,13 @@
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
 				164CF9632553F4E600FF02E0 /* TMToast.m in Sources */,
 				164CF93E2553F4E600FF02E0 /* TMDatePicker.m in Sources */,
+				164497FF2588991A00E63F26 /* UIView+YYAdd.m in Sources */,
+				1644982F2588AA9800E63F26 /* THKCornerModel.m in Sources */,
 				163AB087257122FD005C25B2 /* NormalViewController.m in Sources */,
 				16A7DEF62577330B00F1BABD /* UIViewController+Convenient.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				163AB09925713675005C25B2 /* ViewController.m in Sources */,
+				1644981D2588A96F00E63F26 /* CALayer+Extension.m in Sources */,
 				165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */,
 				164CF9452553F4E600FF02E0 /* TMEmptyContentItem.m in Sources */,
 				164CF9412553F4E600FF02E0 /* TMNormalPicker.m in Sources */,

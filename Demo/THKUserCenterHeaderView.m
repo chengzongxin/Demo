@@ -9,6 +9,10 @@
 #import "THKUserSocialView.h"
 #import "UIButton+Convenient.h"
 #import "THKShowBigImageViewController.h"
+#import "CALayer+YYAdd.h"
+#import "UIView+YYAdd.h"
+#import "CALayer+Shadow.h"
+#import "UIImage+THKCorner.h"
 
 @interface THKUserCenterHeaderView ()
 
@@ -237,6 +241,25 @@ TMUI_PropertySyntheSize(viewModel);
         _avatarImageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAvatar:)];
         [_avatarImageView addGestureRecognizer:tap];
+        
+//        UIImage *img = [UIImage imageNamed:@"com_preload_head_img"];
+//        UIImage *img = [UIImage imageWithLayer:_avatarImageView.layer cornerRadius:THKRectRadiusMake(18, 18, 18, 18)];
+//        _avatarImageView.image = img;
+//        _avatarImageView.layer.masksToBounds = NO;
+////        [_avatarImageView.layer applyShadow:UIColor.blackColor alpha:0.5 x:10 y:10 blue:5 spread:10];
+//        
+////        [self.avatarImageView setNeedsDisplay];
+////        UIImage *img = [_avatarImageView snapshotImage];
+////        _avatarImageView.image = img;
+////        _avatarImageView.layer.masksToBounds = NO;
+//        [_avatarImageView setLayerShadow:[UIColor.blackColor colorWithAlphaComponent:0.5] offset:CGSizeMake(5, 5) radius:5];
+        
+        
+        // shadow
+        //        CALayer *shadowLayer = CALayer.layer;
+        //        shadowLayer.frame = CGRectMake(0, 0, 72, 72);
+//        [shadowLayer setLayerShadow:[UIColor.blackColor colorWithAlphaComponent:0.5] offset:CGSizeMake(5, 5) radius:5];
+//        [_avatarImageView.layer insertSublayer:shadowLayer below:_avatarImageView.layer];
     }
     return _avatarImageView;
 }
