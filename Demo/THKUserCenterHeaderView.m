@@ -8,6 +8,7 @@
 #import "THKUserCenterHeaderView.h"
 #import "THKUserSocialView.h"
 #import "UIButton+Convenient.h"
+#import "THKShowBigImageViewController.h"
 
 @interface THKUserCenterHeaderView ()
 
@@ -172,6 +173,17 @@ TMUI_PropertySyntheSize(viewModel);
 #pragma mark - Public
 
 #pragma mark - Event Respone
+
+- (void)tapAvatar:(UITapGestureRecognizer *)tap{
+//    THKShowBigImageViewController *vc = [[THKShowBigImageViewController alloc] init];
+//    vc.image = [(UIImageView *)tap.view image];
+//    UIViewController *topvc = self.nextResponder.nextResponder.nextResponder;
+//    topvc.modalPresentationStyle = UIModalPresentationCustom;
+//    topvc.transitioningDelegate = vc;
+//    [topvc presentViewController:vc animated:YES completion:nil];
+    [THKShowBigImageViewController showBigImageWithImageView:tap.view];
+}
+
 - (void)clickTagButton{
     NSLog(@"%s",__func__);
 }
@@ -222,6 +234,9 @@ TMUI_PropertySyntheSize(viewModel);
         _avatarImageView.layer.borderWidth = 2;
         _avatarImageView.layer.masksToBounds = YES;
         _avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
+        _avatarImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAvatar:)];
+        [_avatarImageView addGestureRecognizer:tap];
     }
     return _avatarImageView;
 }
