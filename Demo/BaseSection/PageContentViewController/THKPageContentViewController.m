@@ -59,7 +59,6 @@ static const CGFloat kSliderBarHeight = 44;
     [self initial];
     
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     _contentView = nil;
     _headerView = nil;
@@ -115,6 +114,7 @@ static const CGFloat kSliderBarHeight = 44;
 // 子视图布局
 - (void)addSubviews {
     [self.view addSubview:self.contentView];
+    self.contentView.layer.zPosition = -1;
     [self.contentView addSubview:self.headerView];
     [self.contentView addSubview:self.slideBar];
     [self.contentView addSubview:self.contentScrollView];
