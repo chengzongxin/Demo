@@ -100,7 +100,7 @@
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F3B6B925875DCF00E5ADE4 /* THKShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6B825875DCF00E5ADE4 /* THKShowBigImageViewController.m */; };
 		16F3B6C22587750E00E5ADE4 /* THKInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6C12587750E00E5ADE4 /* THKInteractiveTransition.m */; };
-		16F3B6D725877AF100E5ADE4 /* THKTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6D625877AF100E5ADE4 /* THKTransitionAnimator.m */; };
+		16F3B6D725877AF100E5ADE4 /* THKAnimatorTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6D625877AF100E5ADE4 /* THKAnimatorTransition.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
 		C22508FBFE83E454C360C944 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D168DD537E7BC7FA0C76927 /* Pods_Demo.framework */; };
@@ -297,8 +297,8 @@
 		16F3B6B825875DCF00E5ADE4 /* THKShowBigImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKShowBigImageViewController.m; sourceTree = "<group>"; };
 		16F3B6C02587750E00E5ADE4 /* THKInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKInteractiveTransition.h; sourceTree = "<group>"; };
 		16F3B6C12587750E00E5ADE4 /* THKInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKInteractiveTransition.m; sourceTree = "<group>"; };
-		16F3B6D525877AF100E5ADE4 /* THKTransitionAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKTransitionAnimator.h; sourceTree = "<group>"; };
-		16F3B6D625877AF100E5ADE4 /* THKTransitionAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKTransitionAnimator.m; sourceTree = "<group>"; };
+		16F3B6D525877AF100E5ADE4 /* THKAnimatorTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKAnimatorTransition.h; sourceTree = "<group>"; };
+		16F3B6D625877AF100E5ADE4 /* THKAnimatorTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKAnimatorTransition.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B271C6912A85D06F5128169 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -380,8 +380,8 @@
 				1674DC57257778F300B2644A /* THKUserSocialViewModel.m */,
 				16F3B6B725875DCF00E5ADE4 /* THKShowBigImageViewController.h */,
 				16F3B6B825875DCF00E5ADE4 /* THKShowBigImageViewController.m */,
-				16F3B6D525877AF100E5ADE4 /* THKTransitionAnimator.h */,
-				16F3B6D625877AF100E5ADE4 /* THKTransitionAnimator.m */,
+				16F3B6D525877AF100E5ADE4 /* THKAnimatorTransition.h */,
+				16F3B6D625877AF100E5ADE4 /* THKAnimatorTransition.m */,
 				16F3B6C02587750E00E5ADE4 /* THKInteractiveTransition.h */,
 				16F3B6C12587750E00E5ADE4 /* THKInteractiveTransition.m */,
 				16A7DEE52577309D00F1BABD /* Subviews */,
@@ -1104,7 +1104,7 @@
 				1644980A25889B8E00E63F26 /* CALayer+YYAdd.m in Sources */,
 				1674DC522577759E00B2644A /* THKUserSocialView.m in Sources */,
 				1674DC58257778F300B2644A /* THKUserSocialViewModel.m in Sources */,
-				16F3B6D725877AF100E5ADE4 /* THKTransitionAnimator.m in Sources */,
+				16F3B6D725877AF100E5ADE4 /* THKAnimatorTransition.m in Sources */,
 				163AB07B257122DF005C25B2 /* Table1ViewController.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
 				1653258225748191007BD950 /* THKSegmentControl.m in Sources */,

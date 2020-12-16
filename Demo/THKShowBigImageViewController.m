@@ -7,12 +7,12 @@
 
 #import "THKShowBigImageViewController.h"
 #import "THKShadowImageView.h"
-#import "THKTransitionAnimator.h"
+#import "THKAnimatorTransition.h"
 @interface THKShowBigImageViewController ()
 
 @property (nonatomic, strong) UIImage *image;
 
-@property (nonatomic, strong) THKTransitionAnimator *transitionAnimator;
+@property (nonatomic, strong) THKAnimatorTransition *transitionAnimator;
 
 
 @end
@@ -42,13 +42,13 @@
     // transition
     THKInteractiveTransition *interactiveTransition = [[THKInteractiveTransition alloc] init];
     [interactiveTransition addGestureWithVC:imageVC];
-    THKTransitionAnimator *transitionAnimator = [[THKTransitionAnimator alloc] init];
-    transitionAnimator.interactiveTransition = interactiveTransition;
-    transitionAnimator.image = imageView.contentImageView.image;
-    transitionAnimator.imgFrame = imageView.frame;
-    fromVC.transitioningDelegate = transitionAnimator;
-    imageVC.transitioningDelegate = transitionAnimator;
-    imageVC.transitionAnimator = transitionAnimator;
+    THKAnimatorTransition *animatorTransition = [[THKAnimatorTransition alloc] init];
+    animatorTransition.interactiveTransition = interactiveTransition;
+    animatorTransition.image = imageView.contentImageView.image;
+    animatorTransition.imgFrame = imageView.frame;
+    fromVC.transitioningDelegate = animatorTransition;
+    imageVC.transitioningDelegate = animatorTransition;
+    imageVC.transitionAnimator = animatorTransition;
     [fromVC presentViewController:imageVC animated:YES completion:nil];
 }
 

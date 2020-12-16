@@ -5,9 +5,9 @@
 //  Created by Joe.cheng on 2020/12/14.
 //
 
-#import "THKTransitionAnimator.h"
+#import "THKAnimatorTransition.h"
 
-@interface THKTransitionAnimator ()
+@interface THKAnimatorTransition ()
 
 
 
@@ -16,7 +16,7 @@
 
 @end
 
-@implementation THKTransitionAnimator
+@implementation THKAnimatorTransition
 
 #pragma mark - UIViewControllerTransitioningDelegate
 // present 动画
