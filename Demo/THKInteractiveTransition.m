@@ -57,23 +57,16 @@
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:
             //手势开始的时候标记手势状态，并开始相应的事件
-//            self.interactiveTransition.interation = YES;
-//            self.isDismiss = YES;
             [self startGesture];
-//            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-//            [self startInteractiveTransition:self];
-//            [self.interactiveTransition startInteractiveTransition:self];
             break;
         case UIGestureRecognizerStateChanged:{
             //手势过程中，通过updateInteractiveTransition设置pop过程进行的百分比
-//            self.percent = persent;
             [self updateInteractiveTransition:persent];
             NSLog(@" persent = %f",persent);
             break;
         }
         case UIGestureRecognizerStateEnded:{
             //手势完成后结束标记并且判断移动距离是否过半，过则finishInteractiveTransition完成转场操作，否者取消转场操作
-//            self.interation = NO;
             if (persent > 0.5) {
                 [self finishInteractiveTransition];
             }else{
@@ -88,33 +81,14 @@
 
 - (void)startGesture{
     if (self.type == 0) {
-            [self.vc dismissViewControllerAnimated:YES completion:nil];
-    
+        [self.vc dismissViewControllerAnimated:YES completion:nil];
     }else{
-        
         [self.vc.navigationController popViewControllerAnimated:YES];
     }
-//    switch (_type) {
-//        case XWInteractiveTransitionTypePresent:{
-//            if (_presentConifg) {
-//                _presentConifg();
-//            }
-//        }
-//            break;
-//
-//        case XWInteractiveTransitionTypeDismiss:
-//            [_vc dismissViewControllerAnimated:YES completion:nil];
-//            break;
-//        case XWInteractiveTransitionTypePush:{
-//            if (_pushConifg) {
-//                _pushConifg();
-//            }
-//        }
-//            break;
-//        case XWInteractiveTransitionTypePop:
-//            [_vc.navigationController popViewControllerAnimated:YES];
-//            break;
-//    }
+}
+
+- (void)dealloc{
+    NSLog(@"%s %@",__func__,self);
 }
 
 @end

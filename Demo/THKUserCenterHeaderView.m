@@ -186,7 +186,7 @@ TMUI_PropertySyntheSize(viewModel);
 //    topvc.modalPresentationStyle = UIModalPresentationCustom;
 //    topvc.transitioningDelegate = vc;
 //    [topvc presentViewController:vc animated:YES completion:nil];
-    [THKShowBigImageViewController showBigImageWithImageView:tap.view.superview type:0];
+    [THKShowBigImageViewController showBigImageWithImageView:tap.view.superview type:1];
 }
 
 - (void)clickTagButton{

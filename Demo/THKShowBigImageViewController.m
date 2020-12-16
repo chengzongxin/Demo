@@ -45,12 +45,12 @@
     [interactiveTransition addGestureWithVC:imageVC type:type];
     THKAnimatorTransition *animatorTransition;
     
-    if (type == 1) {
-        animatorTransition = [[THKPageAnimatorTransition alloc] init];
-    }else{
-        animatorTransition = [[THKAnimatorTransition alloc] init];
-    }
-    
+//    if (type == 1) {
+//        animatorTransition = [[THKPageAnimatorTransition alloc] init];
+//    }else{
+//    }
+//
+    animatorTransition = [[THKAnimatorTransition alloc] init];
     animatorTransition.interactiveTransition = interactiveTransition;
     animatorTransition.image = imageView.contentImageView.image;
     animatorTransition.imgFrame = imageView.frame;
@@ -67,6 +67,8 @@
     
 }
 
-
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    NSLog(@"%s",__func__);
+//}
 
 @end

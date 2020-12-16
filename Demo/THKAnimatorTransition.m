@@ -35,6 +35,7 @@ typedef enum : NSUInteger {
 
 // push / pop 动画
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    self.trainsitionStyle = operation == UINavigationControllerOperationPush ? THKTransitionStylePush : THKTransitionStylePop;
     return self;
 }
 
@@ -51,10 +52,6 @@ typedef enum : NSUInteger {
     return self.interactiveTransition;
 }
 
-//- (void)startInteractiveTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
 -(NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
     return 1;
 }
@@ -68,10 +65,10 @@ typedef enum : NSUInteger {
             [self dismissAnimation:transitionContext];
             break;
         case THKTransitionStylePush:
-            
+            [self pushAnimation:transitionContext];
             break;
         case THKTransitionStylePop:
-            
+            [self popAnimation:transitionContext];
             break;
     }
 }
@@ -164,6 +161,104 @@ typedef enum : NSUInteger {
 //        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
 //    }
 }
+
+/**
+ *  执行push过渡动画
+ */
+- (void)pushAnimation:(id<UIViewControllerContextTransitioning>)transitionContext{
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    //对tempView做动画，避免bug;
+//    UIView *tempView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
+//    tempView.frame = fromVC.view.frame;
+    UIView *containerView = [transitionContext containerView];
+//    [containerView addSubview:toVC.view];
+//    [containerView addSubview:tempView];
+//    fromVC.view.hidden = YES;
+//    [containerView insertSubview:toVC.view atIndex:0];
+////    [tempView setAnchorPointTo:CGPointMake(0, 0.5)];
+//    CGPoint point = CGPointMake(0, 0.5);
+//    tempView.frame = CGRectOffset(tempView.frame, (point.x - tempView.layer.anchorPoint.x) * tempView.frame.size.width, (point.y - tempView.layer.anchorPoint.y) * tempView.frame.size.height);
+//    tempView.layer.anchorPoint = point;
+//    CATransform3D transfrom3d = CATransform3DIdentity;
+//    transfrom3d.m34 = -0.002;
+//    containerView.layer.sublayerTransform = transfrom3d;
+//    //增加阴影
+//    CAGradientLayer *fromGradient = [CAGradientLayer layer];
+//    fromGradient.frame = fromVC.view.bounds;
+//    fromGradient.colors = @[(id)[UIColor blackColor].CGColor,
+//                        (id)[UIColor blackColor].CGColor];
+//    fromGradient.startPoint = CGPointMake(0.0, 0.5);
+//    fromGradient.endPoint = CGPointMake(0.8, 0.5);
+//    UIView *fromShadow = [[UIView alloc]initWithFrame:fromVC.view.bounds];
+//    fromShadow.backgroundColor = [UIColor clearColor];
+//    [fromShadow.layer insertSublayer:fromGradient atIndex:1];
+//    fromShadow.alpha = 0.0;
+//    [tempView addSubview:fromShadow];
+//    CAGradientLayer *toGradient = [CAGradientLayer layer];
+//    toGradient.frame = fromVC.view.bounds;
+//    toGradient.colors = @[(id)[UIColor blackColor].CGColor,
+//                            (id)[UIColor blackColor].CGColor];
+//    toGradient.startPoint = CGPointMake(0.0, 0.5);
+//    toGradient.endPoint = CGPointMake(0.8, 0.5);
+//    UIView *toShadow = [[UIView alloc]initWithFrame:fromVC.view.bounds];
+//    toShadow.backgroundColor = [UIColor clearColor];
+//    [toShadow.layer insertSublayer:toGradient atIndex:1];
+//    toShadow.alpha = 1.0;
+//    [toVC.view addSubview:toShadow];
+//    NSLog(@"%s %@",__FUNCTION__,transitionContext);
+//    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+//        tempView.layer.transform = CATransform3DMakeRotation(-M_PI_2, 0, 1, 0);
+//        fromShadow.alpha = 1.0;
+//        toShadow.alpha = 0.0;
+//    } completion:^(BOOL finished) {
+//        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+//        if ([transitionContext transitionWasCancelled]) {
+//            [tempView removeFromSuperview];
+//            fromVC.view.hidden = NO;
+//        }
+//    }];
+    
+    
+    
+    [containerView addSubview:fromVC.view];
+    [containerView addSubview:toVC.view];
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+        fromVC.view.alpha = 0;
+        toVC.view.alpha = 1;
+        } completion:^(BOOL finished) {
+            fromVC.view.alpha = 1;
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        }];
+    [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+}
+
+/**
+ *  执行pop过渡动画
+ */
+- (void)popAnimation:(id<UIViewControllerContextTransitioning>)transitionContext{
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *containerView = [transitionContext containerView];
+    //拿到push时候的
+    UIView *tempView = containerView.subviews.lastObject;
+    [containerView addSubview:toVC.view];
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+        tempView.layer.transform = CATransform3DIdentity;
+        fromVC.view.subviews.lastObject.alpha = 1.0;
+        tempView.subviews.lastObject.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        if ([transitionContext transitionWasCancelled]) {
+            [transitionContext completeTransition:NO];
+        }else{
+            [transitionContext completeTransition:YES];
+            [tempView removeFromSuperview];
+            toVC.view.hidden = NO;
+        }
+    }];
+    
+}
+
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     if (flag) {
