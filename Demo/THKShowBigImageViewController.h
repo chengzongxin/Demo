@@ -12,9 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKShowBigImageViewController : UIViewController
 
 + (void)showBigImageWithImageView:(UIImageView *)imageView;
-@property (nonatomic, strong) UIImage *image;
 
-@property (nonatomic, assign) CGRect imgFrame;
 
 @end
 

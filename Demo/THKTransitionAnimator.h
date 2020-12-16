@@ -6,10 +6,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "THKInteractiveTransition.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKTransitionAnimator : NSObject
+@interface THKTransitionAnimator : NSObject<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,CAAnimationDelegate>
+
+@property (nonatomic, strong) THKInteractiveTransition *interactiveTransition;
+
+@property (nonatomic, strong) UIImage *image;
+
+@property (nonatomic, assign) CGRect imgFrame;
 
 @end
 
