@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKInteractiveTransition : UIPercentDrivenInteractiveTransition
 /**记录是否开始手势，判断pop操作是手势触发还是返回键触发*/
 @property (nonatomic, assign) BOOL interation;
+
+- (void)addGestureWithVC:(UIViewController *)vc;
+
 @end
 
 NS_ASSUME_NONNULL_END
