@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**记录是否开始手势，判断pop操作是手势触发还是返回键触发*/
 @property (nonatomic, assign) BOOL interation;
 
-- (void)addGestureWithVC:(UIViewController *)vc;
+- (void)addGestureWithVC:(UIViewController *)vc type:(NSInteger)type;
 
 @end
 

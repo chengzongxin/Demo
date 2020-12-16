@@ -7,12 +7,15 @@
 
 #import "THKAnimatorTransition.h"
 
+typedef enum : NSUInteger {
+    THKTransitionStylePresent,
+    THKTransitionStyleDismiss,
+    THKTransitionStylePush,
+    THKTransitionStylePop
+} THKTransitionStyle;
 @interface THKAnimatorTransition ()
 
-
-
-
-@property (nonatomic, assign) BOOL isDismiss;
+@property (nonatomic, assign) THKTransitionStyle trainsitionStyle;
 
 @end
 
@@ -21,12 +24,22 @@
 #pragma mark - UIViewControllerTransitioningDelegate
 // present 动画
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
+    self.trainsitionStyle = THKTransitionStylePresent;
     return self;
 }
 // dismiss 动画
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    self.isDismiss = YES;
+    self.trainsitionStyle = THKTransitionStyleDismiss;
     return self;
+}
+
+// push / pop 动画
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    return self;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+    return self.interactiveTransition;
 }
 
 // 手势
@@ -47,10 +60,19 @@
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
-    if (self.isDismiss) {
-        [self dismissAnimation:transitionContext];
-    }else{
-        [self presentAnimation:transitionContext];
+    switch (self.trainsitionStyle) {
+        case THKTransitionStylePresent:
+            [self presentAnimation:transitionContext];
+            break;
+        case THKTransitionStyleDismiss:
+            [self dismissAnimation:transitionContext];
+            break;
+        case THKTransitionStylePush:
+            
+            break;
+        case THKTransitionStylePop:
+            
+            break;
     }
 }
 
@@ -158,6 +180,7 @@
         }
     }
 }
+
 
 
 - (void)dealloc{

@@ -97,6 +97,7 @@
 		16A7DEF62577330B00F1BABD /* UIViewController+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DEF52577330B00F1BABD /* UIViewController+Convenient.m */; };
 		16C532D625761E8C00210A3C /* THKUserCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */; };
 		16C532DC25761EA800210A3C /* THKUserCenterHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */; };
+		16EA6CBC2589D95200EF4260 /* THKPageAnimatorTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EA6CBB2589D95200EF4260 /* THKPageAnimatorTransition.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F3B6B925875DCF00E5ADE4 /* THKShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6B825875DCF00E5ADE4 /* THKShowBigImageViewController.m */; };
 		16F3B6C22587750E00E5ADE4 /* THKInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6C12587750E00E5ADE4 /* THKInteractiveTransition.m */; };
@@ -291,6 +292,8 @@
 		16C532D525761E8C00210A3C /* THKUserCenterHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserCenterHeaderView.m; sourceTree = "<group>"; };
 		16C532DA25761EA800210A3C /* THKUserCenterHeaderViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKUserCenterHeaderViewModel.h; sourceTree = "<group>"; };
 		16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserCenterHeaderViewModel.m; sourceTree = "<group>"; };
+		16EA6CBA2589D95200EF4260 /* THKPageAnimatorTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPageAnimatorTransition.h; sourceTree = "<group>"; };
+		16EA6CBB2589D95200EF4260 /* THKPageAnimatorTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPageAnimatorTransition.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		16F3B6B725875DCF00E5ADE4 /* THKShowBigImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKShowBigImageViewController.h; sourceTree = "<group>"; };
@@ -384,6 +387,8 @@
 				16F3B6D625877AF100E5ADE4 /* THKAnimatorTransition.m */,
 				16F3B6C02587750E00E5ADE4 /* THKInteractiveTransition.h */,
 				16F3B6C12587750E00E5ADE4 /* THKInteractiveTransition.m */,
+				16EA6CBA2589D95200EF4260 /* THKPageAnimatorTransition.h */,
+				16EA6CBB2589D95200EF4260 /* THKPageAnimatorTransition.m */,
 				16A7DEE52577309D00F1BABD /* Subviews */,
 				16C532CD25761E3600210A3C /* ChildVC */,
 				160106E82553DD8000FE4B77 /* Main.storyboard */,
@@ -1115,6 +1120,7 @@
 				164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */,
 				163AB08D2571234F005C25B2 /* Table3ViewController.m in Sources */,
 				164CF9622553F4E600FF02E0 /* TMActionSheet.m in Sources */,
+				16EA6CBC2589D95200EF4260 /* THKPageAnimatorTransition.m in Sources */,
 				164CF93C2553F4E600FF02E0 /* UIImage+TMUI.m in Sources */,
 				16F3B6C22587750E00E5ADE4 /* THKInteractiveTransition.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,

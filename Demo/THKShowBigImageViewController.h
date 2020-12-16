@@ -6,12 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "THKShadowImageView.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKShowBigImageViewController : UIViewController
 
-+ (void)showBigImageWithImageView:(UIImageView *)imageView;
++ (void)showBigImageWithImageView:(THKShadowImageView *)imageView type:(NSInteger)type;
 
 
 @end

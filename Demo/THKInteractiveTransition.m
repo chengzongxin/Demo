@@ -11,12 +11,15 @@
 
 @property (nonatomic, weak) UIViewController *vc;
 
+@property (nonatomic, assign) NSInteger type;
+
 @end
 
 @implementation THKInteractiveTransition
 
-- (void)addGestureWithVC:(UIViewController *)vc{
+- (void)addGestureWithVC:(UIViewController *)vc type:(NSInteger)type{
     self.vc = vc;
+    self.type = type;
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
     [vc.view addGestureRecognizer:pan];
 }
@@ -84,7 +87,13 @@
 }
 
 - (void)startGesture{
-    [self.vc dismissViewControllerAnimated:YES completion:nil];
+    if (self.type == 0) {
+            [self.vc dismissViewControllerAnimated:YES completion:nil];
+    
+    }else{
+        
+        [self.vc.navigationController popViewControllerAnimated:YES];
+    }
 //    switch (_type) {
 //        case XWInteractiveTransitionTypePresent:{
 //            if (_presentConifg) {
