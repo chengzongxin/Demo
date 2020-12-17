@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenInteractive;
 
+@property (nonatomic, strong) UIImageView *animateImageView;
+
 @end
 
 @implementation THKAnimatorTransition
@@ -35,6 +37,13 @@
  *  手势过渡的过程
  */
 - (void)handleGesture:(UIPanGestureRecognizer *)panGesture{
+    // animateImageView
+    CGPoint translation = [panGesture translationInView:panGesture.view];
+    
+    CGFloat scale = 1 - (translation.y / UIScreen.mainScreen.bounds.size.width);
+    scale = scale < 0 ? 0 : scale;
+    scale = scale > 1 ? 1 : scale;
+    
     //手势百分比
     CGFloat percent = 0;
     switch (_direction) {
@@ -60,25 +69,44 @@
             break;
     }
     
-    NSLog(@" percent = %f",percent);
+    NSLog(@" percent = %f, scale = %f",percent,scale);
     
     switch (panGesture.state) {
-        case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateBegan:{
             //手势开始的时候标记手势状态，并开始相应的事件
             self.percentDrivenInteractive = [[UIPercentDrivenInteractiveTransition alloc] init];
+            self.animateImageView.hidden = NO;
             [self startGesture];
+        }
             break;
         case UIGestureRecognizerStateChanged:{
+            
             //手势过程中，通过updateInteractiveTransition设置pop过程进行的百分比
             [self.percentDrivenInteractive updateInteractiveTransition:percent];
-            break;
+            self.animateImageView.center = CGPointMake(UIScreen.mainScreen.bounds.size.width/2 + translation.x * scale, UIScreen.mainScreen.bounds.size.height/2 + translation.y);
+            self.animateImageView.transform = CGAffineTransformMakeScale(scale, scale);
         }
+            break;
         case UIGestureRecognizerStateEnded:{
             //手势完成后结束标记并且判断移动距离是否过半，过则finishInteractiveTransition完成转场操作，否者取消转场操作
             if (percent > 0.5) {
                 [self.percentDrivenInteractive finishInteractiveTransition];
+                
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.animateImageView.frame = self.imgFrame;
+                } completion:^(BOOL finished) {
+                    self.animateImageView.transform = CGAffineTransformIdentity;
+                    self.animateImageView.hidden = YES;
+                }];
             }else{
                 [self.percentDrivenInteractive cancelInteractiveTransition];
+                
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.animateImageView.frame = UIScreen.mainScreen.bounds;
+                } completion:^(BOOL finished) {
+                    self.animateImageView.transform = CGAffineTransformIdentity;
+                    self.animateImageView.hidden = YES;
+                }];
             }
             break;
         }
@@ -288,13 +316,17 @@
     
     
     [containerView addSubview:fromVC.view];
-    [containerView addSubview:toVC.view];
-    toVC.view.frame = self.imgFrame;
+    [containerView addSubview:self.animateImageView];
+    self.animateImageView.hidden = NO;
+    self.animateImageView.frame = self.imgFrame;
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         fromVC.view.alpha = 0;
-        toVC.view.alpha = 1;
-        toVC.view.frame = UIScreen.mainScreen.bounds;
+        self.animateImageView.frame = UIScreen.mainScreen.bounds;
+//        toVC.view.alpha = 1;
+//        toVC.view.frame = UIScreen.mainScreen.bounds;
     } completion:^(BOOL finished) {
+        toVC.view.frame = UIScreen.mainScreen.bounds;
+        [containerView addSubview:toVC.view];
         fromVC.view.alpha = 1;
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
@@ -310,7 +342,8 @@
     //拿到push时候的
 //    UIView *tempView = containerView.subviews.lastObject;
     [containerView addSubview:toVC.view];
-    [containerView addSubview:fromVC.view];
+//    [containerView addSubview:fromVC.view];
+    [containerView addSubview:self.animateImageView];
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
 //        tempView.layer.transform = CATransform3DIdentity;
 //        fromVC.view.subviews.lastObject.alpha = 1.0;
@@ -322,11 +355,21 @@
             [toVC.view removeFromSuperview];
         }
     }];
-    
+    NSLog(@"pop animation");
 }
 
 
-
+#pragma mark - Getter
+- (UIImageView *)animateImageView{
+    if (!_animateImageView) {
+        _animateImageView = [[UIImageView alloc] init];
+        _animateImageView.frame = UIScreen.mainScreen.bounds;
+        _animateImageView.image = [UIImage imageNamed:@"com_preload_head_img"];
+        _animateImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _animateImageView.hidden = YES;
+    }
+    return _animateImageView;
+}
 
 
 
