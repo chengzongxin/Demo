@@ -59,6 +59,9 @@
         }
             break;
     }
+    
+    NSLog(@" percent = %f",percent);
+    
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:
             //手势开始的时候标记手势状态，并开始相应的事件
@@ -68,7 +71,6 @@
         case UIGestureRecognizerStateChanged:{
             //手势过程中，通过updateInteractiveTransition设置pop过程进行的百分比
             [self.percentDrivenInteractive updateInteractiveTransition:percent];
-            NSLog(@" persent = %f",percent);
             break;
         }
         case UIGestureRecognizerStateEnded:{
