@@ -6,7 +6,7 @@
 //
 
 #import "THKAnimatorTransition.h"
-
+#import "THKShowBigImageViewController.h"
 
 @interface THKAnimatorTransition ()
 
@@ -286,20 +286,24 @@
  *  执行pop过渡动画
  */
 - (void)popAnimation:(id<UIViewControllerContextTransitioning>)transitionContext{
-    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    THKShowBigImageViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     
     [containerView addSubview:toVC.view];
+    [containerView addSubview:fromVC.view];
     [containerView addSubview:self.animateImageView];
-    
+    fromVC.imageView.hidden = YES;
     [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
-        fromVC.view.frame = self.imgFrame;
+//        fromVC.view.frame = self.imgFrame;
+        fromVC.view.alpha = 0;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         if ([transitionContext transitionWasCancelled]) {
             [toVC.view removeFromSuperview];
         }
+        fromVC.view.alpha = 1;
+        fromVC.imageView.hidden = NO;
     }];
     NSLog(@"pop animation");
 }

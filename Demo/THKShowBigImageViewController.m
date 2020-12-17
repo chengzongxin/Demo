@@ -29,6 +29,7 @@
     imageViewView.image = self.image;
     imageViewView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:imageViewView];
+    _imageView = imageViewView;
     
 }
 

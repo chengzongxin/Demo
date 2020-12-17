@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)showBigImageWithImageView:(THKShadowImageView *)imageView transitionStyle:(THKTransitionStyle)transitionStyle;
 
+@property (nonatomic, strong) UIImageView *imageView;
+
 @end
 
 NS_ASSUME_NONNULL_END
