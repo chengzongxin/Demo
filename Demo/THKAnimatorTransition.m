@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) UIImageView *animateImageView;
 
+@property (nonatomic, assign) BOOL popByGesture;
+
 @end
 
 @implementation THKAnimatorTransition
@@ -105,7 +107,7 @@
             }
             // image动画
             CGRect finalFrame = percent > self.scrollThreshold ? self.imgFrame : UIScreen.mainScreen.bounds;
-            [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
+            [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
                 self.animateImageView.frame = finalFrame;
             } completion:^(BOOL finished) {
                 self.animateImageView.transform = CGAffineTransformIdentity;
@@ -120,6 +122,7 @@
 }
 
 - (void)startGesture{
+    self.popByGesture = YES;
     if (self.trainsitionStyle == THKTransitionStylePresent || self.trainsitionStyle == THKTransitionStyleDismiss) {
         [self.vc dismissViewControllerAnimated:YES completion:nil];
     }else if (self.trainsitionStyle == THKTransitionStylePush || self.trainsitionStyle == THKTransitionStylePop){
@@ -274,7 +277,7 @@
     self.animateImageView.hidden = NO;
     self.animateImageView.frame = self.imgFrame;
     
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
         fromVC.view.alpha = 0;
         self.animateImageView.frame = UIScreen.mainScreen.bounds;
     } completion:^(BOOL finished) {
@@ -298,7 +301,7 @@
     [containerView addSubview:fromVC.view];
     [containerView addSubview:self.animateImageView];
     fromVC.imageView.hidden = YES;
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
 //        fromVC.view.frame = self.imgFrame;
         fromVC.view.alpha = 0;
     } completion:^(BOOL finished) {
@@ -312,7 +315,18 @@
         }
         [self.animateImageView removeFromSuperview];
     }];
-    NSLog(@"pop animation");
+    
+    if (!self.popByGesture) {
+        // image动画
+        [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
+            self.animateImageView.frame = self.imgFrame;
+        } completion:^(BOOL finished) {
+            self.animateImageView.transform = CGAffineTransformIdentity;
+            self.animateImageView.hidden = YES;
+        }];
+    }
+     // 重置
+    self.popByGesture = NO;
 }
 
 

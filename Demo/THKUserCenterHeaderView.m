@@ -180,13 +180,7 @@ TMUI_PropertySyntheSize(viewModel);
 #pragma mark - Event Respone
 
 - (void)tapAvatar:(UITapGestureRecognizer *)tap{
-//    THKShowBigImageViewController *vc = [[THKShowBigImageViewController alloc] init];
-//    vc.image = [(UIImageView *)tap.view image];
-//    UIViewController *topvc = self.nextResponder.nextResponder.nextResponder;
-//    topvc.modalPresentationStyle = UIModalPresentationCustom;
-//    topvc.transitioningDelegate = vc;
-//    [topvc presentViewController:vc animated:YES completion:nil];
-    [THKShowBigImageViewController showBigImageWithImageView:tap.view.superview transitionStyle:THKTransitionStylePush];
+    [THKShowBigImageViewController showBigImageWithImageView:(UIImageView *)tap.view transitionStyle:THKTransitionStylePush];
 }
 
 - (void)clickTagButton{

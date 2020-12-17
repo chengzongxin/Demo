@@ -8,6 +8,9 @@
 #import "THKShowBigImageViewController.h"
 #import "THKShadowImageView.h"
 #import "THKAnimatorTransition.h"
+#import "UIView+TMUI.h"
+#import "THKShadowImageView.h"
+
 @interface THKShowBigImageViewController ()
 
 @property (nonatomic, strong) UIImage *image;
@@ -33,33 +36,31 @@
     
 }
 
-+ (void)showBigImageWithImageView:(THKShadowImageView *)imageView transitionStyle:(THKTransitionStyle)transitionStyle{
-    NSLog(@"%@",imageView);
-    UIViewController *fromVC = (UIViewController *)imageView.nextResponder.nextResponder.nextResponder.nextResponder;
++ (void)showBigImageWithImageView:(UIImageView *)imageView transitionStyle:(THKTransitionStyle)transitionStyle{
+    
+    UIViewController *fromVC = imageView.tmui_viewController;
     fromVC.modalPresentationStyle = UIModalPresentationCustom;
     THKShowBigImageViewController *imageVC = [[THKShowBigImageViewController alloc] init];
-    imageVC.image = imageView.contentImageView.image;
+    imageVC.image = imageView.image;
     // transition
     THKAnimatorTransition *animatorTransition = [[THKAnimatorTransition alloc] init];
+    // 设置手势
     [animatorTransition addGestureWithVC:imageVC direction:THKTransitionGestureDirectionDown];;
-    animatorTransition.image = imageView.contentImageView.image;
-    animatorTransition.imgFrame = imageView.frame;
+    // 设置动画图片尺寸，图片
+    animatorTransition.image = imageView.image;
+    animatorTransition.imgFrame = [imageView convertRect:imageView.frame toView:UIApplication.sharedApplication.keyWindow];
+    // 设置转场代理
     fromVC.transitioningDelegate = animatorTransition;
     fromVC.navigationController.delegate = animatorTransition;
     imageVC.transitioningDelegate = animatorTransition;
-//    imageVC.navigationController.delegate = animatorTransition;
-    imageVC.transitionAnimator = animatorTransition;
+    imageVC.transitionAnimator = animatorTransition; // 强引用，避免被释放
     
     if (transitionStyle == THKTransitionStylePush) {
         [fromVC.navigationController pushViewController:imageVC animated:YES];
     }else{
         [fromVC presentViewController:imageVC animated:YES completion:nil];
     }
-    
 }
 
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    NSLog(@"%s",__func__);
-//}
 
 @end
