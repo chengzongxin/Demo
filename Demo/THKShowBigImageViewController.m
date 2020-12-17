@@ -38,8 +38,10 @@
     
     if (self.images) {
         [self.view addSubview:self.collectionView];
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }else{
         [self.view addSubview:self.imageView];
+        self.imageView.image = self.image;
     }
 }
 
@@ -70,7 +72,6 @@
 }
 
 + (void)showBigImageWithImageView:(NSArray *)images frames:(NSArray<NSValue *> *)frames index:(NSInteger)index transitionStyle:(THKTransitionStyle)transitionStyle fromVC:(nonnull UIViewController *)fromVC{
-//    UIViewController *fromVC = imageView.tmui_viewController;
     fromVC.modalPresentationStyle = UIModalPresentationCustom;
     THKShowBigImageViewController *imageVC = [[THKShowBigImageViewController alloc] init];
     imageVC.images = images;
@@ -140,7 +141,6 @@
 - (UIImageView *)imageView{
     if (!_imageView) {
         _imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-        _imageView.image = self.image;
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _imageView;

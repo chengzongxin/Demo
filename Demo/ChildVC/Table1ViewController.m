@@ -51,7 +51,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSMutableArray <NSNumber *>* frames = [NSMutableArray array];
+    NSMutableArray <NSValue *>* frames = [NSMutableArray array];
     for (int i = 0; i < _imgs.count; i++) {
         NSIndexPath *aIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:aIndexPath];
