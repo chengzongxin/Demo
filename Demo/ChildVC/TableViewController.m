@@ -7,7 +7,7 @@
 
 #import "TableViewController.h"
 
-@interface TableViewController () <UITableViewDataSource>
+@interface TableViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -44,6 +44,7 @@
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     tableView.dataSource = self;
+    tableView.delegate = self;
     [tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"cell"];
     tableView.rowHeight = 88;
     [self.view addSubview:tableView];

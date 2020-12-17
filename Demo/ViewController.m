@@ -94,7 +94,7 @@
 
 - (CGFloat)heightForHeader{
     THKUserCenterHeaderViewModel *viewModel = [[THKUserCenterHeaderViewModel alloc] init];
-    return viewModel.viewHeight + self.vcs.count * 100;
+    return viewModel.viewHeight;
 }
 
 - (UIView *)viewForHeader{

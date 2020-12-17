@@ -69,7 +69,7 @@
     }
 }
 
-+ (void)showBigImageWithImageView:(NSArray *)images frames:(NSArray<NSNumber *> *)frames index:(NSInteger)index transitionStyle:(THKTransitionStyle)transitionStyle fromVC:(nonnull UIViewController *)fromVC{
++ (void)showBigImageWithImageView:(NSArray *)images frames:(NSArray<NSValue *> *)frames index:(NSInteger)index transitionStyle:(THKTransitionStyle)transitionStyle fromVC:(nonnull UIViewController *)fromVC{
 //    UIViewController *fromVC = imageView.tmui_viewController;
     fromVC.modalPresentationStyle = UIModalPresentationCustom;
     THKShowBigImageViewController *imageVC = [[THKShowBigImageViewController alloc] init];

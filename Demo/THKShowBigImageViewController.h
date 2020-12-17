@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
                   transitionStyle:(THKTransitionStyle)transitionStyle;
 /// 显示一组大图
 + (void)showBigImageWithImageView:(NSArray *)images
-                           frames:(NSArray <NSNumber *>*)frames
+                           frames:(NSArray <NSValue *>*)frames
                             index:(NSInteger)index
                   transitionStyle:(THKTransitionStyle)transitionStyle
                            fromVC:(UIViewController *)fromVC;
