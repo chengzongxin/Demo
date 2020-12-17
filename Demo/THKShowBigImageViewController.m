@@ -22,7 +22,7 @@
 
 @property (nonatomic, copy) NSArray *images;
 
-@property (nonatomic, copy) NSArray<NSNumber *> *frames;
+@property (nonatomic, copy) NSArray<NSValue *> *frames;
 
 @property (nonatomic, assign) NSInteger index;
 
@@ -102,6 +102,17 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class) forIndexPath:indexPath];
+    
+    UIImageView *imgV = (UIImageView *)[cell viewWithTag:888];
+    if (!imgV) {
+        imgV = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        imgV.contentMode = UIViewContentModeScaleAspectFit;
+        imgV.layer.masksToBounds = YES;
+        imgV.tag = 888;
+        [cell addSubview:imgV];
+    }
+    imgV.image = _images[indexPath.item];
+    
     return cell;
 }
 
