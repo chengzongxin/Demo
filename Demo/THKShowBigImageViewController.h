@@ -7,12 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import "THKShadowImageView.h"
+#import "THKAnimatorTransition.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKShowBigImageViewController : UIViewController
 
-+ (void)showBigImageWithImageView:(THKShadowImageView *)imageView type:(NSInteger)type;
-
++ (void)showBigImageWithImageView:(THKShadowImageView *)imageView transitionStyle:(THKTransitionStyle)transitionStyle;
 
 @end
 

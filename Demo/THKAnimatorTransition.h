@@ -6,17 +6,30 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "THKInteractiveTransition.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKAnimatorTransition : NSObject<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,CAAnimationDelegate,UINavigationControllerDelegate>
+typedef enum : NSUInteger {
+    THKTransitionStylePresent,
+    THKTransitionStyleDismiss,
+    THKTransitionStylePush,
+    THKTransitionStylePop
+} THKTransitionStyle;
 
-@property (nonatomic, strong) THKInteractiveTransition *interactiveTransition;
+typedef enum : NSUInteger {
+    THKTransitionGestureDirectionLeft,
+    THKTransitionGestureDirectionRight,
+    THKTransitionGestureDirectionUp,
+    THKTransitionGestureDirectionDown
+} THKTransitionGestureDirection;
+
+@interface THKAnimatorTransition : NSObject<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,CAAnimationDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) UIImage *image;
 
 @property (nonatomic, assign) CGRect imgFrame;
+
+- (void)addGestureWithVC:(UIViewController *)vc direction:(THKTransitionGestureDirection)direction;
 
 @end
 

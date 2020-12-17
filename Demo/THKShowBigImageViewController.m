@@ -8,7 +8,6 @@
 #import "THKShowBigImageViewController.h"
 #import "THKShadowImageView.h"
 #import "THKAnimatorTransition.h"
-#import "THKPageAnimatorTransition.h"
 @interface THKShowBigImageViewController ()
 
 @property (nonatomic, strong) UIImage *image;
@@ -33,33 +32,24 @@
     
 }
 
-
-+ (void)showBigImageWithImageView:(THKShadowImageView *)imageView type:(NSInteger)type{
++ (void)showBigImageWithImageView:(THKShadowImageView *)imageView transitionStyle:(THKTransitionStyle)transitionStyle{
     NSLog(@"%@",imageView);
     UIViewController *fromVC = (UIViewController *)imageView.nextResponder.nextResponder.nextResponder.nextResponder;
     fromVC.modalPresentationStyle = UIModalPresentationCustom;
     THKShowBigImageViewController *imageVC = [[THKShowBigImageViewController alloc] init];
     imageVC.image = imageView.contentImageView.image;
     // transition
-    THKInteractiveTransition *interactiveTransition = [[THKInteractiveTransition alloc] init];
-    [interactiveTransition addGestureWithVC:imageVC type:type];
-    THKAnimatorTransition *animatorTransition;
-    
-//    if (type == 1) {
-//        animatorTransition = [[THKPageAnimatorTransition alloc] init];
-//    }else{
-//    }
-//
-    animatorTransition = [[THKAnimatorTransition alloc] init];
-    animatorTransition.interactiveTransition = interactiveTransition;
+    THKAnimatorTransition *animatorTransition = [[THKAnimatorTransition alloc] init];
+    [animatorTransition addGestureWithVC:imageVC direction:THKTransitionGestureDirectionDown];;
     animatorTransition.image = imageView.contentImageView.image;
     animatorTransition.imgFrame = imageView.frame;
     fromVC.transitioningDelegate = animatorTransition;
     fromVC.navigationController.delegate = animatorTransition;
     imageVC.transitioningDelegate = animatorTransition;
+//    imageVC.navigationController.delegate = animatorTransition;
     imageVC.transitionAnimator = animatorTransition;
     
-    if (type == 1) {
+    if (transitionStyle == THKTransitionStylePush) {
         [fromVC.navigationController pushViewController:imageVC animated:YES];
     }else{
         [fromVC presentViewController:imageVC animated:YES completion:nil];

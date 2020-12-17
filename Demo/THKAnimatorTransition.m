@@ -7,21 +7,95 @@
 
 #import "THKAnimatorTransition.h"
 
-typedef enum : NSUInteger {
-    THKTransitionStylePresent,
-    THKTransitionStyleDismiss,
-    THKTransitionStylePush,
-    THKTransitionStylePop
-} THKTransitionStyle;
+
 @interface THKAnimatorTransition ()
 
 @property (nonatomic, assign) THKTransitionStyle trainsitionStyle;
+
+@property (nonatomic, weak) UIViewController *vc;
+
+@property (nonatomic, assign) THKTransitionGestureDirection direction;
+
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenInteractive;
 
 @end
 
 @implementation THKAnimatorTransition
 
-#pragma mark - UIViewControllerTransitioningDelegate
+
+- (void)addGestureWithVC:(UIViewController *)vc direction:(THKTransitionGestureDirection)direction{
+    self.vc = vc;
+    self.direction = direction;
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [vc.view addGestureRecognizer:pan];
+}
+
+
+/**
+ *  手势过渡的过程
+ */
+- (void)handleGesture:(UIPanGestureRecognizer *)panGesture{
+    //手势百分比
+    CGFloat percent = 0;
+    switch (_direction) {
+        case THKTransitionGestureDirectionLeft:{
+            CGFloat transitionX = -[panGesture translationInView:panGesture.view].x;
+            percent = transitionX / panGesture.view.frame.size.width;
+        }
+            break;
+        case THKTransitionGestureDirectionRight:{
+            CGFloat transitionX = [panGesture translationInView:panGesture.view].x;
+            percent = transitionX / panGesture.view.frame.size.width;
+        }
+            break;
+        case THKTransitionGestureDirectionUp:{
+            CGFloat transitionY = -[panGesture translationInView:panGesture.view].y;
+            percent = transitionY / panGesture.view.frame.size.width;
+        }
+            break;
+        case THKTransitionGestureDirectionDown:{
+            CGFloat transitionY = [panGesture translationInView:panGesture.view].y;
+            percent = transitionY / panGesture.view.frame.size.width;
+        }
+            break;
+    }
+    switch (panGesture.state) {
+        case UIGestureRecognizerStateBegan:
+            //手势开始的时候标记手势状态，并开始相应的事件
+            self.percentDrivenInteractive = [[UIPercentDrivenInteractiveTransition alloc] init];
+            [self startGesture];
+            break;
+        case UIGestureRecognizerStateChanged:{
+            //手势过程中，通过updateInteractiveTransition设置pop过程进行的百分比
+            [self.percentDrivenInteractive updateInteractiveTransition:percent];
+            NSLog(@" persent = %f",percent);
+            break;
+        }
+        case UIGestureRecognizerStateEnded:{
+            //手势完成后结束标记并且判断移动距离是否过半，过则finishInteractiveTransition完成转场操作，否者取消转场操作
+            if (percent > 0.5) {
+                [self.percentDrivenInteractive finishInteractiveTransition];
+            }else{
+                [self.percentDrivenInteractive cancelInteractiveTransition];
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)startGesture{
+    if (self.trainsitionStyle == THKTransitionStylePresent || self.trainsitionStyle == THKTransitionStyleDismiss) {
+        [self.vc dismissViewControllerAnimated:YES completion:nil];
+    }else if (self.trainsitionStyle == THKTransitionStylePush || self.trainsitionStyle == THKTransitionStylePop){
+        [self.vc.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+#pragma mark - Delegate 方法集合
+#pragma mark UIViewControllerTransitioningDelegate
+#pragma mark Modal 代理
 // present 动画
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
     self.trainsitionStyle = THKTransitionStylePresent;
@@ -32,26 +106,30 @@ typedef enum : NSUInteger {
     self.trainsitionStyle = THKTransitionStyleDismiss;
     return self;
 }
+// present 手势
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator{
+    return nil;
+}
 
+// dismiss 手势
+- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator{
+    return self.percentDrivenInteractive;
+}
+
+#pragma mark Push/Pop 代理
 // push / pop 动画
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
     self.trainsitionStyle = operation == UINavigationControllerOperationPush ? THKTransitionStylePush : THKTransitionStylePop;
     return self;
 }
 
+// push / pop 手势
 - (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
-    return self.interactiveTransition;
+    return self.trainsitionStyle == THKTransitionStylePop ? self.percentDrivenInteractive : nil;
 }
 
-// 手势
-- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator{
-    return self.interactiveTransition;
-}
 
-- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator{
-    return self.interactiveTransition;
-}
-
+#pragma mark 转场动画代理
 -(NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
     return 1;
 }
@@ -73,18 +151,14 @@ typedef enum : NSUInteger {
     }
 }
 
+#pragma mark - Private Method
+#pragma mark 具体转场动画
 - (void)presentAnimation:(id<UIViewControllerContextTransitioning>)transitionContext{
     //取出转场前后的视图控制器
-//    UIViewController * fromVC = (UIViewController *)[transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController * toVC = (UIViewController *)[transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-//
-//    //取出转场前后视图控制器上的视图view
-//    UIView * toView = [transitionContext viewForKey:UITransitionContextToViewKey];
-//    UIView * fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
 //
     //这里有个重要的概念containerView，要做转场动画的视图就必须要加入containerView上才能进行，可以理解containerView管理着所有做转场动画的视图
     UIView *containerView = [transitionContext containerView];
-
     [containerView addSubview:toVC.view];
     //画两个圆路径
     UIBezierPath *startCycle =  [UIBezierPath bezierPathWithOvalInRect:self.imgFrame];
@@ -107,20 +181,6 @@ typedef enum : NSUInteger {
     maskLayerAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [maskLayerAnimation setValue:transitionContext forKey:@"transitionContextPresent"];
     [maskLayer addAnimation:maskLayerAnimation forKey:@"path"];
-    
-    
-//    //如果加入了手势交互转场，就需要根据手势交互动作是否完成/取消来做操作，完成标记YES，取消标记NO，必须标记，否则系统认为还处于动画过程中，会出现无法交互之类的bug
-//    [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-//    if ([transitionContext transitionWasCancelled]) {
-//        //如果取消转场
-//        [transitionContext cancelInteractiveTransition];
-//    }else{
-//        //完成转场
-//        [transitionContext finishInteractiveTransition];
-////        [transitionContext updateInteractiveTransition:self.percent];
-//
-//    }
-    
     
 }
 
@@ -148,18 +208,22 @@ typedef enum : NSUInteger {
     maskLayerAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     [maskLayerAnimation setValue:transitionContext forKey:@"transitionContextDismiss"];
     [maskLayer addAnimation:maskLayerAnimation forKey:@"path"];
-    
-    //如果加入了手势交互转场，就需要根据手势交互动作是否完成/取消来做操作，完成标记YES，取消标记NO，必须标记，否则系统认为还处于动画过程中，会出现无法交互之类的bug
-    
-//    if ([transitionContext transitionWasCancelled]) {
-//        //如果取消转场
-//        [transitionContext cancelInteractiveTransition];
-//    }else{
-//        //完成转场
-//        [transitionContext finishInteractiveTransition];
-////        [transitionContext updateInteractiveTransition:self.percent];
-//        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-//    }
+}
+
+// 核心动画不支持手势驱动
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    if (flag) {
+        if ([anim valueForKey:@"transitionContextPresent"]) {
+            id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContextPresent"];
+            [transitionContext completeTransition:YES];
+        }else if ([anim valueForKey:@"transitionContextDismiss"]) {
+            id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContextDismiss"];
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+            if ([transitionContext transitionWasCancelled]) {
+                [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view.layer.mask = nil;
+            }
+        }
+    }
 }
 
 /**
@@ -223,14 +287,15 @@ typedef enum : NSUInteger {
     
     [containerView addSubview:fromVC.view];
     [containerView addSubview:toVC.view];
+    toVC.view.frame = self.imgFrame;
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         fromVC.view.alpha = 0;
         toVC.view.alpha = 1;
-        } completion:^(BOOL finished) {
-            fromVC.view.alpha = 1;
-            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-        }];
-    [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        toVC.view.frame = UIScreen.mainScreen.bounds;
+    } completion:^(BOOL finished) {
+        fromVC.view.alpha = 1;
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+    }];
 }
 
 /**
@@ -241,40 +306,25 @@ typedef enum : NSUInteger {
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
     //拿到push时候的
-    UIView *tempView = containerView.subviews.lastObject;
+//    UIView *tempView = containerView.subviews.lastObject;
     [containerView addSubview:toVC.view];
+    [containerView addSubview:fromVC.view];
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-        tempView.layer.transform = CATransform3DIdentity;
-        fromVC.view.subviews.lastObject.alpha = 1.0;
-        tempView.subviews.lastObject.alpha = 0.0;
+//        tempView.layer.transform = CATransform3DIdentity;
+//        fromVC.view.subviews.lastObject.alpha = 1.0;
+//        tempView.subviews.lastObject.alpha = 0.0;
+        fromVC.view.frame = self.imgFrame;
     } completion:^(BOOL finished) {
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         if ([transitionContext transitionWasCancelled]) {
-            [transitionContext completeTransition:NO];
-        }else{
-            [transitionContext completeTransition:YES];
-            [tempView removeFromSuperview];
-            toVC.view.hidden = NO;
+            [toVC.view removeFromSuperview];
         }
     }];
     
 }
 
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    if (flag) {
-        
-        if ([anim valueForKey:@"transitionContextPresent"]) {
-            id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContextPresent"];
-            [transitionContext completeTransition:YES];
-        }else if ([anim valueForKey:@"transitionContextDismiss"]) {
-            id<UIViewControllerContextTransitioning> transitionContext = [anim valueForKey:@"transitionContextDismiss"];
-            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-            if ([transitionContext transitionWasCancelled]) {
-                [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view.layer.mask = nil;
-            }
-        }
-    }
-}
+
 
 
 

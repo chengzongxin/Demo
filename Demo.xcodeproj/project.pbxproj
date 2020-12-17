@@ -99,7 +99,6 @@
 		16C532DC25761EA800210A3C /* THKUserCenterHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C532DB25761EA800210A3C /* THKUserCenterHeaderViewModel.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F3B6B925875DCF00E5ADE4 /* THKShowBigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6B825875DCF00E5ADE4 /* THKShowBigImageViewController.m */; };
-		16F3B6C22587750E00E5ADE4 /* THKInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6C12587750E00E5ADE4 /* THKInteractiveTransition.m */; };
 		16F3B6D725877AF100E5ADE4 /* THKAnimatorTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B6D625877AF100E5ADE4 /* THKAnimatorTransition.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
@@ -295,8 +294,6 @@
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		16F3B6B725875DCF00E5ADE4 /* THKShowBigImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKShowBigImageViewController.h; sourceTree = "<group>"; };
 		16F3B6B825875DCF00E5ADE4 /* THKShowBigImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKShowBigImageViewController.m; sourceTree = "<group>"; };
-		16F3B6C02587750E00E5ADE4 /* THKInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKInteractiveTransition.h; sourceTree = "<group>"; };
-		16F3B6C12587750E00E5ADE4 /* THKInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKInteractiveTransition.m; sourceTree = "<group>"; };
 		16F3B6D525877AF100E5ADE4 /* THKAnimatorTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKAnimatorTransition.h; sourceTree = "<group>"; };
 		16F3B6D625877AF100E5ADE4 /* THKAnimatorTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKAnimatorTransition.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -382,8 +379,6 @@
 				16F3B6B825875DCF00E5ADE4 /* THKShowBigImageViewController.m */,
 				16F3B6D525877AF100E5ADE4 /* THKAnimatorTransition.h */,
 				16F3B6D625877AF100E5ADE4 /* THKAnimatorTransition.m */,
-				16F3B6C02587750E00E5ADE4 /* THKInteractiveTransition.h */,
-				16F3B6C12587750E00E5ADE4 /* THKInteractiveTransition.m */,
 				16A7DEE52577309D00F1BABD /* Subviews */,
 				16C532CD25761E3600210A3C /* ChildVC */,
 				160106E82553DD8000FE4B77 /* Main.storyboard */,
@@ -1116,7 +1111,6 @@
 				163AB08D2571234F005C25B2 /* Table3ViewController.m in Sources */,
 				164CF9622553F4E600FF02E0 /* TMActionSheet.m in Sources */,
 				164CF93C2553F4E600FF02E0 /* UIImage+TMUI.m in Sources */,
-				16F3B6C22587750E00E5ADE4 /* THKInteractiveTransition.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,
 				163AB081257122EA005C25B2 /* Table2ViewController.m in Sources */,
 				16F3B6B925875DCF00E5ADE4 /* THKShowBigImageViewController.m in Sources */,
