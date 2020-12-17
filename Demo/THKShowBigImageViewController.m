@@ -11,11 +11,20 @@
 #import "UIView+TMUI.h"
 #import "THKShadowImageView.h"
 
-@interface THKShowBigImageViewController ()
+@interface THKShowBigImageViewController () <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (nonatomic, strong) UIImage *image;
 
 @property (nonatomic, strong) THKAnimatorTransition *transitionAnimator;
+
+@property (nonatomic, strong) UICollectionView *collectionView;
+
+
+@property (nonatomic, copy) NSArray *images;
+
+@property (nonatomic, copy) NSArray<NSNumber *> *frames;
+
+@property (nonatomic, assign) NSInteger index;
 
 
 @end
@@ -27,13 +36,11 @@
 
     self.view.backgroundColor = UIColor.blackColor;
     
-    
-    UIImageView *imageViewView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    imageViewView.image = self.image;
-    imageViewView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:imageViewView];
-    _imageView = imageViewView;
-    
+    if (self.images) {
+        [self.view addSubview:self.collectionView];
+    }else{
+        [self.view addSubview:self.imageView];
+    }
 }
 
 + (void)showBigImageWithImageView:(UIImageView *)imageView transitionStyle:(THKTransitionStyle)transitionStyle{
@@ -62,5 +69,70 @@
     }
 }
 
++ (void)showBigImageWithImageView:(NSArray *)images frames:(NSArray<NSNumber *> *)frames index:(NSInteger)index transitionStyle:(THKTransitionStyle)transitionStyle fromVC:(nonnull UIViewController *)fromVC{
+//    UIViewController *fromVC = imageView.tmui_viewController;
+    fromVC.modalPresentationStyle = UIModalPresentationCustom;
+    THKShowBigImageViewController *imageVC = [[THKShowBigImageViewController alloc] init];
+    imageVC.images = images;
+    imageVC.frames = frames;
+    imageVC.index = index;
+    // transition
+    THKAnimatorTransition *animatorTransition = [[THKAnimatorTransition alloc] init];
+    // 设置手势
+    [animatorTransition addGestureWithVC:imageVC direction:THKTransitionGestureDirectionDown];;
+    // 设置动画图片尺寸，图片
+    animatorTransition.animateImageView.image = images[index];
+    animatorTransition.imgFrame = frames[index].CGRectValue;
+    // 设置转场代理
+    fromVC.transitioningDelegate = animatorTransition;
+    fromVC.navigationController.delegate = animatorTransition;
+    imageVC.transitioningDelegate = animatorTransition;
+    imageVC.transitionAnimator = animatorTransition; // 强引用，避免被释放
+    
+    if (transitionStyle == THKTransitionStylePush) {
+        [fromVC.navigationController pushViewController:imageVC animated:YES];
+    }else{
+        [fromVC presentViewController:imageVC animated:YES completion:nil];
+    }
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.images.count;
+}
+
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class) forIndexPath:indexPath];
+    return cell;
+}
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    NSInteger index = scrollView.contentOffset.x / self.view.bounds.size.width;
+    self.transitionAnimator.animateImageView.image = self.images[index];
+    self.transitionAnimator.imgFrame = self.frames[index].CGRectValue;
+}
+
+- (UICollectionView *)collectionView{
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+        layout.itemSize = self.view.bounds.size;
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+        _collectionView.pagingEnabled = YES;
+        _collectionView.dataSource = self;
+        _collectionView.delegate = self;
+        [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class)];
+    }
+    return _collectionView;
+}
+
+- (UIImageView *)imageView{
+    if (!_imageView) {
+        _imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        _imageView.image = self.image;
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    return _imageView;
+}
 
 @end
