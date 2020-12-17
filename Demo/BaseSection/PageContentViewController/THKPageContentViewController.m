@@ -59,7 +59,7 @@ static const CGFloat kSliderBarHeight = 44;
     [self initial];
     
     [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
+    [self.contentView removeFromSuperview];
     _contentView = nil;
     _headerView = nil;
     _slideBar = nil;
