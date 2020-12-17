@@ -18,8 +18,6 @@
 
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *percentDrivenInteractive;
 
-@property (nonatomic, strong) UIImageView *animateImageView;
-
 @property (nonatomic, assign) BOOL popByGesture;
 
 @end
@@ -335,7 +333,6 @@
     if (!_animateImageView) {
         _animateImageView = [[UIImageView alloc] init];
         _animateImageView.frame = UIScreen.mainScreen.bounds;
-        _animateImageView.image = [UIImage imageNamed:@"com_preload_head_img"];
         _animateImageView.contentMode = UIViewContentModeScaleAspectFit;
         _animateImageView.hidden = YES;
     }

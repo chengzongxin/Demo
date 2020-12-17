@@ -25,7 +25,7 @@ typedef enum : NSUInteger {
 
 @interface THKAnimatorTransition : NSObject<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,CAAnimationDelegate,UINavigationControllerDelegate>
 
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImageView *animateImageView;
 
 @property (nonatomic, assign) CGRect imgFrame;
 

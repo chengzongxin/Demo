@@ -227,7 +227,7 @@ TMUI_PropertySyntheSize(viewModel);
 - (THKShadowImageView *)avatarImageView{
     if (!_avatarImageView) {
         _avatarImageView = [[THKShadowImageView alloc] init];
-        _avatarImageView.contentImageView.image = [UIImage imageNamed:@"com_preload_head_img"];
+        _avatarImageView.contentImageView.image = [UIImage imageNamed:@"eren"];
         _avatarImageView.contentImageView.layer.cornerRadius = _viewModel.avatarH/2 ?: 36;
         _avatarImageView.contentImageView.layer.borderColor = UIColor.whiteColor.CGColor;
         _avatarImageView.contentImageView.layer.borderWidth = 2;

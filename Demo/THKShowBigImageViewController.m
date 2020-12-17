@@ -47,7 +47,7 @@
     // 设置手势
     [animatorTransition addGestureWithVC:imageVC direction:THKTransitionGestureDirectionDown];;
     // 设置动画图片尺寸，图片
-    animatorTransition.image = imageView.image;
+    animatorTransition.animateImageView.image = imageView.image;
     animatorTransition.imgFrame = [imageView convertRect:imageView.frame toView:UIApplication.sharedApplication.keyWindow];
     // 设置转场代理
     fromVC.transitioningDelegate = animatorTransition;
