@@ -89,10 +89,10 @@
             break;
         case UIGestureRecognizerStateEnded:{
             //手势完成后结束标记并且判断移动距离是否过半，过则finishInteractiveTransition完成转场操作，否者取消转场操作
-            if (percent > 0.5) {
+            if (percent > 1) {
                 [self.percentDrivenInteractive finishInteractiveTransition];
                 
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
                     self.animateImageView.frame = self.imgFrame;
                 } completion:^(BOOL finished) {
                     self.animateImageView.transform = CGAffineTransformIdentity;
@@ -101,7 +101,7 @@
             }else{
                 [self.percentDrivenInteractive cancelInteractiveTransition];
                 
-                [UIView animateWithDuration:0.5 animations:^{
+                [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
                     self.animateImageView.frame = UIScreen.mainScreen.bounds;
                 } completion:^(BOOL finished) {
                     self.animateImageView.transform = CGAffineTransformIdentity;
@@ -256,74 +256,23 @@
     }
 }
 
+// MARK: PUSH
 /**
  *  执行push过渡动画
  */
 - (void)pushAnimation:(id<UIViewControllerContextTransitioning>)transitionContext{
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    //对tempView做动画，避免bug;
-//    UIView *tempView = [fromVC.view snapshotViewAfterScreenUpdates:NO];
-//    tempView.frame = fromVC.view.frame;
     UIView *containerView = [transitionContext containerView];
-//    [containerView addSubview:toVC.view];
-//    [containerView addSubview:tempView];
-//    fromVC.view.hidden = YES;
-//    [containerView insertSubview:toVC.view atIndex:0];
-////    [tempView setAnchorPointTo:CGPointMake(0, 0.5)];
-//    CGPoint point = CGPointMake(0, 0.5);
-//    tempView.frame = CGRectOffset(tempView.frame, (point.x - tempView.layer.anchorPoint.x) * tempView.frame.size.width, (point.y - tempView.layer.anchorPoint.y) * tempView.frame.size.height);
-//    tempView.layer.anchorPoint = point;
-//    CATransform3D transfrom3d = CATransform3DIdentity;
-//    transfrom3d.m34 = -0.002;
-//    containerView.layer.sublayerTransform = transfrom3d;
-//    //增加阴影
-//    CAGradientLayer *fromGradient = [CAGradientLayer layer];
-//    fromGradient.frame = fromVC.view.bounds;
-//    fromGradient.colors = @[(id)[UIColor blackColor].CGColor,
-//                        (id)[UIColor blackColor].CGColor];
-//    fromGradient.startPoint = CGPointMake(0.0, 0.5);
-//    fromGradient.endPoint = CGPointMake(0.8, 0.5);
-//    UIView *fromShadow = [[UIView alloc]initWithFrame:fromVC.view.bounds];
-//    fromShadow.backgroundColor = [UIColor clearColor];
-//    [fromShadow.layer insertSublayer:fromGradient atIndex:1];
-//    fromShadow.alpha = 0.0;
-//    [tempView addSubview:fromShadow];
-//    CAGradientLayer *toGradient = [CAGradientLayer layer];
-//    toGradient.frame = fromVC.view.bounds;
-//    toGradient.colors = @[(id)[UIColor blackColor].CGColor,
-//                            (id)[UIColor blackColor].CGColor];
-//    toGradient.startPoint = CGPointMake(0.0, 0.5);
-//    toGradient.endPoint = CGPointMake(0.8, 0.5);
-//    UIView *toShadow = [[UIView alloc]initWithFrame:fromVC.view.bounds];
-//    toShadow.backgroundColor = [UIColor clearColor];
-//    [toShadow.layer insertSublayer:toGradient atIndex:1];
-//    toShadow.alpha = 1.0;
-//    [toVC.view addSubview:toShadow];
-//    NSLog(@"%s %@",__FUNCTION__,transitionContext);
-//    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-//        tempView.layer.transform = CATransform3DMakeRotation(-M_PI_2, 0, 1, 0);
-//        fromShadow.alpha = 1.0;
-//        toShadow.alpha = 0.0;
-//    } completion:^(BOOL finished) {
-//        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-//        if ([transitionContext transitionWasCancelled]) {
-//            [tempView removeFromSuperview];
-//            fromVC.view.hidden = NO;
-//        }
-//    }];
-    
-    
     
     [containerView addSubview:fromVC.view];
     [containerView addSubview:self.animateImageView];
     self.animateImageView.hidden = NO;
     self.animateImageView.frame = self.imgFrame;
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+    
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
         fromVC.view.alpha = 0;
         self.animateImageView.frame = UIScreen.mainScreen.bounds;
-//        toVC.view.alpha = 1;
-//        toVC.view.frame = UIScreen.mainScreen.bounds;
     } completion:^(BOOL finished) {
         toVC.view.frame = UIScreen.mainScreen.bounds;
         [containerView addSubview:toVC.view];
@@ -332,6 +281,7 @@
     }];
 }
 
+// MARK: POP
 /**
  *  执行pop过渡动画
  */
@@ -339,15 +289,11 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIView *containerView = [transitionContext containerView];
-    //拿到push时候的
-//    UIView *tempView = containerView.subviews.lastObject;
+    
     [containerView addSubview:toVC.view];
-//    [containerView addSubview:fromVC.view];
     [containerView addSubview:self.animateImageView];
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-//        tempView.layer.transform = CATransform3DIdentity;
-//        fromVC.view.subviews.lastObject.alpha = 1.0;
-//        tempView.subviews.lastObject.alpha = 0.0;
+    
+    [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
         fromVC.view.frame = self.imgFrame;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
