@@ -24,6 +24,15 @@
 
 @implementation THKAnimatorTransition
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.scrollThreshold = 0.2;
+    }
+    return self;
+}
+
 
 - (void)addGestureWithVC:(UIViewController *)vc direction:(THKTransitionGestureDirection)direction{
     self.vc = vc;
@@ -40,11 +49,7 @@
     // animateImageView
     CGPoint translation = [panGesture translationInView:panGesture.view];
     
-    CGFloat scale = 1 - (translation.y / UIScreen.mainScreen.bounds.size.width);
-    scale = scale < 0 ? 0 : scale;
-    scale = scale > 1 ? 1 : scale;
-    
-    //手势百分比
+    // 手势百分比
     CGFloat percent = 0;
     switch (_direction) {
         case THKTransitionGestureDirectionLeft:{
@@ -68,7 +73,10 @@
         }
             break;
     }
-    
+    percent = percent < 0 ? 0 : percent;
+    percent = percent > 1 ? 1 : percent;
+    // 缩放比例
+    CGFloat scale = 1 - percent;
     NSLog(@" percent = %f, scale = %f",percent,scale);
     
     switch (panGesture.state) {
@@ -83,33 +91,29 @@
             
             //手势过程中，通过updateInteractiveTransition设置pop过程进行的百分比
             [self.percentDrivenInteractive updateInteractiveTransition:percent];
+            // image动画
             self.animateImageView.center = CGPointMake(UIScreen.mainScreen.bounds.size.width/2 + translation.x * scale, UIScreen.mainScreen.bounds.size.height/2 + translation.y);
             self.animateImageView.transform = CGAffineTransformMakeScale(scale, scale);
         }
             break;
         case UIGestureRecognizerStateEnded:{
             //手势完成后结束标记并且判断移动距离是否过半，过则finishInteractiveTransition完成转场操作，否者取消转场操作
-            if (percent > 1) {
+            if (percent > self.scrollThreshold) {
                 [self.percentDrivenInteractive finishInteractiveTransition];
-                
-                [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
-                    self.animateImageView.frame = self.imgFrame;
-                } completion:^(BOOL finished) {
-                    self.animateImageView.transform = CGAffineTransformIdentity;
-                    self.animateImageView.hidden = YES;
-                }];
             }else{
                 [self.percentDrivenInteractive cancelInteractiveTransition];
-                
-                [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
-                    self.animateImageView.frame = UIScreen.mainScreen.bounds;
-                } completion:^(BOOL finished) {
-                    self.animateImageView.transform = CGAffineTransformIdentity;
-                    self.animateImageView.hidden = YES;
-                }];
             }
-            break;
+            // image动画
+            CGRect finalFrame = percent > self.scrollThreshold ? self.imgFrame : UIScreen.mainScreen.bounds;
+            [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.6 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
+                self.animateImageView.frame = finalFrame;
+            } completion:^(BOOL finished) {
+                self.animateImageView.transform = CGAffineTransformIdentity;
+                self.animateImageView.hidden = YES;
+            }];
+            
         }
+            break;
         default:
             break;
     }
@@ -301,9 +305,12 @@
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         if ([transitionContext transitionWasCancelled]) {
             [toVC.view removeFromSuperview];
+            fromVC.imageView.hidden = NO;
+        }else{
+            // 完成
+            [fromVC.view removeFromSuperview];
         }
-        fromVC.view.alpha = 1;
-        fromVC.imageView.hidden = NO;
+        [self.animateImageView removeFromSuperview];
     }];
     NSLog(@"pop animation");
 }

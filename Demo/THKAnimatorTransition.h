@@ -29,6 +29,8 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, assign) CGRect imgFrame;
 
+@property (nonatomic, assign) float scrollThreshold;
+
 - (void)addGestureWithVC:(UIViewController *)vc direction:(THKTransitionGestureDirection)direction;
 
 @end
