@@ -40,6 +40,7 @@
     UIImageView *imgV = (UIImageView *)[cell viewWithTag:888];
     if (!imgV) {
         imgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width * 3 / 4)];
+        imgV.contentMode = UIViewContentModeScaleAspectFit;
         imgV.layer.masksToBounds = YES;
         imgV.tag = 888;
         [cell addSubview:imgV];
