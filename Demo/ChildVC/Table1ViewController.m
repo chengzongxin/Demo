@@ -55,7 +55,7 @@
     for (int i = 0; i < _imgs.count; i++) {
         NSIndexPath *aIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:aIndexPath];
-        CGRect frame = [cell convertRect:cell.frame toView:UIApplication.sharedApplication.keyWindow];
+        CGRect frame = [cell.superview convertRect:cell.frame toView:UIApplication.sharedApplication.keyWindow];
         [frames addObject:[NSValue valueWithCGRect:frame]];
     }
     

@@ -38,7 +38,7 @@
     
     if (self.images) {
         [self.view addSubview:self.collectionView];
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+        self.collectionView.contentOffset = CGPointMake(self.collectionView.frame.size.width * _index, 0);
     }else{
         [self.view addSubview:self.imageView];
         self.imageView.image = self.image;
@@ -57,7 +57,7 @@
     [animatorTransition addGestureWithVC:imageVC direction:THKTransitionGestureDirectionDown];;
     // 设置动画图片尺寸，图片
     animatorTransition.animateImageView.image = imageView.image;
-    animatorTransition.imgFrame = [imageView convertRect:imageView.frame toView:UIApplication.sharedApplication.keyWindow];
+    animatorTransition.imgFrame = [imageView.superview convertRect:imageView.frame toView:UIApplication.sharedApplication.keyWindow];
     // 设置转场代理
     fromVC.transitioningDelegate = animatorTransition;
     fromVC.navigationController.delegate = animatorTransition;
@@ -129,6 +129,9 @@
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         layout.itemSize = self.view.bounds.size;
+        layout.sectionInset = UIEdgeInsetsZero;
+        layout.minimumInteritemSpacing = 0;
+        layout.minimumLineSpacing = 0;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
         _collectionView.pagingEnabled = YES;
         _collectionView.dataSource = self;
