@@ -46,9 +46,6 @@
  *  手势过渡的过程
  */
 - (void)handleGesture:(UIPanGestureRecognizer *)panGesture{
-    // animateImageView
-    CGPoint translation = [panGesture translationInView:panGesture.view];
-    
     // 手势百分比
     CGFloat percent = 0;
     switch (_direction) {
@@ -88,12 +85,11 @@
         }
             break;
         case UIGestureRecognizerStateChanged:{
-            
             //手势过程中，通过updateInteractiveTransition设置pop过程进行的百分比
             [self.percentDrivenInteractive updateInteractiveTransition:percent];
             // image动画
-            self.animateImageView.center = CGPointMake(UIScreen.mainScreen.bounds.size.width/2 + translation.x * scale, UIScreen.mainScreen.bounds.size.height/2 + translation.y);
-            self.animateImageView.transform = CGAffineTransformMakeScale(scale, scale);
+            CGPoint translation = [panGesture translationInView:panGesture.view];
+            self.animateImageView.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(scale, scale), CGAffineTransformMakeTranslation(translation.x , translation.y));
         }
             break;
         case UIGestureRecognizerStateEnded:{
