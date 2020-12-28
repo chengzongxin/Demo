@@ -25,13 +25,16 @@ typedef enum : NSUInteger {
 
 @interface THKAnimatorTransition : NSObject<UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,CAAnimationDelegate,UINavigationControllerDelegate>
 
+/// 动画执行时生成的ImageView
 @property (nonatomic, strong) UIImageView *animateImageView;
-
+/// ImageView的Frame
 @property (nonatomic, assign) CGRect imgFrame;
-
+/// 滑动阀值
 @property (nonatomic, assign) float scrollThreshold;
-
+/// 添加手势
 - (void)addGestureWithVC:(UIViewController *)vc direction:(THKTransitionGestureDirection)direction;
+/// 传入原始ImageView
+@property (nonatomic, strong) UIImageView *originImageView;
 
 @end
 

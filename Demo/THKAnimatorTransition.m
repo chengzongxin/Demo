@@ -81,6 +81,7 @@
             //手势开始的时候标记手势状态，并开始相应的事件
             self.percentDrivenInteractive = [[UIPercentDrivenInteractiveTransition alloc] init];
             self.animateImageView.hidden = NO;
+            self.originImageView.hidden = YES;
             [self startGesture];
         }
             break;
@@ -103,9 +104,17 @@
             CGRect finalFrame = percent > self.scrollThreshold ? self.imgFrame : UIScreen.mainScreen.bounds;
             [UIView animateWithDuration:0.5 delay:0.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
                 self.animateImageView.frame = finalFrame;
+                if (self.originImageView) {
+                    self.animateImageView.contentMode = self.originImageView.contentMode;
+                    self.animateImageView.layer.cornerRadius = self.originImageView.layer.cornerRadius;
+                    self.animateImageView.layer.masksToBounds = self.originImageView.layer.masksToBounds;
+                    self.animateImageView.layer.borderColor = self.originImageView.layer.borderColor;
+                    self.animateImageView.layer.borderWidth = self.originImageView.layer.borderWidth;
+                }
             } completion:^(BOOL finished) {
                 self.animateImageView.transform = CGAffineTransformIdentity;
                 self.animateImageView.hidden = YES;
+                self.originImageView.hidden = NO;
             }];
             
         }
