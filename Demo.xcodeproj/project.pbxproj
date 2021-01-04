@@ -91,6 +91,7 @@
 		165325AE25748E5F007BD950 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 165325AD25748E5F007BD950 /* UIColor+HexString.m */; };
 		1674DC522577759E00B2644A /* THKUserSocialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674DC512577759E00B2644A /* THKUserSocialView.m */; };
 		1674DC58257778F300B2644A /* THKUserSocialViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1674DC57257778F300B2644A /* THKUserSocialViewModel.m */; };
+		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
 		16A6908D2581BE8000CA756A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A6908C2581BE8000CA756A /* RootViewController.m */; };
 		16A7DEE82577310000F1BABD /* BeCollectThumbupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A7DEE72577310000F1BABD /* BeCollectThumbupView.m */; };
 		16A7DEF02577310800F1BABD /* BeCollectThumbupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16A7DEEF2577310800F1BABD /* BeCollectThumbupView.xib */; };
@@ -278,6 +279,8 @@
 		1674DC512577759E00B2644A /* THKUserSocialView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserSocialView.m; sourceTree = "<group>"; };
 		1674DC56257778F300B2644A /* THKUserSocialViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKUserSocialViewModel.h; sourceTree = "<group>"; };
 		1674DC57257778F300B2644A /* THKUserSocialViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKUserSocialViewModel.m; sourceTree = "<group>"; };
+		1677D10F25A2FE2800F3E6C8 /* InjectionIIIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionIIIHelper.h; sourceTree = "<group>"; };
+		1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionIIIHelper.m; sourceTree = "<group>"; };
 		16A6908B2581BE8000CA756A /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		16A6908C2581BE8000CA756A /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		16A7DEE62577310000F1BABD /* BeCollectThumbupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeCollectThumbupView.h; sourceTree = "<group>"; };
@@ -387,6 +390,7 @@
 				160106F02553DD8000FE4B77 /* Info.plist */,
 				160106F12553DD8000FE4B77 /* main.m */,
 				160107372553DFDC00FE4B77 /* PrefixHeader.pch */,
+				1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */,
 				160107692553EA1A00FE4B77 /* BaseSection */,
 				1644980725889B8100E63F26 /* Category */,
 				164CF8CE2553F4E500FF02E0 /* TMUIKit */,
@@ -729,6 +733,15 @@
 				16A7DEF52577330B00F1BABD /* UIViewController+Convenient.m */,
 			);
 			path = CommonDefine;
+			sourceTree = "<group>";
+		};
+		1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */ = {
+			isa = PBXGroup;
+			children = (
+				1677D10F25A2FE2800F3E6C8 /* InjectionIIIHelper.h */,
+				1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */,
+			);
+			path = InjectionIIIHelper;
 			sourceTree = "<group>";
 		};
 		16A7DEE52577309D00F1BABD /* Subviews */ = {
@@ -1108,6 +1121,7 @@
 				16C532D625761E8C00210A3C /* THKUserCenterHeaderView.m in Sources */,
 				164CF9422553F4E600FF02E0 /* TMContentPicker.m in Sources */,
 				164CF93B2553F4E600FF02E0 /* UIColor+TMUI.m in Sources */,
+				1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */,
 				163AB08D2571234F005C25B2 /* Table3ViewController.m in Sources */,
 				164CF9622553F4E600FF02E0 /* TMActionSheet.m in Sources */,
 				164CF93C2553F4E600FF02E0 /* UIImage+TMUI.m in Sources */,
