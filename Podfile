@@ -11,6 +11,8 @@ target 'Demo' do
   pod 'ReactiveObjC'
   pod 'MJExtension'
   pod 'LookinServer', :configurations => ['Debug']
+  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git'
+  pod 'YYKit'
 
   target 'DemoTests' do
     inherit! :search_paths

@@ -1,17 +1,14 @@
 //
 //  ViewController.h
-//  Demo
+//  THKAuthenticationViewDemo
 //
-//  Created by Joe.cheng on 2020/11/27.
+//  Created by Joe.cheng on 2021/1/19.
 //
 
 #import <UIKit/UIKit.h>
-#import "THKPageContentViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface ViewController : UIViewController
 
-@interface ViewController : THKPageContentViewController
 
 @end
 
-NS_ASSUME_NONNULL_END
