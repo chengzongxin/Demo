@@ -14,7 +14,9 @@
 #import <AFNetworking.h>
 #import <ReactiveObjC.h>
 #import <MJExtension.h>
-#import "TMUIKit.h"
+#import <TMUIKit.h>
+#import <YYKit.h>
+#import "DepencyHeader.h"
 #define kDefaultHeadImg [UIImage imageNamed:@"img_defaultHead"]
 
 #endif /* PrefixHeader_pch */
