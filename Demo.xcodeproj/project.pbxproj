@@ -166,18 +166,7 @@
 			children = (
 				16699B7125D0D03400B7F43B /* THKAvatarView */,
 				16699B7625D0D03400B7F43B /* THKIdentityView */,
-				160106DF2553DD8000FE4B77 /* AppDelegate.h */,
-				160106E02553DD8000FE4B77 /* AppDelegate.m */,
-				160106E22553DD8000FE4B77 /* SceneDelegate.h */,
-				160106E32553DD8000FE4B77 /* SceneDelegate.m */,
-				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
-				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				160106E82553DD8000FE4B77 /* Main.storyboard */,
-				160106EB2553DD8000FE4B77 /* Assets.xcassets */,
-				160106ED2553DD8000FE4B77 /* LaunchScreen.storyboard */,
-				160106F02553DD8000FE4B77 /* Info.plist */,
-				160106F12553DD8000FE4B77 /* main.m */,
-				160107372553DFDC00FE4B77 /* PrefixHeader.pch */,
+				16699BAD25D0D3C300B7F43B /* Support Files */,
 				16699B8D25D0D17400B7F43B /* Depency */,
 				1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */,
 				160107692553EA1A00FE4B77 /* BaseSection */,
@@ -250,6 +239,25 @@
 				16699B9E25D0D29700B7F43B /* THKPersonalDesignerConfigResponse.m */,
 			);
 			path = Depency;
+			sourceTree = "<group>";
+		};
+		16699BAD25D0D3C300B7F43B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				160106DF2553DD8000FE4B77 /* AppDelegate.h */,
+				160106E02553DD8000FE4B77 /* AppDelegate.m */,
+				160106E22553DD8000FE4B77 /* SceneDelegate.h */,
+				160106E32553DD8000FE4B77 /* SceneDelegate.m */,
+				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
+				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				160106E82553DD8000FE4B77 /* Main.storyboard */,
+				160106EB2553DD8000FE4B77 /* Assets.xcassets */,
+				160106ED2553DD8000FE4B77 /* LaunchScreen.storyboard */,
+				160106F02553DD8000FE4B77 /* Info.plist */,
+				160106F12553DD8000FE4B77 /* main.m */,
+				160107372553DFDC00FE4B77 /* PrefixHeader.pch */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 		1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */ = {
@@ -726,8 +734,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5XB293ZE6R;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/PrefixHeader.pch";
-				INFOPLIST_FILE = Demo/Info.plist;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";
+				INFOPLIST_FILE = "Demo/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -746,8 +754,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5XB293ZE6R;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/PrefixHeader.pch";
-				INFOPLIST_FILE = Demo/Info.plist;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";
+				INFOPLIST_FILE = "Demo/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
