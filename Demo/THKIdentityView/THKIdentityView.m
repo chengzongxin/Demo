@@ -7,7 +7,6 @@
 
 
 #import "THKIdentityView.h"
-//#import "UIImageView+TCategory.h"
 #import "THKIdentityConfigManager.h"
 
 
