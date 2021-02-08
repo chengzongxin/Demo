@@ -15,6 +15,8 @@
 @property(nonatomic, strong) THKIdentityTypeModel *localConfig;
 @property(nonatomic, strong) THKIdentityTypeModel *remoteConfig;
 
+@property(nonatomic, assign) BOOL hadLoadConfig;
+
 @end
 
 @implementation THKIdentityConfigManager
@@ -32,10 +34,15 @@
 
 /// 加载配置
 - (void)loadConfig{
+    if (self.hadLoadConfig) {
+        return;
+    }
     // 加载本地配置
     [self loadCacheConfig];
     // 加载远程配置
     [self loadRemoteConfig];
+    
+    self.hadLoadConfig = YES;
 }
 
 

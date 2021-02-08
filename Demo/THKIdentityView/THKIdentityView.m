@@ -65,6 +65,7 @@
         
         [self updateUI];
     }else{
+        // 需要清理内部约束，否则计算出来的size不准确
         [self clear];
     }
     
@@ -72,6 +73,9 @@
 }
 
 - (void)clear{
+    for (UIGestureRecognizer *gesture in self.gestureRecognizers) {
+        [self removeGestureRecognizer:gesture];
+    }
     [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self);
         make.centerY.equalTo(self.mas_centerY);
@@ -114,8 +118,8 @@
         }
         
         [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self).inset(self.viewModel.imageEdgeInsets.left + self.viewModel.iconOffset.x);
-            make.centerY.equalTo(self.mas_centerY).offset(self.viewModel.iconOffset.y);
+            make.left.equalTo(self).inset(self.viewModel.imageEdgeInsets.left + self.viewModel.contentOffset.x);
+            make.centerY.equalTo(self.mas_centerY).offset(self.viewModel.contentOffset.y);
             make.size.mas_equalTo(self.viewModel.iconSize);
         }];
         

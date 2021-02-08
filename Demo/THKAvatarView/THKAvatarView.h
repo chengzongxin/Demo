@@ -1,6 +1,6 @@
 //
-//  TUserAvatarView.h
-//  UIComponentSamples
+//  THKAvatarView.h
+//
 //
 //  Created by Joe.cheng on 2021/2/5.
 //
@@ -18,14 +18,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKAvatarView : THKView
 
 /// 头像View对应的ViewModel，结合-[THKAvatarView bindViewModel:viewModel]使用
-@property (nonatomic, strong, readonly)THKAvatarViewModel *viewModel;
-
+@property (nonatomic, strong, readonly) THKAvatarViewModel *viewModel;
 /// 用户头像展示，为圆形裁剪样式。
 /// @note 内部默认的contentModel为UIViewContentModeScaleAspectFill。
-@property (nonatomic, strong, readonly)UIImageView *avatarImgView;
+@property (nonatomic, strong, readonly) UIImageView *avatarImgView;
 
 /// 在用户头像视图在右下方，展示身份标识小视图，默认此视图的中心点位于头像视图的右下位置的圆上。即中心点到头像视图中心点的直线与水平方向夹角成45度。
-@property(nonatomic, strong, readonly) THKIdentityView *identityView;
+@property (nonatomic, strong, readonly) THKIdentityView *identityView;
 
 
 @end

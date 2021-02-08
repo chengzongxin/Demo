@@ -14,29 +14,40 @@ typedef NS_ENUM(NSInteger, THKIdentityStyle) {
     THKIdentityStyle_IconText = 1, // 完整显示 eg ：V 认证机构
 };
 
+/// 用于THKIdentityView绑定使用，调用bindViewModel：方法
+/// @note 内部还未做RAC通知绑定，如果需要改动原有vm，需要重新生成一个新的vm，再绑定到View
 @interface THKIdentityViewModel : THKViewModel
-
+/// 标识类型，如果不传则不显示标识
 @property (nonatomic, assign) NSInteger type;
+/// 标识二级类型，没有二级标识类型可不传
 @property (nonatomic, assign) NSInteger subType;
+/// 显示样式，Icon或者IconText
 @property (nonatomic, assign) THKIdentityStyle style;
-
-
-
+/// 本地标识图像，只有3个图标可供选择
 @property (nonatomic, strong) UIImage *iconLocal;
+/// 标识图像URL
 @property (nonatomic, strong) NSString *iconUrl;
+/// 标识描述文本（IconText需要）
 @property (nonatomic, strong) NSString *text;
+/// 标识文本字体（IconText需要）
 @property (nonatomic, strong) UIFont *font;
+/// 标识文本颜色（IconText需要）
 @property (nonatomic, strong) UIColor *textColor;
+/// 标识背景色（IconText需要）
 @property (nonatomic, strong) UIColor *backgroundColor;
+/// 标识尺寸
 @property (nonatomic, assign) CGSize iconSize;
-
-@property(nonatomic, assign) UIEdgeInsets imageEdgeInsets;
-@property(nonatomic, assign) CGFloat imageTextSpace;
-
-
-@property (nonatomic, assign) CGPoint iconOffset;
-@property(nonatomic, strong) RACSubject *onTapSubject;
-
+/// 文本缩进，其中（上，左，下）对应icon在view中的缩进
+/// 文本缩进，其中（右）对应文本距离右边的缩进
+/// 设置后，标识View会按照iconSize增大
+@property (nonatomic, assign) UIEdgeInsets imageEdgeInsets;
+/// 标识icon和文本的间距
+@property (nonatomic, assign) CGFloat imageTextSpace;
+/// 标识内容偏移（图标和文本）
+@property (nonatomic, assign) CGPoint contentOffset;
+/// 标识点击信号
+@property (nonatomic, strong) RACSubject *onTapSubject;
+/// 抓取配置是否成功
 @property (nonatomic, assign) BOOL fetchConfigSuccess;
 
 /// 创建标识View

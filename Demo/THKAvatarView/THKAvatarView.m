@@ -1,6 +1,6 @@
 //
-//  TUserAvatarView.m
-//  UIComponentSamples
+//  THKAvatarView.m
+//
 //
 //  Created by Joe.cheng on 2021/2/5.
 //
@@ -20,7 +20,7 @@
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self loadUIs];
+        [self setupViews];
     }
     return self;
 }
@@ -35,11 +35,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self loadUIs];
+    [self setupViews];
 }
 
 #pragma mark - ui layout
-- (void)loadUIs {
+- (void)setupViews {
     self.backgroundColor = [UIColor clearColor];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView)];
     [self addGestureRecognizer:tap];

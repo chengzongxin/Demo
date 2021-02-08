@@ -24,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKIdentityView : THKView
 
 @property (nonatomic, strong, readonly) THKIdentityViewModel *viewModel;
+/// 图标
+@property (nonatomic, strong, readonly) UIImageView *iconImageView;
+/// 文本 （IconText样式才有）
+@property (nonatomic, strong, readonly) UILabel *textLabel;
 /// 获取认证标识View尺寸大小
 @property (nonatomic, assign, readonly) CGSize viewSize;
 
