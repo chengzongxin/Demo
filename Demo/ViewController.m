@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"list" style:UIBarButtonItemStylePlain target:self action:@selector(list)];
+    
     THKIdentityViewModel *vm0 = [[THKIdentityViewModel alloc] initWithType:10 subType:0 style:THKIdentityStyle_IconText];
     THKIdentityView *v0 = [[THKIdentityView alloc] initWithViewModel:vm0];
     [self.view addSubview:v0];
@@ -284,6 +286,5 @@
 //    [_xib1 setType:11];
 //    [_xib2 setType:12];
 }
-
 
 @end
