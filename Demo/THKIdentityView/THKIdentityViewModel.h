@@ -39,6 +39,17 @@ typedef NS_ENUM(NSInteger, THKIdentityStyle) {
 
 @property (nonatomic, assign) BOOL fetchConfigSuccess;
 
+/// 创建标识View
+/// @param type V标识类型
+/// @param style V标识样式
++ (instancetype)viewModelWithType:(NSInteger)type style:(THKIdentityStyle)style;
+
+/// 创建标识View
+/// @param type V标识类型
+/// @param subType 二级标识分类，有些业务线会一个类型下会对应两个标识，比如11.1设计机构，11.2个人设计师
+/// @param style V标识样式
++ (instancetype)viewModelWithType:(NSInteger)type subType:(NSInteger)subType style:(THKIdentityStyle)style;
+
 /// 初始化创建标识View
 /// @param type V标识类型
 /// @param style V标识样式

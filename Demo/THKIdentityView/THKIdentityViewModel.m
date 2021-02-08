@@ -26,6 +26,14 @@
     self.onTapSubject = RACSubject.subject;
 }
 
++ (instancetype)viewModelWithType:(NSInteger)type style:(THKIdentityStyle)style{
+    return [[self alloc] initWithType:type subType:0 style:style];
+}
+
++ (instancetype)viewModelWithType:(NSInteger)type subType:(NSInteger)subType style:(THKIdentityStyle)style{
+    return [[self alloc] initWithType:type subType:subType style:style];
+}
+
 - (instancetype)initWithType:(NSInteger)type style:(THKIdentityStyle)style{
     return [self initWithType:type subType:0 style:style];
 }

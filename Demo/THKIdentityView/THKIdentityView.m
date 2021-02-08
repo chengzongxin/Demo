@@ -59,20 +59,14 @@
 // MARK: 刷新数据和UI，初始化，xib，重新设置Type时调用
 - (void)bindViewModel{
     if (self.viewModel.fetchConfigSuccess) {
-//        self.hidden = NO;
+        [self addGesture];
+        
+        [self updateData];
+        
+        [self updateUI];
     }else{
         [self clear];
-        
-        [self invalidateIntrinsicContentSize];
-        
-        return;
     }
-    
-    [self addGesture];
-    
-    [self updateData];
-    
-    [self updateUI];
     
     [self invalidateIntrinsicContentSize];
 }
@@ -84,6 +78,7 @@
         make.size.mas_equalTo(CGSizeZero);
     }];
     self.textLabel.text = nil;
+    self.textLabel.attributedText = nil;
     [self.textLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.iconImageView.mas_right);
         make.right.equalTo(self);
