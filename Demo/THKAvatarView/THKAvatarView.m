@@ -78,7 +78,8 @@
         self.identityView.hidden = YES;
     }else{
         self.identityView.hidden = NO;
-        [_identityView setType:self.viewModel.identityType subType:self.viewModel.identitySubType];
+        THKIdentityViewModel *vm = [[THKIdentityViewModel alloc] initWithType:self.viewModel.identityType subType:self.viewModel.identitySubType style:THKIdentityStyle_Icon];
+        [_identityView bindViewModel:vm];
         
         if (_identityView.superview) {
             [_identityView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -102,7 +103,7 @@
 
 - (THKIdentityView *)identityView{
     if (!_identityView) {
-        _identityView = [[THKIdentityView alloc] initWithType:0 subType:0 style:THKIdentityViewStyle_Icon];
+        _identityView = [[THKIdentityView alloc] init];
     }
     return _identityView;
 }

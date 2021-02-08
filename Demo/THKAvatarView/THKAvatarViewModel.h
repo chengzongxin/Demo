@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param identityType 标识类型
 /// @param identitySubType 标识二级类型，没有二级标识类型可不传
 - (instancetype)initWithAvatarUrl:(NSString *)avatarUrl
-                 placeHolderImage:(UIImage *)placeHolderImage
+                 placeHolderImage:(nullable UIImage *)placeHolderImage
                      identityType:(NSInteger)identityType
                   identitySubType:(NSInteger)identitySubType;
 

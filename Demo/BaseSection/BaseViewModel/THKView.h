@@ -22,7 +22,7 @@
 
 /// 用ViewModel初始化View
 /// @param viewModel
-- (instancetype)initWithViewModel:(THKViewModel *)viewModel DEPRECATED_MSG_ATTRIBUTE("Please use bindViewModel:");
+- (instancetype)initWithViewModel:(THKViewModel *)viewModel;// DEPRECATED_MSG_ATTRIBUTE("Please use bindViewModel:");
 
 
 /// 用model初始化View

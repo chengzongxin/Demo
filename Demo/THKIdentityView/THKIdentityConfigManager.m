@@ -55,10 +55,10 @@
 }
 
 
-- (THKIdentityConfiguration *)fetchConfigWithType:(NSInteger)type subType:(NSInteger)subType{
+- (THKIdentityViewModel *)fetchConfigWithType:(NSInteger)type subType:(NSInteger)subType{
     THKIdentityTypeModel *remoteConfig = THKIdentityConfigManager.shareInstane.remoteConfig;
     
-    THKIdentityConfiguration *config = [self configWithModel:remoteConfig type:type subType:subType];
+    THKIdentityViewModel *config = [self configWithModel:remoteConfig type:type subType:subType];
     if (config) {
         return config;
     }
@@ -71,7 +71,7 @@
 
 /// 使用接口返回的模型配置
 /// @param type 认证类型
-- (THKIdentityConfiguration *)configWithModel:(THKIdentityTypeModel *)configModel type:(NSInteger)type subType:(NSInteger)subType{
+- (THKIdentityViewModel *)configWithModel:(THKIdentityTypeModel *)configModel type:(NSInteger)type subType:(NSInteger)subType{
 
     NSArray *models = configModel.identify;
     if (models.count == 0) return nil;
@@ -100,7 +100,7 @@
         return nil;
     }
 
-    THKIdentityConfiguration *config = [[THKIdentityConfiguration alloc] init];
+    THKIdentityViewModel *config = [[THKIdentityViewModel alloc] init];
     config.iconUrl = model.identificationPic;
     config.text = model.textData.identificationDesc;
     config.font = [UIFont systemFontOfSize:model.textData.fontSize];

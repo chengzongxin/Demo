@@ -14,7 +14,7 @@
     return [self initWithAvatarUrl:avatarUrl placeHolderImage:nil identityType:identityType identitySubType:0];
 }
 
-- (instancetype)initWithAvatarUrl:(NSString *)avatarUrl placeHolderImage:(UIImage *)placeHolderImage identityType:(NSInteger)identityType identitySubType:(NSInteger)identitySubType{
+- (instancetype)initWithAvatarUrl:(NSString *)avatarUrl placeHolderImage:(nullable UIImage *)placeHolderImage identityType:(NSInteger)identityType identitySubType:(NSInteger)identitySubType{
     if (self == [super init]) {
         self.avatarUrl = avatarUrl;
         self.placeHolderImage = placeHolderImage;
@@ -24,20 +24,14 @@
     return self;
 }
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.avatarUrl = nil;
-        self.placeHolderImage = kDefaultHeadImg;
-        self.identityType = 0;
-        self.identitySubType = 0;
-        self.onTapSubject = RACSubject.subject;
-        self.identityIconSize = CGSizeMake(10, 10);
-        self.identityIconCenterOffset = CGPointZero;
-        self.onTapSubject = RACSubject.subject;
-    }
-    return self;
+- (void)initialize{
+    self.placeHolderImage = kDefaultHeadImg;
+    self.identityType = 0;
+    self.identitySubType = 0;
+    self.onTapSubject = RACSubject.subject;
+    self.identityIconSize = CGSizeMake(10, 10);
+    self.identityIconCenterOffset = CGPointZero;
+    self.onTapSubject = RACSubject.subject;
 }
 
 @end
