@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isHiddenIdentity;
 /// 用户可指定identityIconView的展示尺寸，默认值为{10, 10}
 @property (nonatomic, assign) CGSize identityIconSize;
+/// 用户可指定identityIconView的展示比例，头像和标识默认比例为 <3.6:1>,当不设置identityIconSize才会按照取这个值，如果设置了identityIconSize，这个属性无效
+@property (nonatomic, assign) CGFloat identityRatio;
 /// 用户可指定identityIconView展示时中心位置的偏移。默认为{0, 0}
 @property (nonatomic, assign) CGPoint identityIconCenterOffset;
 /// 点击THKAvatarView回调

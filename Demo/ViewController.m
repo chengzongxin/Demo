@@ -104,22 +104,26 @@
         NSLog(@"vm7 %@",x);
     }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSLog(@"3 second ====================");
-        [v0 bindViewModel:[[THKIdentityViewModel alloc] initWithType:12 subType:0 style:THKIdentityStyle_IconText]];
-        [v1 bindViewModel:[[THKIdentityViewModel alloc] initWithType:14 subType:0 style:THKIdentityStyle_IconText]];
-        [v2 bindViewModel:[[THKIdentityViewModel alloc] initWithType:133 subType:0 style:THKIdentityStyle_IconText]];
-        [v3 bindViewModel:[[THKIdentityViewModel alloc] initWithType:12 subType:0 style:THKIdentityStyle_IconText]];
-        [v4 bindViewModel:[[THKIdentityViewModel alloc] initWithType:11 subType:1 style:THKIdentityStyle_IconText]];
-        [v5 bindViewModel:[[THKIdentityViewModel alloc] initWithType:11 subType:0 style:THKIdentityStyle_IconText]];
-        [v6 bindViewModel:[[THKIdentityViewModel alloc] initWithType:10 subType:0 style:THKIdentityStyle_IconText]];
-        THKAvatarViewModel *vm7_1 = [[THKAvatarViewModel alloc] initWithAvatarUrl:@"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3927348840,3579255094&fm=11&gp=0.jpg" identityType:10];
-        [a7 bindViewModel:vm7_1];
-        [vm7_1.onTapSubject subscribeNext:^(id  _Nullable x) {
-            NSLog(@"vm7_1 %@",x);
-        }];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        NSLog(@"3 second ====================");
+//        [v0 bindViewModel:[[THKIdentityViewModel alloc] initWithType:12 subType:0 style:THKIdentityStyle_IconText]];
+//        [v1 bindViewModel:[[THKIdentityViewModel alloc] initWithType:14 subType:0 style:THKIdentityStyle_IconText]];
+//        [v2 bindViewModel:[[THKIdentityViewModel alloc] initWithType:133 subType:0 style:THKIdentityStyle_IconText]];
+//        [v3 bindViewModel:[[THKIdentityViewModel alloc] initWithType:12 subType:0 style:THKIdentityStyle_IconText]];
+//        [v4 bindViewModel:[[THKIdentityViewModel alloc] initWithType:11 subType:1 style:THKIdentityStyle_IconText]];
+//        [v5 bindViewModel:[[THKIdentityViewModel alloc] initWithType:11 subType:0 style:THKIdentityStyle_IconText]];
+//        [v6 bindViewModel:[[THKIdentityViewModel alloc] initWithType:10 subType:0 style:THKIdentityStyle_IconText]];
+//        THKAvatarViewModel *vm7_1 = [[THKAvatarViewModel alloc] initWithAvatarUrl:@"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3927348840,3579255094&fm=11&gp=0.jpg" identityType:10];
+//        [a7 bindViewModel:vm7_1];
+//        [vm7_1.onTapSubject subscribeNext:^(id  _Nullable x) {
+//            NSLog(@"vm7_1 %@",x);
+//        }];
+//    });
     
+//    THKAvatarViewModel *vm8 = [[THKAvatarViewModel alloc] initWithAvatarUrl:@"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2458338947,591929039&fm=26&gp=0.jpg" identityType:11];
+//    THKAvatarView *a8 = [[THKAvatarView alloc] initWithFrame:CGRectMake(100, 500, 30, 30)];
+//    [a8 bindViewModel:vm8];
+//    [self.view addSubview:a8];
     
     
 //    THKIdentityView *i7 = [THKIdentityView identityViewWithType:10 style:THKIdentityViewStyle_Icon];

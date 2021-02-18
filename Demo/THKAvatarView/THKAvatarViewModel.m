@@ -29,9 +29,16 @@
     self.identityType = 0;
     self.identitySubType = 0;
     self.onTapSubject = RACSubject.subject;
-    self.identityIconSize = CGSizeMake(10, 10);
+    self.identityRatio = 3.6;
     self.identityIconCenterOffset = CGPointZero;
     self.onTapSubject = RACSubject.subject;
+}
+
+- (void)setIdentityRatio:(CGFloat)identityRatio{
+    _identityRatio = identityRatio;
+    if (identityRatio <= 0) {
+        NSAssert(0, @"比例必须大于0");
+    }
 }
 
 @end
