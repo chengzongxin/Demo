@@ -96,8 +96,8 @@
     [a7 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(100);
         make.top.mas_equalTo(300);
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(40);
+        make.width.mas_equalTo(80);
+        make.height.mas_equalTo(80);
     }];
 
     [vm7.onTapSubject subscribeNext:^(id  _Nullable x) {

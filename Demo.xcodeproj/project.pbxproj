@@ -20,18 +20,18 @@
 		1641FD5925D1149100B258DC /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1641FD5825D1149100B258DC /* ListViewController.m */; };
 		1641FD6025D114D900B258DC /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1641FD5E25D114D900B258DC /* ListCell.m */; };
 		1641FD6125D114D900B258DC /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1641FD5F25D114D900B258DC /* ListCell.xib */; };
-		1641FDD725D1309900B258DC /* THKAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1641FDC925D1309900B258DC /* THKAvatarView.m */; };
-		1641FDD825D1309900B258DC /* THKAvatarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1641FDCC25D1309900B258DC /* THKAvatarViewModel.m */; };
-		1641FDD925D1309900B258DC /* THKIdentityConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1641FDCE25D1309900B258DC /* THKIdentityConfigManager.m */; };
-		1641FDDA25D1309900B258DC /* THKIdentityTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1641FDCF25D1309900B258DC /* THKIdentityTypeModel.m */; };
-		1641FDDB25D1309900B258DC /* THKIdentityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1641FDD025D1309900B258DC /* THKIdentityViewModel.m */; };
-		1641FDDC25D1309900B258DC /* V_Identity_Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 1641FDD525D1309900B258DC /* V_Identity_Config.json */; };
-		1641FDDD25D1309900B258DC /* THKIdentityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1641FDD625D1309900B258DC /* THKIdentityView.m */; };
 		16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16699B6025D0CF5E00B7F43B /* ViewController.m */; };
 		16699B9025D0D19900B7F43B /* UIImageView+Depency.m in Sources */ = {isa = PBXBuildFile; fileRef = 16699B8F25D0D19900B7F43B /* UIImageView+Depency.m */; };
 		16699B9925D0D20600B7F43B /* THKPersonalDesignerConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16699B9825D0D20600B7F43B /* THKPersonalDesignerConfigRequest.m */; };
 		16699B9F25D0D29700B7F43B /* THKPersonalDesignerConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16699B9E25D0D29700B7F43B /* THKPersonalDesignerConfigResponse.m */; };
 		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
+		16B00E7725DE52E70029975B /* THKIdentityConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E6925DE52E70029975B /* THKIdentityConfigManager.m */; };
+		16B00E7825DE52E70029975B /* THKIdentityTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E6A25DE52E70029975B /* THKIdentityTypeModel.m */; };
+		16B00E7925DE52E70029975B /* THKIdentityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E6B25DE52E70029975B /* THKIdentityViewModel.m */; };
+		16B00E7A25DE52E70029975B /* V_Identity_Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 16B00E7025DE52E70029975B /* V_Identity_Config.json */; };
+		16B00E7B25DE52E70029975B /* THKIdentityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E7125DE52E70029975B /* THKIdentityView.m */; };
+		16B00E7C25DE52E70029975B /* THKAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E7325DE52E70029975B /* THKAvatarView.m */; };
+		16B00E7D25DE52E70029975B /* THKAvatarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B00E7625DE52E70029975B /* THKAvatarViewModel.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
@@ -83,19 +83,6 @@
 		1641FD5D25D114D900B258DC /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
 		1641FD5E25D114D900B258DC /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
 		1641FD5F25D114D900B258DC /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
-		1641FDC925D1309900B258DC /* THKAvatarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKAvatarView.m; sourceTree = "<group>"; };
-		1641FDCA25D1309900B258DC /* THKAvatarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKAvatarViewModel.h; sourceTree = "<group>"; };
-		1641FDCB25D1309900B258DC /* THKAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKAvatarView.h; sourceTree = "<group>"; };
-		1641FDCC25D1309900B258DC /* THKAvatarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKAvatarViewModel.m; sourceTree = "<group>"; };
-		1641FDCE25D1309900B258DC /* THKIdentityConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityConfigManager.m; sourceTree = "<group>"; };
-		1641FDCF25D1309900B258DC /* THKIdentityTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityTypeModel.m; sourceTree = "<group>"; };
-		1641FDD025D1309900B258DC /* THKIdentityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityViewModel.m; sourceTree = "<group>"; };
-		1641FDD125D1309900B258DC /* THKIdentityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityView.h; sourceTree = "<group>"; };
-		1641FDD225D1309900B258DC /* THKIdentityTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityTypeModel.h; sourceTree = "<group>"; };
-		1641FDD325D1309900B258DC /* THKIdentityConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityConfigManager.h; sourceTree = "<group>"; };
-		1641FDD425D1309900B258DC /* THKIdentityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityViewModel.h; sourceTree = "<group>"; };
-		1641FDD525D1309900B258DC /* V_Identity_Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = V_Identity_Config.json; sourceTree = "<group>"; };
-		1641FDD625D1309900B258DC /* THKIdentityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityView.m; sourceTree = "<group>"; };
 		16699B5F25D0CF5E00B7F43B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		16699B6025D0CF5E00B7F43B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		16699B8E25D0D19900B7F43B /* UIImageView+Depency.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Depency.h"; sourceTree = "<group>"; };
@@ -107,6 +94,19 @@
 		16699BA325D0D2F800B7F43B /* DepencyHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DepencyHeader.h; sourceTree = "<group>"; };
 		1677D10F25A2FE2800F3E6C8 /* InjectionIIIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionIIIHelper.h; sourceTree = "<group>"; };
 		1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionIIIHelper.m; sourceTree = "<group>"; };
+		16B00E6925DE52E70029975B /* THKIdentityConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityConfigManager.m; sourceTree = "<group>"; };
+		16B00E6A25DE52E70029975B /* THKIdentityTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityTypeModel.m; sourceTree = "<group>"; };
+		16B00E6B25DE52E70029975B /* THKIdentityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityViewModel.m; sourceTree = "<group>"; };
+		16B00E6C25DE52E70029975B /* THKIdentityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityView.h; sourceTree = "<group>"; };
+		16B00E6D25DE52E70029975B /* THKIdentityTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityTypeModel.h; sourceTree = "<group>"; };
+		16B00E6E25DE52E70029975B /* THKIdentityConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityConfigManager.h; sourceTree = "<group>"; };
+		16B00E6F25DE52E70029975B /* THKIdentityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityViewModel.h; sourceTree = "<group>"; };
+		16B00E7025DE52E70029975B /* V_Identity_Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = V_Identity_Config.json; sourceTree = "<group>"; };
+		16B00E7125DE52E70029975B /* THKIdentityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityView.m; sourceTree = "<group>"; };
+		16B00E7325DE52E70029975B /* THKAvatarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKAvatarView.m; sourceTree = "<group>"; };
+		16B00E7425DE52E70029975B /* THKAvatarViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKAvatarViewModel.h; sourceTree = "<group>"; };
+		16B00E7525DE52E70029975B /* THKAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKAvatarView.h; sourceTree = "<group>"; };
+		16B00E7625DE52E70029975B /* THKAvatarViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKAvatarViewModel.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,8 +172,8 @@
 		160106DE2553DD8000FE4B77 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				1641FDC825D1309900B258DC /* THKAvatarView */,
-				1641FDCD25D1309900B258DC /* THKIdentityView */,
+				16B00E7225DE52E70029975B /* THKAvatarView */,
+				16B00E6825DE52E70029975B /* THKIdentityView */,
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
 				1641FD5725D1149100B258DC /* ListViewController.h */,
@@ -215,33 +215,6 @@
 			path = BaseSection;
 			sourceTree = "<group>";
 		};
-		1641FDC825D1309900B258DC /* THKAvatarView */ = {
-			isa = PBXGroup;
-			children = (
-				1641FDC925D1309900B258DC /* THKAvatarView.m */,
-				1641FDCA25D1309900B258DC /* THKAvatarViewModel.h */,
-				1641FDCB25D1309900B258DC /* THKAvatarView.h */,
-				1641FDCC25D1309900B258DC /* THKAvatarViewModel.m */,
-			);
-			path = THKAvatarView;
-			sourceTree = "<group>";
-		};
-		1641FDCD25D1309900B258DC /* THKIdentityView */ = {
-			isa = PBXGroup;
-			children = (
-				1641FDCE25D1309900B258DC /* THKIdentityConfigManager.m */,
-				1641FDCF25D1309900B258DC /* THKIdentityTypeModel.m */,
-				1641FDD025D1309900B258DC /* THKIdentityViewModel.m */,
-				1641FDD125D1309900B258DC /* THKIdentityView.h */,
-				1641FDD225D1309900B258DC /* THKIdentityTypeModel.h */,
-				1641FDD325D1309900B258DC /* THKIdentityConfigManager.h */,
-				1641FDD425D1309900B258DC /* THKIdentityViewModel.h */,
-				1641FDD525D1309900B258DC /* V_Identity_Config.json */,
-				1641FDD625D1309900B258DC /* THKIdentityView.m */,
-			);
-			path = THKIdentityView;
-			sourceTree = "<group>";
-		};
 		16699B8D25D0D17400B7F43B /* Depency */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +253,33 @@
 				1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */,
 			);
 			path = InjectionIIIHelper;
+			sourceTree = "<group>";
+		};
+		16B00E6825DE52E70029975B /* THKIdentityView */ = {
+			isa = PBXGroup;
+			children = (
+				16B00E6C25DE52E70029975B /* THKIdentityView.h */,
+				16B00E7125DE52E70029975B /* THKIdentityView.m */,
+				16B00E6F25DE52E70029975B /* THKIdentityViewModel.h */,
+				16B00E6B25DE52E70029975B /* THKIdentityViewModel.m */,
+				16B00E6E25DE52E70029975B /* THKIdentityConfigManager.h */,
+				16B00E6925DE52E70029975B /* THKIdentityConfigManager.m */,
+				16B00E6D25DE52E70029975B /* THKIdentityTypeModel.h */,
+				16B00E6A25DE52E70029975B /* THKIdentityTypeModel.m */,
+				16B00E7025DE52E70029975B /* V_Identity_Config.json */,
+			);
+			path = THKIdentityView;
+			sourceTree = "<group>";
+		};
+		16B00E7225DE52E70029975B /* THKAvatarView */ = {
+			isa = PBXGroup;
+			children = (
+				16B00E7525DE52E70029975B /* THKAvatarView.h */,
+				16B00E7325DE52E70029975B /* THKAvatarView.m */,
+				16B00E7425DE52E70029975B /* THKAvatarViewModel.h */,
+				16B00E7625DE52E70029975B /* THKAvatarViewModel.m */,
+			);
+			path = THKAvatarView;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -426,7 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
-				1641FDDC25D1309900B258DC /* V_Identity_Config.json in Resources */,
+				16B00E7A25DE52E70029975B /* V_Identity_Config.json in Resources */,
 				160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */,
 				160106EA2553DD8000FE4B77 /* Main.storyboard in Resources */,
 				1641FD6125D114D900B258DC /* ListCell.xib in Resources */,
@@ -558,23 +558,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				1641FD6025D114D900B258DC /* ListCell.m in Sources */,
-				1641FDD725D1309900B258DC /* THKAvatarView.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
+				16B00E7B25DE52E70029975B /* THKIdentityView.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
 				1641FD5925D1149100B258DC /* ListViewController.m in Sources */,
+				16B00E7C25DE52E70029975B /* THKAvatarView.m in Sources */,
 				1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */,
-				1641FDDA25D1309900B258DC /* THKIdentityTypeModel.m in Sources */,
 				16699B9025D0D19900B7F43B /* UIImageView+Depency.m in Sources */,
-				1641FDD925D1309900B258DC /* THKIdentityConfigManager.m in Sources */,
+				16B00E7D25DE52E70029975B /* THKAvatarViewModel.m in Sources */,
 				16699B9F25D0D29700B7F43B /* THKPersonalDesignerConfigResponse.m in Sources */,
+				16B00E7825DE52E70029975B /* THKIdentityTypeModel.m in Sources */,
 				16699B9925D0D20600B7F43B /* THKPersonalDesignerConfigRequest.m in Sources */,
-				1641FDD825D1309900B258DC /* THKAvatarViewModel.m in Sources */,
-				1641FDDD25D1309900B258DC /* THKIdentityView.m in Sources */,
-				1641FDDB25D1309900B258DC /* THKIdentityViewModel.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,
+				16B00E7725DE52E70029975B /* THKIdentityConfigManager.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */,
+				16B00E7925DE52E70029975B /* THKIdentityViewModel.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

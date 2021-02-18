@@ -76,18 +76,25 @@
     for (UIGestureRecognizer *gesture in self.gestureRecognizers) {
         [self removeGestureRecognizer:gesture];
     }
-    [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self);
-        make.centerY.equalTo(self.mas_centerY);
-        make.size.mas_equalTo(CGSizeZero);
-    }];
-    self.textLabel.text = nil;
-    self.textLabel.attributedText = nil;
-    [self.textLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.iconImageView.mas_right);
-        make.right.equalTo(self);
-        make.centerY.equalTo(self.iconImageView.mas_centerY);
-    }];
+    
+    if (_iconImageView.superview) {
+        [_iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self);
+            make.centerY.equalTo(self.mas_centerY);
+            make.size.mas_equalTo(CGSizeZero);
+        }];
+    }
+    
+    if (_textLabel.superview || self.viewModel.style == THKIdentityStyle_IconText) {
+        _textLabel.text = nil;
+        _textLabel.attributedText = nil;
+        [_textLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.iconImageView.mas_right);
+            make.right.equalTo(self);
+            make.centerY.equalTo(self.iconImageView.mas_centerY);
+        }];
+    }
+    
 }
 
 - (void)updateData{
