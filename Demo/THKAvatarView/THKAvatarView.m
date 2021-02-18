@@ -87,7 +87,7 @@
 
 /// MARK: 外部调用 -[view bindViewModel:vm] 后会调用这个方法，在这里设置数据 & 刷新UI
 - (void)bindViewModel{
-    [self.avatarImgView loadImageWithUrlStr:self.viewModel.avatarUrl placeHolderImage:self.viewModel.placeHolderImage ?: kDefaultHeadImg];
+    [self.avatarImgView loadImageWithUrlStr:self.viewModel.avatarUrl placeHolderImage:self.viewModel.placeHolderImage ?: kDefaultHeadPortrait_60];
     
     if (self.viewModel.isHiddenIdentity) {
         self.identityView.hidden = YES;

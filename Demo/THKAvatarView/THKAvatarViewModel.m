@@ -25,7 +25,7 @@
 }
 
 - (void)initialize{
-    self.placeHolderImage = kDefaultHeadImg;
+    self.placeHolderImage = kDefaultHeadPortrait_60;
     self.identityType = 0;
     self.identitySubType = 0;
     self.onTapSubject = RACSubject.subject;
