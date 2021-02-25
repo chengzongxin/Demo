@@ -198,6 +198,11 @@
 //        [v11 setType:12 subType:0];
 ////        label.text = @"hhdsahdas";
 //    });
+    
+    
+    CGFloat infi = 1 / self.view.tag;
+    NSLog(@"%f",infi);
+    
 }
 
 - (void)test{

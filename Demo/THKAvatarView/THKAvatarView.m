@@ -60,6 +60,9 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    NSLog(@"%@,%@",self,self.viewModel);
+    
     // 不剪切子视图
     self.clipsToBounds = NO;
     // 设置圆角

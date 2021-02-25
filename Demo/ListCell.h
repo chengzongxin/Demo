@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet THKIdentityView *identity;
 @property (weak, nonatomic) IBOutlet THKIdentityView *identityIconText;
 
+@property(nonatomic, strong) NSIndexPath *indexPath;
+
 @end
 
 NS_ASSUME_NONNULL_END
