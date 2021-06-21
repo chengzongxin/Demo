@@ -12,6 +12,7 @@
 #import "NormalViewController.h"
 #import "THKMaterialClassificationView.h"
 #import "THKMaterialClassificationViewModel.h"
+#import "THKMaterialRecommendRankVC.h"
 
 @interface THKMaterialClassificationVC ()
 
@@ -32,7 +33,7 @@
     
     
     self.title = @"家电";
-    self.vcs = [[@[Table1ViewController.class,
+    self.vcs = [[@[THKMaterialRecommendRankVC.class,
                    Table2ViewController.class,
                    NormalViewController.class].rac_sequence map:^id _Nullable(Class cls) {
         return [[cls alloc] init];

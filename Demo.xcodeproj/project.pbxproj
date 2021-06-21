@@ -36,6 +36,12 @@
 		1669C215268087210059E9B0 /* THKMaterialClassificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C213268087210059E9B0 /* THKMaterialClassificationViewCell.m */; };
 		1669C2202680925C0059E9B0 /* THKMaterialClassificationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C21F2680925C0059E9B0 /* THKMaterialClassificationViewModel.m */; };
 		1669C2272680948B0059E9B0 /* THKDynamicGroupEntranceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C2262680948B0059E9B0 /* THKDynamicGroupEntranceModel.m */; };
+		1669C22D268099DA0059E9B0 /* THKMaterialRecommendRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C22C268099DA0059E9B0 /* THKMaterialRecommendRankVC.m */; };
+		1669C233268099ED0059E9B0 /* THKMaterialRecommendRankVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C232268099ED0059E9B0 /* THKMaterialRecommendRankVM.m */; };
+		1669C23C2680A3A50059E9B0 /* THKMaterialClassificationViewCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C23B2680A3A50059E9B0 /* THKMaterialClassificationViewCellLayout.m */; };
+		1669C2422680A3F40059E9B0 /* THKMaterialClassificationViewCellHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C2412680A3F40059E9B0 /* THKMaterialClassificationViewCellHeader.m */; };
+		1669C2482680A3FC0059E9B0 /* THKMaterialClassificationViewCellFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C2472680A3FC0059E9B0 /* THKMaterialClassificationViewCellFooter.m */; };
+		1669C24E2680A5240059E9B0 /* THKMaterialClassificationDecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C24D2680A5240059E9B0 /* THKMaterialClassificationDecorationView.m */; };
 		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
@@ -125,6 +131,18 @@
 		1669C21F2680925C0059E9B0 /* THKMaterialClassificationViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationViewModel.m; sourceTree = "<group>"; };
 		1669C2252680948B0059E9B0 /* THKDynamicGroupEntranceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDynamicGroupEntranceModel.h; sourceTree = "<group>"; };
 		1669C2262680948B0059E9B0 /* THKDynamicGroupEntranceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDynamicGroupEntranceModel.m; sourceTree = "<group>"; };
+		1669C22B268099DA0059E9B0 /* THKMaterialRecommendRankVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankVC.h; sourceTree = "<group>"; };
+		1669C22C268099DA0059E9B0 /* THKMaterialRecommendRankVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendRankVC.m; sourceTree = "<group>"; };
+		1669C231268099ED0059E9B0 /* THKMaterialRecommendRankVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankVM.h; sourceTree = "<group>"; };
+		1669C232268099ED0059E9B0 /* THKMaterialRecommendRankVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendRankVM.m; sourceTree = "<group>"; };
+		1669C23A2680A3A50059E9B0 /* THKMaterialClassificationViewCellLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationViewCellLayout.h; sourceTree = "<group>"; };
+		1669C23B2680A3A50059E9B0 /* THKMaterialClassificationViewCellLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationViewCellLayout.m; sourceTree = "<group>"; };
+		1669C2402680A3F40059E9B0 /* THKMaterialClassificationViewCellHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationViewCellHeader.h; sourceTree = "<group>"; };
+		1669C2412680A3F40059E9B0 /* THKMaterialClassificationViewCellHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationViewCellHeader.m; sourceTree = "<group>"; };
+		1669C2462680A3FC0059E9B0 /* THKMaterialClassificationViewCellFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationViewCellFooter.h; sourceTree = "<group>"; };
+		1669C2472680A3FC0059E9B0 /* THKMaterialClassificationViewCellFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationViewCellFooter.m; sourceTree = "<group>"; };
+		1669C24C2680A5240059E9B0 /* THKMaterialClassificationDecorationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationDecorationView.h; sourceTree = "<group>"; };
+		1669C24D2680A5240059E9B0 /* THKMaterialClassificationDecorationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationDecorationView.m; sourceTree = "<group>"; };
 		1677D10F25A2FE2800F3E6C8 /* InjectionIIIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionIIIHelper.h; sourceTree = "<group>"; };
 		1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionIIIHelper.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
@@ -286,6 +304,8 @@
 			children = (
 				1669C1F926807F600059E9B0 /* THKMaterialClassificationVC.h */,
 				1669C1FA26807F600059E9B0 /* THKMaterialClassificationVC.m */,
+				1669C22B268099DA0059E9B0 /* THKMaterialRecommendRankVC.h */,
+				1669C22C268099DA0059E9B0 /* THKMaterialRecommendRankVC.m */,
 				1669C208268086980059E9B0 /* View */,
 				1669C21D2680924B0059E9B0 /* ViewModel */,
 				1669C224268094810059E9B0 /* Model */,
@@ -318,6 +338,14 @@
 				1669C20A268086C90059E9B0 /* THKMaterialClassificationView.m */,
 				1669C212268087210059E9B0 /* THKMaterialClassificationViewCell.h */,
 				1669C213268087210059E9B0 /* THKMaterialClassificationViewCell.m */,
+				1669C23A2680A3A50059E9B0 /* THKMaterialClassificationViewCellLayout.h */,
+				1669C23B2680A3A50059E9B0 /* THKMaterialClassificationViewCellLayout.m */,
+				1669C24C2680A5240059E9B0 /* THKMaterialClassificationDecorationView.h */,
+				1669C24D2680A5240059E9B0 /* THKMaterialClassificationDecorationView.m */,
+				1669C2402680A3F40059E9B0 /* THKMaterialClassificationViewCellHeader.h */,
+				1669C2412680A3F40059E9B0 /* THKMaterialClassificationViewCellHeader.m */,
+				1669C2462680A3FC0059E9B0 /* THKMaterialClassificationViewCellFooter.h */,
+				1669C2472680A3FC0059E9B0 /* THKMaterialClassificationViewCellFooter.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,6 +355,8 @@
 			children = (
 				1669C21E2680925C0059E9B0 /* THKMaterialClassificationViewModel.h */,
 				1669C21F2680925C0059E9B0 /* THKMaterialClassificationViewModel.m */,
+				1669C231268099ED0059E9B0 /* THKMaterialRecommendRankVM.h */,
+				1669C232268099ED0059E9B0 /* THKMaterialRecommendRankVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -630,14 +660,18 @@
 				1669C2202680925C0059E9B0 /* THKMaterialClassificationViewModel.m in Sources */,
 				1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
+				1669C2422680A3F40059E9B0 /* THKMaterialClassificationViewCellHeader.m in Sources */,
+				1669C24E2680A5240059E9B0 /* THKMaterialClassificationDecorationView.m in Sources */,
 				1669C1F2268069880059E9B0 /* Table1ViewController.m in Sources */,
 				1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,
 				1669C1FB26807F600059E9B0 /* THKMaterialClassificationVC.m in Sources */,
 				1669C20B268086C90059E9B0 /* THKMaterialClassificationView.m in Sources */,
+				1669C22D268099DA0059E9B0 /* THKMaterialRecommendRankVC.m in Sources */,
 				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
 				1669C1D12680671A0059E9B0 /* THKPageContentViewController.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
+				1669C23C2680A3A50059E9B0 /* THKMaterialClassificationViewCellLayout.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				1669C2272680948B0059E9B0 /* THKDynamicGroupEntranceModel.m in Sources */,
 				1669C1F0268069880059E9B0 /* NormalViewController.m in Sources */,
@@ -647,7 +681,9 @@
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
 				1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */,
 				1669C1F1268069880059E9B0 /* TableViewController.m in Sources */,
+				1669C233268099ED0059E9B0 /* THKMaterialRecommendRankVM.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
+				1669C2482680A3FC0059E9B0 /* THKMaterialClassificationViewCellFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
