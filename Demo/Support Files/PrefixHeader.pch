@@ -19,4 +19,19 @@
 //#import "DepencyHeader.h"
 #define kDefaultHeadImg [UIImage imageNamed:@"img_defaultHead"]
 #define kDefaultHeadPortrait_60  [UIImage imageNamed:@"ico_headPortrait_60"]
+
+// 当前设计图的尺寸
+static CGFloat const kDesignChartWidth = 375.f;
+// 根据屏幕宽度取相应的CGFloat值
+static inline CGFloat CGCustomFloat(CGFloat value) {
+    return round(value * TMUI_SCREEN_WIDTH/kDesignChartWidth);
+}
+// 根据屏幕宽度取相应的字体大小
+static inline CGFloat CGCustomFont(CGFloat value) {
+    if ((YYScreenSize().width >= kDesignChartWidth)) {
+        return floor(value * TMUI_SCREEN_WIDTH/kDesignChartWidth);
+    } else {
+        return ceil(value * TMUI_SCREEN_WIDTH/kDesignChartWidth);
+    }
+}
 #endif /* PrefixHeader_pch */

@@ -10,11 +10,15 @@
 #import "Table2ViewController.h"
 #import "Table3ViewController.h"
 #import "NormalViewController.h"
+#import "THKMaterialClassificationView.h"
+#import "THKMaterialClassificationViewModel.h"
 
 @interface THKMaterialClassificationVC ()
 
 @property (nonatomic, strong) NSArray *vcs;
 @property (nonatomic, strong) NSArray *titles;
+
+@property (nonatomic, strong) THKMaterialClassificationView *headerView;
 
 @end
 
@@ -66,12 +70,12 @@
 }
 
 - (CGFloat)heightForHeader{
-    return 113;
+    return self.headerView.height;
 }
 
 - (UIView *)viewForHeader{
-    UIView *view = View.bgColor(@"random");
-    return view;
+    [self.headerView bindViewModel:THKMaterialClassificationViewModel.new];
+    return self.headerView;
 }
 
 
@@ -84,6 +88,12 @@
 #pragma mark - Private
 
 #pragma mark - Getters and Setters
+- (THKMaterialClassificationView *)headerView{
+    if (!_headerView) {
+        _headerView = [[THKMaterialClassificationView alloc] initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, CGCustomFont(116))];
+    }
+    return _headerView;
+}
 
 #pragma mark - Supperclass
 
