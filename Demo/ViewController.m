@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "SectionViewController.h"
+#import "THKMaterialClassificationVC.h"
 
 @interface ViewController ()
 
@@ -18,15 +18,12 @@
     [super viewDidLoad];
     
     
-    Button.str(@"测试分页组件").bgColor(@"random").xywh(100,100,100,100).addTo(self.view).onClick(^{
+    Button.str(@"如何选材").bgColor(@"random").xywh(100,100,100,100).addTo(self.view).onClick(^{
         Log(@"123123");
-        [self.navigationController pushViewController:SectionViewController.new animated:YES];
+        [self.navigationController pushViewController:THKMaterialClassificationVC.new animated:YES];
     });
     
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    Log(@"xxxx");
-}
 
 @end

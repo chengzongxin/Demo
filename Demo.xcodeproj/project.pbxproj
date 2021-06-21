@@ -26,7 +26,6 @@
 		1669C1D12680671A0059E9B0 /* THKPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1CE2680671A0059E9B0 /* THKPageContentViewController.m */; };
 		1669C1D22680671A0059E9B0 /* THKPageBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1D02680671A0059E9B0 /* THKPageBGScrollView.m */; };
 		1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1D62680673A0059E9B0 /* UIScrollView+TScroll.m */; };
-		1669C1DF268069400059E9B0 /* SectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1DE268069400059E9B0 /* SectionViewController.m */; };
 		1669C1EE268069880059E9B0 /* Table3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1E4268069870059E9B0 /* Table3ViewController.m */; };
 		1669C1EF268069880059E9B0 /* Table2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1E6268069870059E9B0 /* Table2ViewController.m */; };
 		1669C1F0268069880059E9B0 /* NormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1E8268069870059E9B0 /* NormalViewController.m */; };
@@ -102,8 +101,6 @@
 		1669C1D02680671A0059E9B0 /* THKPageBGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageBGScrollView.m; sourceTree = "<group>"; };
 		1669C1D62680673A0059E9B0 /* UIScrollView+TScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TScroll.m"; sourceTree = "<group>"; };
 		1669C1D72680673A0059E9B0 /* UIScrollView+TScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TScroll.h"; sourceTree = "<group>"; };
-		1669C1DD268069400059E9B0 /* SectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SectionViewController.h; sourceTree = "<group>"; };
-		1669C1DE268069400059E9B0 /* SectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SectionViewController.m; sourceTree = "<group>"; };
 		1669C1E4268069870059E9B0 /* Table3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table3ViewController.m; sourceTree = "<group>"; };
 		1669C1E5268069870059E9B0 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		1669C1E6268069870059E9B0 /* Table2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table2ViewController.m; sourceTree = "<group>"; };
@@ -275,8 +272,6 @@
 		1669C1DC268069250059E9B0 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				1669C1DD268069400059E9B0 /* SectionViewController.h */,
-				1669C1DE268069400059E9B0 /* SectionViewController.m */,
 				1669C1F926807F600059E9B0 /* THKMaterialClassificationVC.h */,
 				1669C1FA26807F600059E9B0 /* THKMaterialClassificationVC.m */,
 				1669C1E3268069870059E9B0 /* ChildVC */,
@@ -603,7 +598,6 @@
 				16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
 				1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */,
-				1669C1DF268069400059E9B0 /* SectionViewController.m in Sources */,
 				1669C1F1268069880059E9B0 /* TableViewController.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
 			);
