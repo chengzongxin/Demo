@@ -18,6 +18,20 @@
 		1601076C2553EA2800FE4B77 /* THKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601076B2553EA2700FE4B77 /* THKView.m */; };
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
 		16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16699B6025D0CF5E00B7F43B /* ViewController.m */; };
+		1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C17D268066200059E9B0 /* THKSegmentControl.m */; };
+		1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1A52680667C0059E9B0 /* UIView+Frame.m */; };
+		1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1AB2680667C0059E9B0 /* UIButton+Convenient.m */; };
+		1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1AD2680667C0059E9B0 /* UIViewController+Convenient.m */; };
+		1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1AE2680667C0059E9B0 /* UIColor+HexString.m */; };
+		1669C1D12680671A0059E9B0 /* THKPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1CE2680671A0059E9B0 /* THKPageContentViewController.m */; };
+		1669C1D22680671A0059E9B0 /* THKPageBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1D02680671A0059E9B0 /* THKPageBGScrollView.m */; };
+		1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1D62680673A0059E9B0 /* UIScrollView+TScroll.m */; };
+		1669C1DF268069400059E9B0 /* SectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1DE268069400059E9B0 /* SectionViewController.m */; };
+		1669C1EE268069880059E9B0 /* Table3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1E4268069870059E9B0 /* Table3ViewController.m */; };
+		1669C1EF268069880059E9B0 /* Table2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1E6268069870059E9B0 /* Table2ViewController.m */; };
+		1669C1F0268069880059E9B0 /* NormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1E8268069870059E9B0 /* NormalViewController.m */; };
+		1669C1F1268069880059E9B0 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1EB268069870059E9B0 /* TableViewController.m */; };
+		1669C1F2268069880059E9B0 /* Table1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1EC268069870059E9B0 /* Table1ViewController.m */; };
 		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
@@ -67,6 +81,38 @@
 		160107712553EA3300FE4B77 /* THKViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewModel.h; sourceTree = "<group>"; };
 		16699B5F25D0CF5E00B7F43B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		16699B6025D0CF5E00B7F43B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1669C17D268066200059E9B0 /* THKSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKSegmentControl.m; sourceTree = "<group>"; };
+		1669C180268066200059E9B0 /* THKSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKSegmentControl.h; sourceTree = "<group>"; };
+		1669C1A42680667C0059E9B0 /* THKColorsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKColorsDefine.h; sourceTree = "<group>"; };
+		1669C1A52680667C0059E9B0 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		1669C1A62680667C0059E9B0 /* UIButton+Convenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Convenient.h"; sourceTree = "<group>"; };
+		1669C1A72680667C0059E9B0 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		1669C1A82680667C0059E9B0 /* UIViewController+Convenient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Convenient.h"; sourceTree = "<group>"; };
+		1669C1A92680667C0059E9B0 /* THKCommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCommonDefine.h; sourceTree = "<group>"; };
+		1669C1AA2680667C0059E9B0 /* Define_SetValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define_SetValues.h; sourceTree = "<group>"; };
+		1669C1AB2680667C0059E9B0 /* UIButton+Convenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Convenient.m"; sourceTree = "<group>"; };
+		1669C1AC2680667C0059E9B0 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		1669C1AD2680667C0059E9B0 /* UIViewController+Convenient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Convenient.m"; sourceTree = "<group>"; };
+		1669C1AE2680667C0059E9B0 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
+		1669C1AF2680667C0059E9B0 /* Define_Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define_Block.h; sourceTree = "<group>"; };
+		1669C1CD2680671A0059E9B0 /* THKPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageContentViewController.h; sourceTree = "<group>"; };
+		1669C1CE2680671A0059E9B0 /* THKPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageContentViewController.m; sourceTree = "<group>"; };
+		1669C1CF2680671A0059E9B0 /* THKPageBGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageBGScrollView.h; sourceTree = "<group>"; };
+		1669C1D02680671A0059E9B0 /* THKPageBGScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageBGScrollView.m; sourceTree = "<group>"; };
+		1669C1D62680673A0059E9B0 /* UIScrollView+TScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TScroll.m"; sourceTree = "<group>"; };
+		1669C1D72680673A0059E9B0 /* UIScrollView+TScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TScroll.h"; sourceTree = "<group>"; };
+		1669C1DD268069400059E9B0 /* SectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SectionViewController.h; sourceTree = "<group>"; };
+		1669C1DE268069400059E9B0 /* SectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SectionViewController.m; sourceTree = "<group>"; };
+		1669C1E4268069870059E9B0 /* Table3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table3ViewController.m; sourceTree = "<group>"; };
+		1669C1E5268069870059E9B0 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		1669C1E6268069870059E9B0 /* Table2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table2ViewController.m; sourceTree = "<group>"; };
+		1669C1E7268069870059E9B0 /* Table1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table1ViewController.h; sourceTree = "<group>"; };
+		1669C1E8268069870059E9B0 /* NormalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalViewController.m; sourceTree = "<group>"; };
+		1669C1E9268069870059E9B0 /* Table3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table3ViewController.h; sourceTree = "<group>"; };
+		1669C1EA268069870059E9B0 /* Table2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table2ViewController.h; sourceTree = "<group>"; };
+		1669C1EB268069870059E9B0 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		1669C1EC268069870059E9B0 /* Table1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table1ViewController.m; sourceTree = "<group>"; };
+		1669C1ED268069870059E9B0 /* NormalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalViewController.h; sourceTree = "<group>"; };
 		1677D10F25A2FE2800F3E6C8 /* InjectionIIIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionIIIHelper.h; sourceTree = "<group>"; };
 		1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionIIIHelper.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
@@ -136,6 +182,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				1669C1DC268069250059E9B0 /* Sections */,
 				16699BAD25D0D3C300B7F43B /* Support Files */,
 				1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */,
 				160107692553EA1A00FE4B77 /* BaseSection */,
@@ -164,6 +211,8 @@
 		160107692553EA1A00FE4B77 /* BaseSection */ = {
 			isa = PBXGroup;
 			children = (
+				1669C1A32680667C0059E9B0 /* CommonDefine */,
+				1669C17B268066200059E9B0 /* PageContentViewController */,
 				16C532CC25761E1600210A3C /* BaseViewModel */,
 			);
 			path = BaseSection;
@@ -184,6 +233,67 @@
 				160107372553DFDC00FE4B77 /* PrefixHeader.pch */,
 			);
 			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		1669C17B268066200059E9B0 /* PageContentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1669C1CF2680671A0059E9B0 /* THKPageBGScrollView.h */,
+				1669C1D02680671A0059E9B0 /* THKPageBGScrollView.m */,
+				1669C1D72680673A0059E9B0 /* UIScrollView+TScroll.h */,
+				1669C1D62680673A0059E9B0 /* UIScrollView+TScroll.m */,
+				1669C1CD2680671A0059E9B0 /* THKPageContentViewController.h */,
+				1669C1CE2680671A0059E9B0 /* THKPageContentViewController.m */,
+				1669C180268066200059E9B0 /* THKSegmentControl.h */,
+				1669C17D268066200059E9B0 /* THKSegmentControl.m */,
+			);
+			path = PageContentViewController;
+			sourceTree = "<group>";
+		};
+		1669C1A32680667C0059E9B0 /* CommonDefine */ = {
+			isa = PBXGroup;
+			children = (
+				1669C1A42680667C0059E9B0 /* THKColorsDefine.h */,
+				1669C1A52680667C0059E9B0 /* UIView+Frame.m */,
+				1669C1A62680667C0059E9B0 /* UIButton+Convenient.h */,
+				1669C1A72680667C0059E9B0 /* UIColor+HexString.h */,
+				1669C1A82680667C0059E9B0 /* UIViewController+Convenient.h */,
+				1669C1A92680667C0059E9B0 /* THKCommonDefine.h */,
+				1669C1AA2680667C0059E9B0 /* Define_SetValues.h */,
+				1669C1AB2680667C0059E9B0 /* UIButton+Convenient.m */,
+				1669C1AC2680667C0059E9B0 /* UIView+Frame.h */,
+				1669C1AD2680667C0059E9B0 /* UIViewController+Convenient.m */,
+				1669C1AE2680667C0059E9B0 /* UIColor+HexString.m */,
+				1669C1AF2680667C0059E9B0 /* Define_Block.h */,
+			);
+			path = CommonDefine;
+			sourceTree = "<group>";
+		};
+		1669C1DC268069250059E9B0 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				1669C1DD268069400059E9B0 /* SectionViewController.h */,
+				1669C1DE268069400059E9B0 /* SectionViewController.m */,
+				1669C1E3268069870059E9B0 /* ChildVC */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		1669C1E3268069870059E9B0 /* ChildVC */ = {
+			isa = PBXGroup;
+			children = (
+				1669C1ED268069870059E9B0 /* NormalViewController.h */,
+				1669C1E8268069870059E9B0 /* NormalViewController.m */,
+				1669C1E7268069870059E9B0 /* Table1ViewController.h */,
+				1669C1EC268069870059E9B0 /* Table1ViewController.m */,
+				1669C1EA268069870059E9B0 /* Table2ViewController.h */,
+				1669C1E6268069870059E9B0 /* Table2ViewController.m */,
+				1669C1E9268069870059E9B0 /* Table3ViewController.h */,
+				1669C1E4268069870059E9B0 /* Table3ViewController.m */,
+				1669C1E5268069870059E9B0 /* TableViewController.h */,
+				1669C1EB268069870059E9B0 /* TableViewController.m */,
+			);
+			path = ChildVC;
 			sourceTree = "<group>";
 		};
 		1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */ = {
@@ -468,14 +578,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
+				1669C1EF268069880059E9B0 /* Table2ViewController.m in Sources */,
+				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
+				1669C1EE268069880059E9B0 /* Table3ViewController.m in Sources */,
+				1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
+				1669C1F2268069880059E9B0 /* Table1ViewController.m in Sources */,
 				1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,
+				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
+				1669C1D12680671A0059E9B0 /* THKPageContentViewController.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
+				1669C1F0268069880059E9B0 /* NormalViewController.m in Sources */,
+				1669C1D22680671A0059E9B0 /* THKPageBGScrollView.m in Sources */,
 				16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
+				1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */,
+				1669C1DF268069400059E9B0 /* SectionViewController.m in Sources */,
+				1669C1F1268069880059E9B0 /* TableViewController.m in Sources */,
+				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
