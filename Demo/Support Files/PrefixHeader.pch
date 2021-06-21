@@ -16,7 +16,7 @@
 #import <MJExtension.h>
 #import <TMUIKit.h>
 #import <YYKit.h>
-#import "DepencyHeader.h"
+//#import "DepencyHeader.h"
 #define kDefaultHeadImg [UIImage imageNamed:@"img_defaultHead"]
 #define kDefaultHeadPortrait_60  [UIImage imageNamed:@"ico_headPortrait_60"]
 #endif /* PrefixHeader_pch */
