@@ -32,6 +32,7 @@
 		1669C1F0268069880059E9B0 /* NormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1E8268069870059E9B0 /* NormalViewController.m */; };
 		1669C1F1268069880059E9B0 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1EB268069870059E9B0 /* TableViewController.m */; };
 		1669C1F2268069880059E9B0 /* Table1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1EC268069870059E9B0 /* Table1ViewController.m */; };
+		1669C1FB26807F600059E9B0 /* THKMaterialClassificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1FA26807F600059E9B0 /* THKMaterialClassificationVC.m */; };
 		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
@@ -113,6 +114,8 @@
 		1669C1EB268069870059E9B0 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		1669C1EC268069870059E9B0 /* Table1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table1ViewController.m; sourceTree = "<group>"; };
 		1669C1ED268069870059E9B0 /* NormalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalViewController.h; sourceTree = "<group>"; };
+		1669C1F926807F600059E9B0 /* THKMaterialClassificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationVC.h; sourceTree = "<group>"; };
+		1669C1FA26807F600059E9B0 /* THKMaterialClassificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationVC.m; sourceTree = "<group>"; };
 		1677D10F25A2FE2800F3E6C8 /* InjectionIIIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionIIIHelper.h; sourceTree = "<group>"; };
 		1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionIIIHelper.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 			children = (
 				1669C1DD268069400059E9B0 /* SectionViewController.h */,
 				1669C1DE268069400059E9B0 /* SectionViewController.m */,
+				1669C1F926807F600059E9B0 /* THKMaterialClassificationVC.h */,
+				1669C1FA26807F600059E9B0 /* THKMaterialClassificationVC.m */,
 				1669C1E3268069870059E9B0 /* ChildVC */,
 			);
 			path = Sections;
@@ -588,6 +593,7 @@
 				1669C1F2268069880059E9B0 /* Table1ViewController.m in Sources */,
 				1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,
+				1669C1FB26807F600059E9B0 /* THKMaterialClassificationVC.m in Sources */,
 				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
 				1669C1D12680671A0059E9B0 /* THKPageContentViewController.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
