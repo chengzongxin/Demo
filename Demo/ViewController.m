@@ -18,7 +18,7 @@
     [super viewDidLoad];
     
     
-    Button.str(@"如何选材").bgColor(@"random").xywh(100,100,100,100).addTo(self.view).onClick(^{
+    Button.str(@"测试分页组件").bgColor(@"random").xywh(100,100,100,100).addTo(self.view).onClick(^{
         Log(@"123123");
         [self.navigationController pushViewController:SectionViewController.new animated:YES];
     });
