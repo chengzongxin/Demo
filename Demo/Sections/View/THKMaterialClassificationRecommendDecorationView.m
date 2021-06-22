@@ -5,15 +5,15 @@
 //  Created by Joe.cheng on 2021/6/21.
 //
 
-#import "THKMaterialClassificationDecorationView.h"
+#import "THKMaterialClassificationRecommendDecorationView.h"
 
-@interface THKMaterialClassificationDecorationView ()
+@interface THKMaterialClassificationRecommendDecorationView ()
 
 @property(nonatomic, strong) UIImageView *imageView;
 
 @end
 
-@implementation THKMaterialClassificationDecorationView
+@implementation THKMaterialClassificationRecommendDecorationView
 #pragma mark - Life Cycle
 - (void)dealloc{
     NSLog(@"%@ did dealloc",self);

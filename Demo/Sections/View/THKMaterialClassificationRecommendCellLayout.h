@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKMaterialClassificationViewCellLayout : UICollectionViewFlowLayout
+@interface THKMaterialClassificationRecommendCellLayout : UICollectionViewFlowLayout
 
 @property (nonatomic, assign) UIEdgeInsets decorationInset;
 @property (nonatomic, assign) CGFloat decorationBottomMargin;

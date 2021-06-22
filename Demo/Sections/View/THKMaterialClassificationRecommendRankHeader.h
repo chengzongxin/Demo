@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKMaterialClassificationViewRankHeader : UICollectionReusableView
+@interface THKMaterialClassificationRecommendRankHeader : UICollectionReusableView
 
 - (void)setTitle:(NSString *)title;
 

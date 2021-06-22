@@ -5,17 +5,17 @@
 //  Created by Joe.cheng on 2021/6/21.
 //
 
-#import "THKMaterialClassificationViewCellLayout.h"
-#import "THKMaterialClassificationDecorationView.h"
+#import "THKMaterialClassificationRecommendCellLayout.h"
+#import "THKMaterialClassificationRecommendDecorationView.h"
 
-@interface THKMaterialClassificationViewCellLayout (){
+@interface THKMaterialClassificationRecommendCellLayout (){
     BOOL _insetForSectionAtIndexFlag;
     CGFloat _lastY;
 }
 
 @end
 
-@implementation THKMaterialClassificationViewCellLayout
+@implementation THKMaterialClassificationRecommendCellLayout
 
 - (void)prepareLayout {
     [super prepareLayout];
@@ -23,7 +23,7 @@
     _insetForSectionAtIndexFlag = [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)];
     _lastY = 0;
     
-    [self registerClass:[THKMaterialClassificationDecorationView class] forDecorationViewOfKind:@"decorationView"];
+    [self registerClass:[THKMaterialClassificationRecommendDecorationView class] forDecorationViewOfKind:@"decorationView"];
 }
 
 

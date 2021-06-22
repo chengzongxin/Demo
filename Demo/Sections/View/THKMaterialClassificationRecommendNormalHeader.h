@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKMaterialClassificationViewNormalHeader : UICollectionReusableView
+@interface THKMaterialClassificationRecommendNormalHeader : UICollectionReusableView
 
 - (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle;
 

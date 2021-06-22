@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKMaterialClassificationDecorationView : UICollectionReusableView
+@interface THKMaterialClassificationRecommendDecorationView : UICollectionReusableView
 
 @end
 

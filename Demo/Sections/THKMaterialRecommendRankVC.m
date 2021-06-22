@@ -6,13 +6,16 @@
 //
 
 #import "THKMaterialRecommendRankVC.h"
-#import "THKMaterialClassificationViewCellLayout.h"
-#import "THKMaterialClassificationViewRankHeader.h"
-#import "THKMaterialClassificationViewNormalHeader.h"
-#import "THKMaterialClassificationViewCellFooter.h"
+#import "THKMaterialClassificationRecommendCellLayout.h"
+#import "THKMaterialClassificationRecommendRankHeader.h"
+#import "THKMaterialClassificationRecommendNormalHeader.h"
+#import "THKMaterialClassificationRecommendCellFooter.h"
+#import "THKMaterialClassificationRecommendRankCell.h"
+#import "THKMaterialClassificationRecommendNormalCell.h"
+
 @interface THKMaterialRecommendRankVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) THKMaterialClassificationViewCellLayout *layout;
+@property (nonatomic, strong) THKMaterialClassificationRecommendCellLayout *layout;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @end
@@ -59,17 +62,17 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
         if (indexPath.section == 0) {
-            THKMaterialClassificationViewRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewRankHeader.class) forIndexPath:indexPath];
+            THKMaterialClassificationRecommendRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankHeader.class) forIndexPath:indexPath];
             [header setTitle:@"冰箱推荐榜😆"];
             return header;
         }else{
-            THKMaterialClassificationViewNormalHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewNormalHeader.class) forIndexPath:indexPath];
+            THKMaterialClassificationRecommendNormalHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendNormalHeader.class) forIndexPath:indexPath];
             [header setTitle:@"冰箱推荐榜哈哈哈哈😆" subtitle:@"经典三门 无霜风冷"];
             return header;
         }
         
     } else if (kind == UICollectionElementKindSectionFooter) {
-        return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewCellFooter.class) forIndexPath:indexPath];
+        return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendCellFooter.class) forIndexPath:indexPath];
     }
     
     return nil;
@@ -114,7 +117,7 @@
 #pragma mark - Getters and Setters
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        _layout = [[THKMaterialClassificationViewCellLayout alloc] init];
+        _layout = [[THKMaterialClassificationRecommendCellLayout alloc] init];
         _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 80);
         _layout.footerReferenceSize = CGSizeMake(self.view.bounds.size.width, 25);
         _layout.sectionInset = UIEdgeInsetsMake(0, 22, 0, 22); // item 间距
@@ -131,9 +134,9 @@
         _collectionView.delegate = self;
         
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-        [_collectionView registerClass:THKMaterialClassificationViewRankHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewRankHeader.class)];
-        [_collectionView registerClass:THKMaterialClassificationViewNormalHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewNormalHeader.class)];
-        [_collectionView registerClass:THKMaterialClassificationViewCellFooter.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewCellFooter.class)];
+        [_collectionView registerClass:THKMaterialClassificationRecommendRankHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankHeader.class)];
+        [_collectionView registerClass:THKMaterialClassificationRecommendNormalHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendNormalHeader.class)];
+        [_collectionView registerClass:THKMaterialClassificationRecommendCellFooter.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendCellFooter.class)];
     }
     return _collectionView;
 }
