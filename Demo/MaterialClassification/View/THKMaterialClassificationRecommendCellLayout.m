@@ -41,8 +41,6 @@
         }
     }
     
-    NSLog(@"%s", __func__);
-    
     return attrs;
 }
 

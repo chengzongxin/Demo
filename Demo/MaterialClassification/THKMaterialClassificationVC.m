@@ -83,6 +83,9 @@
 #pragma mark - Public
 
 #pragma mark - Event Respone
+- (void)tapClassification:(NSInteger)index{
+    Log(index);
+}
 
 #pragma mark - Delegate
 
@@ -92,6 +95,11 @@
 - (THKMaterialClassificationView *)headerView{
     if (!_headerView) {
         _headerView = [[THKMaterialClassificationView alloc] initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, CGCustomFont(116))];
+        @TMUI_weakify(self);
+        _headerView.tapItem = ^(NSInteger index) {
+            @TMUI_strongify(self);
+            [self tapClassification:index];
+        };
     }
     return _headerView;
 }

@@ -87,6 +87,15 @@
 #pragma mark - Public
 
 #pragma mark - Event Respone
+// 点击头部更多
+- (void)tapHeaderMore:(NSIndexPath *)indexPath{
+    Log(indexPath);
+}
+
+// 点击cell
+- (void)tapItem:(NSIndexPath *)indexPath{
+    Log(indexPath);
+}
 
 #pragma mark - Delegate
 #pragma mark  UICollectionViewDataSource
@@ -134,10 +143,20 @@
         if (indexPath.section == 0) {
             THKMaterialClassificationRecommendRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankHeader.class) forIndexPath:indexPath];
             [header setTitle:title];
+            @TMUI_weakify(self);
+            header.tapMoreBlock = ^{
+                @TMUI_strongify(self);
+                [self tapHeaderMore:indexPath];
+            };
             return header;
         }else{
             THKMaterialClassificationRecommendNormalHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendNormalHeader.class) forIndexPath:indexPath];
             [header setTitle:title subtitle:subtitle];
+            @TMUI_weakify(self);
+            header.tapMoreBlock = ^{
+                @TMUI_strongify(self);
+                [self tapHeaderMore:indexPath];
+            };
             return header;
         }
         
@@ -146,6 +165,10 @@
     }
     
     return nil;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self tapItem:indexPath];
 }
 
 #pragma mark - Private

@@ -234,8 +234,8 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				1686D8EC2681C72E0061FF66 /* MaterialHotRank */,
 				1669C1DC268069250059E9B0 /* MaterialClassification */,
+				1686D8EC2681C72E0061FF66 /* MaterialHotRank */,
 				16699BAD25D0D3C300B7F43B /* Support Files */,
 				1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */,
 				160107692553EA1A00FE4B77 /* BaseSection */,

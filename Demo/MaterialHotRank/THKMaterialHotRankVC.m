@@ -101,7 +101,15 @@
 }
 
 #pragma mark - Public
+// 点击头部更多
+- (void)tapHeaderMore:(NSIndexPath *)indexPath{
+    Log(indexPath);
+}
 
+// 点击cell
+- (void)tapItem:(NSIndexPath *)indexPath{
+    Log(indexPath);
+}
 #pragma mark - Event Respone
 
 #pragma mark - Delegate
@@ -137,6 +145,11 @@
         NSString *title = _headerTitles[indexPath.section].firstObject;
         THKMaterialHotRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialHotRankHeader.class) forIndexPath:indexPath];
         [header setTitle:title];
+        @TMUI_weakify(self);
+        header.tapMoreBlock = ^{
+            @TMUI_strongify(self);
+            [self tapHeaderMore:indexPath];
+        };
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
         return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendCellFooter.class) forIndexPath:indexPath];
@@ -145,7 +158,9 @@
     return nil;
 }
 
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self tapItem:indexPath];
+}
 
 #pragma mark - Private
 
@@ -164,7 +179,7 @@
         _collectionView.backgroundColor = UIColorHex(#DEEEFF);
         _collectionView.contentInset = UIEdgeInsetsMake(200, 0, 10, 0);
         _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-        [_collectionView addSubview:self.collectionViewHeader];
+        [_collectionView insertSubview:self.collectionViewHeader atIndex:0];
         [self.view addSubview:_collectionView];
         
         _collectionView.dataSource = self;
@@ -208,6 +223,7 @@
             make.right.mas_equalTo(-18);
         }];
         
+        _collectionViewHeader.userInteractionEnabled = NO;
     }
     return _collectionViewHeader;
 }

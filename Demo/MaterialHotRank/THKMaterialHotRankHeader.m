@@ -44,6 +44,10 @@
     }];
 }
 
+- (void)moreButtonClick:(UIButton *)sender{
+    !self.tapMoreBlock ?: self.tapMoreBlock();
+}
+
 - (void)setTitle:(NSString *)title{
     self.titleLabel.text = title;
 }
@@ -68,6 +72,7 @@
         _moreButton.tmui_titleColor = UIColorHex(#1A1C1A);
         _moreButton.layer.cornerRadius = 13.5;
         _moreButton.layer.masksToBounds = YES;
+        [_moreButton tmui_addTarget:self action:@selector(moreButtonClick:)];
     }
     return _moreButton;
 }

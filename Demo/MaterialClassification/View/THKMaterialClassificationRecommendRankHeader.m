@@ -43,6 +43,11 @@
     }];
 }
 
+- (void)moreButtonClick:(UIButton *)sender{
+    !self.tapMoreBlock ?: self.tapMoreBlock();
+}
+
+
 - (void)setTitle:(NSString *)title{
     [self.rankView setText:title];
 }
@@ -61,6 +66,7 @@
         _moreButton.tmui_image = [UIImage tmui_imageWithShape:TMUIImageShapeDisclosureIndicator size:CGSizeMake(5, 8) tintColor:UIColor.whiteColor];
         _moreButton.layer.cornerRadius = 13.5;
         _moreButton.layer.masksToBounds = YES;
+        [_moreButton tmui_addTarget:self action:@selector(moreButtonClick:)];
     }
     return _moreButton;
 }
