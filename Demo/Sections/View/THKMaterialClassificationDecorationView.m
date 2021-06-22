@@ -52,7 +52,7 @@
     }else{
         _imageView.image = [UIImage tmui_imageWithColor:UIColor.whiteColor];
     }
-    _imageView.frame = CGRectMake(0, 0, layoutAttributes.frame.size.width, layoutAttributes.frame.size.height - 10);
+    _imageView.frame = CGRectMake(0, 0, layoutAttributes.frame.size.width, layoutAttributes.frame.size.height); // 距离底部10间距
 }
 
 

@@ -111,10 +111,9 @@
         _layout = [[THKMaterialClassificationViewCellLayout alloc] init];
         _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 80);
         _layout.footerReferenceSize = CGSizeMake(self.view.bounds.size.width, 25);
-        _layout.sectionInset = UIEdgeInsetsMake(0, 22, 0, 22);
-        _layout.decorationInset = UIEdgeInsetsMake(0, 10, 0, 10);
-        CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(_layout.sectionInset) - 8*2)/3);
-        _layout.itemSize = CGSizeMake(width, 135);
+        _layout.sectionInset = UIEdgeInsetsMake(0, 22, 0, 22); // item 间距
+        _layout.decorationInset = UIEdgeInsetsMake(0, 10, 0, 10); // decoration 间距
+        _layout.decorationBottomMargin = 10;
         _layout.minimumLineSpacing = 0;
         _layout.minimumInteritemSpacing = 8;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_layout];

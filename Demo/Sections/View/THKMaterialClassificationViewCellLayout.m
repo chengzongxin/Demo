@@ -65,13 +65,13 @@
     
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal)
     {
-        frame.size.width += CGRectGetMaxX(footer.frame) - CGRectGetMinX(header.frame);;
+        frame.size.width += CGRectGetMaxX(footer.frame) - CGRectGetMinX(header.frame) - self.decorationBottomMargin;
         frame.size.height = self.collectionView.frame.size.height - UIEdgeInsetsGetVerticalValue(self.decorationInset);
     }
     else
     {
         frame.size.width = self.collectionView.frame.size.width - UIEdgeInsetsGetHorizontalValue(self.decorationInset);
-        frame.size.height = CGRectGetMaxY(footer.frame) - CGRectGetMinY(header.frame);
+        frame.size.height = CGRectGetMaxY(footer.frame) - CGRectGetMinY(header.frame) - self.decorationBottomMargin;
     }
     
     attrs.frame = frame;
