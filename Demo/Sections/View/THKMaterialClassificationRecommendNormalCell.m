@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgView;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet TMUILabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 
@@ -33,5 +33,18 @@
     self.rankImgView.image = UIImageMake(imgName);
 }
 
+- (void)setImgUrl:(NSString *)imgUrl{
+    _imgUrl = imgUrl;
+    
+    [self.iconImgView setImageURL:[NSURL URLWithString:imgUrl]];
+}
+
+- (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle{
+    CGFloat space = CGCustomFloat(3);
+    [self.titleLabel tmui_setAttributesString:title lineSpacing:space];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.contentEdgeInsets = UIEdgeInsetsMake(space, 0, space, 0);
+    self.subtitleLabel.text = subtitle;
+}
 
 @end

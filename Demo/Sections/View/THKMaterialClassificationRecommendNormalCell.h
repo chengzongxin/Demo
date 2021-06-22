@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger rank;
 
+@property (nonatomic, strong) NSString *imgUrl;
+
+- (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle;
 @end
 
 NS_ASSUME_NONNULL_END

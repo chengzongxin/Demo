@@ -33,4 +33,17 @@
     self.rankImgView.image = UIImageMake(imgName);
 }
 
+- (void)setImgUrl:(NSString *)imgUrl{
+    _imgUrl = imgUrl;
+    
+    [self.iconImgView setImageURL:[NSURL URLWithString:imgUrl]];
+}
+
+- (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle{
+    self.subtitleLabel.text = subtitle;
+    
+    self.titleLabel.attributedText = [NSAttributedString tmui_attributedStringWithString:title font:UIFontMedium(14) color:UIColorHex(#1A1C1A)];
+    [self.subtitleLabel tmui_setAttributesString:@" 分" color:UIColorHex(#979997) font:UIFont(12)];
+}
+
 @end
