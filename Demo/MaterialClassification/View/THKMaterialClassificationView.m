@@ -91,12 +91,13 @@
 }
 
 - (void)selectIndex:(NSInteger)index{
-//    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-//    cell.selected = YES;
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     
     [self.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+    
+    
+    self.rightEffectView.alpha = 1;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -141,15 +142,13 @@
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    Log(scrollView.contentOffset);
-    Log(scrollView.contentSize);
     NSInteger item = [self.collectionView numberOfItemsInSection:0] - 1;
     if (item < 0) {
         return;
     }
     
-    CGFloat lProgress = (scrollView.contentOffset.x - 100)/100;
-    CGFloat rProgress = (scrollView.contentSize.width - scrollView.contentOffset.x - scrollView.width)/100;
+    CGFloat lProgress = (scrollView.contentOffset.x - 80)/80;
+    CGFloat rProgress = (scrollView.contentSize.width - scrollView.contentOffset.x - scrollView.width)/80;
     
     if (lProgress > 1) {
         lProgress = 1;
@@ -217,7 +216,7 @@
 - (UIView *)leftEffectView{
     if (!_leftEffectView) {
         _leftEffectView = [[THKMaterialClassificationEffectView alloc] init];
-        _leftEffectView.frame = CGRectMake(0, 0, CGCustomFloat(100), self.height);
+        _leftEffectView.frame = CGRectMake(0, 0, CGCustomFloat(80), self.height);
         [_leftEffectView tmui_gradientWithColors:@[[UIColor colorWithRed:1 green:1 blue:1 alpha:1],[UIColor colorWithRed:1 green:1 blue:1 alpha:0]] gradientType:TMUIGradientTypeLeftToRight locations:@[@0.1]];
     }
     return _leftEffectView;
@@ -226,7 +225,7 @@
 - (UIView *)rightEffectView{
     if (!_rightEffectView) {
         _rightEffectView = [[THKMaterialClassificationEffectView alloc] init];
-        _rightEffectView.frame = CGRectMake(self.width - CGCustomFloat(100), 0, CGCustomFloat(100), self.height);
+        _rightEffectView.frame = CGRectMake(self.width - CGCustomFloat(80), 0, CGCustomFloat(80), self.height);
         [_rightEffectView tmui_gradientWithColors:@[[UIColor colorWithRed:1 green:1 blue:1 alpha:0],[UIColor colorWithRed:1 green:1 blue:1 alpha:1]] gradientType:TMUIGradientTypeLeftToRight locations:@[@0.5]];
     }
     return _rightEffectView;
