@@ -8,8 +8,9 @@
 #import "THKMaterialClassificationView.h"
 #import "THKMaterialClassificationViewCell.h"
 #import <UIVisualEffectView+TMUI.h>
+#import <UIScrollView+TMUI.h>
 
-@interface THKMaterialClassificationEffectView : UIVisualEffectView
+@interface THKMaterialClassificationEffectView : UIView
 @end
 @implementation THKMaterialClassificationEffectView
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{return NO;}
@@ -19,7 +20,9 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
-@property (nonatomic, strong) THKMaterialClassificationEffectView *effectView;
+
+@property (nonatomic, strong) THKMaterialClassificationEffectView *leftEffectView;
+@property (nonatomic, strong) THKMaterialClassificationEffectView *rightEffectView;
 
 @property (nonatomic, strong) NSArray *icons;
 
@@ -68,10 +71,13 @@
         [allArr addObject:obj];
     }];
     self.icons = allArr;
+    // 添加分割线
+    self.tmui_borderPosition = TMUIViewBorderPositionBottom;
+    self.tmui_borderColor = UIColorHex(#F6F8F6);
     
     [self addSubview:self.collectionView];
-    
-    [self addSubview:self.effectView];
+    [self addSubview:self.leftEffectView];
+    [self addSubview:self.rightEffectView];
     // 默认选中第一个
     [self selectIndex:0];
 }
@@ -134,6 +140,41 @@
 }
 
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    Log(scrollView.contentOffset);
+    Log(scrollView.contentSize);
+    NSInteger item = [self.collectionView numberOfItemsInSection:0] - 1;
+    if (item < 0) {
+        return;
+    }
+    
+    CGFloat lProgress = (scrollView.contentOffset.x - 100)/100;
+    CGFloat rProgress = (scrollView.contentSize.width - scrollView.contentOffset.x - scrollView.width)/100;
+    
+    if (lProgress > 1) {
+        lProgress = 1;
+    }
+    if (rProgress > 1) {
+        rProgress = 1;
+    }
+    if (lProgress < 0) {
+        lProgress = 0;
+    }
+    if (rProgress < 0) {
+        rProgress = 0;
+    }
+    
+    self.leftEffectView.alpha = lProgress;
+    self.rightEffectView.alpha = rProgress;
+    
+//    NSIndexPath *firstIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+//    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:0];
+//    BOOL isFirstVisible = [self.collectionView tmui_itemVisibleAtIndexPath:firstIndexPath];
+//    BOOL isLastVisible = [self.collectionView tmui_itemVisibleAtIndexPath:lastIndexPath];
+//    self.leftEffectView.alpha = !isFirstVisible;
+//    self.rightEffectView.alpha = !isLastVisible;
+}
+
 #pragma mark - Private
 
 - (CGFloat)itemWidth{
@@ -173,15 +214,22 @@
     return _flowLayout;
 }
 
-- (THKMaterialClassificationEffectView *)effectView{
-    if (!_effectView) {
-        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-        _effectView = [[THKMaterialClassificationEffectView alloc] initWithEffect:blur];
-        _effectView.frame = CGRectMake(self.width - CGCustomFloat(30), 0, CGCustomFloat(30), self.height);
-        _effectView.tmui_foregroundColor = UIColor.whiteColor;
-        _effectView.alpha = 0.5;
+- (UIView *)leftEffectView{
+    if (!_leftEffectView) {
+        _leftEffectView = [[THKMaterialClassificationEffectView alloc] init];
+        _leftEffectView.frame = CGRectMake(0, 0, CGCustomFloat(100), self.height);
+        [_leftEffectView tmui_gradientWithColors:@[[UIColor colorWithRed:1 green:1 blue:1 alpha:1],[UIColor colorWithRed:1 green:1 blue:1 alpha:0]] gradientType:TMUIGradientTypeLeftToRight locations:@[@0.1]];
     }
-    return _effectView;
+    return _leftEffectView;
+}
+
+- (UIView *)rightEffectView{
+    if (!_rightEffectView) {
+        _rightEffectView = [[THKMaterialClassificationEffectView alloc] init];
+        _rightEffectView.frame = CGRectMake(self.width - CGCustomFloat(100), 0, CGCustomFloat(100), self.height);
+        [_rightEffectView tmui_gradientWithColors:@[[UIColor colorWithRed:1 green:1 blue:1 alpha:0],[UIColor colorWithRed:1 green:1 blue:1 alpha:1]] gradientType:TMUIGradientTypeLeftToRight locations:@[@0.5]];
+    }
+    return _rightEffectView;
 }
 
 
