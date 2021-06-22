@@ -7,7 +7,8 @@
 
 #import "THKMaterialRecommendRankVC.h"
 #import "THKMaterialClassificationViewCellLayout.h"
-#import "THKMaterialClassificationViewCellHeader.h"
+#import "THKMaterialClassificationViewRankHeader.h"
+#import "THKMaterialClassificationViewNormalHeader.h"
 #import "THKMaterialClassificationViewCellFooter.h"
 @interface THKMaterialRecommendRankVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -57,13 +58,16 @@
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
-        THKMaterialClassificationViewCellHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-        header.imgView.image = UIImageMake(@"商品卡片头部");
-        header.imgView.hidden = (indexPath.section == 0);
-        return header;
+        if (indexPath.section == 0) {
+            THKMaterialClassificationViewRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewRankHeader.class) forIndexPath:indexPath];
+            return header;
+        }else{
+            THKMaterialClassificationViewNormalHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewNormalHeader.class) forIndexPath:indexPath];
+            return header;
+        }
         
     } else if (kind == UICollectionElementKindSectionFooter) {
-        return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer" forIndexPath:indexPath];
+        return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewCellFooter.class) forIndexPath:indexPath];
     }
     
     return nil;
@@ -124,8 +128,9 @@
         _collectionView.delegate = self;
         
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-        [_collectionView registerClass:[THKMaterialClassificationViewCellHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
-        [_collectionView registerClass:[THKMaterialClassificationViewCellFooter class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
+        [_collectionView registerClass:THKMaterialClassificationViewRankHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewRankHeader.class)];
+        [_collectionView registerClass:THKMaterialClassificationViewNormalHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewNormalHeader.class)];
+        [_collectionView registerClass:THKMaterialClassificationViewCellFooter.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewCellFooter.class)];
     }
     return _collectionView;
 }
