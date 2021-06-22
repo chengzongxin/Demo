@@ -46,8 +46,8 @@
 - (void)applyLayoutAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
     [super applyLayoutAttributes:layoutAttributes];
     
-    // 只有第一行是整个section背景，其他都是只有头部尺寸
-    if (layoutAttributes.indexPath.section == 0) {
+    // 只有第一行是整个section背景，其他都是只有头部尺寸,其他页面不显示排行榜头图
+    if (layoutAttributes.indexPath.section == 0 && [self.reuseIdentifier isEqualToString:@"decorationView_firstDifferent"]) {
         _imageView.image = UIImageMake(@"排行榜头图");
     }else{
         _imageView.image = [UIImage tmui_imageWithColor:UIColor.whiteColor];

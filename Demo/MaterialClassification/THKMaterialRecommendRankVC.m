@@ -73,7 +73,33 @@
 }
 
 
-#pragma mark - UICollectionViewDataSource
+// 子视图布局
+- (void)thk_addSubviews{
+
+}
+
+// 绑定VM
+- (void)bindViewModel {
+
+}
+
+
+#pragma mark - Public
+
+#pragma mark - Event Respone
+
+#pragma mark - Delegate
+#pragma mark  UICollectionViewDataSource
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - 8*2)/3);
+    if (indexPath.section == 0) {
+        return CGSizeMake(width, 135);
+    }else{
+        return CGSizeMake(width, CGCustomFloat(190));
+    }
+}
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return _headerTitles.count;
 }
@@ -122,32 +148,6 @@
     return nil;
 }
 
-
-// 子视图布局
-- (void)thk_addSubviews{
-
-}
-
-// 绑定VM
-- (void)bindViewModel {
-
-}
-
-
-#pragma mark - Public
-
-#pragma mark - Event Respone
-
-#pragma mark - Delegate
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - 8*2)/3);
-    if (indexPath.section == 0) {
-        return CGSizeMake(width, 135);
-    }else{
-        return CGSizeMake(width, CGCustomFloat(190));
-    }
-}
-
 #pragma mark - Private
 
 #pragma mark - Getters and Setters
@@ -159,6 +159,7 @@
         _layout.sectionInset = UIEdgeInsetsMake(0, 22, 0, 22); // item 间距
         _layout.decorationInset = UIEdgeInsetsMake(0, 10, 0, 10); // decoration 间距
         _layout.decorationBottomMargin = 10;
+        _layout.firstDifferent = YES;
         _layout.minimumLineSpacing = 0;
         _layout.minimumInteritemSpacing = 8;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_layout];

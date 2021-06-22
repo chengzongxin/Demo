@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) UIEdgeInsets decorationInset;
 @property (nonatomic, assign) CGFloat decorationBottomMargin;
+@property (nonatomic, assign) BOOL firstDifferent; // 第一个背景不同
 
 @end
 

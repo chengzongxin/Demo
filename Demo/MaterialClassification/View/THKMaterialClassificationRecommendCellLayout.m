@@ -23,7 +23,11 @@
     _insetForSectionAtIndexFlag = [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)];
     _lastY = 0;
     
-    [self registerClass:[THKMaterialClassificationRecommendDecorationView class] forDecorationViewOfKind:@"decorationView"];
+    [self registerClass:[THKMaterialClassificationRecommendDecorationView class] forDecorationViewOfKind:[self reuseId]];
+}
+
+- (NSString *)reuseId{
+    return self.firstDifferent?@"decorationView_firstDifferent":@"decorationView";
 }
 
 
@@ -33,7 +37,7 @@
     
     for (UICollectionViewLayoutAttributes *attr in superAttrs) {
         if (attr.representedElementKind == UICollectionElementKindSectionHeader) {
-            [attrs addObject:[self layoutAttributesForDecorationViewOfKind:@"decorationView" atIndexPath:attr.indexPath top:attr.frame.origin.y]];
+            [attrs addObject:[self layoutAttributesForDecorationViewOfKind:[self reuseId] atIndexPath:attr.indexPath top:attr.frame.origin.y]];
         }
     }
     
