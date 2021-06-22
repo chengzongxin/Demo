@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKMaterialClassificationRecommendRankCell : UICollectionViewCell
 
+@property (nonatomic, assign) NSInteger rank;
+
 @end
 
 NS_ASSUME_NONNULL_END

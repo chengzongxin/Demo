@@ -56,11 +56,11 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         THKMaterialClassificationRecommendRankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankCell.class) forIndexPath:indexPath];
-        cell.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3];
+        cell.rank = indexPath.item;
         return cell;
     }else{
         THKMaterialClassificationRecommendNormalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendNormalCell.class) forIndexPath:indexPath];
-        cell.backgroundColor = [[UIColor orangeColor] colorWithAlphaComponent:0.3];
+        cell.rank = indexPath.item;
         return cell;
     }
 }
@@ -106,7 +106,7 @@
     if (indexPath.section == 0) {
         return CGSizeMake(width, 135);
     }else{
-        return CGSizeMake(width, 190);
+        return CGSizeMake(width, CGCustomFloat(190));
     }
 }
 
