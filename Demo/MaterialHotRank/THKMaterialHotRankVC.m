@@ -20,6 +20,10 @@
 @property (nonatomic, strong) NSArray <NSArray *> *icons;
 @property (nonatomic, strong) NSArray <NSArray *> *titles;
 @property (nonatomic, strong) NSArray <NSArray *> *subtitles;
+
+
+@property (nonatomic, strong) UIView *collectionViewHeader;
+
 @end
 
 @implementation THKMaterialHotRankVC
@@ -52,6 +56,22 @@
                    @[@"97",@"98",@"99"],
                    @[@"97",@"98",@"99"],
                    @[@"97",@"98",@"99"],];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setBackgroundImage:UIImage.new forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:UIImage.new];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
 }
 
 // 渲染VC
@@ -141,8 +161,10 @@
         _layout.minimumLineSpacing = 0;
         _layout.minimumInteritemSpacing = 8;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_layout];
-        _collectionView.backgroundColor = UIColorHex(#F6F8F6);
-        _collectionView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0);
+        _collectionView.backgroundColor = UIColorHex(#DEEEFF);
+        _collectionView.contentInset = UIEdgeInsetsMake(200, 0, 10, 0);
+        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        [_collectionView addSubview:self.collectionViewHeader];
         [self.view addSubview:_collectionView];
         
         _collectionView.dataSource = self;
@@ -156,6 +178,40 @@
     }
     return _collectionView;
 }
+
+
+- (UIView *)collectionViewHeader{
+    if (!_collectionViewHeader) {
+        // 背景
+        UIImage *img = UIImageMake(@"热门排行榜-背景");
+        CGFloat height = self.view.width/img.size.width*img.size.height;
+        _collectionViewHeader = [[UIView alloc] initWithFrame:CGRectMake(0, -200, self.view.width, height)];
+        UIImageView *bgImgV = [[UIImageView alloc] initWithFrame:_collectionViewHeader.bounds];
+        bgImgV.image = img;
+        [_collectionViewHeader addSubview:bgImgV];
+        _collectionViewHeader.layer.zPosition = -1;
+        // 标题
+        UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel.textColor = UIColorHex(#2D76CF);
+        titleLabel.font = UIFontSemibold(32);
+        titleLabel.text = @"热门排行榜";
+        [_collectionViewHeader addSubview:titleLabel];
+        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(110);
+            make.left.mas_equalTo(30);
+        }];
+        // 皇冠图标
+        UIImageView *crownIcon = [[UIImageView alloc] initWithImage:UIImageMake(@"皇冠")];
+        [_collectionViewHeader addSubview:crownIcon];
+        [crownIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(80);
+            make.right.mas_equalTo(-18);
+        }];
+        
+    }
+    return _collectionViewHeader;
+}
+
 #pragma mark - Supperclass
 
 #pragma mark - NSObject
