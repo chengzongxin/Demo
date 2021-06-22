@@ -9,7 +9,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSUInteger, THKMaterialTitleRankViewStyle) {
+    THKMaterialTitleRankViewStyleBlue,
+    THKMaterialTitleRankViewStyleGold
+};
+
 @interface THKMaterialTitleRankView : THKView
+
+- (instancetype)initWithStyle:(THKMaterialTitleRankViewStyle)style;
+
+- (void)setText:(NSString *)text;
 
 @end
 

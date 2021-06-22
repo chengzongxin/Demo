@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKMaterialClassificationViewRankHeader : UICollectionReusableView
 
+- (void)setTitle:(NSString *)title;
+
 @end
 
 NS_ASSUME_NONNULL_END

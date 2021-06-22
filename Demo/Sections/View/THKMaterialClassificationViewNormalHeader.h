@@ -10,7 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKMaterialClassificationViewNormalHeader : UICollectionReusableView
-@property (nonatomic, strong) UIImageView *imgView;
+
+- (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -60,9 +60,11 @@
     if (kind == UICollectionElementKindSectionHeader) {
         if (indexPath.section == 0) {
             THKMaterialClassificationViewRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewRankHeader.class) forIndexPath:indexPath];
+            [header setTitle:@"冰箱推荐榜😆"];
             return header;
         }else{
             THKMaterialClassificationViewNormalHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationViewNormalHeader.class) forIndexPath:indexPath];
+            [header setTitle:@"冰箱推荐榜哈哈哈哈😆" subtitle:@"经典三门 无霜风冷"];
             return header;
         }
         
@@ -122,6 +124,7 @@
         _layout.minimumInteritemSpacing = 8;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_layout];
         _collectionView.backgroundColor = UIColorHex(#F6F8F6);
+        _collectionView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0);
         [self.view addSubview:_collectionView];
         
         _collectionView.dataSource = self;
