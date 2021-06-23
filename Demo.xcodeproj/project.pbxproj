@@ -81,6 +81,7 @@
 		16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */; };
 		16E5C53A26831A8C0024BA20 /* THKMaterialHotListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C53926831A8C0024BA20 /* THKMaterialHotListRequest.m */; };
 		16E5C54026831AA60024BA20 /* THKMaterialHotListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C53F26831AA60024BA20 /* THKMaterialHotListResponse.m */; };
+		16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C54B268325E20024BA20 /* THKRequestCommand.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
@@ -262,6 +263,8 @@
 		16E5C53926831A8C0024BA20 /* THKMaterialHotListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotListRequest.m; sourceTree = "<group>"; };
 		16E5C53E26831AA60024BA20 /* THKMaterialHotListResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotListResponse.h; sourceTree = "<group>"; };
 		16E5C53F26831AA60024BA20 /* THKMaterialHotListResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotListResponse.m; sourceTree = "<group>"; };
+		16E5C54A268325E20024BA20 /* THKRequestCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKRequestCommand.h; sourceTree = "<group>"; };
+		16E5C54B268325E20024BA20 /* THKRequestCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKRequestCommand.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -536,6 +539,8 @@
 				16F3B69C2586F40600E5ADE4 /* THKViewController.h */,
 				16F3B69D2586F40600E5ADE4 /* THKViewController.m */,
 				16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */,
+				16E5C54A268325E20024BA20 /* THKRequestCommand.h */,
+				16E5C54B268325E20024BA20 /* THKRequestCommand.m */,
 			);
 			path = BaseViewModel;
 			sourceTree = "<group>";
@@ -964,6 +969,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
+				16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */,
 				1669C1EF268069880059E9B0 /* Table2ViewController.m in Sources */,
 				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
