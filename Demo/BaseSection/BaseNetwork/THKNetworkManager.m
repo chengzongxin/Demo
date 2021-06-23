@@ -124,9 +124,9 @@
 /// 初始化网络请求公共参数
 -(void)initRequestParameter{
     //接口域名替换
-    [TBTNetworkManager sharedManager].formatUrlBlock = ^NSString *(NSString * _Nonnull url) {
-        return [[THKHttpDNSManager shareInstane] convertHostForUrlString:url isWebUrl:NO];
-    };
+//    [TBTNetworkManager sharedManager].formatUrlBlock = ^NSString *(NSString * _Nonnull url) {
+//        return [[THKHttpDNSManager shareInstane] convertHostForUrlString:url isWebUrl:NO];
+//    };
     // 初始化网络模块
     NSString *cityName = @"深圳";
     NSInteger cityId   = 1130;

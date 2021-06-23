@@ -36,7 +36,6 @@
 		1669C20B268086C90059E9B0 /* THKMaterialClassificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C20A268086C90059E9B0 /* THKMaterialClassificationView.m */; };
 		1669C215268087210059E9B0 /* THKMaterialClassificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C213268087210059E9B0 /* THKMaterialClassificationViewCell.m */; };
 		1669C2202680925C0059E9B0 /* THKMaterialClassificationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C21F2680925C0059E9B0 /* THKMaterialClassificationViewModel.m */; };
-		1669C2272680948B0059E9B0 /* THKDynamicGroupEntranceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C2262680948B0059E9B0 /* THKDynamicGroupEntranceModel.m */; };
 		1669C22D268099DA0059E9B0 /* THKMaterialRecommendRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C22C268099DA0059E9B0 /* THKMaterialRecommendRankVC.m */; };
 		1669C233268099ED0059E9B0 /* THKMaterialRecommendRankVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C232268099ED0059E9B0 /* THKMaterialRecommendRankVM.m */; };
 		1669C23C2680A3A50059E9B0 /* THKMaterialClassificationRecommendCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C23B2680A3A50059E9B0 /* THKMaterialClassificationRecommendCellLayout.m */; };
@@ -65,8 +64,6 @@
 		16E5C4CE2682DE930024BA20 /* TBTNetworkPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4C92682DE930024BA20 /* TBTNetworkPrivate.m */; };
 		16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4CA2682DE930024BA20 /* TBTBaseRequest.m */; };
 		16E5C4D02682DE930024BA20 /* TBTNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4CB2682DE930024BA20 /* TBTNetworkManager.m */; };
-		16E5C4DC2682E0AA0024BA20 /* THKDecorationHomeDiaryListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4DA2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.m */; };
-		16E5C4E52682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4E32682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m */; };
 		16E5C4F22682E4040024BA20 /* THKPhpUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4EA2682E4040024BA20 /* THKPhpUploadRequest.m */; };
 		16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4EC2682E4040024BA20 /* THKNetworkManager.m */; };
 		16E5C4F52682E4040024BA20 /* THKResponse+ErrToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4ED2682E4040024BA20 /* THKResponse+ErrToast.m */; };
@@ -82,6 +79,8 @@
 		16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52326830E5C0024BA20 /* NSData+Common.m */; };
 		16E5C52D26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52B26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m */; };
 		16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */; };
+		16E5C53A26831A8C0024BA20 /* THKMaterialHotListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C53926831A8C0024BA20 /* THKMaterialHotListRequest.m */; };
+		16E5C54026831AA60024BA20 /* THKMaterialHotListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C53F26831AA60024BA20 /* THKMaterialHotListResponse.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
@@ -170,8 +169,6 @@
 		1669C213268087210059E9B0 /* THKMaterialClassificationViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationViewCell.m; sourceTree = "<group>"; };
 		1669C21E2680925C0059E9B0 /* THKMaterialClassificationViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationViewModel.h; sourceTree = "<group>"; };
 		1669C21F2680925C0059E9B0 /* THKMaterialClassificationViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationViewModel.m; sourceTree = "<group>"; };
-		1669C2252680948B0059E9B0 /* THKDynamicGroupEntranceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDynamicGroupEntranceModel.h; sourceTree = "<group>"; };
-		1669C2262680948B0059E9B0 /* THKDynamicGroupEntranceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDynamicGroupEntranceModel.m; sourceTree = "<group>"; };
 		1669C22B268099DA0059E9B0 /* THKMaterialRecommendRankVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankVC.h; sourceTree = "<group>"; };
 		1669C22C268099DA0059E9B0 /* THKMaterialRecommendRankVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendRankVC.m; sourceTree = "<group>"; };
 		1669C231268099ED0059E9B0 /* THKMaterialRecommendRankVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankVM.h; sourceTree = "<group>"; };
@@ -232,10 +229,6 @@
 		16E5C4C92682DE930024BA20 /* TBTNetworkPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTNetworkPrivate.m; sourceTree = "<group>"; };
 		16E5C4CA2682DE930024BA20 /* TBTBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTBaseRequest.m; sourceTree = "<group>"; };
 		16E5C4CB2682DE930024BA20 /* TBTNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTNetworkManager.m; sourceTree = "<group>"; };
-		16E5C4DA2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDecorationHomeDiaryListResponse.m; sourceTree = "<group>"; };
-		16E5C4DB2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDecorationHomeDiaryListResponse.h; sourceTree = "<group>"; };
-		16E5C4E32682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDecorationHomeDiaryListRequest.m; sourceTree = "<group>"; };
-		16E5C4E42682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDecorationHomeDiaryListRequest.h; sourceTree = "<group>"; };
 		16E5C4EA2682E4040024BA20 /* THKPhpUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPhpUploadRequest.m; sourceTree = "<group>"; };
 		16E5C4EC2682E4040024BA20 /* THKNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKNetworkManager.m; sourceTree = "<group>"; };
 		16E5C4ED2682E4040024BA20 /* THKResponse+ErrToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "THKResponse+ErrToast.m"; sourceTree = "<group>"; };
@@ -265,6 +258,10 @@
 		16E5C52A26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPersonalDesignerConfigRequest.h; sourceTree = "<group>"; };
 		16E5C52B26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPersonalDesignerConfigResponse.m; sourceTree = "<group>"; };
 		16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPersonalDesignerConfigRequest.m; sourceTree = "<group>"; };
+		16E5C53826831A8C0024BA20 /* THKMaterialHotListRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotListRequest.h; sourceTree = "<group>"; };
+		16E5C53926831A8C0024BA20 /* THKMaterialHotListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotListRequest.m; sourceTree = "<group>"; };
+		16E5C53E26831AA60024BA20 /* THKMaterialHotListResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotListResponse.h; sourceTree = "<group>"; };
+		16E5C53F26831AA60024BA20 /* THKMaterialHotListResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotListResponse.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -501,12 +498,10 @@
 		1669C224268094810059E9B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1669C2252680948B0059E9B0 /* THKDynamicGroupEntranceModel.h */,
-				1669C2262680948B0059E9B0 /* THKDynamicGroupEntranceModel.m */,
-				16E5C4E42682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.h */,
-				16E5C4E32682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m */,
-				16E5C4DB2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.h */,
-				16E5C4DA2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.m */,
+				16E5C53826831A8C0024BA20 /* THKMaterialHotListRequest.h */,
+				16E5C53926831A8C0024BA20 /* THKMaterialHotListRequest.m */,
+				16E5C53E26831AA60024BA20 /* THKMaterialHotListResponse.h */,
+				16E5C53F26831AA60024BA20 /* THKMaterialHotListResponse.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -970,12 +965,11 @@
 			files = (
 				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
 				1669C1EF268069880059E9B0 /* Table2ViewController.m in Sources */,
-				16E5C4E52682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m in Sources */,
 				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
+				16E5C54026831AA60024BA20 /* THKMaterialHotListResponse.m in Sources */,
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
 				16E5C4F52682E4040024BA20 /* THKResponse+ErrToast.m in Sources */,
-				16E5C4DC2682E0AA0024BA20 /* THKDecorationHomeDiaryListResponse.m in Sources */,
 				16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				1686D8DC268192D90061FF66 /* THKMaterialClassificationRecommendRankCell.m in Sources */,
@@ -1012,7 +1006,6 @@
 				1669C23C2680A3A50059E9B0 /* THKMaterialClassificationRecommendCellLayout.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				1622E5EC2681D00E004DD9D8 /* THKMaterialHotRankHeader.m in Sources */,
-				1669C2272680948B0059E9B0 /* THKDynamicGroupEntranceModel.m in Sources */,
 				1669C1F0268069880059E9B0 /* NormalViewController.m in Sources */,
 				1686D8A12681756E0061FF66 /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
 				16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */,
@@ -1029,6 +1022,7 @@
 				16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */,
 				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
+				16E5C53A26831A8C0024BA20 /* THKMaterialHotListRequest.m in Sources */,
 				16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */,
 				1669C1F1268069880059E9B0 /* TableViewController.m in Sources */,
 				1669C233268099ED0059E9B0 /* THKMaterialRecommendRankVM.m in Sources */,
