@@ -442,7 +442,6 @@
 				1669C22C268099DA0059E9B0 /* THKMaterialRecommendRankVC.m */,
 				1669C208268086980059E9B0 /* View */,
 				1669C21D2680924B0059E9B0 /* ViewModel */,
-				1669C224268094810059E9B0 /* Model */,
 				1669C1E3268069870059E9B0 /* ChildVC */,
 			);
 			path = MaterialClassification;
@@ -531,6 +530,7 @@
 				16E5C5502683281A0024BA20 /* ViewController */,
 				16E5C5512683281A0024BA20 /* ViewModel */,
 				16E5C552268328260024BA20 /* View */,
+				1669C224268094810059E9B0 /* Model */,
 			);
 			path = MaterialHotRank;
 			sourceTree = "<group>";
