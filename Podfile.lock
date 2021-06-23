@@ -14,9 +14,12 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - FBRetainCycleDetector (0.1.4)
   - LookinServer (1.0.0)
   - Masonry (1.1.0)
   - MJExtension (3.2.2)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
   - ReactiveObjC (3.1.1)
   - TMUIKit (1.0.0):
     - Masonry (~> 1.1.0)
@@ -226,6 +229,7 @@ DEPENDENCIES:
   - LookinServer
   - Masonry
   - MJExtension
+  - MLeaksFinder
   - ReactiveObjC
   - TMUIKit (from `https://github.com/chengzongxin/TMUIKit.git`)
   - YYKit
@@ -233,9 +237,11 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - AFNetworking
+    - FBRetainCycleDetector
     - LookinServer
     - Masonry
     - MJExtension
+    - MLeaksFinder
     - ReactiveObjC
     - YYKit
 
@@ -250,13 +256,15 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
   LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   TMUIKit: 113cef591ba603bd784e3d81763c31e8dc161fee
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 0996a8ab5e281de09e1bfbc1ce41952f39cd05ef
+PODFILE CHECKSUM: dc9fecba4268f9791b2059462a03c6493bd7caa9
 
 COCOAPODS: 1.10.0

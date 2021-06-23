@@ -6,6 +6,7 @@
 //
 
 #import "THKMaterialHotRankVC.h"
+#import "THKMaterialHotRankVM.h"
 #import "THKMaterialClassificationRecommendCellLayout.h"
 #import "THKMaterialHotRankHeader.h"
 #import "THKMaterialClassificationRecommendRankCell.h"
@@ -13,6 +14,7 @@
 
 @interface THKMaterialHotRankVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, strong) THKMaterialHotRankVM *viewModel;
 @property (nonatomic, strong) THKMaterialClassificationRecommendCellLayout *layout;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -27,7 +29,7 @@
 @end
 
 @implementation THKMaterialHotRankVC
-
+@dynamic viewModel;
 #pragma mark - Lifecycle 
 
 

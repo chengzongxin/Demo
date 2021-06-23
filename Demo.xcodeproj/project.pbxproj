@@ -82,6 +82,8 @@
 		16E5C53A26831A8C0024BA20 /* THKMaterialHotListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C53926831A8C0024BA20 /* THKMaterialHotListRequest.m */; };
 		16E5C54026831AA60024BA20 /* THKMaterialHotListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C53F26831AA60024BA20 /* THKMaterialHotListResponse.m */; };
 		16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C54B268325E20024BA20 /* THKRequestCommand.m */; };
+		16E5C555268328430024BA20 /* THKMaterialHotRankVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C554268328430024BA20 /* THKMaterialHotRankVM.m */; };
+		16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
@@ -265,6 +267,10 @@
 		16E5C53F26831AA60024BA20 /* THKMaterialHotListResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotListResponse.m; sourceTree = "<group>"; };
 		16E5C54A268325E20024BA20 /* THKRequestCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKRequestCommand.h; sourceTree = "<group>"; };
 		16E5C54B268325E20024BA20 /* THKRequestCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKRequestCommand.m; sourceTree = "<group>"; };
+		16E5C553268328430024BA20 /* THKMaterialHotRankVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankVM.h; sourceTree = "<group>"; };
+		16E5C554268328430024BA20 /* THKMaterialHotRankVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankVM.m; sourceTree = "<group>"; };
+		16E5C590268330270024BA20 /* MLeaksMessenger+HookAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MLeaksMessenger+HookAlert.h"; sourceTree = "<group>"; };
+		16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MLeaksMessenger+HookAlert.m"; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -371,6 +377,7 @@
 				1669C1A32680667C0059E9B0 /* CommonDefine */,
 				1669C17B268066200059E9B0 /* PageContentViewController */,
 				16C532CC25761E1600210A3C /* BaseViewModel */,
+				16E5C58F26832FE30024BA20 /* Third */,
 			);
 			path = BaseSection;
 			sourceTree = "<group>";
@@ -521,10 +528,9 @@
 		1686D8EC2681C72E0061FF66 /* MaterialHotRank */ = {
 			isa = PBXGroup;
 			children = (
-				1686D8ED2681C74C0061FF66 /* THKMaterialHotRankVC.h */,
-				1686D8EE2681C74C0061FF66 /* THKMaterialHotRankVC.m */,
-				1622E5EA2681D00E004DD9D8 /* THKMaterialHotRankHeader.h */,
-				1622E5EB2681D00E004DD9D8 /* THKMaterialHotRankHeader.m */,
+				16E5C5502683281A0024BA20 /* ViewController */,
+				16E5C5512683281A0024BA20 /* ViewModel */,
+				16E5C552268328260024BA20 /* View */,
 			);
 			path = MaterialHotRank;
 			sourceTree = "<group>";
@@ -703,6 +709,42 @@
 				16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */,
 			);
 			path = PersonalDesignerConfig;
+			sourceTree = "<group>";
+		};
+		16E5C5502683281A0024BA20 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1686D8ED2681C74C0061FF66 /* THKMaterialHotRankVC.h */,
+				1686D8EE2681C74C0061FF66 /* THKMaterialHotRankVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		16E5C5512683281A0024BA20 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C553268328430024BA20 /* THKMaterialHotRankVM.h */,
+				16E5C554268328430024BA20 /* THKMaterialHotRankVM.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		16E5C552268328260024BA20 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1622E5EA2681D00E004DD9D8 /* THKMaterialHotRankHeader.h */,
+				1622E5EB2681D00E004DD9D8 /* THKMaterialHotRankHeader.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		16E5C58F26832FE30024BA20 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C590268330270024BA20 /* MLeaksMessenger+HookAlert.h */,
+				16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */,
+			);
+			path = Third;
 			sourceTree = "<group>";
 		};
 		863C150325C51CDA1727051D /* Pods */ = {
@@ -974,6 +1016,7 @@
 				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
 				16E5C54026831AA60024BA20 /* THKMaterialHotListResponse.m in Sources */,
+				16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */,
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
 				16E5C4F52682E4040024BA20 /* THKResponse+ErrToast.m in Sources */,
 				16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */,
@@ -1008,6 +1051,7 @@
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,
 				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
 				1669C1D12680671A0059E9B0 /* THKPageContentViewController.m in Sources */,
+				16E5C555268328430024BA20 /* THKMaterialHotRankVM.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
 				1669C23C2680A3A50059E9B0 /* THKMaterialClassificationRecommendCellLayout.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,

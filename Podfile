@@ -10,9 +10,10 @@ target 'Demo' do
   pod 'AFNetworking'
   pod 'ReactiveObjC'
   pod 'MJExtension'
-  pod 'LookinServer', :configurations => ['Debug']
-  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git'
   pod 'YYKit'
+  pod 'LookinServer', :configurations => ['Debug'] #界面查看工具
+  pod 'MLeaksFinder', :configurations => ['Debug'] #检测内存泄漏
+  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git' #TMUI
 
   target 'DemoTests' do
     inherit! :search_paths

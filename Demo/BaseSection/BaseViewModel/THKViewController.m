@@ -130,18 +130,18 @@
 - (void)thk_layoutNavigation {}
 
 
-#ifdef DEBUG
-    #if __has_include("MLeaksFinder.h")
-- (BOOL)willDealloc {
-    if (![super willDealloc]) {
-        return NO;
-    }
-    if (_viewModel) {
-        MLCheck(self.viewModel);
-    }
-    return YES;
-}
-    #endif
-#endif
+//#ifdef DEBUG
+//    #if __has_include("MLeaksFinder.h")
+//- (BOOL)willDealloc {
+//    if (![super willDealloc]) {
+//        return NO;
+//    }
+//    if (_viewModel) {
+//        MLCheck(self.viewModel);
+//    }
+//    return YES;
+//}
+//    #endif
+//#endif
 
 @end
