@@ -10,6 +10,11 @@
 #import "THKBaseRequest.h"
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum : NSUInteger {
+    THKLoadingStatus_Loading,
+    THKLoadingStatus_Finish,
+} THKLoadingStatus;
+
 typedef void(^cmdMake)(id input,id<RACSubscriber>  _Nonnull subscriber);
 typedef THKBaseRequest *(^cmdRequestMake)(id input);
 

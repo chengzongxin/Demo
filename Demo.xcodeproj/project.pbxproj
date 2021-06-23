@@ -438,8 +438,8 @@
 			children = (
 				16E5C5AB268344D00024BA20 /* ViewController */,
 				1669C208268086980059E9B0 /* View */,
-				1669C21D2680924B0059E9B0 /* ViewModel */,
 				1669C1E3268069870059E9B0 /* ChildVC */,
+				1669C21D2680924B0059E9B0 /* ViewModel */,
 			);
 			path = MaterialClassification;
 			sourceTree = "<group>";

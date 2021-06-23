@@ -7,6 +7,56 @@
 
 #import "THKMaterialRecommendRankVM.h"
 
+@interface THKMaterialRecommendRankVM ()
+
+@property (nonatomic, strong) THKRequestCommand *requestCommand;
+
+@property (nonatomic, strong) RACSubject *emptySignal;
+
+@property (nonatomic, strong) RACReplaySubject *loadingSignal;
+
+@property (nonatomic, strong, nullable) NSArray <THKMaterialHotListModel *> *data;
+
+@end
+
 @implementation THKMaterialRecommendRankVM
+
+- (void)initialize{
+    @weakify(self);
+    [self.requestCommand.nextSignal subscribeNext:^(THKMaterialHotListResponse *x) {
+        @strongify(self);
+        if (x.status != THKStatusSuccess) {
+            [self.emptySignal sendNext:@(TMEmptyContentTypeServerErr)];
+        }else if (x.data.count == 0) {
+            [self.emptySignal sendNext:@(TMEmptyContentTypeNoData)];
+        }else{
+            [self.emptySignal sendNext:nil];
+        }
+        
+        self.data = x.data;
+        [self.loadingSignal sendNext:@(THKLoadingStatus_Finish)];
+    }];
+    
+    [self.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
+        self.data = nil;
+        [self.emptySignal sendNext:@(TMEmptyContentTypeNetErr)];
+        [self.loadingSignal sendNext:@(THKLoadingStatus_Finish)];
+    }];
+    
+    [self.loadingSignal sendNext:@(THKLoadingStatus_Loading)];
+    [self.requestCommand execute:nil];
+}
+
+- (THKRequestCommand *)requestCommand{
+    if (!_requestCommand) {
+        _requestCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
+            return [[THKMaterialHotListRequest alloc] init];
+        }];
+    }
+    return _requestCommand;
+}
+
+TMUI_PropertyLazyLoad(RACSubject, emptySignal)
+TMUI_PropertyLazyLoad(RACReplaySubject, loadingSignal)
 
 @end

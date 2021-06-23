@@ -13,6 +13,7 @@
 #import "THKMaterialClassificationView.h"
 #import "THKMaterialClassificationViewModel.h"
 #import "THKMaterialRecommendRankVC.h"
+#import "THKMaterialRecommendRankVM.h"
 
 @interface THKMaterialClassificationVC ()
 
@@ -31,13 +32,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     self.title = @"家电";
-    self.vcs = [[@[THKMaterialRecommendRankVC.class,
-                   Table2ViewController.class,
-                   NormalViewController.class].rac_sequence map:^id _Nullable(Class cls) {
-        return [[cls alloc] init];
-    }] array];
+    THKMaterialRecommendRankVC *vc1 = [[THKMaterialRecommendRankVC alloc] initWithViewModel:[THKMaterialRecommendRankVM new]];
+    self.vcs = @[vc1,Table2ViewController.new,NormalViewController.new];
     self.titles = @[@"推荐榜单",@"好物种草",@"知识百科"];
 //
 //    [self reloadData];

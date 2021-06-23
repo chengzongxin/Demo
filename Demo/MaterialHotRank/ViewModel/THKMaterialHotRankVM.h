@@ -9,11 +9,6 @@
 #import "THKRequestCommand.h"
 #import "THKMaterialHotListRequest.h"
 
-typedef enum : NSUInteger {
-    THKLoadingStatus_Loading,
-    THKLoadingStatus_Finish,
-} THKLoadingStatus;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKMaterialHotRankVM : THKViewModel

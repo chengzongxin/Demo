@@ -6,6 +6,7 @@
 //
 
 #import "THKMaterialRecommendRankVC.h"
+#import "THKMaterialRecommendRankVM.h"
 #import "THKMaterialClassificationRecommendCellLayout.h"
 #import "THKMaterialClassificationRecommendRankHeader.h"
 #import "THKMaterialClassificationRecommendNormalHeader.h"
@@ -15,6 +16,7 @@
 
 @interface THKMaterialRecommendRankVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, strong) THKMaterialRecommendRankVM *viewModel;
 @property (nonatomic, strong) THKMaterialClassificationRecommendCellLayout *layout;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -26,7 +28,7 @@
 @end
 
 @implementation THKMaterialRecommendRankVC
-
+@dynamic viewModel;
 #pragma mark - Lifecycle 
 
 // 初始化
@@ -78,7 +80,25 @@
 
 // 绑定VM
 - (void)bindViewModel {
-
+    @weakify(self);
+    [[RACObserve(self.viewModel, data) skip:1] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.collectionView reloadData];
+    }];
+    // 空视图界面
+    [self.viewModel.emptySignal subscribeNext:^(NSNumber *x) {
+        @strongify(self);
+        if (x) {
+            [TMEmptyView showEmptyInView:self.view contentType:x.integerValue];
+        }else{
+            [self.view.tmui_emptyView remove];
+        }
+    }];
+    // 加载状态
+    [self.viewModel.loadingSignal subscribeNext:^(NSNumber *x) {
+        NSLog(@"%@",x);
+        [TMToast toast:(x.integerValue == THKLoadingStatus_Loading)?@"努力加载中...":@"加载完成"];
+    }];
 }
 
 
