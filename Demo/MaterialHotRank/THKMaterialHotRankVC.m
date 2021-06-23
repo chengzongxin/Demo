@@ -78,8 +78,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self thk_initialize];
-    
     [self.view addSubview:self.collectionView];
 }
 

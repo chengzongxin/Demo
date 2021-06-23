@@ -167,6 +167,7 @@
 		1686D8E3268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THKMaterialClassificationRecommendNormalCell.xib; sourceTree = "<group>"; };
 		1686D8ED2681C74C0061FF66 /* THKMaterialHotRankVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankVC.h; sourceTree = "<group>"; };
 		1686D8EE2681C74C0061FF66 /* THKMaterialHotRankVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankVC.m; sourceTree = "<group>"; };
+		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -432,6 +433,7 @@
 				160107702553EA3300FE4B77 /* THKViewModel.m */,
 				16F3B69C2586F40600E5ADE4 /* THKViewController.h */,
 				16F3B69D2586F40600E5ADE4 /* THKViewController.m */,
+				16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */,
 			);
 			path = BaseViewModel;
 			sourceTree = "<group>";
@@ -919,6 +921,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_CFLAGS = "-Wno-ambiguous-macro";
 			};
 			name = Debug;
 		};
@@ -939,6 +942,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WARNING_CFLAGS = "-Wno-ambiguous-macro";
 			};
 			name = Release;
 		};
