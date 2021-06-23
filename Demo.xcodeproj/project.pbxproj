@@ -74,6 +74,14 @@
 		16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C5002682E5920024BA20 /* TSimpleDataObject.m */; };
 		16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C5092682E6F80024BA20 /* THKHttpDNSManager.m */; };
 		16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C50A2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m */; };
+		16E5C51A26830DCB0024BA20 /* THKIdentityConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C51126830DCB0024BA20 /* THKIdentityConfigManager.m */; };
+		16E5C51B26830DCB0024BA20 /* THKIdentityTypeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C51226830DCB0024BA20 /* THKIdentityTypeModel.m */; };
+		16E5C51C26830DCB0024BA20 /* THKIdentityViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C51326830DCB0024BA20 /* THKIdentityViewModel.m */; };
+		16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */ = {isa = PBXBuildFile; fileRef = 16E5C51826830DCB0024BA20 /* V_Identity_Config.json */; };
+		16E5C51E26830DCB0024BA20 /* THKIdentityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C51926830DCB0024BA20 /* THKIdentityView.m */; };
+		16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52326830E5C0024BA20 /* NSData+Common.m */; };
+		16E5C52D26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52B26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m */; };
+		16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
@@ -242,6 +250,21 @@
 		16E5C5082682E6F80024BA20 /* THKHttpDNSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKHttpDNSManager.h; sourceTree = "<group>"; };
 		16E5C5092682E6F80024BA20 /* THKHttpDNSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKHttpDNSManager.m; sourceTree = "<group>"; };
 		16E5C50A2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+hook_httpdns_urlprotocol_inject.m"; sourceTree = "<group>"; };
+		16E5C51126830DCB0024BA20 /* THKIdentityConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityConfigManager.m; sourceTree = "<group>"; };
+		16E5C51226830DCB0024BA20 /* THKIdentityTypeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityTypeModel.m; sourceTree = "<group>"; };
+		16E5C51326830DCB0024BA20 /* THKIdentityViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityViewModel.m; sourceTree = "<group>"; };
+		16E5C51426830DCB0024BA20 /* THKIdentityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityView.h; sourceTree = "<group>"; };
+		16E5C51526830DCB0024BA20 /* THKIdentityTypeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityTypeModel.h; sourceTree = "<group>"; };
+		16E5C51626830DCB0024BA20 /* THKIdentityConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityConfigManager.h; sourceTree = "<group>"; };
+		16E5C51726830DCB0024BA20 /* THKIdentityViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKIdentityViewModel.h; sourceTree = "<group>"; };
+		16E5C51826830DCB0024BA20 /* V_Identity_Config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = V_Identity_Config.json; sourceTree = "<group>"; };
+		16E5C51926830DCB0024BA20 /* THKIdentityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKIdentityView.m; sourceTree = "<group>"; };
+		16E5C52226830E5C0024BA20 /* NSData+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Common.h"; sourceTree = "<group>"; };
+		16E5C52326830E5C0024BA20 /* NSData+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Common.m"; sourceTree = "<group>"; };
+		16E5C52926830E7B0024BA20 /* THKPersonalDesignerConfigResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPersonalDesignerConfigResponse.h; sourceTree = "<group>"; };
+		16E5C52A26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPersonalDesignerConfigRequest.h; sourceTree = "<group>"; };
+		16E5C52B26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPersonalDesignerConfigResponse.m; sourceTree = "<group>"; };
+		16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPersonalDesignerConfigRequest.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +362,7 @@
 		160107692553EA1A00FE4B77 /* BaseSection */ = {
 			isa = PBXGroup;
 			children = (
+				16E5C51026830DCB0024BA20 /* THKIdentityView */,
 				16E5C5062682E6F80024BA20 /* HttpDNS */,
 				16E5C4FC2682E5920024BA20 /* CommonObjects */,
 				16E5C4E92682E4040024BA20 /* BaseNetwork */,
@@ -651,6 +675,36 @@
 			path = HttpDNS;
 			sourceTree = "<group>";
 		};
+		16E5C51026830DCB0024BA20 /* THKIdentityView */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C52226830E5C0024BA20 /* NSData+Common.h */,
+				16E5C52326830E5C0024BA20 /* NSData+Common.m */,
+				16E5C52826830E7B0024BA20 /* PersonalDesignerConfig */,
+				16E5C51626830DCB0024BA20 /* THKIdentityConfigManager.h */,
+				16E5C51126830DCB0024BA20 /* THKIdentityConfigManager.m */,
+				16E5C51526830DCB0024BA20 /* THKIdentityTypeModel.h */,
+				16E5C51226830DCB0024BA20 /* THKIdentityTypeModel.m */,
+				16E5C51426830DCB0024BA20 /* THKIdentityView.h */,
+				16E5C51926830DCB0024BA20 /* THKIdentityView.m */,
+				16E5C51726830DCB0024BA20 /* THKIdentityViewModel.h */,
+				16E5C51326830DCB0024BA20 /* THKIdentityViewModel.m */,
+				16E5C51826830DCB0024BA20 /* V_Identity_Config.json */,
+			);
+			path = THKIdentityView;
+			sourceTree = "<group>";
+		};
+		16E5C52826830E7B0024BA20 /* PersonalDesignerConfig */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C52926830E7B0024BA20 /* THKPersonalDesignerConfigResponse.h */,
+				16E5C52A26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.h */,
+				16E5C52B26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m */,
+				16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */,
+			);
+			path = PersonalDesignerConfig;
+			sourceTree = "<group>";
+		};
 		863C150325C51CDA1727051D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -781,6 +835,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */,
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
 				160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */,
 				160106EA2553DD8000FE4B77 /* Main.storyboard in Resources */,
@@ -921,6 +976,7 @@
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
 				16E5C4F52682E4040024BA20 /* THKResponse+ErrToast.m in Sources */,
 				16E5C4DC2682E0AA0024BA20 /* THKDecorationHomeDiaryListResponse.m in Sources */,
+				16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				1686D8DC268192D90061FF66 /* THKMaterialClassificationRecommendRankCell.m in Sources */,
 				1669C1EE268069880059E9B0 /* Table3ViewController.m in Sources */,
@@ -932,6 +988,7 @@
 				16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */,
 				1669C24E2680A5240059E9B0 /* THKMaterialClassificationRecommendDecorationView.m in Sources */,
 				16E5C4CD2682DE930024BA20 /* TBTNetworkConfig.m in Sources */,
+				16E5C51A26830DCB0024BA20 /* THKIdentityConfigManager.m in Sources */,
 				1686D8E4268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
 				1686D8EF2681C74C0061FF66 /* THKMaterialHotRankVC.m in Sources */,
 				1669C1F2268069880059E9B0 /* Table1ViewController.m in Sources */,
@@ -939,12 +996,16 @@
 				16E5C4CE2682DE930024BA20 /* TBTNetworkPrivate.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,
 				16E5C4BB2682DE4B0024BA20 /* THKCommonRequest.m in Sources */,
+				16E5C52D26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m in Sources */,
 				1669C1FB26807F600059E9B0 /* THKMaterialClassificationVC.m in Sources */,
+				16E5C51B26830DCB0024BA20 /* THKIdentityTypeModel.m in Sources */,
 				1686D89B268173C50061FF66 /* THKMaterialTitleRankView.m in Sources */,
 				1686D8A72681758E0061FF66 /* THKMaterialClassificationRecommendNormalHeader.m in Sources */,
 				16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */,
 				1669C20B268086C90059E9B0 /* THKMaterialClassificationView.m in Sources */,
+				16E5C51E26830DCB0024BA20 /* THKIdentityView.m in Sources */,
 				1669C22D268099DA0059E9B0 /* THKMaterialRecommendRankVC.m in Sources */,
+				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,
 				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
 				1669C1D12680671A0059E9B0 /* THKPageContentViewController.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
@@ -957,6 +1018,7 @@
 				16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */,
 				1669C1D22680671A0059E9B0 /* THKPageBGScrollView.m in Sources */,
 				16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */,
+				16E5C51C26830DCB0024BA20 /* THKIdentityViewModel.m in Sources */,
 				16E5C4B82682DE4B0024BA20 /* THKBaseRequest.m in Sources */,
 				16E5C4B92682DE4B0024BA20 /* THKCommonPhpRequest.m in Sources */,
 				1669C215268087210059E9B0 /* THKMaterialClassificationViewCell.m in Sources */,

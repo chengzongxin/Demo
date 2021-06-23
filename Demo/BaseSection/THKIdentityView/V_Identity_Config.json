@@ -1,0 +1,210 @@
+{
+  "status": 0,
+  "desc": "true",
+  "data": {
+    "identify": [
+        {
+          "identificationType": 6,
+          "subCategory": [
+            {
+              "subCategory": 0,
+              "identificationPic": "http://img.to8to.com/app/icon/designer_identity.png",
+              "iconWidth": 14,
+              "iconHeight": 14,
+              "textData": {
+                "identificationDesc": "设计机构",
+                "backgroundColor": "ECF3FC",
+                "textColor": "3380D9",
+                "fontSize": 12
+              }
+            },
+            {
+              "subCategory": 1,
+              "identificationPic": "http://img.to8to.com/app/icon/expert_identity.png",
+              "iconWidth": 14,
+              "iconHeight": 14,
+              "textData": {
+                "identificationDesc": "独立设计师",
+                "backgroundColor": "FEF6E8",
+                "textColor": "EB9002",
+                "fontSize": 12
+              }
+            }
+          ]
+        },
+      {
+        "identificationType": 10,
+        "subCategory": [
+            
+          {
+            "subCategory": 0,
+            "identificationPic": "http://img.to8to.com/app/icon/expert_identity.png",
+            "iconWidth": 14,
+            "iconHeight": 14,
+            "textData": {
+              "identificationDesc": "家居达人",
+              "backgroundColor": "FEF6E8",
+              "textColor": "EB9002",
+              "fontSize": 12
+            }
+          }
+        ]
+      },
+      {
+        "identificationType": 11,
+        "subCategory": [
+          {
+            "subCategory": 0,
+            "identificationPic": "http://img.to8to.com/app/icon/designer_identity.png",
+            "iconWidth": 14,
+            "iconHeight": 14,
+            "textData": {
+              "identificationDesc": "设计机构",
+              "backgroundColor": "ECF3FC",
+              "textColor": "3380D9",
+              "fontSize": 12
+            }
+          },
+          {
+            "subCategory": 1,
+            "identificationPic": "http://img.to8to.com/app/icon/expert_identity.png",
+            "iconWidth": 14,
+            "iconHeight": 14,
+            "textData": {
+              "identificationDesc": "独立设计师",
+              "backgroundColor": "FEF6E8",
+              "textColor": "EB9002",
+              "fontSize": 12
+            }
+          }
+        ]
+      },
+      {
+        "identificationType": 12,
+        "subCategory": [
+          {
+            "subCategory": 0,
+            "identificationPic": "http://img.to8to.com/app/icon/designer_identity.png",
+            "iconWidth": 14,
+            "iconHeight": 14,
+            "textData": {
+              "identificationDesc": "品牌商家",
+              "backgroundColor": "ECF3FC",
+              "textColor": "3380D9",
+              "fontSize": 12
+            }
+          }
+        ]
+      },
+      {
+        "identificationType": 13,
+        "subCategory": [
+          {
+            "subCategory": 0,
+            "identificationPic": "http://img.to8to.com/app/icon/authority_identity.png",
+            "iconWidth": 14,
+            "iconHeight": 14,
+            "textData": {
+              "identificationDesc": "官方认证",
+              "backgroundColor": "E9F9F2",
+              "textColor": "01AA64",
+              "fontSize": 12
+            }
+          }
+        ]
+      },
+      {
+        "identificationType": 14,
+        "subCategory": [
+          {
+            "subCategory": 0,
+            "identificationPic": "http://img.to8to.com/app/icon/designer_identity.png",
+            "iconWidth": 14,
+            "iconHeight": 14,
+            "textData": {
+              "identificationDesc": "装修公司",
+              "backgroundColor": "ECF3FC",
+              "textColor": "3380D9",
+              "fontSize": 12
+            }
+          }
+        ]
+      },
+      {
+        "identificationType": 999,
+        "subCategory": [
+          {
+            "subCategory": 0,
+            "identificationPic": "http://img.to8to.com/app/icon/expert_identity.png",
+            "iconWidth": 14,
+            "iconHeight": 14,
+            "textData": {
+              "identificationDesc": "作者",
+              "backgroundColor": "878B99",
+              "textColor": "FFFFFF",
+              "fontSize": 12
+            }
+          }
+        ]
+      }
+    ],
+    "domainConfig": {
+        "domainMapping": { 
+            "mqc.to8to.com": "mqc.huhudi.com",
+            "pic3.t8tcdn.com": "cdn-pic3.huhudi.com",
+            "3dstatic.t8tcdn.com": "cdn-3dstatic.huhudi.com",
+            "mobileapi.to8to.com": "mobileapi.huhudi.com",
+            "apigw.to8to.com": "apigw.huhudi.com",
+            "tumaxflashapi.to8to.com": "tumaxflashapi.huhudi.com",
+            "spic2.t8tcdn.com": "cdn-spic2.huhudi.com",
+            "store.to8to.com": "store.huhudi.com",
+            "shencebg.to8to.com": "shencebg.huhudi.com",
+            "m.to8to.com": "m.huhudi.com",
+            "file1.to8to.com": "file1.huhudi.com",
+            "wbf3.t8tcdn.com": "cdn-wbf3.huhudi.com",
+            "apigwc1.to8to.com": "apigwc1.huhudi.com",
+            "tumaxopenapi.to8to.com": "tumaxopenapi.huhudi.com",
+            "pic2.to8to.com": "cdn-pic2.huhudi.com",
+            "flashapi.to8to.com": "flashapi.huhudi.com",
+            "finance-m.to8to.com": "finance-m.huhudi.com",
+            "pic6.t8tcdn.com": "cdn-pic6.huhudi.com",
+            "mapp.to8to.com": "mapp.huhudi.com",
+            "pic1.t8tcdn.com": "cdn-pic1.huhudi.com",
+            "wbf1.t8tcdn.com": "cdn-wbf1.huhudi.com",
+            "video.t8tcdn.com": "cdn-video.huhudi.com",
+            "live.to8to.com": "live.huhudi.com",
+            "tumaxmerchant.to8to.com": "tumaxmerchant.huhudi.com",
+            "file.t8tcdn.com": "cdn-file.huhudi.com",
+            "vod.t8tcdn.com": "cdn-vod.huhudi.com",
+            "pic1.to8to.com": "cdn-pic1.huhudi.com",
+            "dacapi.to8to.com": "dacapi.huhudi.com",
+            "wbf2.t8tcdn.com": "cdn-wbf2.huhudi.com",
+            "static.t8tcdn.com": "cdn-static.huhudi.com",
+            "img.to8to.com": "cdn-img.huhudi.com",
+            "pic50.to8to.com": "cdn-pic50.huhudi.com",
+            "scmgw.to8to.com": "scmgw.huhudi.com",
+            "pic50.t8tcdn.com": "cdn-pic50.huhudi.com",
+            "livepic.t8tcdn.com": "cdn-livepic.huhudi.com",
+            "pic2.t8tcdn.com": "cdn-pic2.huhudi.com",
+            "wbf.t8tcdn.com": "cdn-wbf.huhudi.com",
+            "file.to8to.com": "file.huhudi.com",
+            "appapi.to8to.com": "appapi.huhudi.com",
+            "secure.to8to.com": "secure.huhudi.com",
+            "video.to8to.com": "video.huhudi.com",
+            "pic.t8tcdn.com": "cdn-pic.huhudi.com",
+            "to8tozb.to8to.com": "huhudizb.huhudi.com",
+            "pic5.t8tcdn.com": "cdn-pic5.huhudi.com",
+            "static.to8to.com": "cdn-static.huhudi.com",
+            "apigwc2.to8to.com": "apigwc2.huhudi.com",
+            "usertracking.to8to.com": "usertracking.huhudi.com",
+            "img.t8tcdn.com": "cdn-img.huhudi.com",
+            "www.to8to.com": "www.huhudi.com",
+            "file2.to8to.com": "file2.huhudi.com",
+            "assets.to8to.com": "assets.huhudi.com",
+            "pic4.t8tcdn.com": "cdn-pic4.huhudi.com",
+            "pic.to8to.com": "cdn-pic.huhudi.com"
+        },
+        "domainMappingSwitch": 1
+    }
+  }
+}
