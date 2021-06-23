@@ -436,10 +436,7 @@
 		1669C1DC268069250059E9B0 /* MaterialClassification */ = {
 			isa = PBXGroup;
 			children = (
-				1669C1F926807F600059E9B0 /* THKMaterialClassificationVC.h */,
-				1669C1FA26807F600059E9B0 /* THKMaterialClassificationVC.m */,
-				1669C22B268099DA0059E9B0 /* THKMaterialRecommendRankVC.h */,
-				1669C22C268099DA0059E9B0 /* THKMaterialRecommendRankVC.m */,
+				16E5C5AB268344D00024BA20 /* ViewController */,
 				1669C208268086980059E9B0 /* View */,
 				1669C21D2680924B0059E9B0 /* ViewModel */,
 				1669C1E3268069870059E9B0 /* ChildVC */,
@@ -450,6 +447,8 @@
 		1669C1E3268069870059E9B0 /* ChildVC */ = {
 			isa = PBXGroup;
 			children = (
+				1669C22B268099DA0059E9B0 /* THKMaterialRecommendRankVC.h */,
+				1669C22C268099DA0059E9B0 /* THKMaterialRecommendRankVC.m */,
 				1669C1ED268069870059E9B0 /* NormalViewController.h */,
 				1669C1E8268069870059E9B0 /* NormalViewController.m */,
 				1669C1E7268069870059E9B0 /* Table1ViewController.h */,
@@ -745,6 +744,15 @@
 				16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */,
 			);
 			path = Third;
+			sourceTree = "<group>";
+		};
+		16E5C5AB268344D00024BA20 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1669C1F926807F600059E9B0 /* THKMaterialClassificationVC.h */,
+				1669C1FA26807F600059E9B0 /* THKMaterialClassificationVC.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		863C150325C51CDA1727051D /* Pods */ = {
