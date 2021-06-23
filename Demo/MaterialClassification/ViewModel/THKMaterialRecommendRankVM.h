@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) RACReplaySubject *loadingSignal;
 
+@property (nonatomic, strong, readonly) RACReplaySubject *refreshSignal;
+
 @property (nonatomic, strong, readonly, nullable) NSArray <THKMaterialHotListModel *> *data;
 
 @end

@@ -15,7 +15,11 @@
 
 @property (nonatomic, strong) RACReplaySubject *loadingSignal;
 
+@property (nonatomic, strong) RACReplaySubject *refreshSignal;
+
 @property (nonatomic, strong, nullable) NSArray <THKMaterialHotListModel *> *data;
+
+@property (nonatomic, assign) NSInteger inputPage;
 
 @end
 
@@ -33,14 +37,23 @@
             [self.emptySignal sendNext:nil];
         }
         
-        self.data = x.data;
+        if (self.inputPage == 1) {
+            [self.refreshSignal sendNext:@(THKRefreshStatus_EndRefreshing)];
+            [self.refreshSignal sendNext:@(THKRefreshStatus_ResetNoMoreData)];
+        }else if (x.data == 0) {
+            [self.refreshSignal sendNext:@(THKRefreshStatus_NoMoreData)];
+        }
+        
         [self.loadingSignal sendNext:@(THKLoadingStatus_Finish)];
+        
+        self.data = x.data;
     }];
     
     [self.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
         self.data = nil;
         [self.emptySignal sendNext:@(TMEmptyContentTypeNetErr)];
         [self.loadingSignal sendNext:@(THKLoadingStatus_Finish)];
+        [self.refreshSignal sendNext:@(THKRefreshStatus_EndRefreshing)];
     }];
     
     [self.loadingSignal sendNext:@(THKLoadingStatus_Loading)];
@@ -58,5 +71,6 @@
 
 TMUI_PropertyLazyLoad(RACSubject, emptySignal)
 TMUI_PropertyLazyLoad(RACReplaySubject, loadingSignal)
+TMUI_PropertyLazyLoad(RACReplaySubject, refreshSignal)
 
 @end

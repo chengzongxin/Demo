@@ -15,6 +15,12 @@ typedef enum : NSUInteger {
     THKLoadingStatus_Finish,
 } THKLoadingStatus;
 
+typedef enum : NSUInteger {
+    THKRefreshStatus_EndRefreshing,
+    THKRefreshStatus_ResetNoMoreData,
+    THKRefreshStatus_NoMoreData,
+} THKRefreshStatus;
+
 typedef void(^cmdMake)(id input,id<RACSubscriber>  _Nonnull subscriber);
 typedef THKBaseRequest *(^cmdRequestMake)(id input);
 

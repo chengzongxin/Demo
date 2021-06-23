@@ -88,6 +88,18 @@
         NSLog(@"%@",x);
         [TMToast toast:(x.integerValue == THKLoadingStatus_Loading)?@"努力加载中...":@"加载完成"];
     }];
+    
+    // 刷新状态
+    [self.viewModel.refreshSignal subscribeNext:^(NSNumber *x) {
+        THKRefreshStatus status = x.integerValue;
+        if (status == THKRefreshStatus_EndRefreshing) {
+            NSLog(@"停止刷新");
+        }else if (status == THKRefreshStatus_ResetNoMoreData) {
+            NSLog(@"重置头部");
+        }else if (status == THKRefreshStatus_NoMoreData) {
+            NSLog(@"没有更多数据");
+        }
+    }];
 }
 
 #pragma mark - Public
