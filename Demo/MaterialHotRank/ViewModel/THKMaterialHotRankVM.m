@@ -11,12 +11,11 @@
 
 @property (nonatomic, strong) THKRequestCommand *requestCommand;
 
-@property (nonatomic, strong, nullable) NSArray <THKMaterialHotListModel *> *data;
+@property (nonatomic, strong) RACSubject *emptySignal;
 
-@property (nonatomic, strong) NSArray <NSArray *> *headerTitles;
-@property (nonatomic, strong) NSArray <NSArray *> *icons;
-@property (nonatomic, strong) NSArray <NSArray *> *titles;
-@property (nonatomic, strong) NSArray <NSArray *> *subtitles;
+@property (nonatomic, strong) RACReplaySubject *loadingSignal;
+
+@property (nonatomic, strong, nullable) NSArray <THKMaterialHotListModel *> *data;
 
 @end
 
@@ -26,13 +25,25 @@
     @weakify(self);
     [self.requestCommand.nextSignal subscribeNext:^(THKMaterialHotListResponse *x) {
         @strongify(self);
+        if (x.status != THKStatusSuccess) {
+            [self.emptySignal sendNext:@(TMEmptyContentTypeServerErr)];
+        }else if (x.data.count == 0) {
+            [self.emptySignal sendNext:@(TMEmptyContentTypeNoData)];
+        }else{
+            [self.emptySignal sendNext:nil];
+        }
+        
         self.data = x.data;
+        [self.loadingSignal sendNext:@(THKLoadingStatus_Finish)];
     }];
     
     [self.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
         self.data = nil;
+        [self.emptySignal sendNext:@(TMEmptyContentTypeNetErr)];
+        [self.loadingSignal sendNext:@(THKLoadingStatus_Finish)];
     }];
     
+    [self.loadingSignal sendNext:@(THKLoadingStatus_Loading)];
     [self.requestCommand execute:nil];
 }
 
@@ -44,5 +55,8 @@
     }
     return _requestCommand;
 }
+
+TMUI_PropertyLazyLoad(RACSubject, emptySignal)
+TMUI_PropertyLazyLoad(RACReplaySubject, loadingSignal)
 
 @end
