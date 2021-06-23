@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKMaterialHotBrandModel :NSObject
 @property (nonatomic , copy) NSString              * logoHeight;
 @property (nonatomic , assign) NSInteger              uid;
+@property (nonatomic , assign) NSInteger              score;
 @property (nonatomic , copy) NSString              * brandName;
 @property (nonatomic , copy) NSString              * logoWidth;
 @property (nonatomic , assign) NSInteger              brandId;

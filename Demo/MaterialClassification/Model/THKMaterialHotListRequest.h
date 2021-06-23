@@ -6,6 +6,7 @@
 //
 
 #import "THKBaseRequest.h"
+#import "THKMaterialHotListResponse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -6,7 +6,6 @@
 //
 
 #import "THKMaterialHotListRequest.h"
-#import "THKMaterialHotListResponse.h"
 
 @implementation THKMaterialHotListRequest
 - (NSString *)requestDomain {
