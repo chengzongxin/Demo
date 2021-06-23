@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "THKNetworkManager.h"
 @interface AppDelegate ()
 
 @end
@@ -16,6 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[THKNetworkManager sharedManager] setupNetwork];
     return YES;
 }
 

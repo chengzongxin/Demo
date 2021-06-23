@@ -51,6 +51,29 @@
 		1686D8E4268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686D8E2268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.m */; };
 		1686D8E5268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1686D8E3268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.xib */; };
 		1686D8EF2681C74C0061FF66 /* THKMaterialHotRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686D8EE2681C74C0061FF66 /* THKMaterialHotRankVC.m */; };
+		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
+		16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49D2682DE4B0024BA20 /* THKResponse.m */; };
+		16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49F2682DE4B0024BA20 /* THKCommonResponse.m */; };
+		16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4A42682DE4B0024BA20 /* THKDownloadRequest.m */; };
+		16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4A82682DE4B0024BA20 /* THKUploadRequest.m */; };
+		16E5C4B82682DE4B0024BA20 /* THKBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4A92682DE4B0024BA20 /* THKBaseRequest.m */; };
+		16E5C4B92682DE4B0024BA20 /* THKCommonPhpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4B02682DE4B0024BA20 /* THKCommonPhpRequest.m */; };
+		16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4B12682DE4B0024BA20 /* THKCommonJavaRequest.m */; };
+		16E5C4BB2682DE4B0024BA20 /* THKCommonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4B22682DE4B0024BA20 /* THKCommonRequest.m */; };
+		16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4C12682DE930024BA20 /* TBTRequest.m */; };
+		16E5C4CD2682DE930024BA20 /* TBTNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4C72682DE930024BA20 /* TBTNetworkConfig.m */; };
+		16E5C4CE2682DE930024BA20 /* TBTNetworkPrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4C92682DE930024BA20 /* TBTNetworkPrivate.m */; };
+		16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4CA2682DE930024BA20 /* TBTBaseRequest.m */; };
+		16E5C4D02682DE930024BA20 /* TBTNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4CB2682DE930024BA20 /* TBTNetworkManager.m */; };
+		16E5C4DC2682E0AA0024BA20 /* THKDecorationHomeDiaryListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4DA2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.m */; };
+		16E5C4E52682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4E32682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m */; };
+		16E5C4F22682E4040024BA20 /* THKPhpUploadRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4EA2682E4040024BA20 /* THKPhpUploadRequest.m */; };
+		16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4EC2682E4040024BA20 /* THKNetworkManager.m */; };
+		16E5C4F52682E4040024BA20 /* THKResponse+ErrToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4ED2682E4040024BA20 /* THKResponse+ErrToast.m */; };
+		16E5C5012682E5920024BA20 /* TRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C4FE2682E5920024BA20 /* TRequestParameter.m */; };
+		16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C5002682E5920024BA20 /* TSimpleDataObject.m */; };
+		16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C5092682E6F80024BA20 /* THKHttpDNSManager.m */; };
+		16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C50A2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
@@ -168,6 +191,57 @@
 		1686D8ED2681C74C0061FF66 /* THKMaterialHotRankVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankVC.h; sourceTree = "<group>"; };
 		1686D8EE2681C74C0061FF66 /* THKMaterialHotRankVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankVC.m; sourceTree = "<group>"; };
 		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
+		16E5C4992682DE4B0024BA20 /* THKBaseNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseNetwork.h; sourceTree = "<group>"; };
+		16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKBaseNetworkManager.m; sourceTree = "<group>"; };
+		16E5C49C2682DE4B0024BA20 /* THKResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKResponse.h; sourceTree = "<group>"; };
+		16E5C49D2682DE4B0024BA20 /* THKResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKResponse.m; sourceTree = "<group>"; };
+		16E5C49F2682DE4B0024BA20 /* THKCommonResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCommonResponse.m; sourceTree = "<group>"; };
+		16E5C4A02682DE4B0024BA20 /* THKCommonResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCommonResponse.h; sourceTree = "<group>"; };
+		16E5C4A12682DE4B0024BA20 /* THKNetworkDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKNetworkDefine.h; sourceTree = "<group>"; };
+		16E5C4A22682DE4B0024BA20 /* THKBaseNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseNetworkManager.h; sourceTree = "<group>"; };
+		16E5C4A42682DE4B0024BA20 /* THKDownloadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDownloadRequest.m; sourceTree = "<group>"; };
+		16E5C4A52682DE4B0024BA20 /* THKBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseRequest.h; sourceTree = "<group>"; };
+		16E5C4A62682DE4B0024BA20 /* THKUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKUploadRequest.h; sourceTree = "<group>"; };
+		16E5C4A72682DE4B0024BA20 /* THKDownloadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDownloadRequest.h; sourceTree = "<group>"; };
+		16E5C4A82682DE4B0024BA20 /* THKUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKUploadRequest.m; sourceTree = "<group>"; };
+		16E5C4A92682DE4B0024BA20 /* THKBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKBaseRequest.m; sourceTree = "<group>"; };
+		16E5C4AA2682DE4B0024BA20 /* THKBaseRequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseRequestProtocol.h; sourceTree = "<group>"; };
+		16E5C4AC2682DE4B0024BA20 /* THKCommonRequestExtensionDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCommonRequestExtensionDefine.h; sourceTree = "<group>"; };
+		16E5C4AD2682DE4B0024BA20 /* THKCommonRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCommonRequest.h; sourceTree = "<group>"; };
+		16E5C4AE2682DE4B0024BA20 /* THKCommonJavaRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCommonJavaRequest.h; sourceTree = "<group>"; };
+		16E5C4AF2682DE4B0024BA20 /* THKCommonPhpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKCommonPhpRequest.h; sourceTree = "<group>"; };
+		16E5C4B02682DE4B0024BA20 /* THKCommonPhpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCommonPhpRequest.m; sourceTree = "<group>"; };
+		16E5C4B12682DE4B0024BA20 /* THKCommonJavaRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCommonJavaRequest.m; sourceTree = "<group>"; };
+		16E5C4B22682DE4B0024BA20 /* THKCommonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKCommonRequest.m; sourceTree = "<group>"; };
+		16E5C4C12682DE930024BA20 /* TBTRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTRequest.m; sourceTree = "<group>"; };
+		16E5C4C22682DE930024BA20 /* TBTNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTNetworkConfig.h; sourceTree = "<group>"; };
+		16E5C4C32682DE930024BA20 /* TBTBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTBaseRequest.h; sourceTree = "<group>"; };
+		16E5C4C42682DE930024BA20 /* TBTNetworkPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTNetworkPrivate.h; sourceTree = "<group>"; };
+		16E5C4C52682DE930024BA20 /* TBTNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTNetworkManager.h; sourceTree = "<group>"; };
+		16E5C4C62682DE930024BA20 /* TBTRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTRequest.h; sourceTree = "<group>"; };
+		16E5C4C72682DE930024BA20 /* TBTNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTNetworkConfig.m; sourceTree = "<group>"; };
+		16E5C4C82682DE930024BA20 /* TBTNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTNetwork.h; sourceTree = "<group>"; };
+		16E5C4C92682DE930024BA20 /* TBTNetworkPrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTNetworkPrivate.m; sourceTree = "<group>"; };
+		16E5C4CA2682DE930024BA20 /* TBTBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTBaseRequest.m; sourceTree = "<group>"; };
+		16E5C4CB2682DE930024BA20 /* TBTNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTNetworkManager.m; sourceTree = "<group>"; };
+		16E5C4DA2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDecorationHomeDiaryListResponse.m; sourceTree = "<group>"; };
+		16E5C4DB2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDecorationHomeDiaryListResponse.h; sourceTree = "<group>"; };
+		16E5C4E32682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDecorationHomeDiaryListRequest.m; sourceTree = "<group>"; };
+		16E5C4E42682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDecorationHomeDiaryListRequest.h; sourceTree = "<group>"; };
+		16E5C4EA2682E4040024BA20 /* THKPhpUploadRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPhpUploadRequest.m; sourceTree = "<group>"; };
+		16E5C4EC2682E4040024BA20 /* THKNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKNetworkManager.m; sourceTree = "<group>"; };
+		16E5C4ED2682E4040024BA20 /* THKResponse+ErrToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "THKResponse+ErrToast.m"; sourceTree = "<group>"; };
+		16E5C4EE2682E4040024BA20 /* THKPhpUploadRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPhpUploadRequest.h; sourceTree = "<group>"; };
+		16E5C4F02682E4040024BA20 /* THKNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKNetworkManager.h; sourceTree = "<group>"; };
+		16E5C4F12682E4040024BA20 /* THKResponse+ErrToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "THKResponse+ErrToast.h"; sourceTree = "<group>"; };
+		16E5C4FD2682E5920024BA20 /* TSimpleDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSimpleDataObject.h; sourceTree = "<group>"; };
+		16E5C4FE2682E5920024BA20 /* TRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRequestParameter.m; sourceTree = "<group>"; };
+		16E5C4FF2682E5920024BA20 /* TRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRequestParameter.h; sourceTree = "<group>"; };
+		16E5C5002682E5920024BA20 /* TSimpleDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSimpleDataObject.m; sourceTree = "<group>"; };
+		16E5C5072682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+hook_httpdns_urlprotocol_inject.h"; sourceTree = "<group>"; };
+		16E5C5082682E6F80024BA20 /* THKHttpDNSManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKHttpDNSManager.h; sourceTree = "<group>"; };
+		16E5C5092682E6F80024BA20 /* THKHttpDNSManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKHttpDNSManager.m; sourceTree = "<group>"; };
+		16E5C50A2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+hook_httpdns_urlprotocol_inject.m"; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +339,11 @@
 		160107692553EA1A00FE4B77 /* BaseSection */ = {
 			isa = PBXGroup;
 			children = (
+				16E5C5062682E6F80024BA20 /* HttpDNS */,
+				16E5C4FC2682E5920024BA20 /* CommonObjects */,
+				16E5C4E92682E4040024BA20 /* BaseNetwork */,
+				16E5C4BF2682DE930024BA20 /* TBTNetwork */,
+				16E5C4972682DE4B0024BA20 /* THKBaseNetwork */,
 				1669C1A32680667C0059E9B0 /* CommonDefine */,
 				1669C17B268066200059E9B0 /* PageContentViewController */,
 				16C532CC25761E1600210A3C /* BaseViewModel */,
@@ -400,6 +479,10 @@
 			children = (
 				1669C2252680948B0059E9B0 /* THKDynamicGroupEntranceModel.h */,
 				1669C2262680948B0059E9B0 /* THKDynamicGroupEntranceModel.m */,
+				16E5C4E42682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.h */,
+				16E5C4E32682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m */,
+				16E5C4DB2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.h */,
+				16E5C4DA2682E0A90024BA20 /* THKDecorationHomeDiaryListResponse.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -436,6 +519,136 @@
 				16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */,
 			);
 			path = BaseViewModel;
+			sourceTree = "<group>";
+		};
+		16E5C4972682DE4B0024BA20 /* THKBaseNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C4982682DE4B0024BA20 /* Classes */,
+			);
+			path = THKBaseNetwork;
+			sourceTree = "<group>";
+		};
+		16E5C4982682DE4B0024BA20 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C4992682DE4B0024BA20 /* THKBaseNetwork.h */,
+				16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */,
+				16E5C49B2682DE4B0024BA20 /* Response */,
+				16E5C4A12682DE4B0024BA20 /* THKNetworkDefine.h */,
+				16E5C4A22682DE4B0024BA20 /* THKBaseNetworkManager.h */,
+				16E5C4A32682DE4B0024BA20 /* Request */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		16E5C49B2682DE4B0024BA20 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C49C2682DE4B0024BA20 /* THKResponse.h */,
+				16E5C49D2682DE4B0024BA20 /* THKResponse.m */,
+				16E5C49E2682DE4B0024BA20 /* CommonResponse */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		16E5C49E2682DE4B0024BA20 /* CommonResponse */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C49F2682DE4B0024BA20 /* THKCommonResponse.m */,
+				16E5C4A02682DE4B0024BA20 /* THKCommonResponse.h */,
+			);
+			path = CommonResponse;
+			sourceTree = "<group>";
+		};
+		16E5C4A32682DE4B0024BA20 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C4A42682DE4B0024BA20 /* THKDownloadRequest.m */,
+				16E5C4A52682DE4B0024BA20 /* THKBaseRequest.h */,
+				16E5C4A62682DE4B0024BA20 /* THKUploadRequest.h */,
+				16E5C4A72682DE4B0024BA20 /* THKDownloadRequest.h */,
+				16E5C4A82682DE4B0024BA20 /* THKUploadRequest.m */,
+				16E5C4A92682DE4B0024BA20 /* THKBaseRequest.m */,
+				16E5C4AA2682DE4B0024BA20 /* THKBaseRequestProtocol.h */,
+				16E5C4AB2682DE4B0024BA20 /* CommonRequest */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		16E5C4AB2682DE4B0024BA20 /* CommonRequest */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C4AC2682DE4B0024BA20 /* THKCommonRequestExtensionDefine.h */,
+				16E5C4AD2682DE4B0024BA20 /* THKCommonRequest.h */,
+				16E5C4AE2682DE4B0024BA20 /* THKCommonJavaRequest.h */,
+				16E5C4AF2682DE4B0024BA20 /* THKCommonPhpRequest.h */,
+				16E5C4B02682DE4B0024BA20 /* THKCommonPhpRequest.m */,
+				16E5C4B12682DE4B0024BA20 /* THKCommonJavaRequest.m */,
+				16E5C4B22682DE4B0024BA20 /* THKCommonRequest.m */,
+			);
+			path = CommonRequest;
+			sourceTree = "<group>";
+		};
+		16E5C4BF2682DE930024BA20 /* TBTNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C4C02682DE930024BA20 /* Classes */,
+			);
+			path = TBTNetwork;
+			sourceTree = "<group>";
+		};
+		16E5C4C02682DE930024BA20 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C4C12682DE930024BA20 /* TBTRequest.m */,
+				16E5C4C22682DE930024BA20 /* TBTNetworkConfig.h */,
+				16E5C4C32682DE930024BA20 /* TBTBaseRequest.h */,
+				16E5C4C42682DE930024BA20 /* TBTNetworkPrivate.h */,
+				16E5C4C52682DE930024BA20 /* TBTNetworkManager.h */,
+				16E5C4C62682DE930024BA20 /* TBTRequest.h */,
+				16E5C4C72682DE930024BA20 /* TBTNetworkConfig.m */,
+				16E5C4C82682DE930024BA20 /* TBTNetwork.h */,
+				16E5C4C92682DE930024BA20 /* TBTNetworkPrivate.m */,
+				16E5C4CA2682DE930024BA20 /* TBTBaseRequest.m */,
+				16E5C4CB2682DE930024BA20 /* TBTNetworkManager.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		16E5C4E92682E4040024BA20 /* BaseNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C4F02682E4040024BA20 /* THKNetworkManager.h */,
+				16E5C4EC2682E4040024BA20 /* THKNetworkManager.m */,
+				16E5C4EE2682E4040024BA20 /* THKPhpUploadRequest.h */,
+				16E5C4EA2682E4040024BA20 /* THKPhpUploadRequest.m */,
+				16E5C4F12682E4040024BA20 /* THKResponse+ErrToast.h */,
+				16E5C4ED2682E4040024BA20 /* THKResponse+ErrToast.m */,
+			);
+			path = BaseNetwork;
+			sourceTree = "<group>";
+		};
+		16E5C4FC2682E5920024BA20 /* CommonObjects */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C4FD2682E5920024BA20 /* TSimpleDataObject.h */,
+				16E5C4FE2682E5920024BA20 /* TRequestParameter.m */,
+				16E5C4FF2682E5920024BA20 /* TRequestParameter.h */,
+				16E5C5002682E5920024BA20 /* TSimpleDataObject.m */,
+			);
+			path = CommonObjects;
+			sourceTree = "<group>";
+		};
+		16E5C5062682E6F80024BA20 /* HttpDNS */ = {
+			isa = PBXGroup;
+			children = (
+				16E5C5072682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.h */,
+				16E5C5082682E6F80024BA20 /* THKHttpDNSManager.h */,
+				16E5C5092682E6F80024BA20 /* THKHttpDNSManager.m */,
+				16E5C50A2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m */,
+			);
+			path = HttpDNS;
 			sourceTree = "<group>";
 		};
 		863C150325C51CDA1727051D /* Pods */ = {
@@ -702,22 +915,34 @@
 			files = (
 				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
 				1669C1EF268069880059E9B0 /* Table2ViewController.m in Sources */,
+				16E5C4E52682E0B80024BA20 /* THKDecorationHomeDiaryListRequest.m in Sources */,
+				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
+				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
+				16E5C4F52682E4040024BA20 /* THKResponse+ErrToast.m in Sources */,
+				16E5C4DC2682E0AA0024BA20 /* THKDecorationHomeDiaryListResponse.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				1686D8DC268192D90061FF66 /* THKMaterialClassificationRecommendRankCell.m in Sources */,
 				1669C1EE268069880059E9B0 /* Table3ViewController.m in Sources */,
+				16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */,
+				16E5C4D02682DE930024BA20 /* TBTNetworkManager.m in Sources */,
 				1669C2202680925C0059E9B0 /* THKMaterialClassificationViewModel.m in Sources */,
 				1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
+				16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */,
 				1669C24E2680A5240059E9B0 /* THKMaterialClassificationRecommendDecorationView.m in Sources */,
+				16E5C4CD2682DE930024BA20 /* TBTNetworkConfig.m in Sources */,
 				1686D8E4268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
 				1686D8EF2681C74C0061FF66 /* THKMaterialHotRankVC.m in Sources */,
 				1669C1F2268069880059E9B0 /* Table1ViewController.m in Sources */,
 				1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */,
+				16E5C4CE2682DE930024BA20 /* TBTNetworkPrivate.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,
+				16E5C4BB2682DE4B0024BA20 /* THKCommonRequest.m in Sources */,
 				1669C1FB26807F600059E9B0 /* THKMaterialClassificationVC.m in Sources */,
 				1686D89B268173C50061FF66 /* THKMaterialTitleRankView.m in Sources */,
 				1686D8A72681758E0061FF66 /* THKMaterialClassificationRecommendNormalHeader.m in Sources */,
+				16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */,
 				1669C20B268086C90059E9B0 /* THKMaterialClassificationView.m in Sources */,
 				1669C22D268099DA0059E9B0 /* THKMaterialRecommendRankVC.m in Sources */,
 				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
@@ -729,15 +954,26 @@
 				1669C2272680948B0059E9B0 /* THKDynamicGroupEntranceModel.m in Sources */,
 				1669C1F0268069880059E9B0 /* NormalViewController.m in Sources */,
 				1686D8A12681756E0061FF66 /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
+				16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */,
 				1669C1D22680671A0059E9B0 /* THKPageBGScrollView.m in Sources */,
 				16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */,
+				16E5C4B82682DE4B0024BA20 /* THKBaseRequest.m in Sources */,
+				16E5C4B92682DE4B0024BA20 /* THKCommonPhpRequest.m in Sources */,
 				1669C215268087210059E9B0 /* THKMaterialClassificationViewCell.m in Sources */,
+				16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
+				16E5C5012682E5920024BA20 /* TRequestParameter.m in Sources */,
 				1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */,
+				16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */,
+				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
+				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
+				16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */,
 				1669C1F1268069880059E9B0 /* TableViewController.m in Sources */,
 				1669C233268099ED0059E9B0 /* THKMaterialRecommendRankVM.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
 				1669C2482680A3FC0059E9B0 /* THKMaterialClassificationRecommendCellFooter.m in Sources */,
+				16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */,
+				16E5C4F22682E4040024BA20 /* THKPhpUploadRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,7 @@
 #import "ViewController.h"
 #import "THKMaterialClassificationVC.h"
 #import "THKMaterialHotRankVC.h"
-
+#import "THKDecorationHomeDiaryListRequest.h"
 @interface ViewController ()
 
 @end
@@ -30,5 +30,15 @@
     });
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    THKDecorationHomeDiaryListRequest *request = [[THKDecorationHomeDiaryListRequest alloc] init];
+    [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
+        Log(x);
+    } error:^(NSError * _Nullable error) {
+        Log(error);
+    } completed:^{
+        Log(@"complete");
+    }];
+}
 
 @end
