@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "THKNetworkManager.h"
+#import "TRequestParameter.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [[THKNetworkManager sharedManager] setupNetwork];
+    [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":@"4298F251-E93C-478E-AA05-B46E47F02BEC"}];
     return YES;
 }
 
