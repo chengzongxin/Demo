@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) THKRequestCommand *requestCommand;
 
-@property (nonatomic, strong, nullable) NSArray <THKMaterialHotListModel *> *data;
+@property (nonatomic, strong, nullable) NSArray *data;
 
 @end
 
@@ -55,7 +55,9 @@
 }
 
 - (THKBaseRequest *)requestWithInput:(id)input{
-    return [[THKMaterialHotListRequest alloc] init];
+    THKMaterialRecommendRankRequest *request = [[THKMaterialRecommendRankRequest alloc] init];
+    request.needTopSubCategoryList = 1;
+    return request;
 }
 
 @end

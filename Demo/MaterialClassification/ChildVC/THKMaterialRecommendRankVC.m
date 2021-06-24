@@ -57,8 +57,8 @@
     @weakify(self);
     [self.viewModel bindWithView:self.view scrollView:self.collectionView appenBlock:^NSArray * _Nonnull(THKResponse * _Nonnull x) {
         @strongify(self);
-        THKMaterialHotListResponse *response = (THKMaterialHotListResponse *)x;
-        return ([self.viewModel.requestCommand.inputValue integerValue] == 1) ? response.data : nil;
+        THKMaterialRecommendRankResponse *response = (THKMaterialRecommendRankResponse *)x;
+        return nil;
     }];
     
     [self.viewModel addRefreshFooter];

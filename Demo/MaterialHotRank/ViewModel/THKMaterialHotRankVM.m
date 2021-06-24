@@ -21,7 +21,9 @@
 @dynamic data;
 
 - (THKBaseRequest *)requestWithInput:(id)input{
-    return [[THKMaterialHotListRequest alloc] init];
+    THKMaterialHotListRequest *request = [[THKMaterialHotListRequest alloc] init];
+    request.page = [input integerValue];
+    return request;
 }
 
 @end

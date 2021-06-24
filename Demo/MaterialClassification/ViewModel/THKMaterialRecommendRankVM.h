@@ -6,7 +6,7 @@
 //
 
 #import "THKStateMechanismsViewModel.h"
-#import "THKMaterialHotListRequest.h"
+#import "THKMaterialRecommendRankRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) THKRequestCommand *requestCommand;
 
-@property (nonatomic, strong, readonly, nullable) NSArray <THKMaterialHotListModel *> *data;
+@property (nonatomic, strong, readonly, nullable) NSArray *data;
 
 
 /// DEBUG Datas

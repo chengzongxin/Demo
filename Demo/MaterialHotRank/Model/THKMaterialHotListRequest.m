@@ -18,7 +18,7 @@
 
 - (NSDictionary *)parameters {
     return @{@"page":@(self.page?:1),
-             @"size":@(self.size?:10)
+             @"size":@(self.size?:20)
     };
 }
 

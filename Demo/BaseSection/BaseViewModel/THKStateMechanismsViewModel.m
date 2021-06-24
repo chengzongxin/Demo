@@ -178,7 +178,9 @@
 
 - (THKRequestCommand *)requestCommand{
     if (!_requestCommand) {
+        @weakify(self);
         _requestCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
+            @strongify(self);
             return [self requestWithInput:input];
         }];
     }
