@@ -166,7 +166,7 @@ static CGFloat const kGlodAddWidth = 23;
         size.height = 19;
     }
     
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(size);
     }];
 }
