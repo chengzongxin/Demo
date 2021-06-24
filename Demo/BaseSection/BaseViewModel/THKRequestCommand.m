@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) RACSubject *errorSignal;
 
+@property (nonatomic, strong) id inputValue;
+
 @end
 
 @implementation THKRequestCommand
@@ -58,6 +60,11 @@
     [cmd.errors subscribe:cmd.errorSignal];
 
     return cmd;
+}
+
+- (RACSignal *)execute:(id)input{
+    self.inputValue = input;
+    return [super execute:input];
 }
 
 - (RACSubject *)nextSignal{

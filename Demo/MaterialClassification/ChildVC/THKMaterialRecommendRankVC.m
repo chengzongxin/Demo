@@ -80,35 +80,9 @@
 
 // 绑定VM
 - (void)bindViewModel {
-    @weakify(self);
-    [[RACObserve(self.viewModel, data) skip:1] subscribeNext:^(id  _Nullable x) {
-        @strongify(self);
-        [self.collectionView reloadData];
-    }];
-    // 空视图界面
-    [self.viewModel.emptySignal subscribeNext:^(NSNumber *x) {
-        @strongify(self);
-        if (x) {
-            [TMEmptyView showEmptyInView:self.view contentType:x.integerValue];
-        }else{
-            [self.view.tmui_emptyView remove];
-        }
-    }];
-    // 加载状态
-    [self.viewModel.loadingSignal subscribeNext:^(NSNumber *x) {
-        NSLog(@"%@",x);
-        [TMToast toast:(x.integerValue == THKLoadingStatus_Loading)?@"努力加载中...":@"加载完成"];
-    }];
-    // 刷新状态
-    [self.viewModel.refreshSignal subscribeNext:^(NSNumber *x) {
-        THKRefreshStatus status = x.integerValue;
-        if (status == THKRefreshStatus_EndRefreshing) {
-            NSLog(@"停止刷新");
-        }else if (status == THKRefreshStatus_ResetNoMoreData) {
-            NSLog(@"重置头部");
-        }else if (status == THKRefreshStatus_NoMoreData) {
-            NSLog(@"没有更多数据");
-        }
+    [self.viewModel bindWithView:self.view scrollView:self.collectionView appenBlock:^NSArray * _Nonnull(THKResponse * _Nonnull x) {
+        THKMaterialHotListResponse *response = (THKMaterialHotListResponse *)x;
+        return response.data;
     }];
 }
 

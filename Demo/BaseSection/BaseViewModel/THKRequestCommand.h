@@ -10,17 +10,6 @@
 #import "THKBaseRequest.h"
 NS_ASSUME_NONNULL_BEGIN
 
-typedef enum : NSUInteger {
-    THKLoadingStatus_Loading,
-    THKLoadingStatus_Finish,
-} THKLoadingStatus;
-
-typedef enum : NSUInteger {
-    THKRefreshStatus_EndRefreshing,
-    THKRefreshStatus_ResetNoMoreData,
-    THKRefreshStatus_NoMoreData,
-} THKRefreshStatus;
-
 typedef void(^cmdMake)(id input,id<RACSubscriber>  _Nonnull subscriber);
 typedef THKBaseRequest *(^cmdRequestMake)(id input);
 
@@ -70,7 +59,8 @@ typedef THKBaseRequest *(^cmdRequestMake)(id input);
 @property (nonatomic, strong, readonly) RACSubject *nextSignal;
 /// 失败信号
 @property (nonatomic, strong, readonly) RACSubject *errorSignal;
-
+/// 输入信号
+@property (nonatomic, strong, readonly) id inputValue;
 
 @end
 

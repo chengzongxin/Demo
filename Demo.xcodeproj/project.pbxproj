@@ -50,6 +50,7 @@
 		1686D8E4268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686D8E2268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.m */; };
 		1686D8E5268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1686D8E3268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.xib */; };
 		1686D8EF2681C74C0061FF66 /* THKMaterialHotRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686D8EE2681C74C0061FF66 /* THKMaterialHotRankVC.m */; };
+		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
 		16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49D2682DE4B0024BA20 /* THKResponse.m */; };
 		16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49F2682DE4B0024BA20 /* THKCommonResponse.m */; };
@@ -198,6 +199,8 @@
 		1686D8E3268192E40061FF66 /* THKMaterialClassificationRecommendNormalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THKMaterialClassificationRecommendNormalCell.xib; sourceTree = "<group>"; };
 		1686D8ED2681C74C0061FF66 /* THKMaterialHotRankVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankVC.h; sourceTree = "<group>"; };
 		1686D8EE2681C74C0061FF66 /* THKMaterialHotRankVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankVC.m; sourceTree = "<group>"; };
+		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
+		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
 		16E5C4992682DE4B0024BA20 /* THKBaseNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseNetwork.h; sourceTree = "<group>"; };
 		16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKBaseNetworkManager.m; sourceTree = "<group>"; };
@@ -546,6 +549,8 @@
 				16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */,
 				16E5C54A268325E20024BA20 /* THKRequestCommand.h */,
 				16E5C54B268325E20024BA20 /* THKRequestCommand.m */,
+				16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */,
+				16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */,
 			);
 			path = BaseViewModel;
 			sourceTree = "<group>";
@@ -1084,6 +1089,7 @@
 				16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */,
 				1669C1F1268069880059E9B0 /* TableViewController.m in Sources */,
 				1669C233268099ED0059E9B0 /* THKMaterialRecommendRankVM.m in Sources */,
+				16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
 				1669C2482680A3FC0059E9B0 /* THKMaterialClassificationRecommendCellFooter.m in Sources */,
 				16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */,
