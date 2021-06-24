@@ -20,6 +20,8 @@
 @property (nonatomic, strong) THKMaterialClassificationRecommendCellLayout *layout;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
+@property (nonatomic, strong) NSString *subCategoryName;
+
 
 @end
 
@@ -29,7 +31,7 @@
 
 // 初始化
 - (void)thk_initialize{
-    
+    self.subCategoryName = @"冰箱";
 }
 
 // 渲染VC
@@ -54,14 +56,21 @@
 
 // 绑定VM
 - (void)bindViewModel {
-    @weakify(self);
     [self.viewModel bindWithView:self.view scrollView:self.collectionView appenBlock:^NSArray * _Nonnull(THKResponse * _Nonnull x) {
-        @strongify(self);
         THKMaterialRecommendRankResponse *response = (THKMaterialRecommendRankResponse *)x;
-        return nil;
+        NSMutableArray *datas = [NSMutableArray array];
+        if (response.data.brandList.count) {
+            // 热度榜
+            [datas addObject:response.data.brandList];
+        }
+        for (THKMaterialRecommendRankGoodsRankList *list in response.data.goodsRankList) {
+            // 推荐商品
+            list.goodsList.firstObject.listId = list.listId;
+            list.goodsList.firstObject.name = list.name;
+            [datas addObject:list.goodsList];
+        }
+        return datas;
     }];
-    
-    [self.viewModel addRefreshFooter];
 }
 
 
@@ -91,48 +100,66 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.viewModel.headerTitles.count;
+    return self.viewModel.data.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.viewModel.titles[section].count;
+    NSArray *data = self.viewModel.data[section];
+    if ([data isKindOfClass:NSArray.class]) {
+        return MIN(3, data.count);
+    }else{
+        return 0;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *imgUrl = self.viewModel.icons[indexPath.section][indexPath.item];;
-    NSString *title = self.viewModel.titles[indexPath.section][indexPath.item];
-    NSString *subtitle = self.viewModel.subtitles[indexPath.section][indexPath.item];
-    if (indexPath.section == 0) {
+    NSArray *data = self.viewModel.data[indexPath.section];
+    
+    if ([data.firstObject isKindOfClass:THKMaterialRecommendRankBrandList.class]) {
+        // 热度榜
+        NSArray <THKMaterialRecommendRankBrandList *> *brandList = data;
+        THKMaterialRecommendRankBrandList *brand = brandList[indexPath.item];
+        
         THKMaterialClassificationRecommendRankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankCell.class) forIndexPath:indexPath];
         cell.rank = indexPath.item;
-        cell.imgUrl = imgUrl;
-        [cell setTitle:title subtitle:subtitle];
+        cell.imgUrl = brand.logoUrl;
+        [cell setTitle:brand.brandName subtitle:brand.score];
         return cell;
-    }else{
+    }else if ([data.firstObject isKindOfClass:THKMaterialRecommendRankGoodsRankListGoodsList.class]) {
+        // 品牌榜
+        NSArray <THKMaterialRecommendRankGoodsRankListGoodsList *> *goodsList = data;
+        THKMaterialRecommendRankGoodsRankListGoodsList *goods = goodsList[indexPath.item];
         THKMaterialClassificationRecommendNormalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendNormalCell.class) forIndexPath:indexPath];
         cell.rank = indexPath.item;
-        cell.imgUrl = imgUrl;
-        [cell setTitle:title subtitle:subtitle];
+        cell.imgUrl = goods.cover;
+        [cell setTitle:goods.features subtitle:goods.recommendedReason];
         return cell;
+    }else{
+        return nil;
     }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
-        NSString *title = self.viewModel.headerTitles[indexPath.section].firstObject;
-        NSString *subtitle = self.viewModel.headerTitles[indexPath.section].lastObject;
-        if (indexPath.section == 0) {
+        NSArray *data = self.viewModel.data[indexPath.section];
+        if ([data.firstObject isKindOfClass:THKMaterialRecommendRankBrandList.class]) {
             THKMaterialClassificationRecommendRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankHeader.class) forIndexPath:indexPath];
-            [header setTitle:title];
+            [header setTitle:[NSString stringWithFormat:@"%@品牌榜",self.subCategoryName]];
             @TMUI_weakify(self);
             header.tapMoreBlock = ^{
                 @TMUI_strongify(self);
                 [self tapHeaderMore:indexPath];
             };
             return header;
-        }else{
+        }else if ([data.firstObject isKindOfClass:THKMaterialRecommendRankGoodsRankListGoodsList.class]) {
             THKMaterialClassificationRecommendNormalHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendNormalHeader.class) forIndexPath:indexPath];
-            [header setTitle:title subtitle:subtitle];
+            
+            NSArray *data = self.viewModel.data[indexPath.section];
+            NSArray <THKMaterialRecommendRankGoodsRankListGoodsList *> *goodsList = data;
+            THKMaterialRecommendRankGoodsRankListGoodsList *goods = goodsList[indexPath.item];
+            
+            [header setTitle:[NSString stringWithFormat:@"%@推荐榜",self.subCategoryName] subtitle:goods.name];
+                                                                  
             @TMUI_weakify(self);
             header.tapMoreBlock = ^{
                 @TMUI_strongify(self);

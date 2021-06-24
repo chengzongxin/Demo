@@ -18,10 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /// DEBUG Datas
-@property (nonatomic, strong, readonly) NSArray <NSArray *> *headerTitles;
-@property (nonatomic, strong, readonly) NSArray <NSArray *> *icons;
-@property (nonatomic, strong, readonly) NSArray <NSArray *> *titles;
-@property (nonatomic, strong, readonly) NSArray <NSArray *> *subtitles;
+//@property (nonatomic, strong, readonly) NSArray <NSArray *> *headerTitles;
+//@property (nonatomic, strong, readonly) NSArray <NSArray *> *icons;
+//@property (nonatomic, strong, readonly) NSArray <NSArray *> *titles;
+//@property (nonatomic, strong, readonly) NSArray <NSArray *> *subtitles;
 
 @end
 
