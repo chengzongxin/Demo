@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKMaterialRecommendRankVM : THKStateMechanismsViewModel
 
+
+@property (nonatomic, assign) NSInteger subCategoryId;
+@property (nonatomic, assign) NSInteger needTopSubCategoryList;
 @property (nonatomic, strong, readonly) THKRequestCommand *requestCommand;
 
 @property (nonatomic, strong, readonly, nullable) NSArray *data;

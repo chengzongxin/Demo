@@ -29,6 +29,9 @@
 - (void)initialize{
     [super initialize];
     
+    self.subCategoryId = 0;
+    self.needTopSubCategoryList = 0;
+    
     _headerTitles = @[@[@"冰箱品牌榜(๑•̀ㅂ•́)و✧",@""],
                       @[@"冰箱推荐榜哈哈哈😆",@"经典三门 无霜风冷",],
                       @[@"冰箱推荐榜哈哈哈😆",@"经典四门 无霜风冷",],
@@ -56,7 +59,8 @@
 
 - (THKBaseRequest *)requestWithInput:(id)input{
     THKMaterialRecommendRankRequest *request = [[THKMaterialRecommendRankRequest alloc] init];
-    request.needTopSubCategoryList = 1;
+    request.subCategoryId = self.subCategoryId;
+    request.needTopSubCategoryList = self.needTopSubCategoryList;
     return request;
 }
 

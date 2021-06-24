@@ -20,7 +20,7 @@
 @property (nonatomic, strong) THKMaterialClassificationRecommendCellLayout *layout;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-@property (nonatomic, strong) NSString *subCategoryName;
+@property (nonatomic, strong) NSString *categoryName;
 
 
 @end
@@ -31,7 +31,6 @@
 
 // 初始化
 - (void)thk_initialize{
-    self.subCategoryName = @"冰箱";
 }
 
 // 渲染VC
@@ -79,6 +78,9 @@
 #warning pageContentVC 需要更新
 - (void)childViewControllerBeginRefreshingWithPara:(NSDictionary *)para{
     NSLog(@"childvc %@",para);
+    self.viewModel.subCategoryId = [para[@"categoryId"] integerValue];
+    self.categoryName = para[@"categoryName"];
+    [self.viewModel.requestCommand execute:@1];
 }
 
 #pragma mark - Event Respone
@@ -149,7 +151,7 @@
         NSArray *data = self.viewModel.data[indexPath.section];
         if ([data.firstObject isKindOfClass:THKMaterialRecommendRankBrandList.class]) {
             THKMaterialClassificationRecommendRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankHeader.class) forIndexPath:indexPath];
-            [header setTitle:[NSString stringWithFormat:@"%@品牌榜",self.subCategoryName]];
+            [header setTitle:[NSString stringWithFormat:@"%@品牌榜",self.categoryName]];
             @TMUI_weakify(self);
             header.tapMoreBlock = ^{
                 @TMUI_strongify(self);
@@ -163,7 +165,7 @@
             NSArray <THKMaterialRecommendRankGoodsRankListGoodsList *> *goodsList = data;
             THKMaterialRecommendRankGoodsRankListGoodsList *goods = goodsList[indexPath.item];
             
-            [header setTitle:[NSString stringWithFormat:@"%@推荐榜",self.subCategoryName] subtitle:goods.name];
+            [header setTitle:[NSString stringWithFormat:@"%@推荐榜",self.categoryName] subtitle:goods.name];
                                                                   
             @TMUI_weakify(self);
             header.tapMoreBlock = ^{

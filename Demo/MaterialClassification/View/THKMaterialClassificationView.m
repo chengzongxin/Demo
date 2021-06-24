@@ -24,7 +24,7 @@
 @property (nonatomic, strong) THKMaterialClassificationEffectView *leftEffectView;
 @property (nonatomic, strong) THKMaterialClassificationEffectView *rightEffectView;
 
-@property (nonatomic, strong) NSArray *icons;
+//@property (nonatomic, strong) NSArray *icons;
 
 @end
 
@@ -70,7 +70,7 @@
     [array tmui_enumerateNestedArrayWithBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
         [allArr addObject:obj];
     }];
-    self.icons = allArr;
+//    self.icons = allArr;
     // 添加分割线
     self.tmui_borderPosition = TMUIViewBorderPositionBottom;
     self.tmui_borderColor = UIColorHex(#F6F8F6);
@@ -90,13 +90,20 @@
 
 }
 
+- (void)setSubCategoryList:(NSArray<THKMaterialRecommendRankSubCategoryList *> *)subCategoryList{
+    _subCategoryList = subCategoryList;
+    
+    [self.collectionView reloadData];
+    [self selectIndex:0];
+}
+
 - (void)selectIndex:(NSInteger)index{
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
     
     [self.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     [self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
     
-    
+    self.leftEffectView.alpha = 0;
     self.rightEffectView.alpha = 1;
 }
 
@@ -104,18 +111,19 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 //    return self.entranceList.count;
-    return self.icons.count;
+    return self.subCategoryList.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     THKMaterialClassificationViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKMaterialClassificationViewCell class])
                                                                            forIndexPath:indexPath];
     
-    NSString *imgUrl = self.icons[indexPath.item];
+    NSString *imgUrl = self.subCategoryList[indexPath.item].cover;
+    
     [cell.imageView setImageURL:[NSURL URLWithString:imgUrl]];
 //    cell.imageView.image = UIImageMake(@"com_preload_head_img");
     
-    cell.titleLabel.text = @"冰箱";
+    cell.titleLabel.text = self.subCategoryList[indexPath.item].categoryName;
     
 //    THKDynamicGroupEntranceModel *entrance = self.entranceList[indexPath.item];
 //

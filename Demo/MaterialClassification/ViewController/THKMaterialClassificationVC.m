@@ -14,8 +14,11 @@
 #import "THKMaterialClassificationViewModel.h"
 #import "THKMaterialRecommendRankVC.h"
 #import "THKMaterialRecommendRankVM.h"
+#import "THKMaterialRecommendRankResponse.h"
 
 @interface THKMaterialClassificationVC ()
+
+@property (nonatomic, strong) THKMaterialClassificationViewModel *viewModel;
 
 @property (nonatomic, strong) NSArray *vcs;
 @property (nonatomic, strong) NSArray *titles;
@@ -25,7 +28,7 @@
 @end
 
 @implementation THKMaterialClassificationVC
-
+@dynamic viewModel;
 #pragma mark - Lifecycle 
 
 // 渲染VC
@@ -36,8 +39,19 @@
     THKMaterialRecommendRankVC *vc1 = [[THKMaterialRecommendRankVC alloc] initWithViewModel:[THKMaterialRecommendRankVM new]];
     self.vcs = @[vc1,Table2ViewController.new,NormalViewController.new];
     self.titles = @[@"推荐榜单",@"好物种草",@"知识百科"];
-//
-//    [self reloadData];
+    
+    @weakify(self);
+    [self.viewModel.requestCMD.nextSignal subscribeNext:^(THKMaterialRecommendRankResponse *x) {
+        @strongify(self);
+        self.headerView.subCategoryList = x.data.subCategoryList;
+    }];
+    
+    [self.viewModel.requestCMD.errorSignal subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [TMEmptyView showEmptyInView:self.view contentType:TMEmptyContentTypeNetErr];
+    }];
+    
+    [self.viewModel.requestCMD execute:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -81,7 +95,9 @@
 
 #pragma mark - Event Respone
 - (void)tapClassification:(NSInteger)index{
-    [self childVCsBeginRefreshWithPara:@{@"dddd":@(index).stringValue} forceAll:NO];
+    NSInteger categoryId = self.headerView.subCategoryList[index].categoryId;
+    NSString *categoryName = self.headerView.subCategoryList[index].categoryName;
+    [self childVCsBeginRefreshWithPara:@{@"categoryId":@(categoryId),@"categoryName":categoryName?:@""} forceAll:NO];
 }
 
 #pragma mark - Delegate
