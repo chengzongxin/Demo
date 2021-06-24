@@ -81,7 +81,7 @@
 
 #pragma mark - Event Respone
 - (void)tapClassification:(NSInteger)index{
-    Log(index);
+    [self childVCsBeginRefreshWithPara:@{@"dddd":@(index).stringValue} forceAll:NO];
 }
 
 #pragma mark - Delegate

@@ -323,7 +323,11 @@ static const CGFloat kSliderBarStartX = 0;
 }
 
 - (void)childVCsBeginRefresh:(BOOL)forceAll{
-    [self performChildVCSelector:@selector(childViewControllerBeginRefreshing) forceAll:YES];
+    [self performChildVCSelector:@selector(childViewControllerBeginRefreshing) para:nil forceAll:YES];
+}
+
+- (void)childVCsBeginRefreshWithPara:(NSDictionary *)para forceAll:(BOOL)forceAll{
+    [self performChildVCSelector:@selector(childViewControllerBeginRefreshingWithPara:) para:para forceAll:forceAll];
 }
 
 - (void)endRefreshing{
@@ -334,7 +338,7 @@ static const CGFloat kSliderBarStartX = 0;
 - (void)tabbarDidRepeatSelect{
     if (self.contentView.contentOffset.y > -self.contentView.contentInset.top) {
         // 需要子类先滑动到顶部，才能滚动scrollView
-        [self performChildVCSelector:@selector(childViewControllerTabbarDidRepeatSelect) forceAll:NO];
+        [self performChildVCSelector:@selector(childViewControllerTabbarDidRepeatSelect) para:nil forceAll:NO];
 //        [self.contentView setContentOffset:CGPointMake(0, -self.contentView.contentInset.top) animated:NO];
         [self.contentView tmui_scrollToTopAnimated:YES];
     }else{
@@ -342,7 +346,7 @@ static const CGFloat kSliderBarStartX = 0;
     }
 }
 
-- (void)performChildVCSelector:(SEL)selector forceAll:(BOOL)forceAll{
+- (void)performChildVCSelector:(SEL)selector para:(NSDictionary *)para forceAll:(BOOL)forceAll{
     // 这里要使用self.childVCs  ，使用系统的self.childViewControllers返回的子VC实例对象有问题，需要进步一排查
     [self.childVCs enumerateObjectsUsingBlock:^(UIViewController * _Nonnull vc, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([vc isViewLoaded] && [vc respondsToSelector:selector]) {
@@ -352,8 +356,15 @@ static const CGFloat kSliderBarStartX = 0;
 //                [vc performSelector:selector];
                 // 调用协议方法
                 IMP imp = [vc methodForSelector:selector];
-                void (*func)(id, SEL) = (void *)imp;
-                func(vc, selector);
+                
+                if (para) {
+                    void (*func)(id, SEL, id) = (void *)imp;
+                    func(vc, selector, para);
+                }else{
+                    void (*func)(id, SEL) = (void *)imp;
+                    func(vc, selector);
+                }
+                
             }
         }
     }];

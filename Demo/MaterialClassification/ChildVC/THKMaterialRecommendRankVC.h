@@ -6,10 +6,10 @@
 //
 
 #import "THKViewController.h"
-
+#import "THKPageContentViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKMaterialRecommendRankVC : THKViewController
+@interface THKMaterialRecommendRankVC : THKViewController <THKPageChildVCRefreshProtocol>
 
 @end
 

@@ -76,6 +76,11 @@
 
 #pragma mark - Public
 
+#warning pageContentVC 需要更新
+- (void)childViewControllerBeginRefreshingWithPara:(NSDictionary *)para{
+    NSLog(@"childvc %@",para);
+}
+
 #pragma mark - Event Respone
 // 点击头部更多
 - (void)tapHeaderMore:(NSIndexPath *)indexPath{

@@ -18,6 +18,9 @@
 @required
 /// 子VC开始下拉刷新，实现此方法，并在方法体内实现加载数据请求
 - (void)childViewControllerBeginRefreshing;
+
+/// 子VC开始下拉刷新，实现此方法，并在方法体内实现加载数据请求
+- (void)childViewControllerBeginRefreshingWithPara:(NSDictionary *)para;
 @optional
 /// 已添加默认实现，子VC只需要调用该方法，结束下拉刷新
 - (void)childViewControllerEndRefreshing;
@@ -110,6 +113,12 @@
 /// 开始执行childVC下拉刷新,会调用childVc的childViewControllerBeginRefreshing协议方法
 /// @param forceAll 刷新所有已加载的子VC
 - (void)childVCsBeginRefresh:(BOOL)forceAll;
+
+
+/// 开始执行childVC下拉刷新,会调用childVc的childViewControllerBeginRefreshing协议方法
+/// @param para 传给子类的参数
+/// @param forceAll 刷新所有VC
+- (void)childVCsBeginRefreshWithPara:(NSDictionary *)para forceAll:(BOOL)forceAll;
 
 /// 停止刷新
 - (void)endRefreshing;
