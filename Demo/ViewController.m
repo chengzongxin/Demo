@@ -9,7 +9,7 @@
 #import "THKMaterialClassificationVC.h"
 #import "THKMaterialHotRankVC.h"
 #import "THKMaterialHotRankVM.h"
-#import "THKMaterialHotListRequest.h"
+#import "TestViewController.h"
 @interface ViewController ()
 
 @end
@@ -30,6 +30,12 @@
         THKMaterialHotRankVM *vm = [[THKMaterialHotRankVM alloc] init];
         THKMaterialHotRankVC *vc = [[THKMaterialHotRankVC alloc] initWithViewModel:vm];
         [self.navigationController pushViewController:vc animated:YES];
+    });
+    
+    Button.str(@"TEST").bgColor(@"random").xywh(100,250,100,100).addTo(self.view).onClick(^{
+        Log(@"123123");
+        
+        [self.navigationController pushViewController:TestViewController.new animated:YES];
     });
 }
 

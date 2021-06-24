@@ -29,13 +29,19 @@ typedef NSArray *_Nullable(^AppendDataBlock)(THKResponse *);
 /// 数据源
 @property (nonatomic, readonly, nullable) NSArray *data;
 
+/// VM内部集成刷新控件、空视图、加载状态等控件
+/// @param view vc的view
+/// @param scrollView 列表控件，tableView或者collectionView
+/// @param appendBlock 接口返回需要拼接的数据源
 - (void)bindWithView:(UIView *)view scrollView:(UIScrollView *)scrollView appenBlock:(NSArray * (^)(THKResponse *))appendBlock;
 
 
 /// 子类重写
 - (THKBaseRequest *)requestWithInput:(id)input;
 
+/// 添加头部刷新
 - (void)addRefreshHeader;
+/// 添加尾部刷新
 - (void)addRefreshFooter;
 
 @end

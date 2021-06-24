@@ -49,7 +49,7 @@
             newData = self.appendBlock(x);
             if (input == 1) {
                 self.data = newData;
-            }else{
+            }else if (newData.count){
                 self.data = [self.data arrayByAddingObjectsFromArray:newData];
             }
         }
@@ -138,15 +138,17 @@
 
 - (void)addRefreshHeader{
     @weakify(self);
-    self.vcScrollView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^{
+     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         @strongify(self);
         [self.requestCommand execute:@1];
     }];
+    header.ignoredScrollViewContentInsetTop = self.vcScrollView.contentInset.top;
+    self.vcScrollView.mj_header = header;
 }
 
 - (void)addRefreshFooter{
     @weakify(self);
-    self.vcScrollView.mj_footer = [MJRefreshFooter footerWithRefreshingBlock:^{
+    self.vcScrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
         NSInteger input = [self.requestCommand.inputValue integerValue];
         [self.requestCommand execute:@(input+1)];

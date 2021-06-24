@@ -16,6 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly, nullable) NSArray <THKMaterialHotListModel *> *data;
 
+
+/// DEBUG Datas
+@property (nonatomic, strong, readonly) NSArray <NSArray *> *headerTitles;
+@property (nonatomic, strong, readonly) NSArray <NSArray *> *icons;
+@property (nonatomic, strong, readonly) NSArray <NSArray *> *titles;
+@property (nonatomic, strong, readonly) NSArray <NSArray *> *subtitles;
+
 @end
 
 NS_ASSUME_NONNULL_END
