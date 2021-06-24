@@ -35,6 +35,9 @@ typedef NSArray *_Nullable(^AppendDataBlock)(THKResponse *);
 /// 子类重写
 - (THKBaseRequest *)requestWithInput:(id)input;
 
+- (void)addRefreshHeader;
+- (void)addRefreshFooter;
+
 @end
 
 NS_ASSUME_NONNULL_END

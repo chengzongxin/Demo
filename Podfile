@@ -14,6 +14,8 @@ target 'Demo' do
   pod 'LookinServer', :configurations => ['Debug'] #界面查看工具
   pod 'MLeaksFinder', :configurations => ['Debug'] #检测内存泄漏
   pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git' #TMUI
+  pod 'MJRefresh'
+  pod 'MBProgressHUD'
 
   target 'DemoTests' do
     inherit! :search_paths

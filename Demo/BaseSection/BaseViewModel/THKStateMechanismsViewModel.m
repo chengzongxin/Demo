@@ -6,6 +6,8 @@
 //
 
 #import "THKStateMechanismsViewModel.h"
+#import <MBProgressHUD.h>
+#import <MJRefresh.h>
 
 @interface THKStateMechanismsViewModel ()
 
@@ -67,10 +69,14 @@
         
         // 刷新控件状态更新
         if (input == 1) {
+            // 下拉刷新
             [self.refreshSignal sendNext:@(THKRefreshStatus_EndRefreshing)];
             [self.refreshSignal sendNext:@(THKRefreshStatus_ResetNoMoreData)];
         }else if (newData.count == 0) {
+            // 上拉加载
             [self.refreshSignal sendNext:@(THKRefreshStatus_NoMoreData)];
+        }else{
+            [self.refreshSignal sendNext:@(THKRefreshStatus_EndRefreshing)];
         }
         
         [self.loadingSignal sendNext:@(THKLoadingStatus_Finish)];
@@ -102,8 +108,14 @@
     // 加载状态订阅
     [self.loadingSignal subscribeNext:^(NSNumber *x) {
         @strongify(self);
-        NSLog(@"%@",x);
-        [TMToast toast:(x.integerValue == THKLoadingStatus_Loading)?@"努力加载中...":@"加载完成"];
+        NSLog(@"%@",self.vcView);
+        dispatch_block_t showBlk = ^{
+            [MBProgressHUD showHUDAddedTo:self.vcView animated:YES];
+        };
+        dispatch_block_t dismissBlk = ^{
+            [MBProgressHUD hideHUDForView:self.vcView animated:YES];
+        };
+        (x.integerValue == THKLoadingStatus_Loading)?showBlk():dismissBlk();
     }];
     
     // 刷新状态订阅
@@ -112,11 +124,32 @@
         THKRefreshStatus status = x.integerValue;
         if (status == THKRefreshStatus_EndRefreshing) {
             NSLog(@"停止刷新");
+            [self.vcScrollView.mj_header endRefreshing];
+            [self.vcScrollView.mj_footer endRefreshing];
         }else if (status == THKRefreshStatus_ResetNoMoreData) {
-            NSLog(@"重置头部");
+            NSLog(@"重置尾部");
+            [self.vcScrollView.mj_footer resetNoMoreData];
         }else if (status == THKRefreshStatus_NoMoreData) {
             NSLog(@"没有更多数据");
+            [self.vcScrollView.mj_footer endRefreshingWithNoMoreData];
         }
+    }];
+}
+
+- (void)addRefreshHeader{
+    @weakify(self);
+    self.vcScrollView.mj_header = [MJRefreshHeader headerWithRefreshingBlock:^{
+        @strongify(self);
+        [self.requestCommand execute:@1];
+    }];
+}
+
+- (void)addRefreshFooter{
+    @weakify(self);
+    self.vcScrollView.mj_footer = [MJRefreshFooter footerWithRefreshingBlock:^{
+        @strongify(self);
+        NSInteger input = [self.requestCommand.inputValue integerValue];
+        [self.requestCommand execute:@(input+1)];
     }];
 }
 

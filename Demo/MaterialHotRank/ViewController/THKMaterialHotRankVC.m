@@ -11,7 +11,7 @@
 #import "THKMaterialHotRankHeader.h"
 #import "THKMaterialClassificationRecommendRankCell.h"
 #import "THKMaterialClassificationRecommendCellFooter.h"
-
+#import <MJRefresh.h>
 @interface THKMaterialHotRankVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) THKMaterialHotRankVM *viewModel;
@@ -73,6 +73,9 @@
         THKMaterialHotListResponse *response = (THKMaterialHotListResponse *)x;
         return response.data;
     }];
+    
+    [self.viewModel addRefreshHeader];
+    [self.viewModel addRefreshFooter];
 }
 
 
