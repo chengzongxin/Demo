@@ -76,6 +76,8 @@
     
     [self.viewModel addRefreshHeader];
     [self.viewModel addRefreshFooter];
+    
+    [self.viewModel.requestCommand execute:@1];
 }
 
 

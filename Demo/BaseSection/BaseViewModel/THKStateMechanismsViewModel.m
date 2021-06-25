@@ -90,11 +90,6 @@
         [self.loadingSignal sendNext:@(THKLoadingStatus_Finish)];
     }];
     
-    // 发送请求
-    [self.loadingSignal sendNext:@(THKLoadingStatus_Loading)];
-    [self.requestCommand execute:@1];
-    
-    
     /// 订阅更新UI
     // 空视图界面订阅
     [self.emptySignal subscribeNext:^(NSNumber *x) {
@@ -181,6 +176,8 @@
         @weakify(self);
         _requestCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
             @strongify(self);
+            
+            [self.loadingSignal sendNext:@(THKLoadingStatus_Loading)];
             return [self requestWithInput:input];
         }];
     }
