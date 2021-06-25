@@ -24,6 +24,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    self.titleLabel.text = @"";
+    self.subtitleLabel.text = @"";
 }
 
 - (void)setRank:(NSInteger)rank{
