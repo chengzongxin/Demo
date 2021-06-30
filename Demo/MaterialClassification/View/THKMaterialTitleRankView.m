@@ -7,9 +7,6 @@
 
 #import "THKMaterialTitleRankView.h"
 
-static CGFloat const kBlueAddWidth = 36;
-static CGFloat const kGlodAddWidth = 23;
-
 @interface THKMaterialTitleRankView ()
 
 @property (nonatomic, assign) THKMaterialTitleRankViewStyle style;
@@ -83,6 +80,8 @@ static CGFloat const kGlodAddWidth = 23;
         self.topIcon.hidden = NO;
         self.topLeftLine.hidden = NO;
         self.topRightLine.hidden = NO;
+        self.topLeftLine.cornerRadius = 1;
+        self.topRightLine.cornerRadius = 1;
     }else{
         /// 无皇冠
         self.topIcon.hidden = YES;
@@ -171,7 +170,7 @@ static CGFloat const kGlodAddWidth = 23;
 - (void)layoutSubviews {
     [super layoutSubviews];
     UIColor *theColor = self.style == THKMaterialTitleRankViewStyleBlue ? UIColorHex(#2D76CF) : UIColorHex(#FFE9BE);
-    NSArray *colors = @[[UIColor colorWithRed:1 green:1 blue:1 alpha:0],theColor];
+    NSArray *colors = @[[UIColor colorWithRed:0 green:0 blue:0 alpha:0],theColor];
     BOOL hadCrown = [self hadCrwon];
     if (hadCrown) {
         [self.topLeftLine tmui_gradientWithColors:colors gradientType:TMUIGradientTypeLeftToRight locations:@[@0]];
