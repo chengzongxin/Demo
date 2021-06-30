@@ -54,7 +54,7 @@
 
 - (THKMaterialTitleRankView *)rankView{
     if (!_rankView) {
-        _rankView = [[THKMaterialTitleRankView alloc] initWithStyle:THKMaterialTitleRankViewStyleBlue];
+        _rankView = [[THKMaterialTitleRankView alloc] initWithStyle:THKMaterialTitleRankViewStyleBlue titleFont:UIFont(19)];
     }
     return _rankView;
 }

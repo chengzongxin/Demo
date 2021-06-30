@@ -13,6 +13,7 @@ static CGFloat const kGlodAddWidth = 23;
 @interface THKMaterialTitleRankView ()
 
 @property (nonatomic, assign) THKMaterialTitleRankViewStyle style;
+@property (nonatomic, strong) UIFont *titleFont;
 @property (nonatomic, strong) UIImageView *topIcon;
 @property (nonatomic, strong) UIView *topLeftLine;
 @property (nonatomic, strong) UIView *topRightLine;
@@ -46,9 +47,12 @@ static CGFloat const kGlodAddWidth = 23;
     return self;
 }
 
-- (instancetype)initWithStyle:(THKMaterialTitleRankViewStyle)style{
+
+- (instancetype)initWithStyle:(THKMaterialTitleRankViewStyle)style titleFont:(UIFont *)titleFont{
     if (self = [super init]) {
         self.style = style;
+        self.titleFont = titleFont;
+        
         [self didInitalize];
     }
     return self;
@@ -56,27 +60,33 @@ static CGFloat const kGlodAddWidth = 23;
 
 - (void)didInitalize{
     
-    if (THKMaterialTitleRankViewStyleBlue == self.style) {
-        
+    if (self.style & (THKMaterialTitleRankViewStyleBlue | THKMaterialTitleRankViewStyleBlue_NoCrown)) {
+        /// 蓝色
+        self.topIcon.image = UIImageMake(@"icon_crown_blue");
+        self.leftIcon.image = UIImageMake(@"icon_left_olive_blue");
+        self.rightIcon.image = UIImageMake(@"icon_right_olive_blue");
+        self.titleLabel.textColor = UIColorHex(#2D76CF);
+    }else{
+        /// 金色
+        self.topIcon.image = UIImageMake(@"icon_crown_yellow");
+        self.leftIcon.image = UIImageMake(@"icon_left_olive_yellow");
+        self.rightIcon.image = UIImageMake(@"icon_right_olive_yellow");
+        self.titleLabel.textColor = UIColorHex(#FFE9BE);
+    }
+    
+    if (self.style & (THKMaterialTitleRankViewStyleBlue | THKMaterialTitleRankViewStyleGold)) {
+        /// 有皇冠
         self.topIcon.hidden = NO;
         self.topLeftLine.hidden = NO;
         self.topRightLine.hidden = NO;
-        
-        self.topIcon.image = UIImageMake(@"蓝色皇冠");
-        self.leftIcon.image = UIImageMake(@"左橄榄枝蓝");
-        self.rightIcon.image = UIImageMake(@"右橄榄枝蓝");
-        self.titleLabel.textColor = UIColorHex(#2D76CF);
-        self.titleLabel.font = UIFont(CGCustomFont(19));
     }else{
-        self.topIcon.image = UIImageMake(@"皇冠黄");
-        self.leftIcon.image = UIImageMake(@"左橄榄枝黄");
-        self.rightIcon.image = UIImageMake(@"右橄榄枝黄");
+        /// 无皇冠
         self.topIcon.hidden = YES;
         self.topLeftLine.hidden = YES;
         self.topRightLine.hidden = YES;
-        self.titleLabel.textColor = UIColorHex(#FFE9BE);
-        self.titleLabel.font = UIFont(CGCustomFont(10));
     }
+    
+    self.titleLabel.font = self.titleFont;
     
     [self addSubview:self.topIcon];
     [self addSubview:self.topLeftLine];
@@ -94,7 +104,7 @@ static CGFloat const kGlodAddWidth = 23;
     [self.leftIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         
-        if (self.style == THKMaterialTitleRankViewStyleBlue) {
+        if (self.style & (THKMaterialTitleRankViewStyleBlue | THKMaterialTitleRankViewStyleGold)) {
             make.top.equalTo(self.topIcon.mas_bottom);
         }else{
             make.centerY.equalTo(self);
@@ -103,7 +113,7 @@ static CGFloat const kGlodAddWidth = 23;
     
     [self.rightIcon mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(0);
-        if (self.style == THKMaterialTitleRankViewStyleBlue) {
+        if (self.style & (THKMaterialTitleRankViewStyleBlue | THKMaterialTitleRankViewStyleGold)) {
             make.top.equalTo(self.topIcon.mas_bottom);
         }else{
             make.centerY.equalTo(self);
@@ -125,7 +135,7 @@ static CGFloat const kGlodAddWidth = 23;
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        if (self.style == THKMaterialTitleRankViewStyleBlue) {
+        if (self.style & (THKMaterialTitleRankViewStyleBlue | THKMaterialTitleRankViewStyleGold)) {
             make.centerY.equalTo(self.leftIcon);
             make.centerX.equalTo(self);
         }else{
@@ -156,7 +166,7 @@ static CGFloat const kGlodAddWidth = 23;
         return;
     }
     
-    CGFloat textW = [self.titleLabel tmui_sizeWithWidth:CGFLOAT_MAX].width;
+    CGFloat textW = [self.titleLabel.text tmui_widthForFont:self.titleFont];
     CGSize size = CGSizeZero;
     if (self.style == THKMaterialTitleRankViewStyleBlue) {
         size.width = textW + kBlueAddWidth;
