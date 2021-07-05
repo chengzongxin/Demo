@@ -11,6 +11,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKMaterialClassificationRecommendRankCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *rankImgView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconImgView;
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+
 @property (nonatomic, assign) NSInteger rank;
 
 @property (nonatomic, strong) NSString *imgUrl;

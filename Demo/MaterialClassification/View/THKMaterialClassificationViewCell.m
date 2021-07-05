@@ -103,7 +103,7 @@
 - (UIImageView *)imageView{
     if (!_imageView) {
         _imageView = [[UIImageView alloc] init];
-        _imageView.backgroundColor = [UIColor grayColor];
+        _imageView.backgroundColor = UIColor.whiteColor;
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         _imageView.layer.cornerRadius = 4;
         _imageView.layer.masksToBounds = YES;

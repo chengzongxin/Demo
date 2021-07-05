@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKMaterialClassificationVC : THKPageContentViewController
+@interface THKMaterialClassificationVC : THKPageContentViewController<TRouterProtocol>
 
 @end
 

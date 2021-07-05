@@ -36,15 +36,22 @@
     [self addSubview:self.rankView];
     [self addSubview:self.subtitleLabel];
     [self addSubview:self.moreButton];
+    @weakify(self);
+    [self tmui_addSingerTapWithBlock:^{
+        @strongify(self);
+        !self.tapMoreBlock ?: self.tapMoreBlock();
+    }];
     
     [self.rankView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(15);
         make.left.mas_equalTo(25);
+        make.height.mas_equalTo(19);
     }];
     
     [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.rankView.mas_bottom).offset(5);
+        make.top.mas_equalTo(39);
         make.left.mas_equalTo(25);
+        make.right.equalTo(self.moreButton.mas_left).inset(20);
     }];
     
     [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -72,14 +79,14 @@
     if (!_imgView) {
         _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, self.width - 20, self.height)];
         [_imgView tmui_cornerDirect:UIRectCornerTopLeft|UIRectCornerTopRight radius:8];
-        _imgView.image = UIImageMake(@"商品卡片头部");
+        _imgView.image = UIImageMake(@"bg_goods_header");
     }
     return _imgView;
 }
 
 - (THKMaterialTitleRankView *)rankView{
     if (!_rankView) {
-        _rankView = [[THKMaterialTitleRankView alloc] initWithStyle:THKMaterialTitleRankViewStyleGold titleFont:UIFont(10)];
+        _rankView = [[THKMaterialTitleRankView alloc] initWithStyle:THKMaterialTitleRankViewStyleGold_NoCrown titleFont:UIFontMedium(10)];
     }
     return _rankView;
 }

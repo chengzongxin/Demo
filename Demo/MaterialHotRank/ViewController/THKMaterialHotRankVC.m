@@ -11,7 +11,20 @@
 #import "THKMaterialHotRankHeader.h"
 #import "THKMaterialClassificationRecommendRankCell.h"
 #import "THKMaterialClassificationRecommendCellFooter.h"
-#import <MJRefresh.h>
+#import "TCaseDetailTopBar.h"
+#import "THKProjectUIConfig.h"
+
+#define kHeaderViewHeight   200
+
+@interface THKMaterialHotRankVC (Godeye)
+/// 埋点 appPageCycle
+- (void)appPageCycleReport;
+/// cell 曝光
+- (void)cellShowReport:(UICollectionViewCell *)cell model:(NSObject *)model indexPath:(NSIndexPath *)indexPath;
+/// cell点击
+- (void)cellClickReport:(UICollectionViewCell *)cell model:(NSObject *)model indexPath:(NSIndexPath *)indexPath;
+@end
+
 @interface THKMaterialHotRankVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) THKMaterialHotRankVM *viewModel;
@@ -19,7 +32,7 @@
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) UIView *collectionViewHeader;
-
+@property (nonatomic, strong) TCaseDetailTopBar *topBar;
 @end
 
 @implementation THKMaterialHotRankVC
@@ -29,30 +42,32 @@
 
 // 初始化
 - (void)thk_initialize{
-    
+    [self appPageCycleReport];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setBackgroundImage:UIImage.new forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:UIImage.new];
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
-}
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//
+//    self.navigationController.navigationBar.translucent = YES;
+//    [self.navigationController.navigationBar setBackgroundImage:UIImage.new forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:UIImage.new];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//
+//    self.navigationController.navigationBar.translucent = NO;
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:nil];
+//}
 
 // 渲染VC
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.view addSubview:self.collectionView];
+    // 导航栏在最顶层
+    [self configNavigationBar];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -64,7 +79,7 @@
 
 // 子视图布局
 - (void)thk_addSubviews{
-
+    
 }
 
 // 绑定VM
@@ -84,12 +99,20 @@
 #pragma mark - Public
 // 点击头部更多
 - (void)tapHeaderMore:(NSIndexPath *)indexPath{
-    Log(indexPath);
+    [self tapSection:indexPath];
 }
 
 // 点击cell
 - (void)tapItem:(NSIndexPath *)indexPath{
-    Log(indexPath);
+    [self tapSection:indexPath];
+}
+
+- (void)tapSection:(NSIndexPath *)indexPath{
+    NSInteger categoryId = self.viewModel.data[indexPath.section].categoryId;
+    TRouter *router = [TRouter routerWithName:THKRouterPage_SelectMaterialBrandRank
+                                        param:@{@"subCategoryId" : @(categoryId)}
+                               jumpController:nil];
+    [[TRouterManager sharedManager] performRouter:router];
 }
 #pragma mark - Event Respone
 
@@ -111,7 +134,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     THKMaterialHotBrandModel *model = self.viewModel.data[indexPath.section].brandList[indexPath.item];
-    NSString *imgUrl = model.logoUrl;
+    NSString *imgUrl = model.headUrl;
     NSString *title = model.brandName;
     NSString *subtitle = @(model.score).stringValue;
     THKMaterialClassificationRecommendRankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankCell.class) forIndexPath:indexPath];
@@ -119,6 +142,9 @@
     cell.rank = indexPath.item;
     cell.imgUrl = imgUrl;
     [cell setTitle:title subtitle:subtitle];
+    
+    // 曝光
+    [self cellShowReport:cell model:self.viewModel.data indexPath:indexPath];
     return cell;
 }
 
@@ -142,9 +168,62 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self tapItem:indexPath];
+    
+    // 点击
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    [self cellClickReport:cell model:self.viewModel.data indexPath:indexPath];
 }
 
+#pragma mark - scrollView Delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.collectionView) {
+        CGFloat offsetY = scrollView.contentOffset.y;
+        CGFloat coverH = kHeaderViewHeight;
+        CGFloat moveH = offsetY + scrollView.contentInset.top;
+        
+        if (moveH > coverH) {
+            float titlePercent = 1;
+            [self.topBar setNavigationBarColor:[UIColor whiteColor] originTintColor:[UIColor whiteColor] toTintColor:THKColor_222222 gradientPercent:titlePercent];
+            self.topBar.contentSubView.hidden = NO;
+        }else {
+            float percent = moveH / coverH;
+            [self.topBar setNavigationBarColor:[UIColor whiteColor] originTintColor:[UIColor whiteColor] toTintColor:THKColor_222222 gradientPercent:percent];
+            self.topBar.contentSubView.hidden = YES;
+        }
+    }
+}
+
+
 #pragma mark - Private
+
+- (void)configNavigationBar {
+    
+    self.navBarHidden = YES;
+    TCaseDetailTopBar * topBar = [TCaseDetailTopBar createInstance];
+    self.topBar = topBar;
+    topBar.hideShareBtn = YES;
+    [self.view addSubview:topBar];
+    @weakify(self);
+    [topBar configContent:^__kindof UIView *(UIView *contentView) {
+        @strongify(self);
+        UILabel * titleLabel = [[UILabel alloc] init];
+        [contentView addSubview:titleLabel];
+        titleLabel.textColor = [THKProjectUIConfig navigationBarTitleColor_white];
+        titleLabel.font = [THKProjectUIConfig navigationBarTitleFont];
+        titleLabel.hidden = YES;
+        titleLabel.text = @"热门排行榜";
+        titleLabel.tag = 888;
+        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(contentView);
+            make.centerY.equalTo(contentView);
+            make.leading.greaterThanOrEqualTo(contentView.mas_leading);
+            make.trailing.lessThanOrEqualTo(contentView.mas_trailing);
+        }];
+        return titleLabel;
+    }];
+    
+    [topBar setNavigationBarColor:[UIColor clearColor] originTintColor:UIColor.whiteColor toTintColor:UIColor.whiteColor gradientPercent:1];
+}
 
 #pragma mark - Getters and Setters
 - (UICollectionView *)collectionView {
@@ -153,14 +232,18 @@
         _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 56);
         _layout.footerReferenceSize = CGSizeMake(self.view.bounds.size.width, 25);
         _layout.sectionInset = UIEdgeInsetsMake(0, 22, 0, 22); // item 间距
-        _layout.decorationInset = UIEdgeInsetsMake(0, 10, 0, 10); // decoration 间距
-        _layout.decorationBottomMargin = 10;
+        _layout.decorationInset = UIEdgeInsetsMake(0, 10, 10, 10); // decoration 间距
+//        _layout.decorationBottomMargin = 10;
         _layout.minimumLineSpacing = 0;
         _layout.minimumInteritemSpacing = 8;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_layout];
         _collectionView.backgroundColor = UIColorHex(#DEEEFF);
         _collectionView.contentInset = UIEdgeInsetsMake(200, 0, 10, 0);
-        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
         [_collectionView insertSubview:self.collectionViewHeader atIndex:0];
         [self.view addSubview:_collectionView];
         
@@ -180,7 +263,7 @@
 - (UIView *)collectionViewHeader{
     if (!_collectionViewHeader) {
         // 背景
-        UIImage *img = UIImageMake(@"热门排行榜-背景");
+        UIImage *img = UIImageMake(@"bg_hot_list");
         CGFloat height = self.view.width/img.size.width*img.size.height;
         _collectionViewHeader = [[UIView alloc] initWithFrame:CGRectMake(0, -200, self.view.width, height)];
         UIImageView *bgImgV = [[UIImageView alloc] initWithFrame:_collectionViewHeader.bounds];
@@ -194,11 +277,11 @@
         titleLabel.text = @"热门排行榜";
         [_collectionViewHeader addSubview:titleLabel];
         [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(110);
+            make.top.mas_equalTo(121);
             make.left.mas_equalTo(30);
         }];
         // 皇冠图标
-        UIImageView *crownIcon = [[UIImageView alloc] initWithImage:UIImageMake(@"皇冠")];
+        UIImageView *crownIcon = [[UIImageView alloc] initWithImage:UIImageMake(@"icon_materialHome_crown")];
         [_collectionViewHeader addSubview:crownIcon];
         [crownIcon mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(80);
@@ -213,5 +296,58 @@
 #pragma mark - Supperclass
 
 #pragma mark - NSObject
++ (BOOL)canHandleRouter:(TRouter *)router {
+    if ([router routerMatch:THKRouterPage_SelectMaterialHotRank]) {
+        return YES;
+    }
+    return NO;
+}
+
++ (id)createVCWithRouter:(TRouter *)router {
+    THKMaterialHotRankVM *vm = [[THKMaterialHotRankVM alloc] init];
+    THKMaterialHotRankVC *vc = [[THKMaterialHotRankVC alloc] initWithViewModel:vm];
+    return vc;
+}
+
+@end
+
+
+@implementation THKMaterialHotRankVC (Godeye)
+
+
+/// 埋点 appPageCycle
+- (void)appPageCycleReport{
+//    self.gePageLevelPath = @"如何选材|热门榜单页|";
+//    self.gePageName = @"热门榜单页";
+}
+
+- (void)cellShowReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialHotListModel *> *)model indexPath:(NSIndexPath *)indexPath{
+//    THKMaterialHotListModel *section = model[indexPath.section];
+//    THKMaterialHotBrandModel *item = section.brandList[indexPath.item];
+//    if (item.isExposed) {
+//        return;
+//    }
+//    item.isExposed = YES;
+//    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
+//    [resource addEntries:@{@"widget_title":item.brandName?:@"",
+//                           @"widget_uid":@"hot_top_list",
+//                           @"widget_index":@(indexPath.section),
+//                           @"widget_class":section.categoryName,
+//    }];
+//    [[GEWidgetExposeEvent eventWithResource:resource] report];
+}
+
+- (void)cellClickReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialHotListModel *> *)model indexPath:(NSIndexPath *)indexPath{
+//    THKMaterialHotListModel *section = model[indexPath.section];
+//    THKMaterialHotBrandModel *item = section.brandList[indexPath.item];
+//    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
+//    [resource addEntries:@{@"widget_title":item.brandName?:@"",
+//                           @"widget_uid":@"hot_top_list",
+//                           @"widget_index":@(indexPath.section),
+//                           @"widget_class":section.categoryName,
+//    }];
+//    [[GEWidgetClickEvent eventWithResource:resource] report];
+}
+
 
 @end

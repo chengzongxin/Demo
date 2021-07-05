@@ -13,15 +13,29 @@
 #import "THKMaterialClassificationRecommendCellFooter.h"
 #import "THKMaterialClassificationRecommendRankCell.h"
 #import "THKMaterialClassificationRecommendNormalCell.h"
+#import "THKMaterialClassificationVC.h"
+//#import <GECommonEventTracker.h>
 
-@interface THKMaterialRecommendRankVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface THKMaterialRecommendRankVC (Godeye)
+/// header 曝光
+- (void)brandHeaderExposeReport:(THKMaterialRecommendRankBrandList *)model indexPath:(NSIndexPath *)indexPath;
+/// header 点击
+- (void)brandHeaderClickReport:(THKMaterialRecommendRankBrandList *)model indexPath:(NSIndexPath *)indexPath;
+/// header 曝光
+- (void)goodsHeaderExposeReport:(THKMaterialRecommendRankGoodsRankListGoodsList *)model indexPath:(NSIndexPath *)indexPath;
+/// header 点击
+- (void)goodsHeaderClickReport:(THKMaterialRecommendRankGoodsRankListGoodsList *)model indexPath:(NSIndexPath *)indexPath;
+
+@end
+
+
+@interface THKMaterialRecommendRankVC () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,THKMaterialClassificationRecommendCellLayoutDecorationDelegate>
 
 @property (nonatomic, strong) THKMaterialRecommendRankVM *viewModel;
 @property (nonatomic, strong) THKMaterialClassificationRecommendCellLayout *layout;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-@property (nonatomic, strong) NSString *categoryName;
-
+@property (nonatomic, assign) BOOL needExposeVisibleCell;
 
 @end
 
@@ -31,6 +45,8 @@
 
 // 初始化
 - (void)thk_initialize{
+//    self.gePageLevelPath = @"推荐榜单页";
+//    self.gePageName = @"如何选材|主分类详情页|";
 }
 
 // 渲染VC
@@ -63,47 +79,95 @@
             [datas addObject:response.data.brandList];
         }
         for (THKMaterialRecommendRankGoodsRankList *list in response.data.goodsRankList) {
-            // 推荐商品
-            list.goodsList.firstObject.listId = list.listId;
-            list.goodsList.firstObject.name = list.name;
+            // 推荐商品,数据传给子model
+            for (THKMaterialRecommendRankGoodsRankListGoodsList *listItem in list.goodsList) {
+                listItem.listId = list.listId;
+                listItem.name = list.name;
+            }
+            
             [datas addObject:list.goodsList];
         }
         return datas;
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    // 修复埋点上报
+    if (self.needExposeVisibleCell) {
+        [self.collectionView reloadData];
+        self.needExposeVisibleCell = NO;
+    }
+}
 
 #pragma mark - Public
-
-#warning pageContentVC 需要更新
 - (void)childViewControllerBeginRefreshingWithPara:(NSDictionary *)para{
     NSLog(@"childvc %@",para);
-    self.viewModel.subCategoryId = [para[@"categoryId"] integerValue];
-    self.categoryName = para[@"categoryName"];
-    [self.viewModel.requestCommand execute:@1];
+    NSInteger subCategoryId = [para[@"categoryId"] integerValue];;
+    NSString *categoryName = para[@"categoryName"];
+    if (subCategoryId != self.viewModel.subCategoryId) {
+        self.viewModel.subCategoryId = subCategoryId;
+        self.viewModel.categoryName = categoryName;
+        [self.viewModel.requestCommand execute:@1];
+    }
 }
 
 #pragma mark - Event Respone
 // 点击头部更多
 - (void)tapHeaderMore:(NSIndexPath *)indexPath{
-    Log(indexPath);
+    NSArray *data = self.viewModel.data[indexPath.section];
+    if ([data.firstObject isKindOfClass:THKMaterialRecommendRankBrandList.class]) {
+//        THKBrandRankingViewController 品牌
+        
+        THKMaterialRecommendRankBrandList *brand = data.firstObject;
+        
+        TRouter *router = [TRouter routerWithName:THKRouterPage_SelectMaterialBrandRank
+                                            param:@{@"subCategoryId" : @(self.viewModel.subCategoryId)}
+                                   jumpController:nil];
+        [[TRouterManager sharedManager] performRouter:router];
+        
+        // 点击
+        [self brandHeaderClickReport:brand indexPath:indexPath];
+        
+    }else if ([data.firstObject isKindOfClass:THKMaterialRecommendRankGoodsRankListGoodsList.class]) {
+//        THKCommodityRankingViewController 商品
+        
+        THKMaterialRecommendRankGoodsRankListGoodsList *goods = data.firstObject;
+        
+        TRouter *router = [TRouter routerWithName:THKRouterPage_SelectMaterialCommodityRank
+                                            param:@{@"subCategoryId" : @(self.viewModel.subCategoryId),@"listId":@(goods.listId)}
+                                   jumpController:nil];
+        [[TRouterManager sharedManager] performRouter:router];
+        
+        // 点击
+        [self goodsHeaderClickReport:goods indexPath:indexPath];
+    }
 }
 
 // 点击cell
 - (void)tapItem:(NSIndexPath *)indexPath{
-    Log(indexPath);
+    [self tapHeaderMore:indexPath];
 }
 
 #pragma mark - Delegate
 #pragma mark  UICollectionViewDataSource
 
+- (BOOL)isFullDecorationAtIndexPath:(NSIndexPath *)indexPath{
+    return [self isRankCell:indexPath];
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - 8*2)/3);
-    if (indexPath.section == 0) {
+    NSArray *data = self.viewModel.data[indexPath.section];
+    
+    if ([data.firstObject isKindOfClass:THKMaterialRecommendRankBrandList.class]) {
         return CGSizeMake(width, 135);
-    }else{
-        return CGSizeMake(width, CGCustomFloat(190));
+    }else if ([data.firstObject isKindOfClass:THKMaterialRecommendRankGoodsRankListGoodsList.class]) {
+        CGFloat titleH = [self head3DataHeight:indexPath width:width];
+        return CGSizeMake(width, 15 + width + 8 + titleH + 5 + 14);
     }
+    return CGSizeZero;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -129,7 +193,7 @@
         
         THKMaterialClassificationRecommendRankCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankCell.class) forIndexPath:indexPath];
         cell.rank = indexPath.item;
-        cell.imgUrl = brand.logoUrl;
+        cell.imgUrl = brand.headUrl;
         [cell setTitle:brand.brandName subtitle:brand.score];
         return cell;
     }else if ([data.firstObject isKindOfClass:THKMaterialRecommendRankGoodsRankListGoodsList.class]) {
@@ -139,7 +203,8 @@
         THKMaterialClassificationRecommendNormalCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendNormalCell.class) forIndexPath:indexPath];
         cell.rank = indexPath.item;
         cell.imgUrl = goods.cover;
-        [cell setTitle:goods.features subtitle:goods.recommendedReason];
+        
+        [cell setTitle:goods.cellTitle subtitle:goods.features];
         return cell;
     }else{
         return nil;
@@ -151,27 +216,39 @@
         NSArray *data = self.viewModel.data[indexPath.section];
         if ([data.firstObject isKindOfClass:THKMaterialRecommendRankBrandList.class]) {
             THKMaterialClassificationRecommendRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendRankHeader.class) forIndexPath:indexPath];
-            [header setTitle:[NSString stringWithFormat:@"%@品牌榜",self.categoryName]];
+            
+            NSArray <THKMaterialRecommendRankBrandList *> *brandList = data;
+            THKMaterialRecommendRankBrandList *brand = brandList[indexPath.item];
+            
+            [header setTitle:[NSString stringWithFormat:@"%@品牌榜",self.viewModel.categoryName]];
+            
             @TMUI_weakify(self);
             header.tapMoreBlock = ^{
                 @TMUI_strongify(self);
                 [self tapHeaderMore:indexPath];
             };
+            
+            // 曝光
+            [self brandHeaderExposeReport:brand indexPath:indexPath];
+            
             return header;
         }else if ([data.firstObject isKindOfClass:THKMaterialRecommendRankGoodsRankListGoodsList.class]) {
             THKMaterialClassificationRecommendNormalHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialClassificationRecommendNormalHeader.class) forIndexPath:indexPath];
             
-            NSArray *data = self.viewModel.data[indexPath.section];
             NSArray <THKMaterialRecommendRankGoodsRankListGoodsList *> *goodsList = data;
             THKMaterialRecommendRankGoodsRankListGoodsList *goods = goodsList[indexPath.item];
             
-            [header setTitle:[NSString stringWithFormat:@"%@推荐榜",self.categoryName] subtitle:goods.name];
-                                                                  
+            [header setTitle:[NSString stringWithFormat:@"%@推荐榜",self.viewModel.categoryName] subtitle:goods.name];
+            
             @TMUI_weakify(self);
             header.tapMoreBlock = ^{
                 @TMUI_strongify(self);
                 [self tapHeaderMore:indexPath];
             };
+
+            // 曝光
+            [self goodsHeaderExposeReport:goods indexPath:indexPath];
+            
             return header;
         }
         
@@ -187,6 +264,34 @@
 }
 
 #pragma mark - Private
+- (BOOL)isRankCell:(NSIndexPath *)indexPath{
+    NSArray *data = self.viewModel.data[indexPath.section];
+    return [data.firstObject isKindOfClass:THKMaterialRecommendRankBrandList.class];
+}
+
+- (BOOL)isGoodsCell:(NSIndexPath *)indexPath{
+    NSArray *data = self.viewModel.data[indexPath.section];
+    return [data.firstObject isKindOfClass:THKMaterialRecommendRankGoodsRankListGoodsList.class];
+}
+
+- (CGFloat)head3DataHeight:(NSIndexPath *)indexPath width:(CGFloat)width{
+    NSArray *data = self.viewModel.data[indexPath.section];
+    NSArray <THKMaterialRecommendRankGoodsRankListGoodsList *> *goodsList = data;
+    if (goodsList.firstObject.titleH) {
+        return goodsList.firstObject.titleH;
+    }
+//    THKMaterialRecommendRankGoodsRankListGoodsList *goods = goodsList[indexPath.item];
+    __block CGFloat maxTitleH = 0;
+    [goodsList enumerateObjectsUsingBlock:^(THKMaterialRecommendRankGoodsRankListGoodsList * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idx < 3) {
+            CGFloat titleH = [obj.cellTitle tmui_sizeForFont:UIFont(14) size:CGSizeMake(width, CGFLOAT_MAX) lineHeight:0 mode:NSLineBreakByWordWrapping].height;
+            maxTitleH = MAX(maxTitleH, titleH);
+        }
+    }];
+    maxTitleH = maxTitleH > 20 ? 40:20;
+    goodsList.firstObject.titleH = maxTitleH;
+    return maxTitleH;
+}
 
 #pragma mark - Getters and Setters
 - (UICollectionView *)collectionView {
@@ -195,14 +300,20 @@
         _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 80);
         _layout.footerReferenceSize = CGSizeMake(self.view.bounds.size.width, 25);
         _layout.sectionInset = UIEdgeInsetsMake(0, 22, 0, 22); // item 间距
-        _layout.decorationInset = UIEdgeInsetsMake(0, 10, 0, 10); // decoration 间距
-        _layout.decorationBottomMargin = 10;
-        _layout.firstDifferent = YES;
+        _layout.decorationInset = UIEdgeInsetsMake(0, 10, 10, 10); // decoration 间距
+//        _layout.decorationBottomMargin = 10;
+//        _layout.firstDifferent = YES;
+        _layout.delegate = self;
         _layout.minimumLineSpacing = 0;
         _layout.minimumInteritemSpacing = 8;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_layout];
         _collectionView.backgroundColor = UIColorHex(#F6F8F6);
         _collectionView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0);
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
         [self.view addSubview:_collectionView];
         
         _collectionView.dataSource = self;
@@ -224,5 +335,68 @@
 #pragma mark - Supperclass
 
 #pragma mark - NSObject
+
+@end
+
+@implementation THKMaterialRecommendRankVC (Godeye)
+
+- (void)brandHeaderExposeReport:(THKMaterialRecommendRankBrandList *)model indexPath:(NSIndexPath *)indexPath{
+//    THKMaterialClassificationVC *parentVC =  (THKMaterialClassificationVC *)self.parentViewController;
+//    if (![parentVC isKindOfClass:THKMaterialClassificationVC.class] || parentVC.childVCs[parentVC.currentIndex] != self) {
+//        // 页面展示才曝光,来到这里说明页面已经加载了数据，但是没有显示，需要在下次进入此页面，重新上报
+//        self.needExposeVisibleCell = YES;
+//        return;
+//    }
+//
+//    if (model.isExposed) {
+//        return;
+//    }
+//    model.isExposed = YES;
+//    [GECommonEventTracker reportEvent:kGEAppWidgetShow properties:({
+//        @{@"page_uid":self.gePageUid?:@"",
+//          @"widget_title":[NSString stringWithFormat:@"%@品牌榜",self.viewModel.categoryName],
+//          @"widget_uid":@"brand_top_btn",
+//        };
+//    })];
+}
+
+- (void)brandHeaderClickReport:(THKMaterialRecommendRankBrandList *)model indexPath:(NSIndexPath *)indexPath{
+//    [GECommonEventTracker reportEvent:kGEAppWidgetClick properties:({
+//        @{@"page_uid":self.gePageUid?:@"",
+//          @"widget_title":[NSString stringWithFormat:@"%@品牌榜",self.viewModel.categoryName],
+//          @"widget_uid":@"brand_top_btn",
+//        };
+//    })];
+}
+
+- (void)goodsHeaderExposeReport:(THKMaterialRecommendRankGoodsRankListGoodsList *)model indexPath:(NSIndexPath *)indexPath{
+//    THKMaterialClassificationVC *parentVC =  (THKMaterialClassificationVC *)self.parentViewController;
+//    if (![parentVC isKindOfClass:THKMaterialClassificationVC.class] || parentVC.childVCs[parentVC.currentIndex] != self) {
+//        // 页面展示才曝光
+//        return;
+//    }
+//
+//    if (model.isExposed) {
+//        return;
+//    }
+//    model.isExposed = YES;
+//    [GECommonEventTracker reportEvent:kGEAppWidgetShow properties:({
+//        @{@"page_uid":self.gePageUid?:@"",
+//          @"widget_title":[NSString stringWithFormat:@"%@",model.name],
+//          @"widget_index":@(indexPath.section - 1),
+//          @"widget_uid":@"goods_top_btn",
+//        };
+//    })];
+}
+
+- (void)goodsHeaderClickReport:(THKMaterialRecommendRankGoodsRankListGoodsList *)model indexPath:(NSIndexPath *)indexPath{
+//    [GECommonEventTracker reportEvent:kGEAppWidgetClick properties:({
+//        @{@"page_uid":self.gePageUid?:@"",
+//          @"widget_title":[NSString stringWithFormat:@"%@",model.name],
+//          @"widget_index":@(indexPath.section - 1),
+//          @"widget_uid":@"goods_top_btn",
+//        };
+//    })];
+}
 
 @end

@@ -14,7 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic, assign) NSInteger subCategoryId;
+
+@property (nonatomic, strong) NSString *categoryName;
+
 @property (nonatomic, assign) NSInteger needTopSubCategoryList;
+
 @property (nonatomic, strong, readonly) THKRequestCommand *requestCommand;
 
 @property (nonatomic, strong, readonly, nullable) NSArray *data;

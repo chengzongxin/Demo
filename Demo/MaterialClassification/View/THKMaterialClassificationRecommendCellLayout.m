@@ -8,6 +8,9 @@
 #import "THKMaterialClassificationRecommendCellLayout.h"
 #import "THKMaterialClassificationRecommendDecorationView.h"
 
+NSString* const Full_BackGround_ReuseId = @"Full_BackGround_ReuseId";
+NSString* const Header_BackGround_ReuseId = @"Header_BackGround_ReuseId";
+
 @interface THKMaterialClassificationRecommendCellLayout (){
     BOOL _insetForSectionAtIndexFlag;
     CGFloat _lastY;
@@ -23,11 +26,16 @@
     _insetForSectionAtIndexFlag = [self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:insetForSectionAtIndex:)];
     _lastY = 0;
     
-    [self registerClass:[THKMaterialClassificationRecommendDecorationView class] forDecorationViewOfKind:[self reuseId]];
+    [self registerClass:[THKMaterialClassificationRecommendDecorationView class] forDecorationViewOfKind:Full_BackGround_ReuseId];
+    [self registerClass:[THKMaterialClassificationRecommendDecorationView class] forDecorationViewOfKind:Header_BackGround_ReuseId];
 }
 
-- (NSString *)reuseId{
-    return self.firstDifferent?@"decorationView_firstDifferent":@"decorationView";
+- (NSString *)reuseIdForIndexPath:(NSIndexPath *)indexPath{
+    BOOL isFull = NO;
+    if ([self.delegate respondsToSelector:@selector(isFullDecorationAtIndexPath:)]) {
+        isFull = [self.delegate isFullDecorationAtIndexPath:indexPath];
+    }
+    return isFull?Full_BackGround_ReuseId:Header_BackGround_ReuseId;
 }
 
 
@@ -37,7 +45,7 @@
     
     for (UICollectionViewLayoutAttributes *attr in superAttrs) {
         if (attr.representedElementKind == UICollectionElementKindSectionHeader) {
-            [attrs addObject:[self layoutAttributesForDecorationViewOfKind:[self reuseId] atIndexPath:attr.indexPath top:attr.frame.origin.y]];
+            [attrs addObject:[self layoutAttributesForDecorationViewOfKind:[self reuseIdForIndexPath:attr.indexPath] atIndexPath:attr.indexPath top:attr.frame.origin.y]];
         }
     }
     
@@ -67,13 +75,13 @@
     
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal)
     {
-        frame.size.width += CGRectGetMaxX(footer.frame) - CGRectGetMinX(header.frame) - self.decorationBottomMargin;
+        frame.size.width += CGRectGetMaxX(footer.frame) - CGRectGetMinX(header.frame) - self.decorationInset.right;
         frame.size.height = self.collectionView.frame.size.height - UIEdgeInsetsGetVerticalValue(self.decorationInset);
     }
     else
     {
         frame.size.width = self.collectionView.frame.size.width - UIEdgeInsetsGetHorizontalValue(self.decorationInset);
-        frame.size.height = CGRectGetMaxY(footer.frame) - CGRectGetMinY(header.frame) - self.decorationBottomMargin;
+        frame.size.height = CGRectGetMaxY(footer.frame) - CGRectGetMinY(header.frame) - self.decorationInset.bottom;
     }
     
     attrs.frame = frame;

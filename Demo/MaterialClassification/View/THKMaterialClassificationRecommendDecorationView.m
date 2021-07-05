@@ -31,12 +31,11 @@
 /// init or initWithFrame创建
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-//        self.backgroundColor = [UIColor.greenColor colorWithAlphaComponent:0.2];
         _imageView = [[UIImageView alloc] init];
         _imageView.layer.cornerRadius = 8;
         _imageView.layer.masksToBounds = YES;
-        UIImage *image = [UIImage imageNamed:@"dec_banner_def"];
-        _imageView.image = image;
+//        UIImage *image = [UIImage imageNamed:@"dec_banner_def"];
+//        _imageView.image = image;
         //                _imageView.image = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
         [self addSubview:_imageView];
     }
@@ -47,8 +46,8 @@
     [super applyLayoutAttributes:layoutAttributes];
     
     // 只有第一行是整个section背景，其他都是只有头部尺寸,其他页面不显示排行榜头图
-    if (layoutAttributes.indexPath.section == 0 && [self.reuseIdentifier isEqualToString:@"decorationView_firstDifferent"]) {
-        _imageView.image = UIImageMake(@"排行榜头图");
+    if ([self.reuseIdentifier isEqualToString:Full_BackGround_ReuseId]) {
+        _imageView.image = UIImageMake(@"bg_brand_rank");
     }else{
         _imageView.image = [UIImage tmui_imageWithColor:UIColor.whiteColor];
     }

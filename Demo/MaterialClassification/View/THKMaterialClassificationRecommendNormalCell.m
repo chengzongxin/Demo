@@ -32,19 +32,21 @@
 - (void)setRank:(NSInteger)rank{
     _rank = rank;
     
-    NSString *imgName = [NSString stringWithFormat:@"皇冠标签%02ld",rank+1];
+    NSString *imgName = [NSString stringWithFormat:@"icon_material_crown_%ld",rank+1];
     self.rankImgView.image = UIImageMake(imgName);
 }
 
 - (void)setImgUrl:(NSString *)imgUrl{
     _imgUrl = imgUrl;
     
-    [self.iconImgView setImageURL:[NSURL URLWithString:imgUrl]];
+    [self.iconImgView loadImageWithUrlStr:imgUrl];
 }
 
 - (void)setTitle:(NSString *)title subtitle:(NSString *)subtitle{
     CGFloat space = CGCustomFloat(3);
     [self.titleLabel tmui_setAttributesString:title lineSpacing:space];
+    self.titleLabel.numberOfLines = 2;
+    self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.contentEdgeInsets = UIEdgeInsetsMake(space, 0, space, 0);
     self.subtitleLabel.text = subtitle;

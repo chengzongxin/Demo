@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKMaterialHotRankVC : THKViewController
+@interface THKMaterialHotRankVC : THKViewController<TRouterProtocol>
 
 @end
 

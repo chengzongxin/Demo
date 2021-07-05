@@ -40,4 +40,6 @@
 /// @param viewModel
 - (void)bindViewModel:(THKViewModel *)viewModel;
 
+- (void)thk_setupViews;
+
 @end

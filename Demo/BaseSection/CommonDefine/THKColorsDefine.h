@@ -91,8 +91,8 @@
 #define UIColorHex(_hex_)   [UIColor colorWithHexString:((__bridge NSString *)CFSTR(#_hex_))]
 #endif
 
-NS_INLINE UIColor * _THKColorWithHexString(NSString *hexStr) {
-    return [UIColor colorWithHexString:hexStr];
-}
+//NS_INLINE UIColor * _THKColorWithHexString(NSString *hexStr) {
+//    return [UIColor colorWithHexString:hexStr];
+//}
 
 #endif /* THKColorsDefine_h */

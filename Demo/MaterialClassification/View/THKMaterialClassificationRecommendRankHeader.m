@@ -30,10 +30,16 @@
 - (void)didInitalize{
     [self addSubview:self.rankView];
     [self addSubview:self.moreButton];
+    @weakify(self);
+    [self tmui_addSingerTapWithBlock:^{
+        @strongify(self);
+        !self.tapMoreBlock ?: self.tapMoreBlock();
+    }];
     
     [self.rankView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(19);
         make.left.mas_equalTo(25);
+        make.height.mas_equalTo(35);
     }];
     
     [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -54,7 +60,7 @@
 
 - (THKMaterialTitleRankView *)rankView{
     if (!_rankView) {
-        _rankView = [[THKMaterialTitleRankView alloc] initWithStyle:THKMaterialTitleRankViewStyleBlue titleFont:UIFont(19)];
+        _rankView = [[THKMaterialTitleRankView alloc] initWithStyle:THKMaterialTitleRankViewStyleBlue titleFont:UIFontMedium(20)];
     }
     return _rankView;
 }

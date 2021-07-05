@@ -6,7 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "THKMaterialClassificationRecommendCellLayout.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKMaterialClassificationRecommendDecorationView : UICollectionReusableView

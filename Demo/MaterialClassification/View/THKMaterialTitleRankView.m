@@ -170,7 +170,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     UIColor *theColor = self.style == THKMaterialTitleRankViewStyleBlue ? UIColorHex(#2D76CF) : UIColorHex(#FFE9BE);
-    NSArray *colors = @[[UIColor colorWithRed:0 green:0 blue:0 alpha:0],theColor];
+    NSArray *colors = @[[UIColor colorWithRed:1 green:1 blue:1 alpha:0],theColor];
     BOOL hadCrown = [self hadCrwon];
     if (hadCrown) {
         [self.topLeftLine tmui_gradientWithColors:colors gradientType:TMUIGradientTypeLeftToRight locations:@[@0]];
@@ -196,7 +196,7 @@
     }
     
     CGFloat textW = [self.titleLabel.text tmui_widthForFont:self.titleFont];
-    CGFloat addWidth = self.titleLabel.font.lineHeight * 2; // 左右增加的按字体大小增加2倍
+    CGFloat addWidth = self.titleLabel.font.lineHeight * 0.8 * 2; // 左右增加的按字体大小增加0.8 * 2倍
     CGFloat width = textW + addWidth;
     
     [self mas_updateConstraints:^(MASConstraintMaker *make) {

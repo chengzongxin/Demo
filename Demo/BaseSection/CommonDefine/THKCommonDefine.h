@@ -82,8 +82,8 @@
 #define kLineColor [UIColor colorWithHexString:@"#e3e3e3"] //白底上的线条
 #define kLineColor_gray [UIColor colorWithHexString:@"#d8d8d8"] //灰底上的线条
 
-static NSString *kGEAppWidgetShow  = @"appWidgetShow";
-static NSString *kGEAppWidgetClick = @"appWidgetClick";
+//static NSString *kGEAppWidgetShow  = @"appWidgetShow";
+//static NSString *kGEAppWidgetClick = @"appWidgetClick";
 
 static CGFloat kAlertAlpha = 0.7;
 

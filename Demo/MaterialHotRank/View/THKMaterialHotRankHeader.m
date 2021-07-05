@@ -35,6 +35,7 @@
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(15);
         make.left.mas_equalTo(25);
+        make.right.equalTo(self.moreButton.mas_left).inset(20);
     }];
     
     [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,13 +66,11 @@
     if (!_moreButton) {
         _moreButton = [[TMUIButton alloc] init];
         _moreButton.imagePosition = TMUIButtonImagePositionRight;
-        _moreButton.tmui_image = [UIImage tmui_imageWithShape:TMUIImageShapeDisclosureIndicator size:CGSizeMake(5, 8) tintColor:UIColor.blackColor];
+        _moreButton.tmui_image = UIImageMake(@"icon_material_arrow");
         _moreButton.spacingBetweenImageAndTitle = 5;
         _moreButton.tmui_text = @"全部品牌";
-        _moreButton.tmui_font = UIFont(12);
+        _moreButton.tmui_font = [UIFont systemFontOfSize:12];
         _moreButton.tmui_titleColor = UIColorHex(#1A1C1A);
-        _moreButton.layer.cornerRadius = 13.5;
-        _moreButton.layer.masksToBounds = YES;
         [_moreButton tmui_addTarget:self action:@selector(moreButtonClick:)];
     }
     return _moreButton;

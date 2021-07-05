@@ -7,10 +7,9 @@
 
 #import "ViewController.h"
 #import "THKMaterialClassificationVC.h"
-#import "THKMaterialClassificationViewModel.h"
+#import "THKMaterialClassificationVM.h"
 #import "THKMaterialHotRankVC.h"
 #import "THKMaterialHotRankVM.h"
-#import "TestViewController.h"
 #import "THKMaterialTitleRankView.h"
 
 @interface ViewController ()
@@ -26,10 +25,10 @@
     
     Button.str(@"如何选材").bgColor(@"random").xywh(100,100,100,100).addTo(self.view).onClick(^{
         Log(@"123123");
-        THKMaterialClassificationViewModel *vm = [[THKMaterialClassificationViewModel alloc] init];
-        vm.subCategoryId = 1;
-        THKMaterialClassificationVC *vc = [[THKMaterialClassificationVC alloc] initWithViewModel:vm];
-        [self.navigationController pushViewController:vc animated:YES];
+        TRouter *router = [TRouter routerWithName:THKRouterPage_SelectMaterialCategoryDetail
+                                            param:@{@"mainCategoryId" : @4}
+                                   jumpController:self];
+        [[TRouterManager sharedManager] performRouter:router];
     });
     
     Button.str(@"热门排行榜").bgColor(@"random").xywh(250,100,100,100).addTo(self.view).onClick(^{

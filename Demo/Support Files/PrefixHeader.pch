@@ -34,4 +34,13 @@ static inline CGFloat CGCustomFont(CGFloat value) {
         return ceil(value * TMUI_SCREEN_WIDTH/kDesignChartWidth);
     }
 }
+
+#import "TRouterProtocol.h"
+#import "TRouterManager.h"
+#import "QuickMethod.h"
+#import "THKRouterPathDefine.h"
+#import "THKNetworkDefine.h"
+#import "THKResponse.h"
+#import "THKCommonDefine.h"
+
 #endif /* PrefixHeader_pch */

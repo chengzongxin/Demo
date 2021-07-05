@@ -31,7 +31,7 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="皇冠标签01" translatesAutoresizingMaskIntoConstraints="NO" id="8dl-h7-bVT">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_material_crown_1" translatesAutoresizingMaskIntoConstraints="NO" id="8dl-h7-bVT">
                         <rect key="frame" x="5" y="17" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="F04-Jx-t3Q"/>
@@ -39,13 +39,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="松下压缩机 风冷无霜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtD-vq-AXz">
-                        <rect key="frame" x="0.0" y="164.5" width="105" height="11.5"/>
+                        <rect key="frame" x="2" y="164.5" width="101" height="11.5"/>
                         <fontDescription key="fontDescription" name=".SFNS-Regular" family=".AppleSystemUIFont" pointSize="10"/>
                         <color key="textColor" red="0.59215686274509804" green="0.59999999999999998" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MC-YH-V2w" customClass="TMUILabel">
-                        <rect key="frame" x="0.0" y="128" width="105" height="31.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MC-YH-V2w" customClass="TMUILabel">
+                        <rect key="frame" x="2" y="128" width="101" height="31.5"/>
                         <string key="text">松下/经典三门 
 NREC26W</string>
                         <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".AppleSimplifiedChineseFont" pointSize="14"/>
@@ -56,15 +56,15 @@ NREC26W</string>
             </view>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="6MC-YH-V2w" secondAttribute="trailing" id="8aG-Z0-pJL"/>
                 <constraint firstItem="8dl-h7-bVT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="9Od-Af-mfm"/>
                 <constraint firstItem="6MC-YH-V2w" firstAttribute="top" secondItem="YMF-TW-fR6" secondAttribute="bottom" constant="8" id="APN-Yh-Aij"/>
                 <constraint firstItem="YMF-TW-fR6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="Dqv-3F-HbB"/>
+                <constraint firstAttribute="trailing" secondItem="6MC-YH-V2w" secondAttribute="trailing" constant="2" id="MHy-9s-WlX"/>
                 <constraint firstAttribute="trailing" secondItem="YMF-TW-fR6" secondAttribute="trailing" id="Qo5-v5-jQt"/>
                 <constraint firstItem="8dl-h7-bVT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="17" id="ZXO-Jf-Ism"/>
-                <constraint firstItem="NtD-vq-AXz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rDF-Lr-UIw"/>
-                <constraint firstAttribute="trailing" secondItem="NtD-vq-AXz" secondAttribute="trailing" id="rn6-Kg-Ejt"/>
-                <constraint firstItem="6MC-YH-V2w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sln-6W-biw"/>
+                <constraint firstItem="NtD-vq-AXz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="rDF-Lr-UIw"/>
+                <constraint firstAttribute="trailing" secondItem="NtD-vq-AXz" secondAttribute="trailing" constant="2" id="rn6-Kg-Ejt"/>
+                <constraint firstItem="6MC-YH-V2w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="sln-6W-biw"/>
                 <constraint firstItem="NtD-vq-AXz" firstAttribute="top" secondItem="6MC-YH-V2w" secondAttribute="bottom" constant="5" id="twp-5q-bAP"/>
                 <constraint firstItem="YMF-TW-fR6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uB3-4v-7fi"/>
             </constraints>
@@ -78,7 +78,7 @@ NREC26W</string>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="皇冠标签01" width="32" height="32"/>
+        <image name="icon_material_crown_1" width="32" height="32"/>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
