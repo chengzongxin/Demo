@@ -21,9 +21,9 @@
     [[THKNetworkManager sharedManager] setupNetwork];
     [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":@"4298F251-E93C-478E-AA05-B46E47F02BEC"}];
     // 域名映射
-//    [THKIdentityConfigManager.shareInstane loadConfigWithResultBlock:^{
-//        // lanch app
-//    }];
+    [THKIdentityConfigManager.shareInstane loadConfigWithResultBlock:^{
+        // lanch app
+    }];
     return YES;
 }
 

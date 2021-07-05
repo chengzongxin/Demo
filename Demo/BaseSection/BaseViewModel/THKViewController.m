@@ -75,13 +75,17 @@
     
     [self thk_addSubviews];
 }
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (self.navigationController && [self.navigationController.viewControllers containsObject:self]) {
+        [self.navigationController setNavigationBarHidden:self.navBarHidden animated:animated];
+    }
+    
     [self thk_layoutNavigation];
     
     NSLog(@"class=%@ viewWillAppear",[self class]);
 }
+
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
