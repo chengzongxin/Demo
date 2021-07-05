@@ -12,6 +12,7 @@
 #import "THKMaterialHotRankVM.h"
 #import "TestViewController.h"
 #import "THKMaterialTitleRankView.h"
+
 @interface ViewController ()
 
 @end
@@ -37,6 +38,18 @@
         THKMaterialHotRankVC *vc = [[THKMaterialHotRankVC alloc] initWithViewModel:vm];
         [self.navigationController pushViewController:vc animated:YES];
     });
+    
+    // File: ani@3x.gif
+//    UIImage *image = [YYImage imageNamed:@"718.apng"];
+    YYAnimatedImageView *imageView = [[YYAnimatedImageView alloc] init];
+    [imageView setImageURL:[NSURL URLWithString:@"http://pic.to8to.com/infofed/20210701/d8377a0ac76c9c965d1fe3ca8295e27a.webp"]];
+    [self.view addSubview:imageView];
+
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(100);
+        make.width.height.mas_equalTo(100);
+    }];
+    
     
 //    Button.str(@"TEST").bgColor(@"random").xywh(100,250,100,100).addTo(self.view).onClick(^{
 //        Log(@"123123");
