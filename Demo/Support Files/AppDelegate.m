@@ -23,7 +23,7 @@
     TUUIDGenerator.accessGroup = @"SM5GN8GTPY.com.czx";
     [TRequestParameter sharedParameter].version = @"2.5";
     [GEEnvironmentParameter defaultParameter].user_city = @"深圳";
-    [GEEnvironmentParameter defaultParameter].app_name = @"土巴兔";
+    [GEEnvironmentParameter defaultParameter].app_name = @"to8to_ios";
     [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":[TUUIDGenerator getUUID]}];
     [[THKNetworkManager sharedManager] setupNetwork];
     [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":@"4298F251-E93C-478E-AA05-B46E47F02BEC"}];
