@@ -12,10 +12,10 @@
 
 @class THKPageContentViewController;
 @class THKPageHeaderVisualEffectView;
-// demo版刷新方法删除
+
 @protocol THKPageChildVCRefreshProtocol <NSObject>
 
-@required
+@optional
 /// 子VC开始下拉刷新，实现此方法，并在方法体内实现加载数据请求
 - (void)childViewControllerBeginRefreshing;
 
@@ -35,6 +35,9 @@
 @required
 /// 返回所有的子VC
 - (NSArray <UIViewController *> *)viewControllersForChildViewControllers;
+
+- (UIViewController *)viewControllerForContentController;
+
 /// 返回子VC标题
 - (NSArray <NSString *> *)titlesForChildViewControllers;
 
@@ -67,7 +70,7 @@
 
 @end
 
-@interface THKPageContentViewController : THKViewController <THKPageContentViewControllerDataSource,THKPageContentViewControllerDelegate>
+@interface THKPageContentViewController : THKViewController <THKPageContentViewControllerDataSource,THKPageContentViewControllerDelegate,THKTabBarRepeatSelectProtocol>
 /// 数据源方法，默认Self
 @property (nonatomic, weak) id<THKPageContentViewControllerDataSource> dataSource;
 /// 代理方法，默认Self

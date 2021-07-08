@@ -31,4 +31,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+@protocol THKTabBarRepeatSelectProtocol<NSObject>
+
+- (void)tabbarDidRepeatSelect;
+
+@optional
+- (void)tabbarDidSelectedAtIndex:(NSInteger)index;
+- (UIScrollView *)contentScrollView;
+@end
+
 NS_ASSUME_NONNULL_END

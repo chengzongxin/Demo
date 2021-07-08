@@ -122,8 +122,19 @@ static const CGFloat kSliderBarStartX = 0;
 }
 
 - (void)fetchDataSource{
-    self.childVCs = [self viewControllersForChildViewControllers];
     self.childTitles = [self titlesForChildViewControllers];
+    self.childVCs = [self viewControllersForChildViewControllers];
+//    UIViewController *contentVC = [self viewControllerForContentController];
+//    if (self.childTitles.count > 0 && self.childVCs == nil && contentVC) {
+//        NSMutableArray *childVCs = [NSMutableArray arrayWithCapacity:self.childTitles.count];
+//        for (int i=0; i<=self.childTitles.count-1; i++) {
+//            [childVCs addObject:contentVC];
+//        }
+//        self.childVCs = childVCs;
+//    }
+//    
+//    self.childVCs = [self viewControllersForChildViewControllers];
+    
     
     if ([self.dataSource respondsToSelector:@selector(heightForHeader)]) {
         self.headerHeight = [self.dataSource heightForHeader];
@@ -257,17 +268,21 @@ static const CGFloat kSliderBarStartX = 0;
     }
     
     [self.slideBar setSelectedIndex:index animated:animate];
+    
+    
+    // 从当前页面切换到其他页，需要调用当前页面生命周期
+    if (self.currentIndex != index) {
+        UIViewController *preVC = self.childVCs[self.currentIndex];
+        [preVC beginAppearanceTransition:NO animated:YES];
+        [preVC endAppearanceTransition];
+    }
+    
     if (childVC.isViewLoaded && childVC.view.superview) {
+        // 已加载过，调用生命周期方法
         [childVC beginAppearanceTransition:YES animated:YES];
         [childVC endAppearanceTransition];
-        
-        if (self.currentIndex != index) {
-            UIViewController *preVC = self.childVCs[self.currentIndex];
-            [preVC viewWillDisappear:YES];
-            [preVC viewDidDisappear:YES];
-        }
-        
     }else{
+        // 未加载，需要添加后，再调用生命周期
         CGFloat x = index * [UIScreen mainScreen].bounds.size.width;
         childVC.view.frame = CGRectMake(x, 0, [UIScreen mainScreen].bounds.size.width , self.contentScrollView.bounds.size.height);
         [childVC beginAppearanceTransition:YES animated:YES];
