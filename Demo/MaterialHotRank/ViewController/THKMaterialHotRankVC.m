@@ -14,7 +14,8 @@
 #import "TCaseDetailTopBar.h"
 #import "THKProjectUIConfig.h"
 
-#define kHeaderViewHeight   200
+#define kHeaderViewHeight       200
+#define kSectionHeaderHeight    56
 
 @interface THKMaterialHotRankVC (Godeye)
 /// 埋点 appPageCycle
@@ -178,9 +179,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.collectionView) {
         CGFloat offsetY = scrollView.contentOffset.y;
-        CGFloat coverH = kHeaderViewHeight;
+        CGFloat coverH = kHeaderViewHeight - tmui_navigationBarHeight() ;
         CGFloat moveH = offsetY + scrollView.contentInset.top;
-        
         if (moveH > coverH) {
             float titlePercent = 1;
             [self.topBar setNavigationBarColor:[UIColor whiteColor] originTintColor:[UIColor whiteColor] toTintColor:THKColor_222222 gradientPercent:titlePercent];
@@ -203,9 +203,7 @@
     self.topBar = topBar;
     topBar.hideShareBtn = YES;
     [self.view addSubview:topBar];
-    @weakify(self);
     [topBar configContent:^__kindof UIView *(UIView *contentView) {
-        @strongify(self);
         UILabel * titleLabel = [[UILabel alloc] init];
         [contentView addSubview:titleLabel];
         titleLabel.textColor = [THKProjectUIConfig navigationBarTitleColor_white];
@@ -229,7 +227,7 @@
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         _layout = [[THKMaterialClassificationRecommendCellLayout alloc] init];
-        _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 56);
+        _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, kSectionHeaderHeight);
         _layout.footerReferenceSize = CGSizeMake(self.view.bounds.size.width, 25);
         _layout.sectionInset = UIEdgeInsetsMake(0, 22, 0, 22); // item 间距
         _layout.decorationInset = UIEdgeInsetsMake(0, 10, 10, 10); // decoration 间距
@@ -238,7 +236,7 @@
         _layout.minimumInteritemSpacing = 8;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_layout];
         _collectionView.backgroundColor = UIColorHex(#DEEEFF);
-        _collectionView.contentInset = UIEdgeInsetsMake(200, 0, 10, 0);
+        _collectionView.contentInset = UIEdgeInsetsMake(kHeaderViewHeight, 0, 10, 0);
         if (@available(iOS 11.0, *)) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
@@ -265,7 +263,7 @@
         // 背景
         UIImage *img = UIImageMake(@"bg_hot_list");
         CGFloat height = self.view.width/img.size.width*img.size.height;
-        _collectionViewHeader = [[UIView alloc] initWithFrame:CGRectMake(0, -200, self.view.width, height)];
+        _collectionViewHeader = [[UIView alloc] initWithFrame:CGRectMake(0, -kHeaderViewHeight, self.view.width, height)];
         UIImageView *bgImgV = [[UIImageView alloc] initWithFrame:_collectionViewHeader.bounds];
         bgImgV.image = img;
         [_collectionViewHeader addSubview:bgImgV];

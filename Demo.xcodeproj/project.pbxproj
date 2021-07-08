@@ -2096,6 +2096,7 @@
 				DEVELOPMENT_TEAM = 5XB293ZE6R;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "Demo/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2117,6 +2118,7 @@
 				DEVELOPMENT_TEAM = 5XB293ZE6R;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "Demo/Support Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
