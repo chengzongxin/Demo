@@ -15,7 +15,7 @@
 #import "THKMaterialRecommendRankVC.h"
 #import "THKMaterialRecommendRankVM.h"
 #import "THKMaterialRecommendRankResponse.h"
-//#import <GECommonEventTracker.h>
+#import "GECommonEventTracker.h"
 
 /// 埋点分类
 @interface THKMaterialClassificationVC (Godeye)
@@ -48,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self thk_hideNavShadowImageView];
+    [self thk_hideNavShadowImageView];
     
     [self appPageCycleReport];
     
@@ -205,9 +205,9 @@
 
 /// 埋点 appPageCycle
 - (void)appPageCycleReport{
-//    self.gePageNotDisplay = YES;//is_show = 0
-//    self.gePageLevelPath = @"如何选材|主分类详情页|";
-//    self.gePageName = @"推荐榜单页";
+    self.gePageNotDisplay = YES;//is_show = 0
+    self.gePageLevelPath = @"如何选材|主分类详情页|";
+    self.gePageName = @"推荐榜单页";
 }
 
 /// tab 曝光，点击
@@ -237,15 +237,15 @@
 /// tab曝光、点击
 - (void)reportEvent:(NSString *)event button:(UIButton *)button index:(NSInteger)index
 {
-//    [GECommonEventTracker reportEvent:event properties:({
-//        NSMutableDictionary *mDict = @{}.mutableCopy;
-//        mDict[@"page_uid"] = self.gePageUid?:@"";
-//        mDict[@"widget_title"] = button.titleLabel.text?:@"";
-//        mDict[@"widget_uid"] = @"tab_btn";
-//        mDict[@"widget_index"] = @(index).description;
-//        mDict[@"page_refer_uid"] = self.gePageReferUid?:@"";
-//        mDict;
-//    })];
+    [GECommonEventTracker reportEvent:event properties:({
+        NSMutableDictionary *mDict = @{}.mutableCopy;
+        mDict[@"page_uid"] = self.gePageUid?:@"";
+        mDict[@"widget_title"] = button.titleLabel.text?:@"";
+        mDict[@"widget_uid"] = @"tab_btn";
+        mDict[@"widget_index"] = @(index).description;
+        mDict[@"page_refer_uid"] = self.gePageReferUid?:@"";
+        mDict;
+    })];
 }
 
 TMUISynthesizeIdStrongProperty(tagExposeArray, setTagExposeArray);

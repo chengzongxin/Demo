@@ -25,8 +25,8 @@
 
 // 初始化
 - (void)thk_initialize{
-//    self.gePageLevelPath = @"如何选材|主分类详情页|";
-//    self.gePageName = @"好物种草页";
+    self.gePageLevelPath = @"如何选材|主分类详情页|";
+    self.gePageName = @"好物种草页";
 }
 
 // 渲染VC

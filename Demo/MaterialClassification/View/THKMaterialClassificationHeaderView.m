@@ -306,24 +306,24 @@
         return;
     }
     item.isExposed = YES;
-//    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
-//    [resource addEntries:@{@"widget_title":item.categoryName?:@"",
-//                           @"widget_uid":@"top_sub_type_btn",
-//                           @"widget_index":@(indexPath.item),
-//                           @"page_uid":NSStringFromClass(THKMaterialRecommendRankVC.class),
-//    }];
-//    [[GEWidgetExposeEvent eventWithResource:resource] report];
+    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
+    [resource addEntries:@{@"widget_title":item.categoryName?:@"",
+                           @"widget_uid":@"top_sub_type_btn",
+                           @"widget_index":@(indexPath.item),
+                           @"page_uid":NSStringFromClass(THKMaterialRecommendRankVC.class),
+    }];
+    [[GEWidgetExposeEvent eventWithResource:resource] report];
 }
 
 - (void)cellClickReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialRecommendRankSubCategoryList *> *)model indexPath:(NSIndexPath *)indexPath{
     THKMaterialRecommendRankSubCategoryList *item = model[indexPath.item];
-//    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
-//    [resource addEntries:@{@"widget_title":item.categoryName?:@"",
-//                           @"widget_uid":@"top_sub_type_btn",
-//                           @"widget_index":@(indexPath.item),
-//                           @"page_uid":NSStringFromClass(THKMaterialRecommendRankVC.class),
-//    }];
-//    [[GEWidgetClickEvent eventWithResource:resource] report];
+    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
+    [resource addEntries:@{@"widget_title":item.categoryName?:@"",
+                           @"widget_uid":@"top_sub_type_btn",
+                           @"widget_index":@(indexPath.item),
+                           @"page_uid":NSStringFromClass(THKMaterialRecommendRankVC.class),
+    }];
+    [[GEWidgetClickEvent eventWithResource:resource] report];
 }
 
 

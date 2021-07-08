@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "THKViewModel.h"
 #import "THKViewControllerProtocol.h"
+#import "UIViewController+Godeye.h"
+#import "GEWidgetEvent.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKViewController : UIViewController <THKViewControllerProtocol>
@@ -23,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)bindViewModel;
 
 - (void)bindViewModel:(THKViewModel *)viewModel;
+
+- (void)thk_hideNavShadowImageView;
 
 @end
 

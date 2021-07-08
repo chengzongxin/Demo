@@ -11,6 +11,8 @@
 // viewModel
 @property (nonatomic, strong, readwrite) THKViewModel *viewModel;
 
+@property (nonatomic, strong) UIImage *thk_navShadowImage;
+@property (nonatomic, assign) BOOL thk_hideNavShadowImage;
 @end
 
 @implementation THKViewController
@@ -83,6 +85,10 @@
     
     [self thk_layoutNavigation];
     
+    if (self.thk_hideNavShadowImage) {
+        self.thk_navShadowImage = self.navigationController.navigationBar.shadowImage;
+        self.navigationController.navigationBar.shadowImage = [UIImage new];
+    }
     NSLog(@"class=%@ viewWillAppear",[self class]);
 }
 
@@ -94,6 +100,9 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    if (self.thk_hideNavShadowImage) {
+        self.navigationController.navigationBar.shadowImage = self.thk_navShadowImage;
+    }
     NSLog(@"class=%@ viewWillDisappear",[self class]);
 }
 
@@ -133,6 +142,9 @@
 
 - (void)thk_layoutNavigation {}
 
+- (void)thk_hideNavShadowImageView{
+    self.thk_hideNavShadowImage = YES;
+}
 
 //#ifdef DEBUG
 //    #if __has_include("MLeaksFinder.h")

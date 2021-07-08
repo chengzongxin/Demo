@@ -14,7 +14,7 @@
 #import "THKMaterialClassificationRecommendRankCell.h"
 #import "THKMaterialClassificationRecommendNormalCell.h"
 #import "THKMaterialClassificationVC.h"
-//#import <GECommonEventTracker.h>
+#import "GECommonEventTracker.h"
 
 @interface THKMaterialRecommendRankVC (Godeye)
 /// header 曝光
@@ -45,8 +45,8 @@
 
 // 初始化
 - (void)thk_initialize{
-//    self.gePageLevelPath = @"如何选材|主分类详情页|";
-//    self.gePageName = @"推荐榜单页";
+    self.gePageLevelPath = @"如何选材|主分类详情页|";
+    self.gePageName = @"推荐榜单页";
 }
 
 // 渲染VC
@@ -352,21 +352,21 @@
         return;
     }
     model.isExposed = YES;
-//    [GECommonEventTracker reportEvent:kGEAppWidgetShow properties:({
-//        @{@"page_uid":self.gePageUid?:@"",
-//          @"widget_title":[NSString stringWithFormat:@"%@品牌榜",self.viewModel.categoryName],
-//          @"widget_uid":@"brand_top_btn",
-//        };
-//    })];
+    [GECommonEventTracker reportEvent:kGEAppWidgetShow properties:({
+        @{@"page_uid":self.gePageUid?:@"",
+          @"widget_title":[NSString stringWithFormat:@"%@品牌榜",self.viewModel.categoryName],
+          @"widget_uid":@"brand_top_btn",
+        };
+    })];
 }
 
 - (void)brandHeaderClickReport:(THKMaterialRecommendRankBrandList *)model indexPath:(NSIndexPath *)indexPath{
-//    [GECommonEventTracker reportEvent:kGEAppWidgetClick properties:({
-//        @{@"page_uid":self.gePageUid?:@"",
-//          @"widget_title":[NSString stringWithFormat:@"%@品牌榜",self.viewModel.categoryName],
-//          @"widget_uid":@"brand_top_btn",
-//        };
-//    })];
+    [GECommonEventTracker reportEvent:kGEAppWidgetClick properties:({
+        @{@"page_uid":self.gePageUid?:@"",
+          @"widget_title":[NSString stringWithFormat:@"%@品牌榜",self.viewModel.categoryName],
+          @"widget_uid":@"brand_top_btn",
+        };
+    })];
 }
 
 - (void)goodsHeaderExposeReport:(THKMaterialRecommendRankGoodsRankListGoodsList *)model indexPath:(NSIndexPath *)indexPath{
@@ -380,23 +380,23 @@
         return;
     }
     model.isExposed = YES;
-//    [GECommonEventTracker reportEvent:kGEAppWidgetShow properties:({
-//        @{@"page_uid":self.gePageUid?:@"",
-//          @"widget_title":[NSString stringWithFormat:@"%@",model.name],
-//          @"widget_index":@(indexPath.section - 1),
-//          @"widget_uid":@"goods_top_btn",
-//        };
-//    })];
+    [GECommonEventTracker reportEvent:kGEAppWidgetShow properties:({
+        @{@"page_uid":self.gePageUid?:@"",
+          @"widget_title":[NSString stringWithFormat:@"%@",model.name],
+          @"widget_index":@(indexPath.section - 1),
+          @"widget_uid":@"goods_top_btn",
+        };
+    })];
 }
 
 - (void)goodsHeaderClickReport:(THKMaterialRecommendRankGoodsRankListGoodsList *)model indexPath:(NSIndexPath *)indexPath{
-//    [GECommonEventTracker reportEvent:kGEAppWidgetClick properties:({
-//        @{@"page_uid":self.gePageUid?:@"",
-//          @"widget_title":[NSString stringWithFormat:@"%@",model.name],
-//          @"widget_index":@(indexPath.section - 1),
-//          @"widget_uid":@"goods_top_btn",
-//        };
-//    })];
+    [GECommonEventTracker reportEvent:kGEAppWidgetClick properties:({
+        @{@"page_uid":self.gePageUid?:@"",
+          @"widget_title":[NSString stringWithFormat:@"%@",model.name],
+          @"widget_index":@(indexPath.section - 1),
+          @"widget_uid":@"goods_top_btn",
+        };
+    })];
 }
 
 @end

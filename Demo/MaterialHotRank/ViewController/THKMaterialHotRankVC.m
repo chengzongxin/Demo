@@ -316,8 +316,8 @@
 
 /// 埋点 appPageCycle
 - (void)appPageCycleReport{
-//    self.gePageLevelPath = @"如何选材|热门榜单页|";
-//    self.gePageName = @"热门榜单页";
+    self.gePageLevelPath = @"如何选材|热门榜单页|";
+    self.gePageName = @"热门榜单页";
 }
 
 - (void)cellShowReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialHotListModel *> *)model indexPath:(NSIndexPath *)indexPath{
@@ -327,25 +327,25 @@
         return;
     }
     item.isExposed = YES;
-//    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
-//    [resource addEntries:@{@"widget_title":item.brandName?:@"",
-//                           @"widget_uid":@"hot_top_list",
-//                           @"widget_index":@(indexPath.section),
-//                           @"widget_class":section.categoryName?:@"",
-//    }];
-//    [[GEWidgetExposeEvent eventWithResource:resource] report];
+    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
+    [resource addEntries:@{@"widget_title":item.brandName?:@"",
+                           @"widget_uid":@"hot_top_list",
+                           @"widget_index":@(indexPath.section),
+                           @"widget_class":section.categoryName?:@"",
+    }];
+    [[GEWidgetExposeEvent eventWithResource:resource] report];
 }
 
 - (void)cellClickReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialHotListModel *> *)model indexPath:(NSIndexPath *)indexPath{
     THKMaterialHotListModel *section = model[indexPath.section];
     THKMaterialHotBrandModel *item = section.brandList[indexPath.item];
-//    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
-//    [resource addEntries:@{@"widget_title":item.brandName?:@"",
-//                           @"widget_uid":@"hot_top_list",
-//                           @"widget_index":@(indexPath.section),
-//                           @"widget_class":section.categoryName?:@"",
-//    }];
-//    [[GEWidgetClickEvent eventWithResource:resource] report];
+    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
+    [resource addEntries:@{@"widget_title":item.brandName?:@"",
+                           @"widget_uid":@"hot_top_list",
+                           @"widget_index":@(indexPath.section),
+                           @"widget_class":section.categoryName?:@"",
+    }];
+    [[GEWidgetClickEvent eventWithResource:resource] report];
 }
 
 
