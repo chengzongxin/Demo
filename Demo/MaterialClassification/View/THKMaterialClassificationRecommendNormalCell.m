@@ -47,7 +47,7 @@
     [self.titleLabel tmui_setAttributesString:title lineSpacing:space];
     self.titleLabel.numberOfLines = 2;
     self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.textAlignment = NSTextAlignmentLeft;
     self.titleLabel.contentEdgeInsets = UIEdgeInsetsMake(space, 0, space, 0);
     self.subtitleLabel.text = subtitle;
 }

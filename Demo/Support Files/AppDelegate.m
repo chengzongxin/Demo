@@ -9,6 +9,8 @@
 #import "THKNetworkManager.h"
 #import "TRequestParameter.h"
 #import "THKIdentityConfigManager.h"
+#import "TUUIDGenerator.h"
+#import "GEEnvironmentParameter.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +20,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    TUUIDGenerator.accessGroup = @"SM5GN8GTPY.com.czx";
+    [TRequestParameter sharedParameter].version = @"2.5";
+    [GEEnvironmentParameter defaultParameter].user_city = @"深圳";
+    [GEEnvironmentParameter defaultParameter].app_name = @"土巴兔";
+    [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":[TUUIDGenerator getUUID]}];
     [[THKNetworkManager sharedManager] setupNetwork];
     [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":@"4298F251-E93C-478E-AA05-B46E47F02BEC"}];
     // 域名映射

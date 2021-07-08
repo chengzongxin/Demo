@@ -59,6 +59,57 @@
 		16192BF72692FF5400967C73 /* THKSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192BF62692FF5400967C73 /* THKSearchView.m */; };
 		16192BFD2693012100967C73 /* TCaseDetailTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192BFC2693012100967C73 /* TCaseDetailTopBar.m */; };
 		16192C042693014A00967C73 /* THKProjectUIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192C022693014A00967C73 /* THKProjectUIConfig.m */; };
+		16611A3E269684A20089E41B /* THKMaterialClassificationVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119DF269684A20089E41B /* THKMaterialClassificationVM.m */; };
+		16611A3F269684A20089E41B /* THKMaterialRecommendRankVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119E2269684A20089E41B /* THKMaterialRecommendRankVM.m */; };
+		16611A40269684A20089E41B /* THKMaterialKnowledgeVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119E3269684A20089E41B /* THKMaterialKnowledgeVM.m */; };
+		16611A41269684A20089E41B /* THKMaterialGoodsGrassVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119E5269684A20089E41B /* THKMaterialGoodsGrassVM.m */; };
+		16611A42269684A20089E41B /* THKMaterialRecommendRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119EA269684A20089E41B /* THKMaterialRecommendRankVC.m */; };
+		16611A43269684A20089E41B /* THKMaterialKnowledgeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119EB269684A20089E41B /* THKMaterialKnowledgeVC.m */; };
+		16611A44269684A20089E41B /* THKMaterialGoodsGrassVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119EC269684A20089E41B /* THKMaterialGoodsGrassVC.m */; };
+		16611A45269684A20089E41B /* THKMaterialClassificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119EF269684A20089E41B /* THKMaterialClassificationViewCell.m */; };
+		16611A46269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166119F1269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.xib */; };
+		16611A47269684A20089E41B /* THKMaterialClassificationRecommendRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119F4269684A20089E41B /* THKMaterialClassificationRecommendRankCell.m */; };
+		16611A48269684A20089E41B /* THKMaterialClassificationRecommendCellFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119F5269684A20089E41B /* THKMaterialClassificationRecommendCellFooter.m */; };
+		16611A49269684A20089E41B /* THKMaterialClassificationRecommendNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119F6269684A20089E41B /* THKMaterialClassificationRecommendNormalHeader.m */; };
+		16611A4A269684A20089E41B /* THKMaterialClassificationRecommendDecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119F7269684A20089E41B /* THKMaterialClassificationRecommendDecorationView.m */; };
+		16611A4B269684A20089E41B /* THKMaterialTitleRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119FA269684A20089E41B /* THKMaterialTitleRankView.m */; };
+		16611A4C269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119FB269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.m */; };
+		16611A4D269684A20089E41B /* THKMaterialClassificationRecommendRankHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 166119FC269684A20089E41B /* THKMaterialClassificationRecommendRankHeader.m */; };
+		16611A4E269684A20089E41B /* THKMaterialClassificationRecommendRankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16611A00269684A20089E41B /* THKMaterialClassificationRecommendRankCell.xib */; };
+		16611A4F269684A20089E41B /* THKMaterialClassificationHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A03269684A20089E41B /* THKMaterialClassificationHeaderView.m */; };
+		16611A50269684A20089E41B /* THKMaterialClassificationRecommendCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A04269684A20089E41B /* THKMaterialClassificationRecommendCellLayout.m */; };
+		16611A51269684A20089E41B /* THKMaterialClassificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A06269684A20089E41B /* THKMaterialClassificationVC.m */; };
+		16611A62269684A20089E41B /* THKMaterialHotRankVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A32269684A20089E41B /* THKMaterialHotRankVM.m */; };
+		16611A63269684A20089E41B /* THKMaterialHotRankHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A36269684A20089E41B /* THKMaterialHotRankHeader.m */; };
+		16611A64269684A20089E41B /* THKMaterialHotRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A38269684A20089E41B /* THKMaterialHotRankVC.m */; };
+		16611AAD2696870F0089E41B /* GEEnvironmentParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A752696870F0089E41B /* GEEnvironmentParameter.m */; };
+		16611AAE2696870F0089E41B /* GESwizzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A772696870F0089E41B /* GESwizzer.m */; };
+		16611AAF2696870F0089E41B /* GELocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A792696870F0089E41B /* GELocation.m */; };
+		16611AB02696870F0089E41B /* GEProcessor+GodeyePrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A7C2696870F0089E41B /* GEProcessor+GodeyePrivate.m */; };
+		16611AB12696870F0089E41B /* UIResponder+Godeye.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A7D2696870F0089E41B /* UIResponder+Godeye.m */; };
+		16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A7F2696870F0089E41B /* UIScrollView+Godeye.m */; };
+		16611AB32696870F0089E41B /* UITabBarController+Godeye.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A822696870F0089E41B /* UITabBarController+Godeye.m */; };
+		16611AB42696870F0089E41B /* UINavigationController+Godeye.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A842696870F0089E41B /* UINavigationController+Godeye.m */; };
+		16611AB52696870F0089E41B /* UIView+Godeye.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A862696870F0089E41B /* UIView+Godeye.m */; };
+		16611AB62696870F0089E41B /* UIViewController+Godeye.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A892696870F0089E41B /* UIViewController+Godeye.m */; };
+		16611AB72696870F0089E41B /* GEPageViewProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A8B2696870F0089E41B /* GEPageViewProcessor.m */; };
+		16611AB82696870F0089E41B /* GEWidgetProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A8C2696870F0089E41B /* GEWidgetProcessor.m */; };
+		16611AB92696870F0089E41B /* GETrackerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A8D2696870F0089E41B /* GETrackerModel.m */; };
+		16611ABA2696870F0089E41B /* GEProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A8E2696870F0089E41B /* GEProcessor.m */; };
+		16611ABB2696870F0089E41B /* GEDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A942696870F0089E41B /* GEDispatcher.m */; };
+		16611ABC2696870F0089E41B /* GEStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A972696870F0089E41B /* GEStorage.m */; };
+		16611ABD2696870F0089E41B /* GESnsTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A992696870F0089E41B /* GESnsTracker.m */; };
+		16611ABE2696870F0089E41B /* GECommonEventTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A9C2696870F0089E41B /* GECommonEventTracker.m */; };
+		16611ABF2696870F0089E41B /* GEAppLifecycleTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A9D2696870F0089E41B /* GEAppLifecycleTracker.m */; };
+		16611AC02696870F0089E41B /* GELoginTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A9E2696870F0089E41B /* GELoginTracker.m */; };
+		16611AC12696870F0089E41B /* GEWidgetEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611AA22696870F0089E41B /* GEWidgetEvent.m */; };
+		16611AC22696870F0089E41B /* Godeye.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611AA32696870F0089E41B /* Godeye.m */; };
+		16611AC32696870F0089E41B /* GETableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611AA52696870F0089E41B /* GETableView.m */; };
+		16611AC42696870F0089E41B /* GECollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611AA62696870F0089E41B /* GECollectionView.m */; };
+		16611AC52696870F0089E41B /* RegistScrollViewProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611AA82696870F0089E41B /* RegistScrollViewProxy.m */; };
+		16611AC62696870F0089E41B /* GEScrollViewExposeManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611AAB2696870F0089E41B /* GEScrollViewExposeManger.m */; };
+		16611AD1269688C20089E41B /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611ACD269688C20089E41B /* KeychainItemWrapper.m */; };
+		16611AD2269688C20089E41B /* TUUIDGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611ACF269688C20089E41B /* TUUIDGenerator.m */; };
 		16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16699B6025D0CF5E00B7F43B /* ViewController.m */; };
 		1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C17D268066200059E9B0 /* THKSegmentControl.m */; };
 		1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1A52680667C0059E9B0 /* UIView+Frame.m */; };
@@ -69,29 +120,6 @@
 		1669C1D22680671A0059E9B0 /* THKPageBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1D02680671A0059E9B0 /* THKPageBGScrollView.m */; };
 		1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1D62680673A0059E9B0 /* UIScrollView+TScroll.m */; };
 		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
-		1686796B2692B86400650023 /* THKMaterialClassificationVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679382692B86400650023 /* THKMaterialClassificationVM.m */; };
-		1686796C2692B86400650023 /* THKMaterialRecommendRankVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686793B2692B86400650023 /* THKMaterialRecommendRankVM.m */; };
-		1686796D2692B86400650023 /* THKMaterialKnowledgeVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686793C2692B86400650023 /* THKMaterialKnowledgeVM.m */; };
-		1686796E2692B86400650023 /* THKMaterialGoodsGrassVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686793E2692B86400650023 /* THKMaterialGoodsGrassVM.m */; };
-		1686796F2692B86400650023 /* THKMaterialRecommendRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679432692B86400650023 /* THKMaterialRecommendRankVC.m */; };
-		168679702692B86400650023 /* THKMaterialKnowledgeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679442692B86400650023 /* THKMaterialKnowledgeVC.m */; };
-		168679712692B86400650023 /* THKMaterialGoodsGrassVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679452692B86400650023 /* THKMaterialGoodsGrassVC.m */; };
-		168679722692B86400650023 /* THKMaterialClassificationViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679482692B86400650023 /* THKMaterialClassificationViewCell.m */; };
-		168679732692B86400650023 /* THKMaterialClassificationRecommendNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1686794A2692B86400650023 /* THKMaterialClassificationRecommendNormalCell.xib */; };
-		168679742692B86400650023 /* THKMaterialClassificationRecommendRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686794D2692B86400650023 /* THKMaterialClassificationRecommendRankCell.m */; };
-		168679752692B86400650023 /* THKMaterialClassificationRecommendCellFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686794E2692B86400650023 /* THKMaterialClassificationRecommendCellFooter.m */; };
-		168679762692B86400650023 /* THKMaterialClassificationRecommendNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686794F2692B86400650023 /* THKMaterialClassificationRecommendNormalHeader.m */; };
-		168679772692B86400650023 /* THKMaterialClassificationRecommendDecorationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679502692B86400650023 /* THKMaterialClassificationRecommendDecorationView.m */; };
-		168679782692B86400650023 /* THKMaterialTitleRankView.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679532692B86400650023 /* THKMaterialTitleRankView.m */; };
-		168679792692B86400650023 /* THKMaterialClassificationRecommendNormalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679542692B86400650023 /* THKMaterialClassificationRecommendNormalCell.m */; };
-		1686797A2692B86400650023 /* THKMaterialClassificationRecommendRankHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679552692B86400650023 /* THKMaterialClassificationRecommendRankHeader.m */; };
-		1686797B2692B86400650023 /* THKMaterialClassificationRecommendRankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 168679592692B86400650023 /* THKMaterialClassificationRecommendRankCell.xib */; };
-		1686797C2692B86400650023 /* THKMaterialClassificationHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686795C2692B86400650023 /* THKMaterialClassificationHeaderView.m */; };
-		1686797D2692B86400650023 /* THKMaterialClassificationRecommendCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686795D2692B86400650023 /* THKMaterialClassificationRecommendCellLayout.m */; };
-		1686797E2692B86400650023 /* THKMaterialClassificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686795F2692B86400650023 /* THKMaterialClassificationVC.m */; };
-		1686797F2692B86400650023 /* THKMaterialHotRankVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679632692B86400650023 /* THKMaterialHotRankVM.m */; };
-		168679802692B86400650023 /* THKMaterialHotRankHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679672692B86400650023 /* THKMaterialHotRankHeader.m */; };
-		168679812692B86400650023 /* THKMaterialHotRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679692692B86400650023 /* THKMaterialHotRankVC.m */; };
 		168679922692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */; };
 		168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686798A2692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m */; };
 		168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686798D2692B8AC00650023 /* THKMaterialRecommendRankRequest.m */; };
@@ -302,6 +330,107 @@
 		16192BFC2693012100967C73 /* TCaseDetailTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCaseDetailTopBar.m; sourceTree = "<group>"; };
 		16192C022693014A00967C73 /* THKProjectUIConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKProjectUIConfig.m; sourceTree = "<group>"; };
 		16192C032693014A00967C73 /* THKProjectUIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKProjectUIConfig.h; sourceTree = "<group>"; };
+		166119DF269684A20089E41B /* THKMaterialClassificationVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationVM.m; sourceTree = "<group>"; };
+		166119E0269684A20089E41B /* THKMaterialKnowledgeVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialKnowledgeVM.h; sourceTree = "<group>"; };
+		166119E1269684A20089E41B /* THKMaterialGoodsGrassVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialGoodsGrassVM.h; sourceTree = "<group>"; };
+		166119E2269684A20089E41B /* THKMaterialRecommendRankVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendRankVM.m; sourceTree = "<group>"; };
+		166119E3269684A20089E41B /* THKMaterialKnowledgeVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialKnowledgeVM.m; sourceTree = "<group>"; };
+		166119E4269684A20089E41B /* THKMaterialClassificationVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationVM.h; sourceTree = "<group>"; };
+		166119E5269684A20089E41B /* THKMaterialGoodsGrassVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialGoodsGrassVM.m; sourceTree = "<group>"; };
+		166119E6269684A20089E41B /* THKMaterialRecommendRankVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankVM.h; sourceTree = "<group>"; };
+		166119E8269684A20089E41B /* THKMaterialKnowledgeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialKnowledgeVC.h; sourceTree = "<group>"; };
+		166119E9269684A20089E41B /* THKMaterialGoodsGrassVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialGoodsGrassVC.h; sourceTree = "<group>"; };
+		166119EA269684A20089E41B /* THKMaterialRecommendRankVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendRankVC.m; sourceTree = "<group>"; };
+		166119EB269684A20089E41B /* THKMaterialKnowledgeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialKnowledgeVC.m; sourceTree = "<group>"; };
+		166119EC269684A20089E41B /* THKMaterialGoodsGrassVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialGoodsGrassVC.m; sourceTree = "<group>"; };
+		166119ED269684A20089E41B /* THKMaterialRecommendRankVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankVC.h; sourceTree = "<group>"; };
+		166119EF269684A20089E41B /* THKMaterialClassificationViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationViewCell.m; sourceTree = "<group>"; };
+		166119F0269684A20089E41B /* THKMaterialClassificationRecommendRankHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendRankHeader.h; sourceTree = "<group>"; };
+		166119F1269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THKMaterialClassificationRecommendNormalCell.xib; sourceTree = "<group>"; };
+		166119F2269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendNormalCell.h; sourceTree = "<group>"; };
+		166119F3269684A20089E41B /* THKMaterialTitleRankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialTitleRankView.h; sourceTree = "<group>"; };
+		166119F4269684A20089E41B /* THKMaterialClassificationRecommendRankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendRankCell.m; sourceTree = "<group>"; };
+		166119F5269684A20089E41B /* THKMaterialClassificationRecommendCellFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendCellFooter.m; sourceTree = "<group>"; };
+		166119F6269684A20089E41B /* THKMaterialClassificationRecommendNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendNormalHeader.m; sourceTree = "<group>"; };
+		166119F7269684A20089E41B /* THKMaterialClassificationRecommendDecorationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendDecorationView.m; sourceTree = "<group>"; };
+		166119F8269684A20089E41B /* THKMaterialClassificationRecommendCellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendCellLayout.h; sourceTree = "<group>"; };
+		166119F9269684A20089E41B /* THKMaterialClassificationHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationHeaderView.h; sourceTree = "<group>"; };
+		166119FA269684A20089E41B /* THKMaterialTitleRankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialTitleRankView.m; sourceTree = "<group>"; };
+		166119FB269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendNormalCell.m; sourceTree = "<group>"; };
+		166119FC269684A20089E41B /* THKMaterialClassificationRecommendRankHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendRankHeader.m; sourceTree = "<group>"; };
+		166119FD269684A20089E41B /* THKMaterialClassificationViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationViewCell.h; sourceTree = "<group>"; };
+		166119FE269684A20089E41B /* THKMaterialClassificationRecommendRankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendRankCell.h; sourceTree = "<group>"; };
+		166119FF269684A20089E41B /* THKMaterialClassificationRecommendDecorationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendDecorationView.h; sourceTree = "<group>"; };
+		16611A00269684A20089E41B /* THKMaterialClassificationRecommendRankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THKMaterialClassificationRecommendRankCell.xib; sourceTree = "<group>"; };
+		16611A01269684A20089E41B /* THKMaterialClassificationRecommendNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendNormalHeader.h; sourceTree = "<group>"; };
+		16611A02269684A20089E41B /* THKMaterialClassificationRecommendCellFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendCellFooter.h; sourceTree = "<group>"; };
+		16611A03269684A20089E41B /* THKMaterialClassificationHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationHeaderView.m; sourceTree = "<group>"; };
+		16611A04269684A20089E41B /* THKMaterialClassificationRecommendCellLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendCellLayout.m; sourceTree = "<group>"; };
+		16611A06269684A20089E41B /* THKMaterialClassificationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationVC.m; sourceTree = "<group>"; };
+		16611A07269684A20089E41B /* THKMaterialClassificationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationVC.h; sourceTree = "<group>"; };
+		16611A32269684A20089E41B /* THKMaterialHotRankVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankVM.m; sourceTree = "<group>"; };
+		16611A33269684A20089E41B /* THKMaterialHotRankVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankVM.h; sourceTree = "<group>"; };
+		16611A35269684A20089E41B /* THKMaterialHotRankHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankHeader.h; sourceTree = "<group>"; };
+		16611A36269684A20089E41B /* THKMaterialHotRankHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankHeader.m; sourceTree = "<group>"; };
+		16611A38269684A20089E41B /* THKMaterialHotRankVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankVC.m; sourceTree = "<group>"; };
+		16611A39269684A20089E41B /* THKMaterialHotRankVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankVC.h; sourceTree = "<group>"; };
+		16611A732696870F0089E41B /* Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Godeye.h; sourceTree = "<group>"; };
+		16611A752696870F0089E41B /* GEEnvironmentParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEEnvironmentParameter.m; sourceTree = "<group>"; };
+		16611A762696870F0089E41B /* GELocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GELocation.h; sourceTree = "<group>"; };
+		16611A772696870F0089E41B /* GESwizzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GESwizzer.m; sourceTree = "<group>"; };
+		16611A782696870F0089E41B /* GEEnvironmentParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEEnvironmentParameter.h; sourceTree = "<group>"; };
+		16611A792696870F0089E41B /* GELocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GELocation.m; sourceTree = "<group>"; };
+		16611A7A2696870F0089E41B /* GESwizzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GESwizzer.h; sourceTree = "<group>"; };
+		16611A7C2696870F0089E41B /* GEProcessor+GodeyePrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GEProcessor+GodeyePrivate.m"; sourceTree = "<group>"; };
+		16611A7D2696870F0089E41B /* UIResponder+Godeye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Godeye.m"; sourceTree = "<group>"; };
+		16611A7E2696870F0089E41B /* UINavigationController+Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Godeye.h"; sourceTree = "<group>"; };
+		16611A7F2696870F0089E41B /* UIScrollView+Godeye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Godeye.m"; sourceTree = "<group>"; };
+		16611A802696870F0089E41B /* UIView+Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Godeye.h"; sourceTree = "<group>"; };
+		16611A812696870F0089E41B /* UIViewController+Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Godeye.h"; sourceTree = "<group>"; };
+		16611A822696870F0089E41B /* UITabBarController+Godeye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+Godeye.m"; sourceTree = "<group>"; };
+		16611A832696870F0089E41B /* UIResponder+Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Godeye.h"; sourceTree = "<group>"; };
+		16611A842696870F0089E41B /* UINavigationController+Godeye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Godeye.m"; sourceTree = "<group>"; };
+		16611A852696870F0089E41B /* GEProcessor+GodeyePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GEProcessor+GodeyePrivate.h"; sourceTree = "<group>"; };
+		16611A862696870F0089E41B /* UIView+Godeye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Godeye.m"; sourceTree = "<group>"; };
+		16611A872696870F0089E41B /* UIScrollView+Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Godeye.h"; sourceTree = "<group>"; };
+		16611A882696870F0089E41B /* UITabBarController+Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+Godeye.h"; sourceTree = "<group>"; };
+		16611A892696870F0089E41B /* UIViewController+Godeye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Godeye.m"; sourceTree = "<group>"; };
+		16611A8B2696870F0089E41B /* GEPageViewProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEPageViewProcessor.m; sourceTree = "<group>"; };
+		16611A8C2696870F0089E41B /* GEWidgetProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEWidgetProcessor.m; sourceTree = "<group>"; };
+		16611A8D2696870F0089E41B /* GETrackerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GETrackerModel.m; sourceTree = "<group>"; };
+		16611A8E2696870F0089E41B /* GEProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEProcessor.m; sourceTree = "<group>"; };
+		16611A8F2696870F0089E41B /* GEProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEProcessor.h; sourceTree = "<group>"; };
+		16611A902696870F0089E41B /* GETrackerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GETrackerModel.h; sourceTree = "<group>"; };
+		16611A912696870F0089E41B /* GEWidgetProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEWidgetProcessor.h; sourceTree = "<group>"; };
+		16611A922696870F0089E41B /* GEPageViewProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEPageViewProcessor.h; sourceTree = "<group>"; };
+		16611A942696870F0089E41B /* GEDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEDispatcher.m; sourceTree = "<group>"; };
+		16611A952696870F0089E41B /* GEStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEStorage.h; sourceTree = "<group>"; };
+		16611A962696870F0089E41B /* GEDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEDispatcher.h; sourceTree = "<group>"; };
+		16611A972696870F0089E41B /* GEStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEStorage.m; sourceTree = "<group>"; };
+		16611A992696870F0089E41B /* GESnsTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GESnsTracker.m; sourceTree = "<group>"; };
+		16611A9A2696870F0089E41B /* GELoginTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GELoginTracker.h; sourceTree = "<group>"; };
+		16611A9B2696870F0089E41B /* GEWidgetEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEWidgetEvent.h; sourceTree = "<group>"; };
+		16611A9C2696870F0089E41B /* GECommonEventTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GECommonEventTracker.m; sourceTree = "<group>"; };
+		16611A9D2696870F0089E41B /* GEAppLifecycleTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEAppLifecycleTracker.m; sourceTree = "<group>"; };
+		16611A9E2696870F0089E41B /* GELoginTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GELoginTracker.m; sourceTree = "<group>"; };
+		16611A9F2696870F0089E41B /* GESnsTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GESnsTracker.h; sourceTree = "<group>"; };
+		16611AA02696870F0089E41B /* GEAppLifecycleTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEAppLifecycleTracker.h; sourceTree = "<group>"; };
+		16611AA12696870F0089E41B /* GECommonEventTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GECommonEventTracker.h; sourceTree = "<group>"; };
+		16611AA22696870F0089E41B /* GEWidgetEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEWidgetEvent.m; sourceTree = "<group>"; };
+		16611AA32696870F0089E41B /* Godeye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Godeye.m; sourceTree = "<group>"; };
+		16611AA52696870F0089E41B /* GETableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GETableView.m; sourceTree = "<group>"; };
+		16611AA62696870F0089E41B /* GECollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GECollectionView.m; sourceTree = "<group>"; };
+		16611AA72696870F0089E41B /* GEScrollViewExposeManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEScrollViewExposeManger.h; sourceTree = "<group>"; };
+		16611AA82696870F0089E41B /* RegistScrollViewProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistScrollViewProxy.m; sourceTree = "<group>"; };
+		16611AA92696870F0089E41B /* GETableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GETableView.h; sourceTree = "<group>"; };
+		16611AAA2696870F0089E41B /* GECollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GECollectionView.h; sourceTree = "<group>"; };
+		16611AAB2696870F0089E41B /* GEScrollViewExposeManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEScrollViewExposeManger.m; sourceTree = "<group>"; };
+		16611AAC2696870F0089E41B /* RegistScrollViewProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistScrollViewProxy.h; sourceTree = "<group>"; };
+		16611ACD269688C20089E41B /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		16611ACE269688C20089E41B /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		16611ACF269688C20089E41B /* TUUIDGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUUIDGenerator.m; sourceTree = "<group>"; };
+		16611AD0269688C20089E41B /* TUUIDGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUUIDGenerator.h; sourceTree = "<group>"; };
+		16611AD626968BA30089E41B /* Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Demo.entitlements; sourceTree = "<group>"; };
 		16699B5F25D0CF5E00B7F43B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		16699B6025D0CF5E00B7F43B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1669C17D268066200059E9B0 /* THKSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKSegmentControl.m; sourceTree = "<group>"; };
@@ -326,50 +455,6 @@
 		1669C1D72680673A0059E9B0 /* UIScrollView+TScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TScroll.h"; sourceTree = "<group>"; };
 		1677D10F25A2FE2800F3E6C8 /* InjectionIIIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionIIIHelper.h; sourceTree = "<group>"; };
 		1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionIIIHelper.m; sourceTree = "<group>"; };
-		168679382692B86400650023 /* THKMaterialClassificationVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationVM.m; sourceTree = "<group>"; };
-		168679392692B86400650023 /* THKMaterialKnowledgeVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialKnowledgeVM.h; sourceTree = "<group>"; };
-		1686793A2692B86400650023 /* THKMaterialGoodsGrassVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialGoodsGrassVM.h; sourceTree = "<group>"; };
-		1686793B2692B86400650023 /* THKMaterialRecommendRankVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendRankVM.m; sourceTree = "<group>"; };
-		1686793C2692B86400650023 /* THKMaterialKnowledgeVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialKnowledgeVM.m; sourceTree = "<group>"; };
-		1686793D2692B86400650023 /* THKMaterialClassificationVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationVM.h; sourceTree = "<group>"; };
-		1686793E2692B86400650023 /* THKMaterialGoodsGrassVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialGoodsGrassVM.m; sourceTree = "<group>"; };
-		1686793F2692B86400650023 /* THKMaterialRecommendRankVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankVM.h; sourceTree = "<group>"; };
-		168679412692B86400650023 /* THKMaterialKnowledgeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialKnowledgeVC.h; sourceTree = "<group>"; };
-		168679422692B86400650023 /* THKMaterialGoodsGrassVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialGoodsGrassVC.h; sourceTree = "<group>"; };
-		168679432692B86400650023 /* THKMaterialRecommendRankVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendRankVC.m; sourceTree = "<group>"; };
-		168679442692B86400650023 /* THKMaterialKnowledgeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialKnowledgeVC.m; sourceTree = "<group>"; };
-		168679452692B86400650023 /* THKMaterialGoodsGrassVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialGoodsGrassVC.m; sourceTree = "<group>"; };
-		168679462692B86400650023 /* THKMaterialRecommendRankVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankVC.h; sourceTree = "<group>"; };
-		168679482692B86400650023 /* THKMaterialClassificationViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationViewCell.m; sourceTree = "<group>"; };
-		168679492692B86400650023 /* THKMaterialClassificationRecommendRankHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendRankHeader.h; sourceTree = "<group>"; };
-		1686794A2692B86400650023 /* THKMaterialClassificationRecommendNormalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THKMaterialClassificationRecommendNormalCell.xib; sourceTree = "<group>"; };
-		1686794B2692B86400650023 /* THKMaterialClassificationRecommendNormalCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendNormalCell.h; sourceTree = "<group>"; };
-		1686794C2692B86400650023 /* THKMaterialTitleRankView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialTitleRankView.h; sourceTree = "<group>"; };
-		1686794D2692B86400650023 /* THKMaterialClassificationRecommendRankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendRankCell.m; sourceTree = "<group>"; };
-		1686794E2692B86400650023 /* THKMaterialClassificationRecommendCellFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendCellFooter.m; sourceTree = "<group>"; };
-		1686794F2692B86400650023 /* THKMaterialClassificationRecommendNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendNormalHeader.m; sourceTree = "<group>"; };
-		168679502692B86400650023 /* THKMaterialClassificationRecommendDecorationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendDecorationView.m; sourceTree = "<group>"; };
-		168679512692B86400650023 /* THKMaterialClassificationRecommendCellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendCellLayout.h; sourceTree = "<group>"; };
-		168679522692B86400650023 /* THKMaterialClassificationHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationHeaderView.h; sourceTree = "<group>"; };
-		168679532692B86400650023 /* THKMaterialTitleRankView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialTitleRankView.m; sourceTree = "<group>"; };
-		168679542692B86400650023 /* THKMaterialClassificationRecommendNormalCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendNormalCell.m; sourceTree = "<group>"; };
-		168679552692B86400650023 /* THKMaterialClassificationRecommendRankHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendRankHeader.m; sourceTree = "<group>"; };
-		168679562692B86400650023 /* THKMaterialClassificationViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationViewCell.h; sourceTree = "<group>"; };
-		168679572692B86400650023 /* THKMaterialClassificationRecommendRankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendRankCell.h; sourceTree = "<group>"; };
-		168679582692B86400650023 /* THKMaterialClassificationRecommendDecorationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendDecorationView.h; sourceTree = "<group>"; };
-		168679592692B86400650023 /* THKMaterialClassificationRecommendRankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THKMaterialClassificationRecommendRankCell.xib; sourceTree = "<group>"; };
-		1686795A2692B86400650023 /* THKMaterialClassificationRecommendNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendNormalHeader.h; sourceTree = "<group>"; };
-		1686795B2692B86400650023 /* THKMaterialClassificationRecommendCellFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationRecommendCellFooter.h; sourceTree = "<group>"; };
-		1686795C2692B86400650023 /* THKMaterialClassificationHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationHeaderView.m; sourceTree = "<group>"; };
-		1686795D2692B86400650023 /* THKMaterialClassificationRecommendCellLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationRecommendCellLayout.m; sourceTree = "<group>"; };
-		1686795F2692B86400650023 /* THKMaterialClassificationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialClassificationVC.m; sourceTree = "<group>"; };
-		168679602692B86400650023 /* THKMaterialClassificationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialClassificationVC.h; sourceTree = "<group>"; };
-		168679632692B86400650023 /* THKMaterialHotRankVM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankVM.m; sourceTree = "<group>"; };
-		168679642692B86400650023 /* THKMaterialHotRankVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankVM.h; sourceTree = "<group>"; };
-		168679662692B86400650023 /* THKMaterialHotRankHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankHeader.h; sourceTree = "<group>"; };
-		168679672692B86400650023 /* THKMaterialHotRankHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankHeader.m; sourceTree = "<group>"; };
-		168679692692B86400650023 /* THKMaterialHotRankVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialHotRankVC.m; sourceTree = "<group>"; };
-		1686796A2692B86400650023 /* THKMaterialHotRankVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialHotRankVC.h; sourceTree = "<group>"; };
 		168679862692B8AC00650023 /* THKMaterialRecommendKnowledgeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendKnowledgeRequest.h; sourceTree = "<group>"; };
 		168679872692B8AC00650023 /* THKMaterialRecommendRankRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankRequest.h; sourceTree = "<group>"; };
 		168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendGoodsGrassResponse.m; sourceTree = "<group>"; };
@@ -600,10 +685,11 @@
 		160106DE2553DD8000FE4B77 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				168679362692B86400650023 /* MaterialClassification */,
-				168679612692B86400650023 /* MaterialHotRank */,
+				166119DD269684A20089E41B /* MaterialClassification */,
+				16611A30269684A20089E41B /* MaterialHotRank */,
 				16192C14269305EE00967C73 /* Request */,
 				16699BAD25D0D3C300B7F43B /* Support Files */,
 				1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */,
@@ -647,6 +733,8 @@
 				1669C1A32680667C0059E9B0 /* CommonDefine */,
 				1669C17B268066200059E9B0 /* PageContentViewController */,
 				16C532CC25761E1600210A3C /* BaseViewModel */,
+				16611ACA269688C20089E41B /* TUUIDGenerator */,
+				16611A712696870E0089E41B /* Godeye */,
 				16E5C58F26832FE30024BA20 /* Third */,
 			);
 			path = BaseSection;
@@ -882,6 +970,262 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		166119DD269684A20089E41B /* MaterialClassification */ = {
+			isa = PBXGroup;
+			children = (
+				166119DE269684A20089E41B /* ViewModel */,
+				166119E7269684A20089E41B /* ChildVC */,
+				166119EE269684A20089E41B /* View */,
+				16611A05269684A20089E41B /* ViewController */,
+			);
+			path = MaterialClassification;
+			sourceTree = "<group>";
+		};
+		166119DE269684A20089E41B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				166119DF269684A20089E41B /* THKMaterialClassificationVM.m */,
+				166119E0269684A20089E41B /* THKMaterialKnowledgeVM.h */,
+				166119E1269684A20089E41B /* THKMaterialGoodsGrassVM.h */,
+				166119E2269684A20089E41B /* THKMaterialRecommendRankVM.m */,
+				166119E3269684A20089E41B /* THKMaterialKnowledgeVM.m */,
+				166119E4269684A20089E41B /* THKMaterialClassificationVM.h */,
+				166119E5269684A20089E41B /* THKMaterialGoodsGrassVM.m */,
+				166119E6269684A20089E41B /* THKMaterialRecommendRankVM.h */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		166119E7269684A20089E41B /* ChildVC */ = {
+			isa = PBXGroup;
+			children = (
+				166119E8269684A20089E41B /* THKMaterialKnowledgeVC.h */,
+				166119E9269684A20089E41B /* THKMaterialGoodsGrassVC.h */,
+				166119EA269684A20089E41B /* THKMaterialRecommendRankVC.m */,
+				166119EB269684A20089E41B /* THKMaterialKnowledgeVC.m */,
+				166119EC269684A20089E41B /* THKMaterialGoodsGrassVC.m */,
+				166119ED269684A20089E41B /* THKMaterialRecommendRankVC.h */,
+			);
+			path = ChildVC;
+			sourceTree = "<group>";
+		};
+		166119EE269684A20089E41B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				166119EF269684A20089E41B /* THKMaterialClassificationViewCell.m */,
+				166119F0269684A20089E41B /* THKMaterialClassificationRecommendRankHeader.h */,
+				166119F1269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.xib */,
+				166119F2269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.h */,
+				166119F3269684A20089E41B /* THKMaterialTitleRankView.h */,
+				166119F4269684A20089E41B /* THKMaterialClassificationRecommendRankCell.m */,
+				166119F5269684A20089E41B /* THKMaterialClassificationRecommendCellFooter.m */,
+				166119F6269684A20089E41B /* THKMaterialClassificationRecommendNormalHeader.m */,
+				166119F7269684A20089E41B /* THKMaterialClassificationRecommendDecorationView.m */,
+				166119F8269684A20089E41B /* THKMaterialClassificationRecommendCellLayout.h */,
+				166119F9269684A20089E41B /* THKMaterialClassificationHeaderView.h */,
+				166119FA269684A20089E41B /* THKMaterialTitleRankView.m */,
+				166119FB269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.m */,
+				166119FC269684A20089E41B /* THKMaterialClassificationRecommendRankHeader.m */,
+				166119FD269684A20089E41B /* THKMaterialClassificationViewCell.h */,
+				166119FE269684A20089E41B /* THKMaterialClassificationRecommendRankCell.h */,
+				166119FF269684A20089E41B /* THKMaterialClassificationRecommendDecorationView.h */,
+				16611A00269684A20089E41B /* THKMaterialClassificationRecommendRankCell.xib */,
+				16611A01269684A20089E41B /* THKMaterialClassificationRecommendNormalHeader.h */,
+				16611A02269684A20089E41B /* THKMaterialClassificationRecommendCellFooter.h */,
+				16611A03269684A20089E41B /* THKMaterialClassificationHeaderView.m */,
+				16611A04269684A20089E41B /* THKMaterialClassificationRecommendCellLayout.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		16611A05269684A20089E41B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16611A06269684A20089E41B /* THKMaterialClassificationVC.m */,
+				16611A07269684A20089E41B /* THKMaterialClassificationVC.h */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		16611A30269684A20089E41B /* MaterialHotRank */ = {
+			isa = PBXGroup;
+			children = (
+				16611A31269684A20089E41B /* ViewModel */,
+				16611A34269684A20089E41B /* View */,
+				16611A37269684A20089E41B /* ViewController */,
+			);
+			path = MaterialHotRank;
+			sourceTree = "<group>";
+		};
+		16611A31269684A20089E41B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				16611A32269684A20089E41B /* THKMaterialHotRankVM.m */,
+				16611A33269684A20089E41B /* THKMaterialHotRankVM.h */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		16611A34269684A20089E41B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				16611A35269684A20089E41B /* THKMaterialHotRankHeader.h */,
+				16611A36269684A20089E41B /* THKMaterialHotRankHeader.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		16611A37269684A20089E41B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16611A38269684A20089E41B /* THKMaterialHotRankVC.m */,
+				16611A39269684A20089E41B /* THKMaterialHotRankVC.h */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		16611A712696870E0089E41B /* Godeye */ = {
+			isa = PBXGroup;
+			children = (
+				16611A722696870F0089E41B /* src */,
+			);
+			path = Godeye;
+			sourceTree = "<group>";
+		};
+		16611A722696870F0089E41B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				16611A732696870F0089E41B /* Godeye.h */,
+				16611A742696870F0089E41B /* ultility */,
+				16611A7B2696870F0089E41B /* category */,
+				16611A8A2696870F0089E41B /* processor */,
+				16611A932696870F0089E41B /* dispatcher */,
+				16611A982696870F0089E41B /* tracker */,
+				16611AA32696870F0089E41B /* Godeye.m */,
+				16611AA42696870F0089E41B /* exposeManager */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		16611A742696870F0089E41B /* ultility */ = {
+			isa = PBXGroup;
+			children = (
+				16611A752696870F0089E41B /* GEEnvironmentParameter.m */,
+				16611A762696870F0089E41B /* GELocation.h */,
+				16611A772696870F0089E41B /* GESwizzer.m */,
+				16611A782696870F0089E41B /* GEEnvironmentParameter.h */,
+				16611A792696870F0089E41B /* GELocation.m */,
+				16611A7A2696870F0089E41B /* GESwizzer.h */,
+			);
+			path = ultility;
+			sourceTree = "<group>";
+		};
+		16611A7B2696870F0089E41B /* category */ = {
+			isa = PBXGroup;
+			children = (
+				16611A7C2696870F0089E41B /* GEProcessor+GodeyePrivate.m */,
+				16611A7D2696870F0089E41B /* UIResponder+Godeye.m */,
+				16611A7E2696870F0089E41B /* UINavigationController+Godeye.h */,
+				16611A7F2696870F0089E41B /* UIScrollView+Godeye.m */,
+				16611A802696870F0089E41B /* UIView+Godeye.h */,
+				16611A812696870F0089E41B /* UIViewController+Godeye.h */,
+				16611A822696870F0089E41B /* UITabBarController+Godeye.m */,
+				16611A832696870F0089E41B /* UIResponder+Godeye.h */,
+				16611A842696870F0089E41B /* UINavigationController+Godeye.m */,
+				16611A852696870F0089E41B /* GEProcessor+GodeyePrivate.h */,
+				16611A862696870F0089E41B /* UIView+Godeye.m */,
+				16611A872696870F0089E41B /* UIScrollView+Godeye.h */,
+				16611A882696870F0089E41B /* UITabBarController+Godeye.h */,
+				16611A892696870F0089E41B /* UIViewController+Godeye.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		16611A8A2696870F0089E41B /* processor */ = {
+			isa = PBXGroup;
+			children = (
+				16611A8B2696870F0089E41B /* GEPageViewProcessor.m */,
+				16611A8C2696870F0089E41B /* GEWidgetProcessor.m */,
+				16611A8D2696870F0089E41B /* GETrackerModel.m */,
+				16611A8E2696870F0089E41B /* GEProcessor.m */,
+				16611A8F2696870F0089E41B /* GEProcessor.h */,
+				16611A902696870F0089E41B /* GETrackerModel.h */,
+				16611A912696870F0089E41B /* GEWidgetProcessor.h */,
+				16611A922696870F0089E41B /* GEPageViewProcessor.h */,
+			);
+			path = processor;
+			sourceTree = "<group>";
+		};
+		16611A932696870F0089E41B /* dispatcher */ = {
+			isa = PBXGroup;
+			children = (
+				16611A942696870F0089E41B /* GEDispatcher.m */,
+				16611A952696870F0089E41B /* GEStorage.h */,
+				16611A962696870F0089E41B /* GEDispatcher.h */,
+				16611A972696870F0089E41B /* GEStorage.m */,
+			);
+			path = dispatcher;
+			sourceTree = "<group>";
+		};
+		16611A982696870F0089E41B /* tracker */ = {
+			isa = PBXGroup;
+			children = (
+				16611A992696870F0089E41B /* GESnsTracker.m */,
+				16611A9A2696870F0089E41B /* GELoginTracker.h */,
+				16611A9B2696870F0089E41B /* GEWidgetEvent.h */,
+				16611A9C2696870F0089E41B /* GECommonEventTracker.m */,
+				16611A9D2696870F0089E41B /* GEAppLifecycleTracker.m */,
+				16611A9E2696870F0089E41B /* GELoginTracker.m */,
+				16611A9F2696870F0089E41B /* GESnsTracker.h */,
+				16611AA02696870F0089E41B /* GEAppLifecycleTracker.h */,
+				16611AA12696870F0089E41B /* GECommonEventTracker.h */,
+				16611AA22696870F0089E41B /* GEWidgetEvent.m */,
+			);
+			path = tracker;
+			sourceTree = "<group>";
+		};
+		16611AA42696870F0089E41B /* exposeManager */ = {
+			isa = PBXGroup;
+			children = (
+				16611AA52696870F0089E41B /* GETableView.m */,
+				16611AA62696870F0089E41B /* GECollectionView.m */,
+				16611AA72696870F0089E41B /* GEScrollViewExposeManger.h */,
+				16611AA82696870F0089E41B /* RegistScrollViewProxy.m */,
+				16611AA92696870F0089E41B /* GETableView.h */,
+				16611AAA2696870F0089E41B /* GECollectionView.h */,
+				16611AAB2696870F0089E41B /* GEScrollViewExposeManger.m */,
+				16611AAC2696870F0089E41B /* RegistScrollViewProxy.h */,
+			);
+			path = exposeManager;
+			sourceTree = "<group>";
+		};
+		16611ACA269688C20089E41B /* TUUIDGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				16611ACB269688C20089E41B /* src */,
+			);
+			path = TUUIDGenerator;
+			sourceTree = "<group>";
+		};
+		16611ACB269688C20089E41B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				16611ACC269688C20089E41B /* keychainItemWrapper */,
+				16611ACF269688C20089E41B /* TUUIDGenerator.m */,
+				16611AD0269688C20089E41B /* TUUIDGenerator.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		16611ACC269688C20089E41B /* keychainItemWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				16611ACD269688C20089E41B /* KeychainItemWrapper.m */,
+				16611ACE269688C20089E41B /* KeychainItemWrapper.h */,
+			);
+			path = keychainItemWrapper;
+			sourceTree = "<group>";
+		};
 		16699BAD25D0D3C300B7F43B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,120 +1284,6 @@
 				1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */,
 			);
 			path = InjectionIIIHelper;
-			sourceTree = "<group>";
-		};
-		168679362692B86400650023 /* MaterialClassification */ = {
-			isa = PBXGroup;
-			children = (
-				1686795E2692B86400650023 /* ViewController */,
-				168679372692B86400650023 /* ViewModel */,
-				168679402692B86400650023 /* ChildVC */,
-				168679472692B86400650023 /* View */,
-			);
-			path = MaterialClassification;
-			sourceTree = "<group>";
-		};
-		168679372692B86400650023 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				1686793D2692B86400650023 /* THKMaterialClassificationVM.h */,
-				168679382692B86400650023 /* THKMaterialClassificationVM.m */,
-				1686793A2692B86400650023 /* THKMaterialGoodsGrassVM.h */,
-				1686793E2692B86400650023 /* THKMaterialGoodsGrassVM.m */,
-				168679392692B86400650023 /* THKMaterialKnowledgeVM.h */,
-				1686793C2692B86400650023 /* THKMaterialKnowledgeVM.m */,
-				1686793F2692B86400650023 /* THKMaterialRecommendRankVM.h */,
-				1686793B2692B86400650023 /* THKMaterialRecommendRankVM.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		168679402692B86400650023 /* ChildVC */ = {
-			isa = PBXGroup;
-			children = (
-				168679462692B86400650023 /* THKMaterialRecommendRankVC.h */,
-				168679432692B86400650023 /* THKMaterialRecommendRankVC.m */,
-				168679422692B86400650023 /* THKMaterialGoodsGrassVC.h */,
-				168679452692B86400650023 /* THKMaterialGoodsGrassVC.m */,
-				168679412692B86400650023 /* THKMaterialKnowledgeVC.h */,
-				168679442692B86400650023 /* THKMaterialKnowledgeVC.m */,
-			);
-			path = ChildVC;
-			sourceTree = "<group>";
-		};
-		168679472692B86400650023 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				168679522692B86400650023 /* THKMaterialClassificationHeaderView.h */,
-				1686795C2692B86400650023 /* THKMaterialClassificationHeaderView.m */,
-				1686795B2692B86400650023 /* THKMaterialClassificationRecommendCellFooter.h */,
-				1686794E2692B86400650023 /* THKMaterialClassificationRecommendCellFooter.m */,
-				168679512692B86400650023 /* THKMaterialClassificationRecommendCellLayout.h */,
-				1686795D2692B86400650023 /* THKMaterialClassificationRecommendCellLayout.m */,
-				168679582692B86400650023 /* THKMaterialClassificationRecommendDecorationView.h */,
-				168679502692B86400650023 /* THKMaterialClassificationRecommendDecorationView.m */,
-				1686794B2692B86400650023 /* THKMaterialClassificationRecommendNormalCell.h */,
-				168679542692B86400650023 /* THKMaterialClassificationRecommendNormalCell.m */,
-				1686794A2692B86400650023 /* THKMaterialClassificationRecommendNormalCell.xib */,
-				1686795A2692B86400650023 /* THKMaterialClassificationRecommendNormalHeader.h */,
-				1686794F2692B86400650023 /* THKMaterialClassificationRecommendNormalHeader.m */,
-				168679572692B86400650023 /* THKMaterialClassificationRecommendRankCell.h */,
-				1686794D2692B86400650023 /* THKMaterialClassificationRecommendRankCell.m */,
-				168679592692B86400650023 /* THKMaterialClassificationRecommendRankCell.xib */,
-				168679492692B86400650023 /* THKMaterialClassificationRecommendRankHeader.h */,
-				168679552692B86400650023 /* THKMaterialClassificationRecommendRankHeader.m */,
-				168679562692B86400650023 /* THKMaterialClassificationViewCell.h */,
-				168679482692B86400650023 /* THKMaterialClassificationViewCell.m */,
-				1686794C2692B86400650023 /* THKMaterialTitleRankView.h */,
-				168679532692B86400650023 /* THKMaterialTitleRankView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1686795E2692B86400650023 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				168679602692B86400650023 /* THKMaterialClassificationVC.h */,
-				1686795F2692B86400650023 /* THKMaterialClassificationVC.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		168679612692B86400650023 /* MaterialHotRank */ = {
-			isa = PBXGroup;
-			children = (
-				168679682692B86400650023 /* ViewController */,
-				168679622692B86400650023 /* ViewModel */,
-				168679652692B86400650023 /* View */,
-			);
-			path = MaterialHotRank;
-			sourceTree = "<group>";
-		};
-		168679622692B86400650023 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				168679632692B86400650023 /* THKMaterialHotRankVM.m */,
-				168679642692B86400650023 /* THKMaterialHotRankVM.h */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		168679652692B86400650023 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				168679662692B86400650023 /* THKMaterialHotRankHeader.h */,
-				168679672692B86400650023 /* THKMaterialHotRankHeader.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		168679682692B86400650023 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				1686796A2692B86400650023 /* THKMaterialHotRankVC.h */,
-				168679692692B86400650023 /* THKMaterialHotRankVC.m */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		168679852692B8AC00650023 /* MaterialClassificationRequest */ = {
@@ -1637,9 +1867,9 @@
 				16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */,
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
 				160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */,
-				1686797B2692B86400650023 /* THKMaterialClassificationRecommendRankCell.xib in Resources */,
+				16611A4E269684A20089E41B /* THKMaterialClassificationRecommendRankCell.xib in Resources */,
 				160106EA2553DD8000FE4B77 /* Main.storyboard in Resources */,
-				168679732692B86400650023 /* THKMaterialClassificationRecommendNormalCell.xib in Resources */,
+				16611A46269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1767,33 +1997,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				168679752692B86400650023 /* THKMaterialClassificationRecommendCellFooter.m in Sources */,
-				1686797E2692B86400650023 /* THKMaterialClassificationVC.m in Sources */,
 				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
 				168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */,
 				16867A0D2692D76C00650023 /* TMCardComponentOldTopicAndQaStyleCell.m in Sources */,
 				16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */,
 				16867A1A2692D76C00650023 /* TMCardComponentBaseListViewContontroller.m in Sources */,
+				16611A3E269684A20089E41B /* THKMaterialClassificationVM.m in Sources */,
 				168679972692B8AC00650023 /* THKMaterialRecommendKnowledgeResponse.m in Sources */,
 				168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */,
+				16611AD1269688C20089E41B /* KeychainItemWrapper.m in Sources */,
 				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
-				168679792692B86400650023 /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
 				16867A0F2692D76C00650023 /* TMCardComponentCellBottomView.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
+				16611ABF2696870F0089E41B /* GEAppLifecycleTracker.m in Sources */,
+				16611A40269684A20089E41B /* THKMaterialKnowledgeVM.m in Sources */,
 				16192B342692E13E00967C73 /* THKAnimationManager.m in Sources */,
 				168679A02692B8BA00650023 /* THKMaterialHotListResponse.m in Sources */,
+				16611A64269684A20089E41B /* THKMaterialHotRankVC.m in Sources */,
 				16192B2C2692E13E00967C73 /* THKViewController+THKLoadingAnimationView.m in Sources */,
 				16867A082692D76C00650023 /* TMCardComponentRecommendTagsCell.m in Sources */,
+				16611A4A269684A20089E41B /* THKMaterialClassificationRecommendDecorationView.m in Sources */,
 				16192B4E2692E1B100967C73 /* THKRouterPathDefine.m in Sources */,
+				16611AB82696870F0089E41B /* GEWidgetProcessor.m in Sources */,
+				16611A63269684A20089E41B /* THKMaterialHotRankHeader.m in Sources */,
 				16867A052692D76C00650023 /* TMCardComponentScrollAdsIndicatorView.m in Sources */,
 				16192B4C2692E1B100967C73 /* THKBackPushRouter.m in Sources */,
+				16611AC12696870F0089E41B /* GEWidgetEvent.m in Sources */,
+				16611AC42696870F0089E41B /* GECollectionView.m in Sources */,
 				16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */,
 				16192B272692E13E00967C73 /* THKTextComponentView.m in Sources */,
+				16611ABC2696870F0089E41B /* GEStorage.m in Sources */,
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
+				16611ABA2696870F0089E41B /* GEProcessor.m in Sources */,
 				16E5C4F52682E4040024BA20 /* THKResponse+ErrToast.m in Sources */,
 				16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
+				16611AC62696870F0089E41B /* GEScrollViewExposeManger.m in Sources */,
 				16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */,
+				16611A43269684A20089E41B /* THKMaterialKnowledgeVC.m in Sources */,
 				16192AD62692E05700967C73 /* TUserAvatarView.m in Sources */,
 				16192B232692E13E00967C73 /* THKPushPopAsLocationToListTransition.m in Sources */,
 				16E5C4D02682DE930024BA20 /* TBTNetworkManager.m in Sources */,
@@ -1804,15 +2045,16 @@
 				16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */,
 				16192B222692E13E00967C73 /* THKPushPopAsLocationToListForVideoDetailTransition.m in Sources */,
 				16867A0B2692D76C00650023 /* TMCardComponentLiveStyleCell.m in Sources */,
+				16611AC22696870F0089E41B /* Godeye.m in Sources */,
 				16867A122692D76C00650023 /* TMCardComponentTitleSubTitleUpSideDownStyleCell.m in Sources */,
 				16192B382692E13E00967C73 /* THKBaseAnimation.m in Sources */,
 				16192B242692E13E00967C73 /* THKPushPopAsLocationToListSimulationTransition.m in Sources */,
 				16192BFD2693012100967C73 /* TCaseDetailTopBar.m in Sources */,
 				16192B372692E13E00967C73 /* THKAnimationPanDelegate.m in Sources */,
 				16867A172692D76C00650023 /* TMCardComponentHelper.m in Sources */,
-				168679782692B86400650023 /* THKMaterialTitleRankView.m in Sources */,
+				16611A3F269684A20089E41B /* THKMaterialRecommendRankVM.m in Sources */,
+				16611A44269684A20089E41B /* THKMaterialGoodsGrassVC.m in Sources */,
 				16867A0E2692D76C00650023 /* TMCardLiveStatusView.m in Sources */,
-				168679772692B86400650023 /* THKMaterialClassificationRecommendDecorationView.m in Sources */,
 				16E5C4CD2682DE930024BA20 /* TBTNetworkConfig.m in Sources */,
 				16E5C51A26830DCB0024BA20 /* THKIdentityConfigManager.m in Sources */,
 				16867A1B2692D76C00650023 /* TMCardComponentBaseListView.m in Sources */,
@@ -1826,99 +2068,115 @@
 				16192B2F2692E13E00967C73 /* THKMoveCardAnimation.m in Sources */,
 				16867A0A2692D76C00650023 /* TMCardComponentNormalStyleCell.m in Sources */,
 				16192B392692E13E00967C73 /* THKAnimationTool.m in Sources */,
-				168679742692B86400650023 /* THKMaterialClassificationRecommendRankCell.m in Sources */,
+				16611A4B269684A20089E41B /* THKMaterialTitleRankView.m in Sources */,
 				16192C042693014A00967C73 /* THKProjectUIConfig.m in Sources */,
 				160106F22553DD8000FE4B77 /* main.m in Sources */,
 				16E5C4BB2682DE4B0024BA20 /* THKCommonRequest.m in Sources */,
 				16192B312692E13E00967C73 /* THKSearchAnimation.m in Sources */,
 				16E5C52D26830E7B0024BA20 /* THKPersonalDesignerConfigResponse.m in Sources */,
+				16611AB72696870F0089E41B /* GEPageViewProcessor.m in Sources */,
 				16867A062692D76C00650023 /* TMCardComponentScrollAdsBannerView.m in Sources */,
 				16192B262692E13E00967C73 /* THKComponentLayer.m in Sources */,
 				168679922692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m in Sources */,
-				168679702692B86400650023 /* THKMaterialKnowledgeVC.m in Sources */,
 				16867A362692D9B200650023 /* TPushRouter.m in Sources */,
-				168679712692B86400650023 /* THKMaterialGoodsGrassVC.m in Sources */,
-				1686796C2692B86400650023 /* THKMaterialRecommendRankVM.m in Sources */,
+				16611A47269684A20089E41B /* THKMaterialClassificationRecommendRankCell.m in Sources */,
+				16611AB12696870F0089E41B /* UIResponder+Godeye.m in Sources */,
 				16192B2B2692E13E00967C73 /* THKUGCGraphicDetailLoadingAnimationView.m in Sources */,
 				16867A182692D76C00650023 /* TMCardComponentCellDataModel.m in Sources */,
-				168679802692B86400650023 /* THKMaterialHotRankHeader.m in Sources */,
 				16867A332692D9B200650023 /* TRouterManager.m in Sources */,
 				16192B252692E13E00967C73 /* THKComponentView.m in Sources */,
+				16611AC52696870F0089E41B /* RegistScrollViewProxy.m in Sources */,
 				16867A0C2692D76C00650023 /* TMCardComponentQaStyleCell.m in Sources */,
 				16192AB62692DC4500967C73 /* QuickMethod.m in Sources */,
+				16611AC32696870F0089E41B /* GETableView.m in Sources */,
+				16611A48269684A20089E41B /* THKMaterialClassificationRecommendCellFooter.m in Sources */,
 				16867A092692D76C00650023 /* TMCardComponentRecommendTagsBaseUICell.m in Sources */,
 				16E5C51B26830DCB0024BA20 /* THKIdentityTypeModel.m in Sources */,
 				16192B292692E13E00967C73 /* THKCaseDetailLoadingAnimationView.m in Sources */,
+				16611A50269684A20089E41B /* THKMaterialClassificationRecommendCellLayout.m in Sources */,
 				16867A002692D76C00650023 /* TMCardComponentTopicStyleCell.m in Sources */,
 				16192BE52692F73900967C73 /* NSTimer+Block.m in Sources */,
+				16611AB62696870F0089E41B /* UIViewController+Godeye.m in Sources */,
 				16192B3B2692E13E00967C73 /* UIViewController+PopGestureOfPercentDrivenInteractiveTransition.m in Sources */,
 				16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */,
 				168679962692B8AC00650023 /* THKMaterialRecommendRankResponse.m in Sources */,
 				16E5C51E26830DCB0024BA20 /* THKIdentityView.m in Sources */,
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,
 				16867A012692D76C00650023 /* TMCardComponentVideoSetsCell.m in Sources */,
+				16611A42269684A20089E41B /* THKMaterialRecommendRankVC.m in Sources */,
+				16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */,
 				16192B322692E13E00967C73 /* THKSearchAnimation+UI.m in Sources */,
 				16192B212692E13E00967C73 /* THKPushPopTransitionManager.m in Sources */,
 				16867A322692D9B200650023 /* TRouterConfig.m in Sources */,
+				16611AAF2696870F0089E41B /* GELocation.m in Sources */,
 				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
 				1669C1D12680671A0059E9B0 /* THKPageContentViewController.m in Sources */,
 				16192B4B2692E1B100967C73 /* THKRouterConfig.m in Sources */,
+				16611AAD2696870F0089E41B /* GEEnvironmentParameter.m in Sources */,
 				16192B3A2692E13E00967C73 /* UIViewController+THKAnimation.m in Sources */,
-				1686796E2692B86400650023 /* THKMaterialGoodsGrassVM.m in Sources */,
+				16611A41269684A20089E41B /* THKMaterialGoodsGrassVM.m in Sources */,
+				16611ABE2696870F0089E41B /* GECommonEventTracker.m in Sources */,
 				16192B302692E13E00967C73 /* THKMoveViewAnimation.m in Sources */,
+				16611A4D269684A20089E41B /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
+				16611AAE2696870F0089E41B /* GESwizzer.m in Sources */,
 				16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */,
+				16611A62269684A20089E41B /* THKMaterialHotRankVM.m in Sources */,
+				16611ABD2696870F0089E41B /* GESnsTracker.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
 				16867A042692D76C00650023 /* TMCardComponentScrollAdsCell.m in Sources */,
-				1686797C2692B86400650023 /* THKMaterialClassificationHeaderView.m in Sources */,
 				168679FF2692D76C00650023 /* TMCardComponentBaseAbstractCell.m in Sources */,
-				1686797D2692B86400650023 /* THKMaterialClassificationRecommendCellLayout.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */,
 				16867A112692D76C00650023 /* THKTextTagLabel.m in Sources */,
 				16192B3C2692E13E00967C73 /* THKPushPopBaseTransition.m in Sources */,
 				1669C1D22680671A0059E9B0 /* THKPageBGScrollView.m in Sources */,
-				1686796D2692B86400650023 /* THKMaterialKnowledgeVM.m in Sources */,
-				1686796B2692B86400650023 /* THKMaterialClassificationVM.m in Sources */,
 				168679FE2692D76C00650023 /* TMCardComponentCollectionViewLayout.m in Sources */,
 				16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */,
 				16E5C51C26830DCB0024BA20 /* THKIdentityViewModel.m in Sources */,
 				16E5C4B82682DE4B0024BA20 /* THKBaseRequest.m in Sources */,
 				16192ABF2692DE6B00967C73 /* TTagShapeColorView.m in Sources */,
-				168679762692B86400650023 /* THKMaterialClassificationRecommendNormalHeader.m in Sources */,
 				16192B282692E13E00967C73 /* THKLoadingAnimationView.m in Sources */,
+				16611A4C269684A20089E41B /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
 				16867A022692D76C00650023 /* TMCardComponentTitleAndSubTitleStyleCell.m in Sources */,
+				16611A45269684A20089E41B /* THKMaterialClassificationViewCell.m in Sources */,
 				16192B332692E13E00967C73 /* THKInteractiveTransition.m in Sources */,
+				16611ABB2696870F0089E41B /* GEDispatcher.m in Sources */,
 				16192B352692E13E00967C73 /* UIViewController+THKAnimationTransition.m in Sources */,
 				16E5C4B92682DE4B0024BA20 /* THKCommonPhpRequest.m in Sources */,
+				16611AB42696870F0089E41B /* UINavigationController+Godeye.m in Sources */,
+				16611AB92696870F0089E41B /* GETrackerModel.m in Sources */,
 				16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */,
-				1686796F2692B86400650023 /* THKMaterialRecommendRankVC.m in Sources */,
 				16192B4D2692E1B100967C73 /* TRouterManager+Config.m in Sources */,
-				168679722692B86400650023 /* THKMaterialClassificationViewCell.m in Sources */,
+				16611AB02696870F0089E41B /* GEProcessor+GodeyePrivate.m in Sources */,
 				16192B2D2692E13E00967C73 /* THKMoveViewInteractiveTransition.m in Sources */,
 				16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
 				16867A032692D76C00650023 /* TMCardComponentCompanyStyleCell.m in Sources */,
+				16611AC02696870F0089E41B /* GELoginTracker.m in Sources */,
 				16867A152692D76C00650023 /* TMCardComponentTool.m in Sources */,
+				16611A51269684A20089E41B /* THKMaterialClassificationVC.m in Sources */,
 				16E5C5012682E5920024BA20 /* TRequestParameter.m in Sources */,
+				16611AB32696870F0089E41B /* UITabBarController+Godeye.m in Sources */,
 				1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */,
+				16611AB52696870F0089E41B /* UIView+Godeye.m in Sources */,
 				16867A162692D76C00650023 /* TMCardComponentDataInfoObjects.m in Sources */,
-				1686797F2692B86400650023 /* THKMaterialHotRankVM.m in Sources */,
+				16611A49269684A20089E41B /* THKMaterialClassificationRecommendNormalHeader.m in Sources */,
 				16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */,
 				16192B362692E13E00967C73 /* THKTransitionAnimation.m in Sources */,
 				16867A132692D76C00650023 /* TMCardComponentNotSupportCell.m in Sources */,
 				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
 				16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */,
-				1686797A2692B86400650023 /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
 				16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */,
 				16867A352692D9B200650023 /* TRouter.m in Sources */,
-				168679812692B86400650023 /* THKMaterialHotRankVC.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
 				16192BF72692FF5400967C73 /* THKSearchView.m in Sources */,
 				16867A072692D76C00650023 /* TMCardComponentDesignMasterStyleCell.m in Sources */,
 				16867A342692D9B200650023 /* TRuntimeHelper.m in Sources */,
 				16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */,
 				16192B2E2692E13E00967C73 /* THKMoveCardInteractiveTransition.m in Sources */,
+				16611A4F269684A20089E41B /* THKMaterialClassificationHeaderView.m in Sources */,
+				16611AD2269688C20089E41B /* TUUIDGenerator.m in Sources */,
 				16E5C4F22682E4040024BA20 /* THKPhpUploadRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2092,6 +2350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5XB293ZE6R;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";
@@ -2114,6 +2373,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5XB293ZE6R;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";

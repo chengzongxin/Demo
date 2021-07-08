@@ -24,8 +24,8 @@
 
 // 初始化
 - (void)thk_initialize{
-//    self.gePageLevelPath = @"知识百科页";
-//    self.gePageName = @"如何选材|主分类详情页|";
+//    self.gePageLevelPath = @"如何选材|主分类详情页|";
+//    self.gePageName = @"知识百科页";
 }
 
 // 渲染VC

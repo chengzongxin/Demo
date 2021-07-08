@@ -45,8 +45,8 @@
 
 // 初始化
 - (void)thk_initialize{
-//    self.gePageLevelPath = @"推荐榜单页";
-//    self.gePageName = @"如何选材|主分类详情页|";
+//    self.gePageLevelPath = @"如何选材|主分类详情页|";
+//    self.gePageName = @"推荐榜单页";
 }
 
 // 渲染VC
@@ -341,17 +341,17 @@
 @implementation THKMaterialRecommendRankVC (Godeye)
 
 - (void)brandHeaderExposeReport:(THKMaterialRecommendRankBrandList *)model indexPath:(NSIndexPath *)indexPath{
-//    THKMaterialClassificationVC *parentVC =  (THKMaterialClassificationVC *)self.parentViewController;
-//    if (![parentVC isKindOfClass:THKMaterialClassificationVC.class] || parentVC.childVCs[parentVC.currentIndex] != self) {
-//        // 页面展示才曝光,来到这里说明页面已经加载了数据，但是没有显示，需要在下次进入此页面，重新上报
-//        self.needExposeVisibleCell = YES;
-//        return;
-//    }
-//
-//    if (model.isExposed) {
-//        return;
-//    }
-//    model.isExposed = YES;
+    THKMaterialClassificationVC *parentVC =  (THKMaterialClassificationVC *)self.parentViewController;
+    if (![parentVC isKindOfClass:THKMaterialClassificationVC.class] || parentVC.childVCs[parentVC.currentIndex] != self) {
+        // 页面展示才曝光,来到这里说明页面已经加载了数据，但是没有显示，需要在下次进入此页面，重新上报
+        self.needExposeVisibleCell = YES;
+        return;
+    }
+    
+    if (model.isExposed) {
+        return;
+    }
+    model.isExposed = YES;
 //    [GECommonEventTracker reportEvent:kGEAppWidgetShow properties:({
 //        @{@"page_uid":self.gePageUid?:@"",
 //          @"widget_title":[NSString stringWithFormat:@"%@品牌榜",self.viewModel.categoryName],
@@ -370,16 +370,16 @@
 }
 
 - (void)goodsHeaderExposeReport:(THKMaterialRecommendRankGoodsRankListGoodsList *)model indexPath:(NSIndexPath *)indexPath{
-//    THKMaterialClassificationVC *parentVC =  (THKMaterialClassificationVC *)self.parentViewController;
-//    if (![parentVC isKindOfClass:THKMaterialClassificationVC.class] || parentVC.childVCs[parentVC.currentIndex] != self) {
-//        // 页面展示才曝光
-//        return;
-//    }
-//
-//    if (model.isExposed) {
-//        return;
-//    }
-//    model.isExposed = YES;
+    THKMaterialClassificationVC *parentVC =  (THKMaterialClassificationVC *)self.parentViewController;
+    if (![parentVC isKindOfClass:THKMaterialClassificationVC.class] || parentVC.childVCs[parentVC.currentIndex] != self) {
+        // 页面展示才曝光
+        return;
+    }
+    
+    if (model.isExposed) {
+        return;
+    }
+    model.isExposed = YES;
 //    [GECommonEventTracker reportEvent:kGEAppWidgetShow properties:({
 //        @{@"page_uid":self.gePageUid?:@"",
 //          @"widget_title":[NSString stringWithFormat:@"%@",model.name],

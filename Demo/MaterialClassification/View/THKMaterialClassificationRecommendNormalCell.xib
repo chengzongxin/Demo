@@ -38,18 +38,18 @@
                             <constraint firstAttribute="height" constant="20" id="jN9-2H-J30"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="松下压缩机 风冷无霜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtD-vq-AXz">
-                        <rect key="frame" x="2" y="164.5" width="101" height="11.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="松下压缩机 风冷无霜" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NtD-vq-AXz">
+                        <rect key="frame" x="2" y="166.5" width="101" height="11.5"/>
                         <fontDescription key="fontDescription" name=".SFNS-Regular" family=".AppleSystemUIFont" pointSize="10"/>
                         <color key="textColor" red="0.59215686274509804" green="0.59999999999999998" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6MC-YH-V2w" customClass="TMUILabel">
-                        <rect key="frame" x="2" y="128" width="101" height="31.5"/>
+                        <rect key="frame" x="2" y="128" width="101" height="33.5"/>
                         <string key="text">松下/经典三门 
 NREC26W</string>
-                        <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".AppleSimplifiedChineseFont" pointSize="14"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.10196078431372549" green="0.10980392156862745" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>

@@ -179,7 +179,7 @@ static NSString * const kConfig_file = @"kConfig_file";
     if (domains.count == 0) {
         return;
     }
-    NSURL *groupURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.to8to.housekeeper"];
+    NSURL *groupURL = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.czx.demo"];
     NSURL *fileURL = [groupURL URLByAppendingPathComponent:@"thk_domainsMapping.txt"];
     [domains writeToURL:fileURL atomically:YES];
     

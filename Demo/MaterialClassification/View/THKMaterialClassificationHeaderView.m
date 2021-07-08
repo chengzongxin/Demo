@@ -9,6 +9,7 @@
 #import "THKMaterialClassificationViewCell.h"
 #import <UIVisualEffectView+TMUI.h>
 #import <UIScrollView+TMUI.h>
+#import "THKMaterialRecommendRankVC.h"
 
 @interface THKMaterialClassificationEffectView : UIView
 @end
@@ -30,6 +31,8 @@
 
 @property (nonatomic, strong) THKMaterialClassificationEffectView *leftEffectView;
 @property (nonatomic, strong) THKMaterialClassificationEffectView *rightEffectView;
+
+@property (nonatomic, assign) BOOL isSelectByAPI;
 
 @end
 
@@ -100,7 +103,7 @@
             *stop = YES;
         }
     }];
-    
+    self.isSelectByAPI = YES;
     [self selectIndex:selectIndex];
     
 }
@@ -127,16 +130,8 @@
     NSString *imgUrl = self.subCategoryList[indexPath.item].cover;
     
     [cell.imageView loadImageWithUrlStr:imgUrl];
-//    cell.imageView.image = UIImageMake(@"com_preload_head_img");
-    
     cell.titleLabel.text = self.subCategoryList[indexPath.item].categoryName;
-    
-//    THKDynamicGroupEntranceModel *entrance = self.entranceList[indexPath.item];
-//
-//    [cell.imageView loadImageWithUrlStr:entrance.imgUrl];
-//    cell.titleLabel.text = entrance.title;
-//
-//    // 曝光
+    // 曝光
     [self cellShowReport:cell model:self.subCategoryList indexPath:indexPath];
     
     return cell;
@@ -150,9 +145,58 @@
 //    THKDynamicGroupEntranceModel *entrance = self.entranceList[indexPath.item];
 //    TRouter *router = [TRouter routerFromUrl:entrance.targetUrl jumpController:nil];
 //    [[TRouterManager sharedManager] performRouter:router];
-    // 点击
+    
+//    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
+    [self scrollToIndexPath:indexPath animate:!self.isSelectByAPI];
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    if (self.isSelectByAPI) {
+        // 设置数据源后不上报
+        self.isSelectByAPI = NO;
+        return;
+    }
+    // 点击
     [self cellClickReport:cell model:self.subCategoryList indexPath:indexPath];
+}
+
+- (void)scrollToIndexPath:(NSIndexPath *)indexPath animate:(BOOL)animate{
+    [self layoutIfNeeded];
+    if (self.collectionView.contentSize.width <= self.width) {
+        // 不满一屏
+        return;
+    }
+    
+    
+    NSInteger num = [self.collectionView numberOfItemsInSection:0];
+//    CGFloat offsetX = (indexPath.item - 1) * (self.flowLayout.itemSize.width + self.flowLayout.minimumLineSpacing);
+
+    if (indexPath.item == 0 || indexPath.item == num - 1) {
+        // 第一个，最后一个
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:animate];
+    }
+//    else if (offsetX + self.width > self.collectionView.contentSize.width) {
+//        // 滑到底了
+//        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:animate];
+//    }
+    else{
+        // 还有更多数据
+        CGFloat offsetX = 0;
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+        CGRect frame = [cell tmui_convertRect:cell.bounds toViewOrWindow:self];
+        CGFloat pw = self.flowLayout.minimumLineSpacing + self.flowLayout.itemSize.width;
+        
+        if (frame.origin.x < pw) {
+            // 在左边遮罩
+            offsetX = (pw - frame.origin.x)*-1;
+        }else if (CGRectGetMaxX(frame) + pw > self.width) {
+            // 在右边遮罩
+            offsetX = CGRectGetMaxX(frame) + pw - self.width;
+        }
+        
+        if (offsetX) {
+            CGPoint contentOffset = CGPointMake(self.collectionView.contentOffset.x + offsetX, 0);
+            [self.collectionView setContentOffset:contentOffset animated:animate];
+        }
+    }
 }
 
 
@@ -162,8 +206,10 @@
         return;
     }
     
-    CGFloat lProgress = (scrollView.contentOffset.x - 80)/80;
-    CGFloat rProgress = (scrollView.contentSize.width - scrollView.contentOffset.x - scrollView.width)/80;
+    CGFloat pw = self.flowLayout.minimumLineSpacing + self.flowLayout.itemSize.width;
+    
+    CGFloat lProgress = scrollView.contentOffset.x/pw;
+    CGFloat rProgress = (scrollView.contentSize.width - scrollView.contentOffset.x - scrollView.width)/pw;
     
     if (lProgress > 1) {
         lProgress = 1;
@@ -180,13 +226,6 @@
     
     self.leftEffectView.alpha = lProgress;
     self.rightEffectView.alpha = rProgress;
-    
-//    NSIndexPath *firstIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
-//    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForItem:item inSection:0];
-//    BOOL isFirstVisible = [self.collectionView tmui_itemVisibleAtIndexPath:firstIndexPath];
-//    BOOL isLastVisible = [self.collectionView tmui_itemVisibleAtIndexPath:lastIndexPath];
-//    self.leftEffectView.alpha = !isFirstVisible;
-//    self.rightEffectView.alpha = !isLastVisible;
 }
 
 #pragma mark - Private
@@ -231,7 +270,7 @@
 - (UIView *)leftEffectView{
     if (!_leftEffectView) {
         _leftEffectView = [[THKMaterialClassificationEffectView alloc] init];
-        _leftEffectView.frame = CGRectMake(0, 0, CGCustomFloat(80), self.height);
+        _leftEffectView.frame = CGRectMake(0, 0, self.flowLayout.minimumLineSpacing + self.flowLayout.itemSize.width, self.height);
         [_leftEffectView tmui_gradientWithColors:@[[UIColor colorWithRed:1 green:1 blue:1 alpha:1],[UIColor colorWithRed:1 green:1 blue:1 alpha:0]] gradientType:TMUIGradientTypeLeftToRight locations:@[@0.1]];
         _leftEffectView.alpha = 0;
     }
@@ -241,7 +280,7 @@
 - (UIView *)rightEffectView{
     if (!_rightEffectView) {
         _rightEffectView = [[THKMaterialClassificationEffectView alloc] init];
-        _rightEffectView.frame = CGRectMake(self.width - CGCustomFloat(80), 0, CGCustomFloat(80), self.height);
+        _rightEffectView.frame = CGRectMake(self.width - CGCustomFloat(80), 0, self.flowLayout.minimumLineSpacing + self.flowLayout.itemSize.width, self.height);
         [_rightEffectView tmui_gradientWithColors:@[[UIColor colorWithRed:1 green:1 blue:1 alpha:0],[UIColor colorWithRed:1 green:1 blue:1 alpha:1]] gradientType:TMUIGradientTypeLeftToRight locations:@[@0.5]];
         _leftEffectView.alpha = 0;
     }
@@ -262,25 +301,27 @@
 @implementation THKMaterialClassificationHeaderView (Godeye)
 
 - (void)cellShowReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialRecommendRankSubCategoryList *> *)model indexPath:(NSIndexPath *)indexPath{
-//    THKMaterialRecommendRankSubCategoryList *item = model[indexPath.item];
-//    if (item.isExposed) {
-//        return;
-//    }
-//    item.isExposed = YES;
+    THKMaterialRecommendRankSubCategoryList *item = model[indexPath.item];
+    if (item.isExposed) {
+        return;
+    }
+    item.isExposed = YES;
 //    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
 //    [resource addEntries:@{@"widget_title":item.categoryName?:@"",
 //                           @"widget_uid":@"top_sub_type_btn",
 //                           @"widget_index":@(indexPath.item),
+//                           @"page_uid":NSStringFromClass(THKMaterialRecommendRankVC.class),
 //    }];
 //    [[GEWidgetExposeEvent eventWithResource:resource] report];
 }
 
 - (void)cellClickReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialRecommendRankSubCategoryList *> *)model indexPath:(NSIndexPath *)indexPath{
-//    THKMaterialRecommendRankSubCategoryList *item = model[indexPath.item];
+    THKMaterialRecommendRankSubCategoryList *item = model[indexPath.item];
 //    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
 //    [resource addEntries:@{@"widget_title":item.categoryName?:@"",
 //                           @"widget_uid":@"top_sub_type_btn",
 //                           @"widget_index":@(indexPath.item),
+//                           @"page_uid":NSStringFromClass(THKMaterialRecommendRankVC.class),
 //    }];
 //    [[GEWidgetClickEvent eventWithResource:resource] report];
 }

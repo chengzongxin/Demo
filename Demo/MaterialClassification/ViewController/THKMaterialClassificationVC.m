@@ -48,6 +48,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self thk_hideNavShadowImageView];
+    
     [self appPageCycleReport];
     
     THKMaterialRecommendRankVC *vc1 = [[THKMaterialRecommendRankVC alloc] initWithViewModel:[THKMaterialRecommendRankVM new]];
@@ -57,7 +59,6 @@
     self.vcs = @[vc1,vc2,vc3];
     self.titles = @[@"推荐榜单",@"好物种草",@"知识百科"];
     
-    
     [self reloadData];
     
     @weakify(self);
@@ -65,12 +66,18 @@
     [self.viewModel.requestCMD.nextSignal subscribeNext:^(THKMaterialRecommendRankResponse *x) {
         @strongify(self);
         [self.view.tmui_emptyView remove];
-        if (x.data.subCategoryList.count) {
+        
+        if (x.status != THKStatusSuccess) {
+            [TMEmptyView showEmptyInView:self.view contentType:TMEmptyContentTypeServerErr clickBlock:^{
+                @strongify(self);
+                [self.viewModel.requestCMD execute:nil];
+            }];
+        }else if (x.data.subCategoryList.count) {
             // 刷新header
             self.headerView.subCategoryId = self.viewModel.subCategoryId;
             self.headerView.subCategoryList = x.data.subCategoryList;
         }else{
-            [TMEmptyView showEmptyInView:self.view contentType:TMEmptyContentTypeServerErr];
+            [TMEmptyView showEmptyInView:self.view contentType:TMEmptyContentTypeNoData];
         }
     }];
     
@@ -198,8 +205,9 @@
 
 /// 埋点 appPageCycle
 - (void)appPageCycleReport{
-//    self.gePageLevelPath = @"推荐榜单页";
-//    self.gePageName = @"如何选材|主分类详情页|";
+//    self.gePageNotDisplay = YES;//is_show = 0
+//    self.gePageLevelPath = @"如何选材|主分类详情页|";
+//    self.gePageName = @"推荐榜单页";
 }
 
 /// tab 曝光，点击

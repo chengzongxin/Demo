@@ -38,7 +38,7 @@
 
 @implementation THKMaterialHotRankVC
 @dynamic viewModel;
-#pragma mark - Lifecycle 
+#pragma mark - Lifecycle
 
 
 // 初始化
@@ -179,8 +179,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (scrollView == self.collectionView) {
         CGFloat offsetY = scrollView.contentOffset.y;
-        CGFloat coverH = kHeaderViewHeight - tmui_navigationBarHeight() ;
+        CGFloat coverH = kHeaderViewHeight - tmui_navigationBarHeight();
         CGFloat moveH = offsetY + scrollView.contentInset.top;
+        
         if (moveH > coverH) {
             float titlePercent = 1;
             [self.topBar setNavigationBarColor:[UIColor whiteColor] originTintColor:[UIColor whiteColor] toTintColor:THKColor_222222 gradientPercent:titlePercent];
@@ -320,29 +321,29 @@
 }
 
 - (void)cellShowReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialHotListModel *> *)model indexPath:(NSIndexPath *)indexPath{
-//    THKMaterialHotListModel *section = model[indexPath.section];
-//    THKMaterialHotBrandModel *item = section.brandList[indexPath.item];
-//    if (item.isExposed) {
-//        return;
-//    }
-//    item.isExposed = YES;
+    THKMaterialHotListModel *section = model[indexPath.section];
+    THKMaterialHotBrandModel *item = section.brandList[indexPath.item];
+    if (item.isExposed) {
+        return;
+    }
+    item.isExposed = YES;
 //    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
 //    [resource addEntries:@{@"widget_title":item.brandName?:@"",
 //                           @"widget_uid":@"hot_top_list",
 //                           @"widget_index":@(indexPath.section),
-//                           @"widget_class":section.categoryName,
+//                           @"widget_class":section.categoryName?:@"",
 //    }];
 //    [[GEWidgetExposeEvent eventWithResource:resource] report];
 }
 
 - (void)cellClickReport:(UICollectionViewCell *)cell model:(NSArray <THKMaterialHotListModel *> *)model indexPath:(NSIndexPath *)indexPath{
-//    THKMaterialHotListModel *section = model[indexPath.section];
-//    THKMaterialHotBrandModel *item = section.brandList[indexPath.item];
+    THKMaterialHotListModel *section = model[indexPath.section];
+    THKMaterialHotBrandModel *item = section.brandList[indexPath.item];
 //    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:cell];
 //    [resource addEntries:@{@"widget_title":item.brandName?:@"",
 //                           @"widget_uid":@"hot_top_list",
 //                           @"widget_index":@(indexPath.section),
-//                           @"widget_class":section.categoryName,
+//                           @"widget_class":section.categoryName?:@"",
 //    }];
 //    [[GEWidgetClickEvent eventWithResource:resource] report];
 }
