@@ -15,7 +15,6 @@
 #import "THKMaterialRecommendRankVC.h"
 #import "THKMaterialRecommendRankVM.h"
 #import "THKMaterialRecommendRankResponse.h"
-#import "GECommonEventTracker.h"
 
 /// 埋点分类
 @interface THKMaterialClassificationVC (Godeye)

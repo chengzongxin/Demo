@@ -14,7 +14,6 @@
 #import "THKMaterialClassificationRecommendRankCell.h"
 #import "THKMaterialClassificationRecommendNormalCell.h"
 #import "THKMaterialClassificationVC.h"
-#import "GECommonEventTracker.h"
 
 @interface THKMaterialRecommendRankVC (Godeye)
 /// header 曝光

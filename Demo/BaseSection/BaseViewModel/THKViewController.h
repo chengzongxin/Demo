@@ -10,6 +10,7 @@
 #import "THKViewControllerProtocol.h"
 #import "UIViewController+Godeye.h"
 #import "GEWidgetEvent.h"
+#import "GECommonEventTracker.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKViewController : UIViewController <THKViewControllerProtocol>
