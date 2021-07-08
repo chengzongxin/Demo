@@ -155,7 +155,7 @@ UIColor *kTo8toGreen;
 
 
 - (void)loadImageWithUrlStr:(NSString *)urlStr placeholderImage:(UIImage *)img_holder options:(YYWebImageOptions)options manager:(YYWebImageManager *)manager progress:(YYWebImageProgressBlock)progress transform:(YYWebImageTransformBlock)transform completion:(YYWebImageCompletionBlock)completion{
-    [self setImageURL:[NSURL URLWithString:urlStr]];
+    [self setImageWithURL:[NSURL URLWithString:urlStr] placeholder:img_holder options:options manager:manager progress:progress transform:transform completion:completion];
 }
 
 @end

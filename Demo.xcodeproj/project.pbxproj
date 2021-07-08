@@ -112,6 +112,7 @@
 		16611B74269692D20089E41B /* THKMaterialHotRankVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611B5C269692D20089E41B /* THKMaterialHotRankVC.m */; };
 		16611B7F269693DA0089E41B /* THKPageBGScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611B7B269693DA0089E41B /* THKPageBGScrollView.m */; };
 		16611B80269693DA0089E41B /* THKPageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611B7D269693DA0089E41B /* THKPageContentViewController.m */; };
+		16611B9B26969D960089E41B /* YYAnimatedImageView+OLELayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611B9926969D960089E41B /* YYAnimatedImageView+OLELayer.m */; };
 		16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16699B6025D0CF5E00B7F43B /* ViewController.m */; };
 		1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C17D268066200059E9B0 /* THKSegmentControl.m */; };
 		1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1A52680667C0059E9B0 /* UIView+Frame.m */; };
@@ -435,6 +436,8 @@
 		16611B7C269693DA0089E41B /* THKPageContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageContentViewController.h; sourceTree = "<group>"; };
 		16611B7D269693DA0089E41B /* THKPageContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKPageContentViewController.m; sourceTree = "<group>"; };
 		16611B7E269693DA0089E41B /* THKPageBGScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKPageBGScrollView.h; sourceTree = "<group>"; };
+		16611B9926969D960089E41B /* YYAnimatedImageView+OLELayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYAnimatedImageView+OLELayer.m"; sourceTree = "<group>"; };
+		16611B9A26969D960089E41B /* YYAnimatedImageView+OLELayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YYAnimatedImageView+OLELayer.h"; sourceTree = "<group>"; };
 		16699B5F25D0CF5E00B7F43B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		16699B6025D0CF5E00B7F43B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1669C17D268066200059E9B0 /* THKSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKSegmentControl.m; sourceTree = "<group>"; };
@@ -720,6 +723,7 @@
 			isa = PBXGroup;
 			children = (
 				16192AB32692DC2A00967C73 /* QuickMethod */,
+				16611B9826969D960089E41B /* YYAnimatedImageView */,
 				16192AA12692DB5800967C73 /* Depency */,
 				16867A222692D9B200650023 /* TRouter */,
 				16192ADA2692E13D00967C73 /* THKPushPopAnimationTransition */,
@@ -1224,6 +1228,15 @@
 				16611B5D269692D20089E41B /* THKMaterialHotRankVC.h */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		16611B9826969D960089E41B /* YYAnimatedImageView */ = {
+			isa = PBXGroup;
+			children = (
+				16611B9A26969D960089E41B /* YYAnimatedImageView+OLELayer.h */,
+				16611B9926969D960089E41B /* YYAnimatedImageView+OLELayer.m */,
+			);
+			path = YYAnimatedImageView;
 			sourceTree = "<group>";
 		};
 		16699BAD25D0D3C300B7F43B /* Support Files */ = {
@@ -2161,6 +2174,7 @@
 				16611AB52696870F0089E41B /* UIView+Godeye.m in Sources */,
 				16611B61269692D20089E41B /* THKMaterialGoodsGrassVM.m in Sources */,
 				16867A162692D76C00650023 /* TMCardComponentDataInfoObjects.m in Sources */,
+				16611B9B26969D960089E41B /* YYAnimatedImageView+OLELayer.m in Sources */,
 				16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */,
 				16192B362692E13E00967C73 /* THKTransitionAnimation.m in Sources */,
 				16867A132692D76C00650023 /* TMCardComponentNotSupportCell.m in Sources */,
