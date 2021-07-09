@@ -47,7 +47,7 @@ static const CGFloat kSliderBarStartX = 0;
 @property (nonatomic, strong) THKPageHeaderVisualEffectView *effectView;
 @property (nonatomic, strong) THKPageBGScrollView *contentView;
 @property (nonatomic, strong) THKSegmentControl *slideBar;
-@property (nonatomic, strong) UIScrollView *contentScrollView;
+@property (nonatomic, strong) THKPageContentScrollView *contentScrollView;
 @property (nonatomic, strong) UIColor *sliderBarOriginBgColor;
 // delegate
 @property (nonatomic, strong) NSArray <UIViewController *> *childVCs;
@@ -580,10 +580,10 @@ static const CGFloat kSliderBarStartX = 0;
 }
 
 
-- (UIScrollView *)contentScrollView{
+- (THKPageContentScrollView *)contentScrollView{
     if (!_contentScrollView) {
         // 创建contentScrollView
-        _contentScrollView = [[UIScrollView alloc] init];
+        _contentScrollView = [[THKPageContentScrollView alloc] init];
         // 分页
         _contentScrollView.pagingEnabled = YES;
         // 弹簧

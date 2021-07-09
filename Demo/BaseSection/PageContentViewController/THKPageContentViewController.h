@@ -9,6 +9,7 @@
 #import "THKPageBGScrollView.h"
 #import "THKSegmentControl.h"
 #import "THKViewController.h"
+#import "THKPageContentScrollView.h"
 
 @class THKPageContentViewController;
 @class THKPageHeaderVisualEffectView;
@@ -91,7 +92,7 @@
 /// 滑动tab
 @property (nonatomic, strong, readonly) THKSegmentControl *slideBar;
 /// 承载子VC的view的scrollView
-@property (nonatomic, strong, readonly) UIScrollView *contentScrollView;
+@property (nonatomic, strong, readonly) THKPageContentScrollView *contentScrollView;
 
 /// 刷新数据源，会初始化所有属性和子视图，重新调代理方法渲染界面
 - (void)reloadData;
