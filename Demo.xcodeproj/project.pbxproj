@@ -165,6 +165,10 @@
 		16867A342692D9B200650023 /* TRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16867A2A2692D9B200650023 /* TRuntimeHelper.m */; };
 		16867A352692D9B200650023 /* TRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16867A2D2692D9B200650023 /* TRouter.m */; };
 		16867A362692D9B200650023 /* TPushRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16867A302692D9B200650023 /* TPushRouter.m */; };
+		16B574E026CA3D1B00A4FCA1 /* THKVerifyCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B574DF26CA3D1B00A4FCA1 /* THKVerifyCodeVC.m */; };
+		16B574E926CA3D2F00A4FCA1 /* THKVerifyCodeVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B574E826CA3D2F00A4FCA1 /* THKVerifyCodeVM.m */; };
+		16B574F226CA46F900A4FCA1 /* THKPicCaptchaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B574F126CA46F900A4FCA1 /* THKPicCaptchaRequest.m */; };
+		16B574F826CA518700A4FCA1 /* THKVerifyCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B574F726CA518700A4FCA1 /* THKVerifyCodeRequest.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
 		16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49D2682DE4B0024BA20 /* THKResponse.m */; };
@@ -557,6 +561,14 @@
 		16867A2E2692D9B200650023 /* TRouterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRouterManager.h; sourceTree = "<group>"; };
 		16867A2F2692D9B200650023 /* TRouterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRouterConfig.h; sourceTree = "<group>"; };
 		16867A302692D9B200650023 /* TPushRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPushRouter.m; sourceTree = "<group>"; };
+		16B574DE26CA3D1B00A4FCA1 /* THKVerifyCodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKVerifyCodeVC.h; sourceTree = "<group>"; };
+		16B574DF26CA3D1B00A4FCA1 /* THKVerifyCodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKVerifyCodeVC.m; sourceTree = "<group>"; };
+		16B574E726CA3D2F00A4FCA1 /* THKVerifyCodeVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKVerifyCodeVM.h; sourceTree = "<group>"; };
+		16B574E826CA3D2F00A4FCA1 /* THKVerifyCodeVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKVerifyCodeVM.m; sourceTree = "<group>"; };
+		16B574F026CA46F900A4FCA1 /* THKPicCaptchaRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPicCaptchaRequest.h; sourceTree = "<group>"; };
+		16B574F126CA46F900A4FCA1 /* THKPicCaptchaRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPicCaptchaRequest.m; sourceTree = "<group>"; };
+		16B574F626CA518700A4FCA1 /* THKVerifyCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKVerifyCodeRequest.h; sourceTree = "<group>"; };
+		16B574F726CA518700A4FCA1 /* THKVerifyCodeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKVerifyCodeRequest.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
@@ -694,6 +706,7 @@
 				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				16B574DD26CA3C8F00A4FCA1 /* VerifyCode */,
 				16611B29269692D10089E41B /* MaterialClassification */,
 				16611B54269692D20089E41B /* MaterialHotRank */,
 				16192C14269305EE00967C73 /* Request */,
@@ -1133,14 +1146,14 @@
 		16611B2A269692D10089E41B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				16611B2B269692D10089E41B /* THKMaterialClassificationVM.m */,
-				16611B2C269692D10089E41B /* THKMaterialKnowledgeVM.h */,
-				16611B2D269692D10089E41B /* THKMaterialGoodsGrassVM.h */,
-				16611B2E269692D10089E41B /* THKMaterialRecommendRankVM.m */,
-				16611B2F269692D10089E41B /* THKMaterialKnowledgeVM.m */,
 				16611B30269692D10089E41B /* THKMaterialClassificationVM.h */,
+				16611B2B269692D10089E41B /* THKMaterialClassificationVM.m */,
+				16611B2D269692D10089E41B /* THKMaterialGoodsGrassVM.h */,
 				16611B31269692D10089E41B /* THKMaterialGoodsGrassVM.m */,
+				16611B2C269692D10089E41B /* THKMaterialKnowledgeVM.h */,
+				16611B2F269692D10089E41B /* THKMaterialKnowledgeVM.m */,
 				16611B32269692D10089E41B /* THKMaterialRecommendRankVM.h */,
+				16611B2E269692D10089E41B /* THKMaterialRecommendRankVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1563,6 +1576,21 @@
 				16867A2B2692D9B200650023 /* TRuntimeHelper.h */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		16B574DD26CA3C8F00A4FCA1 /* VerifyCode */ = {
+			isa = PBXGroup;
+			children = (
+				16B574DE26CA3D1B00A4FCA1 /* THKVerifyCodeVC.h */,
+				16B574DF26CA3D1B00A4FCA1 /* THKVerifyCodeVC.m */,
+				16B574E726CA3D2F00A4FCA1 /* THKVerifyCodeVM.h */,
+				16B574E826CA3D2F00A4FCA1 /* THKVerifyCodeVM.m */,
+				16B574F026CA46F900A4FCA1 /* THKPicCaptchaRequest.h */,
+				16B574F126CA46F900A4FCA1 /* THKPicCaptchaRequest.m */,
+				16B574F626CA518700A4FCA1 /* THKVerifyCodeRequest.h */,
+				16B574F726CA518700A4FCA1 /* THKVerifyCodeRequest.m */,
+			);
+			path = VerifyCode;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -2043,6 +2071,7 @@
 				16611AC42696870F0089E41B /* GECollectionView.m in Sources */,
 				16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */,
 				16192B272692E13E00967C73 /* THKTextComponentView.m in Sources */,
+				16B574E026CA3D1B00A4FCA1 /* THKVerifyCodeVC.m in Sources */,
 				16611ABC2696870F0089E41B /* GEStorage.m in Sources */,
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
 				16611ABA2696870F0089E41B /* GEProcessor.m in Sources */,
@@ -2143,6 +2172,7 @@
 				16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */,
 				16611ABD2696870F0089E41B /* GESnsTracker.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
+				16B574F226CA46F900A4FCA1 /* THKPicCaptchaRequest.m in Sources */,
 				16867A042692D76C00650023 /* TMCardComponentScrollAdsCell.m in Sources */,
 				168679FF2692D76C00650023 /* TMCardComponentBaseAbstractCell.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
@@ -2176,6 +2206,7 @@
 				16867A152692D76C00650023 /* TMCardComponentTool.m in Sources */,
 				16E5C5012682E5920024BA20 /* TRequestParameter.m in Sources */,
 				16611AB32696870F0089E41B /* UITabBarController+Godeye.m in Sources */,
+				16B574E926CA3D2F00A4FCA1 /* THKVerifyCodeVM.m in Sources */,
 				1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */,
 				16611AB52696870F0089E41B /* UIView+Godeye.m in Sources */,
 				16611B61269692D20089E41B /* THKMaterialGoodsGrassVM.m in Sources */,
@@ -2185,6 +2216,7 @@
 				16192B362692E13E00967C73 /* THKTransitionAnimation.m in Sources */,
 				16867A132692D76C00650023 /* TMCardComponentNotSupportCell.m in Sources */,
 				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
+				16B574F826CA518700A4FCA1 /* THKVerifyCodeRequest.m in Sources */,
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
 				16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */,
 				16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */,
