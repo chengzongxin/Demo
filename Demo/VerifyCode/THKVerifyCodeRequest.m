@@ -23,7 +23,7 @@
              @"phone":self.phone?:@"",
              @"phoneId":self.phoneId?:@"",
              @"ip":self.ip?:@"",
-             @"platform":self.platform?:@"1",
+             @"platform":self.platform?:@"",
     };
 }
 

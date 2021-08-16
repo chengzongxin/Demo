@@ -61,22 +61,12 @@ static UIEdgeInsets const kContentInset = {50,50,0,50};
 
 #pragma mark - Public
 - (void)bindViewModel{
+    // 修改viewModel参数
     RAC(self.viewModel,imgCode) = self.inputTextField.rac_textSignal;
+    // 更新ImgView
+    RAC(self.codeImgView,image) = self.viewModel.imageSubject;
     
     @weakify(self);
-    [self.viewModel.refreshCodeCommand.nextSignal subscribeNext:^(THKPicCaptchaResponse *x) {
-        NSLog(@"%@",x);
-        @strongify(self);
-        NSString *base64Str = [x.data.img stringByReplacingOccurrencesOfString:@"data:image/jpg;base64," withString:@""];
-        NSData *base64Data = [NSData dataWithBase64EncodedString:base64Str];
-        UIImage *img = [UIImage imageWithData:base64Data];
-        self.codeImgView.image = img;
-        
-        self.viewModel.verifyKey = x.data.verifyKey;
-        
-        [self refreshUI];
-    }];
-    
     [self.viewModel.refreshCodeCommand.errorSignal subscribeNext:^(id  _Nullable x) {
         NSLog(@"%@",x);
     }];
