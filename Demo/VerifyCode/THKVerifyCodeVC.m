@@ -7,7 +7,7 @@
 
 #import "THKVerifyCodeVC.h"
 
-static UIEdgeInsets const kContentInset = {50,50,0,50};
+static UIEdgeInsets const kContentInset = {26,30,0,30};
 
 @interface THKVerifyCodeVC ()
 
@@ -16,7 +16,7 @@ static UIEdgeInsets const kContentInset = {50,50,0,50};
 @property (nonatomic, strong) UIImageView *codeImgView;
 @property (nonatomic, strong) UITextField *inputTextField;
 @property (nonatomic, strong) UIButton *refreshButton;
-
+@property (nonatomic, strong) UIButton *commitButton;
 
 @end
 
@@ -27,35 +27,42 @@ static UIEdgeInsets const kContentInset = {50,50,0,50};
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.whiteColor;
-    
     self.title = @"图片验证";
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem tmui_itemWithTitle:@"提交" target:self action:@selector(commitCode)];
 }
 
 - (void)thk_addSubviews{
     [self.view addSubview:self.codeImgView];
-    [self.view addSubview:self.inputTextField];
     [self.view addSubview:self.refreshButton];
+    [self.view addSubview:self.inputTextField];
+    [self.view addSubview:self.commitButton];
     
     [self.codeImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(tmui_navigationBarHeight() + kContentInset.top);
-        make.left.mas_equalTo(kContentInset.left);
-        make.right.mas_equalTo(-kContentInset.right);
-        make.height.mas_equalTo(200);
+        make.top.mas_equalTo(NavigationContentTop + kContentInset.top);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(50);
+        make.centerX.equalTo(self.view);
+    }];
+    
+    
+    [self.refreshButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.codeImgView.mas_bottom).offset(8);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(20);
+        make.centerX.equalTo(self.view);
     }];
     
     [self.inputTextField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.codeImgView.mas_bottom).offset(20);
+        make.top.equalTo(self.refreshButton.mas_bottom).offset(16);
         make.left.mas_equalTo(kContentInset.left);
         make.right.mas_equalTo(-kContentInset.right);
-        make.height.mas_equalTo(44);
+        make.height.mas_equalTo(50);
     }];
     
-    [self.refreshButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.inputTextField.mas_bottom).offset(20);
+    [self.commitButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.inputTextField.mas_bottom).offset(30);
+        make.left.mas_equalTo(kContentInset.left);
         make.right.mas_equalTo(-kContentInset.right);
-        make.width.mas_equalTo(200);
-        make.height.mas_equalTo(44);
+        make.height.mas_equalTo(50);
     }];
 }
 
@@ -125,8 +132,10 @@ static UIEdgeInsets const kContentInset = {50,50,0,50};
 - (UITextField *)inputTextField{
     if (!_inputTextField) {
         _inputTextField = [[UITextField alloc] init];
-        _inputTextField.borderStyle = UITextBorderStyleRoundedRect;
+        _inputTextField.borderStyle = UITextBorderStyleNone;
         _inputTextField.placeholder = @"请填写图片内的验证码";
+        _inputTextField.tmui_borderPosition = TMUIViewBorderPositionBottom;
+        _inputTextField.tmui_borderColor = UIColorHex(EBECF5);
     }
     return _inputTextField;
 }
@@ -136,10 +145,21 @@ static UIEdgeInsets const kContentInset = {50,50,0,50};
         _refreshButton = [[UIButton alloc] init];
         _refreshButton.tmui_text = @"刷新验证码";
         [_refreshButton setTmui_titleColor:UIColor.blueColor];
+        _refreshButton.tmui_font = UIFont(12);
         [_refreshButton tmui_addTarget:self action:@selector(refreshCode)];
     }
     return _refreshButton;
 }
 
+- (UIButton *)commitButton{
+    if (!_commitButton) {
+        _commitButton = [[UIButton alloc] init];
+        _commitButton.backgroundColor = UIColorHex(24C77E);
+        _commitButton.tmui_titleColor = UIColor.whiteColor;
+        _commitButton.tmui_text = @"提交";
+        [_commitButton tmui_addTarget:self action:@selector(commitCode)];
+    }
+    return _commitButton;
+}
 
 @end
