@@ -82,12 +82,14 @@ static UIEdgeInsets const kContentInset = {26,30,0,30};
         NSLog(@"%@",x);
         @strongify(self);
         /// 0 短信校验发送失败! 1 短信校验发送成功! 2 先请求图片验证码! 3 短信ip发送限频! 4 短信phone发送限频! 5 图形验证码校验失败!
-        [TMToast toast:x.data.result];
-        if (x.data.status == 1) {
+        
+        if (x.status == THKStatusSuccess) {
+            [TMToast toast:@"短信校验发送成功!"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController popViewControllerAnimated:YES];
             });
         }else{
+            [TMToast toast:x.errorMsg];
             [self.viewModel.refreshCodeCommand execute:nil];
         }
     }];
