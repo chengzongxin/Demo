@@ -85,6 +85,9 @@ static UIEdgeInsets const kContentInset = {26,30,0,30};
         
         if (x.status == THKStatusSuccess) {
             [TMToast toast:@"短信校验发送成功!"];
+            if (self.verifySuccess) {
+                self.verifySuccess(self.viewModel.verifyKey, self.viewModel.imgCode);
+            }
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [self.navigationController popViewControllerAnimated:YES];
             });

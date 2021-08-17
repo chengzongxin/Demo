@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKVerifyCodeVC : THKViewController
 
+@property (nonatomic, copy) void (^verifySuccess)(NSString *verifyKey,NSString *imgCode);
+
 @end
 
 NS_ASSUME_NONNULL_END
