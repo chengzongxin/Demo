@@ -158,7 +158,10 @@ static UIEdgeInsets const kContentInset = {26,30,0,30};
         _commitButton = [[UIButton alloc] init];
         _commitButton.backgroundColor = UIColorHex(24C77E);
         _commitButton.tmui_titleColor = UIColor.whiteColor;
-        _commitButton.tmui_text = @"提交";
+        _commitButton.tmui_text = @"提  交";
+        _commitButton.tmui_font = UIFont(16);
+        _commitButton.layer.cornerRadius = 25;
+        _commitButton.layer.masksToBounds = YES;
         [_commitButton tmui_addTarget:self action:@selector(commitCode)];
     }
     return _commitButton;
