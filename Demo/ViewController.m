@@ -10,7 +10,7 @@
 #import "THKMaterialClassificationVM.h"
 #import "THKMaterialHotRankVC.h"
 #import "THKMaterialHotRankVM.h"
-#import "THKVerifyCodeVC.h"
+#import "THKDiaryBookVC.h"
 
 @interface ViewController ()
 
@@ -48,12 +48,10 @@
     }];
     
     
-    Button.str(@"图形验证码").bgColor(@"random").xywh(100,250,100,100).addTo(self.view).onClick(^{
+    Button.str(@"日记本").bgColor(@"random").xywh(100,250,100,100).addTo(self.view).onClick(^{
         Log(@"123123");
-        THKVerifyCodeVM *vm = [[THKVerifyCodeVM alloc] init];
-        vm.phone = @"17611111120";
-        vm.phoneId = @"8625710";
-        THKVerifyCodeVC *vc = [[THKVerifyCodeVC alloc] initWithViewModel:vm];
+        THKDiaryBookVM *vm = [[THKDiaryBookVM alloc] init];
+        THKDiaryBookVC *vc = [[THKDiaryBookVC alloc] initWithViewModel:vm];
         [self.navigationController pushViewController:vc animated:YES];
     });
     

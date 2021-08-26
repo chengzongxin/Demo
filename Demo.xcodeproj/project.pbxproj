@@ -17,6 +17,7 @@
 		160107072553DD8100FE4B77 /* DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107062553DD8100FE4B77 /* DemoUITests.m */; };
 		1601076C2553EA2800FE4B77 /* THKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601076B2553EA2700FE4B77 /* THKView.m */; };
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
+		160981D226D76ED800E1364F /* THKDiaryBookCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */; };
 		16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */; };
 		16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AAD2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m */; };
 		16192AB62692DC4500967C73 /* QuickMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AB52692DC4500967C73 /* QuickMethod.m */; };
@@ -165,10 +166,6 @@
 		16867A342692D9B200650023 /* TRuntimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16867A2A2692D9B200650023 /* TRuntimeHelper.m */; };
 		16867A352692D9B200650023 /* TRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16867A2D2692D9B200650023 /* TRouter.m */; };
 		16867A362692D9B200650023 /* TPushRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16867A302692D9B200650023 /* TPushRouter.m */; };
-		16B574E026CA3D1B00A4FCA1 /* THKVerifyCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B574DF26CA3D1B00A4FCA1 /* THKVerifyCodeVC.m */; };
-		16B574E926CA3D2F00A4FCA1 /* THKVerifyCodeVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B574E826CA3D2F00A4FCA1 /* THKVerifyCodeVM.m */; };
-		16B574F226CA46F900A4FCA1 /* THKPicCaptchaRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B574F126CA46F900A4FCA1 /* THKPicCaptchaRequest.m */; };
-		16B574F826CA518700A4FCA1 /* THKVerifyCodeRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B574F726CA518700A4FCA1 /* THKVerifyCodeRequest.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
 		16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49D2682DE4B0024BA20 /* THKResponse.m */; };
@@ -202,6 +199,13 @@
 		16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C54B268325E20024BA20 /* THKRequestCommand.m */; };
 		16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
+		16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */; };
+		16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516AA26D4C2E5002500F7 /* THKDiaryBookModel.m */; };
+		16F516B126D4C328002500F7 /* THKDiaryBookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516B026D4C328002500F7 /* THKDiaryBookVC.m */; };
+		16F516B726D4F7D2002500F7 /* THKDiaryBookInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516B626D4F7D2002500F7 /* THKDiaryBookInfoView.m */; };
+		16F516BD26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516BC26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m */; };
+		16F516C326D4F964002500F7 /* THKDiaryBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516C226D4F964002500F7 /* THKDiaryBookCell.m */; };
+		16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516C826D4F986002500F7 /* THKDiaryBookCellVM.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
 		C22508FBFE83E454C360C944 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D168DD537E7BC7FA0C76927 /* Pods_Demo.framework */; };
@@ -247,6 +251,8 @@
 		1601076B2553EA2700FE4B77 /* THKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKView.m; sourceTree = "<group>"; };
 		160107702553EA3300FE4B77 /* THKViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKViewModel.m; sourceTree = "<group>"; };
 		160107712553EA3300FE4B77 /* THKViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewModel.h; sourceTree = "<group>"; };
+		160981D026D76ED800E1364F /* THKDiaryBookCellHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookCellHeaderView.h; sourceTree = "<group>"; };
+		160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCellHeaderView.m; sourceTree = "<group>"; };
 		16192AA22692DB6300967C73 /* TSearchContentHighlightKeyWordsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchContentHighlightKeyWordsDefine.h; sourceTree = "<group>"; };
 		16192AA72692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStylesCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStylesCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
@@ -561,14 +567,6 @@
 		16867A2E2692D9B200650023 /* TRouterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRouterManager.h; sourceTree = "<group>"; };
 		16867A2F2692D9B200650023 /* TRouterConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRouterConfig.h; sourceTree = "<group>"; };
 		16867A302692D9B200650023 /* TPushRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPushRouter.m; sourceTree = "<group>"; };
-		16B574DE26CA3D1B00A4FCA1 /* THKVerifyCodeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKVerifyCodeVC.h; sourceTree = "<group>"; };
-		16B574DF26CA3D1B00A4FCA1 /* THKVerifyCodeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKVerifyCodeVC.m; sourceTree = "<group>"; };
-		16B574E726CA3D2F00A4FCA1 /* THKVerifyCodeVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKVerifyCodeVM.h; sourceTree = "<group>"; };
-		16B574E826CA3D2F00A4FCA1 /* THKVerifyCodeVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKVerifyCodeVM.m; sourceTree = "<group>"; };
-		16B574F026CA46F900A4FCA1 /* THKPicCaptchaRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPicCaptchaRequest.h; sourceTree = "<group>"; };
-		16B574F126CA46F900A4FCA1 /* THKPicCaptchaRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPicCaptchaRequest.m; sourceTree = "<group>"; };
-		16B574F626CA518700A4FCA1 /* THKVerifyCodeRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKVerifyCodeRequest.h; sourceTree = "<group>"; };
-		16B574F726CA518700A4FCA1 /* THKVerifyCodeRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKVerifyCodeRequest.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
@@ -640,6 +638,20 @@
 		16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MLeaksMessenger+HookAlert.m"; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
+		16F5169D26D4C2B8002500F7 /* THKDiaryBookVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookVM.h; sourceTree = "<group>"; };
+		16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookVM.m; sourceTree = "<group>"; };
+		16F516A926D4C2E5002500F7 /* THKDiaryBookModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookModel.h; sourceTree = "<group>"; };
+		16F516AA26D4C2E5002500F7 /* THKDiaryBookModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookModel.m; sourceTree = "<group>"; };
+		16F516AF26D4C328002500F7 /* THKDiaryBookVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookVC.h; sourceTree = "<group>"; };
+		16F516B026D4C328002500F7 /* THKDiaryBookVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookVC.m; sourceTree = "<group>"; };
+		16F516B526D4F7D2002500F7 /* THKDiaryBookInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookInfoView.h; sourceTree = "<group>"; };
+		16F516B626D4F7D2002500F7 /* THKDiaryBookInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookInfoView.m; sourceTree = "<group>"; };
+		16F516BB26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookInfoViewModel.h; sourceTree = "<group>"; };
+		16F516BC26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookInfoViewModel.m; sourceTree = "<group>"; };
+		16F516C126D4F964002500F7 /* THKDiaryBookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookCell.h; sourceTree = "<group>"; };
+		16F516C226D4F964002500F7 /* THKDiaryBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCell.m; sourceTree = "<group>"; };
+		16F516C726D4F986002500F7 /* THKDiaryBookCellVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookCellVM.h; sourceTree = "<group>"; };
+		16F516C826D4F986002500F7 /* THKDiaryBookCellVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCellVM.m; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B271C6912A85D06F5128169 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -706,7 +718,7 @@
 				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				16B574DD26CA3C8F00A4FCA1 /* VerifyCode */,
+				16F5168F26D4C11D002500F7 /* Diary */,
 				16611B29269692D10089E41B /* MaterialClassification */,
 				16611B54269692D20089E41B /* MaterialHotRank */,
 				16192C14269305EE00967C73 /* Request */,
@@ -1578,21 +1590,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		16B574DD26CA3C8F00A4FCA1 /* VerifyCode */ = {
-			isa = PBXGroup;
-			children = (
-				16B574DE26CA3D1B00A4FCA1 /* THKVerifyCodeVC.h */,
-				16B574DF26CA3D1B00A4FCA1 /* THKVerifyCodeVC.m */,
-				16B574E726CA3D2F00A4FCA1 /* THKVerifyCodeVM.h */,
-				16B574E826CA3D2F00A4FCA1 /* THKVerifyCodeVM.m */,
-				16B574F026CA46F900A4FCA1 /* THKPicCaptchaRequest.h */,
-				16B574F126CA46F900A4FCA1 /* THKPicCaptchaRequest.m */,
-				16B574F626CA518700A4FCA1 /* THKVerifyCodeRequest.h */,
-				16B574F726CA518700A4FCA1 /* THKVerifyCodeRequest.m */,
-			);
-			path = VerifyCode;
-			sourceTree = "<group>";
-		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1778,6 +1775,61 @@
 				16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */,
 			);
 			path = Third;
+			sourceTree = "<group>";
+		};
+		16F5168F26D4C11D002500F7 /* Diary */ = {
+			isa = PBXGroup;
+			children = (
+				16F5169026D4C159002500F7 /* Model */,
+				16F5169326D4C159002500F7 /* View */,
+				16F5169126D4C159002500F7 /* ViewController */,
+				16F5169226D4C159002500F7 /* ViewModel */,
+			);
+			path = Diary;
+			sourceTree = "<group>";
+		};
+		16F5169026D4C159002500F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16F516A926D4C2E5002500F7 /* THKDiaryBookModel.h */,
+				16F516AA26D4C2E5002500F7 /* THKDiaryBookModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		16F5169126D4C159002500F7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16F516AF26D4C328002500F7 /* THKDiaryBookVC.h */,
+				16F516B026D4C328002500F7 /* THKDiaryBookVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		16F5169226D4C159002500F7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				16F5169D26D4C2B8002500F7 /* THKDiaryBookVM.h */,
+				16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */,
+				16F516BB26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.h */,
+				16F516BC26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m */,
+				16F516C726D4F986002500F7 /* THKDiaryBookCellVM.h */,
+				16F516C826D4F986002500F7 /* THKDiaryBookCellVM.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		16F5169326D4C159002500F7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				16F516B526D4F7D2002500F7 /* THKDiaryBookInfoView.h */,
+				16F516B626D4F7D2002500F7 /* THKDiaryBookInfoView.m */,
+				160981D026D76ED800E1364F /* THKDiaryBookCellHeaderView.h */,
+				160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */,
+				16F516C126D4F964002500F7 /* THKDiaryBookCell.h */,
+				16F516C226D4F964002500F7 /* THKDiaryBookCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		863C150325C51CDA1727051D /* Pods */ = {
@@ -2058,6 +2110,7 @@
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
 				16611ABF2696870F0089E41B /* GEAppLifecycleTracker.m in Sources */,
 				16192B342692E13E00967C73 /* THKAnimationManager.m in Sources */,
+				16F516B726D4F7D2002500F7 /* THKDiaryBookInfoView.m in Sources */,
 				168679A02692B8BA00650023 /* THKMaterialHotListResponse.m in Sources */,
 				16192B2C2692E13E00967C73 /* THKViewController+THKLoadingAnimationView.m in Sources */,
 				16867A082692D76C00650023 /* TMCardComponentRecommendTagsCell.m in Sources */,
@@ -2071,7 +2124,6 @@
 				16611AC42696870F0089E41B /* GECollectionView.m in Sources */,
 				16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */,
 				16192B272692E13E00967C73 /* THKTextComponentView.m in Sources */,
-				16B574E026CA3D1B00A4FCA1 /* THKVerifyCodeVC.m in Sources */,
 				16611ABC2696870F0089E41B /* GEStorage.m in Sources */,
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
 				16611ABA2696870F0089E41B /* GEProcessor.m in Sources */,
@@ -2152,9 +2204,11 @@
 				16192B3B2692E13E00967C73 /* UIViewController+PopGestureOfPercentDrivenInteractiveTransition.m in Sources */,
 				16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */,
 				168679962692B8AC00650023 /* THKMaterialRecommendRankResponse.m in Sources */,
+				16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */,
 				16E5C51E26830DCB0024BA20 /* THKIdentityView.m in Sources */,
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,
 				16867A012692D76C00650023 /* TMCardComponentVideoSetsCell.m in Sources */,
+				16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */,
 				16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */,
 				16192B322692E13E00967C73 /* THKSearchAnimation+UI.m in Sources */,
 				16192B212692E13E00967C73 /* THKPushPopTransitionManager.m in Sources */,
@@ -2166,16 +2220,18 @@
 				16192B4B2692E1B100967C73 /* THKRouterConfig.m in Sources */,
 				16611AAD2696870F0089E41B /* GEEnvironmentParameter.m in Sources */,
 				16192B3A2692E13E00967C73 /* UIViewController+THKAnimation.m in Sources */,
+				160981D226D76ED800E1364F /* THKDiaryBookCellHeaderView.m in Sources */,
 				16611ABE2696870F0089E41B /* GECommonEventTracker.m in Sources */,
 				16192B302692E13E00967C73 /* THKMoveViewAnimation.m in Sources */,
 				16611AAE2696870F0089E41B /* GESwizzer.m in Sources */,
 				16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */,
 				16611ABD2696870F0089E41B /* GESnsTracker.m in Sources */,
+				16F516BD26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
-				16B574F226CA46F900A4FCA1 /* THKPicCaptchaRequest.m in Sources */,
 				16867A042692D76C00650023 /* TMCardComponentScrollAdsCell.m in Sources */,
 				168679FF2692D76C00650023 /* TMCardComponentBaseAbstractCell.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
+				16F516B126D4C328002500F7 /* THKDiaryBookVC.m in Sources */,
 				16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */,
 				16867A112692D76C00650023 /* THKTextTagLabel.m in Sources */,
 				16192B3C2692E13E00967C73 /* THKPushPopBaseTransition.m in Sources */,
@@ -2206,7 +2262,6 @@
 				16867A152692D76C00650023 /* TMCardComponentTool.m in Sources */,
 				16E5C5012682E5920024BA20 /* TRequestParameter.m in Sources */,
 				16611AB32696870F0089E41B /* UITabBarController+Godeye.m in Sources */,
-				16B574E926CA3D2F00A4FCA1 /* THKVerifyCodeVM.m in Sources */,
 				1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */,
 				16611AB52696870F0089E41B /* UIView+Godeye.m in Sources */,
 				16611B61269692D20089E41B /* THKMaterialGoodsGrassVM.m in Sources */,
@@ -2216,15 +2271,16 @@
 				16192B362692E13E00967C73 /* THKTransitionAnimation.m in Sources */,
 				16867A132692D76C00650023 /* TMCardComponentNotSupportCell.m in Sources */,
 				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
-				16B574F826CA518700A4FCA1 /* THKVerifyCodeRequest.m in Sources */,
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
 				16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */,
 				16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */,
 				16867A352692D9B200650023 /* TRouter.m in Sources */,
+				16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
 				16192BF72692FF5400967C73 /* THKSearchView.m in Sources */,
 				16867A072692D76C00650023 /* TMCardComponentDesignMasterStyleCell.m in Sources */,
 				16867A342692D9B200650023 /* TRuntimeHelper.m in Sources */,
+				16F516C326D4F964002500F7 /* THKDiaryBookCell.m in Sources */,
 				16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */,
 				16192B2E2692E13E00967C73 /* THKMoveCardInteractiveTransition.m in Sources */,
 				16611AD2269688C20089E41B /* TUUIDGenerator.m in Sources */,
