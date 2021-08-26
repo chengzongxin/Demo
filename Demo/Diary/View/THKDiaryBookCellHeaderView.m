@@ -6,11 +6,13 @@
 //
 
 #import "THKDiaryBookCellHeaderView.h"
-#import "THKDiaryIndexView.h"
+#import "THKDiaryCircleView.h"
 
 @interface THKDiaryBookCellHeaderView ()
 @property(nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) THKDiaryIndexView *indexView;
+@property (nonatomic, strong) UIView *topLineView;
+@property (nonatomic, strong) UIView *bottomLineView;
+@property (nonatomic, strong) THKDiaryCircleView *circleView;
 @end
 
 @implementation THKDiaryBookCellHeaderView
@@ -48,27 +50,34 @@
         make.left.mas_equalTo(36);
     }];
     
-    _indexView = [[THKDiaryIndexView alloc] init];
-    [self.contentView addSubview:_indexView];
-    _indexView.position = THKDiaryIndexPosition_Top;
-    [_indexView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentView addSubview:self.topLineView];
+    [self.contentView addSubview:self.bottomLineView];
+    [self.contentView addSubview:self.circleView];
+    
+    [self.circleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(38);
         make.left.mas_equalTo(10);
-//        make.top.equalTo(self.titleLabel.mas_centerY).inset(-_indexView.normalSize.height/2.0);
+        make.width.height.mas_equalTo(THKDiaryCircleWidth);
+    }];
+    
+    [self.topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.circleView.mas_centerX);
         make.top.mas_equalTo(0);
-        make.width.mas_equalTo(13);
+        make.width.mas_equalTo(2);
+        make.bottom.equalTo(self.circleView.mas_top);
+    }];
+    
+    [self.bottomLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.circleView.mas_centerX);
+        make.top.equalTo(self.circleView.mas_bottom);
+        make.width.mas_equalTo(2);
         make.bottom.mas_equalTo(0);
     }];
 }
 
-
-
-- (void)setPosition:(THKDiaryIndexPosition)position{
-    _indexView.position = position;
+- (void)setIndexPath:(NSIndexPath *)indexPath{
+    self.topLineView.hidden = (indexPath.section == 0);
 }
-
-
-
-
 
 
 
@@ -101,5 +110,28 @@
 
 #pragma mark - Getter && Setter
 
+- (THKDiaryCircleView *)circleView{
+    if (!_circleView) {
+        _circleView = [[THKDiaryCircleView alloc] init];
+        _circleView.type = THKDiaryCircleType_Section;
+    }
+    return _circleView;
+}
+
+- (UIView *)topLineView{
+    if (!_topLineView) {
+        _topLineView = [[UIView alloc] init];
+        _topLineView.backgroundColor = UIColorHex(ECEEEC);
+    }
+    return _topLineView;
+}
+
+- (UIView *)bottomLineView{
+    if (!_bottomLineView) {
+        _bottomLineView = [[UIView alloc] init];
+        _bottomLineView.backgroundColor = UIColorHex(ECEEEC);
+    }
+    return _bottomLineView;
+}
 
 @end

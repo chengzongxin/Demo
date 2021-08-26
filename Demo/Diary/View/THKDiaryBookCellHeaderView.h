@@ -6,13 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "THKDiaryIndexView.h"
+#import "THKDiaryCircleView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDiaryBookCellHeaderView : UITableViewHeaderFooterView
 @property(nonatomic, strong, readonly) UILabel *titleLabel;
-@property (nonatomic, assign) THKDiaryIndexPosition position;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 @end
 
 NS_ASSUME_NONNULL_END

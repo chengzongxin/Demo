@@ -6,13 +6,14 @@
 //
 
 #import "THKDiaryBookCell.h"
-#import "THKDiaryIndexView.h"
+#import "THKDiaryCircleView.h"
 
 static UIEdgeInsets const kContentInset = {0,36,0,20};
 
 @interface THKDiaryBookCell ()
 @property (nonatomic, strong) THKDiaryBookCellVM *viewModel;
-@property (nonatomic, strong) THKDiaryIndexView *lineView;
+@property (nonatomic, strong) THKDiaryCircleView *circleView;
+@property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIView *imagesView;
 @property (nonatomic, strong) UIView *interactiveBar;
@@ -47,14 +48,21 @@ static UIEdgeInsets const kContentInset = {0,36,0,20};
 
 - (void)setupSubviews{
     [self.contentView addSubview:self.lineView];
+    [self.contentView addSubview:self.circleView];
     [self.contentView addSubview:self.contentLabel];
     [self.contentView addSubview:self.imagesView];
     [self.contentView addSubview:self.interactiveBar];
     
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.circleView.mas_centerX);
+        make.top.bottom.mas_equalTo(0);
+        make.width.mas_equalTo(2);
+    }];
+    
+    [self.circleView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.mas_equalTo(0);
         make.left.mas_equalTo(10);
-        make.width.mas_equalTo(13);
+        make.width.mas_equalTo(THKDiaryCircleWidth);
     }];
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -90,7 +98,6 @@ static UIEdgeInsets const kContentInset = {0,36,0,20};
     
 //    self.contentLabel.text = viewModel.model;
     [self.contentLabel tmui_setAttributesString:viewModel.model lineSpacing:6];
-    self.lineView.position = THKDiaryIndexPosition_Diary;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size{
@@ -103,9 +110,18 @@ static UIEdgeInsets const kContentInset = {0,36,0,20};
     return realSize;
 }
 
-- (THKDiaryIndexView *)lineView{
+- (THKDiaryCircleView *)circleView{
+    if (!_circleView) {
+        _circleView = [[THKDiaryCircleView alloc] init];
+        _circleView.type = THKDiaryCircleType_Row;
+    }
+    return _circleView;
+}
+
+- (UIView *)lineView{
     if (!_lineView) {
-        _lineView = [[THKDiaryIndexView alloc] init];
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = UIColorHex(ECEEEC);
     }
     return _lineView;
 }
