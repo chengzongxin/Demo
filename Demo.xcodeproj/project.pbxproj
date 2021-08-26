@@ -18,6 +18,7 @@
 		1601076C2553EA2800FE4B77 /* THKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1601076B2553EA2700FE4B77 /* THKView.m */; };
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
 		160981D226D76ED800E1364F /* THKDiaryBookCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */; };
+		160981DB26D77E4900E1364F /* THKDiaryIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981DA26D77E4900E1364F /* THKDiaryIndexView.m */; };
 		16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */; };
 		16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AAD2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m */; };
 		16192AB62692DC4500967C73 /* QuickMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AB52692DC4500967C73 /* QuickMethod.m */; };
@@ -253,6 +254,8 @@
 		160107712553EA3300FE4B77 /* THKViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewModel.h; sourceTree = "<group>"; };
 		160981D026D76ED800E1364F /* THKDiaryBookCellHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookCellHeaderView.h; sourceTree = "<group>"; };
 		160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCellHeaderView.m; sourceTree = "<group>"; };
+		160981D926D77E4900E1364F /* THKDiaryIndexView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryIndexView.h; sourceTree = "<group>"; };
+		160981DA26D77E4900E1364F /* THKDiaryIndexView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryIndexView.m; sourceTree = "<group>"; };
 		16192AA22692DB6300967C73 /* TSearchContentHighlightKeyWordsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchContentHighlightKeyWordsDefine.h; sourceTree = "<group>"; };
 		16192AA72692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStylesCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStylesCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
@@ -1828,6 +1831,8 @@
 				160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */,
 				16F516C126D4F964002500F7 /* THKDiaryBookCell.h */,
 				16F516C226D4F964002500F7 /* THKDiaryBookCell.m */,
+				160981D926D77E4900E1364F /* THKDiaryIndexView.h */,
+				160981DA26D77E4900E1364F /* THKDiaryIndexView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2128,6 +2133,7 @@
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
 				16611ABA2696870F0089E41B /* GEProcessor.m in Sources */,
 				16E5C4F52682E4040024BA20 /* THKResponse+ErrToast.m in Sources */,
+				160981DB26D77E4900E1364F /* THKDiaryIndexView.m in Sources */,
 				16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				16611AC62696870F0089E41B /* GEScrollViewExposeManger.m in Sources */,

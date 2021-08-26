@@ -6,12 +6,13 @@
 //
 
 #import "THKDiaryBookCell.h"
+#import "THKDiaryIndexView.h"
 
 static UIEdgeInsets const kContentInset = {0,36,0,20};
 
 @interface THKDiaryBookCell ()
 @property (nonatomic, strong) THKDiaryBookCellVM *viewModel;
-
+@property (nonatomic, strong) THKDiaryIndexView *lineView;
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIView *imagesView;
 @property (nonatomic, strong) UIView *interactiveBar;
@@ -45,9 +46,16 @@ static UIEdgeInsets const kContentInset = {0,36,0,20};
 }
 
 - (void)setupSubviews{
+    [self.contentView addSubview:self.lineView];
     [self.contentView addSubview:self.contentLabel];
     [self.contentView addSubview:self.imagesView];
     [self.contentView addSubview:self.interactiveBar];
+    
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.mas_equalTo(0);
+        make.left.mas_equalTo(10);
+        make.width.mas_equalTo(13);
+    }];
     
     [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
@@ -82,6 +90,7 @@ static UIEdgeInsets const kContentInset = {0,36,0,20};
     
 //    self.contentLabel.text = viewModel.model;
     [self.contentLabel tmui_setAttributesString:viewModel.model lineSpacing:6];
+    self.lineView.position = THKDiaryIndexPosition_Diary;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size{
@@ -92,6 +101,13 @@ static UIEdgeInsets const kContentInset = {0,36,0,20};
     realSize.height += 50;
     
     return realSize;
+}
+
+- (THKDiaryIndexView *)lineView{
+    if (!_lineView) {
+        _lineView = [[THKDiaryIndexView alloc] init];
+    }
+    return _lineView;
 }
 
 - (UILabel *)contentLabel{

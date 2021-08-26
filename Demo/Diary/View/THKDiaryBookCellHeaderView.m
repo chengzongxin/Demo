@@ -6,9 +6,11 @@
 //
 
 #import "THKDiaryBookCellHeaderView.h"
+#import "THKDiaryIndexView.h"
 
 @interface THKDiaryBookCellHeaderView ()
 @property(nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) THKDiaryIndexView *indexView;
 @end
 
 @implementation THKDiaryBookCellHeaderView
@@ -46,7 +48,30 @@
         make.left.mas_equalTo(36);
     }];
     
+    _indexView = [[THKDiaryIndexView alloc] init];
+    [self.contentView addSubview:_indexView];
+    _indexView.position = THKDiaryIndexPosition_Top;
+    [_indexView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(10);
+//        make.top.equalTo(self.titleLabel.mas_centerY).inset(-_indexView.normalSize.height/2.0);
+        make.top.mas_equalTo(0);
+        make.width.mas_equalTo(13);
+        make.bottom.mas_equalTo(0);
+    }];
 }
+
+
+
+- (void)setPosition:(THKDiaryIndexPosition)position{
+    _indexView.position = position;
+}
+
+
+
+
+
+
+
 
 // 系统的 UITableViewHeaderFooterView 不允许修改 backgroundColor，都应该放到 backgroundView 里，但却没有在文档中写明，只有不小心误用时才会在 Xcode 控制台里提示，所以这里做个转换，保护误用的情况。
 - (void)setBackgroundColor:(UIColor *)backgroundColor {

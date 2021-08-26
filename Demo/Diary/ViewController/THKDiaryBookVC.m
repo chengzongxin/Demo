@@ -105,6 +105,7 @@ static NSString * const kCellIdentifier = @"cell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     THKDiaryBookCellHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(THKDiaryBookCellHeaderView.class)];
     headerView.titleLabel.text = self.viewModel.sections[section];
+    headerView.position = section == 0 ? THKDiaryIndexPosition_Top : THKDiaryIndexPosition_Mid;
     return headerView;
 }
 
