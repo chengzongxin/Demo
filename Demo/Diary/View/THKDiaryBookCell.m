@@ -104,7 +104,7 @@ static UIEdgeInsets const kContentInset = {0,36,0,20};
     CGSize realSize = CGSizeMake(size.width - UIEdgeInsetsGetHorizontalValue(kContentInset), 0);
     
     realSize.height += [self.contentLabel tmui_sizeForWidth:realSize.width].height;
-    realSize.height += 212;
+    realSize.height += (14 + 212);
     realSize.height += 50;
     
     return realSize;
