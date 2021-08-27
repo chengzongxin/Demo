@@ -17,7 +17,7 @@
 @dynamic model;
 - (void)initialize{
     
-    NSLog(@"ddd %@",self.model);
+//    NSLog(@"ddd %@",self.model);
 }
 
 @end
