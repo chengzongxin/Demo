@@ -51,7 +51,7 @@ static UIEdgeInsets const kContentInset = {20, 20, 30, 20};
         make.top.mas_equalTo(kContentInset.top);
         make.left.mas_equalTo(kContentInset.left);
         make.size.mas_equalTo(CGSizeMake(115, 143));
-        make.bottom.mas_equalTo(-kContentInset.bottom);
+//        make.bottom.mas_equalTo(-kContentInset.bottom);
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,12 +94,27 @@ static UIEdgeInsets const kContentInset = {20, 20, 30, 20};
 // initWithModel or bindViewModel: 方法来到这里
 // MARK: 初始化,刷新数据和UI,xib,重新设置时调用
 - (void)bindViewModel{
+//    [self layoutIfNeeded];
     [self.coverImageView loadImageWithUrlStr:self.viewModel.coverImgUrl];
     self.titleLabel.attributedText = self.viewModel.titleAttr;
-//    [self.titleLabel tmui_setAttributesString:self.viewModel.titleAttr.string lineSpacing:4];
     self.houseInfoLabel.attributedText = self.viewModel.houseInfoAttr;
     self.shoppingListButton.hidden = !self.viewModel.hasShoppingList;
     self.companyLabel.attributedText = self.viewModel.companyInfoAttr;
+    
+    CGFloat lableH = [self.titleLabel sizeThatFits:CGSizeMake(TMUI_SCREEN_WIDTH - 140 - 15, CGFLOAT_MAX)].height;
+    [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(lableH);
+    }];
+    
+    if (lableH > 60) {
+        [self.companyLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(-kContentInset.bottom);
+        }];
+    }else{
+        [self.coverImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(-kContentInset.bottom);
+        }];
+    }
 }
 
 #pragma mark - Delegate

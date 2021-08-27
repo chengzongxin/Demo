@@ -34,7 +34,7 @@
 
 - (void)initialize{
     self.coverImgUrl = @"https://img1.baidu.com/it/u=3366246598,2446278796&fm=26&fmt=auto&gp=0.jpg";
-    self.title = @"王沫沫现实与梦想的家居改造计划,王沫沫现实与梦想的家居改造计划,王沫沫现实与梦想的家居改造计划";
+    self.title = @"王沫沫现实与梦想的家居改造计划,王沫沫现实与梦想的家居改造计划,王沫沫现实与梦想的家居改造计划,王沫沫现实与梦想的家居改造计划";
     self.houseCity = @"深圳";
     self.houseStyle = @"北欧";
     self.houseBudget = 65;
