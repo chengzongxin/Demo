@@ -137,7 +137,8 @@ static UIEdgeInsets const kContentInset = {20, 20, 30, 20};
 - (UIButton *)shoppingListButton{
     if (!_shoppingListButton) {
         _shoppingListButton = [[UIButton alloc] init];
-        _shoppingListButton.tmui_text = @"装修清单 >";
+        _shoppingListButton.tmui_text = @" 装修清单 >";
+        _shoppingListButton.tmui_image = UIImageMake(@"diary_shoppinglist_icon");
         _shoppingListButton.tmui_font = UIFont(12);
         _shoppingListButton.tmui_titleColor = UIColorHex(333533);
     }
