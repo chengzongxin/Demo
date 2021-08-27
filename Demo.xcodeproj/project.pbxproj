@@ -62,6 +62,7 @@
 		16192BFD2693012100967C73 /* TCaseDetailTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192BFC2693012100967C73 /* TCaseDetailTopBar.m */; };
 		16192C042693014A00967C73 /* THKProjectUIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192C022693014A00967C73 /* THKProjectUIConfig.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
+		1642AA3626D8C87200F5FACD /* THKDiaryBookBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1642AA3526D8C87200F5FACD /* THKDiaryBookBottomBar.xib */; };
 		1649086F26983FFB004DC831 /* THKPageContentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649086E26983FFB004DC831 /* THKPageContentScrollView.m */; };
 		16611AAD2696870F0089E41B /* GEEnvironmentParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A752696870F0089E41B /* GEEnvironmentParameter.m */; };
 		16611AAE2696870F0089E41B /* GESwizzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A772696870F0089E41B /* GESwizzer.m */; };
@@ -349,6 +350,7 @@
 		16192C032693014A00967C73 /* THKProjectUIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKProjectUIConfig.h; sourceTree = "<group>"; };
 		1642AA2F26D8BFB200F5FACD /* THKDiaryBookBottomBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookBottomBar.h; sourceTree = "<group>"; };
 		1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookBottomBar.m; sourceTree = "<group>"; };
+		1642AA3526D8C87200F5FACD /* THKDiaryBookBottomBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THKDiaryBookBottomBar.xib; sourceTree = "<group>"; };
 		1649086D26983FFB004DC831 /* THKPageContentScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPageContentScrollView.h; sourceTree = "<group>"; };
 		1649086E26983FFB004DC831 /* THKPageContentScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPageContentScrollView.m; sourceTree = "<group>"; };
 		16611A732696870F0089E41B /* Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Godeye.h; sourceTree = "<group>"; };
@@ -1843,6 +1845,7 @@
 				160981E026D7A16500E1364F /* THKDiaryCircleView.m */,
 				1642AA2F26D8BFB200F5FACD /* THKDiaryBookBottomBar.h */,
 				1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */,
+				1642AA3526D8C87200F5FACD /* THKDiaryBookBottomBar.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1977,6 +1980,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1642AA3626D8C87200F5FACD /* THKDiaryBookBottomBar.xib in Resources */,
 				16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */,
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
 				160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */,

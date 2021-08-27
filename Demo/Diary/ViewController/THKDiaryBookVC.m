@@ -11,8 +11,10 @@
 #import "THKDiaryBookCellVM.h"
 #import "THKDiaryBookCellHeaderView.h"
 #import "THKDiaryBookLastCell.h"
+#import "THKDiaryBookBottomBar.h"
 
-//static NSString * const kCellIdentifier = @"cell";
+
+static CGFloat const kBottomBarH = 50;
 
 @interface THKDiaryBookVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -21,6 +23,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 /// header
 @property (nonatomic, strong) THKDiaryBookInfoView *infoView;
+/// bar
+@property (nonatomic, strong) THKDiaryBookBottomBar *bottomBar;
 /// dataSource
 //@property (nonatomic, copy) NSArray *diaryList;
 
@@ -46,6 +50,19 @@
 // 子视图布局
 - (void)thk_addSubviews{
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.bottomBar];
+    
+    CGFloat bottom = kSafeAreaBottomInset() + kBottomBarH;
+    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, bottom, 0);
+    
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(inset);
+    }];
+    
+    [self.bottomBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(bottom);
+    }];
 }
 
 // 绑定VM
@@ -169,6 +186,13 @@
         _infoView = [[THKDiaryBookInfoView alloc] init];
     }
     return _infoView;
+}
+
+- (THKDiaryBookBottomBar *)bottomBar{
+    if (!_bottomBar) {
+        _bottomBar = [THKDiaryBookBottomBar tmui_instantiateFromNib];
+    }
+    return _bottomBar;
 }
 
 #pragma mark - Supperclass

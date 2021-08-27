@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDiaryBookBottomBar : THKView
 
+@property (weak, nonatomic) IBOutlet UIButton *directoryButton;
+
 @end
 
 NS_ASSUME_NONNULL_END
