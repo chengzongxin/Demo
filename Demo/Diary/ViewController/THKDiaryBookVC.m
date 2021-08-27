@@ -12,7 +12,7 @@
 #import "THKDiaryBookCellHeaderView.h"
 #import "THKDiaryBookLastCell.h"
 #import "THKDiaryBookBottomBar.h"
-
+#import "THKDiaryDirectoryVC.h"
 
 static CGFloat const kBottomBarH = 50;
 
@@ -25,6 +25,9 @@ static CGFloat const kBottomBarH = 50;
 @property (nonatomic, strong) THKDiaryBookInfoView *infoView;
 /// bar
 @property (nonatomic, strong) THKDiaryBookBottomBar *bottomBar;
+/// directory
+@property (nonatomic, strong) THKDiaryDirectoryVC *directoryVC;
+
 /// dataSource
 //@property (nonatomic, copy) NSArray *diaryList;
 
@@ -81,6 +84,15 @@ static CGFloat const kBottomBarH = 50;
 #pragma mark - Public
 
 #pragma mark - Event Respone
+
+- (void)clickDirectory{
+    self.directoryVC = [[THKDiaryDirectoryVC alloc] initWithSponsor:self resetBlock:^(NSArray * _Nonnull dataList) {
+        NSLog(@"%@",dataList);
+    } commitBlock:^(NSArray * _Nonnull dataList) {
+        NSLog(@"%@",dataList);
+    }];
+    [self.directoryVC show];
+}
 
 #pragma mark - Delegate
 #pragma mark <UITableViewDataSource, UITableViewDelegate>
@@ -191,6 +203,11 @@ static CGFloat const kBottomBarH = 50;
 - (THKDiaryBookBottomBar *)bottomBar{
     if (!_bottomBar) {
         _bottomBar = [THKDiaryBookBottomBar tmui_instantiateFromNib];
+        @weakify(self);
+        _bottomBar.clickDirectory = ^{
+            @strongify(self);
+            [self clickDirectory];
+        };
     }
     return _bottomBar;
 }

@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UIButton *directoryButton;
 
+@property (nonatomic, copy) void (^clickDirectory)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

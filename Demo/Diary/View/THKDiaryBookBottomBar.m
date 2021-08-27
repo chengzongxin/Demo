@@ -35,7 +35,7 @@
 }
 
 - (IBAction)directoryButtonClick:(id)sender {
-    
+    !_clickDirectory?:_clickDirectory();
 }
 
 
