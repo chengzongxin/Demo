@@ -81,6 +81,7 @@
 }
 
 - (void)addParticleEffect:(CGPoint)point{
+    self.layer.zPosition = 9999;
     [self removeParticleEffect];
     // 1.创建发射器
     CAEmitterLayer *emitter = [[CAEmitterLayer alloc] init];
@@ -90,17 +91,17 @@
     emitter.preservesDepth = true;
     
     NSMutableArray *cells = [NSMutableArray array];
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1; i++) {
         // 4.设置 Cell(对应其中一个粒子)
         // 4.0.创建粒子
         CAEmitterCell *cell = [[CAEmitterCell alloc] init];
         // 4.1.每秒发射粒子数
-        cell.birthRate = arc4random_uniform(4) + 3;
+        cell.birthRate = 1;
         // 4.2.粒子存活时间
         cell.lifetime = 5;
         cell.lifetimeRange = 2.5;
         // 4.3.缩放比例
-        cell.scale = 0.7;
+        cell.scale = 3;
         cell.scaleRange = 0.3;
         // 4.4.粒子发射方向
         cell.emissionLongitude = -M_PI_2;
@@ -109,7 +110,7 @@
         cell.velocity = 100;
         cell.velocityRange = 50;
         // 4.6.旋转速度
-        cell.spin = M_PI_2;
+//        cell.spin = M_PI_2;
         // 4.7.粒子内容
         cell.contents = (__bridge id _Nullable)([UIImage imageNamed:@"icon_crown_yellow"].CGImage);
         [cells addObject:cell];;
