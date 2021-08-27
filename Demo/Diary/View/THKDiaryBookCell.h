@@ -9,7 +9,16 @@
 #import "THKDiaryBookCellVM.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKDiaryBookCell : UITableViewCell
+UIKIT_EXTERN const UIEdgeInsets kDiaryContentInset;
+
+@protocol THKDiaryBookCellBindVM <NSObject>
+
+/// view绑定viewModel
+- (void)bindViewModel:(THKDiaryBookCellVM *)viewModel;
+
+@end
+
+@interface THKDiaryBookCell : UITableViewCell<THKDiaryBookCellBindVM>
 
 @property (nonatomic, strong, readonly) THKDiaryBookCellVM *viewModel;
 

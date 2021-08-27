@@ -1,33 +1,22 @@
 //
-//  THKDiaryBookCell.m
+//  THKDiaryBookLastCell.m
 //  Demo
 //
-//  Created by Joe.cheng on 2021/8/24.
+//  Created by Joe.cheng on 2021/8/27.
 //
 
+#import "THKDiaryBookLastCell.h"
 #import "THKDiaryBookCell.h"
 #import "THKDiaryCircleView.h"
 
-const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
-
-@interface THKDiaryBookCell ()
-@property (nonatomic, strong) THKDiaryBookCellVM *viewModel;
+@interface THKDiaryBookLastCell ()
+@property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) THKDiaryCircleView *circleView;
 @property (nonatomic, strong) UIView *lineView;
-@property (nonatomic, strong) UILabel *contentLabel;
-@property (nonatomic, strong) UIView *imagesView;
-@property (nonatomic, strong) UIView *interactiveBar;
-
-
 @end
 
-@implementation THKDiaryBookCell
-//@dynamic viewModel;
+@implementation THKDiaryBookLastCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -50,8 +39,6 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
     [self.contentView addSubview:self.lineView];
     [self.contentView addSubview:self.circleView];
     [self.contentView addSubview:self.contentLabel];
-    [self.contentView addSubview:self.imagesView];
-    [self.contentView addSubview:self.interactiveBar];
     
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.circleView.mas_centerX);
@@ -71,44 +58,22 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
         make.right.mas_equalTo(-kDiaryContentInset.right);
     }];
     
-    [self.imagesView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentLabel.mas_bottom).offset(14);
-        make.left.mas_equalTo(kDiaryContentInset.left);
-        make.right.mas_equalTo(-kDiaryContentInset.right);
-        make.height.mas_equalTo(212);
-    }];
-    
-    [self.interactiveBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.imagesView.mas_bottom);
-        make.left.mas_equalTo(kDiaryContentInset.left);
-        make.right.mas_equalTo(-kDiaryContentInset.right);
-        make.height.mas_equalTo(50);
-    }];
-}
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    [self.contentLabel tmui_setAttributesString:@"屋主还在为自己的家努力，你可以提醒TA继续更新～" lineSpacing:6];
 }
 
 - (void)bindViewModel:(THKDiaryBookCellVM *)viewModel{
-    self.viewModel = viewModel;
     
-//    self.contentLabel.text = viewModel.model;
-    [self.contentLabel tmui_setAttributesString:viewModel.model lineSpacing:6];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size{
     CGSize realSize = CGSizeMake(size.width - UIEdgeInsetsGetHorizontalValue(kDiaryContentInset), 0);
     
     realSize.height += [self.contentLabel tmui_sizeForWidth:realSize.width].height;
-    realSize.height += (14 + 212);
-    realSize.height += 50;
+    realSize.height += 150;
     
     return realSize;
 }
+
 
 - (THKDiaryCircleView *)circleView{
     if (!_circleView) {
@@ -135,21 +100,4 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
     }
     return _contentLabel;
 }
-
-- (UIView *)imagesView{
-    if (!_imagesView) {
-        _imagesView = [[UIView alloc] init];
-        _imagesView.backgroundColor = UIColor.tmui_randomColor;
-    }
-    return _imagesView;
-}
-
-- (UIView *)interactiveBar{
-    if (!_interactiveBar) {
-        _interactiveBar = [[UIView alloc] init];
-        _interactiveBar.backgroundColor = UIColor.tmui_randomColor;
-    }
-    return _interactiveBar;
-}
-
 @end

@@ -10,8 +10,9 @@
 #import "THKDiaryBookCell.h"
 #import "THKDiaryBookCellVM.h"
 #import "THKDiaryBookCellHeaderView.h"
+#import "THKDiaryBookLastCell.h"
 
-static NSString * const kCellIdentifier = @"cell";
+//static NSString * const kCellIdentifier = @"cell";
 
 @interface THKDiaryBookVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -77,10 +78,18 @@ static NSString * const kCellIdentifier = @"cell";
 
 
 - (UITableViewCell *)tmui_tableView:(UITableView *)tableView cellWithIdentifier:(NSString *)identifier {
-    if ([identifier isEqualToString:kCellIdentifier]) {
+    if ([identifier isEqualToString:NSStringFromClass(THKDiaryBookCell.class)]) {
         THKDiaryBookCell *cell = (THKDiaryBookCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
         if (!cell) {
-            cell = [[THKDiaryBookCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
+            cell = [[THKDiaryBookCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass(THKDiaryBookCell.class)];
+        }
+        cell.separatorInset = UIEdgeInsetsZero;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }else if ([identifier isEqualToString:NSStringFromClass(THKDiaryBookLastCell.class)]) {
+        THKDiaryBookLastCell *cell = (THKDiaryBookLastCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[THKDiaryBookLastCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass(THKDiaryBookLastCell.class)];
         }
         cell.separatorInset = UIEdgeInsetsZero;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -111,10 +120,16 @@ static NSString * const kCellIdentifier = @"cell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    THKDiaryBookCell *cell = (THKDiaryBookCell *)[self tmui_tableView:tableView cellWithIdentifier:kCellIdentifier];
-    THKDiaryBookCellVM *cellVM = [[THKDiaryBookCellVM alloc] initWithModel:self.viewModel.rows[indexPath.section]];
-    [cell bindViewModel:cellVM];
-    return cell;
+    if (indexPath.section == [tableView numberOfSections] - 1) {
+        THKDiaryBookLastCell *cell = (THKDiaryBookLastCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookLastCell.class)];
+        return cell;
+    }else{
+        THKDiaryBookCell *cell = (THKDiaryBookCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookCell.class)];
+        THKDiaryBookCellVM *cellVM = [[THKDiaryBookCellVM alloc] initWithModel:self.viewModel.rows[indexPath.section]];
+        [cell bindViewModel:cellVM];
+        return cell;
+    }
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,7 +138,8 @@ static NSString * const kCellIdentifier = @"cell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<NSCopying> cachedKey = [self cachedKeyAtIndexPath:indexPath];
-    return [tableView tmui_heightForCellWithIdentifier:kCellIdentifier cacheByKey:cachedKey configuration:^(THKDiaryBookCell *cell) {
+    NSString *identifier = indexPath.section == [tableView numberOfSections] - 1 ? NSStringFromClass(THKDiaryBookLastCell.class) : NSStringFromClass(THKDiaryBookCell.class);
+    return [tableView tmui_heightForCellWithIdentifier:identifier cacheByKey:cachedKey configuration:^(id<THKDiaryBookCellBindVM> cell) {
         THKDiaryBookCellVM *cellVM = [[THKDiaryBookCellVM alloc] initWithModel:self.viewModel.rows[indexPath.section]];
         [cell bindViewModel:cellVM];
     }];
@@ -144,8 +160,10 @@ static NSString * const kCellIdentifier = @"cell";
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
         [_tableView registerClass:THKDiaryBookCellHeaderView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(THKDiaryBookCellHeaderView.class)];
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+        [_tableView registerClass:THKDiaryBookCell.class forCellReuseIdentifier:NSStringFromClass(THKDiaryBookCell.class)];
+        [_tableView registerClass:THKDiaryBookLastCell.class forCellReuseIdentifier:NSStringFromClass(THKDiaryBookLastCell.class)];
     }
     return _tableView;
 }
