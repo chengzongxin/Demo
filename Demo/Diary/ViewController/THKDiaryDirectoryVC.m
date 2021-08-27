@@ -36,6 +36,7 @@
         UINavigationController *filterNavigation = [[NSClassFromString(@"UINavigationController") alloc] initWithRootViewController:self];
 //        [filterNavigation setNavigationBarHidden:YES];
         filterNavigation.navigationBar.translucent = NO;
+        filterNavigation.navigationBar.shadowImage = UIImage.new;
         [self thk_hideNavShadowImageView];
         [filterNavigation.view setFrame:SLIP_ORIGIN_FRAME];
         self.filterNavigation = filterNavigation;
@@ -51,10 +52,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = UIColor.orangeColor;
+    self.view.backgroundColor = UIColor.whiteColor;
     
-    [self reloadData];
-    self.contentView.bounces = NO;
+//    [self reloadData];
+//    self.contentView.bounces = NO;
 }
 
 // 子视图布局
