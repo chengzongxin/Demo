@@ -128,7 +128,6 @@ static CGFloat const kBottomBarH = 50;
     THKDiaryBookCellHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(THKDiaryBookCellHeaderView.class)];
     headerView.titleLabel.text = self.viewModel.sections[section];
     headerView.indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
-//    headerView.position = section == 0 ? THKDiaryIndexPosition_Top : THKDiaryIndexPosition_Mid;
     return headerView;
 }
 
@@ -172,6 +171,7 @@ static CGFloat const kBottomBarH = 50;
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.contentInset =UIEdgeInsetsMake(0, 0, -20, 0); // 底部多余20
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:THKDiaryBookCellHeaderView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(THKDiaryBookCellHeaderView.class)];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
