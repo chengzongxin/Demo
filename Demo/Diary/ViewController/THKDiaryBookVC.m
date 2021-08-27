@@ -50,20 +50,15 @@
 
 // 绑定VM
 - (void)bindViewModel {
-//    self.diaryList = self.viewModel.sections;
     // setup header
-    [self.infoView bindViewModel:[THKDiaryBookInfoViewModel new]];
     self.tableView.tableHeaderView = self.infoView;
-    
     [self.infoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.mas_equalTo(self.view.mas_width);
     }];
-    
-    //        self.headerLable.text = @"测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本";
-    
+    // set datas
+    [self.infoView bindViewModel:[THKDiaryBookInfoViewModel new]];
+    // update layout
     [self.tableView.tableHeaderView layoutIfNeeded];
-    self.tableView.tableHeaderView = self.infoView;
-    [self.tableView reloadData];
 }
 
 #pragma mark - Public
