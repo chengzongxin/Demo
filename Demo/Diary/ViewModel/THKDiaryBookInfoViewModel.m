@@ -130,9 +130,11 @@
     
     NSMutableAttributedString *companyInfoAttr = [[NSMutableAttributedString alloc] init];
     NSAttributedString *tips = [NSAttributedString tmui_attributedStringWithString:@"设计与施工：" font:UIFont(12) color:UIColorHex(999999)];
-    NSAttributedString *company = [NSAttributedString tmui_attributedStringWithString:[NSString stringWithFormat:@"%@ >",companyInfo] font:UIFont(12) color:UIColorHex(1A1C1A)];
+    NSAttributedString *company = [NSAttributedString tmui_attributedStringWithString:[NSString stringWithFormat:@"%@",companyInfo] font:UIFont(12) color:UIColorHex(1A1C1A)];
+    NSAttributedString *arrow = [NSAttributedString tmui_attributedStringWithImage:UIImageMake(@"diary_arrow_icon")];
     [companyInfoAttr appendAttributedString:tips];
     [companyInfoAttr appendAttributedString:company];
+    [companyInfoAttr appendAttributedString:arrow];
     return companyInfoAttr;
 }
 

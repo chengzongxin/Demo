@@ -137,10 +137,12 @@ static UIEdgeInsets const kContentInset = {20, 20, 30, 20};
 - (UIButton *)shoppingListButton{
     if (!_shoppingListButton) {
         _shoppingListButton = [[UIButton alloc] init];
-        _shoppingListButton.tmui_text = @" 装修清单 >";
+        _shoppingListButton.backgroundColor = UIColorHex(F6F8F6);
+        _shoppingListButton.cornerRadius = 4;
         _shoppingListButton.tmui_image = UIImageMake(@"diary_shoppinglist_icon");
-        _shoppingListButton.tmui_font = UIFont(12);
-        _shoppingListButton.tmui_titleColor = UIColorHex(333533);
+        NSMutableAttributedString *titleAttr = [[NSMutableAttributedString tmui_attributedStringWithString:@" 装修清单" font:UIFont(12) color:UIColorHex(333533)] mutableCopy];
+        [titleAttr appendAttributedString:[NSAttributedString tmui_attributedStringWithImage:UIImageMake(@"diary_arrow_icon")]];
+        _shoppingListButton.tmui_attrText = titleAttr;
     }
     return _shoppingListButton;
 }
