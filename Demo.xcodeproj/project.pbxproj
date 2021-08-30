@@ -749,7 +749,7 @@
 				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				16F5168F26D4C11D002500F7 /* Diary */,
+				16F5168F26D4C11D002500F7 /* DiaryBook */,
 				16611B29269692D10089E41B /* MaterialClassification */,
 				16611B54269692D20089E41B /* MaterialHotRank */,
 				16192C14269305EE00967C73 /* Request */,
@@ -1808,7 +1808,7 @@
 			path = Third;
 			sourceTree = "<group>";
 		};
-		16F5168F26D4C11D002500F7 /* Diary */ = {
+		16F5168F26D4C11D002500F7 /* DiaryBook */ = {
 			isa = PBXGroup;
 			children = (
 				16F5169026D4C159002500F7 /* Model */,
@@ -1816,7 +1816,7 @@
 				16F5169126D4C159002500F7 /* ViewController */,
 				16F5169226D4C159002500F7 /* ViewModel */,
 			);
-			path = Diary;
+			path = DiaryBook;
 			sourceTree = "<group>";
 		};
 		16F5169026D4C159002500F7 /* Model */ = {
