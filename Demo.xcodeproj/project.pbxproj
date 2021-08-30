@@ -132,6 +132,8 @@
 		166FCBC426D8716700FA83A8 /* THKDiaryBookLastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166FCBC326D8716700FA83A8 /* THKDiaryBookLastCell.m */; };
 		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
 		16834F0B26DC820D0082268C /* THKDiaryCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F0A26DC820D0082268C /* THKDiaryCircle.m */; };
+		16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F1026DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m */; };
+		16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */; };
 		168679922692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */; };
 		168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686798A2692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m */; };
 		168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686798D2692B8AC00650023 /* THKMaterialRecommendRankRequest.m */; };
@@ -497,6 +499,9 @@
 		1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionIIIHelper.m; sourceTree = "<group>"; };
 		16834F0926DC820D0082268C /* THKDiaryCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryCircle.h; sourceTree = "<group>"; };
 		16834F0A26DC820D0082268C /* THKDiaryCircle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryCircle.m; sourceTree = "<group>"; };
+		16834F0F26DCA4FC0082268C /* THKDiaryDirectoryServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryDirectoryServiceCell.h; sourceTree = "<group>"; };
+		16834F1026DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryDirectoryServiceCell.m; sourceTree = "<group>"; };
+		16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THKDiaryDirectoryServiceCell.xib; sourceTree = "<group>"; };
 		168679862692B8AC00650023 /* THKMaterialRecommendKnowledgeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendKnowledgeRequest.h; sourceTree = "<group>"; };
 		168679872692B8AC00650023 /* THKMaterialRecommendRankRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankRequest.h; sourceTree = "<group>"; };
 		168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendGoodsGrassResponse.m; sourceTree = "<group>"; };
@@ -1871,6 +1876,9 @@
 				1642AA5626D8F6D700F5FACD /* THKDiaryDirectoryCell.m */,
 				16834F0926DC820D0082268C /* THKDiaryCircle.h */,
 				16834F0A26DC820D0082268C /* THKDiaryCircle.m */,
+				16834F0F26DCA4FC0082268C /* THKDiaryDirectoryServiceCell.h */,
+				16834F1026DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m */,
+				16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2011,6 +2019,7 @@
 				160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */,
 				16611B6E269692D20089E41B /* THKMaterialClassificationRecommendRankCell.xib in Resources */,
 				160106EA2553DD8000FE4B77 /* Main.storyboard in Resources */,
+				16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */,
 				16611B66269692D20089E41B /* THKMaterialClassificationRecommendNormalCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2258,6 +2267,7 @@
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,
 				16867A012692D76C00650023 /* TMCardComponentVideoSetsCell.m in Sources */,
 				16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */,
+				16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */,
 				16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */,
 				16192B322692E13E00967C73 /* THKSearchAnimation+UI.m in Sources */,
 				16192B212692E13E00967C73 /* THKPushPopTransitionManager.m in Sources */,
