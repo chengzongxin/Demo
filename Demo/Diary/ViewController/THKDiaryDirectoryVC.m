@@ -120,7 +120,12 @@
 //}
 
 - (void)segmentControlConfig:(THKSegmentControl *)control{
-    control.height = 50;
+    control.indicatorView.backgroundColor = UIColorHex(22C787);
+    [control setTitleFont:[UIFont systemFontOfSize:14] forState:UIControlStateNormal];
+    [control setTitleFont:[UIFont systemFontOfSize:15 weight:UIFontWeightMedium] forState:UIControlStateSelected];
+    [control setTitleColor:UIColorHex(7E807E) forState:UIControlStateNormal];
+    [control setTitleColor:UIColorHex(333333) forState:UIControlStateSelected];
+    control.height = 40;
 }
 
 #pragma mark - Private
