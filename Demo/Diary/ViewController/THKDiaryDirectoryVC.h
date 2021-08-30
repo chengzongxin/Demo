@@ -17,7 +17,7 @@ static inline CGFloat kDirectionWidth() {
     return TMUI_SCREEN_WIDTH * 0.8;
 }
 
-@interface THKDiaryDirectoryVC : THKViewController
+@interface THKDiaryDirectoryVC : TMUIPageViewController
 
 - (instancetype)initWithSponsor:(UIViewController *)sponsor
                      resetBlock:(SideSlipFilterResetBlock)resetBlock

@@ -37,7 +37,7 @@
 //        [filterNavigation setNavigationBarHidden:YES];
         filterNavigation.navigationBar.translucent = NO;
         filterNavigation.navigationBar.shadowImage = UIImage.new;
-        [self thk_hideNavShadowImageView];
+//        [self thk_hideNavShadowImageView];
         [filterNavigation.view setFrame:SLIP_ORIGIN_FRAME];
         self.filterNavigation = filterNavigation;
     }
@@ -54,13 +54,13 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
     
-//    [self reloadData];
+    [self reloadData];
 //    self.contentView.bounces = NO;
 }
 
 // 子视图布局
 - (void)thk_addSubviews{
-
+    
 }
 
 // 绑定VM
@@ -99,29 +99,29 @@
 }
 
 #pragma mark - Delegate
-//- (NSArray<NSString *> *)titlesForChildViewControllers{
-//    return @[@"目录",@"屋主相关服务"];
-//}
-//
-//- (NSArray<UIViewController *> *)viewControllersForChildViewControllers{
-//    return @[THKDiaryDirectoryChildVC.new,THKDiraryDirectoryServiceVC.new];
-//}
-//
-//- (UIColor *)contentViewBackgroundColor{
-//    return UIColor.clearColor;
-//}
-//
+- (NSArray<NSString *> *)titlesForChildViewControllers{
+    return @[@"目录",@"屋主相关服务"];
+}
+
+- (NSArray<UIViewController *> *)viewControllersForChildViewControllers{
+    return @[THKDiaryDirectoryChildVC.new,THKDiraryDirectoryServiceVC.new];
+}
+
+- (UIColor *)contentViewBackgroundColor{
+    return UIColor.clearColor;
+}
+
 //- (UIView *)viewForHeader{
 //    return UIView.new;
 //}
 //
 //- (CGFloat)heightForHeader{
-//    return 0;
+//    return 44;
 //}
-//
-//- (void)segmentControlConfig:(THKSegmentControl *)control{
-//    control.height = 50;
-//}
+
+- (void)segmentControlConfig:(THKSegmentControl *)control{
+    control.height = 50;
+}
 
 #pragma mark - Private
 

@@ -12,7 +12,7 @@
 #import "THKDiaryBookCellHeaderView.h"
 #import "THKDiaryBookLastCell.h"
 #import "THKDiaryBookBottomBar.h"
-#import "THKDiaryDirectoryVC.h"
+#import "THKDiaryDirectoryChildVC.h"
 
 static CGFloat const kBottomBarH = 50;
 

@@ -66,6 +66,7 @@
 		1642AA4126D8D95000F5FACD /* THKDiaryDirectoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA4026D8D95000F5FACD /* THKDiaryDirectoryVC.m */; };
 		1642AA4B26D8EE6A00F5FACD /* THKDiaryDirectoryChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA4A26D8EE6A00F5FACD /* THKDiaryDirectoryChildVC.m */; };
 		1642AA5126D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA5026D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m */; };
+		1642AA5726D8F6D700F5FACD /* THKDiaryDirectoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA5626D8F6D700F5FACD /* THKDiaryDirectoryCell.m */; };
 		1649086F26983FFB004DC831 /* THKPageContentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649086E26983FFB004DC831 /* THKPageContentScrollView.m */; };
 		16611AAD2696870F0089E41B /* GEEnvironmentParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A752696870F0089E41B /* GEEnvironmentParameter.m */; };
 		16611AAE2696870F0089E41B /* GESwizzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A772696870F0089E41B /* GESwizzer.m */; };
@@ -360,6 +361,8 @@
 		1642AA4A26D8EE6A00F5FACD /* THKDiaryDirectoryChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryDirectoryChildVC.m; sourceTree = "<group>"; };
 		1642AA4F26D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiraryDirectoryServiceVC.h; sourceTree = "<group>"; };
 		1642AA5026D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiraryDirectoryServiceVC.m; sourceTree = "<group>"; };
+		1642AA5526D8F6D700F5FACD /* THKDiaryDirectoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryDirectoryCell.h; sourceTree = "<group>"; };
+		1642AA5626D8F6D700F5FACD /* THKDiaryDirectoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryDirectoryCell.m; sourceTree = "<group>"; };
 		1649086D26983FFB004DC831 /* THKPageContentScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPageContentScrollView.h; sourceTree = "<group>"; };
 		1649086E26983FFB004DC831 /* THKPageContentScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPageContentScrollView.m; sourceTree = "<group>"; };
 		16611A732696870F0089E41B /* Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Godeye.h; sourceTree = "<group>"; };
@@ -1861,6 +1864,8 @@
 				1642AA2F26D8BFB200F5FACD /* THKDiaryBookBottomBar.h */,
 				1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */,
 				1642AA3526D8C87200F5FACD /* THKDiaryBookBottomBar.xib */,
+				1642AA5526D8F6D700F5FACD /* THKDiaryDirectoryCell.h */,
+				1642AA5626D8F6D700F5FACD /* THKDiaryDirectoryCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2314,6 +2319,7 @@
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
 				16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */,
 				16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */,
+				1642AA5726D8F6D700F5FACD /* THKDiaryDirectoryCell.m in Sources */,
 				16867A352692D9B200650023 /* TRouter.m in Sources */,
 				16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,

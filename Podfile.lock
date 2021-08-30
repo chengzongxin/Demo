@@ -239,7 +239,7 @@ DEPENDENCIES:
   - MJRefresh
   - MLeaksFinder
   - ReactiveObjC
-  - TMUIKit (from `https://github.com/chengzongxin/TMUIKit.git`)
+  - TMUIKit (from `/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec`)
   - YYKit
 
 SPEC REPOS:
@@ -257,12 +257,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   TMUIKit:
-    :git: https://github.com/chengzongxin/TMUIKit.git
-
-CHECKOUT OPTIONS:
-  TMUIKit:
-    :commit: e6493e9f1b9db177bd39052b5984704ef8d0e8d5
-    :git: https://github.com/chengzongxin/TMUIKit.git
+    :path: "/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec"
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -277,6 +272,6 @@ SPEC CHECKSUMS:
   TMUIKit: 4ad154acdf1857157066637f49a90712908d62bd
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: b151e074160606e3a6b74ba3413620f06ee56ab9
+PODFILE CHECKSUM: 1d2d02b79df447462234b7819e48b49781b8656e
 
 COCOAPODS: 1.10.0
