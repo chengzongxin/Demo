@@ -32,8 +32,15 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+    
+    [self setNeedsDisplay];
 }
 
+- (void)setBorderWidth:(CGFloat)borderWidth{
+    _borderWidth = borderWidth;
+    
+    [self setNeedsDisplay];
+}
 
 - (void)drawRect:(CGRect)rect{
     [self drawCircle:UIGraphicsGetCurrentContext()];
@@ -59,7 +66,7 @@
     CGFloat raduis = self.bounds.size.height / 2;  //6+1 , 10+3
      //圆
     CGContextAddArc (ctx, x, y, raduis, 0, M_PI * 2 , 0);
-    CGContextSetLineWidth(ctx, 1);
+    CGContextSetLineWidth(ctx, _borderWidth);
     CGContextDrawPath(ctx,kCGPathFillStroke);
  }
 

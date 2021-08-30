@@ -64,7 +64,7 @@
     }];
     
     [self.circle mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(12);
+        make.centerX.equalTo(self.bottomLineView.mas_centerX);
         make.centerY.equalTo(self.contentView.mas_centerY);
         make.size.mas_equalTo(CGSizeMake(7, 7));
     }];
@@ -79,24 +79,30 @@
     self.topLineView.hidden = (indexPath.row == 0);
 }
 
-//- (void)setSelected:(BOOL)selected{
-//    [super setSelected:selected];
-//
-//    if (selected) {
-////        _titleLabel.textColor = UIColor.whiteColor;
-//        self.circle.tmui_borderWidth = 3;
-//        self.circle.layer.cornerRadius = 13/2.0;
-//    }else{
-////        _titleLabel.textColor = UIColorHex(#333333);
-//        self.circle.tmui_borderWidth = 1;
-//        self.circle.layer.cornerRadius = 7/2.0;
-//    }
-//
-//    [self setNeedsDisplay];
-//}
+- (void)setSelected:(BOOL)selected{
+    [super setSelected:selected];
 
 
+}
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    if (selected) {
+        _titleLabel.textColor = UIColorHex(22C787);
+        _titleLabel.font = UIFontMedium(16);
+    }else{
+        _titleLabel.textColor = UIColorHex(333533);
+        _titleLabel.font = UIFont(16);
+    }
+    
+    CGFloat width = selected ? 13 : 7;
+    CGFloat radius = 6;
+    
+    self.circle.layer.cornerRadius = width/2.0;
+    self.circle.borderWidth = width - radius;
+    [self.circle mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(width, width));
+    }];
+}
 
 - (UIView *)topLineView{
     if (!_topLineView) {
@@ -114,24 +120,9 @@
     return _bottomLineView;
 }
 
-//- (UIView *)circle{
-//    if (!_circle) {
-//        _circle = [[UIView alloc] init];
-//        _circle.tmui_borderColor = UIColorHex(22C787);
-//        _circle.tmui_borderPosition = TMUIViewBorderPositionTop|TMUIViewBorderPositionLeft|TMUIViewBorderPositionBottom|TMUIViewBorderPositionRight;
-//        _circle.tmui_borderLocation = TMUIViewBorderLocationInside;
-//        _circle.tmui_borderWidth = 3;
-//        _circle.backgroundColor = UIColor.whiteColor;
-//        _circle.layer.cornerRadius = 13/2.0;
-//        _circle.layer.masksToBounds = YES;
-//    }
-//    return _circle;
-//}
-
 - (THKDiaryCircle *)circle{
     if (!_circle) {
         _circle = [[THKDiaryCircle alloc] init];
-        _circle.layer.cornerRadius = 7/2.0;
         _circle.layer.masksToBounds = YES;
     }
     return _circle;

@@ -31,6 +31,21 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    UIView *line = [[UIView alloc] init];
+    line.backgroundColor = UIColorHex(ECEEEC);
+    [self.tableView addSubview:line];
+    line.layer.zPosition = -1;
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(14.5);
+        make.width.mas_equalTo(1);
+//        make.bottom.mas_equalTo(0);
+        make.bottom.equalTo(self.view.mas_bottom);
+//        make.height.mas_equalTo(999);
+    }];
+    
+    [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 // 子视图布局
@@ -70,6 +85,10 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44;
 }
@@ -86,6 +105,7 @@
         _tableView.estimatedSectionFooterHeight = 0;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:THKDiaryDirectoryCell.class forCellReuseIdentifier:NSStringFromClass(THKDiaryDirectoryCell.class)];
+        _tableView.bounces = NO;
     }
     return _tableView;
 }
