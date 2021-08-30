@@ -9,8 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKDiaryDirectoryCell : UITableViewCell
 
+
+@interface THKDiaryDirectoryCell : UITableViewCell
+@property (nonatomic, strong) NSIndexPath *indexPath;
 @end
 
 NS_ASSUME_NONNULL_END

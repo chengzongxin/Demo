@@ -6,6 +6,7 @@
 //
 
 #import "THKDiaryDirectoryChildVC.h"
+#import "THKDiaryDirectoryCell.h"
 
 @interface THKDiaryDirectoryChildVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -59,8 +60,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
-    cell.textLabel.text = @(indexPath.row).stringValue;
+    THKDiaryDirectoryCell *cell = (THKDiaryDirectoryCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKDiaryDirectoryCell.class) forIndexPath:indexPath];
+//    cell.textLabel.text = @(indexPath.row).stringValue;
+    cell.indexPath = indexPath;
     return cell;
 }
 
@@ -74,7 +76,7 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0.0;
@@ -82,7 +84,8 @@
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
-        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [_tableView registerClass:THKDiaryDirectoryCell.class forCellReuseIdentifier:NSStringFromClass(THKDiaryDirectoryCell.class)];
     }
     return _tableView;
 }
