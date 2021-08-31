@@ -77,14 +77,7 @@
 - (NSAttributedString *)contentAttrString{
     if (_contentAttrString == nil) {
         CGFloat contentWidth = _maxWidth;
-        
-        NSString *tagN = self.tagStr;
-        NSString *tagStr;
-        if ([tagN isKindOfClass:NSString.class] && tagN.length > 0) {
-            tagStr = [NSString stringWithFormat:@"#%@#  ",tagN];
-        }else{
-            tagStr = @"";
-        }
+        NSString *tagStr = self.tagStr;
         NSString *contentStr = [self.contentStr tmui_trim];
         
         NSString *allStr = [NSString stringWithFormat:@"%@%@",tagStr,contentStr];

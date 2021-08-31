@@ -77,7 +77,7 @@
     };
 //    label.tagStr = @"入住新家";
 //    label.contentStr = str;
-    [label setTagStr:@"入住新家" contentStr:str];
+    [label setTagStr:@"#入住新家#  " contentStr:str];
     
 //    label.attributedText = [NSAttributedString tmui_attributedStringWithString:str font:UIFont(20) color:UIColor.redColor];
 }
