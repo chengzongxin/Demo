@@ -11,6 +11,7 @@
 #import "THKMaterialHotRankVC.h"
 #import "THKMaterialHotRankVM.h"
 #import "THKDiaryBookVC.h"
+#import "ExpandLabel.h"
 
 @interface ViewController ()
 
@@ -55,6 +56,25 @@
         [self.navigationController pushViewController:vc animated:YES];
     });
     
+    
+    NSString *str = @"dfsfdshhfesf sddsfkjd lkfdsj lfjh sdjkfhk egf hsjfg dhs fghdsfg ewhj dfgjshf jdshfg hdsf gdsfdsfd asdhjk dhkajs gkfds fhkjsdfhesalfhdlskafjlaskdfj ldksaf jldsafafdsafewafsa fds fadsf das fdas fdsaf dsaf dsaf dsafeawfdewafefrg 12313123213 sdad";
+    
+    ExpandLabel *label = ExpandLabel.new;
+    
+    label.numberOfLines = 3;
+    label.lineSpacing = 10;
+    label.maxWidth = TMUI_SCREEN_WIDTH;
+    [self.view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.mas_equalTo(600);
+    }];
+    
+//    label.tagStr = @"入住新家";
+//    label.contentStr = str;
+    [label setTagStr:@"入住新家" contentStr:str];
+    
+//    label.attributedText = [NSAttributedString tmui_attributedStringWithString:str font:UIFont(20) color:UIColor.redColor];
 }
 
 @end
