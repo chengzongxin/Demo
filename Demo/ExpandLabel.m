@@ -99,7 +99,7 @@
         if (self.numberOfLines > 0) {
             // 只显示3行文字
             NSInteger limitLine = self.numberOfLines;
-            NSString *dotStr = @"...    ";
+            NSString *dotStr = @"...     ";
             if (lines.count > limitLine) {
                 self.isFold = YES;
                 NSMutableString *foldStr = [NSMutableString string];
@@ -108,11 +108,19 @@
                     if (i == limitLine - 1) {
                         // 最后一行，铺满需要截取
                         CGFloat width = [lineStr tmui_widthForFont:font];
-                        if (width > contentWidth - 32) {
-                            lineStr = [lineStr stringByReplacingCharactersInRange:NSMakeRange(lineStr.length - dotStr.length, dotStr.length) withString:dotStr];
-                        }else{
-                            lineStr = [[lineStr tmui_trim] stringByAppendingString:dotStr];
+                        
+                        NSString *appendStr = [NSString stringWithFormat:@"%@%@",dotStr,self.foldBtn.tmui_text];
+                        CGFloat appendWidth = [appendStr tmui_sizeWithFont:_preferFont width:_maxWidth].width;
+                        CGFloat padding = 10;
+                        CGFloat addtionGap = 2;
+                        if (width > contentWidth - appendWidth - padding) {
+                            lineStr = [lineStr substringToIndex:lineStr.length - appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap];
+//                            lineStr = [lineStr stringByReplacingCharactersInRange:NSMakeRange(lineStr.length - appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap, appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap) withString:dotStr];
+                            
                         }
+                            
+                        lineStr = [[lineStr tmui_trim] stringByAppendingString:dotStr];
+                        
                     }
                     [foldStr appendString:lineStr];
                 }

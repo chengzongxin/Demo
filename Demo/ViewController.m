@@ -57,11 +57,11 @@
     });
     
     
-    NSString *str = @"dfsfdshhfesf sddsfkjd lkfdsj lfjh sdjkfhk egf hsjfg dhs fghdsfg ewhj dfgjshf jdshfg hdsf gdsfdsfd asdhjk dhkajs gkfds fhkjsdfhesalfhdlskafjlaskdfj ldksaf jldsafafdsafewafsa fds fadsf das fdas fdsaf dsaf dsaf dsafeawfdewafefrg 12313123213 sdad";
+    NSString *str = @"hdhhdsa  dfsfdshhfesf sddsfkjd lkfdsj lfjh sdjkfhk egf hsjfg dhs fghdsfg ewhj dfgjshf jdshfg hdsf gdsfdsfd asdhjk dhkajs gkfds fhkjsdfhesalfhdlskafjlaskdfj ldksaf jldsafafdsafewafsa fds fadsf das fdas fdsaf dsaf dsaf dsafeawfdewafefrg 12313123213 sdad  来电文字大萨达俺爹是  佛挡杀佛第三方加快速度发多少粉红色的发多少";
     
     ExpandLabel *label = ExpandLabel.new;
     
-    label.numberOfLines = 3;
+    label.numberOfLines = 7;
     label.lineSpacing = 10;
     label.maxWidth = TMUI_SCREEN_WIDTH;
     label.preferFont = UIFont(20);
@@ -77,7 +77,7 @@
     };
 //    label.tagStr = @"入住新家";
 //    label.contentStr = str;
-    [label setTagStr:@"#入住新家#  " contentStr:str];
+    [label setTagStr:@"#123入住新家#  " contentStr:str];
     
 //    label.attributedText = [NSAttributedString tmui_attributedStringWithString:str font:UIFont(20) color:UIColor.redColor];
 }
