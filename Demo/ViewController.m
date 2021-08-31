@@ -61,7 +61,7 @@
     
     ExpandLabel *label = ExpandLabel.new;
     
-    label.numberOfLines = 7;
+    label.numberOfLines = 5;
     label.lineSpacing = 10;
     label.maxWidth = TMUI_SCREEN_WIDTH;
     label.preferFont = UIFont(20);
@@ -77,9 +77,11 @@
     };
 //    label.tagStr = @"入住新家";
 //    label.contentStr = str;
-    [label setTagStr:@"#123入住新家#  " contentStr:str];
-    
-//    label.attributedText = [NSAttributedString tmui_attributedStringWithString:str font:UIFont(20) color:UIColor.redColor];
+//    [label setTagStr:@"#123入住新家#  " contentStr:str];
+    [label setTagStr:@"#123入住新家#  "
+         tagAttrDict:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(20)}
+          contentStr:str
+     contentAttrDict:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(20)}];
 }
 
 @end

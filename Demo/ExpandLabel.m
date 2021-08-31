@@ -58,6 +58,15 @@
     [self drawText];
 }
 
+- (void)setTagStr:(NSString *)tagStr tagAttrDict:(NSDictionary *)tagAttrDict contentStr:(NSString *)contentStr contentAttrDict:(NSDictionary *)contentAttrDict{
+    _tagStr = tagStr;
+    _contentStr = contentStr;
+    _tagAttrDict = tagAttrDict;
+    _contentAttrDict = contentAttrDict;
+    
+    [self drawText];
+}
+
 
 - (void)unfoldBtnClick{
     if (self.unfoldClick) {
@@ -77,7 +86,7 @@
 - (NSAttributedString *)contentAttrString{
     if (_contentAttrString == nil) {
         CGFloat contentWidth = _maxWidth;
-        NSString *tagStr = self.tagStr;
+        NSString *tagStr = self.tagStr?:@"";
         NSString *contentStr = [self.contentStr tmui_trim];
         
         NSString *allStr = [NSString stringWithFormat:@"%@%@",tagStr,contentStr];
@@ -115,8 +124,6 @@
                         CGFloat addtionGap = 2;
                         if (width > contentWidth - appendWidth - padding) {
                             lineStr = [lineStr substringToIndex:lineStr.length - appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap];
-//                            lineStr = [lineStr stringByReplacingCharactersInRange:NSMakeRange(lineStr.length - appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap, appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap) withString:dotStr];
-                            
                         }
                             
                         lineStr = [[lineStr tmui_trim] stringByAppendingString:dotStr];
@@ -132,12 +139,33 @@
 
         BOOL oneLine = lines.count <= 1;
         
+//        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] init];
+//
+//        if (!tmui_isNullString(self.tagStr) && self.tagAttrDict) {
+//            [attr appendAttributedString:[[NSAttributedString alloc] initWithString:self.tagStr attributes:self.tagAttrDict]];
+//        }
+//
+//        if (!tmui_isNullString(allStr) && self.contentAttrDict) {
+//            [attr appendAttributedString:[[NSAttributedString alloc] initWithString:self.contentStr attributes:self.contentAttrDict]];
+//        }
+//
+//        if (!oneLine) {
+//            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//            paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+//            [paragraphStyle setLineSpacing:oneLine?0:self.lineSpacing];// 调整行间距
+//            [attr tmui_setAttributes:@{NSParagraphStyleAttributeName:paragraphStyle}];
+//        }
+        
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
         [paragraphStyle setLineSpacing:oneLine?0:self.lineSpacing];// 调整行间距
         
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:allStr attributes:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(20),NSParagraphStyleAttributeName:paragraphStyle}];
-        [attr addAttributes:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(20)} range:[allStr rangeOfString:tagStr]];
+        NSMutableDictionary *allDict = [self.contentAttrDict mutableCopy];
+        allDict[NSParagraphStyleAttributeName] = paragraphStyle;
+        
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:allStr attributes:allDict];
+        [attr addAttributes:self.tagAttrDict range:[allStr rangeOfString:tagStr]];
+        
         _contentAttrString = attr;
     }
     return _contentAttrString;

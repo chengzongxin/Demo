@@ -22,7 +22,11 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic, assign) BOOL isContentAllShow;
 
 @property (nonatomic, strong) NSString *tagStr;
+@property (nonatomic, strong) NSDictionary *tagAttrDict;
 @property (nonatomic, strong) NSString *contentStr;
+@property (nonatomic, strong) NSDictionary *contentAttrDict;
+
+
 @property (nonatomic, assign) BOOL isFold;
 
 // attr
@@ -31,6 +35,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)setTagStr:(NSString *)tagStr contentStr:(NSString *)contentStr;
+
+
+- (void)setTagStr:(NSString *)tagStr
+      tagAttrDict:(NSDictionary *)tagAttrDict
+       contentStr:(NSString *)contentStr
+  contentAttrDict:(NSDictionary *)contentAttrDict;
 
 @property (nonatomic, copy) void (^unfoldClick)(void);
 
