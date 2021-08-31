@@ -209,7 +209,7 @@
 		16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */; };
 		16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C54B268325E20024BA20 /* THKRequestCommand.m */; };
 		16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */; };
-		16EDCE9026DE26D500A3D5D2 /* ExpandLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EDCE8F26DE26D500A3D5D2 /* ExpandLabel.m */; };
+		16EDCE9026DE26D500A3D5D2 /* THKExpandLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */; };
 		16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516AA26D4C2E5002500F7 /* THKDiaryBookModel.m */; };
@@ -668,8 +668,8 @@
 		16E5C54B268325E20024BA20 /* THKRequestCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKRequestCommand.m; sourceTree = "<group>"; };
 		16E5C590268330270024BA20 /* MLeaksMessenger+HookAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MLeaksMessenger+HookAlert.h"; sourceTree = "<group>"; };
 		16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MLeaksMessenger+HookAlert.m"; sourceTree = "<group>"; };
-		16EDCE8E26DE26D500A3D5D2 /* ExpandLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExpandLabel.h; sourceTree = "<group>"; };
-		16EDCE8F26DE26D500A3D5D2 /* ExpandLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExpandLabel.m; sourceTree = "<group>"; };
+		16EDCE8E26DE26D500A3D5D2 /* THKExpandLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKExpandLabel.h; sourceTree = "<group>"; };
+		16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKExpandLabel.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		16F5169D26D4C2B8002500F7 /* THKDiaryBookVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookVM.h; sourceTree = "<group>"; };
@@ -752,8 +752,8 @@
 				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				16EDCE8E26DE26D500A3D5D2 /* ExpandLabel.h */,
-				16EDCE8F26DE26D500A3D5D2 /* ExpandLabel.m */,
+				16EDCE8E26DE26D500A3D5D2 /* THKExpandLabel.h */,
+				16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */,
 				16F5168F26D4C11D002500F7 /* DiaryBook */,
 				16611B29269692D10089E41B /* MaterialClassification */,
 				16611B54269692D20089E41B /* MaterialHotRank */,
@@ -2267,7 +2267,7 @@
 				166FCBC426D8716700FA83A8 /* THKDiaryBookLastCell.m in Sources */,
 				16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */,
 				168679962692B8AC00650023 /* THKMaterialRecommendRankResponse.m in Sources */,
-				16EDCE9026DE26D500A3D5D2 /* ExpandLabel.m in Sources */,
+				16EDCE9026DE26D500A3D5D2 /* THKExpandLabel.m in Sources */,
 				16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */,
 				16E5C51E26830DCB0024BA20 /* THKIdentityView.m in Sources */,
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,

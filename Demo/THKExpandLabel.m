@@ -5,9 +5,9 @@
 //  Created by Joe.cheng on 2021/8/31.
 //
 
-#import "ExpandLabel.h"
+#import "THKExpandLabel.h"
 
-@interface ExpandLabel ()
+@interface THKExpandLabel ()
 
 @property (nonatomic, strong) NSAttributedString *contentAttrString;
 
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation ExpandLabel
+@implementation THKExpandLabel
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -122,7 +122,7 @@
                         NSString *appendStr = [NSString stringWithFormat:@"%@%@",dotStr,self.foldBtn.tmui_text];
                         CGFloat appendWidth = [appendStr tmui_sizeWithFont:_preferFont width:_maxWidth].width;
                         CGFloat padding = 10;
-                        CGFloat addtionGap = 2;
+                        CGFloat addtionGap = 10;
                         if (width > contentWidth - appendWidth - padding) {
                             lineStr = [lineStr substringToIndex:lineStr.length - appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap];
                         }
@@ -140,22 +140,6 @@
 
         BOOL oneLine = lines.count <= 1;
         
-//        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] init];
-//
-//        if (!tmui_isNullString(self.tagStr) && self.tagAttrDict) {
-//            [attr appendAttributedString:[[NSAttributedString alloc] initWithString:self.tagStr attributes:self.tagAttrDict]];
-//        }
-//
-//        if (!tmui_isNullString(allStr) && self.contentAttrDict) {
-//            [attr appendAttributedString:[[NSAttributedString alloc] initWithString:self.contentStr attributes:self.contentAttrDict]];
-//        }
-//
-//        if (!oneLine) {
-//            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-//            paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-//            [paragraphStyle setLineSpacing:oneLine?0:self.lineSpacing];// 调整行间距
-//            [attr tmui_setAttributes:@{NSParagraphStyleAttributeName:paragraphStyle}];
-//        }
         
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
@@ -185,4 +169,3 @@
 
 
 @end
-

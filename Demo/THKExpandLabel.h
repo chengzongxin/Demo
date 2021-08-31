@@ -12,14 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-@interface ExpandLabel : UILabel
+@interface THKExpandLabel : UILabel
 
 @property (nonatomic, assign) CGFloat maxWidth;///< 富文本最大宽度
 @property (nonatomic, strong) UIFont *preferFont;///< 富文本计算字体，因为富文本可能存在多个字体
-//@property (nonatomic, assign) NSInteger maxline;
-
-
-//@property (nonatomic, assign) BOOL isContentAllShow;
 
 @property (nonatomic, assign) BOOL isFold;
 

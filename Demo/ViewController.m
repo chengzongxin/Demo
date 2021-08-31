@@ -11,7 +11,7 @@
 #import "THKMaterialHotRankVC.h"
 #import "THKMaterialHotRankVM.h"
 #import "THKDiaryBookVC.h"
-#import "ExpandLabel.h"
+#import "THKExpandLabel.h"
 
 @interface ViewController ()
 
@@ -56,19 +56,19 @@
         [self.navigationController pushViewController:vc animated:YES];
     });
     
+    NSString *tag = @"#123入住新家#  ";
+    NSString *str = @"hdhhdsa  来电文字大萨达俺爹是  dfsfdshhfesf sddsfkjd lkfdsj lfjh sdjkfhk egf hsjfg dhs fghdsfg ewhj dfgjshf jdshfg hdsf gdsfdsfd asdhjk dhkaj方加快速度发多少粉红色的发多askj ldksaf jldsafafdsafewsa fds fadsf das fdas fdsaf dsaf dsaf dsaefrg 12313123213 sdad  来电文字大萨达俺爹是  佛挡杀佛第三方加快速度发多少粉红dsad发多少";
     
-    NSString *str = @"hdhhdsa  dfsfdshhfesf sddsfkjd lkfdsj lfjh sdjkfhk egf hsjfg dhs fghdsfg ewhj dfgjshf jdshfg hdsf gdsfdsfd asdhjk dhkajs gkfds fhkjsdfhesalfhdlskafjlaskdfj ldksaf jldsafafdsafewafsa fds fadsf das fdas fdsaf dsaf dsaf dsafeawfdewafefrg 12313123213 sdad  来电文字大萨达俺爹是  佛挡杀佛第三方加快速度发多少粉红色的发多少";
+    THKExpandLabel *label = THKExpandLabel.new;
     
-    ExpandLabel *label = ExpandLabel.new;
-    
-    label.numberOfLines = 5;
-    label.lineGap = 5;
-    label.maxWidth = TMUI_SCREEN_WIDTH;
-    label.preferFont = UIFont(20);
+    label.numberOfLines = 8;
+    label.lineGap = 6;
+    label.maxWidth = TMUI_SCREEN_WIDTH - 100;
+    label.preferFont = UIFont(16);
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(self.view);
-        make.top.mas_equalTo(600);
+        make.left.right.equalTo(self.view).inset(50);
+        make.top.mas_equalTo(400);
     }];
     @weakify(label);
     label.unfoldClick = ^{
@@ -78,10 +78,10 @@
 //    label.tagStr = @"入住新家";
 //    label.contentStr = str;
 //    [label setTagStr:@"#123入住新家#  " contentStr:str];
-    [label setTagStr:@"#123入住新家#  "
-         tagAttrDict:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(20)}
+    [label setTagStr:tag
+         tagAttrDict:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(16)}
           contentStr:str
-     contentAttrDict:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(20)}];
+     contentAttrDict:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(16)}];
 }
 
 @end
