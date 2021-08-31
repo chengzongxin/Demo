@@ -62,7 +62,7 @@
     ExpandLabel *label = ExpandLabel.new;
     
     label.numberOfLines = 5;
-    label.lineSpacing = 5;
+    label.lineGap = 5;
     label.maxWidth = TMUI_SCREEN_WIDTH;
     label.preferFont = UIFont(20);
     [self.view addSubview:label];

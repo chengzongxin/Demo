@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL isFold;
 
 // attr
-@property (nonatomic, assign) NSInteger lineSpacing;
+@property (nonatomic, assign) NSInteger lineGap;
 
 
 

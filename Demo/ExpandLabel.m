@@ -38,7 +38,7 @@
     [self addSubview:self.foldBtn];
     [self.foldBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).inset(10);
-        make.bottom.equalTo(self).inset(10);
+        make.bottom.equalTo(self).inset(0);
     }];
 }
 
@@ -159,7 +159,7 @@
         
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
         paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-        [paragraphStyle setLineSpacing:oneLine?0:self.lineSpacing];// 调整行间距
+        [paragraphStyle setLineSpacing:oneLine?0:self.lineGap];// 调整行间距
         
         NSMutableDictionary *allDict = [self.contentAttrDict mutableCopy];
         allDict[NSParagraphStyleAttributeName] = paragraphStyle;
