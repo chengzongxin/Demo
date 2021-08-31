@@ -9,6 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+
+
 @interface ExpandLabel : UILabel
 
 @property (nonatomic, assign) CGFloat maxWidth;///< 富文本最大宽度
@@ -28,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)setTagStr:(NSString *)tagStr contentStr:(NSString *)contentStr;
+
+@property (nonatomic, copy) void (^unfoldClick)(void);
 
 
 @end

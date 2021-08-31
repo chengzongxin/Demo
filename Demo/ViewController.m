@@ -64,12 +64,17 @@
     label.numberOfLines = 3;
     label.lineSpacing = 10;
     label.maxWidth = TMUI_SCREEN_WIDTH;
+    label.preferFont = UIFont(20);
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.mas_equalTo(600);
     }];
-    
+    @weakify(label);
+    label.unfoldClick = ^{
+        @strongify(label);
+        NSLog(@"%@",label.text);
+    };
 //    label.tagStr = @"入住新家";
 //    label.contentStr = str;
     [label setTagStr:@"入住新家" contentStr:str];

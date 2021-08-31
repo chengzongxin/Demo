@@ -17,18 +17,61 @@
 
 @property (nonatomic, strong) NSAttributedString *contentAttrString;
 
+@property (nonatomic, strong) UIButton *foldBtn;
+
 @end
 
 @implementation ExpandLabel
 
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupSubviews];
+    }
+    return self;
+}
 
+- (void)setupSubviews{
+    self.userInteractionEnabled = YES;
+    [self addSubview:self.foldBtn];
+    [self.foldBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).inset(10);
+        make.bottom.equalTo(self).inset(10);
+    }];
+}
 
+- (void)setPreferFont:(UIFont *)preferFont{
+    _preferFont = preferFont;
+    self.foldBtn.tmui_font = preferFont;
+    CGFloat width = [self.foldBtn.tmui_text tmui_sizeForFont:preferFont size:CGSizeMax lineHeight:0 mode:NSLineBreakByWordWrapping].width;
+    [self.foldBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(preferFont.lineHeight);
+        make.width.mas_equalTo(width);
+    }];
+}
 
 - (void)setTagStr:(NSString *)tagStr contentStr:(NSString *)contentStr{
     _tagStr = tagStr;
     _contentStr = contentStr;
     
+    [self drawText];
+}
+
+
+- (void)unfoldBtnClick{
+    if (self.unfoldClick) {
+        self.unfoldClick();
+    }
+    self.numberOfLines = 0;
+    
+    [self drawText];
+}
+
+- (void)drawText{
+    _contentAttrString = nil;
     self.attributedText = [self contentAttrString];
+    self.foldBtn.hidden = !self.isFold;
 }
 
 - (NSAttributedString *)contentAttrString{
@@ -92,11 +135,22 @@
         paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
         [paragraphStyle setLineSpacing:oneLine?0:self.lineSpacing];// 调整行间距
         
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:allStr attributes:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(16),NSParagraphStyleAttributeName:paragraphStyle}];
-        [attr addAttributes:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(16)} range:[allStr rangeOfString:tagStr]];
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:allStr attributes:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(20),NSParagraphStyleAttributeName:paragraphStyle}];
+        [attr addAttributes:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(20)} range:[allStr rangeOfString:tagStr]];
         _contentAttrString = attr;
     }
     return _contentAttrString;
+}
+
+- (UIButton *)foldBtn{
+    if (!_foldBtn) {
+        _foldBtn = [[UIButton alloc] init];
+        _foldBtn.tmui_text = @"展开";
+        _foldBtn.tmui_titleColor = UIColorHex(5B6F9C);
+        _foldBtn.hidden = YES;
+        [_foldBtn tmui_addTarget:self action:@selector(unfoldBtnClick)];
+    }
+    return _foldBtn;
 }
 
 
