@@ -9,15 +9,16 @@
 
 @interface ExpandLabel ()
 
-@property (nonatomic, strong) NSAttributedString *originAttributedText;
-
-@property (nonatomic, strong) NSArray <NSAttributedString *> *originAttributedTexts;
-
-@property (nonatomic, strong) UILabel *foldLabel;
-
 @property (nonatomic, strong) NSAttributedString *contentAttrString;
 
 @property (nonatomic, strong) UIButton *foldBtn;
+
+
+// local var
+@property (nonatomic, strong) NSString *tagStr;
+@property (nonatomic, strong) NSDictionary *tagAttrDict;
+@property (nonatomic, strong) NSString *contentStr;
+@property (nonatomic, strong) NSDictionary *contentAttrDict;
 
 @end
 

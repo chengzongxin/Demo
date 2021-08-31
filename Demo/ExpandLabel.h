@@ -21,12 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 //@property (nonatomic, assign) BOOL isContentAllShow;
 
-@property (nonatomic, strong) NSString *tagStr;
-@property (nonatomic, strong) NSDictionary *tagAttrDict;
-@property (nonatomic, strong) NSString *contentStr;
-@property (nonatomic, strong) NSDictionary *contentAttrDict;
-
-
 @property (nonatomic, assign) BOOL isFold;
 
 // attr
