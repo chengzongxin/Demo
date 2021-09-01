@@ -61,7 +61,7 @@
     
     THKExpandLabel *label = THKExpandLabel.new;
     
-    label.numberOfLines = 8;
+    label.numberOfLines = 6;
     label.lineGap = 6;
     label.maxWidth = TMUI_SCREEN_WIDTH - 100;
     label.preferFont = UIFont(16);

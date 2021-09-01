@@ -105,28 +105,36 @@
             _maxWidth = self.width;
         }
         
-        NSArray *lines = [allStr tmui_linesArrayForFont:font maxWidth:_maxWidth];
+        NSMutableAttributedString *calcAttr = [[NSMutableAttributedString alloc] initWithString:allStr attributes:self.contentAttrDict];
+        [calcAttr addAttributes:self.tagAttrDict range:[allStr rangeOfString:tagStr]];
+        
+        NSArray *lines = [self getLinesForAttrStr:calcAttr maxWidth:_maxWidth];
+        
+        NSLog(@"111 %@",lines);
+//        [allStr tmui_linesArrayForFont:nil maxWidth:0];
         if (self.numberOfLines > 0) {
             // 只显示3行文字
             NSInteger limitLine = self.numberOfLines;
             NSString *dotStr = @"...     ";
             if (lines.count > limitLine) {
+                
+                NSArray *lineStrs = [self getLineTextsFromLines:lines str:calcAttr];
                 self.isFold = YES;
                 NSMutableString *foldStr = [NSMutableString string];
                 for (int i = 0; i < limitLine; i++) {
-                    NSString *lineStr = lines[i];
+                    NSString *lineStr = lineStrs[i];
                     if (i == limitLine - 1) {
                         // 最后一行，铺满需要截取
+                        // 最后一行宽度
                         CGFloat width = [lineStr tmui_widthForFont:font];
-                        
+                        // 拼接文本
                         NSString *appendStr = [NSString stringWithFormat:@"%@%@",dotStr,self.foldBtn.tmui_text];
                         CGFloat appendWidth = [appendStr tmui_sizeWithFont:_preferFont width:_maxWidth].width;
                         CGFloat padding = 10;
-                        CGFloat addtionGap = 10;
+                        CGFloat addtionGap = 4;
                         if (width > contentWidth - appendWidth - padding) {
                             lineStr = [lineStr substringToIndex:lineStr.length - appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap];
                         }
-                            
                         lineStr = [[lineStr tmui_trim] stringByAppendingString:dotStr];
                         
                     }
@@ -137,23 +145,41 @@
         }else{
             self.isFold = NO;
         }
-
-        BOOL oneLine = lines.count <= 1;
         
-        
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-        [paragraphStyle setLineSpacing:oneLine?0:self.lineGap];// 调整行间距
-        
-        NSMutableDictionary *allDict = [self.contentAttrDict mutableCopy];
-        allDict[NSParagraphStyleAttributeName] = paragraphStyle;
-        
-        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:allStr attributes:allDict];
+        NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:allStr attributes:self.contentAttrDict];
         [attr addAttributes:self.tagAttrDict range:[allStr rangeOfString:tagStr]];
+        
+        if (lines.count >= 1) {
+            NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+            paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+            [paragraphStyle setLineSpacing:self.lineGap];// 调整行间距
+            [attr tmui_setAttributes:@{NSParagraphStyleAttributeName:paragraphStyle}];
+        }
         
         _contentAttrString = attr;
     }
     return _contentAttrString;
+}
+
+/// 获取富文本占据行数 CTLine
+- (NSArray *)getLinesForAttrStr:(NSAttributedString *)attrStr maxWidth:(CGFloat)maxWidth{
+    YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:CGSizeMake(maxWidth, CGFLOAT_MAX) text:attrStr];
+    NSArray *lines = (NSArray *)CTFrameGetLines(layout.frame);
+    return lines;
+}
+
+/// 获取每一行富文本内容,lines为 (NSArray *)CTFrameGetLines类型
+- (NSArray <NSString *>*)getLineTextsFromLines:(NSArray *)lines str:(NSAttributedString *)attr{
+    
+    NSMutableArray *linesArray = [[NSMutableArray alloc]init];
+    for (id line in lines) {
+        CTLineRef lineRef = (__bridge  CTLineRef )line;
+        CFRange lineRange = CTLineGetStringRange(lineRef);
+        NSRange range = NSMakeRange(lineRange.location, lineRange.length);
+        NSString *lineString = [attr.string substringWithRange:range];
+        [linesArray addObject:lineString];
+    }
+    return linesArray;
 }
 
 - (UIButton *)foldBtn{
