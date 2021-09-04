@@ -183,7 +183,7 @@ static CGFloat const kBottomBarH = 50;
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
-        _tableView.contentInset =UIEdgeInsetsMake(0, 0, -20, 0); // 底部多余20
+        _tableView.contentInset =UIEdgeInsetsMake(0, 0, 400, 0); // 底部多余20
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView registerClass:THKDiaryBookCellHeaderView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(THKDiaryBookCellHeaderView.class)];
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
