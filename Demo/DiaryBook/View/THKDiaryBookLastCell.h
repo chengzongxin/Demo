@@ -10,7 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKDiaryBookLastCell : UITableViewCell <THKDiaryBookCellBindVM>
+@interface THKDiaryBookLastCell : UITableViewCell
+
+@property (nonatomic, strong, readonly) RACSubject *urgeUpdateSubject;
 
 @end
 

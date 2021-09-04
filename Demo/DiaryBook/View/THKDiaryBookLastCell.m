@@ -14,6 +14,9 @@
 @property (nonatomic, strong) THKDiaryCircleView *circleView;
 @property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) UIButton *updateButton;
+
+@property (nonatomic, strong) RACSubject *urgeUpdateSubject;
+
 @end
 
 @implementation THKDiaryBookLastCell
@@ -67,6 +70,7 @@
     }];
      
     [self.contentLabel tmui_setAttributesString:@"屋主还在为自己的家努力，你可以提醒TA继续更新～" lineSpacing:6];
+    self.circleView.hidden = YES;
     
 }
 
@@ -77,105 +81,10 @@
 }
 
 - (void)updateButtonClick:(UIButton *)btn{
-//    [self addParticleEffect:CGPointMake(btn.centerX, btn.y)];
-
-    [self heartEffect:CGPointMake(btn.centerX, btn.y)];
+    [self addParticleEffect:CGPointMake(btn.centerX, btn.y)];
+    
+    [self.urgeUpdateSubject sendNext:nil];
 }
-
-- (void)heartEffect:(CGPoint)point{
-    
-    UIImage *img = [UIImage imageNamed:@"diary_bixin_icon"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
-    imageView.frame = CGRectMake(point.x, point.y, img.size.width, img.size.height);
-    [self.contentView addSubview:imageView];
-    
-    CGRect rect = [imageView tmui_convertRect:imageView.bounds toViewOrWindow:TMUI_AppWindow];
-    
-    [imageView.layer addAnimation:[self lightAnimationFrom:rect] forKey:nil];
-    
-    @weakify(imageView);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        @strongify(imageView);
-        [imageView removeFromSuperview];
-    });
-}
-
-- (CAAnimation *)lightAnimationFrom:(CGRect)frame {
-    
-    // 位置
-    CAKeyframeAnimation *animation=[CAKeyframeAnimation animationWithKeyPath:@"position"];
-    animation.beginTime = 0.1;
-    animation.duration = 2.0;
-    animation.removedOnCompletion = YES;
-    animation.fillMode = kCAFillModeForwards;
-    animation.repeatCount = 0;
-    animation.calculationMode = kCAAnimationCubicPaced;
-    
-//    CGMutablePathRef curvedPath = CGPathCreateMutable();
-//    CGPoint point0 = CGPointMake(frame.origin.x + frame.size.width / 2, frame.origin.y + frame.size.height / 2);
-//
-//    CGPathMoveToPoint(curvedPath, NULL, point0.x, point0.y);
-//    NSInteger springWidth = frame.size.width * 1.5;
-//    float x11 = point0.x - arc4random() % springWidth + springWidth;
-//    float y11 = frame.origin.y - arc4random() % springWidth - springWidth;
-//    float x1 = point0.x - arc4random() % (springWidth/2) + springWidth/2;
-//    float y1 = y11 - arc4random() % springWidth - (springWidth * 1.3);
-//    CGPoint point1 = CGPointMake(x1, y1);
-//    CGPathAddQuadCurveToPoint(curvedPath, NULL, x11, y11, point1.x, point1.y);
-    
-//    int conffset2 = self.superview.bounds.size.width * 0.2;
-//    int conffset21 = self.superview.bounds.size.width * 0.1;
-//    float x2 = point0.x - arc4random() % conffset2 + conffset2;
-//    float y2 = MAX(0.0, frame.origin.y - 280) + arc4random() % springWidth;
-//    float x21 = point0.x - arc4random() % conffset21  + conffset21;
-//    float y21 = (y2 + y1) / 2 + arc4random() % springWidth - springWidth;
-//    CGPoint point2 = CGPointMake(x2, y2);
-//    CGPathAddQuadCurveToPoint(curvedPath, NULL, x21, y21, point2.x, point2.y);
-    
-    CGMutablePathRef curvedPath = CGPathCreateMutable();
-    CGPoint point0 = frame.origin;
-    CGPathMoveToPoint(curvedPath, NULL, point0.x, point0.y);
-    CGPoint point1 = CGPointMake(100, 100);
-//    CGPathAddQuadCurveToPoint(curvedPath, NULL, 0, 0, point1.x, point1.y);
-    CGPathAddLineToPoint(curvedPath, NULL, point1.x, point1.y);
-//    CGPathCloseSubpath(curvedPath);
-    animation.path = curvedPath;
-    
-    CGPathRelease(curvedPath);
-    
-    // 透明度变化
-    //因视图设置了alpha为0，为了一开始能正常显示出来，这里加一个固定stayAlpha1Sec秒，alpha为1的动画(仅仅是为了在前stayAlpha1Sec秒内视图能正常显示出来)
-    float stayAlpha1Sec = 1;
-    CABasicAnimation *opacityAnim_alphaOf1 = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    opacityAnim_alphaOf1.fromValue = [NSNumber numberWithFloat:1.0];
-    opacityAnim_alphaOf1.toValue = [NSNumber numberWithFloat:1.0];
-    opacityAnim_alphaOf1.removedOnCompletion = NO;
-    opacityAnim_alphaOf1.beginTime = 0;
-    opacityAnim_alphaOf1.duration = stayAlpha1Sec;
-    
-    //正常显示stayAlpha1Sec秒后，再渐变alpha消失
-    CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    opacityAnim.fromValue = [NSNumber numberWithFloat:1.0];
-    opacityAnim.toValue = [NSNumber numberWithFloat:0];
-    opacityAnim.removedOnCompletion = NO;
-    opacityAnim.beginTime = stayAlpha1Sec;
-    opacityAnim.duration = 3 - stayAlpha1Sec;
-    
-    // 比例
-    CABasicAnimation *scaleAnim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    scaleAnim.fromValue = [NSNumber numberWithFloat:.0];
-    scaleAnim.toValue = [NSNumber numberWithFloat:1];
-    scaleAnim.removedOnCompletion = NO;
-    scaleAnim.fillMode = kCAFillModeForwards;
-    scaleAnim.duration = .5;
-    
-    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
-    animGroup.animations = [NSArray arrayWithObjects: scaleAnim, opacityAnim, animation, opacityAnim_alphaOf1, nil];
-    animGroup.duration = 3;
-    
-    return animGroup;
-}
-
 
 - (void)addParticleEffect:(CGPoint)point{
     self.layer.zPosition = 9999;
@@ -283,5 +192,7 @@
     }
     return _updateButton;
 }
+
+TMUI_PropertyLazyLoad(RACSubject, urgeUpdateSubject);
 
 @end
