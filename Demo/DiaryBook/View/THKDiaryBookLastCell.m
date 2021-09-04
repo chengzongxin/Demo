@@ -84,46 +84,61 @@
 
 - (void)heartEffect:(CGPoint)point{
     
-    UIImage *img = [UIImage imageNamed:@"icon_crown_yellow"];
-    UIImageView *imgV = [[UIImageView alloc] initWithImage:img];
-    imgV.frame = CGRectMake(point.x, point.y, img.size.width, img.size.height);
-    [self.contentView addSubview:imgV];
+    UIImage *img = [UIImage imageNamed:@"diary_bixin_icon"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
+    imageView.frame = CGRectMake(point.x, point.y, img.size.width, img.size.height);
+    [self.contentView addSubview:imageView];
     
-    [imgV.layer addAnimation:[self lightAnimationFrom:imgV.bounds] forKey:nil];
+    CGRect rect = [imageView tmui_convertRect:imageView.bounds toViewOrWindow:TMUI_AppWindow];
+    
+    [imageView.layer addAnimation:[self lightAnimationFrom:rect] forKey:nil];
+    
+    @weakify(imageView);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        @strongify(imageView);
+        [imageView removeFromSuperview];
+    });
 }
 
 - (CAAnimation *)lightAnimationFrom:(CGRect)frame {
     
     // 位置
     CAKeyframeAnimation *animation=[CAKeyframeAnimation animationWithKeyPath:@"position"];
-    animation.beginTime = 0.5;
-    animation.duration = 2.5;
+    animation.beginTime = 0.1;
+    animation.duration = 2.0;
     animation.removedOnCompletion = YES;
     animation.fillMode = kCAFillModeForwards;
-    animation.repeatCount= 0;
+    animation.repeatCount = 0;
     animation.calculationMode = kCAAnimationCubicPaced;
     
+//    CGMutablePathRef curvedPath = CGPathCreateMutable();
+//    CGPoint point0 = CGPointMake(frame.origin.x + frame.size.width / 2, frame.origin.y + frame.size.height / 2);
+//
+//    CGPathMoveToPoint(curvedPath, NULL, point0.x, point0.y);
+//    NSInteger springWidth = frame.size.width * 1.5;
+//    float x11 = point0.x - arc4random() % springWidth + springWidth;
+//    float y11 = frame.origin.y - arc4random() % springWidth - springWidth;
+//    float x1 = point0.x - arc4random() % (springWidth/2) + springWidth/2;
+//    float y1 = y11 - arc4random() % springWidth - (springWidth * 1.3);
+//    CGPoint point1 = CGPointMake(x1, y1);
+//    CGPathAddQuadCurveToPoint(curvedPath, NULL, x11, y11, point1.x, point1.y);
+    
+//    int conffset2 = self.superview.bounds.size.width * 0.2;
+//    int conffset21 = self.superview.bounds.size.width * 0.1;
+//    float x2 = point0.x - arc4random() % conffset2 + conffset2;
+//    float y2 = MAX(0.0, frame.origin.y - 280) + arc4random() % springWidth;
+//    float x21 = point0.x - arc4random() % conffset21  + conffset21;
+//    float y21 = (y2 + y1) / 2 + arc4random() % springWidth - springWidth;
+//    CGPoint point2 = CGPointMake(x2, y2);
+//    CGPathAddQuadCurveToPoint(curvedPath, NULL, x21, y21, point2.x, point2.y);
+    
     CGMutablePathRef curvedPath = CGPathCreateMutable();
-    CGPoint point0 = CGPointMake(frame.origin.x + frame.size.width / 2, frame.origin.y + frame.size.height / 2);
-    
+    CGPoint point0 = frame.origin;
     CGPathMoveToPoint(curvedPath, NULL, point0.x, point0.y);
-    NSInteger springWidth = frame.size.width * 1.5;
-    float x11 = point0.x - arc4random() % springWidth + springWidth;
-    float y11 = frame.origin.y - arc4random() % springWidth - springWidth;
-    float x1 = point0.x - arc4random() % (springWidth/2) + springWidth/2;
-    float y1 = y11 - arc4random() % springWidth - (springWidth * 1.3);
-    CGPoint point1 = CGPointMake(x1, y1);
-    CGPathAddQuadCurveToPoint(curvedPath, NULL, x11, y11, point1.x, point1.y);
-    
-    int conffset2 = self.superview.bounds.size.width * 0.2;
-    int conffset21 = self.superview.bounds.size.width * 0.1;
-    float x2 = point0.x - arc4random() % conffset2 + conffset2;
-    float y2 = MAX(0.0, frame.origin.y - 280) + arc4random() % springWidth;
-    float x21 = point0.x - arc4random() % conffset21  + conffset21;
-    float y21 = (y2 + y1) / 2 + arc4random() % springWidth - springWidth;
-    CGPoint point2 = CGPointMake(x2, y2);
-    CGPathAddQuadCurveToPoint(curvedPath, NULL, x21, y21, point2.x, point2.y);
-    
+    CGPoint point1 = CGPointMake(100, 100);
+//    CGPathAddQuadCurveToPoint(curvedPath, NULL, 0, 0, point1.x, point1.y);
+    CGPathAddLineToPoint(curvedPath, NULL, point1.x, point1.y);
+//    CGPathCloseSubpath(curvedPath);
     animation.path = curvedPath;
     
     CGPathRelease(curvedPath);
