@@ -87,9 +87,8 @@
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     UIImage *img = [UIImage imageNamed:@"diary_heart_fly"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
-//    imageView.frame = CGRectMake(point.x, point.y, img.size.width, img.size.height);
-    imageView.frame = CGRectMake(200, 600, img.size.width, img.size.height);
     [self.navigationController.view addSubview:imageView];
+    imageView.alpha = 0;
     CGRect rect = [imageView tmui_convertRect:imageView.bounds toViewOrWindow:TMUI_AppWindow];
     
     [imageView.layer addAnimation:[self lightAnimationFrom:rect] forKey:nil];
@@ -103,7 +102,7 @@
 
 
 - (CAAnimation *)lightAnimationFrom:(CGRect)frame {
-    CGPoint startP = frame.origin;
+    CGPoint startP = CGPointMake(200, 600);
     CGPoint endP = CGPointMake(100, 100);
     CGFloat duration = 2.0;
     
