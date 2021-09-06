@@ -97,11 +97,6 @@
 }
 
 - (void)recivedUrgeUpdate{
-    if (self.avatarImgView.avatarImgView.layer.animationKeys.count == 0) {
-        [self.avatarImgView.avatarImgView.layer addAnimation:[self imageViewScale] forKey:@"scaleAnimation"];
-        
-        [self.popView.layer addAnimation:[self opacityAnimation] forKey:nil];
-    }
     
     if (!self.popView.superview) {
         self.popView.layer.opacity = 0;
@@ -117,6 +112,28 @@
         
     }
     
+    // 添加动画
+    if (self.avatarImgView.avatarImgView.layer.animationKeys.count == 0) {
+        // 头像闪烁动画
+        [self.avatarImgView.avatarImgView.layer addAnimation:[self imageViewScale] forKey:@"scaleAnimation"];
+        
+        // 气泡动画
+        [self.popView.layer addAnimation:[self opacityAnimation] forKey:nil];
+        
+        // 消失动画
+        [UIView animateWithDuration:0.5
+                         animations:^{
+            self.nickNameLbl.alpha = 0;
+            self.focusBtn.alpha = 0;
+        } completion:^(BOOL finished) {
+            NSLog(@"finished");
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.nickNameLbl.alpha = 1;
+                self.focusBtn.alpha = 1;
+            });
+        }];
+        
+    }
     
 }
 
