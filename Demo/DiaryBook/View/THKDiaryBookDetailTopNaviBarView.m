@@ -111,8 +111,8 @@
         
         [self.popView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.mas_equalTo(self.avatarImgView.mas_trailing).mas_offset(10);
-            make.centerY.mas_equalTo(self.avatarImgView.mas_centerY);
-            make.height.mas_equalTo(36);
+            make.top.equalTo(self.avatarImgView);
+            make.height.mas_equalTo(40);
         }];
         
     }
