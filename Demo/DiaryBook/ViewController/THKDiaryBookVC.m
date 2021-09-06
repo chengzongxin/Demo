@@ -151,9 +151,11 @@ static CGFloat const kBottomBarH = 50;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == [tableView numberOfSections] - 1) {
         THKDiaryBookLastCell *cell = (THKDiaryBookLastCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookLastCell.class)];
-        [cell.urgeUpdateSubject subscribeNext:^(id  _Nullable x) {
-                    
-        }];
+        @weakify(self);
+        cell.animationStartBlock = ^{
+            @strongify(self);
+            [self.topBar recivedUrgeUpdate];
+        };
         return cell;
     }else{
         THKDiaryBookCell *cell = (THKDiaryBookCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookCell.class)];

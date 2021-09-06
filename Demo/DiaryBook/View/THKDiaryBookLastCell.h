@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) RACSubject *urgeUpdateSubject;
 
+@property (nonatomic, copy) void (^animationStartBlock)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

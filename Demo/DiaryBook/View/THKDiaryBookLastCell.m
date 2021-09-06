@@ -10,7 +10,7 @@
 #import "THKDiaryCircleView.h"
 #import "UIView+THKDiaryAnimation.h"
 
-@interface THKDiaryBookLastCell ()
+@interface THKDiaryBookLastCell ()<CAAnimationDelegate>
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) THKDiaryCircleView *circleView;
 @property (nonatomic, strong) UIView *lineView;
@@ -116,7 +116,13 @@
         
         CAAnimation *bgColorAnimate = [self backgroundGlowAnimationFromColor:UIColor.whiteColor toColor:UIColorHex(F6F8F6)];
         [self.updateButton.layer addAnimation:bgColorAnimate forKey:@"backgroundColor"];
+        
     }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if (self.animationStartBlock) {
+                    self.animationStartBlock();
+                }
+            });
 }
 
 
@@ -125,10 +131,10 @@
     self.animateStartPoint = rect.origin;
     self.animateEndPoint = CGPointMake(66, 66);
     
-    [self animate1:arc4random()%4+1];
+    [self animate:arc4random()%4+1];
 }
 
-- (void)animate1:(NSInteger)animateType{
+- (void)animate:(NSInteger)animateType{
     UIImage *img = [UIImage imageNamed:@"diary_heart_fly"];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:img];
     imageView.frame = CGRectMake(-1000, -1000, img.size.width, img.size.height);
@@ -154,14 +160,21 @@
         default:
             break;
     }
-    
     [imageView.layer addAnimation:animate forKey:nil];
+    
+    animate.delegate = self;
     
     @weakify(imageView);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         @strongify(imageView);
         [imageView removeFromSuperview];
     });
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    if (self.animationStartBlock) {
+        self.animationStartBlock();
+    }
 }
 
 - (void)bindViewModel:(THKDiaryBookCellVM *)viewModel{

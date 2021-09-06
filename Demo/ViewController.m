@@ -21,9 +21,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self test];
+
+    UIImage *image = [[UIImage imageNamed:@"diary_noti_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 2) resizingMode:UIImageResizingModeTile];
+    UIButton *button = [[UIButton alloc] init];
+
+    UILabel *label = [[UILabel alloc] init];
+    label.textColor = UIColor.whiteColor;
+//    label.backgroundColor = [UIColor redColor];
+    label.text = @"日本动漫dsadsadsadsafdjhdsads  dsa";
+    label.font = [UIFont systemFontOfSize:15];
+    //计算label的宽度
+    NSMutableParagraphStyle *textStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    textStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+
+    CGSize size = [label.text boundingRectWithSize:CGSizeMake(150, 20)
+                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                         attributes:@{NSFontAttributeName:label.font,NSParagraphStyleAttributeName:textStyle}
+                                            context:nil].size;
+
+    CGFloat labelW = ceil(size.width) + 1;
+    label.frame = CGRectMake(10, 4, labelW, 20);
+    [button addSubview:label];
+
+    button.frame = CGRectMake(100, 200, image.size.width + labelW - 8, image.size.height);
+    [button setBackgroundImage:image forState:UIControlStateNormal];
+    [self.view addSubview:button];
 }
+
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//
+////    [self test];
+//
+//    UIImage *image = [UIImage imageNamed:@"diary_noti_bg"];
+//    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(10, 30, 10, 10) resizingMode:UIImageResizingModeTile];
+//    UIImageView *imgV = [[UIImageView alloc] initWithImage:image];
+//    imgV.image = image;
+//    imgV.contentMode = UIViewContentModeScaleAspectFill;
+//    [self.view addSubview:imgV];
+//
+//    [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(200);
+//        make.left.mas_equalTo(100);
+//        make.size.mas_equalTo(CGSizeMake(200, 36));
+//    }];
+//}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self animate1:1];

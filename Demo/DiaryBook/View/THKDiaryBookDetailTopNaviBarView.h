@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 //- (void)updateCollectBtnState:(BOOL)isCollected;
 - (void)updateFocusBtnState:(NSInteger)uid followStatus:(BOOL)followStaus;
 
+- (void)recivedUrgeUpdate;
+
 @end
 
 NS_ASSUME_NONNULL_END

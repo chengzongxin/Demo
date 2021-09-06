@@ -7,6 +7,7 @@
 //
 
 #import "THKDiaryBookDetailTopNaviBarView.h"
+#import "UIView+THKDiaryAnimation.h"
 
 @interface THKDiaryBookDetailTopNaviBarView()
 
@@ -15,6 +16,8 @@
 @property (nonatomic, strong)UILabel *nickNameLbl;
 @property (nonatomic, strong)THKFocusButtonView *focusBtn;
 @property (nonatomic, strong)UIButton *shareBtn;
+@property (nonatomic, strong) UIImageView *notiImgView;
+@property (nonatomic, strong) UILabel *notiLbl;
 @end
 
 @implementation THKDiaryBookDetailTopNaviBarView
@@ -94,6 +97,34 @@
     [self.focusBtn setFocusStatus:followStaus];
 }
 
+- (void)recivedUrgeUpdate{
+    if (self.avatarImgView.avatarImgView.layer.animationKeys.count == 0) {
+        [self.avatarImgView.avatarImgView.layer addAnimation:[self imageViewScale] forKey:@"scaleAnimation"];
+    }
+    
+    if (!self.notiImgView.superview) {
+        [self addSubview:self.notiImgView];
+        [self.notiImgView addSubview:self.notiLbl];
+        
+        [self.notiImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.leading.mas_equalTo(self.avatarImgView.mas_trailing).mas_offset(10);
+            make.centerY.mas_equalTo(self.avatarImgView.mas_centerY);
+            make.trailing.mas_lessThanOrEqualTo(self.focusBtn.mas_leading).mas_offset(-4);
+            make.height.mas_equalTo(36);
+        }];
+        
+        [self.notiLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(20);
+            make.right.mas_equalTo(-20);
+            make.top.bottom.mas_equalTo(0);
+        }];
+        
+        [self.notiImgView.layer addAnimation:[self opacityAnimation] forKey:nil];
+    }
+}
+
+
+
 #pragma mark - sub ui lazy loads
 
 //TMUI_PropertyLazyLoad(UIButton, backBtn);
@@ -108,6 +139,35 @@ TMUI_PropertyLazyLoad(UIButton, shareBtn);
         _focusBtn.hideForFollowed = NO;
     }
     return _focusBtn;
+}
+
+- (UIImageView *)notiImgView{
+    if (!_notiImgView) {
+        _notiImgView = [[UIImageView alloc] init];
+        UIImage *image = [UIImage imageNamed:@"diary_noti_bg"];
+        image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:1];
+//        image = [image tmui_resizedInRect:CGRectMake(0, 0, 200, 36)];
+//        CGFloat sscale = 1.0/2.0;
+//        CGFloat leftRight = (image.size.width - image.size.width * sscale)/2.0;
+//        CGFloat topBottom = (image.size.height - image.size.height * sscale)/2.0;
+//        UIEdgeInsets inset = UIEdgeInsetsMake(topBottom, leftRight, topBottom, leftRight);
+//        image = [image resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
+        _notiImgView.image = image;
+        _notiImgView.contentMode = UIViewContentModeScaleAspectFill;
+//        _notiImgView.hidden = YES;
+    }
+    return _notiImgView;
+}
+
+- (UILabel *)notiLbl{
+    if (!_notiLbl) {
+        _notiLbl = [[UILabel alloc] init];
+        _notiLbl.textColor = UIColor.whiteColor;
+        _notiLbl.textAlignment = NSTextAlignmentLeft;
+        _notiLbl.font = UIFont(16);
+        _notiLbl.text = @"我已经收到啦，更新后会通知你❤️";
+    }
+    return _notiLbl;
 }
 
 @end

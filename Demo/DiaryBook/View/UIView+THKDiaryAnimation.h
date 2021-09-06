@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (CAAnimation *)heartFlyAnimate3:(CGPoint)startPoint endPoint:(CGPoint)endPoint;
 
+- (CAAnimation *)opacityAnimation;
 
 @end
 

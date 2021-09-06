@@ -313,4 +313,32 @@
     return animGroup;
 }
 
+
+- (CAAnimation *)opacityAnimation{
+    CGFloat duration = 2.0;
+    // 透明度变化
+    //因视图设置了alpha为0，为了一开始能正常显示出来，这里加一个固定stayAlpha1Sec秒，alpha为1的动画(仅仅是为了在前stayAlpha1Sec秒内视图能正常显示出来)
+    float stayAlpha1Sec = 1;
+    CABasicAnimation *opacity1Anim = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacity1Anim.fromValue = [NSNumber numberWithFloat:0];
+    opacity1Anim.toValue = [NSNumber numberWithFloat:1.0];
+//    opacity1Anim.removedOnCompletion = NO;
+    opacity1Anim.beginTime = 0;
+    opacity1Anim.duration = stayAlpha1Sec;
+    
+    //正常显示stayAlpha1Sec秒后，再渐变alpha消失
+    CABasicAnimation *opacity2Anim = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacity2Anim.fromValue = [NSNumber numberWithFloat:1.0];
+    opacity2Anim.toValue = [NSNumber numberWithFloat:0];
+//    opacity2Anim.removedOnCompletion = NO;
+    opacity2Anim.beginTime = stayAlpha1Sec;
+    opacity2Anim.duration = duration - stayAlpha1Sec;
+    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
+    animGroup.animations = @[opacity1Anim, opacity2Anim];
+    animGroup.duration = duration;
+    animGroup.removedOnCompletion = NO;
+    
+    return animGroup;
+}
+
 @end
