@@ -84,27 +84,121 @@
 }
 
 - (void)updateButtonClick:(UIButton *)btn{
-    
-    CGRect rect = [btn.imageView tmui_convertRect:btn.imageView.bounds toViewOrWindow:TMUI_AppWindow];
-    self.animateStartPoint = rect.origin;
-    self.animateEndPoint = CGPointMake(100, 80);
-    [self addHeartFlyAnimate];
+    [self addAnimations];
     
     [self.urgeUpdateSubject sendNext:nil];
 }
 
-- (void)addHeartFlyAnimate{
-    [self animate1:1];
+- (void)addAnimations{
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self animate1:2];
-    });
+    [self btnAnimation];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self animate1:3];
-    });
+    [self heartAnimation];
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self animate1:2];
+//    });
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self animate1:3];
+//    });
 }
 
+
+
+
+- (void)btnAnimation{
+    if (self.updateButton.imageView.layer.animationKeys.count == 0) {
+        CAAnimation *scaleImgAnimate = [self btnScale];
+        [self.updateButton.imageView.layer addAnimation:scaleImgAnimate forKey:@"btnScale"];
+        
+        CAAnimation *bgColorAnimate = [self backgroundGlowAnimationFromColor:UIColor.whiteColor toColor:UIColorHex(F6F8F6)];
+        [self.updateButton.layer addAnimation:bgColorAnimate forKey:@"backgroundColor"];
+    }
+    
+    
+    
+}
+
+
+-(CAAnimation *)backgroundGlowAnimationFromColor:(UIColor *)startColor toColor:(UIColor *)destColor{
+    CABasicAnimation *bgAnim1 = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+    bgAnim1.beginTime = 0;
+    bgAnim1.duration = 0.2;
+    bgAnim1.autoreverses = NO;
+    bgAnim1.fromValue = (id) startColor.CGColor;
+    bgAnim1.toValue = (id) destColor.CGColor;
+    bgAnim1.fillMode = kCAFillModeForwards;
+    
+    CABasicAnimation *bgAnim2 = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+    bgAnim2.beginTime = 0.2;
+    bgAnim2.duration = 0.2;
+    bgAnim2.autoreverses = NO;
+    bgAnim2.fromValue = (id) destColor.CGColor;
+    bgAnim2.toValue = (id) startColor.CGColor;
+    bgAnim2.fillMode = kCAFillModeForwards;
+    
+    CABasicAnimation *stopAnim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    stopAnim.fromValue = [NSNumber numberWithFloat:1];
+    stopAnim.toValue = [NSNumber numberWithFloat:1];
+    stopAnim.removedOnCompletion = NO;
+    stopAnim.fillMode = kCAFillModeForwards;
+    stopAnim.beginTime = 0.4;
+    stopAnim.duration = 0.2;
+    
+    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
+    animGroup.animations = @[bgAnim1, bgAnim2, stopAnim];
+    animGroup.duration = 0.6;
+    animGroup.repeatCount = 3;
+    animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    return animGroup;
+}
+
+- (CAAnimation *)btnScale{
+    CGFloat duration = 0.4;
+    float stopDuration = 0.2;
+    float scale = 1.3;
+    // 比例
+    float stayScale1Sec = duration / 2.0;
+    CABasicAnimation *scaleAnim1 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnim1.fromValue = [NSNumber numberWithFloat:1];
+    scaleAnim1.toValue = [NSNumber numberWithFloat:scale];
+    scaleAnim1.removedOnCompletion = NO;
+    scaleAnim1.fillMode = kCAFillModeForwards;
+    scaleAnim1.beginTime = 0;
+    scaleAnim1.duration = stayScale1Sec;
+    
+    CABasicAnimation *scaleAnim2 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    scaleAnim2.fromValue = [NSNumber numberWithFloat:scale];
+    scaleAnim2.toValue = [NSNumber numberWithFloat:1];
+    scaleAnim2.removedOnCompletion = NO;
+    scaleAnim2.fillMode = kCAFillModeForwards;
+    scaleAnim2.beginTime = stayScale1Sec;
+    scaleAnim2.duration = duration - stayScale1Sec;
+    
+    CABasicAnimation *stopAnim = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    stopAnim.fromValue = [NSNumber numberWithFloat:1];
+    stopAnim.toValue = [NSNumber numberWithFloat:1];
+    stopAnim.removedOnCompletion = NO;
+    stopAnim.fillMode = kCAFillModeForwards;
+    stopAnim.beginTime = duration;
+    stopAnim.duration = stopDuration;
+    
+    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
+    animGroup.animations = @[scaleAnim1, scaleAnim2, stopAnim];
+    animGroup.duration = duration + stopDuration;
+    animGroup.repeatCount = 3;
+    animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    return animGroup;
+}
+
+- (void)heartAnimation{
+    CGRect rect = [self.updateButton.imageView tmui_convertRect:self.updateButton.imageView.bounds toViewOrWindow:TMUI_AppWindow];
+    self.animateStartPoint = rect.origin;
+    self.animateEndPoint = CGPointMake(100, 80);
+    
+    [self animate1:arc4random()%4+1];
+}
 
 - (void)animate1:(NSInteger)animateType{
     UIImage *img = [UIImage imageNamed:@"diary_heart_fly"];
@@ -221,7 +315,6 @@
     CAAnimationGroup *animGroup = [CAAnimationGroup animation];
     animGroup.animations = @[scaleAnim1, scaleAnim2, rotationAnim1, rotationAnim2, opacity1Anim, opacity2Anim, positionAnim];
     animGroup.duration = duration;
-    positionAnim.removedOnCompletion = YES;
     
     return animGroup;
 }
@@ -286,7 +379,6 @@
     CAAnimationGroup *animGroup = [CAAnimationGroup animation];
     animGroup.animations = @[scaleAnim1, scaleAnim2, opacity1Anim, opacity2Anim, positionAnim];
     animGroup.duration = duration;
-    positionAnim.removedOnCompletion = YES;
     
     return animGroup;
 }
@@ -371,7 +463,6 @@
     CAAnimationGroup *animGroup = [CAAnimationGroup animation];
     animGroup.animations = @[scaleAnim1, scaleAnim2, opacity1Anim, opacity2Anim, rotationAnim1, rotationAnim2,positionAnim];
     animGroup.duration = duration;
-    positionAnim.removedOnCompletion = YES;
     
     return animGroup;
 }
