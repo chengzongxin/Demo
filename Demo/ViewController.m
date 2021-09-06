@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self test];
     UIImage *image = [[UIImage imageNamed:@"diary_noti_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 2) resizingMode:UIImageResizingModeTile];
     UIImageView *imgV = [[UIImageView alloc] initWithImage:image];
     

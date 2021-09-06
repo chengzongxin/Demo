@@ -16,8 +16,7 @@
 @property (nonatomic, strong)UILabel *nickNameLbl;
 @property (nonatomic, strong)THKFocusButtonView *focusBtn;
 @property (nonatomic, strong)UIButton *shareBtn;
-@property (nonatomic, strong) UIImageView *notiImgView;
-@property (nonatomic, strong) UILabel *notiLbl;
+@property (nonatomic, strong) THKDiaryNotiPopView *popView;
 @end
 
 @implementation THKDiaryBookDetailTopNaviBarView
@@ -102,26 +101,22 @@
         [self.avatarImgView.avatarImgView.layer addAnimation:[self imageViewScale] forKey:@"scaleAnimation"];
     }
     
-    if (!self.notiImgView.superview) {
-        [self addSubview:self.notiImgView];
-        [self.notiImgView addSubview:self.notiLbl];
+    if (!self.popView.superview) {
+        [self addSubview:self.popView];
         
-        [self.notiImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        self.popView.text = @"我已经收到啦，更新后会通知你❤️";
+        
+        [self.popView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.mas_equalTo(self.avatarImgView.mas_trailing).mas_offset(10);
             make.centerY.mas_equalTo(self.avatarImgView.mas_centerY);
-            make.trailing.mas_lessThanOrEqualTo(self.focusBtn.mas_leading).mas_offset(-4);
             make.height.mas_equalTo(36);
         }];
         
-        [self.notiLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(20);
-            make.right.mas_equalTo(-20);
-            make.top.bottom.mas_equalTo(0);
-        }];
-        
-        [self.notiImgView.layer addAnimation:[self opacityAnimation] forKey:nil];
+        [self.popView.layer addAnimation:[self opacityAnimation] forKey:nil];
     }
 }
+
+
 
 
 
@@ -132,6 +127,7 @@ TMUI_PropertyLazyLoad(TUserAvatarView, avatarImgView);
 TMUI_PropertyLazyLoad(UILabel, nickNameLbl);
 //TMUI_PropertyLazyLoad(UIButton, focusBtn);
 TMUI_PropertyLazyLoad(UIButton, shareBtn);
+TMUI_PropertyLazyLoad(THKDiaryNotiPopView, popView);
 
 - (THKFocusButtonView *)focusBtn{
     if (!_focusBtn) {
@@ -141,20 +137,70 @@ TMUI_PropertyLazyLoad(UIButton, shareBtn);
     return _focusBtn;
 }
 
+
+@end
+
+
+@interface THKDiaryNotiPopView ()
+
+@property (nonatomic, strong) UIImageView *notiImgView;
+@property (nonatomic, strong) UILabel *notiLbl;
+
+@end
+
+@implementation THKDiaryNotiPopView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupSubviews];
+    }
+    return self;
+}
+
+- (void)setupSubviews{
+    [self addSubview:self.notiImgView];
+    [self.notiImgView addSubview:self.notiLbl];
+    
+    [self.notiImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(0);
+        make.left.mas_equalTo(0);
+        make.width.mas_equalTo(0);
+    }];
+}
+
+- (void)setText:(NSString *)text{
+    
+    if (tmui_isNullString(text)) {
+        return;
+    }
+    
+    self.notiLbl.text = text;
+    //计算label的宽度
+    NSMutableParagraphStyle *textStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    textStyle.lineBreakMode = NSLineBreakByTruncatingTail;
+    
+    CGSize size = [self.notiLbl.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 20)
+                                           options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                        attributes:@{NSFontAttributeName:self.notiLbl.font,NSParagraphStyleAttributeName:textStyle}
+                                           context:nil].size;
+    
+    CGFloat labelW = ceil(size.width) + 1;
+    self.notiLbl.frame = CGRectMake(10, 4, labelW, 20);
+    
+    CGFloat width = labelW + 20;
+    
+    [self.notiImgView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(width);
+    }];
+}
+
 - (UIImageView *)notiImgView{
     if (!_notiImgView) {
         _notiImgView = [[UIImageView alloc] init];
-        UIImage *image = [UIImage imageNamed:@"diary_noti_bg"];
-        image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10) resizingMode:1];
-//        image = [image tmui_resizedInRect:CGRectMake(0, 0, 200, 36)];
-//        CGFloat sscale = 1.0/2.0;
-//        CGFloat leftRight = (image.size.width - image.size.width * sscale)/2.0;
-//        CGFloat topBottom = (image.size.height - image.size.height * sscale)/2.0;
-//        UIEdgeInsets inset = UIEdgeInsetsMake(topBottom, leftRight, topBottom, leftRight);
-//        image = [image resizableImageWithCapInsets:inset resizingMode:UIImageResizingModeStretch];
-        _notiImgView.image = image;
-        _notiImgView.contentMode = UIViewContentModeScaleAspectFill;
-//        _notiImgView.hidden = YES;
+        UIImage *image = [[UIImage imageNamed:@"diary_noti_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 2) resizingMode:UIImageResizingModeTile];
+        _notiImgView = [[UIImageView alloc] initWithImage:image];
     }
     return _notiImgView;
 }
@@ -164,7 +210,7 @@ TMUI_PropertyLazyLoad(UIButton, shareBtn);
         _notiLbl = [[UILabel alloc] init];
         _notiLbl.textColor = UIColor.whiteColor;
         _notiLbl.textAlignment = NSTextAlignmentLeft;
-        _notiLbl.font = UIFont(16);
+        _notiLbl.font = UIFont(15);
         _notiLbl.text = @"我已经收到啦，更新后会通知你❤️";
     }
     return _notiLbl;
