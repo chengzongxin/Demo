@@ -218,6 +218,9 @@
 		16F516BD26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516BC26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m */; };
 		16F516C326D4F964002500F7 /* THKDiaryBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516C226D4F964002500F7 /* THKDiaryBookCell.m */; };
 		16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516C826D4F986002500F7 /* THKDiaryBookCellVM.m */; };
+		16F84A5826E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A5726E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m */; };
+		16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A6626E5AEDF00192B0A /* THKFocusButtonView.m */; };
+		16F84A7926E5B40E00192B0A /* UIView+THKDiaryAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A7826E5B40E00192B0A /* UIView+THKDiaryAnimation.m */; };
 		52C516C851585D71E62A73D5 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */; };
 		6F77A8EE9D14FCE392BD835F /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D3BA603DDF9B8410FAD81B /* Pods_DemoTests.framework */; };
 		C22508FBFE83E454C360C944 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D168DD537E7BC7FA0C76927 /* Pods_Demo.framework */; };
@@ -686,6 +689,12 @@
 		16F516C226D4F964002500F7 /* THKDiaryBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCell.m; sourceTree = "<group>"; };
 		16F516C726D4F986002500F7 /* THKDiaryBookCellVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookCellVM.h; sourceTree = "<group>"; };
 		16F516C826D4F986002500F7 /* THKDiaryBookCellVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCellVM.m; sourceTree = "<group>"; };
+		16F84A5626E5AEA900192B0A /* THKDiaryBookDetailTopNaviBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookDetailTopNaviBarView.h; sourceTree = "<group>"; };
+		16F84A5726E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookDetailTopNaviBarView.m; sourceTree = "<group>"; };
+		16F84A6526E5AEDF00192B0A /* THKFocusButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKFocusButtonView.h; sourceTree = "<group>"; };
+		16F84A6626E5AEDF00192B0A /* THKFocusButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKFocusButtonView.m; sourceTree = "<group>"; };
+		16F84A7726E5B40E00192B0A /* UIView+THKDiaryAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+THKDiaryAnimation.h"; sourceTree = "<group>"; };
+		16F84A7826E5B40E00192B0A /* UIView+THKDiaryAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+THKDiaryAnimation.m"; sourceTree = "<group>"; };
 		3A9BD9C2D8C584757EF12711 /* Pods-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DemoTests/Pods-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3B271C6912A85D06F5128169 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		3C3BBBCE07C84A21813F2664 /* Pods_Demo_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1872,6 +1881,8 @@
 				16F516C226D4F964002500F7 /* THKDiaryBookCell.m */,
 				166FCBC226D8716700FA83A8 /* THKDiaryBookLastCell.h */,
 				166FCBC326D8716700FA83A8 /* THKDiaryBookLastCell.m */,
+				16F84A7726E5B40E00192B0A /* UIView+THKDiaryAnimation.h */,
+				16F84A7826E5B40E00192B0A /* UIView+THKDiaryAnimation.m */,
 				160981DF26D7A16500E1364F /* THKDiaryCircleView.h */,
 				160981E026D7A16500E1364F /* THKDiaryCircleView.m */,
 				1642AA2F26D8BFB200F5FACD /* THKDiaryBookBottomBar.h */,
@@ -1884,6 +1895,10 @@
 				16834F0F26DCA4FC0082268C /* THKDiaryDirectoryServiceCell.h */,
 				16834F1026DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m */,
 				16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */,
+				16F84A5626E5AEA900192B0A /* THKDiaryBookDetailTopNaviBarView.h */,
+				16F84A5726E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m */,
+				16F84A6526E5AEDF00192B0A /* THKFocusButtonView.h */,
+				16F84A6626E5AEDF00192B0A /* THKFocusButtonView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2206,6 +2221,7 @@
 				16192B222692E13E00967C73 /* THKPushPopAsLocationToListForVideoDetailTransition.m in Sources */,
 				16867A0B2692D76C00650023 /* TMCardComponentLiveStyleCell.m in Sources */,
 				16611B6B269692D20089E41B /* THKMaterialTitleRankView.m in Sources */,
+				16F84A7926E5B40E00192B0A /* UIView+THKDiaryAnimation.m in Sources */,
 				16611B65269692D20089E41B /* THKMaterialClassificationViewCell.m in Sources */,
 				16611AC22696870F0089E41B /* Godeye.m in Sources */,
 				16867A122692D76C00650023 /* TMCardComponentTitleSubTitleUpSideDownStyleCell.m in Sources */,
@@ -2262,6 +2278,7 @@
 				16192BE52692F73900967C73 /* NSTimer+Block.m in Sources */,
 				16611AB62696870F0089E41B /* UIViewController+Godeye.m in Sources */,
 				1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */,
+				16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */,
 				16611B5E269692D20089E41B /* THKMaterialClassificationVM.m in Sources */,
 				16192B3B2692E13E00967C73 /* UIViewController+PopGestureOfPercentDrivenInteractiveTransition.m in Sources */,
 				166FCBC426D8716700FA83A8 /* THKDiaryBookLastCell.m in Sources */,
@@ -2317,6 +2334,7 @@
 				16611AB92696870F0089E41B /* GETrackerModel.m in Sources */,
 				16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				1642AA4B26D8EE6A00F5FACD /* THKDiaryDirectoryChildVC.m in Sources */,
+				16F84A5826E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m in Sources */,
 				16192B4D2692E1B100967C73 /* TRouterManager+Config.m in Sources */,
 				16611AB02696870F0089E41B /* GEProcessor+GodeyePrivate.m in Sources */,
 				16611B80269693DA0089E41B /* THKPageContentViewController.m in Sources */,

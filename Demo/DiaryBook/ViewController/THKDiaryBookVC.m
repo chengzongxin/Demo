@@ -13,6 +13,7 @@
 #import "THKDiaryBookLastCell.h"
 #import "THKDiaryBookBottomBar.h"
 #import "THKDiaryDirectoryChildVC.h"
+#import "THKDiaryBookDetailTopNaviBarView.h"
 
 static CGFloat const kBottomBarH = 50;
 
@@ -28,6 +29,7 @@ static CGFloat const kBottomBarH = 50;
 /// directory
 @property (nonatomic, strong) THKDiaryDirectoryVC *directoryVC;
 
+@property (nonatomic, strong) THKDiaryBookDetailTopNaviBarView *topBar;
 /// dataSource
 //@property (nonatomic, copy) NSArray *diaryList;
 
@@ -54,6 +56,9 @@ static CGFloat const kBottomBarH = 50;
 - (void)thk_addSubviews{
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.bottomBar];
+    
+    self.navigationItem.titleView = self.topBar;
+    [self.topBar.avatarImgView.avatarImgView loadImageWithUrlStr:@"https://img1.baidu.com/it/u=3366246598,2446278796&fm=26&fmt=auto&gp=0.jpg"];
     
     CGFloat bottom = kSafeAreaBottomInset() + kBottomBarH;
     UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, bottom, 0);
@@ -146,6 +151,9 @@ static CGFloat const kBottomBarH = 50;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == [tableView numberOfSections] - 1) {
         THKDiaryBookLastCell *cell = (THKDiaryBookLastCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookLastCell.class)];
+        [cell.urgeUpdateSubject subscribeNext:^(id  _Nullable x) {
+                    
+        }];
         return cell;
     }else{
         THKDiaryBookCell *cell = (THKDiaryBookCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookCell.class)];
@@ -210,6 +218,16 @@ static CGFloat const kBottomBarH = 50;
         };
     }
     return _bottomBar;
+}
+
+- (THKDiaryBookDetailTopNaviBarView *)topBar{
+    if (!_topBar) {
+        _topBar = [[THKDiaryBookDetailTopNaviBarView alloc] init];
+        _topBar.backgroundColor = UIColor.whiteColor;
+//        _topBar.backBtn.tmui_image = UIImageMake(@"nav_back_black");
+        _topBar.nickNameLbl.textColor = UIColorHex(1A1C1A);
+    }
+    return _topBar;
 }
 
 #pragma mark - Supperclass
