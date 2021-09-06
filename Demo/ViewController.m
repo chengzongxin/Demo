@@ -23,29 +23,35 @@
     [super viewDidLoad];
 
     UIImage *image = [[UIImage imageNamed:@"diary_noti_bg"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 30, 0, 2) resizingMode:UIImageResizingModeTile];
-    UIButton *button = [[UIButton alloc] init];
-
+    UIImageView *imgV = [[UIImageView alloc] initWithImage:image];
+    
     UILabel *label = [[UILabel alloc] init];
     label.textColor = UIColor.whiteColor;
-//    label.backgroundColor = [UIColor redColor];
-    label.text = @"日本动漫dsadsadsadsafdjhdsads  dsa";
+    label.text = @"我已经收到啦，更新后会通知你❤️";
     label.font = [UIFont systemFontOfSize:15];
     //计算label的宽度
     NSMutableParagraphStyle *textStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
     textStyle.lineBreakMode = NSLineBreakByTruncatingTail;
-
-    CGSize size = [label.text boundingRectWithSize:CGSizeMake(150, 20)
-                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
-                                         attributes:@{NSFontAttributeName:label.font,NSParagraphStyleAttributeName:textStyle}
-                                            context:nil].size;
-
+    
+    CGSize size = [label.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 20)
+                                           options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                        attributes:@{NSFontAttributeName:label.font,NSParagraphStyleAttributeName:textStyle}
+                                           context:nil].size;
+    
     CGFloat labelW = ceil(size.width) + 1;
     label.frame = CGRectMake(10, 4, labelW, 20);
-    [button addSubview:label];
-
-    button.frame = CGRectMake(100, 200, image.size.width + labelW - 8, image.size.height);
-    [button setBackgroundImage:image forState:UIControlStateNormal];
-    [self.view addSubview:button];
+    [imgV addSubview:label];
+    
+    imgV.image = image;
+    [self.view addSubview:imgV];
+    
+    CGFloat width = labelW + 20;
+    
+    [imgV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(200);
+        make.left.mas_equalTo(100);
+        make.width.mas_equalTo(width);
+    }];
 }
 
 //- (void)viewDidLoad {
