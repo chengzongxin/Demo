@@ -99,9 +99,12 @@
 - (void)recivedUrgeUpdate{
     if (self.avatarImgView.avatarImgView.layer.animationKeys.count == 0) {
         [self.avatarImgView.avatarImgView.layer addAnimation:[self imageViewScale] forKey:@"scaleAnimation"];
+        
+        [self.popView.layer addAnimation:[self opacityAnimation] forKey:nil];
     }
     
     if (!self.popView.superview) {
+        self.popView.layer.opacity = 0;
         [self addSubview:self.popView];
         
         self.popView.text = @"我已经收到啦，更新后会通知你❤️";
@@ -112,8 +115,9 @@
             make.height.mas_equalTo(36);
         }];
         
-        [self.popView.layer addAnimation:[self opacityAnimation] forKey:nil];
     }
+    
+    
 }
 
 
@@ -139,6 +143,9 @@ TMUI_PropertyLazyLoad(THKDiaryNotiPopView, popView);
 
 
 @end
+
+
+
 
 
 @interface THKDiaryNotiPopView ()
