@@ -9,8 +9,9 @@
 #import "THKDiaryBookCell.h"
 #import "THKDiaryCircleView.h"
 #import "UIView+THKDiaryAnimation.h"
+//#import "THKHalfPresentLoginVC.h"
 
-@interface THKDiaryBookLastCell ()<CAAnimationDelegate>
+@interface THKDiaryBookLastCell ()
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) THKDiaryCircleView *circleView;
 @property (nonatomic, strong) UIView *lineView;
@@ -18,8 +19,6 @@
 
 @property (nonatomic, strong) RACSubject *urgeUpdateSubject;
 
-@property (nonatomic, assign) CGPoint animateStartPoint;
-@property (nonatomic, assign) CGPoint animateEndPoint;
 
 @end
 
@@ -44,6 +43,7 @@
 }
 
 - (void)setupSubviews{
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.contentView addSubview:self.lineView];
     [self.contentView addSubview:self.circleView];
     [self.contentView addSubview:self.contentLabel];
@@ -78,34 +78,34 @@
     
 }
 
-- (void)layoutSubviews{
-    [super layoutSubviews];
-    
-//    [self addParticleEffect];
-}
-
 - (void)updateButtonClick:(UIButton *)btn{
-    [self addAnimations];
     
-    [self.urgeUpdateSubject sendNext:nil];
+    dispatch_block_t next = ^{
+//        if (kCurrentUser.uid == self.uid) {
+//            return;
+//        }
+        
+        [self addAnimations];
+        
+        [self.urgeUpdateSubject sendNext:nil];
+    };
+    
+//    if (![kCurrentUser isLoginStatus]) {
+//        [THKHalfPresentLoginVC judgeLoginStateWithLoginedHandler:^(id obj) {
+//            next();
+//        } failHandler:^(id obj) {
+//        }];
+//    } else {
+//        next();
+//    }
+    next();
 }
 
 - (void)addAnimations{
-    
     [self btnAnimation];
     
     [self heartAnimation];
-    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self animate1:2];
-//    });
-//
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self animate1:3];
-//    });
 }
-
-
 
 
 - (void)btnAnimation{
@@ -129,7 +129,7 @@
 - (void)heartAnimation{
     CGRect rect = [self.updateButton.imageView tmui_convertRect:self.updateButton.imageView.bounds toViewOrWindow:TMUI_AppWindow];
     self.animateStartPoint = rect.origin;
-    self.animateEndPoint = CGPointMake(66, 66);
+//    self.animateEndPoint = CGPointMake(66, 66);
     
     [self animate:arc4random()%4+1];
 }
@@ -161,8 +161,6 @@
             break;
     }
     [imageView.layer addAnimation:animate forKey:nil];
-    
-    animate.delegate = self;
     
     @weakify(imageView);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void (^animationStartBlock)(void);
 
+@property (nonatomic, assign) CGPoint animateStartPoint;
+@property (nonatomic, assign) CGPoint animateEndPoint;
+
 @end
 
 NS_ASSUME_NONNULL_END
