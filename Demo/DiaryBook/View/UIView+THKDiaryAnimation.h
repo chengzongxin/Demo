@@ -7,6 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
+
+UIKIT_EXTERN const CGFloat kDiaryAnimationDuration;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (THKDiaryAnimation)

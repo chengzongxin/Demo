@@ -7,9 +7,10 @@
 
 #import "UIView+THKDiaryAnimation.h"
 
+const CGFloat kDiaryAnimationDuration = 1.5;
+
+
 @implementation UIView (THKDiaryAnimation)
-
-
 
 - (CAAnimation *)backgroundGlowAnimationFromColor:(UIColor *)startColor toColor:(UIColor *)destColor{
     CABasicAnimation *bgAnim1 = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
@@ -39,7 +40,7 @@
     CAAnimationGroup *animGroup = [CAAnimationGroup animation];
     animGroup.animations = @[bgAnim1, bgAnim2, stopAnim];
     animGroup.duration = 0.6;
-    animGroup.repeatCount = 3;
+    animGroup.repeatCount = 1;
     animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     return animGroup;
 }
@@ -77,15 +78,15 @@
     CAAnimationGroup *animGroup = [CAAnimationGroup animation];
     animGroup.animations = @[scaleAnim1, scaleAnim2, stopAnim];
     animGroup.duration = duration + stopDuration;
-    animGroup.repeatCount = 3;
+    animGroup.repeatCount = 1;
     animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     return animGroup;
 }
 
 
 - (CAAnimation *)heartFlyAnimate1:(CGPoint)startPoint endPoint:(CGPoint)endPoint {
-    CGPoint controlPoint = CGPointMake(startPoint.x + 200, (startPoint.y - endPoint.y)/2);
-    CGFloat duration = 2.0;
+    CGPoint controlPoint = CGPointMake(startPoint.x + arc4random()%200, (startPoint.y - endPoint.y)/2);
+    CGFloat duration = kDiaryAnimationDuration;
     
     // 位置
     CAKeyframeAnimation *positionAnim =[CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -106,7 +107,7 @@
     
     // 透明度变化
     //因视图设置了alpha为0，为了一开始能正常显示出来，这里加一个固定stayAlpha1Sec秒，alpha为1的动画(仅仅是为了在前stayAlpha1Sec秒内视图能正常显示出来)
-    float stayAlpha1Sec = 1;
+    float stayAlpha1Sec = kDiaryAnimationDuration / 2.0;
     CABasicAnimation *opacity1Anim = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacity1Anim.fromValue = [NSNumber numberWithFloat:0.1];
     opacity1Anim.toValue = [NSNumber numberWithFloat:1.0];
@@ -123,7 +124,7 @@
     opacity2Anim.duration = duration - stayAlpha1Sec;
     
     // 比例
-    float stayScale1Sec = 1;
+    float stayScale1Sec = kDiaryAnimationDuration / 2.0;
     CABasicAnimation *scaleAnim1 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnim1.fromValue = [NSNumber numberWithFloat:0.1];
     scaleAnim1.toValue = [NSNumber numberWithFloat:1];
@@ -141,7 +142,7 @@
     scaleAnim2.duration = duration - stayScale1Sec;
     
     // 旋转
-    float stayRotation1Sec = 1;
+    float stayRotation1Sec = kDiaryAnimationDuration / 2.0;
     CABasicAnimation *rotationAnim1 = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     rotationAnim1.fromValue = [NSNumber numberWithFloat:0.5 * M_PI];
     rotationAnim1.toValue = [NSNumber numberWithFloat:0];
@@ -166,8 +167,8 @@
 }
 
 - (CAAnimation *)heartFlyAnimate2:(CGPoint)startPoint endPoint:(CGPoint)endPoint {
-    CGPoint controlPoint = CGPointMake(startPoint.x - 200, startPoint.y);
-    CGFloat duration = 2.0;
+    CGPoint controlPoint = CGPointMake(startPoint.x - arc4random()%100, startPoint.y);
+    CGFloat duration = kDiaryAnimationDuration;
     
     // 位置
     CAKeyframeAnimation *positionAnim =[CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -188,7 +189,7 @@
     
     // 透明度变化
     //因视图设置了alpha为0，为了一开始能正常显示出来，这里加一个固定stayAlpha1Sec秒，alpha为1的动画(仅仅是为了在前stayAlpha1Sec秒内视图能正常显示出来)
-    float stayAlpha1Sec = 1;
+    float stayAlpha1Sec = kDiaryAnimationDuration / 2.0;
     CABasicAnimation *opacity1Anim = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacity1Anim.fromValue = [NSNumber numberWithFloat:0.1];
     opacity1Anim.toValue = [NSNumber numberWithFloat:1.0];
@@ -205,7 +206,7 @@
     opacity2Anim.duration = duration - stayAlpha1Sec;
     
     // 比例
-    float stayScale1Sec = 1;
+    float stayScale1Sec = kDiaryAnimationDuration / 2.0;
     CABasicAnimation *scaleAnim1 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnim1.fromValue = [NSNumber numberWithFloat:0.1];
     scaleAnim1.toValue = [NSNumber numberWithFloat:1];
@@ -232,7 +233,7 @@
 - (CAAnimation *)heartFlyAnimate3:(CGPoint)startPoint endPoint:(CGPoint)endPoint {
     CGPoint controlPoint0 = CGPointMake(startPoint.x, (startPoint.y + endPoint.y) / 2);
     CGPoint controlPoint1 = CGPointMake((startPoint.x + endPoint.x) /2, endPoint.y - 50);
-    CGFloat duration = 2.0;
+    CGFloat duration = kDiaryAnimationDuration;
     
     // 位置
     CAKeyframeAnimation *positionAnim =[CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -254,7 +255,7 @@
     
     // 透明度变化
     //因视图设置了alpha为0，为了一开始能正常显示出来，这里加一个固定stayAlpha1Sec秒，alpha为1的动画(仅仅是为了在前stayAlpha1Sec秒内视图能正常显示出来)
-    float stayAlpha1Sec = 1;
+    float stayAlpha1Sec = kDiaryAnimationDuration / 2.0;
     CABasicAnimation *opacity1Anim = [CABasicAnimation animationWithKeyPath:@"opacity"];
     opacity1Anim.fromValue = [NSNumber numberWithFloat:0.1];
     opacity1Anim.toValue = [NSNumber numberWithFloat:1.0];
@@ -271,7 +272,7 @@
     opacity2Anim.duration = duration - stayAlpha1Sec;
     
     // 比例
-    float stayScale1Sec = 1;
+    float stayScale1Sec = kDiaryAnimationDuration / 2.0;
     CABasicAnimation *scaleAnim1 = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnim1.fromValue = [NSNumber numberWithFloat:0.1];
     scaleAnim1.toValue = [NSNumber numberWithFloat:1];
@@ -289,7 +290,7 @@
     scaleAnim2.duration = duration - stayScale1Sec;
     
     // 旋转
-    float stayRotation1Sec = 1;
+    float stayRotation1Sec = kDiaryAnimationDuration / 2.0;
     CABasicAnimation *rotationAnim1 = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
     rotationAnim1.fromValue = [NSNumber numberWithFloat:-0.5 * M_PI];
     rotationAnim1.toValue = [NSNumber numberWithFloat:0];
@@ -336,7 +337,7 @@
     CAAnimationGroup *animGroup = [CAAnimationGroup animation];
     animGroup.animations = @[opacity1Anim, opacity2Anim];
     animGroup.duration = duration;
-    animGroup.removedOnCompletion = NO;
+    animGroup.removedOnCompletion = YES;
     
     return animGroup;
 }

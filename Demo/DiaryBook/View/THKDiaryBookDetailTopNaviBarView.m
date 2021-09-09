@@ -57,7 +57,7 @@
     }];
     
     [self.shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.mas_equalTo(-12);
+        make.trailing.mas_equalTo(0);
         make.width.mas_equalTo(40);
         make.height.mas_equalTo(40);
         make.centerY.mas_equalTo(self.avatarImgView.mas_centerY);
@@ -113,28 +113,40 @@
     }
     
     // 添加动画
+    NSLog(@"%@",self.avatarImgView.avatarImgView.layer.animationKeys);
     if (self.avatarImgView.avatarImgView.layer.animationKeys.count == 0) {
         // 头像闪烁动画
         [self.avatarImgView.avatarImgView.layer addAnimation:[self imageViewScale] forKey:@"scaleAnimation"];
-        
+    }
+    
+//    NSLog(@"%@",self.popView.layer.animationKeys);
+    if (self.popView.layer.animationKeys.count == 0) {
         // 气泡动画
-        [self.popView.layer addAnimation:[self opacityAnimation] forKey:nil];
+        CAAnimation *popAnim = [self opacityAnimation];
+        @weakify(self);
+        popAnim.tmui_animationDidStopBlock = ^(__kindof CAAnimation * _Nonnull aAnimation, BOOL finished) {
+            @strongify(self);
+            self.nickNameLbl.alpha = 1;
+            self.focusBtn.alpha = 1;
+            self.shareBtn.alpha = 1;
+        };
+        [self.popView.layer addAnimation:popAnim forKey:@"opacityAnimation"];
         
         // 消失动画
         [UIView animateWithDuration:0.5
                          animations:^{
             self.nickNameLbl.alpha = 0;
             self.focusBtn.alpha = 0;
+            self.shareBtn.alpha = 0;
         } completion:^(BOOL finished) {
             NSLog(@"finished");
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                self.nickNameLbl.alpha = 1;
-                self.focusBtn.alpha = 1;
-            });
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                self.nickNameLbl.alpha = 1;
+//                self.focusBtn.alpha = 1;
+//                self.shareBtn.alpha = 1;
+//            });
         }];
-        
     }
-    
 }
 
 

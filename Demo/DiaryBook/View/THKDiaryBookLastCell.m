@@ -118,7 +118,7 @@
         [self.updateButton.layer addAnimation:bgColorAnimate forKey:@"backgroundColor"];
         
     }
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kDiaryAnimationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if (self.animationStartBlock) {
                     self.animationStartBlock();
                 }
@@ -128,7 +128,7 @@
 
 - (void)heartAnimation{
     CGRect rect = [self.updateButton.imageView tmui_convertRect:self.updateButton.imageView.bounds toViewOrWindow:TMUI_AppWindow];
-    self.animateStartPoint = rect.origin;
+    self.animateStartPoint = CGPointMake(CGRectGetCenter(rect).x, rect.origin.y);
 //    self.animateEndPoint = CGPointMake(66, 66);
     
     [self animate:arc4random()%4+1];
