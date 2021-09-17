@@ -15,9 +15,7 @@ static NSString *const kPicDomain = @"http://pic.to8to.com";
 
 + (void)uploadImage:(NSArray <UIImage *> *)images type:(THKOSSModuleType)type success:(OSSToolUploadSuccess)success fail:(OSSToolUploadFail)fail{
     
-    THKOSSManager.sharedInstance.debugModel = YES;
     NSMutableArray <THKOSSUploadFileModel *> *fileModes = [NSMutableArray array];
-    
     for (int i = 0; i < images.count; i++) {
         UIImage *img = images[i];
         THKOSSUploadFileModel *aModel = [[THKOSSUploadFileModel alloc] init];
@@ -27,7 +25,7 @@ static NSString *const kPicDomain = @"http://pic.to8to.com";
         [fileModes addObject:aModel];
     }
     
-    [[THKOSSManager sharedInstance] uploadOSSFiles:fileModes accessType:OSSManagerAccessType_Private progress:nil resultBlock:^(NSInteger code, NSString * _Nullable result) {
+    [[THKOSSManager sharedInstance] uploadOSSFiles:fileModes accessType:OSSManagerAccessType_Public progress:nil resultBlock:^(NSInteger code, NSString * _Nullable result) {
         NSArray *urls = [fileModes tmui_map:^id _Nonnull(THKOSSUploadFileModel * _Nonnull item) {
             return [NSString stringWithFormat:@"%@/%@",kPicDomain,item.filePath];
         }];

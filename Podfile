@@ -22,7 +22,7 @@ target 'Demo' do
 #  pod 'TMUIKit', '1.1.7'
   pod 'MJRefresh'
   pod 'MBProgressHUD'
-  pod 'THKOSSManager', '1.1.5'
+  pod 'THKOSSManager', '1.1.6'
 
 
   target 'DemoTests' do
