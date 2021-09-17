@@ -23,6 +23,9 @@ PODS:
   - MLeaksFinder (1.0.0):
     - FBRetainCycleDetector
   - ReactiveObjC (3.1.1)
+  - THKOSSManager (1.1.5):
+    - AFNetworking (~> 4.0.1)
+    - Masonry (~> 1.1.0)
   - TMUIKit (1.1.4):
     - Masonry (~> 1.1.0)
     - TMUIKit/TMUIComponents (= 1.1.4)
@@ -239,10 +242,15 @@ DEPENDENCIES:
   - MJRefresh
   - MLeaksFinder
   - ReactiveObjC
+  - THKOSSManager (= 1.1.5)
   - TMUIKit (from `/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec`)
   - YYKit
 
 SPEC REPOS:
+  "git@repo.we.com:ios/tspecsrepo.git":
+    - THKOSSManager
+  https://github.com/CocoaPods/Specs.git:
+    - YYKit
   trunk:
     - AFNetworking
     - FBRetainCycleDetector
@@ -253,7 +261,6 @@ SPEC REPOS:
     - MJRefresh
     - MLeaksFinder
     - ReactiveObjC
-    - YYKit
 
 EXTERNAL SOURCES:
   TMUIKit:
@@ -269,9 +276,10 @@ SPEC CHECKSUMS:
   MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
   MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  THKOSSManager: b89028073716a8e49d77dee10a9a12aa80a001b7
   TMUIKit: 4ad154acdf1857157066637f49a90712908d62bd
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 1d2d02b79df447462234b7819e48b49781b8656e
+PODFILE CHECKSUM: 6c3e35ea3dccedfc0fe91cf82ee1488795c0145a
 
 COCOAPODS: 1.10.0

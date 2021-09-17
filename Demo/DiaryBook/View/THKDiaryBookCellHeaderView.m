@@ -54,19 +54,15 @@
     [self.contentView addSubview:self.topLineView];
     [self.contentView addSubview:self.bottomLineView];
     
-    CGFloat viewH = 66;
-    CGFloat circleH = THKDiaryCircleWidth;
-    CGFloat circleY = 38;
-    
     [self.topLineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.circleView.mas_centerX);
         make.top.mas_equalTo(0);
         make.width.mas_equalTo(2);
-        make.height.mas_equalTo(circleY);
+        make.bottom.equalTo(self.circleView.mas_top);
     }];
     
     [self.circleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(38);
+        make.centerY.equalTo(self.titleLabel.mas_centerY);
         make.left.mas_equalTo(10);
         make.width.height.mas_equalTo(THKDiaryCircleWidth);
     }];
@@ -75,7 +71,7 @@
         make.centerX.equalTo(self.circleView.mas_centerX);
         make.top.equalTo(self.circleView.mas_bottom);
         make.width.mas_equalTo(2);
-        make.height.mas_equalTo(viewH-circleY-circleH);
+        make.bottom.mas_equalTo(0);
     }];
 }
 

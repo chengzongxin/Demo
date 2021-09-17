@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <YYKit.h>
 static NSString *kGEAppWidgetShow  = @"appWidgetShow";
 static NSString *kGEAppWidgetClick = @"appWidgetClick";
 NS_ASSUME_NONNULL_BEGIN
