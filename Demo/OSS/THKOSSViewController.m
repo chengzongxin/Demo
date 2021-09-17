@@ -16,15 +16,12 @@
 
 
 - (void)uploadImage:(UIImage *)image{
-    [THKOSSTool uploadImage:@[image] type:THKOSSModuleType_Personal success:^(NSArray<NSString *> *urls) {
+    [THKOSSTool uploadImage:@[image,image] type:THKOSSModuleType_Personal success:^(NSArray<NSString *> *urls) {
         NSLog(@"%@",urls);
     } fail:^(NSError *error) {
         NSLog(@"%@",error);
     }];
 }
-
-
-
 
 
 

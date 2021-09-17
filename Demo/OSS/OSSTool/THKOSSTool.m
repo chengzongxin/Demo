@@ -9,6 +9,8 @@
 #import "THKOSSTool.h"
 #import <THKOSSManager.h>
 
+static NSString *const kPicDomain = @"http://pic.to8to.com";
+
 @implementation THKOSSTool
 
 + (void)uploadImage:(NSArray <UIImage *> *)images type:(THKOSSModuleType)type success:(OSSToolUploadSuccess)success fail:(OSSToolUploadFail)fail{
@@ -25,8 +27,11 @@
         [fileModes addObject:aModel];
     }
     
-    [[THKOSSManager sharedInstance] uploadOSSFiles:fileModes progress:nil resultBlock:^(NSInteger code, NSString * _Nullable result) {
-        success(@[result]);
+    [[THKOSSManager sharedInstance] uploadOSSFiles:fileModes accessType:OSSManagerAccessType_Private progress:nil resultBlock:^(NSInteger code, NSString * _Nullable result) {
+        NSArray *urls = [fileModes tmui_map:^id _Nonnull(THKOSSUploadFileModel * _Nonnull item) {
+            return [NSString stringWithFormat:@"%@/%@",kPicDomain,item.filePath];
+        }];
+        success(urls);
     } failBlock:^(NSInteger code, NSString * _Nullable result) {
         fail([NSError errorWithDomain:result code:code userInfo:nil]);
     }];
@@ -44,7 +49,6 @@
  */
 + (NSString *)getFilePathWithType:(THKOSSModuleType)type originFileName:(NSString *)originFileName{
     NSString *directory1 = nil;
-    NSString *filePath = nil;
     // 1级目录
     switch (type) {
         case THKOSSModuleType_Diary:

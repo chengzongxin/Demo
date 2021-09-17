@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^OSSToolUploadSuccess)(NSArray <NSString *> *urls);
-typedef void(^OSSToolUploadFail)(NSError *error);
+typedef void(^OSSToolUploadSuccess)(NSArray <NSString *> * _Nullable urls);
+typedef void(^OSSToolUploadFail)(NSError * _Nullable error);
 
 typedef enum : NSUInteger {
     THKOSSModuleType_Diary,

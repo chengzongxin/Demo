@@ -22,9 +22,9 @@
 //    [alertViewTemp show];
 //    alertView = alertViewTemp;
     
-    [[UIViewController.new tmui_topViewController] tmui_showAlertWithTitle:title message:message block:^(NSInteger index) {
+//    [[UIViewController.new tmui_topViewController] tmui_showAlertWithTitle:title message:message block:^(NSInteger index) {
 //        [UIViewController.new tmui_topViewController] 
-    } buttons:@"confirm"];
+//    } buttons:@"confirm"];
     
     NSLog(@"%@: %@", title, message);
 }
