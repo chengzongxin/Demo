@@ -70,11 +70,11 @@
     });
     
     NSString *tag = @"#123入住新家#  ";
-    NSString *str = @"hdhhdsa  来电文字大萨达俺爹是  dfsfdshhfesf sddsfkjd lkfdsj lfjh sdjkfhk egf hsjfg dhs fghdsfg ewhj dfgjshf jdshfg hdsf gdsfdsfd asdhjk dhkaj方加快速度发多少粉红色的发多askj ldksaf jldsafafdsafewsa fds fadsf das fdas fdsaf dsaf dsaf dsaefrg 12313123213 sdad  来电文字大萨达俺爹是  佛挡杀佛第三方加快速度发多少粉红dsad发多少";
+    NSString *str = @"13:39 👍🏾👍🏾\n\n😬😬😬\n\n哈哈哈哈哈哈哈哈哈哈哈哈哈哈👍🏾👍🏾👍🏾👍🏾👍🏾👍🏾";
     
     THKExpandLabel *label = THKExpandLabel.new;
     
-    label.numberOfLines = 5;
+    label.numberOfLines = 0;
     label.lineGap = 6;
     label.maxWidth = TMUI_SCREEN_WIDTH - 100;
     label.preferFont = UIFont(16);
@@ -91,7 +91,7 @@
 //    label.tagStr = @"入住新家";
 //    label.contentStr = str;
 //    [label setTagStr:@"#123入住新家#  " contentStr:str];
-    [label setTagStr:tag
+    [label setTagStr:nil
          tagAttrDict:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(16)}
           contentStr:str
      contentAttrDict:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(16)}];

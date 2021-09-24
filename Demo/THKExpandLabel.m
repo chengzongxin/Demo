@@ -95,13 +95,19 @@
         
         
         NSMutableAttributedString *calcAttr = [[NSMutableAttributedString alloc] init];
-        [calcAttr appendAttributedString:[[NSAttributedString alloc] initWithString:tagStr attributes:tagAttrDict]];
-        [calcAttr appendAttributedString:[[NSAttributedString alloc] initWithString:contentStr attributes:contentAttrDict]];
+        if (!tmui_isNullString(tagStr) && tagAttrDict) {
+            [calcAttr appendAttributedString:[[NSAttributedString alloc] initWithString:tagStr attributes:tagAttrDict]];
+        }
+        
+        if (!tmui_isNullString(contentStr) && contentAttrDict) {
+            [calcAttr appendAttributedString:[[NSAttributedString alloc] initWithString:contentStr attributes:contentAttrDict]];
+        }
+        
         
         NSArray *lines = [self getLinesForAttrStr:calcAttr maxWidth:_maxWidth];
         
         NSMutableAttributedString* (^setLineGap)(NSMutableAttributedString*) = ^NSMutableAttributedString *(NSMutableAttributedString *attr) {
-            if (lines.count >= 1) {
+            if (lines.count > 1) {
                 NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
                 paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
                 [paragraphStyle setLineSpacing:self.lineGap];// 调整行间距
@@ -136,16 +142,25 @@
                     CGFloat padding = 10;
                     CGFloat addtionGap = 4;
                     if (width > contentWidth - appendWidth - padding) {
-                        lineStr = [lineStr substringToIndex:lineStr.length - appendStr.tmui_lengthWhenCountingNonASCIICharacterAsTwo - addtionGap];
+                        lineStr = [lineStr substringToIndex:lineStr.length - appendStr.length - addtionGap];
                     }
                     lineStr = [lineStr stringByAppendingString:dotStr];
                 }
                 [foldStr appendString:lineStr];
             }
             
-            NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:foldStr attributes:self.contentAttrDict];
-            NSRange tagR = [foldStr rangeOfString:tagStr];
-            [attr addAttributes:self.tagAttrDict range:tagR];
+            NSMutableAttributedString *attr = nil;
+           
+            
+            if (!tmui_isNullString(foldStr) && contentAttrDict) {
+                attr = [[NSMutableAttributedString alloc] initWithString:foldStr attributes:self.contentAttrDict];
+            }
+            
+            if (!tmui_isNullString(tagStr) && tagAttrDict) {
+                NSRange tagR = [foldStr rangeOfString:tagStr];
+                [attr addAttributes:self.tagAttrDict range:tagR];
+            }
+            
             setLineGap(attr);
             _contentAttrString = attr;
         }

@@ -1304,8 +1304,8 @@
 		16611B5B269692D20089E41B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				16611B5C269692D20089E41B /* THKMaterialHotRankVC.m */,
 				16611B5D269692D20089E41B /* THKMaterialHotRankVC.h */,
+				16611B5C269692D20089E41B /* THKMaterialHotRankVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

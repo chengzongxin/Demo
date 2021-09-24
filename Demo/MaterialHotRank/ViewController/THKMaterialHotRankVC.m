@@ -13,6 +13,7 @@
 #import "THKMaterialClassificationRecommendCellFooter.h"
 #import "TCaseDetailTopBar.h"
 #import "THKProjectUIConfig.h"
+#import "THKPageBGScrollView.h"
 
 #define kHeaderViewHeight       200
 #define kSectionHeaderHeight    56
@@ -34,6 +35,9 @@
 
 @property (nonatomic, strong) UIView *collectionViewHeader;
 @property (nonatomic, strong) TCaseDetailTopBar *topBar;
+
+@property (nonatomic, strong) TMUIPageContainerScrollView *containerScrollView;
+
 @end
 
 @implementation THKMaterialHotRankVC
@@ -66,7 +70,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.containerScrollView];
+    UIView *header = View.bgColor(@"random").xywh(0,-300,self.view.width,300);
+    [self.containerScrollView addSubview:header];
+    [self.containerScrollView addSubview:self.collectionView];
+    self.containerScrollView.contentSize = self.containerScrollView.bounds.size;
+    
+    [header mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.containerScrollView);
+        make.top.mas_equalTo(-300);
+        make.height.mas_equalTo(300);
+        make.width.mas_equalTo(self.view.mas_width);
+    }];
+    
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(header.mas_bottom).priorityHigh();
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(self.view.height);
+    }];
+    
+    
+    _containerScrollView.contentInset = UIEdgeInsetsMake(300, 0, 0, 0);
+    
+    _containerScrollView.lockArea = NavigationContentTop + 50;
+    
     // 导航栏在最顶层
     [self configNavigationBar];
 }
@@ -126,15 +153,15 @@
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.viewModel.data.count;
+    return self.viewModel.data.count*10;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.viewModel.data[section].brandList.count;
+    return self.viewModel.data[0].brandList.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    THKMaterialHotBrandModel *model = self.viewModel.data[indexPath.section].brandList[indexPath.item];
+    THKMaterialHotBrandModel *model = self.viewModel.data[0].brandList[0];
     NSString *imgUrl = model.headUrl;
     NSString *title = model.brandName;
     NSString *subtitle = @(model.score).stringValue;
@@ -145,13 +172,13 @@
     [cell setTitle:title subtitle:subtitle];
     
     // 曝光
-    [self cellShowReport:cell model:self.viewModel.data indexPath:indexPath];
+//    [self cellShowReport:cell model:self.viewModel.data indexPath:indexPath];
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
-        NSString *title = self.viewModel.data[indexPath.section].categoryName;
+        NSString *title = self.viewModel.data[0].categoryName;
         THKMaterialHotRankHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKMaterialHotRankHeader.class) forIndexPath:indexPath];
         [header setTitle:title];
         @TMUI_weakify(self);
@@ -181,7 +208,7 @@
         CGFloat offsetY = scrollView.contentOffset.y;
         CGFloat coverH = kHeaderViewHeight - tmui_navigationBarHeight();
         CGFloat moveH = offsetY + scrollView.contentInset.top;
-        
+
         if (moveH > coverH) {
             float titlePercent = 1;
             [self.topBar setNavigationBarColor:[UIColor whiteColor] originTintColor:[UIColor whiteColor] toTintColor:THKColor_222222 gradientPercent:titlePercent];
@@ -225,6 +252,14 @@
 }
 
 #pragma mark - Getters and Setters
+
+- (TMUIPageContainerScrollView *)containerScrollView{
+    if (!_containerScrollView) {
+        _containerScrollView = [[TMUIPageContainerScrollView alloc] initWithFrame:self.view.bounds];
+    }
+    return _containerScrollView;
+}
+
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         _layout = [[THKMaterialClassificationRecommendCellLayout alloc] init];
@@ -235,7 +270,9 @@
 //        _layout.decorationBottomMargin = 10;
         _layout.minimumLineSpacing = 0;
         _layout.minimumInteritemSpacing = 8;
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_layout];
+        CGRect frame = self.view.bounds;
+        frame.origin.y = 300;
+        _collectionView = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:_layout];
         _collectionView.backgroundColor = UIColorHex(#DEEEFF);
         _collectionView.contentInset = UIEdgeInsetsMake(kHeaderViewHeight, 0, 10, 0);
         if (@available(iOS 11.0, *)) {
