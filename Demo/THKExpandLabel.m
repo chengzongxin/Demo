@@ -60,8 +60,8 @@
 }
 
 - (void)setTagStr:(NSString *)tagStr tagAttrDict:(NSDictionary *)tagAttrDict contentStr:(NSString *)contentStr contentAttrDict:(NSDictionary *)contentAttrDict{
-    _tagStr = tagStr;
-    _contentStr = contentStr;
+    _tagStr = [tagStr tmui_trim];
+    _contentStr = [contentStr tmui_trim];
     _tagAttrDict = tagAttrDict;
     _contentAttrDict = contentAttrDict;
     
@@ -112,7 +112,7 @@
                 paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
                 [paragraphStyle setLineSpacing:self.lineGap];// 调整行间距
 //                [attr tmui_setAttributes:@{NSParagraphStyleAttributeName:paragraphStyle}];
-                [attr addAttributes:@{NSParagraphStyleAttributeName:paragraphStyle} range:NSMakeRange(0, attr.string.length-1)];
+                [attr addAttributes:@{NSParagraphStyleAttributeName:paragraphStyle} range:NSMakeRange(0, attr.string.length)];
             }
             return attr;
         };

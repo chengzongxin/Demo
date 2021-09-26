@@ -69,11 +69,11 @@
         [self.navigationController pushViewController:vc animated:YES];
     });
     
-    NSString *tag = @"#123入住新家#  ";
-    NSString *str = @"13:39 👍🏾👍🏾\n\n😬😬😬\n\n哈哈哈哈哈哈哈哈哈哈哈哈哈哈👍🏾👍🏾👍🏾👍🏾👍🏾👍🏾";
+    NSString *tag = @"#123入住新家#  \n\n";
+    NSString *str = @"    \n\n\n\n   13:39 👍🏾👍🏾\n\n😬😬😬\n\n哈哈哈哈哈哈哈哈哈哈哈哈哈哈👍🏾👍🏾👍🏾👍🏾👍🏾👍🏾    \n\n\n\n\n\n   ";
     
     THKExpandLabel *label = THKExpandLabel.new;
-    
+    label.backgroundColor = UIColor.tmui_randomColor;
     label.numberOfLines = 0;
     label.lineGap = 6;
     label.maxWidth = TMUI_SCREEN_WIDTH - 100;
