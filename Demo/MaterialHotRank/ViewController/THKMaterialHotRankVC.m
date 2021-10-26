@@ -36,7 +36,7 @@
 @property (nonatomic, strong) UIView *collectionViewHeader;
 @property (nonatomic, strong) TCaseDetailTopBar *topBar;
 
-@property (nonatomic, strong) TMUIPageContainerScrollView *containerScrollView;
+@property (nonatomic, strong) TMUIPageWrapperScrollView *containerScrollView;
 
 @end
 
@@ -253,9 +253,9 @@
 
 #pragma mark - Getters and Setters
 
-- (TMUIPageContainerScrollView *)containerScrollView{
+- (TMUIPageWrapperScrollView *)containerScrollView{
     if (!_containerScrollView) {
-        _containerScrollView = [[TMUIPageContainerScrollView alloc] initWithFrame:self.view.bounds];
+        _containerScrollView = [[TMUIPageWrapperScrollView alloc] initWithFrame:self.view.bounds];
     }
     return _containerScrollView;
 }
