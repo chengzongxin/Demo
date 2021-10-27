@@ -14,6 +14,7 @@
 #import "THKDiaryBookBottomBar.h"
 #import "THKDiaryDirectoryChildVC.h"
 #import "THKDiaryBookDetailTopNaviBarView.h"
+#import "THKDiaryProducer.h"
 
 static CGFloat const kBottomBarH = 50;
 
@@ -33,6 +34,8 @@ static CGFloat const kBottomBarH = 50;
 /// dataSource
 //@property (nonatomic, copy) NSArray *diaryList;
 
+@property (nonatomic, strong) THKDiaryProducer *producer;
+
 @end
 
 @implementation THKDiaryBookVC
@@ -47,9 +50,25 @@ static CGFloat const kBottomBarH = 50;
 // 渲染VC
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.translucent = NO;
-    [self thk_hideNavShadowImageView];
     self.view.backgroundColor = UIColor.whiteColor;
+    
+    @weakify(self);
+//    // 从日记本进入
+//    [self.producer loadDataWithComplete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType) {
+//        @strongify(self);
+//        [self.tableView reloadData];
+//    } failure:^(NSError * _Nonnull error) {
+//
+//    }];
+    
+    
+    // 从子日记进入
+    [self.producer loadDataWithDiaryId:2020998 complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType) {
+        @strongify(self);
+        [self.tableView reloadData];
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 // 子视图布局
@@ -130,11 +149,11 @@ static CGFloat const kBottomBarH = 50;
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.sections.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.producer.map.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -148,25 +167,42 @@ static CGFloat const kBottomBarH = 50;
     return headerView;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == [tableView numberOfSections] - 1) {
-        THKDiaryBookLastCell *cell = (THKDiaryBookLastCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookLastCell.class)];
-        CGRect rect = [self.topBar.avatarImgView tmui_convertRect:self.topBar.avatarImgView.frame toViewOrWindow:self.navigationController.view];
-        
-        cell.animateEndPoint = CGRectGetCenter(rect);
-        Log(cell.animateStartPoint);
-        @weakify(self);
-        cell.animationStartBlock = ^{
-            @strongify(self);
-            [self.topBar recivedUrgeUpdate];
-        };
-        return cell;
+int preLoad = 5;
+float beginOffset = 0;
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    beginOffset = scrollView.contentOffset.y;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.y > beginOffset) {
+        NSIndexPath *last = self.tableView.indexPathsForVisibleRows.lastObject;
+        [self.producer preLoadData:last.row isDown:YES];
     }else{
+        NSIndexPath *first = self.tableView.indexPathsForVisibleRows.firstObject;
+        [self.producer preLoadData:first.row isDown:NO];
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (indexPath.section == [tableView numberOfSections] - 1) {
+//        THKDiaryBookLastCell *cell = (THKDiaryBookLastCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookLastCell.class)];
+//        CGRect rect = [self.topBar.avatarImgView tmui_convertRect:self.topBar.avatarImgView.frame toViewOrWindow:self.navigationController.view];
+//
+//        cell.animateEndPoint = CGRectGetCenter(rect);
+//        Log(cell.animateStartPoint);
+//        @weakify(self);
+//        cell.animationStartBlock = ^{
+//            @strongify(self);
+//            [self.topBar recivedUrgeUpdate];
+//        };
+//        return cell;
+//    }else{
         THKDiaryBookCell *cell = (THKDiaryBookCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookCell.class)];
-        THKDiaryBookCellVM *cellVM = [[THKDiaryBookCellVM alloc] initWithModel:self.viewModel.rows[indexPath.section]];
+        THKDiaryBookCellVM *cellVM = [[THKDiaryBookCellVM alloc] initWithModel:self.producer.map[indexPath.row].content];
         [cell bindViewModel:cellVM];
         return cell;
-    }
+//    }
     
 }
 
@@ -176,9 +212,9 @@ static CGFloat const kBottomBarH = 50;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<NSCopying> cachedKey = [self cachedKeyAtIndexPath:indexPath];
-    NSString *identifier = indexPath.section == [tableView numberOfSections] - 1 ? NSStringFromClass(THKDiaryBookLastCell.class) : NSStringFromClass(THKDiaryBookCell.class);
+    NSString *identifier = NSStringFromClass(THKDiaryBookCell.class);
     return [tableView tmui_heightForCellWithIdentifier:identifier cacheByKey:cachedKey configuration:^(id<THKDiaryBookCellBindVM> cell) {
-        THKDiaryBookCellVM *cellVM = [[THKDiaryBookCellVM alloc] initWithModel:self.viewModel.rows[indexPath.section]];
+        THKDiaryBookCellVM *cellVM = [[THKDiaryBookCellVM alloc] initWithModel:self.producer.map[indexPath.row].content];
         [cell bindViewModel:cellVM];
     }];
 }
@@ -205,6 +241,14 @@ static CGFloat const kBottomBarH = 50;
         [_tableView registerClass:THKDiaryBookLastCell.class forCellReuseIdentifier:NSStringFromClass(THKDiaryBookLastCell.class)];
     }
     return _tableView;
+}
+
+- (THKDiaryProducer *)producer{
+    if (!_producer) {
+        _producer = [[THKDiaryProducer alloc] init];
+        _producer.diaryBookId = 7007277;
+    }
+    return _producer;
 }
 
 - (THKDiaryBookInfoView *)infoView{

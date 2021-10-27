@@ -10,16 +10,16 @@ target 'Demo' do
   use_frameworks!
 
   # Pods for Demo
-  pod 'Masonry'
+#  pod 'Masonry'
   pod 'AFNetworking'
   pod 'ReactiveObjC'
   pod 'MJExtension'
   pod 'YYKit'
   pod 'LookinServer', :configurations => ['Debug'] #界面查看工具
 #  pod 'MLeaksFinder', :configurations => ['Debug'] #检测内存泄漏
-#  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git' #TMUI
+#  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git/' #TMUI
   pod 'TMUIKit', :path => '/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec'
-#  pod 'TMUIKit', '1.1.7'
+#  pod 'TMUIKit', '1.1.8'
   pod 'MJRefresh'
   pod 'MBProgressHUD'
   pod 'THKOSSManager', '1.1.6'
