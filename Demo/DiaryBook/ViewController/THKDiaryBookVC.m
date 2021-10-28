@@ -66,7 +66,7 @@ static CGFloat const kBottomBarH = 50;
     [self.producer loadDataWithDiaryId:2022012 complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType, NSInteger offset) {
         @strongify(self);
         [self.tableView reloadData];
-        [self.tableView scrollToRow:offset inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:YES];
+        [self.tableView scrollToRow:offset inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:NO];
     } failure:^(NSError * _Nonnull error) {
 
     }];
