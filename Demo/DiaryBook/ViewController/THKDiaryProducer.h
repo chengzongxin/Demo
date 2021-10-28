@@ -41,7 +41,7 @@ typedef void (^THKDiaryProductFailure)(NSError *error);
 // 上下滑动
 - (void)preLoadData:(NSInteger)idx isDown:(BOOL)isDown;
 // 初始化加载
-- (void)loadDataWithComplete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure;
+- (void)loadDataWithOffsetId:(NSInteger)offsetId complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure;
 // 从日记加载
 - (void)loadDataWithDiaryId:(NSInteger)diaryId complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure;
 // 从阶段加载

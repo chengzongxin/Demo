@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^SideSlipFilterCommitBlock)(NSArray *dataList);
+typedef void (^SideSlipFilterCommitBlock)(NSIndexPath *indexPath);
 typedef void (^SideSlipFilterResetBlock)(NSArray *dataList);
 
 static inline CGFloat kDirectionWidth() {

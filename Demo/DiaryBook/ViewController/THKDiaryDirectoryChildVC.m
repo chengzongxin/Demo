@@ -10,6 +10,7 @@
 
 @interface THKDiaryDirectoryChildVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *titles;
 @end
 
 @implementation THKDiaryDirectoryChildVC
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _titles = @[@"开工前",@"买建材",@"施工中",@"家电软装",@"入住新家"];
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -71,18 +73,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return _titles.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     THKDiaryDirectoryCell *cell = (THKDiaryDirectoryCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKDiaryDirectoryCell.class) forIndexPath:indexPath];
 //    cell.textLabel.text = @(indexPath.row).stringValue;
     cell.indexPath = indexPath;
+    cell.titleLabel.text = _titles[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [NSNotificationCenter.defaultCenter postNotificationName:@"clickDirectory" object:indexPath];
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{

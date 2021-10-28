@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface THKDiaryDirectoryCell : UITableViewCell
+@property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @end
 

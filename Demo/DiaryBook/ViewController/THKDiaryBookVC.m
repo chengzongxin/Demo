@@ -52,23 +52,44 @@ static CGFloat const kBottomBarH = 50;
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
     
-    @weakify(self);
 //    // 从日记本进入
-//    [self.producer loadDataWithComplete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType) {
-//        @strongify(self);
-//        [self.tableView reloadData];
-//    } failure:^(NSError * _Nonnull error) {
-//
-//    }];t
-    
+//    [self loadDataWithOffsetId:0];
     
     // 从子日记进入
-    [self.producer loadDataWithDiaryId:2022012 complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType, NSInteger offset) {
+    [self loadDataWithDiaryId:2022012];
+}
+
+//
+- (void)loadDataWithOffsetId:(NSInteger)offsetId{
+    @weakify(self);
+    [self.producer loadDataWithOffsetId:offsetId complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType, NSInteger offset) {
+        @strongify(self);
+        [self.tableView reloadData];
+        [self.tableView scrollToRow:offset inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:NO];
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (void)loadDataWithDiaryId:(NSInteger)diaryId{
+    @weakify(self);
+    [self.producer loadDataWithDiaryId:diaryId complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType, NSInteger offset) {
         @strongify(self);
         [self.tableView reloadData];
         [self.tableView scrollToRow:offset inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:NO];
     } failure:^(NSError * _Nonnull error) {
 
+    }];
+}
+
+- (void)loadDataWithStageId:(NSInteger)stageId{
+    @weakify(self);
+    [self.producer loadDataWithStageId:stageId complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType, NSInteger offset) {
+        @strongify(self);
+        [self.tableView reloadData];
+        [self.tableView scrollToRow:offset inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:NO];
+    } failure:^(NSError * _Nonnull error) {
+        
     }];
 }
 
@@ -111,10 +132,13 @@ static CGFloat const kBottomBarH = 50;
 #pragma mark - Event Respone
 
 - (void)clickDirectory{
+    @weakify(self);
     self.directoryVC = [[THKDiaryDirectoryVC alloc] initWithSponsor:self resetBlock:^(NSArray * _Nonnull dataList) {
         NSLog(@"%@",dataList);
-    } commitBlock:^(NSArray * _Nonnull dataList) {
-        NSLog(@"%@",dataList);
+    } commitBlock:^(NSIndexPath * _Nonnull indexPath) {
+        @strongify(self);
+        [self.directoryVC dismiss];
+        [self loadDataWithStageId:indexPath.row + 1];
     }];
     [self.directoryVC show];
 }

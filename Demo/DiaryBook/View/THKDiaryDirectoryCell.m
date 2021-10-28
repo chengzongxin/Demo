@@ -11,7 +11,7 @@
 
 @interface THKDiaryDirectoryCell ()
 
-@property (nonatomic, strong) UILabel *titleLabel;
+
 @property (nonatomic, strong) UIView *topLineView;
 @property (nonatomic, strong) THKDiaryCircle *circle;
 @property (nonatomic, strong) UIView *bottomLineView;

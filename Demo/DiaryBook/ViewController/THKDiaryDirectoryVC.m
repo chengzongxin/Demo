@@ -56,6 +56,13 @@
     
     [self reloadData];
 //    self.contentView.bounces = NO;
+    @weakify(self);
+    [[[NSNotificationCenter.defaultCenter rac_addObserverForName:@"clickDirectory" object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self);
+        NSIndexPath *indexPath = x.object;
+        self.commitBlock(indexPath);
+    }];
+    
 }
 
 // 子视图布局

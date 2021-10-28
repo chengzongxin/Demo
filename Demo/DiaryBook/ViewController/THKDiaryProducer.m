@@ -14,8 +14,6 @@
 
 @property (nonatomic, assign, readwrite) NSInteger totalCount;
 
-@property (nonatomic, strong) NSArray *loadedArray;
-
 @property (nonatomic, weak) THKBaseRequest *lastRequest;
 
 @end
@@ -26,8 +24,8 @@
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
 
 #pragma mark - Public
-
-- (void)loadDataWithComplete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure{
+#pragma mark - 用户操作
+- (void)loadDataWithOffsetId:(NSInteger)offsetId complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure{
     THKMapRange range = {0, 10};
     [self datasFromRemote:range idType:THKDiaryProductIdType_offsetId offsetId:0 diaryId:0 stageId:0 complete:complete failure:failure];
 }
@@ -38,10 +36,100 @@
 }
 
 - (void)loadDataWithStageId:(NSInteger)stageId complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure{
+    // 先判断是否已经存在
     THKMapRange range = {-10, 10};
-    [self datasFromRemote:range idType:THKDiaryProductIdType_stageId offsetId:0 diaryId:0 stageId:stageId complete:complete failure:failure];
+    __block NSInteger desIdx = NSNotFound;
+    [self.map enumerateObjectsUsingBlock:^(THKDiaryInfoModel * _Nonnull diary, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (diary.firstStageId == stageId && diary.showFirstStageName) {
+            desIdx = diary.offset;
+            *stop = YES;
+        }
+    }];
+    
+    // 找到下标，已在内存中存在
+    if (desIdx != NSNotFound) {
+        NSInteger from = MAX(0, desIdx - range.left);   // 上标不超出0
+        NSInteger to = MIN(self.map.count - from,range.right - range.left); // 下标不超过最大长度
+        
+        BOOL isExistAllData = YES;
+        for (NSInteger i = from + 1; i <= to; i++) {
+            if (self.map[i].diaryId == 0) {
+                isExistAllData = NO;
+                break;
+            }
+        }
+        
+        if (isExistAllData) {
+            complete(self.map,THKDiaryProductFromType_Memory,desIdx);
+        }else{
+            // 数据不足
+            [self datasFromRemote:range idType:THKDiaryProductIdType_stageId offsetId:0 diaryId:0 stageId:stageId complete:complete failure:failure];
+        }
+    }else{
+        // 没找到stageId
+        [self datasFromRemote:range idType:THKDiaryProductIdType_stageId offsetId:0 diaryId:0 stageId:stageId complete:complete failure:failure];
+    }
+    
 }
 
+
+
+// 上下滑动
+- (void)preLoadData:(NSInteger)idx isDown:(BOOL)isDown{
+    if (self.totalCount == 0 || self.map.count == 0) {
+        return;
+    }
+    if (self.lastRequest.isExecuting) {
+        return;
+    }
+    
+    if (self.map[idx].diaryId && (self.map[idx].offset == 0 || self.map[idx].offset == self.totalCount - 1)) {
+        // 到顶了
+        return;
+    }
+    
+    if (isDown) {
+        // 往下滑
+        if (idx + 1 < self.totalCount) {
+            if (self.map[idx+1].diaryId) {
+                return;
+            }
+        }else{
+            return;
+        }
+    }else{
+        // 往上滑
+        if (idx - 1 >= 0) {
+            if (self.map[idx-1].diaryId) {
+                return;
+            }
+        }else{
+            return;
+        }
+    }
+    
+    THKMapRange range = {0,0};
+    if (isDown) {
+        range.left = 0;
+        range.right = 10;
+    }else{
+        range.left = -10;
+        range.right = 0;
+    }
+    
+    NSInteger offsetId = self.map[idx].offset;
+    
+    self.lastRequest = [self datasFromRemote:range
+                                      idType:THKDiaryProductIdType_offsetId
+                                    offsetId:offsetId
+                                     diaryId:0
+                                     stageId:0
+                                    complete:nil
+                                     failure:nil];
+}
+
+
+#pragma mark - 接口调用
 - (void)datasForRange:(THKMapRange)range
                idType:(THKDiaryProductIdType)idType
              offsetId:(NSInteger)offsetId
@@ -156,7 +244,7 @@
                 *stop = YES;
             }
         }else if (idType == THKDiaryProductIdType_stageId) {
-            if (obj.stageBigId == stageId && obj.showFirstStageName) {
+            if (obj.firstStageId == stageId && obj.showFirstStageName) {
                 desOffsetId = obj.offset;
                 *stop = YES;
             }
@@ -172,61 +260,6 @@
         array[obj.offset] = obj;
     }];
     self.map = [array copy];
-}
-
-
-// 上下滑动
-- (void)preLoadData:(NSInteger)idx isDown:(BOOL)isDown{
-    if (self.totalCount == 0 || self.map.count == 0) {
-        return;
-    }
-    if (self.lastRequest.isExecuting) {
-        return;
-    }
-    
-    if (self.map[idx].diaryId && (self.map[idx].offset == 0 || self.map[idx].offset == self.totalCount - 1)) {
-        // 到顶了
-        return;
-    }
-    
-    if (isDown) {
-        // 往下滑
-        if (idx + 1 < self.totalCount) {
-            if (self.map[idx+1].diaryId) {
-                return;
-            }
-        }else{
-            return;
-        }
-    }else{
-        // 往上滑
-        if (idx - 1 >= 0) {
-            if (self.map[idx-1].diaryId) {
-                return;
-            }
-        }else{
-            return;
-        }
-    }
-    
-    THKMapRange range = {0,0};
-    if (isDown) {
-        range.left = 0;
-        range.right = 10;
-    }else{
-        range.left = -10;
-        range.right = 0;
-    }
-    
-    NSInteger offsetId = self.map[idx].offset;
-    
-    self.lastRequest = [self datasFromRemote:range
-                                      idType:THKDiaryProductIdType_offsetId
-                                    offsetId:offsetId
-                                     diaryId:0
-                                     stageId:0
-                                    complete:nil
-                                     failure:nil];
 }
 
 
