@@ -38,8 +38,8 @@ typedef void (^THKDiaryProductFailure)(NSError *error);
 
 @property (nonatomic, assign) NSInteger diaryBookId;
 
-// 上下滑动
-- (void)preLoadData:(NSInteger)idx isDown:(BOOL)isDown;
+// 上下滑动加载
+- (void)scrollLoadData:(NSInteger)idx isDown:(BOOL)isDown complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure;
 // 初始化加载
 - (void)loadDataWithOffsetId:(NSInteger)offsetId complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure;
 // 从日记加载

@@ -201,12 +201,22 @@ float beginOffset = 0;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    @weakify(self);
+    THKDiaryProductComplete _completion = ^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType, NSInteger offset) {
+        @strongify(self);
+        [self.tableView reloadData];
+    };
+    
     if (scrollView.contentOffset.y > beginOffset) {
-        NSIndexPath *last = self.tableView.indexPathsForVisibleRows.lastObject;
-        [self.producer preLoadData:last.row isDown:YES];
+        NSInteger idx = self.tableView.indexPathsForVisibleRows.lastObject.row;
+        [self.producer scrollLoadData:idx isDown:YES complete:_completion failure:^(NSError * _Nonnull error) {
+            
+        }];
     }else{
-        NSIndexPath *first = self.tableView.indexPathsForVisibleRows.firstObject;
-        [self.producer preLoadData:first.row isDown:NO];
+        NSInteger idx = self.tableView.indexPathsForVisibleRows.firstObject.row;
+        [self.producer scrollLoadData:idx isDown:NO complete:_completion failure:^(NSError * _Nonnull error) {
+            
+        }];
     }
 }
 

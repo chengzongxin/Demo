@@ -72,6 +72,68 @@
     
 }
 
+- (void)scrollLoadData:(NSInteger)idx isDown:(BOOL)isDown complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure{
+    if (idx < 0 || idx >= self.map.count) {
+//        NSAssert(0, @"滑动加载越界");
+        return;
+    }
+    
+    if (self.lastRequest.isExecuting) {
+        return;
+    }
+    
+    if (self.map[idx].diaryId == 0) {
+        // 滑动过快时
+        THKMapRange range = {-10, 10};
+        self.lastRequest = [self datasFromRemote:range
+                                          idType:THKDiaryProductIdType_offsetId
+                                        offsetId:0
+                                         diaryId:0
+                                         stageId:0
+                                        complete:complete
+                                         failure:failure];
+    }else{
+        // 正常滑动
+        if (isDown) {
+            // 往下滑
+            if (idx + 1 < self.totalCount) {
+                if (self.map[idx+1].diaryId) {
+                    return;
+                }
+            }else{
+                return;
+            }
+        }else{
+            // 往上滑
+            if (idx - 1 >= 0) {
+                if (self.map[idx-1].diaryId) {
+                    return;
+                }
+            }else{
+                return;
+            }
+        }
+        
+        THKMapRange range = {0,0};
+        if (isDown) {
+            range.left = 0;
+            range.right = 10;
+        }else{
+            range.left = -10;
+            range.right = 0;
+        }
+        
+        NSInteger offsetId = self.map[idx].offset;
+        
+        self.lastRequest = [self datasFromRemote:range
+                                          idType:THKDiaryProductIdType_offsetId
+                                        offsetId:offsetId
+                                         diaryId:0
+                                         stageId:0
+                                        complete:complete
+                                         failure:failure];
+    }
+}
 
 
 // 上下滑动
