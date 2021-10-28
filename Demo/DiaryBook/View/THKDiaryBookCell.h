@@ -25,6 +25,8 @@ UIKIT_EXTERN const UIEdgeInsets kDiaryContentInset;
 /// view绑定viewModel
 - (void)bindViewModel:(THKDiaryBookCellVM *)viewModel;
 
+- (void)setIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 NS_ASSUME_NONNULL_END

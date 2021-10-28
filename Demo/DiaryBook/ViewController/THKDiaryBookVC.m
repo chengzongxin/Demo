@@ -59,15 +59,16 @@ static CGFloat const kBottomBarH = 50;
 //        [self.tableView reloadData];
 //    } failure:^(NSError * _Nonnull error) {
 //
-//    }];
+//    }];t
     
     
     // 从子日记进入
-    [self.producer loadDataWithDiaryId:2020998 complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType) {
+    [self.producer loadDataWithDiaryId:2022012 complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType, NSInteger offset) {
         @strongify(self);
         [self.tableView reloadData];
+        [self.tableView scrollToRow:offset inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:YES];
     } failure:^(NSError * _Nonnull error) {
-        
+
     }];
 }
 
@@ -122,7 +123,8 @@ static CGFloat const kBottomBarH = 50;
 #pragma mark <UITableViewDataSource, UITableViewDelegate>
 
 - (id<NSCopying>)cachedKeyAtIndexPath:(NSIndexPath *)indexPath {
-    return @(indexPath.section);// 这里简单处理，认为只要长度不同，高度就不同（但实际情况下长度就算相同，高度也有可能不同，要注意）
+    return @(self.producer.map[indexPath.row].diaryId).stringValue;
+//    return @(indexPath.row);// 这里简单处理，认为只要长度不同，高度就不同（但实际情况下长度就算相同，高度也有可能不同，要注意）
 }
 
 
@@ -201,6 +203,7 @@ float beginOffset = 0;
         THKDiaryBookCell *cell = (THKDiaryBookCell *)[self tmui_tableView:tableView cellWithIdentifier:NSStringFromClass(THKDiaryBookCell.class)];
         THKDiaryBookCellVM *cellVM = [[THKDiaryBookCellVM alloc] initWithModel:self.producer.map[indexPath.row].content];
         [cell bindViewModel:cellVM];
+    [cell setIndexPath:indexPath];
         return cell;
 //    }
     

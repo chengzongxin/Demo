@@ -29,7 +29,7 @@
 
 - (void)loadDataWithComplete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure{
     THKMapRange range = {0, 10};
-    [self datasFromRemote:range idType:THKDiaryProductIdType_offsetId offsetId:1 diaryId:0 stageId:0 complete:complete failure:failure];
+    [self datasFromRemote:range idType:THKDiaryProductIdType_offsetId offsetId:0 diaryId:0 stageId:0 complete:complete failure:failure];
 }
 
 - (void)loadDataWithDiaryId:(NSInteger)diaryId complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure{
@@ -88,7 +88,7 @@
         }
         
         if (isExistAllData) {
-            complete(self.map,THKDiaryProductFromType_Memory);
+            complete(self.map,THKDiaryProductFromType_Memory,desIdx);
         }else{
             [self datasFromRemote:range idType:idType offsetId:offsetId diaryId:diaryId stageId:stageId complete:complete failure:failure];
         }
@@ -127,7 +127,8 @@
             self.snapshotId = response.data.snapshotId;
             NSArray *diaryList = response.data.diaryInfos;
             [self saveMapWithDatas:diaryList];
-            !complete?:complete(self.map,THKDiaryProductFromType_Remote);
+            NSInteger desOffset = [self offsetForResponse:diaryList idType:idType offsetId:offsetId diaryId:diaryId stageId:stageId];
+            !complete?:complete(self.map,THKDiaryProductFromType_Remote,desOffset);
         }else{
             !failure?:failure([NSError errorWithDomain:@"" code:0 userInfo:nil]);
         }
@@ -136,6 +137,33 @@
     }];
     
     return request;
+}
+
+- (NSInteger)offsetForResponse:(NSArray <THKDiaryInfoModel *>*)datas
+                   idType:(THKDiaryProductIdType)idType
+                 offsetId:(NSInteger)offsetId
+                  diaryId:(NSInteger)diaryId
+                  stageId:(NSInteger)stageId{
+    
+    __block NSInteger desOffsetId = offsetId;
+    
+    [datas enumerateObjectsUsingBlock:^(THKDiaryInfoModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (idType == THKDiaryProductIdType_offsetId) {
+            *stop = YES;
+        }else if (idType == THKDiaryProductIdType_diaryId) {
+            if (obj.diaryId == diaryId) {
+                desOffsetId = obj.offset;
+                *stop = YES;
+            }
+        }else if (idType == THKDiaryProductIdType_stageId) {
+            if (obj.stageBigId == stageId && obj.showFirstStageName) {
+                desOffsetId = obj.offset;
+                *stop = YES;
+            }
+        }
+    }];
+    
+    return desOffsetId;
 }
 
 - (void)saveMapWithDatas:(NSArray <THKDiaryInfoModel *>*)datas{
@@ -156,17 +184,28 @@
         return;
     }
     
+    if (self.map[idx].diaryId && (self.map[idx].offset == 0 || self.map[idx].offset == self.totalCount - 1)) {
+        // 到顶了
+        return;
+    }
+    
     if (isDown) {
+        // 往下滑
         if (idx + 1 < self.totalCount) {
             if (self.map[idx+1].diaryId) {
                 return;
             }
+        }else{
+            return;
         }
     }else{
+        // 往上滑
         if (idx - 1 >= 0) {
             if (self.map[idx-1].diaryId) {
                 return;
             }
+        }else{
+            return;
         }
     }
     

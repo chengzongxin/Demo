@@ -16,7 +16,7 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
 @property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UIView *imagesView;
-@property (nonatomic, strong) UIView *interactiveBar;
+@property (nonatomic, strong) UILabel *interactiveBar;
 
 
 @end
@@ -72,10 +72,10 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
     }];
     
     [self.imagesView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentLabel.mas_bottom).offset(14);
+        make.top.equalTo(self.contentLabel.mas_bottom).offset(0);
         make.left.mas_equalTo(kDiaryContentInset.left);
         make.right.mas_equalTo(-kDiaryContentInset.right);
-        make.height.mas_equalTo(212);
+        make.height.mas_equalTo(0);
     }];
     
     [self.interactiveBar mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,17 +97,20 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
     self.viewModel = viewModel;
     
 //    self.contentLabel.text = viewModel.model;
-    [self.contentLabel tmui_setAttributesString:viewModel.model lineSpacing:6];
+//    self.contentLabel.attributedText = [NSAttributedString tmui_attributedStringWithString:viewModel.model lineSpacing:10];
+    [self.contentLabel tmui_setAttributesString:viewModel.model lineSpacing:0];
+//    self.contentLabel.text = viewModel.model;
 }
 
 - (CGSize)sizeThatFits:(CGSize)size{
-    CGSize realSize = CGSizeMake(size.width - UIEdgeInsetsGetHorizontalValue(kDiaryContentInset), 0);
+    CGSize resultSize = CGSizeMake(size.width, 0);
+    CGFloat contentLabelWidth = size.width - UIEdgeInsetsGetHorizontalValue(kDiaryContentInset);
     
-    realSize.height += [self.contentLabel tmui_sizeForWidth:realSize.width].height;
-    realSize.height += (14 + 212);
-    realSize.height += 50;
+    CGFloat contentHeight = [self.contentLabel tmui_sizeForWidth:contentLabelWidth].height;
     
-    return realSize;
+    resultSize.height = contentHeight + 50;
+    
+    return resultSize;
 }
 
 - (THKDiaryCircleView *)circleView{
@@ -144,12 +147,16 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
     return _imagesView;
 }
 
-- (UIView *)interactiveBar{
+- (UILabel *)interactiveBar{
     if (!_interactiveBar) {
-        _interactiveBar = [[UIView alloc] init];
-        _interactiveBar.backgroundColor = UIColor.tmui_randomColor;
+        _interactiveBar = [[UILabel alloc] init];
+//        _interactiveBar.backgroundColor = UIColor.tmui_randomColor;
     }
     return _interactiveBar;
+}
+
+- (void)setIndexPath:(NSIndexPath *)indexPath{
+    self.interactiveBar.text = @(indexPath.row).stringValue;
 }
 
 @end

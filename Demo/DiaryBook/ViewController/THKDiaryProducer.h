@@ -27,7 +27,7 @@ typedef struct {
     int right;
 } THKMapRange;
 
-typedef void (^THKDiaryProductComplete)(NSArray *datas,THKDiaryProductFromType fromType);
+typedef void (^THKDiaryProductComplete)(NSArray *datas,THKDiaryProductFromType fromType,NSInteger offset);
 typedef void (^THKDiaryProductFailure)(NSError *error);
 
 @interface THKDiaryProducer : NSObject
