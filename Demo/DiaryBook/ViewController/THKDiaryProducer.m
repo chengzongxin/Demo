@@ -26,8 +26,16 @@
 #pragma mark - Public
 #pragma mark - 用户操作
 - (void)loadDataWithOffsetId:(NSInteger)offsetId complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure{
-    THKMapRange range = {0, 10};
-    [self datasFromRemote:range idType:THKDiaryProductIdType_offsetId offsetId:0 diaryId:0 stageId:0 complete:complete failure:failure];
+    THKMapRange range1 = {0, 20};
+    THKMapRange range2 = {20, 120};
+    THKMapRange range3 = {120, 220};
+    THKMapRange range4 = {220, 320};
+    THKMapRange range5 = {320, 450};
+    [self datasFromRemote:range1 idType:THKDiaryProductIdType_offsetId offsetId:0 diaryId:0 stageId:0 complete:complete failure:failure];
+    [self datasFromRemote:range2 idType:THKDiaryProductIdType_offsetId offsetId:0 diaryId:0 stageId:0 complete:complete failure:failure];
+    [self datasFromRemote:range3 idType:THKDiaryProductIdType_offsetId offsetId:0 diaryId:0 stageId:0 complete:complete failure:failure];
+    [self datasFromRemote:range4 idType:THKDiaryProductIdType_offsetId offsetId:0 diaryId:0 stageId:0 complete:complete failure:failure];
+    [self datasFromRemote:range5 idType:THKDiaryProductIdType_offsetId offsetId:0 diaryId:0 stageId:0 complete:complete failure:failure];
 }
 
 - (void)loadDataWithDiaryId:(NSInteger)diaryId complete:(THKDiaryProductComplete)complete failure:(THKDiaryProductFailure)failure{
@@ -268,7 +276,11 @@
         request.firstStageId = @(stageId).stringValue;
     }
     request.range = @[@(range.left),@(range.right)];
-    
+    //单位计算为毫秒
+    CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+     
+
+
     @weakify(self);
     [request.rac_requestSignal subscribeNext:^(THKDirDetailDiaryPageResponse *response) {
         @strongify(self);
@@ -279,6 +291,12 @@
             [self saveMapWithDatas:diaryList];
             NSInteger desOffset = [self offsetForResponse:diaryList idType:idType offsetId:offsetId diaryId:diaryId stageId:stageId];
             !complete?:complete(self.map,THKDiaryProductFromType_Remote,desOffset);
+            
+           // do something
+            
+           CFAbsoluteTime end = CFAbsoluteTimeGetCurrent();
+            
+           NSLog(@"当前请求耗时:[%f], 数量:[%zd]", end - start,diaryList.count);
         }else{
             !failure?:failure([NSError errorWithDomain:@"" code:0 userInfo:nil]);
         }

@@ -24,6 +24,12 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
 @implementation THKDiaryBookCell
 //@dynamic viewModel;
 
+- (void)prepareForReuse{
+    [super prepareForReuse];
+ 
+    self.contentLabel.text = nil;
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
@@ -103,6 +109,9 @@ const UIEdgeInsets kDiaryContentInset = {0,36,0,20};
 }
 
 - (CGSize)sizeThatFits:(CGSize)size{
+    if (self.contentLabel.text.length == 0) {
+        return CGSizeZero;
+    }
     CGSize resultSize = CGSizeMake(size.width, 0);
     CGFloat contentLabelWidth = size.width - UIEdgeInsetsGetHorizontalValue(kDiaryContentInset);
     

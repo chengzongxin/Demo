@@ -53,10 +53,10 @@ static CGFloat const kBottomBarH = 50;
     self.view.backgroundColor = UIColor.whiteColor;
     
 //    // 从日记本进入
-//    [self loadDataWithOffsetId:0];
+    [self loadDataWithOffsetId:0];
     
     // 从子日记进入
-    [self loadDataWithDiaryId:2022012];
+//    [self loadDataWithDiaryId:2022012];
 }
 
 //
@@ -283,7 +283,7 @@ float beginOffset = 0;
 - (THKDiaryProducer *)producer{
     if (!_producer) {
         _producer = [[THKDiaryProducer alloc] init];
-        _producer.diaryBookId = 7007277;
+        _producer.diaryBookId = 7007626;
     }
     return _producer;
 }

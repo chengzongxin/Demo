@@ -22,7 +22,7 @@ NSString *const kModelDataKey = @"ModelDataKey";
 @implementation THKViewModel
 
 - (void)dealloc {
-    NSLog(@"class=%@ dealloc",[self class]);
+//    NSLog(@"class=%@ dealloc",[self class]);
 }
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone {

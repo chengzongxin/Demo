@@ -18,7 +18,7 @@
 @implementation THKView
 
 - (void)dealloc {
-    NSLog(@"class=%@ dealloc",[self class]);
+//    NSLog(@"class=%@ dealloc",[self class]);
 }
 
 //普通代码初始化方法,若外部直接调用 alloc.init,也会走到此方法frame为{0,0,0,0}

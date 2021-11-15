@@ -95,6 +95,77 @@
          tagAttrDict:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(16)}
           contentStr:str
      contentAttrDict:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(16)}];
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self doCurrentApiRequestTest];
+//            
+//            for (int i = 0; i < 20; i++) {
+//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * i * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                    [self doCurrentApiRequestTest];
+//                });
+//                
+//            }
+//
+//        });
+    
+}
+
+- (void)doCurrentApiRequestTest {
+#if DEBUG
+    
+//    Class cls = THKDynamicGroupEntranceRequest.class;
+//    void (^customReqInfosBlock)(__kindof THKBaseRequest *req) = ^(__kindof THKBaseRequest *req) {
+//        ((THKDynamicGroupEntranceRequest*)req).wholeCode = kDynamicTabsWholeCodeCaseList;
+//    };
+//    if (cls) {
+//        THKBaseRequest *req = [[cls alloc] init];
+//        customReqInfosBlock(req);
+//        [req.rac_requestSignal subscribeNext:^(THKResponse *x) {
+//            NSLog(@"response: %@", x);
+//        } error:^(NSError * _Nullable error) {
+//            NSLog(@"err: %@", error);
+//        }];
+//    }
+    
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+
+//    NSString *css1 = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.baidu1.com"] encoding:NSUTF8StringEncoding error:nil];
+//
+//    CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+//    NSLog(@"1111111方法耗时: %f ms", endTime * 1000.0);
+//    startTime = CFAbsoluteTimeGetCurrent();
+    
+    NSString *urlString1 = [NSString stringWithFormat:@"https://appapi.to8to.com/social/article/detail?id=%ld", (long)1007115];
+         //处理字符
+         urlString1 = [urlString1 stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+         //创建URL
+         NSURL *url1 = [NSURL URLWithString:urlString1];
+         //2.创建请求类
+         NSURLRequest *request1 = [NSURLRequest requestWithURL:url1];
+         //3.创建会话
+         //delegateQueue 表示协议方法在哪个线程中执行
+         NSURLSession *session1 = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil  delegateQueue:[NSOperationQueue mainQueue]];
+         //4.根据会话创建任务
+//        CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+        NSURLSessionDataTask *dataTask1 = [session1 dataTaskWithRequest:request1 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    //        NSDictionary *secondDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    ////        NSLog(@"666666-----%@", secondDictionary);
+    //
+    //        NSString *content = [[secondDictionary objectForKey:@"data"] objectForKey:@"content"];
+    //
+
+            CFAbsoluteTime endTime = (CFAbsoluteTimeGetCurrent() - startTime);
+            NSLog(@"--666666-----------方法耗时: %f ms", endTime * 1000.0);
+
+            NSLog(@"666666------方法111: %@", error);
+
+        }];
+         //5.启动任务
+         [dataTask1 resume];
+
+
+    
+#endif
 }
 
 @end
