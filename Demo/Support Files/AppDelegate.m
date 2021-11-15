@@ -11,7 +11,6 @@
 #import "THKIdentityConfigManager.h"
 #import "TUUIDGenerator.h"
 #import "GEEnvironmentParameter.h"
-#import <THKOSSManager.h>
 
 @interface AppDelegate ()
 
@@ -34,8 +33,6 @@
         // lanch app
     }];
     
-    
-    THKOSSManager.sharedInstance.environmentType = OSSManagerEnvironmentType_Test;
     
     return YES;
 }

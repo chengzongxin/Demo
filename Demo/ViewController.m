@@ -12,7 +12,6 @@
 #import "THKMaterialHotRankVM.h"
 #import "THKDiaryBookVC.h"
 #import "THKExpandLabel.h"
-#import "THKOSSViewController.h"
 
 @interface ViewController ()
 
@@ -60,12 +59,6 @@
         Log(@"123123");
         THKDiaryBookVM *vm = [[THKDiaryBookVM alloc] init];
         THKDiaryBookVC *vc = [[THKDiaryBookVC alloc] initWithViewModel:vm];
-        [self.navigationController pushViewController:vc animated:YES];
-    });
-    
-    Button.str(@"OSS").bgColor(@"random").xywh(250,250,100,100).addTo(self.view).onClick(^{
-        Log(@"123123");
-        THKOSSViewController *vc = [[THKOSSViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     });
     

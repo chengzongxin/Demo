@@ -212,8 +212,6 @@
 		16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */; };
 		16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C54B268325E20024BA20 /* THKRequestCommand.m */; };
 		16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */; };
-		16EB460526F42EFA006A7428 /* THKOSSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB460426F42EFA006A7428 /* THKOSSViewController.m */; };
-		16EB471D26F48119006A7428 /* THKOSSTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB471C26F48119006A7428 /* THKOSSTool.m */; };
 		16EDCE9026DE26D500A3D5D2 /* THKExpandLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */; };
@@ -681,10 +679,6 @@
 		16E5C54B268325E20024BA20 /* THKRequestCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKRequestCommand.m; sourceTree = "<group>"; };
 		16E5C590268330270024BA20 /* MLeaksMessenger+HookAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MLeaksMessenger+HookAlert.h"; sourceTree = "<group>"; };
 		16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MLeaksMessenger+HookAlert.m"; sourceTree = "<group>"; };
-		16EB460326F42EFA006A7428 /* THKOSSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOSSViewController.h; sourceTree = "<group>"; };
-		16EB460426F42EFA006A7428 /* THKOSSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOSSViewController.m; sourceTree = "<group>"; };
-		16EB471B26F48119006A7428 /* THKOSSTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKOSSTool.h; sourceTree = "<group>"; };
-		16EB471C26F48119006A7428 /* THKOSSTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKOSSTool.m; sourceTree = "<group>"; };
 		16EDCE8E26DE26D500A3D5D2 /* THKExpandLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKExpandLabel.h; sourceTree = "<group>"; };
 		16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKExpandLabel.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
@@ -776,9 +770,6 @@
 				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				16EDCE8E26DE26D500A3D5D2 /* THKExpandLabel.h */,
-				16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */,
-				16EB460226F42E89006A7428 /* OSS */,
 				16F5168F26D4C11D002500F7 /* DiaryBook */,
 				16611B29269692D10089E41B /* MaterialClassification */,
 				16611B54269692D20089E41B /* MaterialHotRank */,
@@ -811,6 +802,7 @@
 		160107692553EA1A00FE4B77 /* BaseSection */ = {
 			isa = PBXGroup;
 			children = (
+				16A026402742652500C7E4B3 /* THKExpandLabel */,
 				16192AB32692DC2A00967C73 /* QuickMethod */,
 				16611B9826969D960089E41B /* YYAnimatedImageView */,
 				16192AA12692DB5800967C73 /* Depency */,
@@ -1651,6 +1643,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		16A026402742652500C7E4B3 /* THKExpandLabel */ = {
+			isa = PBXGroup;
+			children = (
+				16EDCE8E26DE26D500A3D5D2 /* THKExpandLabel.h */,
+				16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */,
+			);
+			path = THKExpandLabel;
+			sourceTree = "<group>";
+		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1836,25 +1837,6 @@
 				16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */,
 			);
 			path = Third;
-			sourceTree = "<group>";
-		};
-		16EB460226F42E89006A7428 /* OSS */ = {
-			isa = PBXGroup;
-			children = (
-				16EB471A26F48119006A7428 /* OSSTool */,
-				16EB460326F42EFA006A7428 /* THKOSSViewController.h */,
-				16EB460426F42EFA006A7428 /* THKOSSViewController.m */,
-			);
-			path = OSS;
-			sourceTree = "<group>";
-		};
-		16EB471A26F48119006A7428 /* OSSTool */ = {
-			isa = PBXGroup;
-			children = (
-				16EB471B26F48119006A7428 /* THKOSSTool.h */,
-				16EB471C26F48119006A7428 /* THKOSSTool.m */,
-			);
-			path = OSSTool;
 			sourceTree = "<group>";
 		};
 		16F5168F26D4C11D002500F7 /* DiaryBook */ = {
@@ -2273,7 +2255,6 @@
 				16192BFD2693012100967C73 /* TCaseDetailTopBar.m in Sources */,
 				16192B372692E13E00967C73 /* THKAnimationPanDelegate.m in Sources */,
 				16867A172692D76C00650023 /* TMCardComponentHelper.m in Sources */,
-				16EB460526F42EFA006A7428 /* THKOSSViewController.m in Sources */,
 				16867A0E2692D76C00650023 /* TMCardLiveStatusView.m in Sources */,
 				16E5C4CD2682DE930024BA20 /* TBTNetworkConfig.m in Sources */,
 				16611B6A269692D20089E41B /* THKMaterialClassificationRecommendDecorationView.m in Sources */,
@@ -2283,7 +2264,6 @@
 				168679A12692B8BA00650023 /* THKMaterialHotListRequest.m in Sources */,
 				16867A142692D76C00650023 /* TMCardComponentCellSizeTool.m in Sources */,
 				16867A102692D76C00650023 /* NSAttributedString+THKTextTagLabel.m in Sources */,
-				16EB471D26F48119006A7428 /* THKOSSTool.m in Sources */,
 				1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */,
 				16192B4F2692E1B100967C73 /* THKCustomRouter.m in Sources */,
 				16E5C4CE2682DE930024BA20 /* TBTNetworkPrivate.m in Sources */,

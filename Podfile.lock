@@ -20,9 +20,6 @@ PODS:
   - MJExtension (3.2.2)
   - MJRefresh (3.6.1)
   - ReactiveObjC (3.1.1)
-  - THKOSSManager (1.1.6):
-    - AFNetworking (~> 4.0.1)
-    - Masonry (~> 1.1.0)
   - TMUIKit (1.1.4):
     - Masonry (~> 1.1.0)
     - TMUIKit/TMUIComponents (= 1.1.4)
@@ -237,19 +234,16 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - ReactiveObjC
-  - THKOSSManager (= 1.1.6)
   - TMUIKit (from `/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec`)
   - YYKit
 
 SPEC REPOS:
-  "git@repo.we.com:ios/tspecsrepo.git":
-    - THKOSSManager
   https://github.com/CocoaPods/Specs.git:
-    - Masonry
     - YYKit
   trunk:
     - AFNetworking
     - LookinServer
+    - Masonry
     - MBProgressHUD
     - MJExtension
     - MJRefresh
@@ -267,10 +261,9 @@ SPEC CHECKSUMS:
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  THKOSSManager: 36a423218351630f2410db21f3b55472ee875caf
   TMUIKit: 4ad154acdf1857157066637f49a90712908d62bd
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 4731225756952ee98d94b11636a41266452aea94
+PODFILE CHECKSUM: 7b811e4b134a578dddc8d29f6e74f34deeac4d1a
 
 COCOAPODS: 1.10.0

@@ -1,8 +1,5 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
-source 'https://github.com/CocoaPods/Specs.git'        #官方仓库地址
-source 'git@repo.we.com:ios/tspecsrepo.git'       #私有仓库地址
-source 'http://repo.baichuan-ios.taobao.com/baichuanSDK/AliBCSpecs.git'
 
 
 target 'Demo' do
@@ -20,8 +17,7 @@ target 'Demo' do
   pod 'TMUIKit', :path => '/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec'
   pod 'MJRefresh'
   pod 'MBProgressHUD'
-  pod 'THKOSSManager', '1.1.6'
-
+  
 
   target 'DemoTests' do
     inherit! :search_paths
