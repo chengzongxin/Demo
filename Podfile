@@ -17,7 +17,7 @@ target 'Demo' do
   pod 'TMUIKit', :path => '/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec'
   pod 'MJRefresh'
   pod 'MBProgressHUD'
-  
+#  pod 'YYWebImage', '1.0.5'
 
   target 'DemoTests' do
     inherit! :search_paths

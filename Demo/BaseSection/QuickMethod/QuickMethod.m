@@ -10,6 +10,11 @@
 UIColor *kTo8toGreen;
 
 @implementation QuickMethod
+
++ (BOOL)isLoginStatus{
+    return NO;
+}
+
 @end
 
 

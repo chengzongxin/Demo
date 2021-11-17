@@ -42,5 +42,7 @@ static inline CGFloat CGCustomFont(CGFloat value) {
 #import "THKNetworkDefine.h"
 #import "THKResponse.h"
 #import "THKCommonDefine.h"
+#import "Define_Block.h"
+
 
 #endif /* PrefixHeader_pch */

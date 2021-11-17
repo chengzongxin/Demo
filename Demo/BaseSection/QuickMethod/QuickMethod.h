@@ -11,7 +11,18 @@ static NSString *kGEAppWidgetShow  = @"appWidgetShow";
 static NSString *kGEAppWidgetClick = @"appWidgetClick";
 NS_ASSUME_NONNULL_BEGIN
 
+
+///接口请求失败(平台后端问题导致失败)
+static NSString *const k_toast_msg_reqFail    = @"请求失败，请稍后重试";///< 请求失败，请稍后重试
+///无网络 或 弱网环境链接失败
+static NSString *const k_toast_msg_weakNet    = @"网络出问题了，请检查网络连接";///< 网络出问题了，请检查网络连接
+
+#define kCurrentUser QuickMethod
+
 @interface QuickMethod : NSObject
+
++ (BOOL)isLoginStatus;
+
 @end
 
 

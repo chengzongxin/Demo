@@ -12,6 +12,7 @@
 #import "THKMaterialHotRankVM.h"
 #import "THKDiaryBookVC.h"
 #import "THKExpandLabel.h"
+#import "DynamicTabVC.h"
 
 @interface ViewController ()
 
@@ -62,6 +63,17 @@
         [self.navigationController pushViewController:vc animated:YES];
     });
     
+    Button.str(@"Tab组件").bgColor(@"random").xywh(250,250,100,100).addTo(self.view).onClick(^{
+        DynamicTabVM *vm = [[DynamicTabVM alloc] init];
+        DynamicTabVC *vc = [[DynamicTabVC alloc] initWithViewModel:vm];
+        [self.navigationController pushViewController:vc animated:YES];
+    });
+    
+    
+}
+
+- (void)expandLabel{
+    
     NSString *tag = @"#123入住新家#  \n\n";
     NSString *str = @"    \n\n\n\n   13:39 👍🏾👍🏾\n\n😬😬😬\n\n哈哈哈哈哈哈哈哈哈哈哈哈哈哈👍🏾👍🏾👍🏾👍🏾👍🏾👍🏾    \n\n\n\n\n\n   ";
     
@@ -91,12 +103,12 @@
     
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [self doCurrentApiRequestTest];
-//            
+//
 //            for (int i = 0; i < 20; i++) {
 //                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * i * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //                    [self doCurrentApiRequestTest];
 //                });
-//                
+//
 //            }
 //
 //        });
