@@ -12,7 +12,7 @@
 #import "THKPageBGScrollView.h"
 static CGFloat const kSliderH = 44;
 
-@interface THKDynamicTabsManager ()<YNPageViewControllerDelegate,YNPageViewControllerDataSource>{
+@interface THKDynamicTabsManager ()<YNPageViewControllerDelegate,YNPageViewControllerDataSource,THKPageViewControllerDelegate,THKPageViewControllerDataSource>{
     NSArray *_childVCs;
     NSArray *_childTitles;
 }
@@ -22,7 +22,7 @@ static CGFloat const kSliderH = 44;
 @property (nonatomic, strong)   UIView                          *wrapperView;
 @property (nonatomic, strong)   UIView                          *headerView;
 @property (nonatomic, strong)   THKImageTabSegmentControl       *sliderBar;
-@property (nonatomic, strong)   YNPageViewController            *pageContainerVC;
+@property (nonatomic, strong)   THKPageViewController           *pageContainerVC;
 @property (nonatomic, assign)   BOOL isFirst;
 
 
@@ -33,8 +33,8 @@ static CGFloat const kSliderH = 44;
 - (instancetype)initWithViewModel:(THKDynamicTabsViewModel *)viewModel {
     if (self = [super init]) {
         
-        _childVCs = @[DynamicTabChildVC.new,DynamicTabChildVC.new];
-        _childTitles = @[@"1",@"2"];
+        _childVCs = @[DynamicTabChildVC.new];
+        _childTitles = @[@"1"];
         self.viewModel = viewModel;
         [self bindViewModel];
     }
@@ -243,12 +243,12 @@ static CGFloat const kSliderH = 44;
     return _headerView;
 }
 
-- (YNPageViewController *)pageContainerVC {
+- (THKPageViewController *)pageContainerVC {
     if (!_pageContainerVC) {
-        YNPageConfigration *configration = [YNPageConfigration defaultConfig];
-        configration.pageStyle = YNPageStyleNavigation;
+        THKPageViewModel *configration = [THKPageViewModel defaultConfig];
+//        configration.pageStyle = YNPageStyleNavigation;
         configration.headerViewCouldScale = NO;
-        configration.headerViewScaleMode = YNPageHeaderViewScaleModeTop;
+//        configration.headerViewScaleMode = YNPageHeaderViewScaleModeTop;
         configration.showTabbar = NO;
         configration.showNavigation = NO;
         configration.scrollMenu = NO;
@@ -259,7 +259,7 @@ static CGFloat const kSliderH = 44;
 //        configration.menuWidth = 150;
         configration.cutOutHeight = self.viewModel.cutOutHeight + kSliderH + NavigationContentTop;
         
-        _pageContainerVC = [YNPageViewController pageViewControllerWithControllers:_childVCs
+        _pageContainerVC = [THKPageViewController pageViewControllerWithControllers:_childVCs
                                                                   titles:_childTitles
                                                                   config:configration];
         _pageContainerVC.delegate = self;

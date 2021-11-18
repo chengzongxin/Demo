@@ -14,6 +14,7 @@
 #import "THKDynamicTabsViewModel.h"
 #import "YNPageViewController.h"
 #import "TMUIPageWrapperScrollView.h"
+#import "THKPageViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly)     UIView                          *wrapperView;
 @property (nonatomic, strong, readonly)     UIView                          *headerView;
 @property (nonatomic, strong, readonly)     THKImageTabSegmentControl       *sliderBar;
-@property (nonatomic, strong, readonly)     YNPageViewController            *pageContainerVC;
+@property (nonatomic, strong, readonly)     THKPageViewController           *pageContainerVC;
 
 /**
  这个Block做了重复曝光的判断，如果你需要重复曝光，可以直接用sliderBar.itemExposeBlock
