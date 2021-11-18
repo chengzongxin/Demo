@@ -245,11 +245,9 @@ static CGFloat const kSliderH = 44;
 
 - (THKPageViewController *)pageContainerVC {
     if (!_pageContainerVC) {
-        THKPageViewModel *configration = [THKPageViewModel defaultConfig];
-        configration.cutOutHeight = self.viewModel.cutOutHeight + kSliderH + NavigationContentTop;
-        _pageContainerVC = [THKPageViewController pageViewControllerWithControllers:_childVCs
-                                                                  titles:_childTitles
-                                                                  config:configration];
+        THKPageViewModel *vm = [[THKPageViewModel alloc] init];
+        vm.cutOutHeight = self.viewModel.cutOutHeight + kSliderH + NavigationContentTop;
+        _pageContainerVC = [[THKPageViewController alloc] initWithViewModel:vm];
         _pageContainerVC.delegate = self;
         _pageContainerVC.dataSource = self;
     }
@@ -260,7 +258,7 @@ static CGFloat const kSliderH = 44;
     
     if (!_sliderBar) {
         
-        CGRect frame = CGRectMake(0, 0, kScreenWidth, 52.0-6);
+        CGRect frame = CGRectMake(0, 0, kScreenWidth, kSliderH);
         _sliderBar = [[THKImageTabSegmentControl alloc] initWithFrame:frame];
         _sliderBar.backgroundColor = [UIColor whiteColor];
         _sliderBar.indicatorView.hidden = NO;

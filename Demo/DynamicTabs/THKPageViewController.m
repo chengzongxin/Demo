@@ -12,6 +12,7 @@
 
 @interface THKPageViewController ()<UIScrollViewDelegate>
 
+@property (nonatomic, strong) THKPageViewModel *viewModel;
 /// 页面ScrollView
 @property (nonatomic, strong) THKPageScrollView *pageScrollView;
 /// 展示控制器的字典
@@ -34,60 +35,56 @@
 @end
 
 @implementation THKPageViewController
-
+@dynamic viewModel;
 
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+}
+
+- (void)bindViewModel{
     [self initData];
+    
+    if (self.controllersM.count == 0) {
+        return;
+    }
+    
+    [self checkParams];
     [self setupSubViews];
     [self setSelectedPageIndex:self.pageIndex];
 }
 
-#pragma mark - Initialize Method
-/**
- 初始化方法
- @param controllers 子控制器
- @param titles 标题
- @param config 配置信息
- */
-+ (instancetype)pageViewControllerWithControllers:(NSArray *)controllers
-                                           titles:(NSArray *)titles
-                                           config:(THKPageViewModel *)config {
-    return [[self alloc] initPageViewControllerWithControllers:controllers
-                                                        titles:titles
-                                                        config:config];
-}
-
-- (instancetype)initPageViewControllerWithControllers:(NSArray *)controllers
-                                               titles:(NSArray *)titles
-                                               config:(THKPageViewModel *)config {
-    self = [super init];
-    self.controllersM = controllers.mutableCopy;
-    self.titlesM = titles.mutableCopy;
-    self.config = config ?: [THKPageViewModel defaultConfig];
+- (void)initData {
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.displayDictM = @{}.mutableCopy;
     self.cacheDictM = @{}.mutableCopy;
     self.originInsetBottomDictM = @{}.mutableCopy;
     self.scrollViewCacheDictionryM = @{}.mutableCopy;
-    return self;
 }
 
-/**
- *  当前PageScrollViewVC作为子控制器
- *
- *  @param parentViewControler 父类控制器
- */
-- (void)addSelfToParentViewController:(UIViewController *)parentViewControler {
-    [self addChildViewControllerWithChildVC:self parentVC:parentViewControler];
+/// 初始化子View
+- (void)setupSubViews {
+    [self setupPageScrollView];
 }
 
-/**
- *  从父类控制器里面移除自己（PageScrollViewVC）
- */
-- (void)removeSelfViewController {
-    [self removeViewControllerWithChildVC:self];
+/// 初始化PageScrollView
+- (void)setupPageScrollView {
+    CGFloat cutOutHeight = self.viewModel.cutOutHeight > 0 ? self.viewModel.cutOutHeight : 0;
+    CGFloat contentHeight = TMUI_SCREEN_HEIGHT - cutOutHeight;
+    
+    self.pageScrollView.frame = CGRectMake(0, 0, TMUI_SCREEN_WIDTH, contentHeight);
+    
+    self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH * self.controllersM.count, contentHeight);
+    
+    self.viewModel.contentHeight = self.pageScrollView.height - self.viewModel.menuHeight;
+    if (kLESS_THAN_iOS11) {
+        [self.view addSubview:[UIView new]];
+    }
+    [self.view addSubview:self.pageScrollView];
 }
 
 
@@ -156,8 +153,6 @@
 
     CGFloat offX = currentPostion > self.lastPositionX ? ceilf(offsetX) : offsetX;
 
-//    [self replaceHeaderViewFromTableView];
-    
     [self initViewControllerWithIndex:offX];
 
     CGFloat progress = offsetX - (NSInteger)offsetX;
@@ -334,33 +329,29 @@
 }
 
 #pragma mark - Private Method
-- (void)initData {
-    [self checkParams];
+/// 检查参数
+- (void)checkParams {
+#if DEBUG
+    NSAssert(self.controllersM.count != 0 || self.controllersM, @"ViewControllers`count is 0 or nil");
     
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-}
-
-/// 初始化子View
-- (void)setupSubViews {
-    [self setupPageScrollView];
-}
-
-/// 初始化PageScrollView
-- (void)setupPageScrollView {
-    CGFloat cutOutHeight = self.config.cutOutHeight > 0 ? self.config.cutOutHeight : 0;
-    CGFloat contentHeight = TMUI_SCREEN_HEIGHT - cutOutHeight;
+    NSAssert(self.titlesM.count != 0 || self.titlesM, @"TitleArray`count is 0 or nil,");
     
-    self.pageScrollView.frame = CGRectMake(0, 0, TMUI_SCREEN_WIDTH, contentHeight);
-    
-    self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH * self.controllersM.count, contentHeight);
-    
-    self.config.contentHeight = self.pageScrollView.height - self.config.menuHeight;
-    if (kLESS_THAN_iOS11) {
-        [self.view addSubview:[UIView new]];
+    NSAssert(self.controllersM.count == self.titlesM.count, @"ViewControllers`count is not equal titleArray!");
+#endif
+    if (![self respondsToCustomCachekey]) {
+        BOOL isHasNotEqualTitle = YES;
+        for (int i = 0; i < self.titlesM.count; i++) {
+            for (int j = i + 1; j < self.titlesM.count; j++) {
+                if (i != j && [self.titlesM[i] isEqualToString:self.titlesM[j]]) {
+                    isHasNotEqualTitle = NO;
+                    break;
+                }
+            }
+        }
+#if DEBUG
+        NSAssert(isHasNotEqualTitle, @"TitleArray Not allow equal title.");
+#endif
     }
-    [self.view addSubview:self.pageScrollView];
 }
 
 /// 移除缓存控制器
@@ -397,30 +388,6 @@
     [childVC removeFromParentViewController];
 }
 
-/// 检查参数
-- (void)checkParams {
-#if DEBUG
-    NSAssert(self.controllersM.count != 0 || self.controllersM, @"ViewControllers`count is 0 or nil");
-    
-    NSAssert(self.titlesM.count != 0 || self.titlesM, @"TitleArray`count is 0 or nil,");
-    
-    NSAssert(self.controllersM.count == self.titlesM.count, @"ViewControllers`count is not equal titleArray!");
-#endif
-    if (![self respondsToCustomCachekey]) {
-        BOOL isHasNotEqualTitle = YES;
-        for (int i = 0; i < self.titlesM.count; i++) {
-            for (int j = i + 1; j < self.titlesM.count; j++) {
-                if (i != j && [self.titlesM[i] isEqualToString:self.titlesM[j]]) {
-                    isHasNotEqualTitle = NO;
-                    break;
-                }
-            }
-        }
-#if DEBUG
-        NSAssert(isHasNotEqualTitle, @"TitleArray Not allow equal title.");
-#endif
-    }
-}
 
 - (BOOL)respondsToCustomCachekey {
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(pageViewController:customCacheKeyForIndex:)]) {
@@ -445,6 +412,24 @@
     return title;
 };
 
+
+/**
+ *  当前PageScrollViewVC作为子控制器
+ *
+ *  @param parentViewControler 父类控制器
+ */
+- (void)addSelfToParentViewController:(UIViewController *)parentViewControler {
+    [self addChildViewControllerWithChildVC:self parentVC:parentViewControler];
+}
+
+/**
+ *  从父类控制器里面移除自己（PageScrollViewVC）
+ */
+- (void)removeSelfViewController {
+    [self removeViewControllerWithChildVC:self];
+}
+
+
 #pragma mark - Invoke Delegate Method
 /// 回调监听列表滚动代理
 - (void)invokeDelegateForScrollWithOffsetY:(CGFloat)offsetY {
@@ -460,7 +445,7 @@
         _pageScrollView = [[THKPageScrollView alloc] init];
         _pageScrollView.showsVerticalScrollIndicator = NO;
         _pageScrollView.showsHorizontalScrollIndicator = NO;
-        _pageScrollView.scrollEnabled = self.config.pageScrollEnabled;
+        _pageScrollView.scrollEnabled = self.viewModel.pageScrollEnabled;
         _pageScrollView.pagingEnabled = YES;
         _pageScrollView.bounces = NO;
         _pageScrollView.delegate = self;
@@ -492,7 +477,7 @@
 //            scrollView.yn_pageScrollViewDidScrollView = ^(UIScrollView *scrollView) {
 //                [weakSelf yn_pageScrollViewDidScrollView:scrollView];
 //            };
-//            if (self.config.pageStyle == THKPageStyleSuspensionTopPause) {
+//            if (self.viewModel.pageStyle == THKPageStyleSuspensionTopPause) {
 //                scrollView.yn_pageScrollViewBeginDragginScrollView = ^(UIScrollView *scrollView) {
 //                    [weakSelf yn_pageScrollViewBeginDragginScrollView:scrollView];
 //                };

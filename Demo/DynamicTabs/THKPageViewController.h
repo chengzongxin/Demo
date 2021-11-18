@@ -112,10 +112,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface THKPageViewController : UIViewController
+@interface THKPageViewController : THKViewController
 
 /// 配置信息
-@property (nonatomic, strong) THKPageViewModel *config;
+@property (nonatomic, strong, readonly) THKPageViewModel *viewModel;
 /// 控制器数组
 @property (nonatomic, strong) NSMutableArray<__kindof UIViewController *> *controllersM;
 /// 标题数组 默认 缓存 key 为 title 可通过数据源代理 进行替换
@@ -134,25 +134,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
-
-/**
- 初始化方法
- @param controllers 子控制器
- @param titles 标题
- @param config 配置信息
- */
-+ (instancetype)pageViewControllerWithControllers:(NSArray *)controllers
-                                           titles:(NSArray *)titles
-                                           config:(THKPageViewModel *)config;
-/**
- 初始化方法
- @param controllers 子控制器
- @param titles 标题
- @param config 配置信息
- */
-- (instancetype)initPageViewControllerWithControllers:(NSArray *)controllers
-                                               titles:(NSArray *)titles
-                                               config:(THKPageViewModel *)config;
 
 /**
  *  当前PageScrollViewVC作为子控制器
@@ -184,21 +165,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param pageIndex 页面下标
  */
 - (void)setSelectedPageIndex:(NSInteger)pageIndex;
-
-/**
- 更新菜单栏标题
- 
- @param title 标题
- @param index index
- */
-//- (void)updateMenuItemTitle:(NSString *)title index:(NSInteger)index;
-
-/**
- 更新全部菜单栏标题
- 
- @param titles 标题数组
- */
-//- (void)updateMenuItemTitles:(NSArray *)titles;
 
 /**
  批量插入控制器
