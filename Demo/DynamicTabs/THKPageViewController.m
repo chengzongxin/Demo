@@ -655,9 +655,9 @@
 //
 //    } else {
         
-        self.pageScrollView.frame = CGRectMake(0, [self isTopStyle] ? self.config.menuHeight : 0, TMUI_SCREEN_WIDTH, ([self isTopStyle] ? contentHeight - self.config.menuHeight : contentHeight));
+        self.pageScrollView.frame = CGRectMake(0, 0, TMUI_SCREEN_WIDTH, contentHeight);
         
-        self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_HEIGHT * self.controllersM.count, contentHeight - ([self isTopStyle] ? self.config.menuHeight : 0));
+        self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH * self.controllersM.count, contentHeight);
         
         self.config.contentHeight = self.pageScrollView.yn_height - self.config.menuHeight;
         if (kLESS_THAN_iOS11) {
@@ -875,10 +875,10 @@
 }
 
 #pragma mark - 样式取值
-- (BOOL)isTopStyle {
-//    return self.config.pageStyle == THKPageStyleTop ? YES : NO;
-    return NO;
-}
+//- (BOOL)isTopStyle {
+////    return self.config.pageStyle == THKPageStyleTop ? YES : NO;
+//    return NO;
+//}
 //
 //- (BOOL)isNavigationStyle {
 //    return self.config.pageStyle == THKPageStyleNavigation ? YES : NO;
