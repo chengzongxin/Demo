@@ -12,10 +12,7 @@
 #import "THKPageBGScrollView.h"
 static CGFloat const kSliderH = 44;
 
-@interface THKDynamicTabsManager ()<YNPageViewControllerDelegate,YNPageViewControllerDataSource,THKPageViewControllerDelegate,THKPageViewControllerDataSource>{
-    NSArray *_childVCs;
-    NSArray *_childTitles;
-}
+@interface THKDynamicTabsManager ()<THKPageViewControllerDelegate,THKPageViewControllerDataSource>
 
 @property (nonatomic, strong)   THKDynamicTabsViewModel         *viewModel;
 @property (nonatomic, strong)   TMUIPageWrapperScrollView       *wrapperScrollView;
@@ -23,7 +20,6 @@ static CGFloat const kSliderH = 44;
 @property (nonatomic, strong)   UIView                          *headerView;
 @property (nonatomic, strong)   THKImageTabSegmentControl       *sliderBar;
 @property (nonatomic, strong)   THKPageViewController           *pageContainerVC;
-@property (nonatomic, assign)   BOOL isFirst;
 
 
 @end
@@ -32,9 +28,6 @@ static CGFloat const kSliderH = 44;
 
 - (instancetype)initWithViewModel:(THKDynamicTabsViewModel *)viewModel {
     if (self = [super init]) {
-        
-        _childVCs = @[DynamicTabChildVC.new];
-        _childTitles = @[@"1"];
         self.viewModel = viewModel;
         [self bindViewModel];
     }
@@ -154,7 +147,6 @@ static CGFloat const kSliderH = 44;
     self.pageContainerVC.pageIndex = selectedIndex;
     [self.pageContainerVC reloadData];
     
-    self.isFirst = YES;
     [self.viewModel.segmentValueChangedSubject sendNext:@(selectedIndex)];
     [self.viewModel.tabsLoadFinishSignal sendNext:self.viewModel.segmentTabs];
 }
@@ -172,8 +164,8 @@ static CGFloat const kSliderH = 44;
 }
 
 #pragma mark - YNPageViewControllerDataSource
-- (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
-    NSArray *vcs = self.viewModel.arrayChildVC?:_childVCs;
+- (UIScrollView *)pageViewController:(THKPageViewController *)pageViewController pageForIndex:(NSInteger)index {
+    NSArray *vcs = self.viewModel.arrayChildVC;
     UIViewController *controller = [vcs safeObjectAtIndex:index];
     UIScrollView *scrollView = nil;
     if ([controller conformsToProtocol:@protocol(THKTabBarRepeatSelectProtocol)] && [controller respondsToSelector:@selector(contentScrollView)]) {
@@ -182,7 +174,7 @@ static CGFloat const kSliderH = 44;
     return scrollView;
 }
 
-- (void)pageViewController:(YNPageViewController *)pageViewController
+- (void)pageViewController:(THKPageViewController *)pageViewController
         didEndDecelerating:(UIScrollView *)scrollView{
     NSInteger selectedIndex = pageViewController.pageIndex;
     if (selectedIndex == self.sliderBar.selectedIndex){

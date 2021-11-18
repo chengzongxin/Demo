@@ -12,7 +12,6 @@
 #import <Foundation/Foundation.h>
 #import "THKImageTabSegmentControl.h"
 #import "THKDynamicTabsViewModel.h"
-#import "YNPageViewController.h"
 #import "TMUIPageWrapperScrollView.h"
 #import "THKPageViewController.h"
 

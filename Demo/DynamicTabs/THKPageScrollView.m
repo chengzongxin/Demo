@@ -6,7 +6,6 @@
 //
 
 #import "THKPageScrollView.h"
-#import "UIView+YNPageExtend.h"
 #import <objc/runtime.h>
 
 @interface THKPageScrollView ()<UIGestureRecognizerDelegate>
@@ -24,7 +23,7 @@
 }
 
 - (BOOL)panBack:(UIGestureRecognizer *)gestureRecognizer {
-    int location_X = 0.15 * kYNPAGE_SCREEN_WIDTH;
+    int location_X = 0.15 * TMUI_SCREEN_WIDTH;
 
     if (gestureRecognizer == self.panGestureRecognizer) {
         UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)gestureRecognizer;
@@ -33,7 +32,7 @@
         if (UIGestureRecognizerStateBegan == state || UIGestureRecognizerStatePossible == state) {
             CGPoint location = [gestureRecognizer locationInView:self];
             int temp1 = location.x;
-            int temp2 = kYNPAGE_SCREEN_WIDTH;
+            int temp2 = TMUI_SCREEN_WIDTH;
             NSInteger XX = temp1 % temp2;
             if (point.x >0 && XX < location_X) {
                 return YES;

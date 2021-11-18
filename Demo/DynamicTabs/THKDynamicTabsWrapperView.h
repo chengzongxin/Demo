@@ -6,11 +6,11 @@
 //
 
 #import "THKView.h"
-#import "YNPageScrollView.h"
+#import "THKPageScrollView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKDynamicTabsWrapperView : YNPageScrollView
+@interface THKDynamicTabsWrapperView : THKPageScrollView
 
 /// 头部固定区域
 @property (nonatomic, assign) CGFloat lockArea;
