@@ -36,7 +36,7 @@
             CGFloat oldH = self.dynamicTabsManager.viewModel.headerContentViewHeight;
             self.dynamicTabsManager.viewModel.headerContentViewHeight = arc4random()%200 + 100;
             CGFloat newH = self.dynamicTabsManager.viewModel.headerContentViewHeight;
-            self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
+            self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + self.dynamicTabsManager.viewModel.sliderBarHeight;
             UILabel *lbl =(UILabel *)[self.headerView viewWithTag:999];
             lbl.text = [NSString stringWithFormat:@"头部高度：%f",self.dynamicTabsManager.viewModel.headerContentViewHeight];
             
@@ -48,7 +48,7 @@
             }
         });
     }];
-    header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
+    header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + self.dynamicTabsManager.viewModel.sliderBarHeight;
     [header setTitle:@"下拉刷新头部高度" forState:MJRefreshStatePulling];
     self.dynamicTabsManager.wrapperScrollView.mj_header = header;
     
