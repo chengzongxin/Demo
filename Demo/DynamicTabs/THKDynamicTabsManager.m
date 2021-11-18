@@ -10,7 +10,6 @@
 #import "THKViewController.h"
 #import "DynamicTabChildVC.h"
 #import "THKPageBGScrollView.h"
-static CGFloat const kSliderH = 44;
 
 @interface THKDynamicTabsManager ()<THKPageViewControllerDelegate,THKPageViewControllerDataSource>
 
@@ -46,7 +45,7 @@ static CGFloat const kSliderH = 44;
     [[RACObserve(self.viewModel, headerContentViewHeight) delay:0] subscribeNext:^(id  _Nullable x) {
         if (self.headerView.superview) {
             CGFloat headerH = self.viewModel.headerContentViewHeight;
-            CGFloat topH = headerH + kSliderH;
+            CGFloat topH = headerH + self.viewModel.sliderBarHeight;
             
             [self.headerView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(-topH);
@@ -54,7 +53,7 @@ static CGFloat const kSliderH = 44;
             }];
             
             self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
-            self.wrapperScrollView.lockArea = kSliderH;
+            self.wrapperScrollView.lockArea = self.viewModel.sliderBarHeight;
             self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
         }
     }];
@@ -70,7 +69,7 @@ static CGFloat const kSliderH = 44;
     if (self.viewModel.isSuspendStyle) {
         
         headerH = self.viewModel.headerContentViewHeight;
-        topH = headerH + kSliderH;
+        topH = headerH + self.viewModel.sliderBarHeight;
         
         [self.wrapperScrollView addSubview:self.headerView];
         [self.wrapperScrollView addSubview:self.sliderBar];
@@ -92,24 +91,24 @@ static CGFloat const kSliderH = 44;
         }];
         
         [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(-kSliderH);
+            make.top.mas_equalTo(-self.viewModel.sliderBarHeight);
             make.left.mas_offset(0);
-            make.height.mas_equalTo(kSliderH);
+            make.height.mas_equalTo(self.viewModel.sliderBarHeight);
             make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
         }];
         
         [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.bottom.mas_equalTo(0);
             make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
-            make.height.equalTo(self.wrapperScrollView).offset(-kSliderH);
+            make.height.equalTo(self.wrapperScrollView).offset(-self.viewModel.sliderBarHeight);
         }];
         
         
         self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
-        self.wrapperScrollView.lockArea = kSliderH;
+        self.wrapperScrollView.lockArea = self.viewModel.sliderBarHeight;
         self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
     }else{
-        topH = kSliderH;
+        topH = self.viewModel.sliderBarHeight;
         
         [self.wrapperView addSubview:self.sliderBar];
         [self.wrapperView addSubview:self.pageContainerVC.view];
@@ -117,7 +116,7 @@ static CGFloat const kSliderH = 44;
         [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(0);
             make.left.mas_offset(0);
-            make.height.mas_equalTo(kSliderH);
+            make.height.mas_equalTo(self.viewModel.sliderBarHeight);
             make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
         }];
         
@@ -125,7 +124,7 @@ static CGFloat const kSliderH = 44;
             make.top.equalTo(self.sliderBar.mas_bottom);
             make.left.right.mas_equalTo(0);
             make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
-            make.height.equalTo(self.wrapperView).offset(-kSliderH);
+            make.height.equalTo(self.wrapperView).offset(-self.viewModel.sliderBarHeight);
         }];
     }
     
@@ -238,7 +237,7 @@ static CGFloat const kSliderH = 44;
 - (THKPageViewController *)pageContainerVC {
     if (!_pageContainerVC) {
         THKPageViewModel *vm = [[THKPageViewModel alloc] init];
-        vm.cutOutHeight = self.viewModel.cutOutHeight + kSliderH + NavigationContentTop;
+        vm.cutOutHeight = self.viewModel.cutOutHeight + self.viewModel.sliderBarHeight + NavigationContentTop;
         _pageContainerVC = [[THKPageViewController alloc] initWithViewModel:vm];
         _pageContainerVC.delegate = self;
         _pageContainerVC.dataSource = self;
@@ -250,7 +249,7 @@ static CGFloat const kSliderH = 44;
     
     if (!_sliderBar) {
         
-        CGRect frame = CGRectMake(0, 0, kScreenWidth, kSliderH);
+        CGRect frame = CGRectMake(0, 0, kScreenWidth, self.viewModel.sliderBarHeight);
         _sliderBar = [[THKImageTabSegmentControl alloc] initWithFrame:frame];
         _sliderBar.backgroundColor = [UIColor whiteColor];
         _sliderBar.indicatorView.hidden = NO;

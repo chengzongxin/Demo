@@ -48,6 +48,7 @@
 - (void)initialize {
     [super initialize];
     
+    self.sliderBarHeight = 44;
     self.tabsResultSubject = [RACSubject subject];
     self.segmentValueChangedSubject = [RACSubject subject];
     self.tabsLoadFinishSignal = [RACSubject subject];

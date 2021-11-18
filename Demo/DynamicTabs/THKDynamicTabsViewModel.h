@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger isSuspendStyle;
 @property (nonatomic, strong) UIView *headerContentView;
 @property (nonatomic, assign) CGFloat headerContentViewHeight;
+/// tab标签高度,默认44
+@property (nonatomic, assign) CGFloat sliderBarHeight;
 ///非pageContent内容的高度
 @property (nonatomic, assign) CGFloat cutOutHeight;
 @property (nonatomic, weak) UIViewController *parentVC;

@@ -71,6 +71,7 @@
         
         viewModel.isSuspendStyle = YES;
         viewModel.cutOutHeight = 44;
+        viewModel.sliderBarHeight = 60;
         viewModel.headerContentViewHeight = 321;
         viewModel.headerContentView = self.headerView;
         viewModel.headerContentView.backgroundColor = UIColor.tmui_randomColor;
