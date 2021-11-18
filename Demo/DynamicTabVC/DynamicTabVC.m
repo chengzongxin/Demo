@@ -54,8 +54,16 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 @strongify(self);
                 [self.dynamicTabsManager.wrapperScrollView.mj_header endRefreshing];
-                self.dynamicTabsManager.viewModel.headerContentViewHeight = 188;
+                CGFloat oldH = self.dynamicTabsManager.viewModel.headerContentViewHeight;
+                self.dynamicTabsManager.viewModel.headerContentViewHeight = arc4random()%200 + 100;
+                CGFloat newH = self.dynamicTabsManager.viewModel.headerContentViewHeight;
                 self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
+                if (newH > oldH) {
+                    // 头部变高，需要置顶
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.dynamicTabsManager.wrapperScrollView tmui_scrollToTopAnimated:YES];
+                    });
+                }
             });
         }];
         self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;

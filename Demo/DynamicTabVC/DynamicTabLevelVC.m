@@ -13,6 +13,8 @@
 @property (nonatomic, strong, readwrite) DynamicTabLevelVM *viewModel;
 @property (nonatomic, strong) THKDiaryBookDetailTopNaviBarView *topBar;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
+// 私有头部
+@property (nonatomic, strong) UIView *headerView;
 @end
 
 @implementation DynamicTabLevelVC
@@ -26,31 +28,32 @@
     }];
     @weakify(self);
 //    self.tableView.tmui_isAddRefreshControl = YES;
-    self.dynamicTabsManager.wrapperScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             @strongify(self);
+            // 这里必须要先设置头部刷新结束，再设置新的头部高度，否则会引起inset问题，怀疑是MJRefresh内部逻辑导致的
             [self.dynamicTabsManager.wrapperScrollView.mj_header endRefreshing];
-            self.dynamicTabsManager.viewModel.headerContentViewHeight = 188;
+            CGFloat oldH = self.dynamicTabsManager.viewModel.headerContentViewHeight;
+            self.dynamicTabsManager.viewModel.headerContentViewHeight = arc4random()%200 + 100;
+            CGFloat newH = self.dynamicTabsManager.viewModel.headerContentViewHeight;
             self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
+            UILabel *lbl =(UILabel *)[self.headerView viewWithTag:999];
+            lbl.text = [NSString stringWithFormat:@"头部高度：%f",self.dynamicTabsManager.viewModel.headerContentViewHeight];
+            
+            if (newH > oldH) {
+                // 头部变高，需要置顶
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.dynamicTabsManager.wrapperScrollView tmui_scrollToTopAnimated:YES];
+                });
+            }
         });
     }];
-    self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
+    header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
+    [header setTitle:@"下拉刷新头部高度" forState:MJRefreshStatePulling];
+    self.dynamicTabsManager.wrapperScrollView.mj_header = header;
     
     [self.dynamicTabsManager loadTabs];
-    
-//    [RACObserve(self, contentScrollView) subscribeNext:^(id  _Nullable x) {
-//        NSLog(@"%@",x);
-//    }];
 }
-
-//- (UIScrollView *)contentScrollView{
-//    return _dynamicTabsManager.wrapperScrollView;
-//}
-//
-//- (void)tabbarDidRepeatSelect{
-//    [self.dynamicTabsManager.wrapperScrollView setContentOffset:self.dynamicTabsManager.wrapperScrollView.tmui_topPoint animated:YES];
-//}
-
 
 - (THKDynamicTabsManager *)dynamicTabsManager {
     if (!_dynamicTabsManager) {
@@ -69,13 +72,28 @@
         viewModel.isSuspendStyle = YES;
         viewModel.cutOutHeight = 44;
         viewModel.headerContentViewHeight = 321;
-        viewModel.headerContentView = [UIView new];
+        viewModel.headerContentView = self.headerView;
         viewModel.headerContentView.backgroundColor = UIColor.tmui_randomColor;
         viewModel.parentVC = self;
         
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
     }
     return _dynamicTabsManager;
+}
+
+- (UIView *)headerView{
+    if (!_headerView) {
+        _headerView = [[UIView alloc] init];
+        _headerView.backgroundColor = UIColor.tmui_randomColor;
+        UILabel *lbl = [[UILabel alloc] init];
+        lbl.text = [NSString stringWithFormat:@"头部高度：%f",321.0];
+        [_headerView addSubview:lbl];
+        [lbl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.mas_equalTo(20);
+        }];
+        lbl.tag = 999;
+    }
+    return _headerView;
 }
 
 

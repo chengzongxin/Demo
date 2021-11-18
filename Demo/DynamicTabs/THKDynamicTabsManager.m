@@ -43,7 +43,7 @@ static CGFloat const kSliderH = 44;
         [self reloadUI];
     }];
     
-    [[RACObserve(self.viewModel, headerContentViewHeight) delay:1] subscribeNext:^(id  _Nullable x) {
+    [[RACObserve(self.viewModel, headerContentViewHeight) delay:0] subscribeNext:^(id  _Nullable x) {
         if (self.headerView.superview) {
             CGFloat headerH = self.viewModel.headerContentViewHeight;
             CGFloat topH = headerH + kSliderH;
