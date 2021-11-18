@@ -191,14 +191,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param title 标题
  @param index index
  */
-- (void)updateMenuItemTitle:(NSString *)title index:(NSInteger)index;
+//- (void)updateMenuItemTitle:(NSString *)title index:(NSInteger)index;
 
 /**
  更新全部菜单栏标题
  
  @param titles 标题数组
  */
-- (void)updateMenuItemTitles:(NSArray *)titles;
+//- (void)updateMenuItemTitles:(NSArray *)titles;
 
 /**
  批量插入控制器
@@ -237,7 +237,7 @@ NS_ASSUME_NONNULL_BEGIN
  * THKPageStyleSuspensionTop 样式 1.需要对刷新控件进行特殊处理 2.需要在下拉刷新完成时调用该方法
  * THKPageStyleSuspensionCenter 样式 1.需要在下拉刷新完成时调用该方法
  */
-- (void)reloadSuspendHeaderViewFrame;
+//- (void)reloadSuspendHeaderViewFrame;
 
 /**
  滚动到顶部(置顶)

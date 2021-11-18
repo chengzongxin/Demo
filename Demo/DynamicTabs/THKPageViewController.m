@@ -6,9 +6,9 @@
 //
 
 #import "THKPageViewController.h"
-#import "UIView+YNPageExtend.h"
-#import "UIScrollView+YNPageExtend.h"
 #import "THKPageScrollView.h"
+
+#define kLESS_THAN_iOS11 ([[UIDevice currentDevice].systemVersion floatValue] < 11.0 ? YES : NO)
 
 @interface THKPageViewController ()<UIScrollViewDelegate>
 
@@ -30,18 +30,18 @@
 @property (nonatomic, assign) CGFloat lastPositionX;
 /// TableView距离顶部的偏移量
 @property (nonatomic, assign) CGFloat insetTop;
-/// 判断headerView是否在列表内
-@property (nonatomic, assign) BOOL headerViewInTableView;
-/// 菜单栏的初始OriginY
-@property (nonatomic, assign) CGFloat scrollMenuViewOriginY;
-/// headerView的原始高度 用来处理头部伸缩效果
-@property (nonatomic, assign) CGFloat headerViewOriginHeight;
-/// 是否是悬浮状态
-@property (nonatomic, assign) BOOL supendStatus;
-/// 记录bgScrollView Y 偏移量
-@property (nonatomic, assign) CGFloat beginBgScrollOffsetY;
-/// 记录currentScrollView Y 偏移量
-@property (nonatomic, assign) CGFloat beginCurrentScrollOffsetY;
+///// 判断headerView是否在列表内
+//@property (nonatomic, assign) BOOL headerViewInTableView;
+///// 菜单栏的初始OriginY
+//@property (nonatomic, assign) CGFloat scrollMenuViewOriginY;
+///// headerView的原始高度 用来处理头部伸缩效果
+//@property (nonatomic, assign) CGFloat headerViewOriginHeight;
+///// 是否是悬浮状态
+//@property (nonatomic, assign) BOOL supendStatus;
+///// 记录bgScrollView Y 偏移量
+//@property (nonatomic, assign) CGFloat beginBgScrollOffsetY;
+///// 记录currentScrollView Y 偏移量
+//@property (nonatomic, assign) CGFloat beginCurrentScrollOffsetY;
 
 @end
 
@@ -150,7 +150,7 @@
 - (void)addViewControllerToParent:(UIViewController *)viewController index:(NSInteger)index {
     [self addChildViewController:self.controllersM[index]];
     
-    viewController.view.frame = CGRectMake(TMUI_SCREEN_WIDTH * index, 0, self.pageScrollView.yn_width, self.pageScrollView.yn_height);
+    viewController.view.frame = CGRectMake(TMUI_SCREEN_WIDTH * index, 0, self.pageScrollView.width, self.pageScrollView.height);
     
     [self.pageScrollView addSubview:viewController.view];
     
@@ -162,7 +162,7 @@
     
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(pageViewController:heightForScrollViewAtIndex:)]) {
         CGFloat scrollViewHeight = [self.dataSource pageViewController:self heightForScrollViewAtIndex:index];
-        scrollView.frame = CGRectMake(0, 0, viewController.view.yn_width, scrollViewHeight);
+        scrollView.frame = CGRectMake(0, 0, viewController.view.width, scrollViewHeight);
     } else {
         scrollView.frame = viewController.view.bounds;
     }
@@ -293,7 +293,7 @@
 #pragma mark - yn_pageScrollViewBeginDragginScrollView
 - (void)yn_pageScrollViewBeginDragginScrollView:(UIScrollView *)scrollView {
 //    _beginBgScrollOffsetY = self.bgScrollView.contentOffset.y;
-    _beginCurrentScrollOffsetY = scrollView.contentOffset.y;
+//    _beginCurrentScrollOffsetY = scrollView.contentOffset.y;
 }
 
 #pragma mark - yn_pageScrollViewDidScrollView
@@ -312,8 +312,8 @@
 //
 //        CGFloat offsetY = scrollView.contentOffset.y;
 //        /// 悬浮临界点
-//        if (offsetY > - self.scrollMenuView.yn_height - self.config.suspenOffsetY) {
-//            self.headerBgView.yn_y = -self.headerBgView.yn_height + offsetY + self.config.suspenOffsetY;
+//        if (offsetY > - self.scrollMenuView.height - self.config.suspenOffsetY) {
+//            self.headerBgView.yn_y = -self.headerBgView.height + offsetY + self.config.suspenOffsetY;
 //            self.scrollMenuView.yn_y = offsetY + self.config.suspenOffsetY;
 //            self.supendStatus = YES;
 //        } else {
@@ -370,7 +370,7 @@
     
     if (pageIndex > self.controllersM.count - 1) return;
     
-    CGRect frame = CGRectMake(self.pageScrollView.yn_width * pageIndex, 0, self.pageScrollView.yn_width, self.pageScrollView.yn_height);
+    CGRect frame = CGRectMake(self.pageScrollView.width * pageIndex, 0, self.pageScrollView.width, self.pageScrollView.height);
     if (frame.origin.x == self.pageScrollView.contentOffset.x) {
         [self scrollViewDidScroll:self.pageScrollView];
     } else {
@@ -469,16 +469,16 @@
 }
 
 - (void)updateViewWithIndex:(NSInteger)pageIndex {
-    self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH * self.controllersM.count, self.pageScrollView.yn_height);
+    self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH * self.controllersM.count, self.pageScrollView.height);
     
     UIViewController *vc = self.controllersM[pageIndex];
     
-    vc.view.yn_x = TMUI_SCREEN_WIDTH * pageIndex;
+    vc.view.x = TMUI_SCREEN_WIDTH * pageIndex;
     
 //    [self.scrollMenuView reloadView];
 //    [self.scrollMenuView selectedItemIndex:pageIndex animated:NO];
     
-    CGRect frame = CGRectMake(self.pageScrollView.yn_width * pageIndex, 0, self.pageScrollView.yn_width, self.pageScrollView.yn_height);
+    CGRect frame = CGRectMake(self.pageScrollView.width * pageIndex, 0, self.pageScrollView.width, self.pageScrollView.height);
     
     [self.pageScrollView scrollRectToVisible:frame animated:NO];
     
@@ -618,7 +618,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    _headerViewInTableView = YES;
+//    _headerViewInTableView = YES;
 }
 
 /// 初始化子View
@@ -630,22 +630,22 @@
 
 /// 初始化PageScrollView
 - (void)setupPageScrollView {
-    CGFloat navHeight = self.config.showNavigation ?NavigationContentTop : 0;
-    CGFloat tabHeight = self.config.showTabbar ? TabBarHeight : 0;
+//    CGFloat navHeight = self.config.showNavigation ?NavigationContentTop : 0;
+//    CGFloat tabHeight = self.config.showTabbar ? TabBarHeight : 0;
     CGFloat cutOutHeight = self.config.cutOutHeight > 0 ? self.config.cutOutHeight : 0;
-    CGFloat contentHeight = TMUI_SCREEN_HEIGHT - navHeight - tabHeight - cutOutHeight;
+    CGFloat contentHeight = TMUI_SCREEN_HEIGHT - cutOutHeight;
     
 //    if ([self isSuspensionTopPauseStyle]) {
 //        self.bgScrollView.frame = CGRectMake(0, 0, kTHKPage_SCREEN_WIDTH, contentHeight);
-//        self.bgScrollView.contentSize = CGSizeMake(kTHKPage_SCREEN_WIDTH, contentHeight + self.headerBgView.yn_height - self.config.suspenOffsetY);
+//        self.bgScrollView.contentSize = CGSizeMake(kTHKPage_SCREEN_WIDTH, contentHeight + self.headerBgView.height - self.config.suspenOffsetY);
 //
 //        self.scrollMenuView.yn_y = self.headerBgView.yn_bottom;
 //
 //        self.pageScrollView.frame = CGRectMake(0, self.scrollMenuView.yn_bottom, kTHKPage_SCREEN_WIDTH, contentHeight - self.config.menuHeight  - self.config.suspenOffsetY);
 //
-//        self.pageScrollView.contentSize = CGSizeMake(kTHKPage_SCREEN_WIDTH * self.controllersM.count, self.pageScrollView.yn_height);
+//        self.pageScrollView.contentSize = CGSizeMake(kTHKPage_SCREEN_WIDTH * self.controllersM.count, self.pageScrollView.height);
 //
-//        self.config.contentHeight = self.pageScrollView.yn_height;
+//        self.config.contentHeight = self.pageScrollView.height;
 //
 //        [self.bgScrollView addSubview:self.pageScrollView];
 //        if (kLESS_THAN_iOS11) {
@@ -659,7 +659,7 @@
         
         self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH * self.controllersM.count, contentHeight);
         
-        self.config.contentHeight = self.pageScrollView.yn_height - self.config.menuHeight;
+        self.config.contentHeight = self.pageScrollView.height - self.config.menuHeight;
         if (kLESS_THAN_iOS11) {
             [self.view addSubview:[UIView new]];
         }
@@ -679,23 +679,23 @@
 //        NSAssert(self.headerView, @"Please set headerView !");
 //#endif
 //        self.headerBgView = [[THKPageHeaderScrollView alloc] initWithFrame:self.headerView.bounds];
-//        self.headerBgView.contentSize = CGSizeMake(kTHKPage_SCREEN_WIDTH * 2, self.headerView.yn_height);
+//        self.headerBgView.contentSize = CGSizeMake(kTHKPage_SCREEN_WIDTH * 2, self.headerView.height);
 //        [self.headerBgView addSubview:self.headerView];
-//        self.headerViewOriginHeight = self.headerBgView.yn_height;
+//        self.headerViewOriginHeight = self.headerBgView.height;
 //        self.headerBgView.scrollEnabled = !self.config.headerViewCouldScrollPage;
 //
 //        if (self.config.headerViewCouldScale && self.scaleBackgroundView) {
 //            [self.headerBgView insertSubview:self.scaleBackgroundView atIndex:0];
 //            self.scaleBackgroundView.userInteractionEnabled = NO;
 //        }
-//        self.config.tempTopHeight = self.headerBgView.yn_height + self.config.menuHeight;
+//        self.config.tempTopHeight = self.headerBgView.height + self.config.menuHeight;
 //
-//        _insetTop = self.headerBgView.yn_height + self.config.menuHeight;
+//        _insetTop = self.headerBgView.height + self.config.menuHeight;
 //
-//        _scrollMenuViewOriginY = _headerView.yn_height;
+//        _scrollMenuViewOriginY = _headerView.height;
 //
 //        if ([self isSuspensionTopPauseStyle]) {
-//            _insetTop = self.headerBgView.yn_height - self.config.suspenOffsetY;
+//            _insetTop = self.headerBgView.height - self.config.suspenOffsetY;
 //            [self.bgScrollView addSubview:self.headerBgView];
 //        }
 //    }
@@ -919,14 +919,14 @@
 //        switch (self.config.pageStyle) {
 //            case THKPageStyleSuspensionTop:
 //            case THKPageStyleSuspensionCenter: {
-//                CGFloat progress = 1 + (offsetY + self.scrollMenuView.yn_height + self.config.suspenOffsetY) / (self.headerBgView.yn_height -self.config.suspenOffsetY);
+//                CGFloat progress = 1 + (offsetY + self.scrollMenuView.height + self.config.suspenOffsetY) / (self.headerBgView.height -self.config.suspenOffsetY);
 //                progress = progress > 1 ? 1 : progress;
 //                progress = progress < 0 ? 0 : progress;
 //                [self.delegate pageViewController:self contentOffsetY:offsetY progress:progress];
 //            }
 //                break;
 //            case THKPageStyleSuspensionTopPause: {
-//                CGFloat progress = offsetY / (self.headerBgView.yn_height - self.config.suspenOffsetY);
+//                CGFloat progress = offsetY / (self.headerBgView.height - self.config.suspenOffsetY);
 //                progress = progress > 1 ? 1 : progress;
 //                progress = progress < 0 ? 0 : progress;
 //                [self.delegate pageViewController:self contentOffsetY:offsetY progress:progress];
@@ -987,7 +987,7 @@
     if (![self.scrollViewCacheDictionryM objectForKey:key]) {
         if (self.dataSource && [self.dataSource respondsToSelector:@selector(pageViewController:pageForIndex:)]) {
             scrollView = [self.dataSource pageViewController:self pageForIndex:pageIndex];
-            scrollView.yn_observerDidScrollView = YES;
+//            scrollView.yn_observerDidScrollView = YES;
 //            __weak typeof(self) weakSelf = self;
 //            scrollView.yn_pageScrollViewDidScrollView = ^(UIScrollView *scrollView) {
 //                [weakSelf yn_pageScrollViewDidScrollView:scrollView];
@@ -1046,7 +1046,7 @@
 
 //- (void)setHeaderView:(UIView *)headerView {
 //    _headerView = headerView;
-//    _headerView.yn_height = ceil(headerView.yn_height);
+//    _headerView.height = ceil(headerView.height);
 //}
 
 - (void)dealloc {

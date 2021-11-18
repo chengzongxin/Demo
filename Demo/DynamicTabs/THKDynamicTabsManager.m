@@ -246,19 +246,7 @@ static CGFloat const kSliderH = 44;
 - (THKPageViewController *)pageContainerVC {
     if (!_pageContainerVC) {
         THKPageViewModel *configration = [THKPageViewModel defaultConfig];
-//        configration.pageStyle = YNPageStyleNavigation;
-        configration.headerViewCouldScale = NO;
-//        configration.headerViewScaleMode = YNPageHeaderViewScaleModeTop;
-        configration.showTabbar = NO;
-        configration.showNavigation = NO;
-        configration.scrollMenu = NO;
-        configration.aligmentModeCenter = NO;
-        configration.lineWidthEqualFontWidth = NO;
-        configration.showBottomLine = YES;
-        /// 设置菜单栏宽度
-//        configration.menuWidth = 150;
         configration.cutOutHeight = self.viewModel.cutOutHeight + kSliderH + NavigationContentTop;
-        
         _pageContainerVC = [THKPageViewController pageViewControllerWithControllers:_childVCs
                                                                   titles:_childTitles
                                                                   config:configration];

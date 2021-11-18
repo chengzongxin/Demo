@@ -12,20 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKPageViewModel : THKViewModel
 
 #pragma mark - YNPage Config
-/** 是否显示导航条 YES */
-@property (nonatomic, assign) BOOL showNavigation;
-/** 是否显示Tabbar NO */
-@property (nonatomic, assign) BOOL showTabbar;
 /** 裁剪内容高度 用来添加最上层控件 添加在父类view上 */
 @property (nonatomic, assign) CGFloat cutOutHeight;
 /** 页面是否可以滚动 默认 YES */
 @property (nonatomic, assign) BOOL pageScrollEnabled;
-/** 头部是否能伸缩效果   要伸缩效果最好不要有下拉刷新控件 NO */
-@property (nonatomic, assign) BOOL headerViewCouldScale;
-/** 头部是否可以滚页面 NO */
-@property (nonatomic, assign) BOOL headerViewCouldScrollPage;
-/** headerView + menu height */
-@property (nonatomic, assign, readonly) CGFloat pageHeaderViewOriginHeight;
 
 #pragma mark - UIScrollMenuView Config
 /** 是否显示遮盖*/
@@ -33,24 +23,24 @@ NS_ASSUME_NONNULL_BEGIN
 /** 是否显示线条 YES */
 @property (nonatomic, assign) BOOL showScrollLine;
 /** 是否显示底部线条 NO */
-@property (nonatomic, assign) BOOL showBottomLine;
+//@property (nonatomic, assign) BOOL showBottomLine;
 /** 颜色是否渐变 YES */
 @property (nonatomic, assign) BOOL showGradientColor;
 /** 是否显示按钮 NO */
 @property (nonatomic, assign) BOOL showAddButton;
-/** 菜单是否滚动 YES */
-@property (nonatomic, assign) BOOL scrollMenu;
-/** 菜单弹簧效果 NO */
-@property (nonatomic, assign) BOOL bounces;
+///** 菜单是否滚动 YES */
+//@property (nonatomic, assign) BOOL scrollMenu;
+///** 菜单弹簧效果 NO */
+//@property (nonatomic, assign) BOOL bounces;
 /**
  *  是否是居中 (当所有的Item+margin的宽度小于ScrollView宽度)  默认 YES
  *  scrollMenu = NO,aligmentModeCenter = NO 会变成平分
  */
-@property (nonatomic, assign) BOOL aligmentModeCenter;
+//@property (nonatomic, assign) BOOL aligmentModeCenter;
 /** 当aligmentModeCenter 变为平分时 是否需要线条宽度等于字体宽度 默认 NO */
-@property (nonatomic, assign) BOOL lineWidthEqualFontWidth;
+//@property (nonatomic, assign) BOOL lineWidthEqualFontWidth;
 /** 自定义Item 加图片 图片间隙 ... */
-@property (nonatomic, copy) NSArray<UIButton *> *buttonArray;
+//@property (nonatomic, copy) NSArray<UIButton *> *buttonArray;
 /** 按钮N图片 */
 @property (nonatomic, copy) NSString *addButtonNormalImageName;
 /** 按钮H图片 */

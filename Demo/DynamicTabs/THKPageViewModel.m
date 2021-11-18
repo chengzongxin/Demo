@@ -21,22 +21,22 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _showNavigation = YES;
-        _showTabbar = NO;
+//        _showNavigation = YES;
+//        _showTabbar = NO;
 //        _pageStyle = YNPageStyleTop;
         _showConver = NO;
         _showScrollLine = YES;
-        _showBottomLine = NO;
+//        _showBottomLine = NO;
         _showGradientColor =YES;
         _showAddButton = NO;
-        _scrollMenu = YES;
-        _bounces = YES;
-        _aligmentModeCenter = YES;
-        _lineWidthEqualFontWidth = NO;
+//        _scrollMenu = YES;
+//        _bounces = YES;
+//        _aligmentModeCenter = YES;
+//        _lineWidthEqualFontWidth = NO;
         
         _pageScrollEnabled = YES;
         
-        _headerViewCouldScale = NO;
+//        _headerViewCouldScale = NO;
         
         _lineColor = [UIColor redColor];
         _converColor = [UIColor groupTableViewBackgroundColor];
