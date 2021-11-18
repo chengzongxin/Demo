@@ -10,7 +10,7 @@
 #import "YNPageViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DynamicTabChildVC : THKViewController <TRouterProtocol,THKTabBarRepeatSelectProtocol,YNPageViewControllerDataSource>
+@interface DynamicTabChildVC : THKViewController <TRouterProtocol>
 
 @end
 

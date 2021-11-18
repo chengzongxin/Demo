@@ -491,10 +491,15 @@
     } else {
         return [self.scrollViewCacheDictionryM objectForKey:key];
     }
-#if DEBUG
-    NSAssert(scrollView != nil, @"请设置pageViewController 的数据源！");
-#endif
-    [self.scrollViewCacheDictionryM setObject:scrollView forKey:key];
+    
+    if (scrollView) {
+        [self.scrollViewCacheDictionryM setObject:scrollView forKey:key];
+    }
+    
+//#if DEBUG
+//    NSAssert(scrollView != nil, @"请设置pageViewController 的数据源！");
+//#endif
+//    [self.scrollViewCacheDictionryM setObject:scrollView forKey:key];
     return scrollView;
 }
 

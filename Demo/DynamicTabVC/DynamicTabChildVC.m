@@ -90,17 +90,17 @@
 
 #pragma mark - Page Delegate
 
-- (__kindof UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index{
-    return self.tableView;
-}
-
-- (UIScrollView *)contentScrollView{
-    return self.tableView;
-}
-
-- (void)tabbarDidRepeatSelect{
-    
-}
+//- (__kindof UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index{
+//    return self.tableView;
+//}
+//
+//- (UIScrollView *)contentScrollView{
+//    return self.tableView;
+//}
+//
+//- (void)tabbarDidRepeatSelect{
+//    
+//}
 
 + (BOOL)canHandleRouter:(TRouter *)router{
     if ([router routerMatch:THKRouterPage_HomeRecommendNew]) {

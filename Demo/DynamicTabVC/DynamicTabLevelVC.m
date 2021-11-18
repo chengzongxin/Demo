@@ -38,18 +38,18 @@
     
     [self.dynamicTabsManager loadTabs];
     
-    [RACObserve(self, contentScrollView) subscribeNext:^(id  _Nullable x) {
-        NSLog(@"%@",x);
-    }];
+//    [RACObserve(self, contentScrollView) subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"%@",x);
+//    }];
 }
 
-- (UIScrollView *)contentScrollView{
-    return _dynamicTabsManager.wrapperScrollView;
-}
-
-- (void)tabbarDidRepeatSelect{
-    [self.dynamicTabsManager.wrapperScrollView setContentOffset:self.dynamicTabsManager.wrapperScrollView.tmui_topPoint animated:YES];
-}
+//- (UIScrollView *)contentScrollView{
+//    return _dynamicTabsManager.wrapperScrollView;
+//}
+//
+//- (void)tabbarDidRepeatSelect{
+//    [self.dynamicTabsManager.wrapperScrollView setContentOffset:self.dynamicTabsManager.wrapperScrollView.tmui_topPoint animated:YES];
+//}
 
 
 - (THKDynamicTabsManager *)dynamicTabsManager {
