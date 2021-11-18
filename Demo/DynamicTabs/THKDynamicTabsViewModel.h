@@ -15,6 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDynamicTabsViewModel : THKViewModel
 
+
+/// 是否有头部悬浮效果，默认NO
+@property (nonatomic, assign) NSInteger isSuspendStyle;
+@property (nonatomic, strong) UIView *headerContentView;
+@property (nonatomic, assign) CGFloat headerContentViewHeight;
+///非pageContent内容的高度
+@property (nonatomic, assign) CGFloat cutOutHeight;
+@property (nonatomic, weak) UIViewController *parentVC;
 /**
  获取标签tab接口结果
  */
@@ -57,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly)     BOOL                isRequestSuccess;
 
 - (instancetype)initWithWholeCode:(NSString *)wholeCode defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
-- (instancetype)initWithWholeCode:(NSString *)wholeCode extraParam:(NSDictionary *)extraParam defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
+- (instancetype)initWithWholeCode:(NSString *)wholeCode extraParam:(nullable NSDictionary *)extraParam defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
 
 /**
  请求tab的数据接口，请求返回后发出tabsResultSubject信号

@@ -11,6 +11,7 @@
 #import "THKIdentityConfigManager.h"
 #import "TUUIDGenerator.h"
 #import "GEEnvironmentParameter.h"
+#import "TRouterManager+Config.h"
 
 @interface AppDelegate ()
 
@@ -32,7 +33,7 @@
     [THKIdentityConfigManager.shareInstane loadConfigWithResultBlock:^{
         // lanch app
     }];
-    
+    [[TRouterManager sharedManager] configEnvironment];
     
     return YES;
 }

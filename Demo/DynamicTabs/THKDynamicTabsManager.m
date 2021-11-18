@@ -8,12 +8,23 @@
 
 #import "THKDynamicTabsManager.h"
 #import "THKViewController.h"
-@interface THKDynamicTabsManager ()<YNPageViewControllerDelegate,YNPageViewControllerDataSource>
+#import "DynamicTabChildVC.h"
+#import "THKPageBGScrollView.h"
+static CGFloat const kSliderH = 44;
+
+@interface THKDynamicTabsManager ()<YNPageViewControllerDelegate,YNPageViewControllerDataSource>{
+    NSArray *_childVCs;
+    NSArray *_childTitles;
+}
 
 @property (nonatomic, strong)   THKDynamicTabsViewModel         *viewModel;
-@property (nonatomic, strong)   YNPageViewController     *pageContainerVC;
+@property (nonatomic, strong)   TMUIPageWrapperScrollView       *wrapperScrollView;
+@property (nonatomic, strong)   UIView                          *wrapperView;
+@property (nonatomic, strong)   UIView                          *headerView;
 @property (nonatomic, strong)   THKImageTabSegmentControl       *sliderBar;
+@property (nonatomic, strong)   YNPageViewController            *pageContainerVC;
 @property (nonatomic, assign)   BOOL isFirst;
+
 
 @end
 
@@ -21,6 +32,9 @@
 
 - (instancetype)initWithViewModel:(THKDynamicTabsViewModel *)viewModel {
     if (self = [super init]) {
+        
+        _childVCs = @[DynamicTabChildVC.new,DynamicTabChildVC.new];
+        _childTitles = @[@"1",@"2"];
         self.viewModel = viewModel;
         [self bindViewModel];
     }
@@ -28,26 +42,121 @@
 }
 
 - (void)bindViewModel {
+    [self setupSubviews];
+    
     @weakify(self);
     [self.viewModel.tabsResultSubject subscribeNext:^(id  _Nullable x) {
         @strongify(self);
-        NSInteger selectedIndex = self.viewModel.sliderBarDefaultSelected;
-        [self.sliderBar setSegmentTitles:self.viewModel.segmentTabs];
-        
-        [self.sliderBar setSelectedIndex:selectedIndex];
-        if (self.viewModel.segmentTitles) {
-            self.pageContainerVC.titlesM = [NSMutableArray arrayWithArray:self.viewModel.segmentTitles];
-        }
-        if (self.viewModel.arrayChildVC) {
-            self.pageContainerVC.controllersM = [NSMutableArray arrayWithArray:self.viewModel.arrayChildVC];
-        }
-        self.pageContainerVC.pageIndex = selectedIndex;
-        [self.pageContainerVC reloadData];
-        
-        self.isFirst = YES;
-        [self.viewModel.segmentValueChangedSubject sendNext:@(selectedIndex)];
-        [self.viewModel.tabsLoadFinishSignal sendNext:self.viewModel.segmentTabs];
+        [self reloadUI];
     }];
+    
+    [[RACObserve(self.viewModel, headerContentViewHeight) delay:1] subscribeNext:^(id  _Nullable x) {
+        if (self.headerView.superview) {
+            CGFloat headerH = self.viewModel.headerContentViewHeight;
+            CGFloat topH = headerH + kSliderH;
+            
+            [self.headerView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(-topH);
+                make.height.mas_equalTo(headerH);
+            }];
+            
+            self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
+            self.wrapperScrollView.lockArea = kSliderH;
+            self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
+        }
+    }];
+}
+
+
+- (void)setupSubviews{
+    
+    CGFloat headerH = 0;
+    CGFloat topH = 0;
+    
+    
+    if (self.viewModel.isSuspendStyle) {
+        
+        headerH = self.viewModel.headerContentViewHeight;
+        topH = headerH + kSliderH;
+        
+        [self.wrapperScrollView addSubview:self.headerView];
+        [self.wrapperScrollView addSubview:self.sliderBar];
+        [self.wrapperScrollView addSubview:self.pageContainerVC.view];
+        
+        if (self.viewModel.headerContentView) {
+            [self.headerView addSubview:self.viewModel.headerContentView];
+            [self.viewModel.headerContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(self.headerView);
+            }];
+        }
+        
+        
+        [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(-topH);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+            make.left.mas_offset(0);
+            make.height.mas_equalTo(headerH);
+        }];
+        
+        [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(-kSliderH);
+            make.left.mas_offset(0);
+            make.height.mas_equalTo(kSliderH);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+        }];
+        
+        [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.mas_equalTo(0);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+            make.height.equalTo(self.wrapperScrollView).offset(-kSliderH);
+        }];
+        
+        
+        self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
+        self.wrapperScrollView.lockArea = kSliderH;
+        self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
+    }else{
+        topH = kSliderH;
+        
+        [self.wrapperView addSubview:self.sliderBar];
+        [self.wrapperView addSubview:self.pageContainerVC.view];
+        
+        [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(0);
+            make.left.mas_offset(0);
+            make.height.mas_equalTo(kSliderH);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+        }];
+        
+        [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.sliderBar.mas_bottom);
+            make.left.right.mas_equalTo(0);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+            make.height.equalTo(self.wrapperView).offset(-kSliderH);
+        }];
+    }
+    
+    
+    [self.viewModel.parentVC addChildViewController:self.pageContainerVC];
+}
+
+- (void)reloadUI{
+    NSInteger selectedIndex = self.viewModel.sliderBarDefaultSelected;
+    [self.sliderBar setSegmentTitles:self.viewModel.segmentTabs];
+    
+    [self.sliderBar setSelectedIndex:selectedIndex];
+    if (self.viewModel.segmentTitles) {
+        self.pageContainerVC.titlesM = [NSMutableArray arrayWithArray:self.viewModel.segmentTitles];
+    }
+    if (self.viewModel.arrayChildVC) {
+        self.pageContainerVC.controllersM = [NSMutableArray arrayWithArray:self.viewModel.arrayChildVC];
+    }
+    self.pageContainerVC.pageIndex = selectedIndex;
+    [self.pageContainerVC reloadData];
+    
+    self.isFirst = YES;
+    [self.viewModel.segmentValueChangedSubject sendNext:@(selectedIndex)];
+    [self.viewModel.tabsLoadFinishSignal sendNext:self.viewModel.segmentTabs];
 }
 
 - (void)loadTabs {
@@ -64,7 +173,8 @@
 
 #pragma mark - YNPageViewControllerDataSource
 - (UIScrollView *)pageViewController:(YNPageViewController *)pageViewController pageForIndex:(NSInteger)index {
-    UIViewController *controller = [self.viewModel.arrayChildVC safeObjectAtIndex:index];
+    NSArray *vcs = self.viewModel.arrayChildVC?:_childVCs;
+    UIViewController *controller = [vcs safeObjectAtIndex:index];
     UIScrollView *scrollView = nil;
     if ([controller conformsToProtocol:@protocol(THKTabBarRepeatSelectProtocol)] && [controller respondsToSelector:@selector(contentScrollView)]) {
         scrollView = [(UIViewController<THKTabBarRepeatSelectProtocol> *)controller contentScrollView];
@@ -107,13 +217,39 @@
     return _viewModel;
 }
 
+
+- (TMUIPageWrapperScrollView *)wrapperScrollView{
+    if (!_wrapperScrollView) {
+        _wrapperScrollView = [[TMUIPageWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        _wrapperScrollView.showsHorizontalScrollIndicator = NO;
+        //_contentView.directionalLockEnabled = YES;
+//        _contentView.t_delegate = self;
+//        _contentView.backgroundColor = UIColor.whiteColor;
+    }
+    return _wrapperScrollView;
+}
+
+- (UIView *)wrapperView{
+    if (!_wrapperView) {
+        _wrapperView = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    }
+    return _wrapperView;
+}
+
+- (UIView *)headerView{
+    if (!_headerView) {
+        _headerView = [UIView new];
+    }
+    return _headerView;
+}
+
 - (YNPageViewController *)pageContainerVC {
     if (!_pageContainerVC) {
         YNPageConfigration *configration = [YNPageConfigration defaultConfig];
         configration.pageStyle = YNPageStyleNavigation;
         configration.headerViewCouldScale = NO;
         configration.headerViewScaleMode = YNPageHeaderViewScaleModeTop;
-        configration.showTabbar = YES;
+        configration.showTabbar = NO;
         configration.showNavigation = NO;
         configration.scrollMenu = NO;
         configration.aligmentModeCenter = NO;
@@ -121,10 +257,10 @@
         configration.showBottomLine = YES;
         /// 设置菜单栏宽度
 //        configration.menuWidth = 150;
-        configration.cutOutHeight = self.cutOutHeight;
+        configration.cutOutHeight = self.viewModel.cutOutHeight + kSliderH + NavigationContentTop;
         
-        _pageContainerVC = [YNPageViewController pageViewControllerWithControllers:self.viewModel.arrayChildVC
-                                                                  titles:self.viewModel.segmentTitles
+        _pageContainerVC = [YNPageViewController pageViewControllerWithControllers:_childVCs
+                                                                  titles:_childTitles
                                                                   config:configration];
         _pageContainerVC.delegate = self;
         _pageContainerVC.dataSource = self;

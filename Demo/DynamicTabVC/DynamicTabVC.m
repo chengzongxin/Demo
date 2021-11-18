@@ -6,18 +6,109 @@
 //
 
 #import "DynamicTabVC.h"
-
+#import "THKDynamicTabsManager.h"
+#import "THKDiaryBookDetailTopNaviBarView.h"
+#import <MJRefresh.h>
 @interface DynamicTabVC ()
 @property (nonatomic, strong, readwrite) DynamicTabVM *viewModel;
+@property (nonatomic, strong) THKDiaryBookDetailTopNaviBarView *topBar;
+@property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
 @end
 
 @implementation DynamicTabVC
 @dynamic viewModel;
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navBarHidden = YES;
     self.view.backgroundColor = UIColor.whiteColor;
+    
+    [self.view addSubview:self.topBar];
+    [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(NavigationContentTop);
+    }];
+    
+    if (self.viewModel.isSuspend == DynamicTabStyle_Suspend) {
+        [self.view addSubview:self.dynamicTabsManager.wrapperScrollView];
+        [self.dynamicTabsManager.wrapperScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsMake(NavigationContentTop, 0, 0, 0));
+        }];
+        
+        @weakify(self);
+    //    self.tableView.tmui_isAddRefreshControl = YES;
+        self.dynamicTabsManager.wrapperScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                @strongify(self);
+                [self.dynamicTabsManager.wrapperScrollView.mj_header endRefreshing];
+                self.dynamicTabsManager.viewModel.headerContentViewHeight = 188;
+                self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
+            });
+        }];
+        self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
+    }else{
+        [self.view addSubview:self.dynamicTabsManager.wrapperView];
+        [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsMake(NavigationContentTop, 0, 0, 0));
+        }];
+    }
+    
+    
+    
+    [self.dynamicTabsManager loadTabs];
 }
+
+- (THKDynamicTabsManager *)dynamicTabsManager {
+    if (!_dynamicTabsManager) {
+        THKDynamicTabsViewModel *viewModel = [[THKDynamicTabsViewModel alloc] initWithWholeCode:kDynamicTabsWholeCodeHomePage
+                                                                                    defualtTabs:self.viewModel.segmentTitles];
+        viewModel.configDynamicTabButtonModelBlock = ^(THKDynamicTabDisplayModel * _Nonnull configButtonModel, NSInteger tabId, NSString * _Nonnull title) {
+            //这里可以根据tabId或title来设值每一个按钮的属性
+            configButtonModel.badgeImageColor = THKColor_RedPointColor;
+            configButtonModel.normalColor = THKColor_999999;
+            configButtonModel.selectedColor = THKColor_333333;
+            configButtonModel.scale = 0.9;
+            configButtonModel.normalFont  = [UIFont fontWithName:@"PingFangSC-Regular" size:15.6];
+            configButtonModel.selectedFont = [UIFont fontWithName:@"PingFangSC-Medium" size:16.7];
+        };
+        
+        viewModel.isSuspendStyle = self.viewModel.isSuspend == DynamicTabStyle_Suspend;
+        viewModel.parentVC = self;
+        viewModel.headerContentViewHeight = 321;
+        viewModel.headerContentView = [UIView new];
+        viewModel.headerContentView.backgroundColor = UIColor.tmui_randomColor;
+        _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
+    }
+    return _dynamicTabsManager;
+}
+
+- (THKDiaryBookDetailTopNaviBarView *)topBar{
+    if (!_topBar) {
+        _topBar = [[THKDiaryBookDetailTopNaviBarView alloc] init];
+        _topBar.backgroundColor = UIColor.whiteColor;
+        _topBar.backBtn.tmui_image = UIImageMake(@"nav_back_black");
+        _topBar.nickNameLbl.textColor = UIColorHex(1A1C1A);
+        @weakify(self);
+        [[_topBar.backBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+            @strongify(self);
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+    }
+    return _topBar;
+}
+
 
 @end

@@ -12,7 +12,7 @@
 #import "THKMaterialHotRankVM.h"
 #import "THKDiaryBookVC.h"
 #import "THKExpandLabel.h"
-#import "DynamicTabVC.h"
+#import "DynamicTabDemoList.h"
 
 @interface ViewController ()
 
@@ -64,8 +64,7 @@
     });
     
     Button.str(@"Tab组件").bgColor(@"random").xywh(250,250,100,100).addTo(self.view).onClick(^{
-        DynamicTabVM *vm = [[DynamicTabVM alloc] init];
-        DynamicTabVC *vc = [[DynamicTabVC alloc] initWithViewModel:vm];
+        DynamicTabDemoList *vc = [[DynamicTabDemoList alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     });
     

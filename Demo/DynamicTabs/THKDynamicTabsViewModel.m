@@ -183,9 +183,7 @@
     }
     THKTabBadgeRequest  *request = [[THKTabBadgeRequest alloc] init];
     request.badgeType = type;
-    @weakify(self);
     [request sendSuccess:^(THKTabBadgeResponse *response) {
-        @strongify(self);
         if (response.status == THKStatusSuccess) {
             [self.segmentTabs enumerateObjectsUsingBlock:^(THKDynamicTabsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if (type == THKTabBadgeType_Follow && [obj.targetUrl containsString:THKRouterPage_CommunityFollowList]) {
@@ -203,7 +201,6 @@
             }
         }
     } failure:^(NSError * _Nonnull error) {
-        @strongify(self);
         if (failBlock) {
             failBlock(k_toast_msg_weakNet);
         }
@@ -217,9 +214,7 @@
     }
     THKTabClearBadgeRequest  *request = [[THKTabClearBadgeRequest alloc] init];
     request.badgeType = type;
-    @weakify(self);
     [request sendSuccess:^(THKResponse *response) {
-        @strongify(self);
         if (response.status == THKStatusSuccess) {
         } else {
             if (failBlock) {
@@ -227,7 +222,6 @@
             }
         }
     } failure:^(NSError * _Nonnull error) {
-        @strongify(self);
         if (failBlock) {
             failBlock(k_toast_msg_weakNet);
         }

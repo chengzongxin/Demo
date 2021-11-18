@@ -1,5 +1,5 @@
 //
-//  THKHomeDynamicTabsManager.h
+//  THKDynamicTabsManager.h
 //  HouseKeeper
 //
 //  Created by collen.zhang on 2021/10/15.
@@ -13,6 +13,7 @@
 #import "THKImageTabSegmentControl.h"
 #import "THKDynamicTabsViewModel.h"
 #import "YNPageViewController.h"
+#import "TMUIPageWrapperScrollView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,9 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
  外部可根据需求定制sliderBar的样式，它的变化由viewmodel的segmentValueChangedSubject信号发出，外部不用再监听它的变化事件
  默认frame为CGRectMake(0, 0, kScreenWidth, 52.0-6)
  */
-@property (nonatomic, strong, readonly)     THKImageTabSegmentControl       *sliderBar;
-@property (nonatomic, strong, readonly)     YNPageViewController     *pageContainerVC;
 @property (nonatomic, strong, readonly)     THKDynamicTabsViewModel         *viewModel;
+@property (nonatomic, strong, readonly)     TMUIPageWrapperScrollView       *wrapperScrollView;
+@property (nonatomic, strong, readonly)     UIView                          *wrapperView;
+@property (nonatomic, strong, readonly)     UIView                          *headerView;
+@property (nonatomic, strong, readonly)     THKImageTabSegmentControl       *sliderBar;
+@property (nonatomic, strong, readonly)     YNPageViewController            *pageContainerVC;
 
 /**
  这个Block做了重复曝光的判断，如果你需要重复曝光，可以直接用sliderBar.itemExposeBlock
@@ -38,8 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL breakLayout;
 
-///非pageContent内容的高度
-@property (nonatomic, assign) CGFloat cutOutHeight;
 /**
  初始化出入viewmodel，如果不传入，则内部新建一个viewmodel
  */

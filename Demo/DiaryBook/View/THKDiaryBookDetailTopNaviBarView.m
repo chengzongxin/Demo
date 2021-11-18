@@ -11,7 +11,7 @@
 
 @interface THKDiaryBookDetailTopNaviBarView()
 
-//@property (nonatomic, strong)UIButton *backBtn;
+@property (nonatomic, strong)UIButton *backBtn;
 @property (nonatomic, strong)TUserAvatarView *avatarImgView;
 @property (nonatomic, strong)UILabel *nickNameLbl;
 @property (nonatomic, strong)THKFocusButtonView *focusBtn;
@@ -24,7 +24,7 @@
 - (void)thk_setupViews {
     [super thk_setupViews];
     
-//    [self addSubview:self.backBtn];
+    [self addSubview:self.backBtn];
     [self addSubview:self.avatarImgView];
     [self addSubview:self.nickNameLbl];
     [self addSubview:self.focusBtn];
@@ -35,15 +35,15 @@
 }
 
 - (void)_addSubLayoutConstraints {
-//    [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(6);
-//        make.width.mas_equalTo(40);
-//        make.height.mas_equalTo(44);
-//        make.bottom.mas_equalTo(0);
-//    }];
+    [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(6);
+        make.width.mas_equalTo(40);
+        make.height.mas_equalTo(44);
+        make.bottom.mas_equalTo(0);
+    }];
     
     [self.avatarImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leading.mas_equalTo(0);
+        make.leading.mas_equalTo(self.backBtn.mas_trailing).mas_offset(10);
         make.width.mas_equalTo(32);
         make.height.mas_equalTo(32);
 //        make.centerY.mas_equalTo(self.backBtn.mas_centerY);
@@ -155,7 +155,7 @@
 
 #pragma mark - sub ui lazy loads
 
-//TMUI_PropertyLazyLoad(UIButton, backBtn);
+TMUI_PropertyLazyLoad(UIButton, backBtn);
 TMUI_PropertyLazyLoad(TUserAvatarView, avatarImgView);
 TMUI_PropertyLazyLoad(UILabel, nickNameLbl);
 //TMUI_PropertyLazyLoad(UIButton, focusBtn);

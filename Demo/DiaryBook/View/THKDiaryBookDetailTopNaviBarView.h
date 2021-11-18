@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface THKDiaryBookDetailTopNaviBarView : THKView
 
-//@property (nonatomic, strong, readonly)UIButton *backBtn;
+@property (nonatomic, strong, readonly)UIButton *backBtn;
 @property (nonatomic, strong, readonly)TUserAvatarView *avatarImgView;
 @property (nonatomic, strong, readonly)UILabel *nickNameLbl;
 @property (nonatomic, strong, readonly)THKFocusButtonView *focusBtn;
