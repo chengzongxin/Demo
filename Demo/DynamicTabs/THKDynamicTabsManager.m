@@ -264,6 +264,12 @@
                 }
             }
         };
+        _sliderBar.itemClickBlock = ^(UIButton *button, NSInteger index) {
+            @strongify(self);
+            if (self.tabButtonScrollBlock) {
+                self.tabButtonScrollBlock(button, index);
+            }
+        };
     }
     
     return _sliderBar;
