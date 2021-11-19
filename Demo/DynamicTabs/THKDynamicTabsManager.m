@@ -236,7 +236,7 @@
 
 - (THKDynamicTabsPageVC *)pageContainerVC {
     if (!_pageContainerVC) {
-        THKPageViewModel *vm = [[THKPageViewModel alloc] init];
+        THKDynamicTabsPageVM *vm = [[THKDynamicTabsPageVM alloc] init];
         vm.cutOutHeight = self.viewModel.cutOutHeight + self.viewModel.sliderBarHeight + NavigationContentTop;
         _pageContainerVC = [[THKDynamicTabsPageVC alloc] initWithViewModel:vm];
         _pageContainerVC.delegate = self;

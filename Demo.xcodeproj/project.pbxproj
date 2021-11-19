@@ -75,7 +75,7 @@
 		16529F692745ED09002A3B65 /* DynamicTabLevelVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16529F682745ED09002A3B65 /* DynamicTabLevelVM.m */; };
 		16529F6C2745F220002A3B65 /* DynamicTabDemoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 16529F6B2745F220002A3B65 /* DynamicTabDemoList.m */; };
 		16529F7E274641EC002A3B65 /* THKDynamicTabsPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16529F7D274641EC002A3B65 /* THKDynamicTabsPageVC.m */; };
-		16529F81274641FD002A3B65 /* THKPageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16529F80274641FD002A3B65 /* THKPageViewModel.m */; };
+		16529F81274641FD002A3B65 /* THKDynamicTabsPageVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16529F80274641FD002A3B65 /* THKDynamicTabsPageVM.m */; };
 		16529F8427464643002A3B65 /* THKDynamicTabsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16529F8327464643002A3B65 /* THKDynamicTabsScrollView.m */; };
 		16611AAD2696870F0089E41B /* GEEnvironmentParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A752696870F0089E41B /* GEEnvironmentParameter.m */; };
 		16611AAE2696870F0089E41B /* GESwizzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A772696870F0089E41B /* GESwizzer.m */; };
@@ -410,8 +410,8 @@
 		16529F6B2745F220002A3B65 /* DynamicTabDemoList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabDemoList.m; sourceTree = "<group>"; };
 		16529F7C274641EC002A3B65 /* THKDynamicTabsPageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsPageVC.h; sourceTree = "<group>"; };
 		16529F7D274641EC002A3B65 /* THKDynamicTabsPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDynamicTabsPageVC.m; sourceTree = "<group>"; };
-		16529F7F274641FD002A3B65 /* THKPageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPageViewModel.h; sourceTree = "<group>"; };
-		16529F80274641FD002A3B65 /* THKPageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPageViewModel.m; sourceTree = "<group>"; };
+		16529F7F274641FD002A3B65 /* THKDynamicTabsPageVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsPageVM.h; sourceTree = "<group>"; };
+		16529F80274641FD002A3B65 /* THKDynamicTabsPageVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDynamicTabsPageVM.m; sourceTree = "<group>"; };
 		16529F8227464643002A3B65 /* THKDynamicTabsScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsScrollView.h; sourceTree = "<group>"; };
 		16529F8327464643002A3B65 /* THKDynamicTabsScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDynamicTabsScrollView.m; sourceTree = "<group>"; };
 		16611A732696870F0089E41B /* Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Godeye.h; sourceTree = "<group>"; };
@@ -1736,8 +1736,8 @@
 				1689DE7A2744932A0073BA68 /* THKImageTabSegmentControl.m */,
 				16529F7C274641EC002A3B65 /* THKDynamicTabsPageVC.h */,
 				16529F7D274641EC002A3B65 /* THKDynamicTabsPageVC.m */,
-				16529F7F274641FD002A3B65 /* THKPageViewModel.h */,
-				16529F80274641FD002A3B65 /* THKPageViewModel.m */,
+				16529F7F274641FD002A3B65 /* THKDynamicTabsPageVM.h */,
+				16529F80274641FD002A3B65 /* THKDynamicTabsPageVM.m */,
 				16529F8227464643002A3B65 /* THKDynamicTabsScrollView.h */,
 				16529F8327464643002A3B65 /* THKDynamicTabsScrollView.m */,
 			);
@@ -2471,7 +2471,7 @@
 				16867A092692D76C00650023 /* TMCardComponentRecommendTagsBaseUICell.m in Sources */,
 				16E5C51B26830DCB0024BA20 /* THKIdentityTypeModel.m in Sources */,
 				16611B6C269692D20089E41B /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
-				16529F81274641FD002A3B65 /* THKPageViewModel.m in Sources */,
+				16529F81274641FD002A3B65 /* THKDynamicTabsPageVM.m in Sources */,
 				16192B292692E13E00967C73 /* THKCaseDetailLoadingAnimationView.m in Sources */,
 				16867A002692D76C00650023 /* TMCardComponentTopicStyleCell.m in Sources */,
 				16192BE52692F73900967C73 /* NSTimer+Block.m in Sources */,

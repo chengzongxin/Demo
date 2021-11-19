@@ -12,7 +12,7 @@
 
 @interface THKDynamicTabsPageVC ()<UIScrollViewDelegate>
 
-@property (nonatomic, strong) THKPageViewModel *viewModel;
+@property (nonatomic, strong) THKDynamicTabsPageVM *viewModel;
 /// 页面ScrollView
 @property (nonatomic, strong) THKDynamicTabsScrollView *pageScrollView;
 /// 展示控制器的字典

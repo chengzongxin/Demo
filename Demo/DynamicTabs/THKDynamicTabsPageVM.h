@@ -1,5 +1,5 @@
 //
-//  THKPageViewModel.h
+//  THKDynamicTabsPageVM.h
 //  Demo
 //
 //  Created by Joe.cheng on 2021/11/18.
@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKPageViewModel : THKViewModel
+@interface THKDynamicTabsPageVM : THKViewModel
 
 #pragma mark - YNPage Config
 /** 裁剪内容高度 用来添加最上层控件 添加在父类view上 */

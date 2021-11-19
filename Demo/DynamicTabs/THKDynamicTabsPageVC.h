@@ -6,7 +6,7 @@
 //
 
 #import "THKViewController.h"
-#import "THKPageViewModel.h"
+#import "THKDynamicTabsPageVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -115,7 +115,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKDynamicTabsPageVC : THKViewController
 
 /// 配置信息
-@property (nonatomic, strong, readonly) THKPageViewModel *viewModel;
+@property (nonatomic, strong, readonly) THKDynamicTabsPageVM *viewModel;
 /// 控制器数组
 @property (nonatomic, strong) NSMutableArray<__kindof UIViewController *> *controllersM;
 /// 标题数组 默认 缓存 key 为 title 可通过数据源代理 进行替换

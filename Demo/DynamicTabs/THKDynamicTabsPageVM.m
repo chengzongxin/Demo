@@ -1,17 +1,17 @@
 //
-//  THKPageViewModel.m
+//  THKDynamicTabsPageVM.m
 //  Demo
 //
 //  Created by Joe.cheng on 2021/11/18.
 //
 
-#import "THKPageViewModel.h"
+#import "THKDynamicTabsPageVM.h"
 
-@interface THKPageViewModel ()
+@interface THKDynamicTabsPageVM ()
 
 @end
 
-@implementation THKPageViewModel
+@implementation THKDynamicTabsPageVM
 
 - (instancetype)init {
     self = [super init];
