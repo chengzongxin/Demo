@@ -42,12 +42,13 @@
         make.height.mas_equalTo(NavigationContentTop);
     }];
     
+    
+    [self.view addSubview:self.dynamicTabsManager.wrapperView];
+    [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsMake(NavigationContentTop, 0, 0, 0));
+    }];
+    
     if (self.viewModel.isSuspend == DynamicTabStyle_Suspend) {
-        [self.view addSubview:self.dynamicTabsManager.wrapperScrollView];
-        [self.dynamicTabsManager.wrapperScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(UIEdgeInsetsMake(NavigationContentTop, 0, 0, 0));
-        }];
-        
         @weakify(self);
     //    self.tableView.tmui_isAddRefreshControl = YES;
         self.dynamicTabsManager.wrapperScrollView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -67,14 +68,7 @@
             });
         }];
         self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + 44;
-    }else{
-        [self.view addSubview:self.dynamicTabsManager.wrapperView];
-        [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(UIEdgeInsetsMake(NavigationContentTop, 0, 0, 0));
-        }];
     }
-    
-    
     
     [self.dynamicTabsManager loadTabs];
 }

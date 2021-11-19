@@ -22,8 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view addSubview:self.dynamicTabsManager.wrapperScrollView];
-    [self.dynamicTabsManager.wrapperScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.dynamicTabsManager.wrapperView];
+    [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     @weakify(self);

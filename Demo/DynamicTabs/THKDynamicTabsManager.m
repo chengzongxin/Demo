@@ -14,7 +14,7 @@
 @property (nonatomic, strong)   THKDynamicTabsViewModel         *viewModel;
 @property (nonatomic, strong)   TMUIPageWrapperScrollView       *wrapperScrollView;
 @property (nonatomic, strong)   UIView                          *wrapperView;
-@property (nonatomic, strong)   UIView                          *headerView;
+@property (nonatomic, strong)   UIView                          *headerWrapperView;
 @property (nonatomic, strong)   THKImageTabSegmentControl       *sliderBar;
 @property (nonatomic, strong)   THKDynamicTabsPageVC            *pageContainerVC;
 
@@ -42,11 +42,11 @@
     
     [[RACObserve(self.viewModel, headerContentViewHeight) delay:0] subscribeNext:^(id  _Nullable x) {
         @strongify(self);
-        if ( self.viewModel.layout == THKDynamicTabsLayoutType_Suspend && self.headerView.superview) {
+        if ( self.viewModel.layout == THKDynamicTabsLayoutType_Suspend && self.headerWrapperView.superview) {
             CGFloat headerH = self.viewModel.headerContentViewHeight;
             CGFloat topH = headerH + self.viewModel.sliderBarHeight;
             
-            [self.headerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.headerWrapperView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(-topH);
                 make.height.mas_equalTo(headerH);
             }];
@@ -69,23 +69,28 @@
         headerH = self.viewModel.headerContentViewHeight;
         topH = headerH + self.viewModel.sliderBarHeight;
         
-        [self.wrapperScrollView addSubview:self.headerView];
+        [self.wrapperView addSubview:self.wrapperScrollView];
+        [self.wrapperScrollView addSubview:self.headerWrapperView];
         [self.wrapperScrollView addSubview:self.sliderBar];
         [self.wrapperScrollView addSubview:self.pageContainerVC.view];
         
-        if (self.viewModel.headerContentView) {
-            [self.headerView addSubview:self.viewModel.headerContentView];
-            [self.viewModel.headerContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.equalTo(self.headerView);
-            }];
-        }
+        [self.wrapperScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.wrapperView);
+        }];
         
-        [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.headerWrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(-topH);
             make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
             make.left.mas_offset(0);
             make.height.mas_equalTo(headerH);
         }];
+        
+        if (self.viewModel.headerContentView) {
+            [self.headerWrapperView addSubview:self.viewModel.headerContentView];
+            [self.viewModel.headerContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(self.headerWrapperView);
+            }];
+        }
         
         [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(-self.viewModel.sliderBarHeight);
@@ -199,6 +204,13 @@
 
 #pragma mark - getter and setter
 
+- (UIView *)wrapperView{
+    if (!_wrapperView) {
+        _wrapperView = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    }
+    return _wrapperView;
+}
+
 - (TMUIPageWrapperScrollView *)wrapperScrollView{
     if (!_wrapperScrollView) {
         _wrapperScrollView = [[TMUIPageWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
@@ -207,18 +219,11 @@
     return _wrapperScrollView;
 }
 
-- (UIView *)wrapperView{
-    if (!_wrapperView) {
-        _wrapperView = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+- (UIView *)headerWrapperView{
+    if (!_headerWrapperView) {
+        _headerWrapperView = [UIView new];
     }
-    return _wrapperView;
-}
-
-- (UIView *)headerView{
-    if (!_headerView) {
-        _headerView = [UIView new];
-    }
-    return _headerView;
+    return _headerWrapperView;
 }
 
 - (THKDynamicTabsPageVC *)pageContainerVC {

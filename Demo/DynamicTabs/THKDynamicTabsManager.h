@@ -24,12 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
  默认frame为CGRectMake(0, 0, kScreenWidth, 52.0-6)
  */
 @property (nonatomic, strong, readonly)     THKDynamicTabsViewModel         *viewModel;
-/// 吸顶效果时使用容器 wrapperScrollView or wrapperView 只能选一个使用
-@property (nonatomic, strong, readonly)     TMUIPageWrapperScrollView       *wrapperScrollView;
-/// 常规效果时使用容器 wrapperScrollView or wrapperView 只能选一个使用
+/// 常规效果时使用容器
 @property (nonatomic, strong, readonly)     UIView                          *wrapperView;
+/// 吸顶效果时会包含的容器
+@property (nonatomic, strong, readonly)     TMUIPageWrapperScrollView       *wrapperScrollView;
 /// 吸顶效果时头部使用容器
-@property (nonatomic, strong, readonly)     UIView                          *headerView;
+@property (nonatomic, strong, readonly)     UIView                          *headerWrapperView;
 /// slider菜单
 @property (nonatomic, strong, readonly)     THKImageTabSegmentControl       *sliderBar;
 /// 子VC集合容器
