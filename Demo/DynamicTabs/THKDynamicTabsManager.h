@@ -30,12 +30,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly)     THKImageTabSegmentControl       *sliderBar;
 @property (nonatomic, strong, readonly)     THKDynamicTabsPageVC           *pageContainerVC;
 
-+ (instancetype)new UNAVAILABLE_ATTRIBUTE;
-+ (instancetype)init UNAVAILABLE_ATTRIBUTE;
-
 
 /**
- 初始化出入viewmodel，如果不传入，则内部新建一个viewmodel
+ 暂时不可用，用initWithViewModel初始化
+ */
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+/**
+ 指定初始化方法，需要传入ViewModel
  */
 - (instancetype)initWithViewModel:(THKDynamicTabsViewModel *)viewModel NS_DESIGNATED_INITIALIZER;
 

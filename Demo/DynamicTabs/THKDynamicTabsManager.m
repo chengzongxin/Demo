@@ -18,7 +18,7 @@
 @property (nonatomic, strong)   UIView                          *wrapperView;
 @property (nonatomic, strong)   UIView                          *headerView;
 @property (nonatomic, strong)   THKImageTabSegmentControl       *sliderBar;
-@property (nonatomic, strong)   THKDynamicTabsPageVC           *pageContainerVC;
+@property (nonatomic, strong)   THKDynamicTabsPageVC            *pageContainerVC;
 
 
 @end
@@ -201,21 +201,11 @@
 }
 
 #pragma mark - getter and setter
-- (THKDynamicTabsViewModel *)viewModel {
-    if (_viewModel == nil) {
-        _viewModel = [[THKDynamicTabsViewModel alloc] init];
-    }
-    return _viewModel;
-}
-
 
 - (TMUIPageWrapperScrollView *)wrapperScrollView{
     if (!_wrapperScrollView) {
         _wrapperScrollView = [[TMUIPageWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
         _wrapperScrollView.showsHorizontalScrollIndicator = NO;
-        //_contentView.directionalLockEnabled = YES;
-//        _contentView.t_delegate = self;
-//        _contentView.backgroundColor = UIColor.whiteColor;
     }
     return _wrapperScrollView;
 }

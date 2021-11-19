@@ -30,11 +30,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) UIViewController *parentVC;
 
 
-+ (instancetype)new UNAVAILABLE_ATTRIBUTE;
-+ (instancetype)init UNAVAILABLE_ATTRIBUTE;
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
 
 /// 使用下面的方法初始化
-- (instancetype)initWithWholeCode:(NSString *)wholeCode defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithWholeCode:(NSString *)wholeCode defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
 - (instancetype)initWithWholeCode:(NSString *)wholeCode extraParam:(nullable NSDictionary *)extraParam defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs NS_DESIGNATED_INITIALIZER;
 /**
  获取标签tab接口结果
