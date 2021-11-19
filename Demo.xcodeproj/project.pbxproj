@@ -201,7 +201,6 @@
 		1689DEC527449B530073BA68 /* THKTabClearBadgeResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DEC327449B530073BA68 /* THKTabClearBadgeResponse.m */; };
 		1689DECC27449F410073BA68 /* DynamicTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DECB27449F410073BA68 /* DynamicTabVC.m */; };
 		1689DECF27449F4D0073BA68 /* DynamicTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DECE27449F4D0073BA68 /* DynamicTabVM.m */; };
-		1689DED22744A5E90073BA68 /* THKDynamicTabsWrapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DED12744A5E90073BA68 /* THKDynamicTabsWrapperView.m */; };
 		1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DED42744DA220073BA68 /* DynamicTabChildVC.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
@@ -677,8 +676,6 @@
 		1689DECB27449F410073BA68 /* DynamicTabVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabVC.m; sourceTree = "<group>"; };
 		1689DECD27449F4D0073BA68 /* DynamicTabVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicTabVM.h; sourceTree = "<group>"; };
 		1689DECE27449F4D0073BA68 /* DynamicTabVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabVM.m; sourceTree = "<group>"; };
-		1689DED02744A5E90073BA68 /* THKDynamicTabsWrapperView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsWrapperView.h; sourceTree = "<group>"; };
-		1689DED12744A5E90073BA68 /* THKDynamicTabsWrapperView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDynamicTabsWrapperView.m; sourceTree = "<group>"; };
 		1689DED32744DA220073BA68 /* DynamicTabChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicTabChildVC.h; sourceTree = "<group>"; };
 		1689DED42744DA220073BA68 /* DynamicTabChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabChildVC.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
@@ -1122,6 +1119,7 @@
 		16192C14269305EE00967C73 /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				16702D30274749D500ECB807 /* DynamicTabsRequest */,
 				168679852692B8AC00650023 /* MaterialClassificationRequest */,
 				1686799B2692B8BA00650023 /* MaterialHotRankRequest */,
 			);
@@ -1446,6 +1444,16 @@
 			path = CommonDefine;
 			sourceTree = "<group>";
 		};
+		16702D30274749D500ECB807 /* DynamicTabsRequest */ = {
+			isa = PBXGroup;
+			children = (
+				1689DEBF27449B530073BA68 /* THKTabClearBadgeRequest */,
+				1689DE9427449A700073BA68 /* THKTabBadgeRequest */,
+				1689DE83274498280073BA68 /* DynamicTabs */,
+			);
+			path = DynamicTabsRequest;
+			sourceTree = "<group>";
+		};
 		1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1724,8 +1732,6 @@
 				1689DE782744932A0073BA68 /* THKDynamicTabsProtocol.h */,
 				1689DE7B2744932A0073BA68 /* THKDynamicTabsViewModel.h */,
 				1689DE762744932A0073BA68 /* THKDynamicTabsViewModel.m */,
-				1689DED02744A5E90073BA68 /* THKDynamicTabsWrapperView.h */,
-				1689DED12744A5E90073BA68 /* THKDynamicTabsWrapperView.m */,
 				1689DE7E2744932A0073BA68 /* THKImageTabSegmentControl.h */,
 				1689DE7A2744932A0073BA68 /* THKImageTabSegmentControl.m */,
 				16529F7C274641EC002A3B65 /* THKPageViewController.h */,
@@ -1734,9 +1740,6 @@
 				16529F80274641FD002A3B65 /* THKPageViewModel.m */,
 				16529F8227464643002A3B65 /* THKPageScrollView.h */,
 				16529F8327464643002A3B65 /* THKPageScrollView.m */,
-				1689DEBF27449B530073BA68 /* THKTabClearBadgeRequest */,
-				1689DE9427449A700073BA68 /* THKTabBadgeRequest */,
-				1689DE83274498280073BA68 /* DynamicTabs */,
 			);
 			path = DynamicTabs;
 			sourceTree = "<group>";
@@ -2358,7 +2361,6 @@
 				168679972692B8AC00650023 /* THKMaterialRecommendKnowledgeResponse.m in Sources */,
 				168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */,
 				1689DE8F274498280073BA68 /* THKDynamicTabsModel.m in Sources */,
-				1689DED22744A5E90073BA68 /* THKDynamicTabsWrapperView.m in Sources */,
 				16611B62269692D20089E41B /* THKMaterialRecommendRankVC.m in Sources */,
 				16611AD1269688C20089E41B /* KeychainItemWrapper.m in Sources */,
 				16611B6D269692D20089E41B /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
