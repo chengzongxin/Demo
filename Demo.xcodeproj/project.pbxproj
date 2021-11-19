@@ -1459,6 +1459,8 @@
 			children = (
 				167412042747903500262960 /* THKDynamicTabsManager.h */,
 				167411FD2747903500262960 /* THKDynamicTabsManager.m */,
+				167411FF2747903500262960 /* THKDynamicTabsViewModel.h */,
+				167411F82747903500262960 /* THKDynamicTabsViewModel.m */,
 				167412012747903500262960 /* THKDynamicTabsPageVC.h */,
 				167411FB2747903500262960 /* THKDynamicTabsPageVC.m */,
 				167412032747903500262960 /* THKDynamicTabsPageVM.h */,
@@ -1466,8 +1468,6 @@
 				167411FC2747903500262960 /* THKDynamicTabsProtocol.h */,
 				167411F72747903500262960 /* THKDynamicTabsScrollView.h */,
 				167412002747903500262960 /* THKDynamicTabsScrollView.m */,
-				167411FF2747903500262960 /* THKDynamicTabsViewModel.h */,
-				167411F82747903500262960 /* THKDynamicTabsViewModel.m */,
 				167412052747903500262960 /* THKImageTabSegmentControl.h */,
 				167411FE2747903500262960 /* THKImageTabSegmentControl.m */,
 			);

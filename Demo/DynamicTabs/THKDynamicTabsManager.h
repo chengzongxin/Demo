@@ -7,9 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-
-#import <Foundation/Foundation.h>
 #import "THKImageTabSegmentControl.h"
 #import "THKDynamicTabsViewModel.h"
 #import "TMUIPageWrapperScrollView.h"
