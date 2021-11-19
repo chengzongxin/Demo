@@ -11,10 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-@class THKPageViewController;
+@class THKDynamicTabsPageVC;
 
 #pragma mark - THKPageViewControllerDelegate
-@protocol THKPageViewControllerDelegate <NSObject>
+@protocol THKDynamicTabsPageVCDelegate <NSObject>
 @optional
 
 /**
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param contentOffsetY 内容偏移量
  @param progress 进度
  */
-- (void)pageViewController:(THKPageViewController *)pageViewController
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController
             contentOffsetY:(CGFloat)contentOffsetY
                   progress:(CGFloat)progress;
 
@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param pageViewController PageVC
  @param scrollView UIScrollView
  */
-- (void)pageViewController:(THKPageViewController *)pageViewController
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController
         didEndDecelerating:(UIScrollView *)scrollView;
 
 /**
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param fromIndex 从哪个页面
  @param toIndex 到哪个页面
  */
-- (void)pageViewController:(THKPageViewController *)pageViewController
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController
                  didScroll:(UIScrollView *)scrollView
                   progress:(CGFloat)progress
                  formIndex:(NSInteger)fromIndex
@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param itemButton item
  @param index 下标
  */
-- (void)pageViewController:(THKPageViewController *)pageViewController
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController
          didScrollMenuItem:(UIButton *)itemButton
                      index:(NSInteger)index;
 
@@ -69,14 +69,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param pageViewController PageVC
  @param button Add按钮
  */
-- (void)pageViewController:(THKPageViewController *)pageViewController
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController
         didAddButtonAction:(UIButton *)button;
 
 
 @end
 
 #pragma mark - THKPageViewControllerDataSource
-@protocol THKPageViewControllerDataSource <NSObject>
+@protocol THKDynamicTabsPageVCDataSource <NSObject>
 @required
 
 /**
@@ -86,7 +86,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param index pageIndex
  @return 数据源
  */
-- (__kindof UIScrollView *)pageViewController:(THKPageViewController *)pageViewController
+- (__kindof UIScrollView *)pageViewController:(THKDynamicTabsPageVC *)pageViewController
                                  pageForIndex:(NSInteger )index;
 
 @optional
@@ -97,7 +97,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param index pageIndex
  @return ScrollView高度
  */
-- (CGFloat)pageViewController:(THKPageViewController *)pageViewController heightForScrollViewAtIndex:(NSInteger )index;
+- (CGFloat)pageViewController:(THKDynamicTabsPageVC *)pageViewController heightForScrollViewAtIndex:(NSInteger )index;
 
 /**
  自定义缓存Key 如果不实现，则不允许相同的菜单栏title
@@ -107,12 +107,12 @@ NS_ASSUME_NONNULL_BEGIN
  @param index pageIndex
  @return 唯一标识 (一般是后台ID)
  */
-- (NSString *)pageViewController:(THKPageViewController *)pageViewController
+- (NSString *)pageViewController:(THKDynamicTabsPageVC *)pageViewController
           customCacheKeyForIndex:(NSInteger )index;
 
 @end
 
-@interface THKPageViewController : THKViewController
+@interface THKDynamicTabsPageVC : THKViewController
 
 /// 配置信息
 @property (nonatomic, strong, readonly) THKPageViewModel *viewModel;
@@ -121,9 +121,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 标题数组 默认 缓存 key 为 title 可通过数据源代理 进行替换
 @property (nonatomic, strong) NSMutableArray<NSString *> *titlesM;
 /// 数据源
-@property (nonatomic, weak) id<THKPageViewControllerDataSource> dataSource;
+@property (nonatomic, weak) id<THKDynamicTabsPageVCDataSource> dataSource;
 /// 代理
-@property (nonatomic, weak) id<THKPageViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<THKDynamicTabsPageVCDelegate> delegate;
 /// 当前页面index
 @property (nonatomic, assign) NSInteger pageIndex;
 /// 头部伸缩背景View

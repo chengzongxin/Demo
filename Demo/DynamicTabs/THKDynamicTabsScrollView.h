@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKPageScrollView : UIScrollView
+@interface THKDynamicTabsScrollView : UIScrollView
 
 @end
 

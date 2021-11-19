@@ -5,14 +5,14 @@
 //  Created by Joe.cheng on 2021/11/18.
 //
 
-#import "THKPageScrollView.h"
+#import "THKDynamicTabsScrollView.h"
 #import <objc/runtime.h>
 
-@interface THKPageScrollView ()<UIGestureRecognizerDelegate>
+@interface THKDynamicTabsScrollView ()<UIGestureRecognizerDelegate>
 
 @end
 
-@implementation THKPageScrollView
+@implementation THKDynamicTabsScrollView
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
     

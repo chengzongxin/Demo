@@ -11,14 +11,14 @@
 #import "DynamicTabChildVC.h"
 #import "THKPageBGScrollView.h"
 
-@interface THKDynamicTabsManager ()<THKPageViewControllerDelegate,THKPageViewControllerDataSource>
+@interface THKDynamicTabsManager ()<THKDynamicTabsPageVCDelegate,THKDynamicTabsPageVCDataSource>
 
 @property (nonatomic, strong)   THKDynamicTabsViewModel         *viewModel;
 @property (nonatomic, strong)   TMUIPageWrapperScrollView       *wrapperScrollView;
 @property (nonatomic, strong)   UIView                          *wrapperView;
 @property (nonatomic, strong)   UIView                          *headerView;
 @property (nonatomic, strong)   THKImageTabSegmentControl       *sliderBar;
-@property (nonatomic, strong)   THKPageViewController           *pageContainerVC;
+@property (nonatomic, strong)   THKDynamicTabsPageVC           *pageContainerVC;
 
 
 @end
@@ -163,7 +163,7 @@
 }
 
 #pragma mark - YNPageViewControllerDataSource
-- (UIScrollView *)pageViewController:(THKPageViewController *)pageViewController pageForIndex:(NSInteger)index {
+- (UIScrollView *)pageViewController:(THKDynamicTabsPageVC *)pageViewController pageForIndex:(NSInteger)index {
     NSArray *vcs = self.viewModel.arrayChildVC;
     UIViewController *controller = [vcs safeObjectAtIndex:index];
     UIScrollView *scrollView = nil;
@@ -173,7 +173,7 @@
     return scrollView;
 }
 
-- (void)pageViewController:(THKPageViewController *)pageViewController
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController
         didEndDecelerating:(UIScrollView *)scrollView{
     NSInteger selectedIndex = pageViewController.pageIndex;
     if (selectedIndex == self.sliderBar.selectedIndex){
@@ -234,11 +234,11 @@
     return _headerView;
 }
 
-- (THKPageViewController *)pageContainerVC {
+- (THKDynamicTabsPageVC *)pageContainerVC {
     if (!_pageContainerVC) {
         THKPageViewModel *vm = [[THKPageViewModel alloc] init];
         vm.cutOutHeight = self.viewModel.cutOutHeight + self.viewModel.sliderBarHeight + NavigationContentTop;
-        _pageContainerVC = [[THKPageViewController alloc] initWithViewModel:vm];
+        _pageContainerVC = [[THKDynamicTabsPageVC alloc] initWithViewModel:vm];
         _pageContainerVC.delegate = self;
         _pageContainerVC.dataSource = self;
     }

@@ -5,16 +5,16 @@
 //  Created by Joe.cheng on 2021/11/18.
 //
 
-#import "THKPageViewController.h"
-#import "THKPageScrollView.h"
+#import "THKDynamicTabsPageVC.h"
+#import "THKDynamicTabsScrollView.h"
 
 #define kLESS_THAN_iOS11 ([[UIDevice currentDevice].systemVersion floatValue] < 11.0 ? YES : NO)
 
-@interface THKPageViewController ()<UIScrollViewDelegate>
+@interface THKDynamicTabsPageVC ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) THKPageViewModel *viewModel;
 /// 页面ScrollView
-@property (nonatomic, strong) THKPageScrollView *pageScrollView;
+@property (nonatomic, strong) THKDynamicTabsScrollView *pageScrollView;
 /// 展示控制器的字典
 @property (nonatomic, strong) NSMutableDictionary *displayDictM;
 /// 原始InsetBottom
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation THKPageViewController
+@implementation THKDynamicTabsPageVC
 @dynamic viewModel;
 
 #pragma mark - Life Cycle
@@ -439,9 +439,9 @@
 
 #pragma mark - Lazy Method
 
-- (THKPageScrollView *)pageScrollView {
+- (THKDynamicTabsScrollView *)pageScrollView {
     if (!_pageScrollView) {
-        _pageScrollView = [[THKPageScrollView alloc] init];
+        _pageScrollView = [[THKDynamicTabsScrollView alloc] init];
         _pageScrollView.showsVerticalScrollIndicator = NO;
         _pageScrollView.showsHorizontalScrollIndicator = NO;
         _pageScrollView.scrollEnabled = self.viewModel.pageScrollEnabled;

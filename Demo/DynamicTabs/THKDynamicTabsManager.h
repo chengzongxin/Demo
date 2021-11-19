@@ -13,7 +13,7 @@
 #import "THKImageTabSegmentControl.h"
 #import "THKDynamicTabsViewModel.h"
 #import "TMUIPageWrapperScrollView.h"
-#import "THKPageViewController.h"
+#import "THKDynamicTabsPageVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly)     UIView                          *wrapperView;
 @property (nonatomic, strong, readonly)     UIView                          *headerView;
 @property (nonatomic, strong, readonly)     THKImageTabSegmentControl       *sliderBar;
-@property (nonatomic, strong, readonly)     THKPageViewController           *pageContainerVC;
+@property (nonatomic, strong, readonly)     THKDynamicTabsPageVC           *pageContainerVC;
 
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 + (instancetype)init UNAVAILABLE_ATTRIBUTE;
