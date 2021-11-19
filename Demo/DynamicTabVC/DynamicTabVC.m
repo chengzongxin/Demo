@@ -93,7 +93,7 @@
             configButtonModel.selectedFont = [UIFont fontWithName:@"PingFangSC-Medium" size:16.7];
         };
         
-        viewModel.isSuspendStyle = self.viewModel.isSuspend == DynamicTabStyle_Suspend;
+        viewModel.layout = self.viewModel.isSuspend == DynamicTabStyle_Suspend ? THKDynamicTabsLayoutType_Suspend : THKDynamicTabsLayoutType_Normal;
         viewModel.parentVC = self;
         viewModel.headerContentViewHeight = 321;
         viewModel.headerContentView = [UIView new];

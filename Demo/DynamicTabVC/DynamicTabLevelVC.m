@@ -69,7 +69,7 @@
             configButtonModel.selectedFont = [UIFont fontWithName:@"PingFangSC-Medium" size:16.7];
         };
         
-        viewModel.isSuspendStyle = YES;
+        viewModel.layout = THKDynamicTabsLayoutType_Suspend;
         viewModel.cutOutHeight = 44;
         viewModel.sliderBarHeight = 60;
         viewModel.headerContentViewHeight = 321;

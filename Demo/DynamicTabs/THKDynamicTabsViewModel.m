@@ -184,7 +184,9 @@
     }
     THKTabBadgeRequest  *request = [[THKTabBadgeRequest alloc] init];
     request.badgeType = type;
+    @weakify(self);
     [request sendSuccess:^(THKTabBadgeResponse *response) {
+        @strongify(self);
         if (response.status == THKStatusSuccess) {
             [self.segmentTabs enumerateObjectsUsingBlock:^(THKDynamicTabsModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 if (type == THKTabBadgeType_Follow && [obj.targetUrl containsString:THKRouterPage_CommunityFollowList]) {

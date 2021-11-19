@@ -8,8 +8,6 @@
 
 #import "THKDynamicTabsManager.h"
 #import "THKViewController.h"
-#import "DynamicTabChildVC.h"
-#import "THKPageBGScrollView.h"
 
 @interface THKDynamicTabsManager ()<THKDynamicTabsPageVCDelegate,THKDynamicTabsPageVCDataSource>
 
@@ -43,7 +41,8 @@
     }];
     
     [[RACObserve(self.viewModel, headerContentViewHeight) delay:0] subscribeNext:^(id  _Nullable x) {
-        if (self.headerView.superview) {
+        @strongify(self);
+        if ( self.viewModel.layout == THKDynamicTabsLayoutType_Suspend && self.headerView.superview) {
             CGFloat headerH = self.viewModel.headerContentViewHeight;
             CGFloat topH = headerH + self.viewModel.sliderBarHeight;
             
@@ -66,8 +65,7 @@
     CGFloat topH = 0;
     
     
-    if (self.viewModel.isSuspendStyle) {
-        
+    if (self.viewModel.layout == THKDynamicTabsLayoutType_Suspend) {
         headerH = self.viewModel.headerContentViewHeight;
         topH = headerH + self.viewModel.sliderBarHeight;
         
@@ -81,7 +79,6 @@
                 make.edges.equalTo(self.headerView);
             }];
         }
-        
         
         [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(-topH);
@@ -107,7 +104,7 @@
         self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
         self.wrapperScrollView.lockArea = self.viewModel.sliderBarHeight;
         self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
-    }else{
+    }else if (self.viewModel.layout == THKDynamicTabsLayoutType_Normal){
         topH = self.viewModel.sliderBarHeight;
         
         [self.wrapperView addSubview:self.sliderBar];

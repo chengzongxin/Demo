@@ -13,11 +13,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum : NSUInteger {
+    THKDynamicTabsLayoutType_Custom = 0,    ///<自定义，需要外部手动布局
+    THKDynamicTabsLayoutType_Normal,        ///<常规布局
+    THKDynamicTabsLayoutType_Suspend,       ///<包含头部、Tab、吸顶效果布局
+} THKDynamicTabsLayoutType;
+
 @interface THKDynamicTabsViewModel : THKViewModel
-
-
 /// 是否有头部悬浮效果，默认NO，设计到内部容器wrapper是scrollView还是View
-@property (nonatomic, assign) NSInteger isSuspendStyle;
+@property (nonatomic, assign) THKDynamicTabsLayoutType layout;
 /// 头部视图
 @property (nonatomic, strong) UIView *headerContentView;
 /// 头部视图高度
@@ -31,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 + (instancetype)new NS_UNAVAILABLE;
-- (instancetype)init NS_UNAVAILABLE;
+//- (instancetype)init NS_UNAVAILABLE;
 
 /// 使用下面的方法初始化
 - (instancetype)initWithWholeCode:(NSString *)wholeCode defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
