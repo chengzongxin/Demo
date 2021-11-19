@@ -30,6 +30,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly)     THKImageTabSegmentControl       *sliderBar;
 @property (nonatomic, strong, readonly)     THKPageViewController           *pageContainerVC;
 
++ (instancetype)new UNAVAILABLE_ATTRIBUTE;
++ (instancetype)init UNAVAILABLE_ATTRIBUTE;
+
+
+/**
+ 初始化出入viewmodel，如果不传入，则内部新建一个viewmodel
+ */
+- (instancetype)initWithViewModel:(THKDynamicTabsViewModel *)viewModel NS_DESIGNATED_INITIALIZER;
+
+
+#pragma mark - 埋点事件集合
 /**
  这个Block做了重复曝光的判断，如果你需要重复曝光，可以直接用sliderBar.itemExposeBlock
  */
@@ -41,11 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy  ) THKSegmentControlItemEventBlock     tabButtonScrollBlock;
 
 @property (nonatomic, assign) BOOL breakLayout;
-
-/**
- 初始化出入viewmodel，如果不传入，则内部新建一个viewmodel
- */
-- (instancetype)initWithViewModel:(THKDynamicTabsViewModel *)viewModel;
 
 - (void)loadTabs;
 

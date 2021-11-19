@@ -16,15 +16,26 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKDynamicTabsViewModel : THKViewModel
 
 
-/// 是否有头部悬浮效果，默认NO
+/// 是否有头部悬浮效果，默认NO，设计到内部容器wrapper是scrollView还是View
 @property (nonatomic, assign) NSInteger isSuspendStyle;
+/// 头部视图
 @property (nonatomic, strong) UIView *headerContentView;
+/// 头部视图高度
 @property (nonatomic, assign) CGFloat headerContentViewHeight;
 /// tab标签高度,默认44
 @property (nonatomic, assign) CGFloat sliderBarHeight;
-///非pageContent内容的高度
+/// 非pageContent内容的高度
 @property (nonatomic, assign) CGFloat cutOutHeight;
+/// 当前VC，用于管理子VC生命周期
 @property (nonatomic, weak) UIViewController *parentVC;
+
+
++ (instancetype)new UNAVAILABLE_ATTRIBUTE;
++ (instancetype)init UNAVAILABLE_ATTRIBUTE;
+
+/// 使用下面的方法初始化
+- (instancetype)initWithWholeCode:(NSString *)wholeCode defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithWholeCode:(NSString *)wholeCode extraParam:(nullable NSDictionary *)extraParam defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs NS_DESIGNATED_INITIALIZER;
 /**
  获取标签tab接口结果
  */
@@ -66,8 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign, readonly)     BOOL                isRequestSuccess;
 
-- (instancetype)initWithWholeCode:(NSString *)wholeCode defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
-- (instancetype)initWithWholeCode:(NSString *)wholeCode extraParam:(nullable NSDictionary *)extraParam defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
+
 
 /**
  请求tab的数据接口，请求返回后发出tabsResultSubject信号

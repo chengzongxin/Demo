@@ -80,7 +80,6 @@
     
     self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH * self.controllersM.count, contentHeight);
     
-    self.viewModel.contentHeight = self.pageScrollView.height - self.viewModel.menuHeight;
     if (kLESS_THAN_iOS11) {
         [self.view addSubview:[UIView new]];
     }
