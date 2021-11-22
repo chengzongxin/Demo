@@ -14,7 +14,7 @@ target 'Demo' do
   pod 'YYKit'
   pod 'LookinServer', :configurations => ['Debug'] #界面查看工具
 #  pod 'MLeaksFinder', :configurations => ['Debug'] #检测内存泄漏
-  pod 'TMUIKit', :path => '/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec'
+  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git'
   pod 'MJRefresh'
   pod 'MBProgressHUD'
 #  pod 'YYWebImage', '1.0.5'
