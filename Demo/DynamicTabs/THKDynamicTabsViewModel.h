@@ -37,9 +37,16 @@ typedef enum : NSUInteger {
 + (instancetype)new NS_UNAVAILABLE;
 //- (instancetype)init NS_UNAVAILABLE;
 
-/// 使用下面的方法初始化
+/// 使用下面的方法初始化，会调用接口创建VC
 - (instancetype)initWithWholeCode:(NSString *)wholeCode defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
 - (instancetype)initWithWholeCode:(NSString *)wholeCode extraParam:(nullable NSDictionary *)extraParam defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs NS_DESIGNATED_INITIALIZER;
+/// 使用静态VC，需要外部提供数据源
+- (instancetype)initWithVCs:(NSArray<UIViewController *> *)childVCs titles:(NSArray<NSString *> *)childTitles NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTabs:(NSArray<THKDynamicTabsModel *> *)tabs NS_DESIGNATED_INITIALIZER;
+/// 没有通过指定方法创建（使用init），后期手动塞入数据源调用下面方法
+- (void)setVCs:(NSArray<UIViewController *> *)childVCs titles:(NSArray<NSString *> *)childTitles;
+- (void)setTabs:(NSArray<THKDynamicTabsModel *> *)tabs;
+
 /**
  获取标签tab接口结果
  */
@@ -82,7 +89,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign, readonly)     BOOL                isRequestSuccess;
 
 
-
+- (void)loadTabs;
 /**
  请求tab的数据接口，请求返回后发出tabsResultSubject信号
  这个接口需要传入默认的tabs，如果获取数据失败则解析默认的tab并回传，所以这个接口不存在返回错误的情况，但有可能返回空数组

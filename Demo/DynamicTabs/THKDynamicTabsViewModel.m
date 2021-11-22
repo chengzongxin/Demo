@@ -18,14 +18,19 @@
 
 @property (nonatomic, copy)     NSArray<THKDynamicTabsModel *>      *segmentTabs;
 @property (nonatomic, copy)     NSArray<NSString *>                 *segmentTitles;
-@property (nonatomic, copy)     NSArray<UIViewController *>    *arrayChildVC;
+@property (nonatomic, copy)     NSArray<UIViewController *>         *arrayChildVC;
 
+/// 请求全码
 @property (nonatomic, copy)     NSString            *wholeCode;
-@property (nonatomic, copy)     NSDictionary            *extraParam;
+/// 请求参数
+@property (nonatomic, copy)     NSDictionary        *extraParam;
 
 @property (nonatomic, assign)   NSInteger           sliderBarDefaultSelected;
 
-@property (nonatomic, assign)     BOOL                isRequestSuccess;
+@property (nonatomic, assign)   BOOL                isRequestSuccess;
+
+/// 使用外部数据源
+@property (nonatomic, assign)   BOOL isUseExternalDataSource;
 
 @property (nonatomic, weak) __kindof THKBaseRequest *curReq;
 @end
@@ -45,6 +50,31 @@
     return self;
 }
 
+- (instancetype)initWithTabs:(NSArray<THKDynamicTabsModel *> *)tabs{
+    if (self = [super init]) {
+        [self setTabs:tabs];
+    }
+    return self;
+}
+
+- (instancetype)initWithVCs:(NSArray<UIViewController *> *)childVCs titles:(NSArray<NSString *> *)childTitles{
+    if (self = [super init]) {
+        [self setVCs:childVCs titles:childTitles];
+    }
+    return self;
+}
+
+- (void)setVCs:(NSArray<UIViewController *> *)childVCs titles:(NSArray<NSString *> *)childTitles{
+    self.isUseExternalDataSource = YES;
+    self.segmentTitles = childTitles;
+    self.arrayChildVC = childVCs;
+}
+
+- (void)setTabs:(NSArray<THKDynamicTabsModel *> *)tabs{
+    self.isUseExternalDataSource = YES;
+    self.segmentTabs = tabs;
+}
+
 - (void)initialize {
     [super initialize];
     
@@ -52,6 +82,18 @@
     self.tabsResultSubject = [RACSubject subject];
     self.segmentValueChangedSubject = [RACSubject subject];
     self.tabsLoadFinishSignal = [RACSubject subject];
+}
+
+- (void)loadTabs{
+    if (self.isUseExternalDataSource) {
+        if (self.segmentTabs) {
+            [self parseTabs:self.segmentTabs];
+        }else{
+            [self.tabsResultSubject sendNext:nil];
+        }
+    }else{
+        [self requestConfigTabs];
+    }
 }
 
 - (void)requestConfigTabs {

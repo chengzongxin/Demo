@@ -154,7 +154,7 @@
 
 - (void)loadTabs {
     //先赋值信号回调,再调用相关接口,以上相关接口调用后立马返回时，信号回调还没被赋值(断网情况下小概率可能发生)
-    [self.viewModel requestConfigTabs];
+    [self.viewModel loadTabs];
 }
 
 -(BOOL)pageViewControllerBreakLayoutSubviewsAction{
