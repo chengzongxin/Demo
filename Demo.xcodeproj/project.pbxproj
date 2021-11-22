@@ -142,6 +142,8 @@
 		1677AC55274B2609001B0F66 /* THKDynamicTabsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677AC48274B2609001B0F66 /* THKDynamicTabsManager.m */; };
 		1677AC56274B2609001B0F66 /* THKImageTabSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677AC49274B2609001B0F66 /* THKImageTabSegmentControl.m */; };
 		1677AC57274B2609001B0F66 /* THKDynamicTabsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677AC4B274B2609001B0F66 /* THKDynamicTabsScrollView.m */; };
+		1677AC5F274B91D4001B0F66 /* THKQuickCommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677AC5E274B91D4001B0F66 /* THKQuickCommentsView.m */; };
+		1677AC62274B91EE001B0F66 /* THKQuickCommentsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677AC61274B91EE001B0F66 /* THKQuickCommentsViewModel.m */; };
 		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
 		16834F0B26DC820D0082268C /* THKDiaryCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F0A26DC820D0082268C /* THKDiaryCircle.m */; };
 		16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F1026DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m */; };
@@ -548,6 +550,10 @@
 		1677AC4E274B2609001B0F66 /* THKDynamicTabsPageVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsPageVM.h; sourceTree = "<group>"; };
 		1677AC4F274B2609001B0F66 /* THKDynamicTabsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsManager.h; sourceTree = "<group>"; };
 		1677AC50274B2609001B0F66 /* THKImageTabSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKImageTabSegmentControl.h; sourceTree = "<group>"; };
+		1677AC5D274B91D4001B0F66 /* THKQuickCommentsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKQuickCommentsView.h; sourceTree = "<group>"; };
+		1677AC5E274B91D4001B0F66 /* THKQuickCommentsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKQuickCommentsView.m; sourceTree = "<group>"; };
+		1677AC60274B91EE001B0F66 /* THKQuickCommentsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKQuickCommentsViewModel.h; sourceTree = "<group>"; };
+		1677AC61274B91EE001B0F66 /* THKQuickCommentsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKQuickCommentsViewModel.m; sourceTree = "<group>"; };
 		1677D10F25A2FE2800F3E6C8 /* InjectionIIIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InjectionIIIHelper.h; sourceTree = "<group>"; };
 		1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InjectionIIIHelper.m; sourceTree = "<group>"; };
 		16834F0926DC820D0082268C /* THKDiaryCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryCircle.h; sourceTree = "<group>"; };
@@ -838,6 +844,7 @@
 				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				1677AC5C274B91C9001B0F66 /* QuickComments */,
 				1689DEC927449F2C0073BA68 /* DynamicTabVC */,
 				1677AC41274B2609001B0F66 /* DynamicTabs */,
 				16F5168F26D4C11D002500F7 /* DiaryBook */,
@@ -1472,6 +1479,17 @@
 				1677AC49274B2609001B0F66 /* THKImageTabSegmentControl.m */,
 			);
 			path = DynamicTabs;
+			sourceTree = "<group>";
+		};
+		1677AC5C274B91C9001B0F66 /* QuickComments */ = {
+			isa = PBXGroup;
+			children = (
+				1677AC5D274B91D4001B0F66 /* THKQuickCommentsView.h */,
+				1677AC5E274B91D4001B0F66 /* THKQuickCommentsView.m */,
+				1677AC60274B91EE001B0F66 /* THKQuickCommentsViewModel.h */,
+				1677AC61274B91EE001B0F66 /* THKQuickCommentsViewModel.m */,
+			);
+			path = QuickComments;
 			sourceTree = "<group>";
 		};
 		1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */ = {
@@ -2471,6 +2489,7 @@
 				16E5C51B26830DCB0024BA20 /* THKIdentityTypeModel.m in Sources */,
 				1677AC52274B2609001B0F66 /* THKDynamicTabsPageVM.m in Sources */,
 				16611B6C269692D20089E41B /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
+				1677AC5F274B91D4001B0F66 /* THKQuickCommentsView.m in Sources */,
 				16192B292692E13E00967C73 /* THKCaseDetailLoadingAnimationView.m in Sources */,
 				16867A002692D76C00650023 /* TMCardComponentTopicStyleCell.m in Sources */,
 				16192BE52692F73900967C73 /* NSTimer+Block.m in Sources */,
@@ -2581,6 +2600,7 @@
 				16192B2E2692E13E00967C73 /* THKMoveCardInteractiveTransition.m in Sources */,
 				16611AD2269688C20089E41B /* TUUIDGenerator.m in Sources */,
 				16611B60269692D20089E41B /* THKMaterialKnowledgeVM.m in Sources */,
+				1677AC62274B91EE001B0F66 /* THKQuickCommentsViewModel.m in Sources */,
 				16E5C4F22682E4040024BA20 /* THKPhpUploadRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
