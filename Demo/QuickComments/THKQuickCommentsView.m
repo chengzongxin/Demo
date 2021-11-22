@@ -63,7 +63,6 @@
 @dynamic viewModel;
 
 - (void)thk_setupViews{
-    self.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
     [self addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
@@ -106,7 +105,6 @@
                                                                            forIndexPath:indexPath];
     NSString *comment = self.viewModel.comments[indexPath.item];
     cell.textLbl.text = comment;
-    cell.backgroundColor = UIColor.tmui_randomColor;
     return cell;
 }
 
