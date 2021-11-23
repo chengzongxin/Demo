@@ -43,7 +43,6 @@
     [self.dynamicTabsManager.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.searchView.mas_bottom);
         make.left.right.equalTo(self.view);
-        make.height.mas_equalTo(50);
     }];
     
     [self.dynamicTabsManager loadTabs];
@@ -105,6 +104,7 @@
         
         viewModel.layout = THKDynamicTabsLayoutType_Custom;
         viewModel.parentVC = self;
+        viewModel.sliderBarHeight = 55;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.hidden = YES;
 //        _dynamicTabsManager.sliderBar.minItemWidth = TMUI_SCREEN_WIDTH / 6;
