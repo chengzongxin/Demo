@@ -8,6 +8,7 @@
 #import "THKSelectMaterialMainVC.h"
 #import "THKDynamicTabsManager.h"
 #import "THKSearchView.h"
+#import "THKSelectMaterialVC.h"
 
 @interface THKSelectMaterialMainVC ()<THKDynamicTabsManagerDelegate>
 
@@ -49,14 +50,8 @@
     
     @weakify(self);
     [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"wrapperScrollViewDidScroll" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-        NSLog(@"%@",x.object);
-        UIScrollView *scrollView = x.object;
         @strongify(self);
-        CGFloat offsetY = scrollView.contentOffset.y + scrollView.contentInset.top;
-        CGFloat top = 44 - offsetY;
-        [self.searchView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(top);
-        }];
+        [self updateTopBarLayoutWithWrapperScrollView:x.object];
     }];
 }
 
@@ -71,6 +66,20 @@
 
 - (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController didScroll:(UIScrollView *)scrollView progress:(CGFloat)progress formIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex{
     NSLog(@"MainVC pager %@",scrollView);
+    THKSelectMaterialVC *childVc = [pageViewController.controllersM safeObjectAtIndex:toIndex];
+    if (childVc.isViewLoaded == NO) {
+        return;
+    }
+    
+    [self updateTopBarLayoutWithWrapperScrollView:childVc.dynamicTabsManager.wrapperScrollView];
+}
+
+- (void)updateTopBarLayoutWithWrapperScrollView:(UIScrollView *)scrollView{
+    CGFloat offsetY = scrollView.contentOffset.y + scrollView.contentInset.top;
+    CGFloat top = 44 - offsetY;
+    [self.searchView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(top);
+    }];
 }
 
 - (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView{
