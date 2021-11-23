@@ -302,6 +302,9 @@
         CGFloat offsetX = scrollView.contentOffset.x + scrollView.width;
         CGFloat totalWidth = self.exposeButtonWidth;
         NSInteger i = self.exposeButtonIndex + 1;
+        if (i >= self.segmentButtons.count) {
+            return;
+        }
         UIButton *button = [self.segmentButtons objectAtIndex:i];
         if (button) {
             if (offsetX >= (totalWidth + button.width / 2)) {

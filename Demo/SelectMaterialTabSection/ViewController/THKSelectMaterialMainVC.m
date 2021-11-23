@@ -108,7 +108,7 @@
         viewModel.sliderBarHeight = 55;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.hidden = YES;
-//        _dynamicTabsManager.sliderBar.minItemWidth = TMUI_SCREEN_WIDTH / 6;
+        _dynamicTabsManager.sliderBar.minItemWidth = (TMUI_SCREEN_WIDTH - 30 )/ 5;
         _dynamicTabsManager.delegate = self;
     }
     return _dynamicTabsManager;
