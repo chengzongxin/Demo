@@ -52,7 +52,7 @@
             }];
             
             self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
-            self.wrapperScrollView.lockArea = self.viewModel.sliderBarHeight;
+            self.wrapperScrollView.lockArea = self.viewModel.lockArea ?: self.viewModel.sliderBarHeight;
             self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
         }
     }];
@@ -215,6 +215,11 @@
     if (!_wrapperScrollView) {
         _wrapperScrollView = [[TMUIPageWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
         _wrapperScrollView.showsHorizontalScrollIndicator = NO;
+        if (@available(iOS 11.0, *)) {
+            _wrapperScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.viewModel.parentVC.automaticallyAdjustsScrollViewInsets = NO;
+        }
     }
     return _wrapperScrollView;
 }

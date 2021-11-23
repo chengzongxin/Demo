@@ -26,6 +26,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) UIView *headerContentView;
 /// 头部视图高度
 @property (nonatomic, assign) CGFloat headerContentViewHeight;
+/// 锁定高度
+@property (nonatomic, assign) CGFloat lockArea;
 /// tab标签高度,默认44
 @property (nonatomic, assign) CGFloat sliderBarHeight;
 /// 非pageContent内容的高度

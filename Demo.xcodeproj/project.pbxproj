@@ -209,6 +209,8 @@
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialVM.m */; };
 		16DDC070274C79B7000DAA29 /* THKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06F274C79B7000DAA29 /* THKTabBarController.m */; };
 		16DDC075274C8AEC000DAA29 /* THKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC074274C8AEC000DAA29 /* THKNavigationController.m */; };
+		16DDC07B274C9417000DAA29 /* THKSelectMaterialHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC07A274C9417000DAA29 /* THKSelectMaterialHeaderView.m */; };
+		16DDC07E274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC07D274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m */; };
 		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
 		16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49D2682DE4B0024BA20 /* THKResponse.m */; };
 		16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49F2682DE4B0024BA20 /* THKCommonResponse.m */; };
@@ -699,6 +701,10 @@
 		16DDC06F274C79B7000DAA29 /* THKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKTabBarController.m; sourceTree = "<group>"; };
 		16DDC073274C8AEC000DAA29 /* THKNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationController.h; sourceTree = "<group>"; };
 		16DDC074274C8AEC000DAA29 /* THKNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationController.m; sourceTree = "<group>"; };
+		16DDC079274C9417000DAA29 /* THKSelectMaterialHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialHeaderView.h; sourceTree = "<group>"; };
+		16DDC07A274C9417000DAA29 /* THKSelectMaterialHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialHeaderView.m; sourceTree = "<group>"; };
+		16DDC07C274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialHeaderViewModel.h; sourceTree = "<group>"; };
+		16DDC07D274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialHeaderViewModel.m; sourceTree = "<group>"; };
 		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
 		16E5C4992682DE4B0024BA20 /* THKBaseNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseNetwork.h; sourceTree = "<group>"; };
 		16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKBaseNetworkManager.m; sourceTree = "<group>"; };
@@ -1878,6 +1884,8 @@
 			children = (
 				16DDC06B274C780D000DAA29 /* THKSelectMaterialVM.h */,
 				16DDC06C274C780D000DAA29 /* THKSelectMaterialVM.m */,
+				16DDC07C274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.h */,
+				16DDC07D274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1887,6 +1895,8 @@
 			children = (
 				16DDC060274C774C000DAA29 /* THKSelectMaterialTabView.m */,
 				16DDC061274C774C000DAA29 /* THKSelectMaterialTabView.h */,
+				16DDC079274C9417000DAA29 /* THKSelectMaterialHeaderView.h */,
+				16DDC07A274C9417000DAA29 /* THKSelectMaterialHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2440,6 +2450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16DDC07B274C9417000DAA29 /* THKSelectMaterialHeaderView.m in Sources */,
 				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
 				168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */,
 				16867A0D2692D76C00650023 /* TMCardComponentOldTopicAndQaStyleCell.m in Sources */,
@@ -2545,6 +2556,7 @@
 				16611B70269692D20089E41B /* THKMaterialClassificationRecommendCellLayout.m in Sources */,
 				16611B63269692D20089E41B /* THKMaterialKnowledgeVC.m in Sources */,
 				16611AB12696870F0089E41B /* UIResponder+Godeye.m in Sources */,
+				16DDC07E274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m in Sources */,
 				1642AA5126D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m in Sources */,
 				1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */,
 				16192B2B2692E13E00967C73 /* THKUGCGraphicDetailLoadingAnimationView.m in Sources */,
