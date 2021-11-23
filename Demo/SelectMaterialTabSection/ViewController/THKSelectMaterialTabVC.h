@@ -6,14 +6,14 @@
 //
 
 #import "THKViewController.h"
-#import "THKSelectMaterialVM.h"
+#import "THKSelectMaterialTabVM.h"
 #import "THKDynamicTabsManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKSelectMaterialVC : THKViewController<TRouterProtocol>
+@interface THKSelectMaterialTabVC : THKViewController<TRouterProtocol>
 
-@property (nonatomic, strong, readonly) THKSelectMaterialVM *viewModel;
+@property (nonatomic, strong, readonly) THKSelectMaterialTabVM *viewModel;
 
 @property (nonatomic, strong, readonly) THKDynamicTabsManager *dynamicTabsManager;
 

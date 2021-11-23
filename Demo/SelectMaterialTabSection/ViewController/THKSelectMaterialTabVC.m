@@ -5,17 +5,17 @@
 //  Created by Joe.cheng on 2021/11/23.
 //
 
-#import "THKSelectMaterialVC.h"
+#import "THKSelectMaterialTabVC.h"
 #import "THKDynamicTabsManager.h"
 #import "THKSelectMaterialHeaderView.h"
-@interface THKSelectMaterialVC ()<THKDynamicTabsManagerDelegate>
-@property (nonatomic, strong) THKSelectMaterialVM *viewModel;
+@interface THKSelectMaterialTabVC ()<THKDynamicTabsManagerDelegate>
+@property (nonatomic, strong) THKSelectMaterialTabVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
 @property (nonatomic, strong) THKSelectMaterialHeaderView *headerView;
 
 @end
 
-@implementation THKSelectMaterialVC
+@implementation THKSelectMaterialTabVC
 @dynamic viewModel;
 
 - (void)viewDidLoad {
@@ -104,7 +104,7 @@
 }
 
 + (id)createVCWithRouter:(TRouter *)router{
-    THKSelectMaterialVM *selectMaterialVM = [[THKSelectMaterialVM alloc] init];
+    THKSelectMaterialTabVM *selectMaterialVM = [[THKSelectMaterialTabVM alloc] init];
     return [[self alloc] initWithViewModel:selectMaterialVM];
 }
 

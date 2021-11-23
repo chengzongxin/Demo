@@ -5,19 +5,19 @@
 //  Created by Joe.cheng on 2021/11/23.
 //
 
-#import "THKSelectMaterialMainVC.h"
+#import "THKSelectMaterialHomeVC.h"
 #import "THKDynamicTabsManager.h"
 #import "THKSearchView.h"
-#import "THKSelectMaterialVC.h"
+#import "THKSelectMaterialTabVC.h"
 
-@interface THKSelectMaterialMainVC ()<THKDynamicTabsManagerDelegate>
+@interface THKSelectMaterialHomeVC ()<THKDynamicTabsManagerDelegate>
 
-@property (nonatomic, strong) THKSelectMaterialMainVM *viewModel;
+@property (nonatomic, strong) THKSelectMaterialHomeVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
 @property (nonatomic, strong) THKSearchView *searchView;
 @end
 
-@implementation THKSelectMaterialMainVC
+@implementation THKSelectMaterialHomeVC
 @dynamic viewModel;
 
 - (void)viewDidLoad {
@@ -66,7 +66,7 @@
 
 - (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController didScroll:(UIScrollView *)scrollView progress:(CGFloat)progress formIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex{
     NSLog(@"MainVC pager %@",scrollView);
-    THKSelectMaterialVC *childVc = [pageViewController.controllersM safeObjectAtIndex:toIndex];
+    THKSelectMaterialTabVC *childVc = [pageViewController.controllersM safeObjectAtIndex:toIndex];
     if (childVc.isViewLoaded == NO) {
         return;
     }

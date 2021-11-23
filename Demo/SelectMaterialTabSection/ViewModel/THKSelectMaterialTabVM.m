@@ -5,13 +5,13 @@
 //  Created by Joe.cheng on 2021/11/23.
 //
 
-#import "THKSelectMaterialVM.h"
+#import "THKSelectMaterialTabVM.h"
 
-@interface THKSelectMaterialVM ()
+@interface THKSelectMaterialTabVM ()
 @property (nonatomic, strong) NSArray<THKDynamicTabsModel *> *segmentTitles;
 @end
 
-@implementation THKSelectMaterialVM
+@implementation THKSelectMaterialTabVM
 
 #pragma mark - lazy
 

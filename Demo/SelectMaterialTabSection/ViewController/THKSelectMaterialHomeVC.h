@@ -6,13 +6,13 @@
 //
 
 #import "THKViewController.h"
-#import "THKSelectMaterialMainVM.h"
+#import "THKSelectMaterialHomeVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKSelectMaterialMainVC : THKViewController
+@interface THKSelectMaterialHomeVC : THKViewController
 
-@property (nonatomic, strong, readonly) THKSelectMaterialMainVM *viewModel;
+@property (nonatomic, strong, readonly) THKSelectMaterialHomeVM *viewModel;
 
 @end
 
