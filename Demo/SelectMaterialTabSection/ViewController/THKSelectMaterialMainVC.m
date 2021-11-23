@@ -9,7 +9,7 @@
 #import "THKDynamicTabsManager.h"
 #import "THKSearchView.h"
 
-@interface THKSelectMaterialMainVC ()<UIScrollViewDelegate>
+@interface THKSelectMaterialMainVC ()<THKDynamicTabsManagerDelegate>
 
 @property (nonatomic, strong) THKSelectMaterialMainVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
@@ -68,13 +68,15 @@
 #pragma mark - Event Respone
 
 #pragma mark - Delegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView != _dynamicTabsManager.wrapperScrollView) {
-        return;
-    }
-    
-    NSLog(@"%@",scrollView);
+
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController didScroll:(UIScrollView *)scrollView progress:(CGFloat)progress formIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex{
+    NSLog(@"MainVC pager %@",scrollView);
 }
+
+- (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView{
+    NSLog(@"MainVC wrapper %@",wrapperScrollView);
+}
+
 #pragma mark - Private
 
 #pragma mark - Getters and Setters
@@ -85,17 +87,19 @@
         viewModel.configDynamicTabButtonModelBlock = ^(THKDynamicTabDisplayModel * _Nonnull configButtonModel, NSInteger tabId, NSString * _Nonnull title) {
             //这里可以根据tabId或title来设值每一个按钮的属性
             configButtonModel.badgeImageColor = THKColor_RedPointColor;
-            configButtonModel.normalColor = THKColor_999999;
-            configButtonModel.selectedColor = THKColor_333333;
+            configButtonModel.normalColor = UIColorHex(4C4E4C);
+            configButtonModel.selectedColor = UIColorHex(1A1C1A);
             configButtonModel.scale = 0.9;
-            configButtonModel.normalFont  = [UIFont fontWithName:@"PingFangSC-Regular" size:15.6];
-            configButtonModel.selectedFont = [UIFont fontWithName:@"PingFangSC-Medium" size:16.7];
+            configButtonModel.normalFont  = UIFont(16);
+            configButtonModel.selectedFont = UIFontMedium(20);
         };
         
         viewModel.layout = THKDynamicTabsLayoutType_Custom;
         viewModel.parentVC = self;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
-        _dynamicTabsManager.wrapperScrollView.delegate = self;
+        _dynamicTabsManager.sliderBar.indicatorView.hidden = YES;
+//        _dynamicTabsManager.sliderBar.minItemWidth = TMUI_SCREEN_WIDTH / 6;
+        _dynamicTabsManager.delegate = self;
     }
     return _dynamicTabsManager;
 }

@@ -202,6 +202,19 @@
     [self.viewModel.segmentValueChangedSubject sendNext:@(selectedIndex)];
 }
 
+#pragma mark - PageVC Delegate
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController didScroll:(UIScrollView *)scrollView progress:(CGFloat)progress formIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didScroll:progress:formIndex:toIndex:)]) {
+        [self.delegate pageViewController:pageViewController didScroll:scrollView progress:progress formIndex:fromIndex toIndex:toIndex];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView == self.wrapperScrollView && self.delegate && [self.delegate respondsToSelector:@selector(wrapperScrollViewDidScroll:)]) {
+        [self.delegate wrapperScrollViewDidScroll:self.wrapperScrollView];
+    }
+}
+
 #pragma mark - getter and setter
 
 - (UIView *)wrapperView{
@@ -215,6 +228,7 @@
     if (!_wrapperScrollView) {
         _wrapperScrollView = [[TMUIPageWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
         _wrapperScrollView.showsHorizontalScrollIndicator = NO;
+        _wrapperScrollView.delegate = self;
         if (@available(iOS 11.0, *)) {
             _wrapperScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {

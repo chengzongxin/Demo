@@ -189,6 +189,7 @@
     
     self.pageIndex = self.pageIndex < 0 ? 0 : self.pageIndex;
     self.pageIndex = self.pageIndex >= self.controllersM.count ? self.controllersM.count - 1 : self.pageIndex;
+    self.pageIndex = self.pageIndex < 0 ? 0 : self.pageIndex;
     
     for (UIViewController *vc in self.displayDictM.allValues) {
         [self removeViewControllerWithChildVC:vc];

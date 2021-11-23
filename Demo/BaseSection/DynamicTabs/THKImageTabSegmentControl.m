@@ -154,6 +154,7 @@
     CGFloat tempWidth = kButtonEdgeInsets.left + kButtonEdgeInsets.right;// + ((index == self.titles.count - 1) ? 0 : 14);//左边距离5px，红点6px，红点距离右边2px
     if (model.style == THKDynamicTabButtonStyle_TextOnly || model.style == THKDynamicTabButtonStyle_TextAndImage) { //纯文字/图文混排
         textWidth = [model.title boundingRectWithSize:CGSizeMake(FLT_MAX, self.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:selectedFont} context:nil].size.width + 2;
+        textWidth = MAX(textWidth,self.minItemWidth);
         tempWidth += textWidth;
         if (model.style == THKDynamicTabButtonStyle_TextAndImage) {
             tempWidth += (model.image.width + kImageAndTextOffset);
@@ -188,9 +189,9 @@
     return CGRectMake(button.centerX - self.indicatorView.width / 2, self.indicatorView.top, self.indicatorView.width, self.indicatorView.height);//CGRectMake((button.centerX - (kBadgeSize.width + offset) / 2) - self.indicatorView.width / 2, self.indicatorView.top, self.indicatorView.width, self.indicatorView.height);
 }
 
-- (void)setMinItemWidth:(CGFloat)minItemWidth {
-    //覆盖父类方法，不做任何处理
-}
+//- (void)setMinItemWidth:(CGFloat)minItemWidth {
+//    //覆盖父类方法，不做任何处理
+//}
 
 - (void)setScale:(CGFloat)scale {
     

@@ -14,7 +14,32 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKDynamicTabsManager : NSObject
+@protocol THKDynamicTabsManagerDelegate <NSObject>
+
+/**
+ PageVc滚动时回调
+ UIScrollView滚动时回调, 可用来自定义 ScrollMenuView
+ 
+ @param pageViewController PageVC
+ @param scrollView UIScrollView
+ @param progress 进度
+ @param fromIndex 从哪个页面
+ @param toIndex 到哪个页面
+ */
+- (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController
+                 didScroll:(UIScrollView *)scrollView
+                  progress:(CGFloat)progress
+                 formIndex:(NSInteger)fromIndex
+                   toIndex:(NSInteger)toIndex;
+
+
+/// 背景ScrollView滑动时回调
+- (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView;
+
+@end
+
+
+@interface THKDynamicTabsManager : NSObject<THKDynamicTabsPageVCDelegate,UIScrollViewDelegate>
 
 /**
  外部可根据需求定制sliderBar的样式，它的变化由viewmodel的segmentValueChangedSubject信号发出，外部不用再监听它的变化事件
@@ -31,8 +56,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly)     THKImageTabSegmentControl       *sliderBar;
 /// 子VC集合容器
 @property (nonatomic, strong, readonly)     THKDynamicTabsPageVC            *pageContainerVC;
-
-
+/// 代理
+@property (nonatomic, weak) id<THKDynamicTabsManagerDelegate> delegate;
 /**
  暂时不可用，用initWithViewModel初始化
  */
