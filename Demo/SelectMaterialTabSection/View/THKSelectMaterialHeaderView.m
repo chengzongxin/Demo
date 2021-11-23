@@ -20,6 +20,8 @@
 
 @property (nonatomic, strong) THKEntranceView *firstLevelEntranceView;
 
+@property (nonatomic, strong) UIView *entryLineView;
+
 @property (nonatomic, strong) THKEntranceView *secondLevelEntranceView;
 
 @end
@@ -32,6 +34,7 @@
     [self addSubview:self.tipsLabel];
     [self addSubview:self.entryView];
     [self.entryView addSubview:self.firstLevelEntranceView];
+    [self.entryView addSubview:self.entryLineView];
     [self.entryView addSubview:self.secondLevelEntranceView];
     
     [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -56,6 +59,12 @@
         make.height.mas_equalTo(103);
     }];
     
+    [self.entryLineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(103);
+        make.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(0.5);
+    }];
+    
     [self.secondLevelEntranceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.mas_equalTo(0);
         make.height.mas_equalTo(73);
@@ -72,6 +81,16 @@
     [secondViewModel bindWithModel:@[@"品牌排行",@"实拍效果",@"选购技巧",@"价格计算",@"常见问题"]];
     [self.secondLevelEntranceView bindViewModel:secondViewModel];
 }
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    if (self.entryView.height * self.entryView.width) {
+        self.entryView.layer.cornerRadius = 8;
+        [self.entryView.layer tmui_setLayerShadow:UIColor.blackColor offset:CGSizeMake(0, 2) alpha:0.05 radius:10 spread:0];
+    }
+}
+
 
 - (UIImageView *)coverImageView{
     if (!_coverImageView) {
@@ -110,11 +129,21 @@
     return _firstLevelEntranceView;
 }
 
+
 - (THKEntranceView *)secondLevelEntranceView{
     if (!_secondLevelEntranceView) {
         _secondLevelEntranceView = [[THKEntranceView alloc] init];
     }
     return _secondLevelEntranceView;
 }
+
+- (UIView *)entryLineView{
+    if (!_entryLineView) {
+        _entryLineView = [[UIView alloc] init];
+        _entryLineView.backgroundColor = UIColorHex(ECEEEC);
+    }
+    return _entryLineView;
+}
+
 
 @end

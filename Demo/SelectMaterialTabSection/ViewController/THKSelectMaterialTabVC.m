@@ -69,11 +69,11 @@
         viewModel.configDynamicTabButtonModelBlock = ^(THKDynamicTabDisplayModel * _Nonnull configButtonModel, NSInteger tabId, NSString * _Nonnull title) {
             //这里可以根据tabId或title来设值每一个按钮的属性
             configButtonModel.badgeImageColor = THKColor_RedPointColor;
-            configButtonModel.normalColor = THKColor_999999;
-            configButtonModel.selectedColor = THKColor_333333;
+            configButtonModel.normalColor = UIColorHex(7E807E);
+            configButtonModel.selectedColor = UIColorHex(333533);
             configButtonModel.scale = 0.9;
-            configButtonModel.normalFont  = [UIFont fontWithName:@"PingFangSC-Regular" size:15.6];
-            configButtonModel.selectedFont = [UIFont fontWithName:@"PingFangSC-Medium" size:16.7];
+            configButtonModel.normalFont  = UIFont(14);
+            configButtonModel.selectedFont = UIFontMedium(15);
         };
         
         viewModel.layout = THKDynamicTabsLayoutType_Suspend;
@@ -81,6 +81,7 @@
         viewModel.headerContentViewHeight = 800;
         viewModel.lockArea = NavigationContentTop;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
+        _dynamicTabsManager.sliderBar.indicatorView.backgroundColor = UIColorHex(22C787);
         _dynamicTabsManager.delegate = self;
     }
     return _dynamicTabsManager;

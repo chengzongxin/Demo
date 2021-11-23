@@ -15,6 +15,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol THKDynamicTabsManagerDelegate <NSObject>
+@optional
 
 /**
  PageVc滚动时回调
