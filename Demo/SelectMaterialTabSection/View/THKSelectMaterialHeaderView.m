@@ -6,6 +6,7 @@
 //
 
 #import "THKSelectMaterialHeaderView.h"
+#import "THKEntranceView.h"
 
 @interface THKSelectMaterialHeaderView ()
 
@@ -17,6 +18,10 @@
 
 @property (nonatomic, strong) UIView *entryView;
 
+@property (nonatomic, strong) THKEntranceView *firstLevelEntranceView;
+
+@property (nonatomic, strong) THKEntranceView *secondLevelEntranceView;
+
 @end
 
 @implementation THKSelectMaterialHeaderView
@@ -26,6 +31,8 @@
     [self addSubview:self.coverImageView];
     [self addSubview:self.tipsLabel];
     [self addSubview:self.entryView];
+    [self.entryView addSubview:self.firstLevelEntranceView];
+    [self.entryView addSubview:self.secondLevelEntranceView];
     
     [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(StatusBarHeight + 55 + 36);
@@ -43,10 +50,26 @@
         make.left.right.equalTo(self).inset(15);
         make.height.mas_equalTo(176);
     }];
+    
+    [self.firstLevelEntranceView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(103);
+    }];
+    
+    [self.secondLevelEntranceView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(73);
+    }];
 }
 
 - (void)bindViewModel{
+    THKEntranceViewModel *firstViewModel = [[THKEntranceViewModel alloc] init];
+    [firstViewModel bindWithModel:@[@"1",@"5",@"4",@"3",@"2"]];
+    [self.firstLevelEntranceView bindViewModel:firstViewModel];
     
+    THKEntranceViewModel *secondViewModel = [[THKEntranceViewModel alloc] init];
+    [secondViewModel bindWithModel:@[@"1",@"5",@"4",@"3"]];
+    [self.secondLevelEntranceView bindViewModel:secondViewModel];
 }
 
 - (UIImageView *)coverImageView{
@@ -74,9 +97,23 @@
 - (UIView *)entryView{
     if (!_entryView) {
         _entryView = [[UIView alloc] init];
-        _entryView.backgroundColor = UIColor.tmui_randomColor;
+        _entryView.backgroundColor = UIColor.whiteColor;
     }
     return _entryView;
+}
+
+- (THKEntranceView *)firstLevelEntranceView{
+    if (!_firstLevelEntranceView) {
+        _firstLevelEntranceView = [[THKEntranceView alloc] init];
+    }
+    return _firstLevelEntranceView;
+}
+
+- (THKEntranceView *)secondLevelEntranceView{
+    if (!_secondLevelEntranceView) {
+        _secondLevelEntranceView = [[THKEntranceView alloc] init];
+    }
+    return _secondLevelEntranceView;
 }
 
 @end
