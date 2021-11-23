@@ -69,6 +69,13 @@
         [self.navigationController pushViewController:vc animated:YES];
     });
     
+    
+    Button.str(@"选材").bgColor(@"random").xywh(100,400,100,100).addTo(self.view).onClick(^{
+        THKMaterialHotRankVM *vm = [[THKMaterialHotRankVM alloc] init];
+        THKMaterialHotRankVC *vc = [[THKMaterialHotRankVC alloc] initWithViewModel:vm];
+        [self.navigationController pushViewController:vc animated:YES];
+    });
+    
     [self comment];
 }
 
@@ -78,7 +85,7 @@
     [self.view addSubview:view];
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view).inset(20);
-        make.top.equalTo(@500);
+        make.top.equalTo(@600);
         make.height.equalTo(@30);
     }];
     
