@@ -204,7 +204,6 @@
 		1689DECF27449F4D0073BA68 /* DynamicTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DECE27449F4D0073BA68 /* DynamicTabVM.m */; };
 		1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DED42744DA220073BA68 /* DynamicTabChildVC.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
-		16DDC066274C774C000DAA29 /* THKSelectMaterialTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC060274C774C000DAA29 /* THKSelectMaterialTabView.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialVM.m */; };
 		16DDC070274C79B7000DAA29 /* THKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06F274C79B7000DAA29 /* THKTabBarController.m */; };
@@ -216,6 +215,7 @@
 		16DDC09F274CEFF2000DAA29 /* THKEntranceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC09E274CEFF2000DAA29 /* THKEntranceView.m */; };
 		16DDC0A2274CEFFE000DAA29 /* THKEntranceViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC0A1274CEFFE000DAA29 /* THKEntranceViewModel.m */; };
 		16DDC0A5274CF059000DAA29 /* THKEntranceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC0A4274CF059000DAA29 /* THKEntranceViewCell.m */; };
+		16DDC0A8274CF980000DAA29 /* THKEntranceViewDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC0A7274CF980000DAA29 /* THKEntranceViewDetailCell.m */; };
 		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
 		16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49D2682DE4B0024BA20 /* THKResponse.m */; };
 		16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49F2682DE4B0024BA20 /* THKCommonResponse.m */; };
@@ -696,8 +696,6 @@
 		1689DED42744DA220073BA68 /* DynamicTabChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabChildVC.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
-		16DDC060274C774C000DAA29 /* THKSelectMaterialTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialTabView.m; sourceTree = "<group>"; };
-		16DDC061274C774C000DAA29 /* THKSelectMaterialTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabView.h; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialVC.h; sourceTree = "<group>"; };
 		16DDC069274C77EA000DAA29 /* THKSelectMaterialVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialVC.m; sourceTree = "<group>"; };
 		16DDC06B274C780D000DAA29 /* THKSelectMaterialVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialVM.h; sourceTree = "<group>"; };
@@ -720,6 +718,8 @@
 		16DDC0A1274CEFFE000DAA29 /* THKEntranceViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKEntranceViewModel.m; sourceTree = "<group>"; };
 		16DDC0A3274CF059000DAA29 /* THKEntranceViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKEntranceViewCell.h; sourceTree = "<group>"; };
 		16DDC0A4274CF059000DAA29 /* THKEntranceViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKEntranceViewCell.m; sourceTree = "<group>"; };
+		16DDC0A6274CF980000DAA29 /* THKEntranceViewDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKEntranceViewDetailCell.h; sourceTree = "<group>"; };
+		16DDC0A7274CF980000DAA29 /* THKEntranceViewDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKEntranceViewDetailCell.m; sourceTree = "<group>"; };
 		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
 		16E5C4992682DE4B0024BA20 /* THKBaseNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseNetwork.h; sourceTree = "<group>"; };
 		16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKBaseNetworkManager.m; sourceTree = "<group>"; };
@@ -1910,8 +1910,6 @@
 		16DDC05F274C774C000DAA29 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				16DDC060274C774C000DAA29 /* THKSelectMaterialTabView.m */,
-				16DDC061274C774C000DAA29 /* THKSelectMaterialTabView.h */,
 				16DDC079274C9417000DAA29 /* THKSelectMaterialHeaderView.h */,
 				16DDC07A274C9417000DAA29 /* THKSelectMaterialHeaderView.m */,
 				16DDC09C274CEFEB000DAA29 /* THKEntranceView */,
@@ -1967,6 +1965,8 @@
 				16DDC0A1274CEFFE000DAA29 /* THKEntranceViewModel.m */,
 				16DDC0A3274CF059000DAA29 /* THKEntranceViewCell.h */,
 				16DDC0A4274CF059000DAA29 /* THKEntranceViewCell.m */,
+				16DDC0A6274CF980000DAA29 /* THKEntranceViewDetailCell.h */,
+				16DDC0A7274CF980000DAA29 /* THKEntranceViewDetailCell.m */,
 			);
 			path = THKEntranceView;
 			sourceTree = "<group>";
@@ -2616,12 +2616,12 @@
 				1677AC52274B2609001B0F66 /* THKDynamicTabsPageVM.m in Sources */,
 				16611B6C269692D20089E41B /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
 				1677AC5F274B91D4001B0F66 /* THKQuickCommentsView.m in Sources */,
-				16DDC066274C774C000DAA29 /* THKSelectMaterialTabView.m in Sources */,
 				16192B292692E13E00967C73 /* THKCaseDetailLoadingAnimationView.m in Sources */,
 				16867A002692D76C00650023 /* TMCardComponentTopicStyleCell.m in Sources */,
 				16192BE52692F73900967C73 /* NSTimer+Block.m in Sources */,
 				16611AB62696870F0089E41B /* UIViewController+Godeye.m in Sources */,
 				1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */,
+				16DDC0A8274CF980000DAA29 /* THKEntranceViewDetailCell.m in Sources */,
 				16DDC09B274CCA56000DAA29 /* THKSelectMaterialMainVM.m in Sources */,
 				16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */,
 				16611B5E269692D20089E41B /* THKMaterialClassificationVM.m in Sources */,

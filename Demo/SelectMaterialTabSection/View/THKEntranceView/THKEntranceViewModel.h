@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKEntranceViewModel : THKViewModel
 
+@property (nonatomic, assign) BOOL isFirstLevelEntrance;
+
 @property (nonatomic , strong) NSArray *entranceList;
 
 @end

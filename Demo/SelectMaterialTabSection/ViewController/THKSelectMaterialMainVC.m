@@ -43,6 +43,7 @@
     [self.dynamicTabsManager.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.searchView.mas_bottom);
         make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(self.dynamicTabsManager.viewModel.sliderBarHeight);
     }];
     
     [self.dynamicTabsManager loadTabs];

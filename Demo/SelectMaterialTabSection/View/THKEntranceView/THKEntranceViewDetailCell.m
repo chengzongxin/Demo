@@ -1,20 +1,20 @@
 //
-//  THKEntranceViewCell.m
+//  THKEntranceViewDetailCell.m
 //  Demo
 //
 //  Created by Joe.cheng on 2021/11/23.
 //
 
-#import "THKEntranceViewCell.h"
+#import "THKEntranceViewDetailCell.h"
 
-@interface THKEntranceViewCell ()
+@interface THKEntranceViewDetailCell ()
 
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel *titleLabel;
-
+@property (nonatomic, strong) UILabel *detailLabel;
 @end
 
-@implementation THKEntranceViewCell
+@implementation THKEntranceViewDetailCell
 
 #pragma mark - Init
 
@@ -28,6 +28,7 @@
 - (void)thk_setupView {
     [self.contentView addSubview:self.imageView];
     [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.detailLabel];
     
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(12);
@@ -37,6 +38,11 @@
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.imageView.mas_bottom).offset(5);
+        make.left.right.equalTo(self.contentView);
+    }];
+    
+    [self.detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(1);
         make.left.right.equalTo(self.contentView);
     }];
     
@@ -55,10 +61,20 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.textColor = UIColorHex(4C4E4C);
-        _titleLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+        _titleLabel.textColor = UIColorHex(333533);
+        _titleLabel.font = [UIFont systemFontOfSize:14 weight:UIFontWeightMedium];
     }
     return _titleLabel;
+}
+
+- (UILabel *)detailLabel{
+    if (!_detailLabel) {
+        _detailLabel = [[UILabel alloc] init];
+        _detailLabel.textAlignment = NSTextAlignmentCenter;
+        _detailLabel.textColor = UIColorHex(7E807E);
+        _detailLabel.font = [UIFont systemFontOfSize:10 weight:UIFontWeightMedium];
+    }
+    return _detailLabel;
 }
 
 @end

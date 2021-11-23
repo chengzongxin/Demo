@@ -8,6 +8,7 @@
 #import "THKEntranceView.h"
 #import "THKEntranceViewModel.h"
 #import "THKEntranceViewCell.h"
+#import "THKEntranceViewDetailCell.h"
 
 @interface THKEntranceView ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -76,19 +77,38 @@
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    THKEntranceViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKEntranceViewCell class])
-                                                                           forIndexPath:indexPath];
-    
-    NSString *entrance = self.viewModel.entranceList[indexPath.item];
+    if (self.viewModel.isFirstLevelEntrance) {
+        THKEntranceViewDetailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKEntranceViewDetailCell class])
+                                                                               forIndexPath:indexPath];
+        
+        NSString *entrance = self.viewModel.entranceList[indexPath.item];
 
-//    [cell.imageView loadImageWithUrlStr:entrance.imgUrl];
-    cell.imageView.image = UIImageMake(@"diary_heart_fly");
-    cell.titleLabel.text = entrance;
+    //    [cell.imageView loadImageWithUrlStr:entrance.imgUrl];
+        cell.imageView.image = UIImageMake(@"diary_heart_fly");
+        cell.titleLabel.text = entrance;
+        cell.detailLabel.text = entrance;
+        
+        // 曝光
+    //    [self entrancesShowReport:cell model:entrance indexPath:indexPath];
+        
+        return cell;
+    }else{
+        
+        THKEntranceViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKEntranceViewCell class])
+                                                                              forIndexPath:indexPath];
+        
+        NSString *entrance = self.viewModel.entranceList[indexPath.item];
+        
+        //    [cell.imageView loadImageWithUrlStr:entrance.imgUrl];
+        cell.imageView.image = UIImageMake(@"diary_heart_fly");
+        cell.titleLabel.text = entrance;
+        
+        // 曝光
+        //    [self entrancesShowReport:cell model:entrance indexPath:indexPath];
+        
+        return cell;
+    }
     
-    // 曝光
-//    [self entrancesShowReport:cell model:entrance indexPath:indexPath];
-    
-    return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -128,8 +148,9 @@
 //        _collectionView.contentInset = UIEdgeInsetsMake(0, 11, 0, 11);
         [_collectionView registerClass:[THKEntranceViewCell class]
             forCellWithReuseIdentifier:NSStringFromClass([THKEntranceViewCell class])];
+        [_collectionView registerClass:[THKEntranceViewDetailCell class]
+            forCellWithReuseIdentifier:NSStringFromClass([THKEntranceViewDetailCell class])];
     }
-    
     return _collectionView;
 }
 
@@ -156,7 +177,7 @@
 
 TMUISynthesizeIdStrongProperty(geParas, setGeParas)
 
-//- (void)entrancesShowReport:(UICollectionViewCell *)view model:(THKDynamicGroupEntranceModel *)model indexPath:(NSIndexPath *)indexPath{
+- (void)entrancesShowReport:(UICollectionViewCell *)view model:(id)model indexPath:(NSIndexPath *)indexPath{
 //    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:view];
 //    resource.geWidgetUid = @"cmp_first_entrance";
 //    [resource addEntries:@{@"widget_index":@(indexPath.item),
@@ -165,9 +186,9 @@ TMUISynthesizeIdStrongProperty(geParas, setGeParas)
 //    }];
 //    [resource addEntries:self.geParas];// 额外添加的字段
 //    [[GEWidgetExposeEvent eventWithResource:resource] report];
-//}
-//
-//- (void)entrancesClickReport:(UICollectionViewCell *)view model:(THKDynamicGroupEntranceModel *)model indexPath:(NSIndexPath *)indexPath{
+}
+
+- (void)entrancesClickReport:(UICollectionViewCell *)view model:(id)model indexPath:(NSIndexPath *)indexPath{
 //    GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:view];
 //    resource.geWidgetUid = @"cmp_first_entrance";
 //    [resource addEntries:@{@"widget_index":@(indexPath.item),
@@ -176,6 +197,6 @@ TMUISynthesizeIdStrongProperty(geParas, setGeParas)
 //    }];
 //    [resource addEntries:self.geParas];// 额外添加的字段
 //    [[GEWidgetClickEvent eventWithResource:resource] report];
-//}
+}
 
 @end

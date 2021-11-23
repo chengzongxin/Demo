@@ -64,11 +64,12 @@
 
 - (void)bindViewModel{
     THKEntranceViewModel *firstViewModel = [[THKEntranceViewModel alloc] init];
-    [firstViewModel bindWithModel:@[@"1",@"5",@"4",@"3",@"2"]];
+    firstViewModel.isFirstLevelEntrance = YES;
+    [firstViewModel bindWithModel:@[@"瓷砖百科",@"参数对比",@"土巴兔实测",@"口碑评价"]];
     [self.firstLevelEntranceView bindViewModel:firstViewModel];
     
     THKEntranceViewModel *secondViewModel = [[THKEntranceViewModel alloc] init];
-    [secondViewModel bindWithModel:@[@"1",@"5",@"4",@"3"]];
+    [secondViewModel bindWithModel:@[@"品牌排行",@"实拍效果",@"选购技巧",@"价格计算",@"常见问题"]];
     [self.secondLevelEntranceView bindViewModel:secondViewModel];
 }
 
