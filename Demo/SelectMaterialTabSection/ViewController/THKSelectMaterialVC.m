@@ -7,10 +7,12 @@
 
 #import "THKSelectMaterialVC.h"
 #import "THKDynamicTabsManager.h"
+#import "THKSelectMaterialHeaderView.h"
 @interface THKSelectMaterialVC ()
 
 @property (nonatomic, strong) THKSelectMaterialVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
+@property (nonatomic, strong) THKSelectMaterialHeaderView *headerView;
 
 @end
 
@@ -20,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = UIColor.tmui_randomColor;
+    self.view.backgroundColor = UIColor.whiteColor;
     self.navigationController.navigationBar.hidden = YES;
     
     [self.view addSubview:self.dynamicTabsManager.wrapperView];
@@ -28,7 +30,20 @@
         make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, tmui_safeAreaBottomInset()));
     }];
     
+    [self.dynamicTabsManager.headerWrapperView addSubview:self.headerView];
+    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
+    
     [self.dynamicTabsManager loadTabs];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    THKSelectMaterialHeaderViewModel *headerViewModel = [[THKSelectMaterialHeaderViewModel alloc] init];
+    [self.headerView bindViewModel:headerViewModel];
+    self.dynamicTabsManager.viewModel.headerContentViewHeight = 510;
 }
 
 
@@ -60,13 +75,18 @@
         
         viewModel.layout = THKDynamicTabsLayoutType_Suspend;
         viewModel.parentVC = self;
-        viewModel.headerContentViewHeight = 321;
+        viewModel.headerContentViewHeight = 800;
         viewModel.lockArea = NavigationContentTop;
-        viewModel.headerContentView = [UIView new];
-        viewModel.headerContentView.backgroundColor = UIColor.tmui_randomColor;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
     }
     return _dynamicTabsManager;
+}
+
+- (THKSelectMaterialHeaderView *)headerView{
+    if (!_headerView) {
+        _headerView = [[THKSelectMaterialHeaderView alloc] init];
+    }
+    return _headerView;
 }
 
 #pragma mark - Supperclass
