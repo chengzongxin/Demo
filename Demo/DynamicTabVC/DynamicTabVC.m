@@ -36,6 +36,19 @@
     self.navBarHidden = YES;
     self.view.backgroundColor = UIColor.whiteColor;
     
+    
+    if (self.viewModel.isSuspend == DynamicTabStyle_Immersion) {
+        self.navigationController.navigationBar.hidden = YES;
+        
+        [self.view addSubview:self.dynamicTabsManager.wrapperView];
+        [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, tmui_safeAreaBottomInset()));
+        }];
+        
+        [self.dynamicTabsManager loadTabs];
+        return;
+    }
+    
     [self.view addSubview:self.topBar];
     [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
@@ -90,6 +103,11 @@
         viewModel.layout = self.viewModel.isSuspend == DynamicTabStyle_Suspend ? THKDynamicTabsLayoutType_Suspend : THKDynamicTabsLayoutType_Normal;
         viewModel.parentVC = self;
         viewModel.headerContentViewHeight = 321;
+        
+        if (self.viewModel.isSuspend == DynamicTabStyle_Immersion) {
+            viewModel.layout = THKDynamicTabsLayoutType_Suspend;
+            viewModel.lockArea = NavigationContentTop;
+        }
         viewModel.headerContentView = [UIView new];
         viewModel.headerContentView.backgroundColor = UIColor.tmui_randomColor;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];

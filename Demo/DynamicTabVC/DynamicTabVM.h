@@ -14,6 +14,7 @@ typedef enum : NSUInteger {
     DynamicTabStyle_Single = 0,
     DynamicTabStyle_Suspend,
     DynamicTabStyle_Nested,
+    DynamicTabStyle_Immersion
 } DynamicTabStyle;
 
 @interface DynamicTabVM : THKViewModel

@@ -42,6 +42,12 @@
                         DynamicTabVC *vc = [[DynamicTabVC alloc] initWithViewModel:vm];
                         [self.navigationController pushViewController:vc animated:YES];
                     }),
+                    Row.str(@"沉浸式吸顶Tap").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
+                        DynamicTabVM *vm = [[DynamicTabVM alloc] init];
+                        vm.isSuspend = DynamicTabStyle_Immersion;
+                        DynamicTabVC *vc = [[DynamicTabVC alloc] initWithViewModel:vm];
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }),
                     )
             ).header(@0.01).footer(@0.01).embedIn(self.view);
 }

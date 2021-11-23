@@ -865,7 +865,6 @@
 				16DDC05B274C774C000DAA29 /* SelectMaterialTabSection */,
 				1677AC5C274B91C9001B0F66 /* QuickComments */,
 				1689DEC927449F2C0073BA68 /* DynamicTabVC */,
-				1677AC41274B2609001B0F66 /* DynamicTabs */,
 				16F5168F26D4C11D002500F7 /* DiaryBook */,
 				16611B29269692D10089E41B /* MaterialClassification */,
 				16611B54269692D20089E41B /* MaterialHotRank */,
@@ -898,6 +897,7 @@
 		160107692553EA1A00FE4B77 /* BaseSection */ = {
 			isa = PBXGroup;
 			children = (
+				1677AC41274B2609001B0F66 /* DynamicTabs */,
 				16DDC072274C8AD4000DAA29 /* BaseViewController */,
 				16A026402742652500C7E4B3 /* THKExpandLabel */,
 				16192AB32692DC2A00967C73 /* QuickMethod */,
