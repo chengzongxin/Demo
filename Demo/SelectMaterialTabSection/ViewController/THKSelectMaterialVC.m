@@ -8,8 +8,7 @@
 #import "THKSelectMaterialVC.h"
 #import "THKDynamicTabsManager.h"
 #import "THKSelectMaterialHeaderView.h"
-@interface THKSelectMaterialVC ()
-
+@interface THKSelectMaterialVC ()<UIScrollViewDelegate>
 @property (nonatomic, strong) THKSelectMaterialVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
 @property (nonatomic, strong) THKSelectMaterialHeaderView *headerView;
@@ -55,6 +54,13 @@
 
 #pragma mark - Delegate
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView != _dynamicTabsManager.wrapperScrollView) {
+        return;
+    }
+    
+    [NSNotificationCenter.defaultCenter postNotificationName:@"wrapperScrollViewDidScroll" object:scrollView];
+}
 #pragma mark - Private
 
 #pragma mark - Getters and Setters
@@ -77,6 +83,7 @@
         viewModel.headerContentViewHeight = 800;
         viewModel.lockArea = NavigationContentTop;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
+        _dynamicTabsManager.wrapperScrollView.delegate = self;
     }
     return _dynamicTabsManager;
 }

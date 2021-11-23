@@ -7,10 +7,13 @@
 
 #import "THKSelectMaterialMainVC.h"
 #import "THKDynamicTabsManager.h"
-@interface THKSelectMaterialMainVC ()
+#import "THKSearchView.h"
+
+@interface THKSelectMaterialMainVC ()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) THKSelectMaterialMainVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
+@property (nonatomic, strong) THKSearchView *searchView;
 @end
 
 @implementation THKSelectMaterialMainVC
@@ -27,12 +30,34 @@
         make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
-//    [self.view addSubview:self.dynamicTabsManager.wrapperView];
-//    [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, tmui_safeAreaBottomInset()));
-//    }];
+    
+    [self.view addSubview:self.searchView];
+    [self.searchView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(StatusBarHeight);
+        make.left.right.equalTo(self.view).inset(15);
+        make.height.mas_equalTo(36);
+    }];
+    
+    [self.view addSubview:self.dynamicTabsManager.sliderBar];
+    [self.dynamicTabsManager.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.searchView.mas_bottom);
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(50);
+    }];
     
     [self.dynamicTabsManager loadTabs];
+    
+    @weakify(self);
+    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"wrapperScrollViewDidScroll" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        NSLog(@"%@",x.object);
+        UIScrollView *scrollView = x.object;
+        @strongify(self);
+        CGFloat offsetY = scrollView.contentOffset.y + scrollView.contentInset.top;
+        CGFloat top = 44 - offsetY;
+        [self.searchView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(top);
+        }];
+    }];
 }
 
 
@@ -43,7 +68,13 @@
 #pragma mark - Event Respone
 
 #pragma mark - Delegate
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView != _dynamicTabsManager.wrapperScrollView) {
+        return;
+    }
+    
+    NSLog(@"%@",scrollView);
+}
 #pragma mark - Private
 
 #pragma mark - Getters and Setters
@@ -63,12 +94,23 @@
         
         viewModel.layout = THKDynamicTabsLayoutType_Custom;
         viewModel.parentVC = self;
-//        viewModel.headerContentViewHeight = 800;
-//        viewModel.lockArea = NavigationContentTop;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
+        _dynamicTabsManager.wrapperScrollView.delegate = self;
     }
     return _dynamicTabsManager;
 }
+
+
+- (THKSearchView *)searchView{
+    if (!_searchView) {
+        _searchView = [[THKSearchView alloc] init];
+        _searchView.backgroundColor = UIColorHex(F9FAF9);
+        _searchView.searchLabel.text = @"大家都在搜：瓷砖";
+        _searchView.cornerRadius = 8;
+    }
+    return _searchView;
+}
+
 
 #pragma mark - Supperclass
 

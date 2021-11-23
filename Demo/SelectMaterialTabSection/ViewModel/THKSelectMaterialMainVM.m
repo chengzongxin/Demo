@@ -19,7 +19,7 @@
 
 - (NSArray<THKDynamicTabsModel *> *)segmentTitles {
     if (!_segmentTitles) {
-        NSArray *defaultTitles = @[@"推荐1",@"推荐2",@"推荐3",@"推荐4",@"推荐5"];
+        NSArray *defaultTitles = @[@"瓷砖",@"地板",@"门窗",@"涂料",@"全屋定制"];
         NSMutableArray *arrayTemp = @[].mutableCopy;
         [defaultTitles enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             THKDynamicTabsModel *model = [[THKDynamicTabsModel alloc] init];
