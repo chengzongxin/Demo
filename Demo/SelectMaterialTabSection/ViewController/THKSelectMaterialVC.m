@@ -61,8 +61,7 @@
 
 - (THKDynamicTabsManager *)dynamicTabsManager {
     if (!_dynamicTabsManager) {
-        THKDynamicTabsViewModel *viewModel = [[THKDynamicTabsViewModel alloc] initWithWholeCode:kDynamicTabsWholeCodeHomePage
-                                                                                    defualtTabs:self.viewModel.segmentTitles];
+        THKDynamicTabsViewModel *viewModel = [[THKDynamicTabsViewModel alloc] initWithTabs:self.viewModel.segmentTitles];
         viewModel.configDynamicTabButtonModelBlock = ^(THKDynamicTabDisplayModel * _Nonnull configButtonModel, NSInteger tabId, NSString * _Nonnull title) {
             //这里可以根据tabId或title来设值每一个按钮的属性
             configButtonModel.badgeImageColor = THKColor_RedPointColor;
