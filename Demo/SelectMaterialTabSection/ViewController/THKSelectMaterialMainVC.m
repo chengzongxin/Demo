@@ -1,22 +1,19 @@
 //
-//  THKSelectMaterialVC.m
+//  THKSelectMaterialMainVC.m
 //  Demo
 //
 //  Created by Joe.cheng on 2021/11/23.
 //
 
-#import "THKSelectMaterialVC.h"
+#import "THKSelectMaterialMainVC.h"
 #import "THKDynamicTabsManager.h"
-#import "THKSelectMaterialHeaderView.h"
-@interface THKSelectMaterialVC ()
+@interface THKSelectMaterialMainVC ()
 
-@property (nonatomic, strong) THKSelectMaterialVM *viewModel;
+@property (nonatomic, strong) THKSelectMaterialMainVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
-@property (nonatomic, strong) THKSelectMaterialHeaderView *headerView;
-
 @end
 
-@implementation THKSelectMaterialVC
+@implementation THKSelectMaterialMainVC
 @dynamic viewModel;
 
 - (void)viewDidLoad {
@@ -25,25 +22,17 @@
     self.view.backgroundColor = UIColor.whiteColor;
     self.navigationController.navigationBar.hidden = YES;
     
-    [self.view addSubview:self.dynamicTabsManager.wrapperView];
-    [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, tmui_safeAreaBottomInset()));
+    [self.view addSubview:self.dynamicTabsManager.pageContainerVC.view];
+    [self.dynamicTabsManager.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
-    [self.dynamicTabsManager.headerWrapperView addSubview:self.headerView];
-    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-    }];
+//    [self.view addSubview:self.dynamicTabsManager.wrapperView];
+//    [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, tmui_safeAreaBottomInset()));
+//    }];
     
     [self.dynamicTabsManager loadTabs];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    THKSelectMaterialHeaderViewModel *headerViewModel = [[THKSelectMaterialHeaderViewModel alloc] init];
-    [self.headerView bindViewModel:headerViewModel];
-    self.dynamicTabsManager.viewModel.headerContentViewHeight = 510;
 }
 
 
@@ -72,35 +61,18 @@
             configButtonModel.selectedFont = [UIFont fontWithName:@"PingFangSC-Medium" size:16.7];
         };
         
-        viewModel.layout = THKDynamicTabsLayoutType_Suspend;
+        viewModel.layout = THKDynamicTabsLayoutType_Custom;
         viewModel.parentVC = self;
-        viewModel.headerContentViewHeight = 800;
-        viewModel.lockArea = NavigationContentTop;
+//        viewModel.headerContentViewHeight = 800;
+//        viewModel.lockArea = NavigationContentTop;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
     }
     return _dynamicTabsManager;
 }
 
-- (THKSelectMaterialHeaderView *)headerView{
-    if (!_headerView) {
-        _headerView = [[THKSelectMaterialHeaderView alloc] init];
-    }
-    return _headerView;
-}
-
 #pragma mark - Supperclass
 
 #pragma mark - NSObject
-+ (BOOL)canHandleRouter:(TRouter *)router{
-    if ([router routerMatch:THKRouterPage_MaterialSubVC]) {
-        return YES;
-    }
-    return NO;
-}
 
-+ (id)createVCWithRouter:(TRouter *)router{
-    THKSelectMaterialVM *selectMaterialVM = [[THKSelectMaterialVM alloc] init];
-    return [[self alloc] initWithViewModel:selectMaterialVM];
-}
 
 @end

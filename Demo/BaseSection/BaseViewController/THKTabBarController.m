@@ -7,9 +7,10 @@
 //
 
 #import "THKTabBarController.h"
-#import "ViewController.h"
-#import "THKSelectMaterialVC.h"
 #import "THKNavigationController.h"
+#import "ViewController.h"
+//#import "THKSelectMaterialVC.h"
+#import "THKSelectMaterialMainVC.h"
 
 #pragma mark - THKTabBarController
 
@@ -51,8 +52,8 @@
     // tab 0 首页
     [arrViewControllers safeAddObject:[[THKNavigationController alloc] initWithRootViewController:[[ViewController alloc] init]]];
     // tab 1 选材
-    THKSelectMaterialVM *decorateHomeVM = [[THKSelectMaterialVM alloc] init];
-    [arrViewControllers safeAddObject:[[THKNavigationController alloc]initWithRootViewController:[[THKSelectMaterialVC alloc] initWithViewModel:decorateHomeVM]]];
+    THKSelectMaterialMainVM *selectMaterialVM = [[THKSelectMaterialMainVM alloc] init];
+    [arrViewControllers safeAddObject:[[THKNavigationController alloc]initWithRootViewController:[[THKSelectMaterialMainVC alloc] initWithViewModel:selectMaterialVM]]];
     
     arrViewControllers[0].tabBarItem.title = @"首页";
     arrViewControllers[1].tabBarItem.title = @"选材";

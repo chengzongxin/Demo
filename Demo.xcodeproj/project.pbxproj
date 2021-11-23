@@ -211,6 +211,8 @@
 		16DDC075274C8AEC000DAA29 /* THKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC074274C8AEC000DAA29 /* THKNavigationController.m */; };
 		16DDC07B274C9417000DAA29 /* THKSelectMaterialHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC07A274C9417000DAA29 /* THKSelectMaterialHeaderView.m */; };
 		16DDC07E274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC07D274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m */; };
+		16DDC098274CCA3F000DAA29 /* THKSelectMaterialMainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC097274CCA3F000DAA29 /* THKSelectMaterialMainVC.m */; };
+		16DDC09B274CCA56000DAA29 /* THKSelectMaterialMainVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC09A274CCA56000DAA29 /* THKSelectMaterialMainVM.m */; };
 		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
 		16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49D2682DE4B0024BA20 /* THKResponse.m */; };
 		16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49F2682DE4B0024BA20 /* THKCommonResponse.m */; };
@@ -705,6 +707,10 @@
 		16DDC07A274C9417000DAA29 /* THKSelectMaterialHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialHeaderView.m; sourceTree = "<group>"; };
 		16DDC07C274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialHeaderViewModel.h; sourceTree = "<group>"; };
 		16DDC07D274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialHeaderViewModel.m; sourceTree = "<group>"; };
+		16DDC096274CCA3F000DAA29 /* THKSelectMaterialMainVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialMainVC.h; sourceTree = "<group>"; };
+		16DDC097274CCA3F000DAA29 /* THKSelectMaterialMainVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialMainVC.m; sourceTree = "<group>"; };
+		16DDC099274CCA56000DAA29 /* THKSelectMaterialMainVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialMainVM.h; sourceTree = "<group>"; };
+		16DDC09A274CCA56000DAA29 /* THKSelectMaterialMainVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialMainVM.m; sourceTree = "<group>"; };
 		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
 		16E5C4992682DE4B0024BA20 /* THKBaseNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseNetwork.h; sourceTree = "<group>"; };
 		16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKBaseNetworkManager.m; sourceTree = "<group>"; };
@@ -1111,16 +1117,16 @@
 		16192B402692E1B100967C73 /* RouterConfig */ = {
 			isa = PBXGroup;
 			children = (
-				16192B412692E1B100967C73 /* THKRouterConfig.m */,
-				16192B422692E1B100967C73 /* THKBackPushRouter.m */,
-				16192B432692E1B100967C73 /* TRouterManager+Config.h */,
-				16192B442692E1B100967C73 /* THKRouterPathDefine.h */,
-				16192B452692E1B100967C73 /* THKCustomRouter.h */,
 				16192B462692E1B100967C73 /* THKBackPushRouter.h */,
-				16192B472692E1B100967C73 /* THKRouterConfig.h */,
-				16192B482692E1B100967C73 /* TRouterManager+Config.m */,
-				16192B492692E1B100967C73 /* THKRouterPathDefine.m */,
+				16192B422692E1B100967C73 /* THKBackPushRouter.m */,
+				16192B452692E1B100967C73 /* THKCustomRouter.h */,
 				16192B4A2692E1B100967C73 /* THKCustomRouter.m */,
+				16192B472692E1B100967C73 /* THKRouterConfig.h */,
+				16192B412692E1B100967C73 /* THKRouterConfig.m */,
+				16192B442692E1B100967C73 /* THKRouterPathDefine.h */,
+				16192B492692E1B100967C73 /* THKRouterPathDefine.m */,
+				16192B432692E1B100967C73 /* TRouterManager+Config.h */,
+				16192B482692E1B100967C73 /* TRouterManager+Config.m */,
 			);
 			path = RouterConfig;
 			sourceTree = "<group>";
@@ -1882,6 +1888,8 @@
 		16DDC05C274C774C000DAA29 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				16DDC099274CCA56000DAA29 /* THKSelectMaterialMainVM.h */,
+				16DDC09A274CCA56000DAA29 /* THKSelectMaterialMainVM.m */,
 				16DDC06B274C780D000DAA29 /* THKSelectMaterialVM.h */,
 				16DDC06C274C780D000DAA29 /* THKSelectMaterialVM.m */,
 				16DDC07C274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.h */,
@@ -1904,6 +1912,8 @@
 		16DDC062274C774C000DAA29 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				16DDC096274CCA3F000DAA29 /* THKSelectMaterialMainVC.h */,
+				16DDC097274CCA3F000DAA29 /* THKSelectMaterialMainVC.m */,
 				16DDC068274C77EA000DAA29 /* THKSelectMaterialVC.h */,
 				16DDC069274C77EA000DAA29 /* THKSelectMaterialVC.m */,
 			);
@@ -2588,6 +2598,7 @@
 				16192BE52692F73900967C73 /* NSTimer+Block.m in Sources */,
 				16611AB62696870F0089E41B /* UIViewController+Godeye.m in Sources */,
 				1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */,
+				16DDC09B274CCA56000DAA29 /* THKSelectMaterialMainVM.m in Sources */,
 				16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */,
 				16611B5E269692D20089E41B /* THKMaterialClassificationVM.m in Sources */,
 				16192B3B2692E13E00967C73 /* UIViewController+PopGestureOfPercentDrivenInteractiveTransition.m in Sources */,
@@ -2604,6 +2615,7 @@
 				16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */,
 				16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */,
 				16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */,
+				16DDC098274CCA3F000DAA29 /* THKSelectMaterialMainVC.m in Sources */,
 				16192B322692E13E00967C73 /* THKSearchAnimation+UI.m in Sources */,
 				16192B212692E13E00967C73 /* THKPushPopTransitionManager.m in Sources */,
 				16867A322692D9B200650023 /* TRouterConfig.m in Sources */,

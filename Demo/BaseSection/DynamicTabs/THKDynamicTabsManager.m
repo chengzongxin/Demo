@@ -234,7 +234,11 @@
 - (THKDynamicTabsPageVC *)pageContainerVC {
     if (!_pageContainerVC) {
         THKDynamicTabsPageVM *vm = [[THKDynamicTabsPageVM alloc] init];
-        vm.cutOutHeight = self.viewModel.cutOutHeight + self.viewModel.sliderBarHeight + NavigationContentTop;
+        if (self.viewModel.layout == THKDynamicTabsLayoutType_Custom) {
+            vm.cutOutHeight = self.viewModel.cutOutHeight;
+        }else{
+            vm.cutOutHeight = self.viewModel.cutOutHeight + self.viewModel.sliderBarHeight + NavigationContentTop;
+        }
         _pageContainerVC = [[THKDynamicTabsPageVC alloc] initWithViewModel:vm];
         _pageContainerVC.delegate = self;
         _pageContainerVC.dataSource = self;

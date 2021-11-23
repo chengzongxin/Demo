@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKSelectMaterialVC : THKViewController
+@interface THKSelectMaterialVC : THKViewController<TRouterProtocol>
 
 @property (nonatomic, strong, readonly) THKSelectMaterialVM *viewModel;
 
