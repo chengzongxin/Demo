@@ -235,7 +235,7 @@ TRouterPath const THKRouterPage_SelectMaterialCommodityRank = @"/material/rank/a
 //v9.2.1
 TRouterPath const THKRouterPage_CounterPay = @"/money/counterPay"; // 新版收银台(web用)
 
-TRouterPath const THKRouterPage_MaterialSubVC = @"/material/materialSubVC"; // 新版收银台(web用)
+TRouterPath const THKRouterPage_MaterialHomeTab = @"/material/home/tab/";
 
 @implementation THKRouterPathDefine
 

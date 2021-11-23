@@ -97,7 +97,7 @@
 
 #pragma mark - NSObject
 + (BOOL)canHandleRouter:(TRouter *)router{
-    if ([router routerMatch:THKRouterPage_MaterialSubVC]) {
+    if ([router routerMatch:THKRouterPage_MaterialHomeTab]) {
         return YES;
     }
     return NO;
