@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 160106E02553DD8000FE4B77 /* AppDelegate.m */; };
 		160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 160106E32553DD8000FE4B77 /* SceneDelegate.m */; };
-		160106EA2553DD8000FE4B77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160106E82553DD8000FE4B77 /* Main.storyboard */; };
 		160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 160106EB2553DD8000FE4B77 /* Assets.xcassets */; };
 		160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 160106ED2553DD8000FE4B77 /* LaunchScreen.storyboard */; };
 		160106F22553DD8000FE4B77 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 160106F12553DD8000FE4B77 /* main.m */; };
@@ -208,6 +207,8 @@
 		16DDC066274C774C000DAA29 /* THKSelectMaterialTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC060274C774C000DAA29 /* THKSelectMaterialTabView.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialVM.m */; };
+		16DDC070274C79B7000DAA29 /* THKTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06F274C79B7000DAA29 /* THKTabBarController.m */; };
+		16DDC075274C8AEC000DAA29 /* THKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC074274C8AEC000DAA29 /* THKNavigationController.m */; };
 		16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */; };
 		16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49D2682DE4B0024BA20 /* THKResponse.m */; };
 		16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C49F2682DE4B0024BA20 /* THKCommonResponse.m */; };
@@ -279,7 +280,6 @@
 		160106E02553DD8000FE4B77 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		160106E22553DD8000FE4B77 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		160106E32553DD8000FE4B77 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		160106E92553DD8000FE4B77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		160106EB2553DD8000FE4B77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		160106EE2553DD8000FE4B77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		160106F02553DD8000FE4B77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -695,6 +695,10 @@
 		16DDC069274C77EA000DAA29 /* THKSelectMaterialVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialVC.m; sourceTree = "<group>"; };
 		16DDC06B274C780D000DAA29 /* THKSelectMaterialVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialVM.h; sourceTree = "<group>"; };
 		16DDC06C274C780D000DAA29 /* THKSelectMaterialVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialVM.m; sourceTree = "<group>"; };
+		16DDC06E274C79B7000DAA29 /* THKTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKTabBarController.h; sourceTree = "<group>"; };
+		16DDC06F274C79B7000DAA29 /* THKTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKTabBarController.m; sourceTree = "<group>"; };
+		16DDC073274C8AEC000DAA29 /* THKNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationController.h; sourceTree = "<group>"; };
+		16DDC074274C8AEC000DAA29 /* THKNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationController.m; sourceTree = "<group>"; };
 		16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKViewControllerProtocol.h; sourceTree = "<group>"; };
 		16E5C4992682DE4B0024BA20 /* THKBaseNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKBaseNetwork.h; sourceTree = "<group>"; };
 		16E5C49A2682DE4B0024BA20 /* THKBaseNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKBaseNetworkManager.m; sourceTree = "<group>"; };
@@ -851,8 +855,7 @@
 			isa = PBXGroup;
 			children = (
 				16611AD626968BA30089E41B /* Demo.entitlements */,
-				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
-				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				16DDC071274C8914000DAA29 /* HomeSection */,
 				16DDC05B274C774C000DAA29 /* SelectMaterialTabSection */,
 				1677AC5C274B91C9001B0F66 /* QuickComments */,
 				1689DEC927449F2C0073BA68 /* DynamicTabVC */,
@@ -889,6 +892,7 @@
 		160107692553EA1A00FE4B77 /* BaseSection */ = {
 			isa = PBXGroup;
 			children = (
+				16DDC072274C8AD4000DAA29 /* BaseViewController */,
 				16A026402742652500C7E4B3 /* THKExpandLabel */,
 				16192AB32692DC2A00967C73 /* QuickMethod */,
 				16611B9826969D960089E41B /* YYAnimatedImageView */,
@@ -1415,7 +1419,6 @@
 				160106E02553DD8000FE4B77 /* AppDelegate.m */,
 				160106E22553DD8000FE4B77 /* SceneDelegate.h */,
 				160106E32553DD8000FE4B77 /* SceneDelegate.m */,
-				160106E82553DD8000FE4B77 /* Main.storyboard */,
 				160106EB2553DD8000FE4B77 /* Assets.xcassets */,
 				160106ED2553DD8000FE4B77 /* LaunchScreen.storyboard */,
 				160106F02553DD8000FE4B77 /* Info.plist */,
@@ -1897,6 +1900,26 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		16DDC071274C8914000DAA29 /* HomeSection */ = {
+			isa = PBXGroup;
+			children = (
+				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
+				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+			);
+			path = HomeSection;
+			sourceTree = "<group>";
+		};
+		16DDC072274C8AD4000DAA29 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				16DDC06E274C79B7000DAA29 /* THKTabBarController.h */,
+				16DDC06F274C79B7000DAA29 /* THKTabBarController.m */,
+				16DDC073274C8AEC000DAA29 /* THKNavigationController.h */,
+				16DDC074274C8AEC000DAA29 /* THKNavigationController.m */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
 		16E5C4972682DE4B0024BA20 /* THKBaseNetwork */ = {
 			isa = PBXGroup;
 			children = (
@@ -2288,7 +2311,6 @@
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
 				160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */,
 				16611B6E269692D20089E41B /* THKMaterialClassificationRecommendRankCell.xib in Resources */,
-				160106EA2553DD8000FE4B77 /* Main.storyboard in Resources */,
 				16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */,
 				16611B66269692D20089E41B /* THKMaterialClassificationRecommendNormalCell.xib in Resources */,
 			);
@@ -2427,6 +2449,7 @@
 				168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */,
 				1689DE8F274498280073BA68 /* THKDynamicTabsModel.m in Sources */,
 				16611B62269692D20089E41B /* THKMaterialRecommendRankVC.m in Sources */,
+				16DDC070274C79B7000DAA29 /* THKTabBarController.m in Sources */,
 				16611AD1269688C20089E41B /* KeychainItemWrapper.m in Sources */,
 				16611B6D269692D20089E41B /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
 				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
@@ -2480,6 +2503,7 @@
 				16F84A7926E5B40E00192B0A /* UIView+THKDiaryAnimation.m in Sources */,
 				16611B65269692D20089E41B /* THKMaterialClassificationViewCell.m in Sources */,
 				16611AC22696870F0089E41B /* Godeye.m in Sources */,
+				16DDC075274C8AEC000DAA29 /* THKNavigationController.m in Sources */,
 				16867A122692D76C00650023 /* TMCardComponentTitleSubTitleUpSideDownStyleCell.m in Sources */,
 				16192B382692E13E00967C73 /* THKBaseAnimation.m in Sources */,
 				16192B242692E13E00967C73 /* THKPushPopAsLocationToListSimulationTransition.m in Sources */,
@@ -2687,14 +2711,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		160106E82553DD8000FE4B77 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				160106E92553DD8000FE4B77 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		160106ED2553DD8000FE4B77 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

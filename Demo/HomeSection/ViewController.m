@@ -28,7 +28,7 @@
 }
 
 - (void)test{
-    
+    self.view.backgroundColor = UIColor.tmui_randomColor;
     
     Button.str(@"如何选材").bgColor(@"random").xywh(100,100,100,100).addTo(self.view).onClick(^{
         Log(@"123123");
@@ -98,5 +98,11 @@
     };
 }
 
+
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    
+//    self.tabBarController.tabBar.hidden = NO;
+//}
 
 @end

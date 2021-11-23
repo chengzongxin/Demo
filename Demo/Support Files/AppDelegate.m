@@ -12,6 +12,7 @@
 #import "TUUIDGenerator.h"
 #import "GEEnvironmentParameter.h"
 #import "TRouterManager+Config.h"
+#import "THKTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -34,6 +35,9 @@
         // lanch app
     }];
     [[TRouterManager sharedManager] configEnvironment];
+    
+    self.window.rootViewController = THKTabBarController.new;
+    [self.window makeKeyAndVisible];
     
     return YES;
 }
