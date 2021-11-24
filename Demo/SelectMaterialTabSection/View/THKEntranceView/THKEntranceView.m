@@ -114,6 +114,7 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    !_tapItem?:_tapItem(indexPath);
 //    THKDynamicGroupEntranceModel *entrance = self.viewModel.entranceList[indexPath.item];
 //    TRouter *router = [TRouter routerFromUrl:entrance.targetUrl jumpController:nil];
 //    [[TRouterManager sharedManager] performRouter:router];

@@ -49,7 +49,7 @@
         [self.textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.iconImageView.mas_right).mas_offset(0);
             make.centerY.equalTo(containerView);
-            make.right.mas_offset(0);
+            make.right.mas_lessThanOrEqualTo(0);
             make.width.mas_equalTo(0);
         }];
         

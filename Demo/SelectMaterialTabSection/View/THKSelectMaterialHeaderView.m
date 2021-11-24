@@ -24,6 +24,11 @@
 
 @property (nonatomic, strong) THKEntranceView *secondLevelEntranceView;
 
+
+@property (nonatomic, strong) RACSubject *tapCoverSubject;
+
+@property (nonatomic, strong) RACSubject *tapEntrySubject;
+
 @end
 
 @implementation THKSelectMaterialHeaderView
@@ -97,6 +102,11 @@
         _coverImageView = [[UIImageView alloc] init];
         _coverImageView.cornerRadius = 8;
         _coverImageView.image = UIImageMake(@"dec_banner_def");
+        @weakify(self);
+        [_coverImageView tmui_addSingerTapWithBlock:^{
+            @strongify(self);
+            [self.tapCoverSubject sendNext:nil];
+        }];
     }
     return _coverImageView;
 }
@@ -125,6 +135,11 @@
 - (THKEntranceView *)firstLevelEntranceView{
     if (!_firstLevelEntranceView) {
         _firstLevelEntranceView = [[THKEntranceView alloc] init];
+        @weakify(self);
+        _firstLevelEntranceView.tapItem = ^(NSIndexPath * _Nonnull indexPath) {
+            @strongify(self);
+            [self.tapEntrySubject sendNext:RACTuplePack(@(1),indexPath)];
+        };
     }
     return _firstLevelEntranceView;
 }
@@ -133,6 +148,11 @@
 - (THKEntranceView *)secondLevelEntranceView{
     if (!_secondLevelEntranceView) {
         _secondLevelEntranceView = [[THKEntranceView alloc] init];
+        @weakify(self);
+        _secondLevelEntranceView.tapItem = ^(NSIndexPath * _Nonnull indexPath) {
+            @strongify(self);
+            [self.tapEntrySubject sendNext:RACTuplePack(@(2),indexPath)];
+        };
     }
     return _secondLevelEntranceView;
 }
@@ -144,6 +164,9 @@
     }
     return _entryLineView;
 }
+
+TMUI_PropertyLazyLoad(RACSubject, tapCoverSubject);
+TMUI_PropertyLazyLoad(RACSubject, tapEntrySubject);
 
 
 @end

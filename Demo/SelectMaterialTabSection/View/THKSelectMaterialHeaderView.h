@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) THKSelectMaterialHeaderViewModel *viewModel;
 
+
+@property (nonatomic, strong, readonly) RACSubject *tapCoverSubject;
+
+@property (nonatomic, strong, readonly) RACSubject *tapEntrySubject;
+
 @end
 
 NS_ASSUME_NONNULL_END

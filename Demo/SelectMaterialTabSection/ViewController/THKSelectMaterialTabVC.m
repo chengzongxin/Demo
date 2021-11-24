@@ -34,15 +34,33 @@
         make.edges.mas_equalTo(0);
     }];
     
+}
+
+- (void)bindViewModel{
+    @weakify(self);
+    [self.dynamicTabsManager.viewModel.tabsLoadFinishSignal subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        
+        THKSelectMaterialHeaderViewModel *headerViewModel = [[THKSelectMaterialHeaderViewModel alloc] init];
+        [self.headerView bindViewModel:headerViewModel];
+        self.dynamicTabsManager.viewModel.headerContentViewHeight = 510;
+    }];
+    
+    [self.headerView.tapCoverSubject subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    [self.headerView.tapEntrySubject subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
+    
     [self.dynamicTabsManager loadTabs];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    THKSelectMaterialHeaderViewModel *headerViewModel = [[THKSelectMaterialHeaderViewModel alloc] init];
-    [self.headerView bindViewModel:headerViewModel];
-    self.dynamicTabsManager.viewModel.headerContentViewHeight = 510;
 }
 
 
