@@ -14,6 +14,7 @@
 #import "THKExpandLabel.h"
 #import "DynamicTabDemoList.h"
 #import "THKQuickCommentsView.h"
+#import "THKSelectMaterialHomeVC.h"
 
 @interface ViewController ()
 
@@ -71,8 +72,8 @@
     
     
     Button.str(@"选材").bgColor(@"random").xywh(100,400,100,100).addTo(self.view).onClick(^{
-        THKMaterialHotRankVM *vm = [[THKMaterialHotRankVM alloc] init];
-        THKMaterialHotRankVC *vc = [[THKMaterialHotRankVC alloc] initWithViewModel:vm];
+        THKSelectMaterialHomeVM *vm = [[THKSelectMaterialHomeVM alloc] init];
+        THKSelectMaterialHomeVC *vc = [[THKSelectMaterialHomeVC alloc] initWithViewModel:vm];
         [self.navigationController pushViewController:vc animated:YES];
     });
     

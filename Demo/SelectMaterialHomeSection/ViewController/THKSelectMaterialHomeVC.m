@@ -9,11 +9,12 @@
 #import "THKDynamicTabsManager.h"
 #import "THKSearchView.h"
 #import "THKSelectMaterialTabVC.h"
-
+#import "THKSelectMaterialTopBar.h"
 @interface THKSelectMaterialHomeVC ()<THKDynamicTabsManagerDelegate>
 
 @property (nonatomic, strong) THKSelectMaterialHomeVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
+@property (nonatomic, strong) THKSelectMaterialTopBar *topBar;
 @property (nonatomic, strong) THKSearchView *searchView;
 @end
 
@@ -31,28 +32,34 @@
         make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
+    [self.view addSubview:self.topBar];
+    [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.mas_equalTo(0);
+        make.height.mas_equalTo(StatusBarHeight+36);
+    }];
     
-    [self.view addSubview:self.searchView];
+    [self.topBar addSubview:self.searchView];
     [self.searchView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(StatusBarHeight);
-        make.left.right.equalTo(self.view).inset(15);
+        make.left.equalTo(self.view).inset(54);
+        make.right.equalTo(self.view).inset(15);
         make.height.mas_equalTo(36);
     }];
     
     [self.view addSubview:self.dynamicTabsManager.sliderBar];
     [self.dynamicTabsManager.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.searchView.mas_bottom);
+        make.top.equalTo(self.topBar.mas_bottom);
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(self.dynamicTabsManager.viewModel.sliderBarHeight);
     }];
     
     [self.dynamicTabsManager loadTabs];
     
-    @weakify(self);
-    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"wrapperScrollViewDidScroll" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-        @strongify(self);
-        [self updateTopBarLayoutWithWrapperScrollView:x.object];
-    }];
+//    @weakify(self);
+//    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"wrapperScrollViewDidScroll" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+//        @strongify(self);
+//        [self updateTopBarLayoutWithWrapperScrollView:x.object];
+//    }];
 }
 
 
@@ -65,13 +72,13 @@
 #pragma mark - Delegate
 
 - (void)pageViewController:(THKDynamicTabsPageVC *)pageViewController didScroll:(UIScrollView *)scrollView progress:(CGFloat)progress formIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex{
-    NSLog(@"MainVC pager %@",scrollView);
-    THKSelectMaterialTabVC *childVc = [pageViewController.controllersM safeObjectAtIndex:toIndex];
-    if (childVc.isViewLoaded == NO) {
-        return;
-    }
-    
-    [self updateTopBarLayoutWithWrapperScrollView:childVc.dynamicTabsManager.wrapperScrollView];
+//    NSLog(@"MainVC pager %@",scrollView);
+//    THKSelectMaterialTabVC *childVc = [pageViewController.controllersM safeObjectAtIndex:toIndex];
+//    if (childVc.isViewLoaded == NO) {
+//        return;
+//    }
+//
+//    [self updateTopBarLayoutWithWrapperScrollView:childVc.dynamicTabsManager.wrapperScrollView];
 }
 
 - (void)updateTopBarLayoutWithWrapperScrollView:(UIScrollView *)scrollView{
@@ -112,6 +119,15 @@
         _dynamicTabsManager.delegate = self;
     }
     return _dynamicTabsManager;
+}
+
+- (THKSelectMaterialTopBar *)topBar{
+    if (!_topBar) {
+        _topBar = [[THKSelectMaterialTopBar alloc] init];
+        _topBar.backgroundColor = UIColor.whiteColor;
+        _topBar.backBtn.tmui_image = UIImageMake(@"nav_back_black");
+    }
+    return _topBar;
 }
 
 

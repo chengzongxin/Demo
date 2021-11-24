@@ -22,7 +22,6 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.whiteColor;
-    self.navigationController.navigationBar.hidden = YES;
     
     [self.view addSubview:self.dynamicTabsManager.wrapperView];
     [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -97,7 +96,7 @@
         viewModel.layout = THKDynamicTabsLayoutType_Suspend;
         viewModel.parentVC = self;
         viewModel.headerContentViewHeight = 800;
-        viewModel.lockArea = NavigationContentTop;
+        viewModel.lockArea = StatusBarHeight + 36 + 55 + 44;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.backgroundColor = UIColorHex(22C787);
         _dynamicTabsManager.delegate = self;
