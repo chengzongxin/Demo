@@ -234,7 +234,8 @@ extern TRouterPath const THKRouterPage_SelectMaterialCommodityRank; //商品榜�
 //v9.2.1
 extern TRouterPath const THKRouterPage_CounterPay; // 新版收银台(web用)
 
-extern TRouterPath const THKRouterPage_MaterialHomeTab;
+extern TRouterPath const THKRouterPage_MaterialHomeTab; // 选材tab页
+extern TRouterPath const THKRouterPage_MaterialHomeTabCommunication; // 选材tab交流圈页
 
 @interface THKRouterPathDefine : NSObject
 
