@@ -899,7 +899,7 @@
 			children = (
 				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16DDC071274C8914000DAA29 /* HomeSection */,
-				16DDC05B274C774C000DAA29 /* SelectMaterialTabSection */,
+				16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */,
 				16DDC07F274CB68F000DAA29 /* BusinessSection */,
 				1689DEC927449F2C0073BA68 /* DynamicTabVC */,
 				16F5168F26D4C11D002500F7 /* DiaryBook */,
@@ -1920,14 +1920,14 @@
 			path = BaseViewModel;
 			sourceTree = "<group>";
 		};
-		16DDC05B274C774C000DAA29 /* SelectMaterialTabSection */ = {
+		16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */ = {
 			isa = PBXGroup;
 			children = (
 				16DDC05C274C774C000DAA29 /* ViewModel */,
 				16DDC05F274C774C000DAA29 /* View */,
 				16DDC062274C774C000DAA29 /* ViewController */,
 			);
-			path = SelectMaterialTabSection;
+			path = SelectMaterialHomeSection;
 			sourceTree = "<group>";
 		};
 		16DDC05C274C774C000DAA29 /* ViewModel */ = {
