@@ -1207,7 +1207,6 @@
 		16192C14269305EE00967C73 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				16A961E8274F1C34002B6C89 /* SelectMaterial */,
 				16702D30274749D500ECB807 /* DynamicTabsRequest */,
 				168679852692B8AC00650023 /* MaterialClassificationRequest */,
 				1686799B2692B8BA00650023 /* MaterialHotRankRequest */,
@@ -1924,7 +1923,7 @@
 			path = THKExpandLabel;
 			sourceTree = "<group>";
 		};
-		16A961E8274F1C34002B6C89 /* SelectMaterial */ = {
+		16A96202274F84C7002B6C89 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				16A961EC274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.h */,
@@ -1940,7 +1939,7 @@
 				16A961FB274F6BDF002B6C89 /* THKMaterialCommunicateListModel.h */,
 				16A961FC274F6BDF002B6C89 /* THKMaterialCommunicateListModel.m */,
 			);
-			path = SelectMaterial;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -1967,6 +1966,7 @@
 		16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */ = {
 			isa = PBXGroup;
 			children = (
+				16A96202274F84C7002B6C89 /* Model */,
 				16DDC05C274C774C000DAA29 /* ViewModel */,
 				16DDC05F274C774C000DAA29 /* View */,
 				16DDC062274C774C000DAA29 /* ViewController */,
