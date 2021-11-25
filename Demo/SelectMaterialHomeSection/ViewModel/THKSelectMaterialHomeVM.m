@@ -6,11 +6,10 @@
 //
 
 #import "THKSelectMaterialHomeVM.h"
-
 @interface THKSelectMaterialHomeVM ()
 
+@property (nonatomic, strong) RACCommand *requestTab;
 @property (nonatomic, strong) NSArray<THKDynamicTabsModel *> *segmentTitles;
-
 @end
 
 @implementation THKSelectMaterialHomeVM
@@ -34,6 +33,49 @@
         _segmentTitles = arrayTemp;
     }
     return _segmentTitles;
+}
+
+
+- (void)initialize{
+    [super initialize];
+    
+    THKMaterialV3IndexTopTabRequest *request = [[THKMaterialV3IndexTopTabRequest alloc] init];
+    [request.rac_requestSignal subscribeNext:^(THKMaterialV3IndexTopTabResponse *x) {
+        NSLog(@"%@",x);
+    } error:^(NSError * _Nullable error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+//- (THKRequestCommand *)requestTab{
+//    if (!_requestTab) {
+//        _requestTab = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
+//            return [THKMaterialV3IndexTopTabRequest new];
+//        }];
+//    }
+//    return _requestTab;
+//}
+
+
+- (RACCommand *)requestTab{
+    if (!_requestTab) {
+        _requestTab = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                THKMaterialV3IndexTopTabRequest *request = [[THKMaterialV3IndexTopTabRequest alloc] init];
+                [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
+                    [subscriber sendNext:x];
+                } error:^(NSError * _Nullable error) {
+                    [subscriber sendError:error];
+                }];
+                
+                return [RACDisposable disposableWithBlock:^{
+                    [request cancel];
+                }];
+            }];
+        }];
+        return _requestTab;
+    }
+    return _requestTab;
 }
 
 @end

@@ -41,6 +41,7 @@
     THKRequestCommand *cmd = [[self alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
         return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
             THKBaseRequest *request = requestMake(input);
+            NSLog(@"123123");
             [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
                 [subscriber sendNext:x];
             } error:^(NSError * _Nullable error) {

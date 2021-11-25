@@ -8,6 +8,7 @@
 #import "THKSelectMaterialTabVM.h"
 
 @interface THKSelectMaterialTabVM ()
+@property (nonatomic, strong) THKRequestCommand *requestTab;
 @property (nonatomic, strong) NSArray<THKDynamicTabsModel *> *segmentTitles;
 @end
 
@@ -33,5 +34,20 @@
     }
     return _segmentTitles;
 }
+
+
+- (THKRequestCommand *)requestTab{
+    if (!_requestTab) {
+        @weakify(self);
+        _requestTab = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
+            @strongify(self);
+            THKMaterialV3IndexEntranceRequest *request = [THKMaterialV3IndexEntranceRequest new];
+            request.categoryId = self.categoryId;
+            return request;
+        }];
+    }
+    return _requestTab;
+}
+
 
 @end

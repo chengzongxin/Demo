@@ -7,6 +7,20 @@
 
 #import "THKSelectMaterialHeaderViewModel.h"
 
+
+@interface THKSelectMaterialHeaderViewModel ()
+
+@property (nonatomic, strong) THKMaterialTabEntranceModel *model;
+
+@end
+
 @implementation THKSelectMaterialHeaderViewModel
+@dynamic model;
+
+- (void)initialize{
+    [super initialize];
+    
+    NSLog(@"%@",self.model);
+}
 
 @end

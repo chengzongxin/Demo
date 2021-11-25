@@ -53,7 +53,6 @@
         make.height.mas_equalTo(self.dynamicTabsManager.viewModel.sliderBarHeight);
     }];
     
-    [self.dynamicTabsManager loadTabs];
     
 //    @weakify(self);
 //    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"wrapperScrollViewDidScroll" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
@@ -62,6 +61,18 @@
 //    }];
 }
 
+
+- (void)bindViewModel{
+    
+    @weakify(self);
+    [self.viewModel.requestTab.executionSignals.switchToLatest subscribeNext:^(THKMaterialV3IndexTopTabResponse *x) {
+        @strongify(self);
+        [self.dynamicTabsManager.viewModel setTabs:x.data];
+        [self.dynamicTabsManager loadTabs];
+    }];
+    
+    [self.viewModel.requestTab execute:nil];
+}
 
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
 

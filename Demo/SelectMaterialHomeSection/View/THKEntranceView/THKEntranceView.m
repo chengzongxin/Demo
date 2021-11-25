@@ -81,12 +81,11 @@
         THKEntranceViewDetailCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKEntranceViewDetailCell class])
                                                                                forIndexPath:indexPath];
         
-        NSString *entrance = self.viewModel.entranceList[indexPath.item];
+        MaterialTabMajorEntrancesModel *entrance = self.viewModel.entranceList[indexPath.item];
 
-    //    [cell.imageView loadImageWithUrlStr:entrance.imgUrl];
-        cell.imageView.image = UIImageMake(@"diary_heart_fly");
-        cell.titleLabel.text = entrance;
-        cell.detailLabel.text = entrance;
+        [cell.imageView loadImageWithUrlStr:entrance.imgUrl];
+        cell.titleLabel.text = entrance.title;
+        cell.detailLabel.text = entrance.subTitle;
         
         // 曝光
     //    [self entrancesShowReport:cell model:entrance indexPath:indexPath];
@@ -97,11 +96,10 @@
         THKEntranceViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKEntranceViewCell class])
                                                                               forIndexPath:indexPath];
         
-        NSString *entrance = self.viewModel.entranceList[indexPath.item];
+        MaterialTabMajorEntrancesModel *entrance = self.viewModel.entranceList[indexPath.item];
         
-        //    [cell.imageView loadImageWithUrlStr:entrance.imgUrl];
-        cell.imageView.image = UIImageMake(@"diary_heart_fly");
-        cell.titleLabel.text = entrance;
+        [cell.imageView loadImageWithUrlStr:entrance.imgUrl];
+        cell.titleLabel.text = entrance.title;
         
         // 曝光
         //    [self entrancesShowReport:cell model:entrance indexPath:indexPath];
@@ -114,7 +112,8 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    !_tapItem?:_tapItem(indexPath);
+    MaterialTabMajorEntrancesModel *entrance = self.viewModel.entranceList[indexPath.item];
+    !_tapItem?:_tapItem(indexPath,entrance);
 //    THKDynamicGroupEntranceModel *entrance = self.viewModel.entranceList[indexPath.item];
 //    TRouter *router = [TRouter routerFromUrl:entrance.targetUrl jumpController:nil];
 //    [[TRouterManager sharedManager] performRouter:router];

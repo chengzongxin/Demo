@@ -6,14 +6,14 @@
 //
 
 #import "THKViewModel.h"
-
+#import "THKMaterialTabEntranceModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKEntranceViewModel : THKViewModel
 
 @property (nonatomic, assign) BOOL isFirstLevelEntrance;
 
-@property (nonatomic , strong) NSArray *entranceList;
+@property (nonatomic , strong)  NSArray <MaterialTabMajorEntrancesModel *> *entranceList;
 
 @end
 

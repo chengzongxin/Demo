@@ -74,6 +74,8 @@
     Button.str(@"选材").bgColor(@"random").xywh(100,400,100,100).addTo(self.view).onClick(^{
         THKSelectMaterialHomeVM *vm = [[THKSelectMaterialHomeVM alloc] init];
         THKSelectMaterialHomeVC *vc = [[THKSelectMaterialHomeVC alloc] initWithViewModel:vm];
+        
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     });
     

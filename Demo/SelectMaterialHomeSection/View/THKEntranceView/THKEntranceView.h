@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) THKEntranceViewModel *viewModel;
 
-@property (nonatomic, copy) void (^tapItem)(NSIndexPath *indexPath);
+@property (nonatomic, copy) void (^tapItem)(NSIndexPath *indexPath,MaterialTabMajorEntrancesModel *entrance);
 
 @end
 

@@ -8,6 +8,7 @@
 #import "THKSelectMaterialTabVC.h"
 #import "THKDynamicTabsManager.h"
 #import "THKSelectMaterialHeaderView.h"
+#import "THKMaterialTabEntranceModel.h"
 @interface THKSelectMaterialTabVC ()<THKDynamicTabsManagerDelegate>
 @property (nonatomic, strong) THKSelectMaterialTabVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
@@ -25,7 +26,7 @@
     
     [self.view addSubview:self.dynamicTabsManager.wrapperView];
     [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, tmui_safeAreaBottomInset()));
+        make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     
     [self.dynamicTabsManager.headerWrapperView addSubview:self.headerView];
@@ -37,24 +38,38 @@
 
 - (void)bindViewModel{
     @weakify(self);
-    [self.dynamicTabsManager.viewModel.tabsLoadFinishSignal subscribeNext:^(id  _Nullable x) {
-        @strongify(self);
-        
-        THKSelectMaterialHeaderViewModel *headerViewModel = [[THKSelectMaterialHeaderViewModel alloc] init];
-        [self.headerView bindViewModel:headerViewModel];
-        self.dynamicTabsManager.viewModel.headerContentViewHeight = 510;
-    }];
-    
-    [self.headerView.tapCoverSubject subscribeNext:^(id  _Nullable x) {
+//    [self.dynamicTabsManager.viewModel.tabsLoadFinishSignal subscribeNext:^(id  _Nullable x) {
+//        @strongify(self);
+//
+//        THKSelectMaterialHeaderViewModel *headerViewModel = [[THKSelectMaterialHeaderViewModel alloc] init];
+//        [self.headerView bindViewModel:headerViewModel];
+//        self.dynamicTabsManager.viewModel.headerContentViewHeight = 510;
+//    }];
+//
+    [self.headerView.tapCoverSubject subscribeNext:^(MaterialTabBannerModel *x) {
         NSLog(@"%@",x);
     }];
     
     [self.headerView.tapEntrySubject subscribeNext:^(id  _Nullable x) {
-        NSLog(@"%@",x);
+        RACTupleUnpack(NSNumber *num,NSIndexPath *indexPath,MaterialTabMajorEntrancesModel *model) = x;
+        NSLog(@"%@-%@-%@",num,indexPath,model);
     }];
     
     
     [self.dynamicTabsManager loadTabs];
+    
+    [self.viewModel.requestTab.nextSignal subscribeNext:^(THKMaterialV3IndexEntranceResponse *x) {
+        @strongify(self);
+        NSLog(@"%@",x);
+        THKSelectMaterialHeaderViewModel *headerViewModel = [[THKSelectMaterialHeaderViewModel alloc] initWithModel:x.data];
+        [self.headerView bindViewModel:headerViewModel];
+        self.dynamicTabsManager.viewModel.headerContentViewHeight = 510;
+        
+        [self.dynamicTabsManager.viewModel setTabs:x.data.tabs];
+        [self.dynamicTabsManager loadTabs];
+    }];
+    
+    [self.viewModel.requestTab execute:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -123,6 +138,7 @@
 
 + (id)createVCWithRouter:(TRouter *)router{
     THKSelectMaterialTabVM *selectMaterialVM = [[THKSelectMaterialTabVM alloc] init];
+    selectMaterialVM.categoryId = [[router.param safeObjectForKey:@"categoryId"] integerValue];
     return [[self alloc] initWithViewModel:selectMaterialVM];
 }
 

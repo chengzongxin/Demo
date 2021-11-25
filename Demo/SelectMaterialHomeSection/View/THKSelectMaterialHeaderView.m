@@ -77,13 +77,17 @@
 }
 
 - (void)bindViewModel{
+    [self.coverImageView loadImageWithUrlStr:self.viewModel.model.banner.imgUrl];
+    
     THKEntranceViewModel *firstViewModel = [[THKEntranceViewModel alloc] init];
     firstViewModel.isFirstLevelEntrance = YES;
-    [firstViewModel bindWithModel:@[@"瓷砖百科",@"参数对比",@"土巴兔实测",@"口碑评价"]];
+//    [firstViewModel bindWithModel:@[@"瓷砖百科",@"参数对比",@"土巴兔实测",@"口碑评价"]];
+    [firstViewModel bindWithModel:self.viewModel.model.majorEntrances];
     [self.firstLevelEntranceView bindViewModel:firstViewModel];
     
     THKEntranceViewModel *secondViewModel = [[THKEntranceViewModel alloc] init];
-    [secondViewModel bindWithModel:@[@"品牌排行",@"实拍效果",@"选购技巧",@"价格计算",@"常见问题"]];
+//    [secondViewModel bindWithModel:@[@"品牌排行",@"实拍效果",@"选购技巧",@"价格计算",@"常见问题"]];
+    [secondViewModel bindWithModel:self.viewModel.model.minorEntrances];
     [self.secondLevelEntranceView bindViewModel:secondViewModel];
 }
 
@@ -105,7 +109,7 @@
         @weakify(self);
         [_coverImageView tmui_addSingerTapWithBlock:^{
             @strongify(self);
-            [self.tapCoverSubject sendNext:nil];
+            [self.tapCoverSubject sendNext:self.viewModel.model.banner];
         }];
     }
     return _coverImageView;
@@ -136,9 +140,9 @@
     if (!_firstLevelEntranceView) {
         _firstLevelEntranceView = [[THKEntranceView alloc] init];
         @weakify(self);
-        _firstLevelEntranceView.tapItem = ^(NSIndexPath * _Nonnull indexPath) {
+        _firstLevelEntranceView.tapItem = ^(NSIndexPath * _Nonnull indexPath, MaterialTabMajorEntrancesModel * _Nonnull entrance) {
             @strongify(self);
-            [self.tapEntrySubject sendNext:RACTuplePack(@(1),indexPath)];
+            [self.tapEntrySubject sendNext:RACTuplePack(@(1),indexPath,entrance)];
         };
     }
     return _firstLevelEntranceView;
@@ -149,9 +153,9 @@
     if (!_secondLevelEntranceView) {
         _secondLevelEntranceView = [[THKEntranceView alloc] init];
         @weakify(self);
-        _secondLevelEntranceView.tapItem = ^(NSIndexPath * _Nonnull indexPath) {
+        _secondLevelEntranceView.tapItem = ^(NSIndexPath * _Nonnull indexPath, MaterialTabMajorEntrancesModel * _Nonnull entrance) {
             @strongify(self);
-            [self.tapEntrySubject sendNext:RACTuplePack(@(2),indexPath)];
+            [self.tapEntrySubject sendNext:RACTuplePack(@(2),indexPath,entrance)];
         };
     }
     return _secondLevelEntranceView;
