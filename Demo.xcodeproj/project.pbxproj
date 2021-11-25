@@ -1966,10 +1966,10 @@
 		16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */ = {
 			isa = PBXGroup;
 			children = (
-				16A96202274F84C7002B6C89 /* Model */,
+				16DDC062274C774C000DAA29 /* ViewController */,
 				16DDC05C274C774C000DAA29 /* ViewModel */,
 				16DDC05F274C774C000DAA29 /* View */,
-				16DDC062274C774C000DAA29 /* ViewController */,
+				16A96202274F84C7002B6C89 /* Model */,
 			);
 			path = SelectMaterialHomeSection;
 			sourceTree = "<group>";
