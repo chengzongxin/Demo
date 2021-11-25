@@ -7,7 +7,7 @@
 
 #import "THKSelectMaterialHeaderView.h"
 #import "THKEntranceView.h"
-
+#import "THKSelectMaterialConst.h"
 @interface THKSelectMaterialHeaderView ()
 
 @property (nonatomic, strong) THKSelectMaterialHeaderViewModel *viewModel;
@@ -29,6 +29,8 @@
 
 @property (nonatomic, strong) RACSubject *tapEntrySubject;
 
+@property (nonatomic, assign) CGFloat viewHeight;
+
 @end
 
 @implementation THKSelectMaterialHeaderView
@@ -43,7 +45,7 @@
     [self.entryView addSubview:self.secondLevelEntranceView];
     
     [self.coverImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(StatusBarHeight + 55 + 36);
+        make.top.mas_equalTo(StatusBarHeight + kMaterialHomeSearchHeight + kMaterialHomeTabHeight);
         make.left.right.equalTo(self).inset(15);
         make.height.mas_equalTo(180);
     }];
@@ -89,6 +91,33 @@
 //    [secondViewModel bindWithModel:@[@"品牌排行",@"实拍效果",@"选购技巧",@"价格计算",@"常见问题"]];
     [secondViewModel bindWithModel:self.viewModel.model.minorEntrances];
     [self.secondLevelEntranceView bindViewModel:secondViewModel];
+}
+
+- (CGSize)sizeThatFits:(CGSize)size{
+    CGSize resultSize = CGSizeMake(size.width, 0);
+    
+    CGFloat height = 0;
+    
+    height += StatusBarHeight + kMaterialHomeSearchHeight + kMaterialHomeTabHeight;
+    
+    if (self.viewModel.model.banner.imgUrl.length) {
+        height += 180;
+    }
+    
+    height += 10;
+    if (self.viewModel.model.majorEntrances.count) {
+        height += 103;
+    }
+    
+    if (self.viewModel.model.minorEntrances.count) {
+        height += 73;
+    }
+    
+    height += 9.5;
+    
+    resultSize.height = height;
+    
+    return resultSize;
 }
 
 - (void)layoutSubviews{

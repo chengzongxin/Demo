@@ -7,11 +7,12 @@
 
 #import "THKViewModel.h"
 #import "THKAvatarViewModel.h"
+#import "THKMaterialCommunicateListModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKSelectMaterialCommunicationCellVM : THKViewModel
 
-//@property (nonatomic, strong, readonly) THKDecorationDiaryListModel *model;
+@property (nonatomic, strong, readonly) THKMaterialCommunicateListModel *model;
 @property (nonatomic, strong, readonly) THKAvatarViewModel *avatarVM;
 //@property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong, readonly) NSAttributedString *name;

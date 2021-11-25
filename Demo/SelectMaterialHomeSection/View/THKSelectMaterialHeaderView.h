@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) RACSubject *tapEntrySubject;
 
+@property (nonatomic, assign, readonly) CGFloat viewHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

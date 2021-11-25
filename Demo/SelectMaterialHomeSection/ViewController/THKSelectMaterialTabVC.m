@@ -9,6 +9,8 @@
 #import "THKDynamicTabsManager.h"
 #import "THKSelectMaterialHeaderView.h"
 #import "THKMaterialTabEntranceModel.h"
+#import "THKSelectMaterialConst.h"
+
 @interface THKSelectMaterialTabVC ()<THKDynamicTabsManagerDelegate>
 @property (nonatomic, strong) THKSelectMaterialTabVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
@@ -53,17 +55,17 @@
     [self.headerView.tapEntrySubject subscribeNext:^(id  _Nullable x) {
         RACTupleUnpack(NSNumber *num,NSIndexPath *indexPath,MaterialTabMajorEntrancesModel *model) = x;
         NSLog(@"%@-%@-%@",num,indexPath,model);
+        TRouter *router = [TRouter routerFromUrl:model.targetUrl];
+        [[TRouterManager sharedManager] performRouter:router];
     }];
-    
-    
-    [self.dynamicTabsManager loadTabs];
     
     [self.viewModel.requestTab.nextSignal subscribeNext:^(THKMaterialV3IndexEntranceResponse *x) {
         @strongify(self);
         NSLog(@"%@",x);
         THKSelectMaterialHeaderViewModel *headerViewModel = [[THKSelectMaterialHeaderViewModel alloc] initWithModel:x.data];
         [self.headerView bindViewModel:headerViewModel];
-        self.dynamicTabsManager.viewModel.headerContentViewHeight = 510;
+        CGSize size = [self.headerView sizeThatFits:CGSizeMax];
+        self.dynamicTabsManager.viewModel.headerContentViewHeight = size.height;
         
         [self.dynamicTabsManager.viewModel setTabs:x.data.tabs];
         [self.dynamicTabsManager loadTabs];

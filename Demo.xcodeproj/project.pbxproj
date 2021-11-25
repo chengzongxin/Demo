@@ -214,6 +214,10 @@
 		16A961EE274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961ED274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m */; };
 		16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F0274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m */; };
 		16A961F4274F2E1F002B6C89 /* THKMaterialTabEntranceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F3274F2E1F002B6C89 /* THKMaterialTabEntranceModel.m */; };
+		16A961F7274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F6274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.m */; };
+		16A961FA274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F9274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.m */; };
+		16A961FD274F6BDF002B6C89 /* THKMaterialCommunicateListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961FC274F6BDF002B6C89 /* THKMaterialCommunicateListModel.m */; };
+		16A96200274F72A1002B6C89 /* THKSelectMaterialConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961FF274F72A1002B6C89 /* THKSelectMaterialConst.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -728,6 +732,14 @@
 		16A961F0274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialV3IndexEntranceRequest.m; sourceTree = "<group>"; };
 		16A961F2274F2E1F002B6C89 /* THKMaterialTabEntranceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialTabEntranceModel.h; sourceTree = "<group>"; };
 		16A961F3274F2E1F002B6C89 /* THKMaterialTabEntranceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialTabEntranceModel.m; sourceTree = "<group>"; };
+		16A961F5274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3CommunicateListRequest.h; sourceTree = "<group>"; };
+		16A961F6274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialV3CommunicateListRequest.m; sourceTree = "<group>"; };
+		16A961F8274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3CommunicateLabelRequest.h; sourceTree = "<group>"; };
+		16A961F9274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialV3CommunicateLabelRequest.m; sourceTree = "<group>"; };
+		16A961FB274F6BDF002B6C89 /* THKMaterialCommunicateListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialCommunicateListModel.h; sourceTree = "<group>"; };
+		16A961FC274F6BDF002B6C89 /* THKMaterialCommunicateListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialCommunicateListModel.m; sourceTree = "<group>"; };
+		16A961FE274F72A1002B6C89 /* THKSelectMaterialConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialConst.h; sourceTree = "<group>"; };
+		16A961FF274F72A1002B6C89 /* THKSelectMaterialConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialConst.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -1921,6 +1933,12 @@
 				16A961F0274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m */,
 				16A961F2274F2E1F002B6C89 /* THKMaterialTabEntranceModel.h */,
 				16A961F3274F2E1F002B6C89 /* THKMaterialTabEntranceModel.m */,
+				16A961F5274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.h */,
+				16A961F6274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.m */,
+				16A961F8274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.h */,
+				16A961F9274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.m */,
+				16A961FB274F6BDF002B6C89 /* THKMaterialCommunicateListModel.h */,
+				16A961FC274F6BDF002B6C89 /* THKMaterialCommunicateListModel.m */,
 			);
 			path = SelectMaterial;
 			sourceTree = "<group>";
@@ -1967,6 +1985,8 @@
 				16DDC07D274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m */,
 				1630D98D274DD7F9009A04FA /* THKSelectMaterialCommunicationVM.h */,
 				1630D98E274DD7F9009A04FA /* THKSelectMaterialCommunicationVM.m */,
+				16A961FE274F72A1002B6C89 /* THKSelectMaterialConst.h */,
+				16A961FF274F72A1002B6C89 /* THKSelectMaterialConst.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2565,6 +2585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				16DDC07B274C9417000DAA29 /* THKSelectMaterialHeaderView.m in Sources */,
+				16A961F7274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.m in Sources */,
 				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
 				168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */,
 				16867A0D2692D76C00650023 /* TMCardComponentOldTopicAndQaStyleCell.m in Sources */,
@@ -2593,6 +2614,7 @@
 				168679A02692B8BA00650023 /* THKMaterialHotListResponse.m in Sources */,
 				16192B2C2692E13E00967C73 /* THKViewController+THKLoadingAnimationView.m in Sources */,
 				16867A082692D76C00650023 /* TMCardComponentRecommendTagsCell.m in Sources */,
+				16A961FA274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.m in Sources */,
 				16192B4E2692E1B100967C73 /* THKRouterPathDefine.m in Sources */,
 				16611B73269692D20089E41B /* THKMaterialHotRankHeader.m in Sources */,
 				1642AA4126D8D95000F5FACD /* THKDiaryDirectoryVC.m in Sources */,
@@ -2612,6 +2634,7 @@
 				16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				16611AC62696870F0089E41B /* GEScrollViewExposeManger.m in Sources */,
+				16A96200274F72A1002B6C89 /* THKSelectMaterialConst.m in Sources */,
 				1630D98B274DD7D0009A04FA /* THKAvatarViewModel.m in Sources */,
 				16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */,
 				16192AD62692E05700967C73 /* TUserAvatarView.m in Sources */,
@@ -2783,6 +2806,7 @@
 				16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
 				16867A032692D76C00650023 /* TMCardComponentCompanyStyleCell.m in Sources */,
+				16A961FD274F6BDF002B6C89 /* THKMaterialCommunicateListModel.m in Sources */,
 				16529F692745ED09002A3B65 /* DynamicTabLevelVM.m in Sources */,
 				16611B6F269692D20089E41B /* THKMaterialClassificationHeaderView.m in Sources */,
 				16611AC02696870F0089E41B /* GELoginTracker.m in Sources */,

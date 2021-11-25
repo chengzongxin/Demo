@@ -37,15 +37,20 @@ static NSString * const kCellIdentifier = @"kSelectMaterialCommunicationCell";
 // 绑定VM
 - (void)bindViewModel {
     [self.viewModel bindWithView:self.view scrollView:self.tableView appenBlock:^NSArray * _Nonnull(THKResponse * _Nonnull x) {
-//        THKMaterialHotListResponse *response = (THKMaterialHotListResponse *)x;
-        x.status = THKStatusSuccess;
-        return @[@"1",@"2",@"3",@"4",@"5",@"6"];
+        THKMaterialV3CommunicateListResponse *response = (THKMaterialV3CommunicateListResponse *)x;
+        return response.data;
     }];
+    
+    [self.viewModel.labelRequest.nextSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    }];
+    
     
     [self.viewModel addRefreshHeader];
     [self.viewModel addRefreshFooter];
     
     [self.viewModel.requestCommand execute:@1];
+    [self.viewModel.labelRequest execute:nil];
 }
 
 
@@ -186,6 +191,7 @@ static NSString * const kCellIdentifier = @"kSelectMaterialCommunicationCell";
 
 + (id)createVCWithRouter:(TRouter *)router{
     THKSelectMaterialCommunicationVM *selectMaterialVM = [[THKSelectMaterialCommunicationVM alloc] init];
+    selectMaterialVM.categoryId = [[router.param safeObjectForKey:@"categoryId"] integerValue];
     return [[self alloc] initWithViewModel:selectMaterialVM];
 }
 

@@ -10,6 +10,8 @@
 #import "THKSearchView.h"
 #import "THKSelectMaterialTabVC.h"
 #import "THKSelectMaterialTopBar.h"
+#import "THKSelectMaterialConst.h"
+
 @interface THKSelectMaterialHomeVC ()<THKDynamicTabsManagerDelegate>
 
 @property (nonatomic, strong) THKSelectMaterialHomeVM *viewModel;
@@ -123,7 +125,7 @@
         
         viewModel.layout = THKDynamicTabsLayoutType_Custom;
         viewModel.parentVC = self;
-        viewModel.sliderBarHeight = 55;
+//        viewModel.sliderBarHeight = kMaterialHomeTabHeight;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.hidden = YES;
         _dynamicTabsManager.sliderBar.minItemWidth = (TMUI_SCREEN_WIDTH - 30 )/ 5;

@@ -9,7 +9,7 @@
 
 @interface THKSelectMaterialCommunicationCellVM ()
 
-//@property (nonatomic, strong) THKDecorationDiaryListModel *model;
+@property (nonatomic, strong) THKMaterialCommunicateListModel *model;
 
 @property (nonatomic, strong) THKAvatarViewModel *avatarVM;
 @property (nonatomic, strong) NSAttributedString *name;
@@ -38,7 +38,7 @@
 @end
 
 @implementation THKSelectMaterialCommunicationCellVM
-
+@dynamic model;
 - (void)initialize{
     NSLog(@"%@",self.model);
     
@@ -56,9 +56,10 @@
 //    self.companyName = self.model.companyInfo.shortName?:@"";
 //    self.companyTag = @"提供服务";
     
-    self.name = [NSAttributedString tmui_attributedStringWithString:@"土巴兔小王" lineSpacing:10];;
-    self.tags = [NSAttributedString tmui_attributedStringWithString:@"土巴兔资深质检师" lineSpacing:10];
-    self.content = [NSAttributedString tmui_attributedStringWithString:@"暴力测评👷‍♂️二十年经验的装修工人为你们揭秘挑选瓷砖的秘密" lineSpacing:10];
+    self.name = [NSAttributedString tmui_attributedStringWithString:self.model.authorName lineSpacing:10];
+    
+    self.tags = [NSAttributedString tmui_attributedStringWithString:self.model.identityDesc lineSpacing:10];
+    self.content = [NSAttributedString tmui_attributedStringWithString:self.model.content lineSpacing:10];
     
 }
 
