@@ -113,7 +113,9 @@
         viewModel.layout = THKDynamicTabsLayoutType_Suspend;
         viewModel.parentVC = self;
         viewModel.headerContentViewHeight = 800;
-        viewModel.lockArea = StatusBarHeight + 36 + 55 + 44;
+        NSLog(@"%f,%f,%f,%f",StatusBarHeight,kMaterialHomeSearchHeight,kMaterialHomeTabHeight,viewModel.sliderBarHeight);
+        CGFloat lockArea = StatusBarHeight + kMaterialHomeSearchHeight + kMaterialHomeTabHeight + viewModel.sliderBarHeight;
+        viewModel.lockArea = lockArea;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.backgroundColor = UIColorHex(22C787);
         _dynamicTabsManager.delegate = self;

@@ -104,7 +104,6 @@
         height += 180;
     }
     
-    height += 10;
     if (self.viewModel.model.majorEntrances.count) {
         height += 103;
     }
@@ -113,7 +112,12 @@
         height += 73;
     }
     
-    height += 9.5;
+    if (self.viewModel.model.majorEntrances.count || self.viewModel.model.minorEntrances.count) {
+        height += 10; // top 边距
+        
+        height += 9.5; // bottom 边距
+    }
+    
     
     resultSize.height = height;
     

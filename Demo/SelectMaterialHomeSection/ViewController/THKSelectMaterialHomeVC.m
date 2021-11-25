@@ -37,7 +37,7 @@
     [self.view addSubview:self.topBar];
     [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.right.mas_equalTo(0);
-        make.height.mas_equalTo(StatusBarHeight+36);
+        make.height.mas_equalTo(StatusBarHeight+kMaterialHomeSearchHeight);
     }];
     
     [self.topBar addSubview:self.searchView];
@@ -45,7 +45,7 @@
         make.top.mas_equalTo(StatusBarHeight);
         make.left.equalTo(self.view).inset(54);
         make.right.equalTo(self.view).inset(15);
-        make.height.mas_equalTo(36);
+        make.height.mas_equalTo(kMaterialHomeSearchHeight);
     }];
     
     [self.view addSubview:self.dynamicTabsManager.sliderBar];
@@ -125,7 +125,7 @@
         
         viewModel.layout = THKDynamicTabsLayoutType_Custom;
         viewModel.parentVC = self;
-//        viewModel.sliderBarHeight = kMaterialHomeTabHeight;
+        viewModel.sliderBarHeight = kMaterialHomeTabHeight;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.hidden = YES;
         _dynamicTabsManager.sliderBar.minItemWidth = (TMUI_SCREEN_WIDTH - 30 )/ 5;
