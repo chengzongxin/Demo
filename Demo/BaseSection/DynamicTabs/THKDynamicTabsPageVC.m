@@ -89,7 +89,12 @@
 
 #pragma mark - 初始化子控制器
 - (void)initViewControllerWithIndex:(NSInteger)index {
-    self.currentViewController = self.controllersM[index];
+    UIViewController *vc = [self.controllersM safeObjectAtIndex:index];
+    if (!vc) {
+        NSAssert(!vc, @"controllersM is invalid");
+        return;
+    }
+    self.currentViewController = vc;
 
     self.pageIndex = index;
     NSString *title = [self titleWithIndex:index];
@@ -101,8 +106,12 @@
 
 /// 添加到父类控制器中
 - (void)addViewControllerToParent:(UIViewController *)viewController index:(NSInteger)index {
-    [self addChildViewController:self.controllersM[index]];
+    UIViewController *vc = [self.controllersM safeObjectAtIndex:index];
+    if (!vc) {
+        return;
+    }
     
+    [self addChildViewController:self.controllersM[index]];
     viewController.view.frame = CGRectMake(TMUI_SCREEN_WIDTH * index, 0, self.pageScrollView.width, self.pageScrollView.height);
     
     [self.pageScrollView addSubview:viewController.view];
@@ -349,7 +358,7 @@
             }
         }
 #if DEBUG
-        NSAssert(isHasNotEqualTitle, @"TitleArray Not allow equal title.");
+        //NSAssert(isHasNotEqualTitle, @"TitleArray Not allow equal title.");
 #endif
     }
 }

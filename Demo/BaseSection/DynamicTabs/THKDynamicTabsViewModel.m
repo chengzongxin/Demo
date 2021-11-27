@@ -72,7 +72,9 @@
 
 - (void)setTabs:(NSArray<THKDynamicTabsModel *> *)tabs{
     self.isUseExternalDataSource = YES;
-    self.segmentTabs = tabs;
+    if (tabs && tabs.count > 0) {
+        self.segmentTabs = tabs;
+    }
 }
 
 - (void)initialize {

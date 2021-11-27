@@ -209,6 +209,10 @@
     }
 }
 
+- (NSString *)pageViewController:(THKDynamicTabsPageVC *)pageViewController customCacheKeyForIndex:(NSInteger)index{
+    return [NSString stringWithFormat:@"%zd-%@",index,[pageViewController.titlesM safeObjectAtIndex:index]];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (scrollView == self.wrapperScrollView && self.delegate && [self.delegate respondsToSelector:@selector(wrapperScrollViewDidScroll:)]) {
         [self.delegate wrapperScrollViewDidScroll:self.wrapperScrollView];
