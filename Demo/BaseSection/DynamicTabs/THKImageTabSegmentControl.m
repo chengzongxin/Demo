@@ -48,8 +48,8 @@
         [containerView addSubview:self.textLabel];
         [self.textLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.iconImageView.mas_right).mas_offset(0);
-            make.centerY.equalTo(containerView);
-            make.right.mas_lessThanOrEqualTo(0);
+            make.right.mas_offset(0);
+            make.centerY.mas_offset(0);
             make.width.mas_equalTo(0);
         }];
         
@@ -65,22 +65,40 @@
 
 - (void)setButtonModel:(THKDynamicTabsModel *)model textWidth:(CGFloat)textWidth {
     _tabModel = model;
-    if (model.style != THKDynamicTabButtonStyle_TextOnly) {
-        [self.iconImageView loadImageWithUrlStr:model.image.url];
-        [self.iconImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.size.mas_equalTo(CGSizeMake(model.image.width, model.image.height));
-        }];
-    }
-    
-    if (model.style != THKDynamicTabButtonStyle_ImageOnly) {
+    if (model.style == THKDynamicTabButtonStyle_TextOnly) {
         self.textLabel.font =  model.displayModel.normalFont;
         self.textLabel.text = model.title;
+        self.textLabel.textAlignment = NSTextAlignmentCenter;
+        
         [self.textLabel mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(textWidth);
-            if (model.style == THKDynamicTabButtonStyle_TextAndImage) {
-                make.left.equalTo(self.iconImageView.mas_right).mas_offset(kImageAndTextOffset);
-            }
         }];
+        
+    } else if (model.style == THKDynamicTabButtonStyle_TextAndImage) {
+        self.textLabel.font =  model.displayModel.normalFont;
+        self.textLabel.text = model.title;
+        self.textLabel.textAlignment = NSTextAlignmentLeft;
+        
+        [self.iconImageView loadImageWithUrlStr:model.iconImage.url];
+        [self.iconImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(model.iconImage.width, model.iconImage.height));
+        }];
+        
+        [self.textLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(textWidth);
+        }];
+        
+    } else if (model.style == THKDynamicTabButtonStyle_ImageOnly) {
+        self.textLabel.text = @"";
+        
+        [self.iconImageView loadImageWithUrlStr:model.iconImage.url];
+        [self.iconImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(model.iconImage.width, model.iconImage.height));
+        }];
+    }
+
+    if (model.displayModel.normalBackgroundImage) {
+        [self setImage:model.displayModel.normalBackgroundImage forState:UIControlStateNormal];
     }
     
     if (model.displayModel.badgeImageColor) {
@@ -100,6 +118,12 @@
     if (self.tabModel.style != THKDynamicTabButtonStyle_ImageOnly) {
         self.textLabel.font = selected ? displayModel.selectedFont : displayModel.normalFont;
         self.textLabel.textColor = selected ? displayModel.selectedColor : displayModel.normalColor;
+    }
+    
+    if (selected) {
+        [self setBackgroundImage:self.tabModel.displayModel.selectedBackgroundImage forState:UIControlStateNormal];
+    } else {
+        [self setBackgroundImage:self.tabModel.displayModel.normalBackgroundImage forState:UIControlStateNormal];
     }
 }
 
@@ -157,10 +181,10 @@
         tempWidth += textWidth;
         tempWidth = MAX(tempWidth,self.minItemWidth);
         if (model.style == THKDynamicTabButtonStyle_TextAndImage) {
-            tempWidth += (model.image.width + kImageAndTextOffset);
+            tempWidth += (model.iconImage.width + kImageAndTextOffset);
         }
     } else if (model.style == THKDynamicTabButtonStyle_ImageOnly) { //纯图片
-        tempWidth += model.image.width;
+        tempWidth += model.iconImage.width;
     }
     
     THKImageTabSegmentButton *button = [[THKImageTabSegmentButton alloc] initWithFrame:CGRectMake(offsetX, 0, tempWidth, self.height)];

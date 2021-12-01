@@ -164,6 +164,14 @@
     return [self.viewModel.arrayChildVC safeObjectAtIndex:index];
 }
 
+- (void)updateSliderbarHeight:(CGFloat)height {
+    self.sliderBar.height = height;
+    self.viewModel.sliderBarHeight = height;
+    [self.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.mas_equalTo(height);
+    }];
+}
+
 #pragma mark - YNPageViewControllerDataSource
 - (UIScrollView *)pageViewController:(THKDynamicTabsPageVC *)pageViewController pageForIndex:(NSInteger)index {
     NSArray *vcs = self.viewModel.arrayChildVC;

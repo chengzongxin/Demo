@@ -85,6 +85,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadTabs;
 
+- (void)updateSliderbarHeight:(CGFloat)height;
+
 /**
  获取指定位置的vc
  */

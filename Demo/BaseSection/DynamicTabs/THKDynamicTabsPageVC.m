@@ -42,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.geDisableAutoTrack = YES;
 }
 
 - (void)bindViewModel{

@@ -170,17 +170,18 @@
             }
             
             if (obj.style == THKDynamicTabButtonStyle_ImageOnly) {
-                obj.image.width = (14 / obj.image.height) * obj.image.width;
-                obj.image.height = 14;
+                obj.iconImage.width = (14 / obj.iconImage.height) * obj.iconImage.width;
+                obj.iconImage.height = 14;
             } else if (obj.style == THKDynamicTabButtonStyle_TextAndImage) {
-                obj.image.height = 16;
-                obj.image.width = 16;
+                obj.iconImage.height = 16;
+                obj.iconImage.width = 16;
             }
-            THKDynamicTabDisplayModel *displayModel = [[THKDynamicTabDisplayModel alloc] init];
+            if (!obj.displayModel) {
+                obj.displayModel = [[THKDynamicTabDisplayModel alloc] init];
+            }
             if (self.configDynamicTabButtonModelBlock) {
-                self.configDynamicTabButtonModelBlock(displayModel,obj.tabId, obj.title);
+                self.configDynamicTabButtonModelBlock(obj.displayModel,obj.tabId, obj.title);
             }
-            obj.displayModel = displayModel;
 
             if (vc) {
                 [arrayVC addObject:vc];

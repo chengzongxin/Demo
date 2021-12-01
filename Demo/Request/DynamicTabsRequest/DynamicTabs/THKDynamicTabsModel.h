@@ -62,6 +62,9 @@ UIKIT_EXTERN DynamicTabsWholeCodeString const kDynamicTabsWholeCodeLocalDiaryCha
 @property (nonatomic, strong)     UIFont    *normalFont; //正常字体
 @property (nonatomic, strong)     UIFont    *selectedFont; //选中时的字体
 
+@property (nonatomic, strong)     UIImage *selectedBackgroundImage;//设置选中时的背景图片
+@property (nonatomic, strong)     UIImage *normalBackgroundImage;//设置正常状态下的背景图片
+
 @property (nonatomic, strong)     UIColor   *badgeImageColor; //右上角角标：小红点
 @property (nonatomic, assign)     CGFloat   scale; // 按钮的放大系数，如果设置了该值，则按钮(文字+图片)整体做缩放
 
@@ -75,13 +78,13 @@ UIKIT_EXTERN DynamicTabsWholeCodeString const kDynamicTabsWholeCodeLocalDiaryCha
 @property (nonatomic, assign)   NSInteger position; //标签位置
 @property (nonatomic, copy)     NSString *title ;//标签名称
 @property (nonatomic, assign)   NSInteger targetType;//标签打开类型，1-H5，2-原生，3-内容
-@property (nonatomic, copy)     NSString *targetUrl ;//标签跳转链接
+@property (nonatomic, copy)     NSString *targetUrl;//标签跳转链接
 @property (nonatomic, assign)   NSInteger origin;//标签内容来源
 @property (nonatomic, assign)   NSInteger userGroup;//number 用户分群id，0-全量用户
 @property (nonatomic, assign)   THKDynamicTabButtonStyle style;//0:纯文本/1:图文/2:纯图
 @property (nonatomic, assign)   BOOL selected;//是否为默认的选项
 
-@property (nonatomic, strong)   THKDynamicTabsHomeImageModel *image;
+@property (nonatomic, strong)   THKDynamicTabsHomeImageModel *iconImage;
 
 @property (nonatomic, strong)   THKDynamicTabDisplayModel *displayModel;
 
