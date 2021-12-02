@@ -48,13 +48,14 @@
 - (void)bindViewModel{
     [self initData];
     
-    if (self.controllersM.count == 0) {
-        return;
-    }
-    
-    [self checkParams];
     [self setupSubViews];
-    [self setSelectedPageIndex:self.pageIndex];
+    
+    // 吸顶后禁止滚动
+    RAC(self.pageScrollView,isEnableInfiniteScroll) = RACObserve(self.viewModel, isEnableInfiniteScroll);
+    
+    if (self.controllersM.count) {
+        [self setSelectedPageIndex:self.pageIndex];
+    }
 }
 
 - (void)initData {
@@ -456,11 +457,12 @@
         _pageScrollView.showsVerticalScrollIndicator = NO;
         _pageScrollView.showsHorizontalScrollIndicator = NO;
         _pageScrollView.scrollEnabled = self.viewModel.pageScrollEnabled;
+        _pageScrollView.isEnableInfiniteScroll = self.viewModel.isEnableInfiniteScroll;
         _pageScrollView.pagingEnabled = YES;
         _pageScrollView.bounces = NO;
         _pageScrollView.delegate = self;
         _pageScrollView.backgroundColor = [UIColor whiteColor];
-//        _pageScrollView.tmui_isWarpperNotScroll = YES;
+        _pageScrollView.tmui_isWarpperNotScroll = YES;
         if (@available(iOS 11.0, *)) {
             _pageScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }

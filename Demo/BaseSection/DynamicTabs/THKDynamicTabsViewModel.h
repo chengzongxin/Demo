@@ -34,6 +34,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat cutOutHeight;
 /// 当前VC，用于管理子VC生命周期
 @property (nonatomic, weak) UIViewController *parentVC;
+/// 是否开启无限滚动（嵌套Tab组件才需要开启）
+@property (nonatomic, assign) BOOL isEnableInfiniteScroll;
 
 
 + (instancetype)new NS_UNAVAILABLE;

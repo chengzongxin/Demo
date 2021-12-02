@@ -111,6 +111,7 @@
         };
         
         viewModel.layout = THKDynamicTabsLayoutType_Suspend;
+        viewModel.isEnableInfiniteScroll = YES;
         viewModel.parentVC = self;
         viewModel.headerContentViewHeight = 800;
         NSLog(@"%f,%f,%f,%f",StatusBarHeight,kMaterialHomeSearchHeight,kMaterialHomeTabHeight,viewModel.sliderBarHeight);

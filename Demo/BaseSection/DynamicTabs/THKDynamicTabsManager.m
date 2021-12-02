@@ -230,6 +230,13 @@
     }
 }
 
+- (void)pageWrapperScrollView:(TMUIPageWrapperScrollView *)pageWrapperScrollView pin:(BOOL)pin{
+    // 是否开启无限滚动功能
+    if (self.viewModel.isEnableInfiniteScroll) {
+        self.pageContainerVC.viewModel.isEnableInfiniteScroll = !pin;
+    }
+}
+
 #pragma mark - getter and setter
 
 - (UIView *)wrapperView{
@@ -268,6 +275,7 @@
         }else{
             vm.cutOutHeight = self.viewModel.cutOutHeight + self.viewModel.sliderBarHeight + NavigationContentTop;
         }
+        vm.isEnableInfiniteScroll = self.viewModel.isEnableInfiniteScroll;
         _pageContainerVC = [[THKDynamicTabsPageVC alloc] initWithViewModel:vm];
         _pageContainerVC.delegate = self;
         _pageContainerVC.dataSource = self;

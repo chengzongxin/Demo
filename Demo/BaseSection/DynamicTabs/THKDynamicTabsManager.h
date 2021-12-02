@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface THKDynamicTabsManager : NSObject<THKDynamicTabsPageVCDelegate,UIScrollViewDelegate>
+@interface THKDynamicTabsManager : NSObject<THKDynamicTabsPageVCDelegate,TMUIPageWrapperScrollViewDelegate>
 
 /**
  外部可根据需求定制sliderBar的样式，它的变化由viewmodel的segmentValueChangedSubject信号发出，外部不用再监听它的变化事件

@@ -17,8 +17,13 @@
     self = [super init];
     if (self) {
         _pageScrollEnabled = YES;
+        _isEnableInfiniteScroll = NO;
     }
     return self;
+}
+
+- (void)setIsEnableInfiniteScroll:(BOOL)isEnableInfiniteScroll{
+    _isEnableInfiniteScroll = isEnableInfiniteScroll;
 }
 
 @end
