@@ -215,6 +215,9 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didScroll:progress:formIndex:toIndex:)]) {
         [self.delegate pageViewController:pageViewController didScroll:scrollView progress:progress formIndex:fromIndex toIndex:toIndex];
     }
+    if (_wrapperScrollView) {
+        [_wrapperScrollView childViewControllerDidChanged:[self.pageContainerVC.controllersM safeObjectAtIndex:self.pageContainerVC.pageIndex]];
+    }
 }
 
 - (NSString *)pageViewController:(THKDynamicTabsPageVC *)pageViewController customCacheKeyForIndex:(NSInteger)index{

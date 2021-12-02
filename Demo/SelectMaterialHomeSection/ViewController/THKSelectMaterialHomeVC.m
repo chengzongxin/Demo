@@ -66,14 +66,16 @@
 
 - (void)bindViewModel{
     
-    @weakify(self);
-    [self.viewModel.requestTab.executionSignals.switchToLatest subscribeNext:^(THKMaterialV3IndexTopTabResponse *x) {
-        @strongify(self);
-        [self.dynamicTabsManager.viewModel setTabs:x.data];
-        [self.dynamicTabsManager loadTabs];
-    }];
+//    @weakify(self);
+//    [self.viewModel.requestTab.executionSignals.switchToLatest subscribeNext:^(THKMaterialV3IndexTopTabResponse *x) {
+//        @strongify(self);
+//        [self.dynamicTabsManager.viewModel setTabs:x.data];
+//        [self.dynamicTabsManager loadTabs];
+//    }];
     
     [self.viewModel.requestTab execute:nil];
+    
+    [self.dynamicTabsManager loadTabs];
 }
 
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
@@ -128,7 +130,7 @@
         viewModel.sliderBarHeight = kMaterialHomeTabHeight;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.hidden = YES;
-        _dynamicTabsManager.sliderBar.minItemWidth = (TMUI_SCREEN_WIDTH - 30 )/ 5;
+        _dynamicTabsManager.sliderBar.minItemWidth = (TMUI_SCREEN_WIDTH - 25 )/ 5;
         _dynamicTabsManager.delegate = self;
     }
     return _dynamicTabsManager;

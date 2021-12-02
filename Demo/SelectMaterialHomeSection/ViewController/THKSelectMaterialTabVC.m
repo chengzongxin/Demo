@@ -67,7 +67,7 @@
         CGSize size = [self.headerView sizeThatFits:CGSizeMax];
         self.dynamicTabsManager.viewModel.headerContentViewHeight = size.height;
         
-        [self.dynamicTabsManager.viewModel setTabs:x.data.tabs];
+//        [self.dynamicTabsManager.viewModel setTabs:x.data.tabs];
         [self.dynamicTabsManager loadTabs];
     }];
     

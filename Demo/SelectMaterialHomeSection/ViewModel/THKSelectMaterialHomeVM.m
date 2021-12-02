@@ -26,7 +26,7 @@
             model.targetType = THKDynamicTabTargetType_Origin;
             model.position = idx;
             model.selected = (idx == 0);
-            model.targetUrl = [NSString stringWithFormat:@"%@://%@%@?wholeCode=index", TRouter_Scheme, TRouter_Build_Host,THKRouterPage_MaterialHomeTab];
+            model.targetUrl = [NSString stringWithFormat:@"%@://%@%@?categoryId=1", TRouter_Scheme, TRouter_Build_Host,THKRouterPage_MaterialHomeTab];
             model.origin = THKDynamicConfigOriginType_HomePage;
             [arrayTemp addObject:model];
         }];
