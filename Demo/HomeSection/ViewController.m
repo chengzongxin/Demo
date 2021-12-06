@@ -15,7 +15,7 @@
 #import "DynamicTabDemoList.h"
 #import "THKQuickCommentsView.h"
 #import "THKSelectMaterialHomeVC.h"
-
+#import "THKNewcomerProcessVC.h"
 @interface ViewController ()
 
 @end
@@ -79,7 +79,22 @@
         [self.navigationController pushViewController:vc animated:YES];
     });
     
-    View.bgColor(@"random").xywh(100,600,100,100).addTo(self.view);
+    Button.str(@"选材").bgColor(@"random").xywh(100,400,100,100).addTo(self.view).onClick(^{
+        THKSelectMaterialHomeVM *vm = [[THKSelectMaterialHomeVM alloc] init];
+        THKSelectMaterialHomeVC *vc = [[THKSelectMaterialHomeVC alloc] initWithViewModel:vm];
+        
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    });
+    
+    Button.str(@"新人流程").bgColor(@"random").xywh(250,400,100,100).addTo(self.view).onClick(^{
+        THKNewcomerProcessVM *vm = [[THKNewcomerProcessVM alloc] init];
+        THKNewcomerProcessVC *vc = [[THKNewcomerProcessVC alloc] initWithViewModel:vm];
+        
+        [vc showInSomeRootVC:self];
+    });
+    
+//    View.bgColor(@"random").xywh(100,600,100,100).addTo(self.view);
     
     [self comment];
 }
