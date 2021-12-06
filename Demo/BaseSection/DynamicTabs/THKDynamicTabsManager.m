@@ -251,6 +251,7 @@
         _wrapperScrollView = [[TMUIPageWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
         _wrapperScrollView.showsHorizontalScrollIndicator = NO;
         _wrapperScrollView.delegate = self;
+        _wrapperScrollView.scrollsToTop = YES;
         if (@available(iOS 11.0, *)) {
             _wrapperScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {

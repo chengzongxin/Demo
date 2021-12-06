@@ -462,6 +462,7 @@
         _pageScrollView.bounces = NO;
         _pageScrollView.delegate = self;
         _pageScrollView.backgroundColor = [UIColor whiteColor];
+        _pageScrollView.scrollsToTop = NO;
         _pageScrollView.tmui_isWarpperNotScroll = YES;
         if (@available(iOS 11.0, *)) {
             _pageScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

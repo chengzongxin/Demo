@@ -79,6 +79,8 @@
         [self.navigationController pushViewController:vc animated:YES];
     });
     
+    View.bgColor(@"random").xywh(100,600,100,100).addTo(self.view);
+    
     [self comment];
 }
 
@@ -104,6 +106,7 @@
 
 CAAnimation *_anim;
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSLog(@"%@,%@",touches,event);
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(300, 300, 100, 30)];
     view.backgroundColor = UIColor.tmui_randomColor;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
@@ -120,6 +123,13 @@ CAAnimation *_anim;
     
 }
 
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSLog(@"%@,%@",touches,event);
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    NSLog(@"%@,%@",touches,event);
+}
 
 - (CAAnimation *)commentFlyAnimate:(CGPoint)startPoint{
     
