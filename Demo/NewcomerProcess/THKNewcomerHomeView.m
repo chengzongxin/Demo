@@ -7,16 +7,6 @@
 
 #import "THKNewcomerHomeView.h"
 #import "THKNewcomerAnimation.h"
-@interface THKNewcomerHomeSelectStageCell : UITableViewCell
-@property (nonatomic, strong) UIView *bgView;
-/// icon
-@property (nonatomic, strong) UIImageView *iconView;
-/// title
-@property (nonatomic, strong) UILabel  *titleLabel;
-/// 箭头
-@property (nonatomic, strong) UIImageView  *arrowView;
-
-@end
 
 @implementation THKNewcomerHomeSelectStageCell
 
@@ -210,28 +200,48 @@ static UIEdgeInsets const kContentInset = {0,20,0,20};
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
     THKNewcomerHomeSelectStageCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    !self.animateView?:self.animateView(indexPath.row,cell);
     
-//    CAAnimation *anim = [THKNewcomerAnimation selectBgViewScale];
-//    [self.selectStageView.layer addAnimation:anim forKey:nil];
+    @weakify(self);
+    void (^finishAnimate)(BOOL) = ^(BOOL finished) {
+        @strongify(self);
+        !self.tapItem?:self.tapItem(indexPath.row,cell);
+    };
     
+    // 背景放大
+    [self bgViewScaleAnimateCompletion:finishAnimate];
+    // 选中cell平移
+    [self selectCellMoveAnimate:cell];
+    // 非选中cell上移
+    [self unselectCellDissmissAnimate:indexPath];
+}
+
+- (void)bgViewScaleAnimateCompletion:(void (^)(BOOL finished))completion{
     [self.selectStageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
     }];
-    
     [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:10 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//        self.selectStageView.frame = self.bounds;
         [self layoutSubviews];
-    } completion:^(BOOL finished) {
-        !self.tapItem?:self.tapItem(indexPath.row,cell.titleLabel);
-    }];
+    } completion:completion];
+}
+
+/// MARK: 选中cell移动
+- (void)selectCellMoveAnimate:(THKNewcomerHomeSelectStageCell *)cell{
+    CGRect rect = [cell.titleLabel tmui_convertRect:cell.titleLabel.bounds toViewOrWindow:self.superview];
+    [cell.titleLabel removeFromSuperview];
+    [self.superview addSubview:cell.titleLabel];
+    cell.titleLabel.frame = rect;
     
-    [tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        CGRect rect = [obj tmui_convertRect:obj.bounds toViewOrWindow:tableView];
+    CAAnimation *anim = [THKNewcomerAnimation cellMove:rect.origin endPoint:CGPointMake(165, 117)];
+    [cell.titleLabel.layer addAnimation:anim forKey:nil];
+}
+
+- (void)unselectCellDissmissAnimate:(NSIndexPath *)indexPath{
+    [self.tableView.visibleCells enumerateObjectsUsingBlock:^(__kindof UITableViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGRect rect = [obj tmui_convertRect:obj.bounds toViewOrWindow:self.tableView];
         CGPoint startP = CGRectGetCenter(rect);
-        CGPoint endP = CGPointMake(startP.x, startP.y - idx * 90 / 2 - 200);
+        CGPoint endP = CGPointMake(startP.x, startP.y - idx * 90 / 1.5 - 200);
         CAAnimation *anim = [THKNewcomerAnimation cellDismiss:startP endPoint:endP];
         [obj.layer addAnimation:anim forKey:nil];
     }];

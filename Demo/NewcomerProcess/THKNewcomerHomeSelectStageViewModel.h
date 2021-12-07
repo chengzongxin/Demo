@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKNewcomerStageViewModel : THKViewModel
+@interface THKNewcomerHomeSelectStageViewModel : THKViewModel
 
 @property (nonatomic, strong, readonly) RACSubject *skipSignal;
 

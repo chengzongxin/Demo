@@ -9,7 +9,7 @@
 
 @interface THKNewcomerStageView ()
 
-@property (nonatomic, strong) THKNewcomerStageViewModel *viewModel;
+@property (nonatomic, strong) THKNewcomerHomeSelectStageViewModel *viewModel;
 
 @end
 

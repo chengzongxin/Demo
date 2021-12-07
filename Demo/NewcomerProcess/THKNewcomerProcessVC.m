@@ -8,7 +8,8 @@
 #import "THKNewcomerProcessVC.h"
 #import "THKNewcomerHomeView.h"
 #import "THKNewcomerStageView.h"
-
+#import "THKNewcomerHomeSelectStageView.h"
+#import "THKNewcomerAnimation.h"
 @interface THKNewcomerProcessVC ()
 
 @property (nonatomic, strong, readwrite) THKNewcomerProcessVM *viewModel;
@@ -53,30 +54,44 @@
 - (void)firstStage{
     THKNewcomerHomeViewModel *homeVM = [[THKNewcomerHomeViewModel alloc] init];
     THKNewcomerHomeView *homeView = [[THKNewcomerHomeView alloc] initWithViewModel:homeVM];
-    [self.view addSubview:homeView];
+    [self.view insertSubview:homeView belowSubview:self.skipBtn];
     [homeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
     
     @weakify(self);
-    [homeVM.skipSignal subscribeNext:^(id  _Nullable x) {
+    homeView.tapItem = ^(NSInteger idx, THKNewcomerHomeSelectStageCell * _Nonnull cell) {
         @strongify(self);
-        [self finish];
-    }];
-    
-    homeView.tapItem = ^(NSInteger idx, UILabel * _Nonnull label) {
-        @strongify(self);
-        [self secondStage:label];
+        [self secondStage:cell];
     };
+//    homeView.animateView = ^(NSInteger idx, THKNewcomerHomeSelectStageCell * _Nonnull cell) {
+//        @strongify(self);
+//        [self secondStage:cell];
+//    };
 }
 
-- (void)secondStage:(UILabel *)label{
-    NSLog(@"%@",label);
-    [self finish];
+- (void)secondStage:(THKNewcomerHomeSelectStageCell *)cell{
+    NSLog(@"%@",cell);
+    
+    THKNewcomerHomeSelectStageViewModel *stageVM = [[THKNewcomerHomeSelectStageViewModel alloc] init];
+    THKNewcomerHomeSelectStageView *stageView = [[THKNewcomerHomeSelectStageView alloc] initWithViewModel:stageVM];
+    [self.view insertSubview:stageView belowSubview:self.skipBtn];
+    
+    [stageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    
+//    [cell.titleLabel removeFromSuperview];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self finish];
+//    });
 }
 
 - (void)skipBtnClick:(id)sender{
-//    [self.viewModel.skipSignal sendNext:sender];
+    NSLog(@"%@",sender);
+    
+    [self finish];
 }
 
 
@@ -98,7 +113,6 @@
         _skipBtn.tmui_font = UIFontRegular(14.0);
         _skipBtn.imagePosition = TMUIButtonImagePositionRight;
         [_skipBtn tmui_addTarget:self action:@selector(skipBtnClick:)];
-        _skipBtn.layer.zPosition = 999;
     }
     return _skipBtn;
 }

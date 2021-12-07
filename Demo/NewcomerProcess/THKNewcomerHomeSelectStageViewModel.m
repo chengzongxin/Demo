@@ -5,15 +5,15 @@
 //  Created by Joe.cheng on 2021/12/6.
 //
 
-#import "THKNewcomerStageViewModel.h"
+#import "THKNewcomerHomeSelectStageViewModel.h"
 
-@interface THKNewcomerStageViewModel ()
+@interface THKNewcomerHomeSelectStageViewModel ()
 
 @property (nonatomic, strong) RACSubject *skipSignal;
 
 @end
 
-@implementation THKNewcomerStageViewModel
+@implementation THKNewcomerHomeSelectStageViewModel
 
 
 TMUI_PropertyLazyLoad(RACSubject, skipSignal)

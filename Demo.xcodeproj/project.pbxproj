@@ -71,6 +71,7 @@
 		1630D992274DDD11009A04FA /* THKSelectMaterialCommunicationCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D991274DDD11009A04FA /* THKSelectMaterialCommunicationCellVM.m */; };
 		1630D996274DE78D009A04FA /* THKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D993274DE78D009A04FA /* THKTableViewCell.m */; };
 		1630D9DC274E66BD009A04FA /* THKSelectMaterialTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D9DB274E66BD009A04FA /* THKSelectMaterialTopBar.m */; };
+		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
 		1642AA3626D8C87200F5FACD /* THKDiaryBookBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1642AA3526D8C87200F5FACD /* THKDiaryBookBottomBar.xib */; };
 		1642AA4126D8D95000F5FACD /* THKDiaryDirectoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA4026D8D95000F5FACD /* THKDiaryDirectoryVC.m */; };
@@ -216,7 +217,7 @@
 		16B1F518275DF54A00FF18C4 /* THKNewcomerProcessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F517275DF54A00FF18C4 /* THKNewcomerProcessVC.m */; };
 		16B1F51B275DFFEF00FF18C4 /* THKNewcomerHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F51A275DFFEF00FF18C4 /* THKNewcomerHomeView.m */; };
 		16B1F51E275E000000FF18C4 /* THKNewcomerStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F51D275E000000FF18C4 /* THKNewcomerStageView.m */; };
-		16B1F521275E000C00FF18C4 /* THKNewcomerStageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F520275E000C00FF18C4 /* THKNewcomerStageViewModel.m */; };
+		16B1F521275E000C00FF18C4 /* THKNewcomerHomeSelectStageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F520275E000C00FF18C4 /* THKNewcomerHomeSelectStageViewModel.m */; };
 		16B1F524275E001700FF18C4 /* THKNewcomerHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F523275E001700FF18C4 /* THKNewcomerHomeViewModel.m */; };
 		16B1F527275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F526275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m */; };
 		16B1F52A275E1B6D00FF18C4 /* THKNewcomerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F529275E1B6D00FF18C4 /* THKNewcomerAnimation.m */; };
@@ -441,6 +442,8 @@
 		1630D995274DE78D009A04FA /* THKTableViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKTableViewCellProtocol.h; sourceTree = "<group>"; };
 		1630D9DA274E66BD009A04FA /* THKSelectMaterialTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTopBar.h; sourceTree = "<group>"; };
 		1630D9DB274E66BD009A04FA /* THKSelectMaterialTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialTopBar.m; sourceTree = "<group>"; };
+		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
+		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
 		1642AA2F26D8BFB200F5FACD /* THKDiaryBookBottomBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookBottomBar.h; sourceTree = "<group>"; };
 		1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookBottomBar.m; sourceTree = "<group>"; };
 		1642AA3526D8C87200F5FACD /* THKDiaryBookBottomBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THKDiaryBookBottomBar.xib; sourceTree = "<group>"; };
@@ -743,8 +746,8 @@
 		16B1F51A275DFFEF00FF18C4 /* THKNewcomerHomeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeView.m; sourceTree = "<group>"; };
 		16B1F51C275E000000FF18C4 /* THKNewcomerStageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerStageView.h; sourceTree = "<group>"; };
 		16B1F51D275E000000FF18C4 /* THKNewcomerStageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerStageView.m; sourceTree = "<group>"; };
-		16B1F51F275E000C00FF18C4 /* THKNewcomerStageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerStageViewModel.h; sourceTree = "<group>"; };
-		16B1F520275E000C00FF18C4 /* THKNewcomerStageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerStageViewModel.m; sourceTree = "<group>"; };
+		16B1F51F275E000C00FF18C4 /* THKNewcomerHomeSelectStageViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageViewModel.h; sourceTree = "<group>"; };
+		16B1F520275E000C00FF18C4 /* THKNewcomerHomeSelectStageViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageViewModel.m; sourceTree = "<group>"; };
 		16B1F522275E001700FF18C4 /* THKNewcomerHomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeViewModel.h; sourceTree = "<group>"; };
 		16B1F523275E001700FF18C4 /* THKNewcomerHomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeViewModel.m; sourceTree = "<group>"; };
 		16B1F525275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageView.h; sourceTree = "<group>"; };
@@ -1956,14 +1959,16 @@
 				16B1F514275DF53B00FF18C4 /* THKNewcomerProcessVM.m */,
 				16B1F519275DFFEF00FF18C4 /* THKNewcomerHomeView.h */,
 				16B1F51A275DFFEF00FF18C4 /* THKNewcomerHomeView.m */,
-				16B1F525275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.h */,
-				16B1F526275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m */,
 				16B1F522275E001700FF18C4 /* THKNewcomerHomeViewModel.h */,
 				16B1F523275E001700FF18C4 /* THKNewcomerHomeViewModel.m */,
 				16B1F51C275E000000FF18C4 /* THKNewcomerStageView.h */,
 				16B1F51D275E000000FF18C4 /* THKNewcomerStageView.m */,
-				16B1F51F275E000C00FF18C4 /* THKNewcomerStageViewModel.h */,
-				16B1F520275E000C00FF18C4 /* THKNewcomerStageViewModel.m */,
+				16B1F525275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.h */,
+				16B1F526275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m */,
+				16B1F51F275E000C00FF18C4 /* THKNewcomerHomeSelectStageViewModel.h */,
+				16B1F520275E000C00FF18C4 /* THKNewcomerHomeSelectStageViewModel.m */,
+				16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */,
+				16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */,
 				16B1F528275E1B6D00FF18C4 /* THKNewcomerAnimation.h */,
 				16B1F529275E1B6D00FF18C4 /* THKNewcomerAnimation.m */,
 			);
@@ -2668,7 +2673,7 @@
 				16A961FA274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.m in Sources */,
 				16192B4E2692E1B100967C73 /* THKRouterPathDefine.m in Sources */,
 				16611B73269692D20089E41B /* THKMaterialHotRankHeader.m in Sources */,
-				16B1F521275E000C00FF18C4 /* THKNewcomerStageViewModel.m in Sources */,
+				16B1F521275E000C00FF18C4 /* THKNewcomerHomeSelectStageViewModel.m in Sources */,
 				1642AA4126D8D95000F5FACD /* THKDiaryDirectoryVC.m in Sources */,
 				16611AB82696870F0089E41B /* GEWidgetProcessor.m in Sources */,
 				16867A052692D76C00650023 /* TMCardComponentScrollAdsIndicatorView.m in Sources */,
@@ -2712,6 +2717,7 @@
 				16192B242692E13E00967C73 /* THKPushPopAsLocationToListSimulationTransition.m in Sources */,
 				16B1F515275DF53B00FF18C4 /* THKNewcomerProcessVM.m in Sources */,
 				16611B7F269693DA0089E41B /* THKPageBGScrollView.m in Sources */,
+				16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */,
 				16192BFD2693012100967C73 /* TCaseDetailTopBar.m in Sources */,
 				16192B372692E13E00967C73 /* THKAnimationPanDelegate.m in Sources */,
 				16867A172692D76C00650023 /* TMCardComponentHelper.m in Sources */,

@@ -119,32 +119,32 @@
 }
 
 
-CAAnimation *_anim;
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSLog(@"%@,%@",touches,event);
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(300, 300, 100, 30)];
-    view.backgroundColor = UIColor.tmui_randomColor;
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
-    label.text = @"开工大吉";
-    [view addSubview:label];
-//    view.layer.anchorPoint = CGPointMake(0, 0);
-    [self.navigationController.view addSubview:view];
-    CAAnimation *anim = [self commentFlyAnimate:CGPointMake(300, 300)];
-    __weak typeof(view) weakView = view;
-    anim.tmui_animationDidStopBlock = ^(__kindof CAAnimation * _Nonnull aAnimation, BOOL finished) {
-        [weakView removeFromSuperview];
-    };
-    [view.layer addAnimation:anim forKey:@"commentAnim"];
-    
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSLog(@"%@,%@",touches,event);
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    NSLog(@"%@,%@",touches,event);
-}
+//CAAnimation *_anim;
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    NSLog(@"%@,%@",touches,event);
+//    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(300, 300, 100, 30)];
+//    view.backgroundColor = UIColor.tmui_randomColor;
+//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 30)];
+//    label.text = @"开工大吉";
+//    [view addSubview:label];
+////    view.layer.anchorPoint = CGPointMake(0, 0);
+//    [self.navigationController.view addSubview:view];
+//    CAAnimation *anim = [self commentFlyAnimate:CGPointMake(300, 300)];
+//    __weak typeof(view) weakView = view;
+//    anim.tmui_animationDidStopBlock = ^(__kindof CAAnimation * _Nonnull aAnimation, BOOL finished) {
+//        [weakView removeFromSuperview];
+//    };
+//    [view.layer addAnimation:anim forKey:@"commentAnim"];
+//    
+//}
+//
+//- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    NSLog(@"%@,%@",touches,event);
+//}
+//
+//- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    NSLog(@"%@,%@",touches,event);
+//}
 
 - (CAAnimation *)commentFlyAnimate:(CGPoint)startPoint{
     
