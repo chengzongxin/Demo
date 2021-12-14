@@ -11,7 +11,7 @@
 #import "THKMaterialTabEntranceModel.h"
 #import "THKSelectMaterialConst.h"
 
-@interface THKSelectMaterialTabVC ()<THKDynamicTabsManagerDelegate>
+@interface THKSelectMaterialTabVC ()<THKDynamicTabsManagerDelegate,TMUIPageWrapperScrollViewDelegate>
 @property (nonatomic, strong) THKSelectMaterialTabVM *viewModel;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
 @property (nonatomic, strong) THKSelectMaterialHeaderView *headerView;
@@ -76,10 +76,10 @@
     [self.viewModel.requestTab execute:nil];
     
 //    @weakify(self);
-    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"TMUIPageWrapperScrollViewContentOffsetRealChange" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-        @strongify(self);
-        [self wrapperScrollViewDidScroll:x.object];
-    }];
+//    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"TMUIPageWrapperScrollViewContentOffsetRealChange" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+//        @strongify(self);
+//        [self wrapperScrollViewDidScroll:x.object];
+//    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -99,15 +99,15 @@
 
 CGFloat _offsetY = 0.0;
 CGFloat _offsetTabY = -44.0;
-- (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView{
+
+- (void)pageWrapperScrollViewRealChanged:(TMUIPageWrapperScrollView *)wrapperScrollView diff:(CGFloat)diff{
+    //  往上滑，diff减少，往下滑，diff增加
     if (wrapperScrollView.tmui_isAtTop) {
         return;
     }
     CGFloat lockArea = self.dynamicTabsManager.viewModel.lockArea;
     CGFloat inset = wrapperScrollView.contentOffset.y + lockArea + kMaterialHomeTabHeight;
     
-    //  往上滑，diff减少，往下滑，diff增加
-    CGFloat diff = [wrapperScrollView tmui_getBoundDoubleForKey:@"diff"];
     _offsetY += diff;
     if (_offsetY < -kMaterialHomeTabHeight) {
         _offsetY = -kMaterialHomeTabHeight;
@@ -133,7 +133,6 @@ CGFloat _offsetTabY = -44.0;
             diff = 0;
         }
         _offsetTabY -= diff;
-//        _offsetTabY = -44;
         if (_offsetTabY < -44) {
             _offsetTabY = -44;
         }
@@ -171,7 +170,7 @@ CGFloat _offsetTabY = -44.0;
         viewModel.lockArea = lockArea;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.backgroundColor = UIColorHex(22C787);
-//        _dynamicTabsManager.delegate = self;
+        _dynamicTabsManager.wrapperScrollView.delegate = self;
     }
     return _dynamicTabsManager;
 }
