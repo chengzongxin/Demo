@@ -98,7 +98,7 @@
 #pragma mark - Delegate
 
 CGFloat _offsetY = 0.0;
-CGFloat _offsetTabY = 0.0;
+CGFloat _offsetTabY = -44.0;
 - (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView{
     if (wrapperScrollView.tmui_isAtTop) {
         return;
@@ -121,24 +121,27 @@ CGFloat _offsetTabY = 0.0;
     [NSNotificationCenter.defaultCenter postNotificationName:@"wrapperScrollViewDidScroll" object:@(_offsetY)];
     
     if (wrapperScrollView.pin) {
-        
         _offsetTabY += diff;
         if (_offsetTabY < -44) {
             _offsetTabY = -44;
         }
-        if (_offsetTabY > 0) {
-            _offsetTabY = 0;
+        if (_offsetTabY > kMaterialHomeTabHeight - 44) {
+            _offsetTabY = kMaterialHomeTabHeight - 44;
         }
-        
-//        CGFloat tabTop = _offsetY
-        [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(_offsetTabY);
-        }];
     }else{
-        [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(-44);
-        }];
+        if (diff < 0) {
+            diff = 0;
+        }
+        _offsetTabY -= diff;
+//        _offsetTabY = -44;
+        if (_offsetTabY < -44) {
+            _offsetTabY = -44;
+        }
     }
+    
+    [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_offsetTabY);
+    }];
 }
 
 
