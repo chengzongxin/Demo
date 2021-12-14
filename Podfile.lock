@@ -20,6 +20,31 @@ PODS:
   - MJExtension (3.2.2)
   - MJRefresh (3.6.1)
   - ReactiveObjC (3.1.1)
+  - TBasicLib (0.8.67):
+    - TBasicLib/CommonConstant (= 0.8.67)
+    - TBasicLib/CommonDefine (= 0.8.67)
+    - TBasicLib/CommonInline (= 0.8.67)
+    - TBasicLib/CommonTool (= 0.8.67)
+  - TBasicLib/CommonConstant (0.8.67)
+  - TBasicLib/CommonDefine (0.8.67)
+  - TBasicLib/CommonInline (0.8.67)
+  - TBasicLib/CommonTool (0.8.67)
+  - TMEmptyView (1.0.0):
+    - Masonry (= 1.1.0)
+    - TBasicLib (= 0.8.67)
+    - TMEmptyView/Content (= 1.0.0)
+    - TMEmptyView/Resources (= 1.0.0)
+  - TMEmptyView/Content (1.0.0):
+    - Masonry (= 1.1.0)
+    - TBasicLib (= 0.8.67)
+  - TMEmptyView/Resources (1.0.0):
+    - Masonry (= 1.1.0)
+    - TBasicLib (= 0.8.67)
+  - TMToast (1.1.0):
+    - Masonry (= 1.1.0)
+    - TMToast/Resources (= 1.1.0)
+  - TMToast/Resources (1.1.0):
+    - Masonry (= 1.1.0)
   - TMUIKit (1.1.4):
     - Masonry (~> 1.1.0)
     - TMUIKit/TMUIComponents (= 1.1.4)
@@ -234,10 +259,16 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - ReactiveObjC
+  - TMEmptyView
+  - TMToast
   - TMUIKit (from `/Users/joe.cheng/tmuikit/TMUIKit_Debug.podspec`)
   - YYKit
 
 SPEC REPOS:
+  "git@repo.we.com:ios/tspecsrepo.git":
+    - TBasicLib
+    - TMEmptyView
+    - TMToast
   https://github.com/CocoaPods/Specs.git:
     - YYKit
   trunk:
@@ -261,9 +292,12 @@ SPEC CHECKSUMS:
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  TBasicLib: cb7fd97a9beddec2c8ed443e7a3846ba975e83a0
+  TMEmptyView: 8efd9407d9fdf2a66e2b00264c8154e84fa7f8fb
+  TMToast: 28b5935120a1f68efa37c3a2cee9ff797d1001da
   TMUIKit: 4ad154acdf1857157066637f49a90712908d62bd
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: ba7068843aeae3bc48879916d6246647552ec552
+PODFILE CHECKSUM: d89276dc20c8adc8302ff980756bd90673c56761
 
 COCOAPODS: 1.10.0

@@ -360,7 +360,7 @@
 #if DEBUG
     if (msg.length > 0) {
         NSLog(@"%@", msg);
-        [TMToast toast:msg hideAfterDelay:3 hideFinishBlock:nil];
+//        [TMToast toast:msg hideAfterDelay:3 hideFinishBlock:nil];
     }
 #endif
 }

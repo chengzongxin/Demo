@@ -40,7 +40,7 @@
 @implementation THKSelectMaterialCommunicationCellVM
 @dynamic model;
 - (void)initialize{
-    NSLog(@"%@",self.model);
+//    NSLog(@"%@",self.model);
     
 //    self.avatarVM = [[THKAvatarViewModel alloc] initWithAvatarUrl:self.model.userInfo.authorAvatar identityType:self.model.userInfo.identificationType identitySubType:self.model.userInfo.subCategory];
 //    

@@ -21,7 +21,7 @@
 @dynamic viewModel;
 #pragma mark - Life Cycle
 - (void)dealloc{
-    NSLog(@"THKIdentityView dealloc");
+//    NSLog(@"THKIdentityView dealloc");
 }
 
 /// xib创建
