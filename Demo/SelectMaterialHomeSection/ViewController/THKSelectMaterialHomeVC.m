@@ -55,12 +55,14 @@
         make.height.mas_equalTo(self.dynamicTabsManager.viewModel.sliderBarHeight);
     }];
     
+    [self.view insertSubview:self.dynamicTabsManager.sliderBar belowSubview:self.topBar];
     
-//    @weakify(self);
-//    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"wrapperScrollViewDidScroll" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
-//        @strongify(self);
-//        [self updateTopBarLayoutWithWrapperScrollView:x.object];
-//    }];
+    
+    @weakify(self);
+    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"wrapperScrollViewDidScroll" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self);
+        [self updateTopBarLayoutWithWrapperScrollView:x.object];
+    }];
 }
 
 
@@ -96,13 +98,20 @@
 //    [self updateTopBarLayoutWithWrapperScrollView:childVc.dynamicTabsManager.wrapperScrollView];
 }
 
-- (void)updateTopBarLayoutWithWrapperScrollView:(UIScrollView *)scrollView{
-    CGFloat offsetY = scrollView.contentOffset.y + scrollView.contentInset.top;
-    CGFloat top = 44 - offsetY;
-    [self.searchView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(top);
+
+- (void)updateTopBarLayoutWithWrapperScrollView:(NSNumber *)topNum{
+    CGFloat top = topNum.floatValue;
+    [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.topBar.mas_bottom).offset(-top);
     }];
 }
+//- (void)updateTopBarLayoutWithWrapperScrollView:(UIScrollView *)scrollView{
+//    CGFloat offsetY = scrollView.contentOffset.y + scrollView.contentInset.top;
+//    CGFloat top = 44 - offsetY;
+//    [self.searchView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(top);
+//    }];
+//}
 
 - (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView{
     NSLog(@"MainVC wrapper %@",wrapperScrollView);

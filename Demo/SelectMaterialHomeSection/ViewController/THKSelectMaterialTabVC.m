@@ -72,11 +72,18 @@
     }];
     
     [self.viewModel.requestTab execute:nil];
+    
+//    @weakify(self);
+    [[NSNotificationCenter.defaultCenter rac_addObserverForName:@"TMUIPageWrapperScrollViewContentOffsetRealChange" object:nil] subscribeNext:^(NSNotification * _Nullable x) {
+        @strongify(self);
+        [self wrapperScrollViewDidScroll:x.object];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    _offsetY = 0;
 }
 
 
@@ -88,8 +95,33 @@
 
 #pragma mark - Delegate
 
+CGFloat _offsetY = 0.0;
 - (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView{
-    [NSNotificationCenter.defaultCenter postNotificationName:@"wrapperScrollViewDidScroll" object:wrapperScrollView];
+    CGFloat lockArea = self.dynamicTabsManager.viewModel.lockArea;
+    CGFloat inset = wrapperScrollView.contentOffset.y + lockArea + kMaterialHomeTabHeight;
+    
+    CGFloat diff = [wrapperScrollView tmui_getBoundDoubleForKey:@"diff"];
+    
+    _offsetY -= diff;
+    if (_offsetY < 0) {
+        _offsetY = 0;
+    }
+    if (_offsetY > kMaterialHomeTabHeight) {
+        _offsetY = kMaterialHomeTabHeight;
+    }
+    // 往下滚动越多，偏移越多，缩进越多，最多为55，但是吸顶后，会保持55不变
+    NSLog(@"%f,%f,%f,%f",_offsetY,diff,inset,wrapperScrollView.contentOffset.y);
+//    if (inset < 0) {
+//        inset = 0;
+//    }
+//    if (inset > kMaterialHomeTabHeight) {
+//        inset = kMaterialHomeTabHeight;
+//    }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"wrapperScrollViewDidScroll" object:@(_offsetY)];
+    
+//    [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(-_sliderH);
+//    }];
 }
 
 
@@ -115,11 +147,11 @@
         viewModel.parentVC = self;
         viewModel.headerContentViewHeight = 800;
         NSLog(@"%f,%f,%f,%f",StatusBarHeight,kMaterialHomeSearchHeight,kMaterialHomeTabHeight,viewModel.sliderBarHeight);
-        CGFloat lockArea = StatusBarHeight + kMaterialHomeSearchHeight + kMaterialHomeTabHeight + viewModel.sliderBarHeight;
+        CGFloat lockArea = StatusBarHeight + kMaterialHomeSearchHeight + viewModel.sliderBarHeight;
         viewModel.lockArea = lockArea;
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.sliderBar.indicatorView.backgroundColor = UIColorHex(22C787);
-        _dynamicTabsManager.delegate = self;
+//        _dynamicTabsManager.delegate = self;
     }
     return _dynamicTabsManager;
 }
