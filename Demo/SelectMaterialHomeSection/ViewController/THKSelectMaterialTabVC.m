@@ -36,6 +36,8 @@
         make.edges.mas_equalTo(0);
     }];
     
+    [self.dynamicTabsManager.wrapperScrollView bringSubviewToFront:self.dynamicTabsManager.sliderBar];
+    
 }
 
 - (void)bindViewModel{
@@ -96,32 +98,47 @@
 #pragma mark - Delegate
 
 CGFloat _offsetY = 0.0;
+CGFloat _offsetTabY = 0.0;
 - (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView{
+    if (wrapperScrollView.tmui_isAtTop) {
+        return;
+    }
     CGFloat lockArea = self.dynamicTabsManager.viewModel.lockArea;
     CGFloat inset = wrapperScrollView.contentOffset.y + lockArea + kMaterialHomeTabHeight;
     
+    //  往上滑，diff减少，往下滑，diff增加
     CGFloat diff = [wrapperScrollView tmui_getBoundDoubleForKey:@"diff"];
-    
-    _offsetY -= diff;
-    if (_offsetY < 0) {
-        _offsetY = 0;
+    _offsetY += diff;
+    if (_offsetY < -kMaterialHomeTabHeight) {
+        _offsetY = -kMaterialHomeTabHeight;
     }
-    if (_offsetY > kMaterialHomeTabHeight) {
-        _offsetY = kMaterialHomeTabHeight;
+    if (_offsetY > 0) {
+        _offsetY = 0;
     }
     // 往下滚动越多，偏移越多，缩进越多，最多为55，但是吸顶后，会保持55不变
     NSLog(@"%f,%f,%f,%f",_offsetY,diff,inset,wrapperScrollView.contentOffset.y);
-//    if (inset < 0) {
-//        inset = 0;
-//    }
-//    if (inset > kMaterialHomeTabHeight) {
-//        inset = kMaterialHomeTabHeight;
-//    }
+    
     [NSNotificationCenter.defaultCenter postNotificationName:@"wrapperScrollViewDidScroll" object:@(_offsetY)];
     
-//    [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(-_sliderH);
-//    }];
+    if (wrapperScrollView.pin) {
+        
+        _offsetTabY += diff;
+        if (_offsetTabY < -44) {
+            _offsetTabY = -44;
+        }
+        if (_offsetTabY > 0) {
+            _offsetTabY = 0;
+        }
+        
+//        CGFloat tabTop = _offsetY
+        [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(_offsetTabY);
+        }];
+    }else{
+        [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(-44);
+        }];
+    }
 }
 
 

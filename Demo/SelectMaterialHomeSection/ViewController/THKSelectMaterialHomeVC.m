@@ -102,7 +102,7 @@
 - (void)updateTopBarLayoutWithWrapperScrollView:(NSNumber *)topNum{
     CGFloat top = topNum.floatValue;
     [self.dynamicTabsManager.sliderBar mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.topBar.mas_bottom).offset(-top);
+        make.top.equalTo(self.topBar.mas_bottom).offset(top);
     }];
 }
 //- (void)updateTopBarLayoutWithWrapperScrollView:(UIScrollView *)scrollView{
