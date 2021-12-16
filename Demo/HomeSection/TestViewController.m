@@ -7,8 +7,14 @@
 
 #import "TestViewController.h"
 
-@interface TestViewController ()
+@interface TestViewController (){
+    RACSubject *_subject1;
+    RACSubject *_subject2;
+}
 
+@property (nonatomic, strong) UITextField *acTF;
+@property (nonatomic, strong) UITextField *pwdTF;
+@property (nonatomic, strong) UIButton *loginBtn;
 @end
 
 @implementation TestViewController
@@ -18,17 +24,93 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
     self.title = @"随你怎么玩";
-    NSLog(@"%s",__FUNCTION__);
+    NSLog(@"===========%s=============",__FUNCTION__);
+    
+    _acTF = TextField.hint(@"account").fixWH(200,44);
+    _pwdTF = TextField.hint(@"password").fixWH(200,44);
+    _loginBtn = Button.fixWH(200,44).str(@"Login").bgColor(@"random").onClick(^{
+        Log(@"1111");
+    });
+    [_loginBtn setTitleColor:UIColor.redColor forState:UIControlStateDisabled];
+    VerStack(_acTF,_pwdTF,_loginBtn).embedIn(self.view, UIEdgeInsetsMake(150, 20, 200, 20));
+    
+    RAC(_loginBtn,enabled) = [RACSignal combineLatest:@[_acTF.rac_textSignal,_pwdTF.rac_textSignal] reduce:^id _Nullable(NSString *ac,NSString *pwd){
+//        NSLog(@"account:%@ pw:%@",ac,pwd);
+        return @(ac.length && pwd.length);
+    }];
+    
+//    [self combine1];
+    [self combine2];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)combine2{
+    @weakify(self);
+    RACSignal *sign1 = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        @strongify(self);
+        RACDisposable *dispose = [self.acTF.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+            Log(@"combine2 subject1 send %@",x);
+            [subscriber sendNext:x];
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [dispose dispose];
+        }];
+    }];
+    
+    RACSignal *sign2 = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        @strongify(self);
+        RACDisposable *dispose = [self.pwdTF.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+            Log(@"combine2 subject2 send %@",x);
+            [subscriber sendNext:x];
+            [subscriber sendCompleted];
+        }];
+        return [RACDisposable disposableWithBlock:^{
+            [dispose dispose];
+        }];
+    }];
+    
+    [[RACSignal combineLatest:@[sign1,sign2] reduce:^id(id data1,id data2){
+        return [NSString stringWithFormat:@"combineLatest2 send %@,%@",data1,data2];
+    }] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"combineLatest2 subscribeNext %@",x);
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        Log(sign1);
+        Log(sign2);
+    });
 }
-*/
+
+- (void)combine1{
+    
+    
+    _subject1 = [RACSubject subject];
+    _subject2 = [RACSubject subject];
+    
+    
+    [[RACSignal combineLatest:@[_subject1,_subject2] reduce:^id(id data1,id data2){
+        return [NSString stringWithFormat:@"combineLatest send %@,%@",data1,data2];
+    }] subscribeNext:^(id  _Nullable x) {
+        NSLog(@"combineLatest subscribeNext %@",x);
+    }];
+    
+    
+    
+    @weakify(self);
+    [_acTF.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+        @strongify(self);
+        Log(@"subject1 send %@",x);
+        [self->_subject1 sendNext:x];
+        [self->_subject1 sendCompleted];
+    }];
+    
+    [_pwdTF.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+        @strongify(self);
+        Log(@"subject2 send %@",x);
+        [self->_subject2 sendNext:x];
+        [self->_subject2 sendCompleted];
+    }];
+}
 
 @end
