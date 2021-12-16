@@ -118,6 +118,29 @@
     };
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    
+    
+}
+
+- (void)arrayCrash{
+    
+    dispatch_queue_t queue2 = dispatch_queue_create("queue2", DISPATCH_QUEUE_CONCURRENT);
+    
+    NSMutableArray *mArray = [NSMutableArray array];
+    
+    for (int i = 0; i < 5000; i++) {
+        
+//        NSLog(@"%p",mArray);
+        dispatch_async(queue2, ^{
+            
+            NSString *url = [NSString stringWithFormat:@"%p__%d.png",mArray,i];
+            [mArray addObject:url];
+        });
+        
+    }
+}
 
 //CAAnimation *_anim;
 //- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

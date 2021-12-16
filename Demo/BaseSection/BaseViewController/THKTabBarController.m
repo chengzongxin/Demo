@@ -11,7 +11,7 @@
 #import "ViewController.h"
 //#import "THKSelectMaterialVC.h"
 #import "THKSelectMaterialHomeVC.h"
-
+#import "TestViewController.h"
 #pragma mark - THKTabBarController
 
 @interface THKTabBarItem : UITabBarItem
@@ -54,9 +54,8 @@
     // tab 1 选材
     THKSelectMaterialHomeVM *selectMaterialVM = [[THKSelectMaterialHomeVM alloc] init];
     [arrViewControllers safeAddObject:[[THKNavigationController alloc]initWithRootViewController:[[THKSelectMaterialHomeVC alloc] initWithViewModel:selectMaterialVM]]];
-    
-    arrViewControllers[0].tabBarItem.title = @"首页";
-    arrViewControllers[1].tabBarItem.title = @"选材";
+    // tab 2 测试
+    [arrViewControllers safeAddObject:[[THKNavigationController alloc] initWithRootViewController:[[TestViewController alloc] init]]];
     
     self.viewControllers = arrViewControllers;
     self.tabBar.translucent = NO;// 不透明
@@ -64,7 +63,8 @@
     
     UIColor *nColor =  _THKColorWithHexString(@"7E807E");
     UIColor *sColor = _THKColorWithHexString(@"1A1C1A");
-    NSArray *imgs = @[UIImageMake(@"diary_collect_icon"),UIImageMake(@"diary_direction_icon")];
+    NSArray *titles = @[@"首页",@"选材",@"测试"];
+    NSArray *imgs = @[UIImageMake(@"diary_collect_icon"),UIImageMake(@"diary_direction_icon"),UIImageMake(@"nav_share_black")];
     
     for (int i = 0; i < self.tabBar.items.count; i++) {
         UITabBarItem *item = self.tabBar.items[i];
@@ -78,6 +78,7 @@
         [item setTitleTextAttributes:@{NSForegroundColorAttributeName:selectedColor,
                                        NSFontAttributeName:[UIFont systemFontOfSize:10 weight:UIFontWeightMedium]}
                             forState:UIControlStateSelected];
+        self.tabBar.items[i].title = titles[i];
     }
 }
 
