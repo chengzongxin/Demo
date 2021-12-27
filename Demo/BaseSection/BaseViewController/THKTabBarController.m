@@ -9,8 +9,7 @@
 #import "THKTabBarController.h"
 #import "THKNavigationController.h"
 #import "ViewController.h"
-//#import "THKSelectMaterialVC.h"
-#import "THKSelectMaterialHomeVC.h"
+#import "ComponentViewController.h"
 #import "TestViewController.h"
 #pragma mark - THKTabBarController
 
@@ -51,9 +50,8 @@
     NSMutableArray <UIViewController *> *arrViewControllers = [NSMutableArray array];
     // tab 0 首页
     [arrViewControllers safeAddObject:[[THKNavigationController alloc] initWithRootViewController:[[ViewController alloc] init]]];
-    // tab 1 选材
-    THKSelectMaterialHomeVM *selectMaterialVM = [[THKSelectMaterialHomeVM alloc] init];
-    [arrViewControllers safeAddObject:[[THKNavigationController alloc]initWithRootViewController:[[THKSelectMaterialHomeVC alloc] initWithViewModel:selectMaterialVM]]];
+    // tab 1 组件
+    [arrViewControllers safeAddObject:[[THKNavigationController alloc] initWithRootViewController:[[ComponentViewController alloc] init]]];
     // tab 2 测试
     [arrViewControllers safeAddObject:[[THKNavigationController alloc] initWithRootViewController:[[TestViewController alloc] init]]];
     
@@ -63,7 +61,7 @@
     
     UIColor *nColor =  _THKColorWithHexString(@"7E807E");
     UIColor *sColor = _THKColorWithHexString(@"1A1C1A");
-    NSArray *titles = @[@"首页",@"选材",@"测试"];
+    NSArray *titles = @[@"首页",@"组件",@"测试"];
     NSArray *imgs = @[UIImageMake(@"diary_collect_icon"),UIImageMake(@"diary_direction_icon"),UIImageMake(@"nav_share_black")];
     
     for (int i = 0; i < self.tabBar.items.count; i++) {

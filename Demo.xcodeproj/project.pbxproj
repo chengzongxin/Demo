@@ -207,6 +207,8 @@
 		1689DECC27449F410073BA68 /* DynamicTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DECB27449F410073BA68 /* DynamicTabVC.m */; };
 		1689DECF27449F4D0073BA68 /* DynamicTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DECE27449F4D0073BA68 /* DynamicTabVM.m */; };
 		1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DED42744DA220073BA68 /* DynamicTabChildVC.m */; };
+		16976FC827795A5F00D477DA /* ComponentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16976FC727795A5F00D477DA /* ComponentViewController.m */; };
+		16976FCC27795BEB00D477DA /* THKExpandLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16976FCB27795BEB00D477DA /* THKExpandLabelViewController.m */; };
 		16A961EE274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961ED274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m */; };
 		16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F0274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m */; };
 		16A961F4274F2E1F002B6C89 /* THKMaterialTabEntranceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F3274F2E1F002B6C89 /* THKMaterialTabEntranceModel.m */; };
@@ -727,6 +729,10 @@
 		1689DECE27449F4D0073BA68 /* DynamicTabVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabVM.m; sourceTree = "<group>"; };
 		1689DED32744DA220073BA68 /* DynamicTabChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicTabChildVC.h; sourceTree = "<group>"; };
 		1689DED42744DA220073BA68 /* DynamicTabChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabChildVC.m; sourceTree = "<group>"; };
+		16976FC627795A5F00D477DA /* ComponentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentViewController.h; sourceTree = "<group>"; };
+		16976FC727795A5F00D477DA /* ComponentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentViewController.m; sourceTree = "<group>"; };
+		16976FCA27795BEB00D477DA /* THKExpandLabelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKExpandLabelViewController.h; sourceTree = "<group>"; };
+		16976FCB27795BEB00D477DA /* THKExpandLabelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKExpandLabelViewController.m; sourceTree = "<group>"; };
 		16A961EC274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3IndexTopTabRequest.h; sourceTree = "<group>"; };
 		16A961ED274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialV3IndexTopTabRequest.m; sourceTree = "<group>"; };
 		16A961EF274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3IndexEntranceRequest.h; sourceTree = "<group>"; };
@@ -953,14 +959,8 @@
 			children = (
 				16611AD626968BA30089E41B /* Demo.entitlements */,
 				16DDC071274C8914000DAA29 /* HomeSection */,
-				16B1F512275DF52700FF18C4 /* NewcomerProcess */,
-				16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */,
-				16DDC07F274CB68F000DAA29 /* BusinessSection */,
-				1689DEC927449F2C0073BA68 /* DynamicTabVC */,
-				16F5168F26D4C11D002500F7 /* DiaryBook */,
-				16611B29269692D10089E41B /* MaterialClassification */,
-				16611B54269692D20089E41B /* MaterialHotRank */,
-				16192C14269305EE00967C73 /* Request */,
+				16976FC427795A1B00D477DA /* ComponentSection */,
+				16976FC527795A3C00D477DA /* TestSection */,
 				16699BAD25D0D3C300B7F43B /* Support Files */,
 				1677D10E25A2FE2800F3E6C8 /* InjectionIIIHelper */,
 				160107692553EA1A00FE4B77 /* BaseSection */,
@@ -1925,6 +1925,35 @@
 			path = DynamicTabVC;
 			sourceTree = "<group>";
 		};
+		16976FC427795A1B00D477DA /* ComponentSection */ = {
+			isa = PBXGroup;
+			children = (
+				16976FC627795A5F00D477DA /* ComponentViewController.h */,
+				16976FC727795A5F00D477DA /* ComponentViewController.m */,
+				16976FC927795B9B00D477DA /* THKExpandLabel */,
+			);
+			path = ComponentSection;
+			sourceTree = "<group>";
+		};
+		16976FC527795A3C00D477DA /* TestSection */ = {
+			isa = PBXGroup;
+			children = (
+				1644D3CD276AF7EC00E91C66 /* TestViewController.h */,
+				1644D3CE276AF7EC00E91C66 /* TestViewController.m */,
+			);
+			path = TestSection;
+			sourceTree = "<group>";
+		};
+		16976FC927795B9B00D477DA /* THKExpandLabel */ = {
+			isa = PBXGroup;
+			children = (
+				16976FCA27795BEB00D477DA /* THKExpandLabelViewController.h */,
+				16976FCB27795BEB00D477DA /* THKExpandLabelViewController.m */,
+			);
+			name = THKExpandLabel;
+			path = Demo/TestSection/THKExpandLabel;
+			sourceTree = SOURCE_ROOT;
+		};
 		16A026402742652500C7E4B3 /* THKExpandLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2078,8 +2107,14 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				1644D3CD276AF7EC00E91C66 /* TestViewController.h */,
-				1644D3CE276AF7EC00E91C66 /* TestViewController.m */,
+				16B1F512275DF52700FF18C4 /* NewcomerProcess */,
+				16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */,
+				16DDC07F274CB68F000DAA29 /* BusinessSection */,
+				1689DEC927449F2C0073BA68 /* DynamicTabVC */,
+				16F5168F26D4C11D002500F7 /* DiaryBook */,
+				16611B29269692D10089E41B /* MaterialClassification */,
+				16611B54269692D20089E41B /* MaterialHotRank */,
+				16192C14269305EE00967C73 /* Request */,
 			);
 			path = HomeSection;
 			sourceTree = "<group>";
@@ -2779,6 +2814,7 @@
 				16867A0C2692D76C00650023 /* TMCardComponentQaStyleCell.m in Sources */,
 				16192AB62692DC4500967C73 /* QuickMethod.m in Sources */,
 				16611AC32696870F0089E41B /* GETableView.m in Sources */,
+				16976FC827795A5F00D477DA /* ComponentViewController.m in Sources */,
 				16867A092692D76C00650023 /* TMCardComponentRecommendTagsBaseUICell.m in Sources */,
 				16E5C51B26830DCB0024BA20 /* THKIdentityTypeModel.m in Sources */,
 				16611B6C269692D20089E41B /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
@@ -2896,6 +2932,7 @@
 				1642AA5726D8F6D700F5FACD /* THKDiaryDirectoryCell.m in Sources */,
 				16867A352692D9B200650023 /* TRouter.m in Sources */,
 				16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */,
+				16976FCC27795BEB00D477DA /* THKExpandLabelViewController.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
 				16192BF72692FF5400967C73 /* THKSearchView.m in Sources */,
 				16DDB87027577A3700D816DC /* THKImageTabSegmentControl.m in Sources */,

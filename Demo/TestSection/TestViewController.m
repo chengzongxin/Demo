@@ -70,15 +70,26 @@
         }];
     }];
     
-    [[RACSignal combineLatest:@[sign1,sign2] reduce:^id(id data1,id data2){
+    RACDisposable *dispose = [[RACSignal combineLatest:@[sign1,sign2] reduce:^id(id data1,id data2){
         return [NSString stringWithFormat:@"combineLatest2 send %@,%@",data1,data2];
     }] subscribeNext:^(id  _Nullable x) {
         NSLog(@"combineLatest2 subscribeNext %@",x);
+    } error:^(NSError * _Nullable error) {
+        NSLog(@"combineLatest2 error");
+    } completed:^{
+        NSLog(@"combineLatest2 complete");
     }];
+    [dispose dispose];
+    NSLog(@"%@",dispose);
     
+//    [RACSignal combineLatest:@[sign1,sign2] reduce:^id(id data1,id data2){
+//        return [NSString stringWithFormat:@"combineLatest2 send %@,%@",data1,data2];
+//    }];
+//    TMUI_weakify(sign1)
+    __weak __typeof__(sign1) _tmui_weak_sign1 = sign1;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        Log(sign1);
-        Log(sign2);
+//        Log(sign1);
+        Log(_tmui_weak_sign1);
     });
 }
 
