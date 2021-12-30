@@ -6,7 +6,8 @@
 //
 
 #import "THKExpandLabelViewController.h"
-
+#import "THKExpandLabel.h"
+//#import "UILabel+Expand.h"
 @interface THKExpandLabelViewController ()
 
 @end
@@ -17,6 +18,72 @@
     [super viewDidLoad];
     
     self.view.bgColor(@"white");
+    
+    [self test2];
+}
+
+- (void)test2{
+    UILabel *label = [[UILabel alloc] init];
+    [self.view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).insets(NavigationContentTop + 20);
+        make.left.right.equalTo(self.view).insets(20);
+    }];
+    
+    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(16) color:UIColor.tmui_randomColor lineSpacing:20];
+//    label.expandString = attr;
+    label.numberOfLines = 5;
+}
+
+- (void)test1{
+    
+    THKExpandLabel *label = [[THKExpandLabel alloc] init];
+    [self.view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).insets(NavigationContentTop + 20);
+        make.left.right.equalTo(self.view).insets(20);
+    }];
+    
+    
+    NSString *tag = @"#123入住新家#  ";
+    NSString *str = [self contentStr];
+    
+//    THKExpandLabel *label = THKExpandLabel.new;
+    
+    label.numberOfLines = 8;
+    label.lineGap = 6;
+    label.maxWidth = TMUI_SCREEN_WIDTH - 100;
+    label.preferFont = UIFont(16);
+    
+    @weakify(label);
+    label.unfoldClick = ^{
+        @strongify(label);
+        NSLog(@"%@",label.text);
+    };
+    
+    [label setTagStr:tag
+         tagAttrDict:@{NSForegroundColorAttributeName:THKColor_999999,NSFontAttributeName:UIFontMedium(16)}
+          contentStr:str
+     contentAttrDict:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(16)}];
+}
+
+
+- (NSString *)contentStr {
+    NSString *str = @"Demo\
+开发版base\n\
+土巴兔项目独立工程，抽离了部分组件，可用于快速迭代开发使用，可配合Injection进行热部署进一步提高效率\n\
+包含：\n\
+THKBaseNetwork\n\
+TRouter\n\
+TMUIKit\n\
+TMCardComponent\n\
+THKDynamicTabsManager\n\
+THKIdentityView\n\
+包含TBTBaseNetwork库快速开发接口、\n\
+TMCardComponent瀑布流快速开发页面、\n\
+TMUIKit库搭建页面\n\
+THKDynamicTabsManager\n";
+    return str;
 }
 
 @end

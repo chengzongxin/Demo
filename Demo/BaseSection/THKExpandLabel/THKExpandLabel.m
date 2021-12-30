@@ -60,7 +60,7 @@
 }
 
 - (void)setTagStr:(NSString *)tagStr tagAttrDict:(NSDictionary *)tagAttrDict contentStr:(NSString *)contentStr contentAttrDict:(NSDictionary *)contentAttrDict{
-    _tagStr = [tagStr tmui_trim];
+    _tagStr = tagStr;
     _contentStr = [contentStr tmui_trim];
     _tagAttrDict = tagAttrDict;
     _contentAttrDict = contentAttrDict;

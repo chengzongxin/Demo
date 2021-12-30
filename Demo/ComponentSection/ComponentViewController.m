@@ -7,6 +7,7 @@
 
 #import "ComponentViewController.h"
 #import "THKExpandLabelViewController.h"
+#import "THKComboViewController.h"
 @interface ComponentViewController ()
 
 @end
@@ -22,8 +23,9 @@
                         THKExpandLabelViewController *vc = [[THKExpandLabelViewController alloc] init];
                         [self.navigationController pushViewController:vc animated:YES];
                     }),
-                    Row.str(@"九宫格").fnt(18).detailStr(@"九宫格组件").subtitleStyle.cellHeightAuto.onClick(^{
-                        
+                    Row.str(@"连击").fnt(18).detailStr(@"连击动效").subtitleStyle.cellHeightAuto.onClick(^{
+                        THKComboViewController *vc = [[THKComboViewController alloc] init];
+                        [self.navigationController pushViewController:vc animated:YES];
                     }),
                     )
             ).header(@0.01).footer(@0.01).embedIn(self.view);
