@@ -42,10 +42,23 @@ static CGFloat const kComboNumW = 17;
 }
 
 - (void)combo{
+    self.hidden = NO;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(dismiss) object:nil];
     //每调用一次self.numberView.number get方法 自增1
     self.number++;
     NSInteger num = self.number;
     [self changeNumber:num];
+    [self performSelector:@selector(dismiss) withObject:nil afterDelay:2.0];
+}
+
+- (void)dismiss{
+    self.number = 0;
+    [UIView animateWithDuration:0.2 animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        self.alpha = 1;
+        self.hidden = YES;
+    }];
 }
 
 /**
