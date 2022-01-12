@@ -9,15 +9,17 @@
 #import "THKDynamicTabsManager.h"
 #import "THKViewController.h"
 
-@interface THKDynamicTabsManager ()<THKDynamicTabsPageVCDelegate,THKDynamicTabsPageVCDataSource>
+@interface THKDynamicTabsManager ()<THKDynamicTabsPageVCDelegate,THKDynamicTabsPageVCDataSource,THKDynamicTabsWrapperScrollViewDelegate>
 
 @property (nonatomic, strong)   THKDynamicTabsViewModel         *viewModel;
-@property (nonatomic, strong)   TMUIPageWrapperScrollView       *wrapperScrollView;
-@property (nonatomic, strong)   UIView                          *wrapperView;
+@property (nonatomic, strong)   UIView                          *view;
+@property (nonatomic, strong)   THKDynamicTabsWrapperScrollView *wrapperScrollView;
 @property (nonatomic, strong)   UIView                          *headerWrapperView;
 @property (nonatomic, strong)   THKImageTabSegmentControl       *sliderBar;
 @property (nonatomic, strong)   THKDynamicTabsPageVC            *pageContainerVC;
 
+///上一次头部的高度
+@property (nonatomic, assign)   CGFloat lastHeaderContentViewHeight;
 
 @end
 
@@ -54,6 +56,17 @@
             self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
             self.wrapperScrollView.lockArea = self.viewModel.lockArea ?: self.viewModel.sliderBarHeight;
             self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
+            // 更新刷新组件位置
+            if (self.viewModel.isEnableRefresh) {
+                [self setRefreshHeader:self.viewModel.refreshHeaderInset];
+            }
+            if(self.lastHeaderContentViewHeight < self.viewModel.headerContentViewHeight){
+                dispatch_async(dispatch_get_main_queue(), ^{
+//                    THKDebugLog(@"self.wrapperScrollView.resetHeaderScrollAnimated = %d",self.wrapperScrollView.resetHeaderScrollAnimated);
+                    [self.wrapperScrollView tmui_scrollToTopAnimated:self.wrapperScrollView.resetHeaderScrollAnimated];
+                });
+            }
+            self.lastHeaderContentViewHeight = self.viewModel.headerContentViewHeight;
         }
     }];
 }
@@ -69,13 +82,13 @@
         headerH = self.viewModel.headerContentViewHeight;
         topH = headerH + self.viewModel.sliderBarHeight;
         
-        [self.wrapperView addSubview:self.wrapperScrollView];
+        [self.view addSubview:self.wrapperScrollView];
         [self.wrapperScrollView addSubview:self.headerWrapperView];
         [self.wrapperScrollView addSubview:self.sliderBar];
         [self.wrapperScrollView addSubview:self.pageContainerVC.view];
         
         [self.wrapperScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self.wrapperView);
+            make.edges.equalTo(self.view);
         }];
         
         [self.headerWrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -112,8 +125,8 @@
     }else if (self.viewModel.layout == THKDynamicTabsLayoutType_Normal){
         topH = self.viewModel.sliderBarHeight;
         
-        [self.wrapperView addSubview:self.sliderBar];
-        [self.wrapperView addSubview:self.pageContainerVC.view];
+        [self.view addSubview:self.sliderBar];
+        [self.view addSubview:self.pageContainerVC.view];
         
         [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(0);
@@ -126,7 +139,14 @@
             make.top.equalTo(self.sliderBar.mas_bottom);
             make.left.right.mas_equalTo(0);
             make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
-            make.height.equalTo(self.wrapperView).offset(-self.viewModel.sliderBarHeight);
+            make.height.equalTo(self.view).offset(-self.viewModel.sliderBarHeight);
+        }];
+    }else{
+        // 只添加pageVC
+        [self.view addSubview:self.pageContainerVC.view];
+        [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.mas_equalTo(0);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
         }];
     }
     
@@ -180,6 +200,12 @@
     if ([controller conformsToProtocol:@protocol(THKTabBarRepeatSelectProtocol)] && [controller respondsToSelector:@selector(contentScrollView)]) {
         scrollView = [(UIViewController<THKTabBarRepeatSelectProtocol> *)controller contentScrollView];
     }
+    if ([controller conformsToProtocol:@protocol(THKDynamicTabsProtocol)] && [controller respondsToSelector:@selector(contentScrollView)]) {
+        scrollView = [(UIViewController<THKDynamicTabsProtocol> *)controller contentScrollView];
+        // 不启用多代理，内部有GETableView会造成代理不能分发事件
+        //scrollView.tmui_multipleDelegatesEnabled = YES;
+        //scrollView.delegate = self;
+    }
     return scrollView;
 }
 
@@ -215,6 +241,7 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didScroll:progress:formIndex:toIndex:)]) {
         [self.delegate pageViewController:pageViewController didScroll:scrollView progress:progress formIndex:fromIndex toIndex:toIndex];
     }
+    // 切换时，把子VC的scrollView内容吸顶，避免下滑时，再置顶的抖动效果，提升体验
     if (_wrapperScrollView) {
         [_wrapperScrollView childViewControllerDidChanged:[self.pageContainerVC.controllersM safeObjectAtIndex:self.pageContainerVC.pageIndex]];
     }
@@ -225,33 +252,65 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (scrollView == self.wrapperScrollView && self.delegate && [self.delegate respondsToSelector:@selector(wrapperScrollViewDidScroll:)]) {
+    if (scrollView == self.wrapperScrollView && [self.delegate respondsToSelector:@selector(wrapperScrollViewDidScroll:)]) {
         [self.delegate wrapperScrollViewDidScroll:self.wrapperScrollView];
     }
 }
 
-- (void)pageWrapperScrollView:(TMUIPageWrapperScrollView *)pageWrapperScrollView pin:(BOOL)pin{
+// MARK: wrapper滚动回调
+- (void)pageWrapperScrollViewRealChanged:(THKDynamicTabsWrapperScrollView *)pageWrapperScrollView diff:(CGFloat)diff{
+    if ([self.delegate respondsToSelector:@selector(wrapperScrollViewDidScroll:diff:)]){
+        [self.delegate wrapperScrollViewDidScroll:pageWrapperScrollView diff:diff];
+    }
+}
+
+// MARK: content滚动回调
+- (void)pageWrapperContentScrollViewChanged:(UIScrollView *)contentScrollView diff:(CGFloat)diff{
+    if ([self.delegate respondsToSelector:@selector(contentScrollViewDidScroll:diff:)]){
+        [self.delegate contentScrollViewDidScroll:contentScrollView diff:diff];
+    }
+}
+
+- (void)pageWrapperScrollView:(THKDynamicTabsWrapperScrollView *)pageWrapperScrollView pin:(BOOL)pin{
     // 是否开启无限滚动功能
     if (self.viewModel.isEnableInfiniteScroll) {
         self.pageContainerVC.viewModel.isEnableInfiniteScroll = !pin;
     }
 }
 
-#pragma mark - getter and setter
-
-- (UIView *)wrapperView{
-    if (!_wrapperView) {
-        _wrapperView = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+// 点击状态栏回调
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView{
+    UIViewController *controller = [self.pageContainerVC.controllersM safeObjectAtIndex:self.pageContainerVC.pageIndex];
+    if ([controller conformsToProtocol:@protocol(THKTabBarRepeatSelectProtocol)] && [controller respondsToSelector:@selector(contentScrollView)]) {
+        UIScrollView *scrollView = [(UIViewController<THKTabBarRepeatSelectProtocol> *)controller contentScrollView];
+        [scrollView tmui_scrollToTop];
     }
-    return _wrapperView;
+                   
+    [self.wrapperScrollView scrollToTop:YES];
+    return YES;
 }
 
-- (TMUIPageWrapperScrollView *)wrapperScrollView{
+
+#pragma mark - getter and setter
+
+- (void)setIsPageVCScrollEnable:(BOOL)isPageVCScrollEnable{
+    _isPageVCScrollEnable = isPageVCScrollEnable;
+    self.pageContainerVC.viewModel.pageScrollEnabled = isPageVCScrollEnable;
+}
+
+- (UIView *)view{
+    if (!_view) {
+        _view = [[UIView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    }
+    return _view;
+}
+
+- (THKDynamicTabsWrapperScrollView *)wrapperScrollView{
     if (!_wrapperScrollView) {
-        _wrapperScrollView = [[TMUIPageWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
+        _wrapperScrollView = [[THKDynamicTabsWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
         _wrapperScrollView.showsHorizontalScrollIndicator = NO;
-        _wrapperScrollView.delegate = self;
         _wrapperScrollView.scrollsToTop = YES;
+        _wrapperScrollView.delegate = self;
         if (@available(iOS 11.0, *)) {
             _wrapperScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
@@ -330,4 +389,57 @@
 -(UIViewController *)getCurrentViewController{
     return [self getViewControllerWithIndex:self.currentIndex];
 }
+@end
+
+
+#pragma mark - 刷新子VC
+static NSString *const kDynamicTabsManagerKey = @"kDynamicTabsManagerKey";
+@implementation THKDynamicTabsManager (THKRefresh)
+
+- (void)setRefreshHeader:(CGFloat)inset{
+//    if (!self.wrapperScrollView.header) {
+//        THKRefreshHeaderView *headerView = [THKRefreshHeaderView new];
+//        @weakify(self);
+//        [self.wrapperScrollView addRefreshHeader:headerView refreshingBlock:^{
+//            @strongify(self);
+//            [self refreshChildVC];
+//        }];
+//    }
+//
+//    CGFloat headerInset = self.wrapperScrollView.contentInset.top - inset;
+//    self.wrapperScrollView.header.headerInset = headerInset;
+//    [self.wrapperScrollView.header layoutSubviews];
+}
+
+- (void)refreshChildVC{
+    [self.pageContainerVC.controllersM enumerateObjectsUsingBlock:^(__kindof UIViewController<THKDynamicTabsProtocol> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isViewLoaded] && [obj respondsToSelector:@selector(dynamicTabsBeginRefreshing)]) {
+            [obj dynamicTabsBeginRefreshing];
+            [obj tmui_bindObjectWeakly:self forKey:kDynamicTabsManagerKey];
+        }
+    }];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(dynamicTabsManagerMainVCBeginingRefresh)]){
+        [self.delegate dynamicTabsManagerMainVCBeginingRefresh];
+        
+        [(NSObject*)self.delegate tmui_bindObjectWeakly:self forKey:kDynamicTabsManagerKey];
+    }
+}
+
+- (void)endRefreshing{
+//    [self.wrapperScrollView.header endRefreshing];
+}
+
+@end
+
+
+//  协议默认实现
+@implementation UIViewController (THKDynamicTabs)
+
+- (void)dynamicTabsEndRefreshing{
+    THKDynamicTabsManager *manager = [self tmui_getBoundObjectForKey:kDynamicTabsManagerKey];
+    if ([manager isKindOfClass:THKDynamicTabsManager.class]) {
+        [manager endRefreshing];
+    }
+}
+
 @end

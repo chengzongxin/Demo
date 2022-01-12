@@ -6,11 +6,10 @@
 //
 
 #import "THKDynamicTabsPageVC.h"
-#import "THKDynamicTabsScrollView.h"
 
 #define kLESS_THAN_iOS11 ([[UIDevice currentDevice].systemVersion floatValue] < 11.0 ? YES : NO)
 
-@interface THKDynamicTabsPageVC ()<UIScrollViewDelegate>
+@interface THKDynamicTabsPageVC ()<UIScrollViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) THKDynamicTabsPageVM *viewModel;
 /// 页面ScrollView
@@ -32,6 +31,12 @@
 /// TableView距离顶部的偏移量
 @property (nonatomic, assign) CGFloat insetTop;
 
+///切换多个tab时，需要先锁定,(修复：先定位到前一个，然后才定位到选中那一个，比如1->4，会先到3，才会到4)
+@property (nonatomic, assign) BOOL lockChangeMoreTab;
+
+///禁止动画执行，重新初始化切换到指定tab时，不需要动画
+@property (nonatomic, assign) BOOL disAnimation;
+
 @end
 
 @implementation THKDynamicTabsPageVC
@@ -48,14 +53,17 @@
 - (void)bindViewModel{
     [self initData];
     
-    [self setupSubViews];
-    
     // 吸顶后禁止滚动
     RAC(self.pageScrollView,isEnableInfiniteScroll) = RACObserve(self.viewModel, isEnableInfiniteScroll);
+    RAC(self.pageScrollView,scrollEnabled) = RACObserve(self.viewModel, pageScrollEnabled);
     
-    if (self.controllersM.count) {
-        [self setSelectedPageIndex:self.pageIndex];
+    if (self.controllersM.count == 0) {
+        return;
     }
+    
+    [self checkParams];
+    [self setupSubViews];
+    [self setSelectedPageIndex:self.pageIndex];
 }
 
 - (void)initData {
@@ -126,9 +134,15 @@
     
     if (self.dataSource && [self.dataSource respondsToSelector:@selector(pageViewController:heightForScrollViewAtIndex:)]) {
         CGFloat scrollViewHeight = [self.dataSource pageViewController:self heightForScrollViewAtIndex:index];
-        scrollView.frame = CGRectMake(0, 0, viewController.view.width, scrollViewHeight);
+        if (scrollView != viewController.view) {
+            // 除开根视图就是ScrollView的情况
+            scrollView.frame = CGRectMake(0, 0, viewController.view.width, scrollViewHeight);
+        }
     } else {
-        scrollView.frame = viewController.view.bounds;
+        if (scrollView != viewController.view) {
+            // 除开根视图就是ScrollView的情况
+            scrollView.frame = viewController.view.bounds;
+        }
     }
     
     [viewController didMoveToParentViewController:self];
@@ -140,7 +154,22 @@
 }
 
 #pragma mark - UIScrollViewDelegate
+
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+//    if (gestureRecognizer.view == self.pageScrollView) {
+//        UIViewController <THKDynamicTabsPageVCDelegate> *vc = [self.controllersM safeObjectAtIndex:self.pageIndex];
+//        if ([vc respondsToSelector:@selector(pageViewControllerSholdScroll:)]) {
+//            return [vc pageViewControllerSholdScroll:self];
+//        }
+//        return YES;
+//    }
+//    return YES;
+//}
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (!self.lockChangeMoreTab && self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didEndDecelerating:)]) {
+        [self.delegate pageViewController:self didEndDecelerating:scrollView];
+    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -150,7 +179,16 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self removeViewController];
     
-    if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didEndDecelerating:)]) {
+//    if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didEndDecelerating:)]) {
+//        [self.delegate pageViewController:self didEndDecelerating:scrollView];
+//    }
+    if (!self.lockChangeMoreTab && self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didEndDecelerating:)]) {
+        [self.delegate pageViewController:self didEndDecelerating:scrollView];
+    }
+}
+// called when setContentOffset/scrollRectVisible:animated: finishes. not called if not animating
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    if (!self.lockChangeMoreTab && self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didEndDecelerating:)]) {
         [self.delegate pageViewController:self didEndDecelerating:scrollView];
     }
 }
@@ -158,19 +196,44 @@
 /// scrollView滚动ing
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat currentPostion = scrollView.contentOffset.x;
+    
+    int screenW = (int)TMUI_SCREEN_WIDTH;
+    
+    CGFloat offsetX = currentPostion / screenW;
+    
+    BOOL scrollMore = currentPostion > self.lastPositionX;
 
-    CGFloat offsetX = currentPostion / TMUI_SCREEN_WIDTH;
-
-    CGFloat offX = currentPostion > self.lastPositionX ? ceilf(offsetX) : offsetX;
-
+    CGFloat offX = scrollMore ? ceilf(offsetX) : offsetX;
+ 
+    NSInteger oldPageIndex = self.pageIndex;
+    // 添加VC
     [self initViewControllerWithIndex:offX];
-
-    CGFloat progress = offsetX - (NSInteger)offsetX;
-
+    
+    CGFloat lastOffsetX = currentPostion - self.lastPositionX;
+    
     self.lastPositionX = currentPostion;
     
+    NSInteger from = scrollMore ? floor(offsetX) : ceilf(offsetX);
+    NSInteger to = scrollMore ? ceilf(offsetX) : floor(offsetX);
+    CGFloat mod = (offsetX - (NSInteger)offsetX);
+    CGFloat progress;
+    if (mod == 0) {
+        // 翻了整页，点击tab的时候会出现
+        progress = 1;
+        // 此时from和to相等，需要处理上次的值
+        int pageNum = MAX(1, abs((int)(lastOffsetX / screenW)));
+        if (lastOffsetX > 0) {
+            pageNum *= -1;
+        }
+        from = to + pageNum;
+        
+    }else{
+        progress = scrollMore ? mod : (1 - mod);
+    }
+    
+    // 如果相等，说明是点击tab直接移动过来，而不是滑动切换过来的
     if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didScroll:progress:formIndex:toIndex:)]) {
-        [self.delegate pageViewController:self didScroll:scrollView progress:progress formIndex:floor(offsetX) toIndex:ceilf(offsetX)];
+        [self.delegate pageViewController:self didScroll:scrollView progress:progress formIndex:from toIndex:to];
     }
 }
 
@@ -189,18 +252,48 @@
     if (frame.origin.x == self.pageScrollView.contentOffset.x) {
         [self scrollViewDidScroll:self.pageScrollView];
     } else {
+        NSInteger oldPageIndex = self.pageIndex;
         [self.pageScrollView scrollRectToVisible:frame animated:NO];
+        
+        //tbt Code
+//        if (self.disAnimation) {
+//            [self.pageScrollView scrollRectToVisible:frame animated:NO];
+//        }else{
+//            if (labs(pageIndex - self.pageIndex) > 1) {
+//                NSInteger prePage = pageIndex -1;
+//                if (pageIndex < self.pageIndex) {
+//                    prePage = pageIndex + 1;
+//                }
+//                if (prePage > 0 && prePage < self.controllersM.count - 1) {
+//                    CGRect frame1 = CGRectMake(self.pageScrollView.width * (prePage), 0, self.pageScrollView.width, self.pageScrollView.height);
+//                    self.lockChangeMoreTab = YES;
+//                    [self.pageScrollView scrollRectToVisible:frame1 animated:NO];
+//                }
+//            }
+//            [self.pageScrollView scrollRectToVisible:frame animated:self.pageIndex!=pageIndex];
+//        }
+//        // 直接点击切换,需要先切换，否则会改变
+//        if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didScroll:progress:formIndex:toIndex:)]) {
+//            [self.delegate pageViewController:self didScroll:self.pageScrollView progress:0 formIndex:oldPageIndex toIndex:pageIndex];
+//        }
+
     }
     
     [self scrollViewDidEndDecelerating:self.pageScrollView];
+    self.lockChangeMoreTab = NO;
 }
 
 - (void)reloadData {
     [self checkParams];
     
+//    self.pageIndex = self.pageIndex < 0 ? 0 : self.pageIndex;
+//    self.pageIndex = self.pageIndex >= self.controllersM.count ? self.controllersM.count - 1 : self.pageIndex;
+//    self.pageIndex = self.pageIndex < 0 ? 0 : self.pageIndex;
+    
     self.pageIndex = self.pageIndex < 0 ? 0 : self.pageIndex;
     self.pageIndex = self.pageIndex >= self.controllersM.count ? self.controllersM.count - 1 : self.pageIndex;
-    self.pageIndex = self.pageIndex < 0 ? 0 : self.pageIndex;
+//    self.pageIndex = self.pageIndex < 0 ? 0 : self.pageIndex;
+    NSInteger pageIndex = self.pageIndex;
     
     for (UIViewController *vc in self.displayDictM.allValues) {
         [self removeViewControllerWithChildVC:vc];
@@ -213,8 +306,13 @@
     [self.pageScrollView removeFromSuperview];
     
     [self setupSubViews];
-    
-    [self setSelectedPageIndex:self.pageIndex];
+    //从9个tab变成8个tab，会有问题，所以要个用reloading字段判断，滑动到初始tab时不用动画
+    //使用pageIndex的原因是self.pageIndex会被动态改变
+    self.disAnimation = YES;
+    [self setSelectedPageIndex:pageIndex];
+    //self.disAnimation = NO;
+
+//    [self setSelectedPageIndex:self.pageIndex];
 }
 
 - (void)insertPageChildControllersWithTitles:(NSArray *)titles
@@ -245,8 +343,7 @@
 - (void)updateViewWithIndex:(NSInteger)pageIndex {
     self.pageScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH * self.controllersM.count, self.pageScrollView.height);
     
-    UIViewController *vc = self.controllersM[pageIndex];
-    
+    UIViewController *vc = [self.controllersM safeObjectAtIndex:pageIndex];
     vc.view.x = TMUI_SCREEN_WIDTH * pageIndex;
     
     CGRect frame = CGRectMake(self.pageScrollView.width * pageIndex, 0, self.pageScrollView.width, self.pageScrollView.height);
@@ -462,8 +559,7 @@
         _pageScrollView.bounces = NO;
         _pageScrollView.delegate = self;
         _pageScrollView.backgroundColor = [UIColor whiteColor];
-        _pageScrollView.scrollsToTop = NO;
-        _pageScrollView.tmui_isWarpperNotScroll = YES;
+        _pageScrollView.thk_isWarpperNotScroll = YES;
         if (@available(iOS 11.0, *)) {
             _pageScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }

@@ -7,6 +7,8 @@
 
 #import "THKViewController.h"
 #import "THKDynamicTabsPageVM.h"
+#import "THKDynamicTabsScrollView.h"
+#import "THKDynamicTabsWrapperScrollView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -73,6 +75,9 @@ NS_ASSUME_NONNULL_BEGIN
         didAddButtonAction:(UIButton *)button;
 
 
+/// 是否滚动
+- (BOOL)pageViewControllerSholdScroll:(THKDynamicTabsPageVC *)pageViewController;
+
 @end
 
 #pragma mark - THKPageViewControllerDataSource
@@ -116,6 +121,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 配置信息
 @property (nonatomic, strong, readonly) THKDynamicTabsPageVM *viewModel;
+/// 页面ScrollView
+@property (nonatomic, strong, readonly) THKDynamicTabsScrollView *pageScrollView;
 /// 控制器数组
 @property (nonatomic, strong) NSMutableArray<__kindof UIViewController *> *controllersM;
 /// 标题数组 默认 缓存 key 为 title 可通过数据源代理 进行替换

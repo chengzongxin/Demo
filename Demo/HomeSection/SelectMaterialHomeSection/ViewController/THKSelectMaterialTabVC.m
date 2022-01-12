@@ -26,8 +26,8 @@
     
     self.view.backgroundColor = UIColor.whiteColor;
     
-    [self.view addSubview:self.dynamicTabsManager.wrapperView];
-    [self.dynamicTabsManager.wrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.dynamicTabsManager.view];
+    [self.dynamicTabsManager.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
     

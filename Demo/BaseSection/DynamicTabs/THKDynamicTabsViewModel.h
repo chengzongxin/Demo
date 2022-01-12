@@ -19,9 +19,17 @@ typedef enum : NSUInteger {
     THKDynamicTabsLayoutType_Suspend,       ///<包含头部、Tab、吸顶效果布局
 } THKDynamicTabsLayoutType;
 
+typedef enum : NSUInteger {
+    THKDynamicTabsLoadType_API = 0,    ///< 通过调接口传wholecode加载tab
+    THKDynamicTabsLoadType_Data,        ///<通过塞VCs和Titles加载tab
+    THKDynamicTabsLoadType_Model,         ///<通过THKDynamicTabModel加载tab
+} THKDynamicTabsLoadType;
+
 @interface THKDynamicTabsViewModel : THKViewModel
 /// 是否有头部悬浮效果，默认NO，设计到内部容器wrapper是scrollView还是View
 @property (nonatomic, assign) THKDynamicTabsLayoutType layout;
+/// 加载数据方式
+@property (nonatomic, assign, readonly) THKDynamicTabsLoadType loadType;
 /// 头部视图
 @property (nonatomic, strong) UIView *headerContentView;
 /// 头部视图高度
@@ -34,9 +42,12 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat cutOutHeight;
 /// 当前VC，用于管理子VC生命周期
 @property (nonatomic, weak) UIViewController *parentVC;
+/// 是否需要下拉刷新
+@property (nonatomic, assign) BOOL isEnableRefresh;
+/// 刷新头部高度，默认在顶端
+@property (nonatomic, assign) CGFloat refreshHeaderInset;
 /// 是否开启无限滚动（嵌套Tab组件才需要开启）
 @property (nonatomic, assign) BOOL isEnableInfiniteScroll;
-
 
 + (instancetype)new NS_UNAVAILABLE;
 //- (instancetype)init NS_UNAVAILABLE;

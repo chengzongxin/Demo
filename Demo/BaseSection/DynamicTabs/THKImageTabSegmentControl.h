@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKImageTabSegmentButton : UIButton
 
-@property (nonatomic, strong, readonly)     UIImageView *iconImageView;
+@property (nonatomic, strong, readonly)     YYAnimatedImageView *iconImageView;
 @property (nonatomic, strong, readonly)     UILabel *textLabel;
-@property (nonatomic, strong, readonly)     UIImageView *badgeIconView;
+@property (nonatomic, strong, readonly)     YYAnimatedImageView *badgeIconView;
 @property (nonatomic, strong, readonly)     THKDynamicTabsModel *tabModel;
 
 @property (nonatomic, assign) BOOL exposed;//是否已曝光

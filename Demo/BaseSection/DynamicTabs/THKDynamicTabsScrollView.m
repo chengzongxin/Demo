@@ -17,6 +17,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.scrollsToTop = NO;
         self.isEnableInfiniteScroll = NO;
     }
     return self;
@@ -49,6 +50,7 @@
     }
     return NO;
 }
+
 
 - (BOOL)infiniteScroll:(UIGestureRecognizer *)gestureRecognizer {
     if (self.contentOffset.x + self.visibleSize.width == self.contentSize.width) {

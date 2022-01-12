@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong)   YYAnimatedImageView *iconImageView;
 @property (nonatomic, strong)   UILabel *textLabel;
-@property (nonatomic, strong)   UIImageView *badgeIconView;
+@property (nonatomic, strong)   YYAnimatedImageView *badgeIconView;
 
 @property (nonatomic, strong)   THKDynamicTabsModel *tabModel;
 @property (nonatomic, strong)   UIView  *containerView;
@@ -143,9 +143,9 @@
     return _textLabel;
 }
 
-- (UIImageView *)badgeIconView {
+- (YYAnimatedImageView *)badgeIconView {
     if (!_badgeIconView) {
-        _badgeIconView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kBadgeSize.width, kBadgeSize.height)];
+        _badgeIconView = [[YYAnimatedImageView alloc] initWithFrame:CGRectMake(0, 0, kBadgeSize.width, kBadgeSize.height)];
         _badgeIconView.cornerRadius = kBadgeSize.width / 2;
         _badgeIconView.backgroundColor = THKColor_RedPointColor;
     }
@@ -173,11 +173,12 @@
     if (![model isKindOfClass:[THKDynamicTabsModel class]]) {
         return nil;
     }
+    UIFont *normalFont = model.displayModel.normalFont;
     UIFont *selectedFont = model.displayModel.selectedFont;
     CGFloat textWidth = 0;
     CGFloat tempWidth = kButtonEdgeInsets.left + kButtonEdgeInsets.right;// + ((index == self.titles.count - 1) ? 0 : 14);//左边距离5px，红点6px，红点距离右边2px
     if (model.style == THKDynamicTabButtonStyle_TextOnly || model.style == THKDynamicTabButtonStyle_TextAndImage) { //纯文字/图文混排
-        textWidth = [model.title boundingRectWithSize:CGSizeMake(FLT_MAX, self.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:selectedFont} context:nil].size.width + 2;
+        textWidth = [model.title boundingRectWithSize:CGSizeMake(FLT_MAX, self.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:(selectedFont.pointSize >= normalFont.pointSize ? selectedFont : normalFont) } context:nil].size.width + 2;
         tempWidth += textWidth;
         tempWidth = MAX(tempWidth,self.minItemWidth);
         if (model.style == THKDynamicTabButtonStyle_TextAndImage) {

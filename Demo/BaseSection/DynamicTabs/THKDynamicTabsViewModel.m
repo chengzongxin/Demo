@@ -28,9 +28,10 @@
 @property (nonatomic, assign)   NSInteger           sliderBarDefaultSelected;
 
 @property (nonatomic, assign)   BOOL                isRequestSuccess;
-
+/// 加载数据方式
+@property (nonatomic, assign) THKDynamicTabsLoadType loadType;
 /// 使用外部数据源
-@property (nonatomic, assign)   BOOL isUseExternalDataSource;
+//@property (nonatomic, assign)   BOOL isUseExternalDataSource;
 
 @property (nonatomic, weak) __kindof THKBaseRequest *curReq;
 @end
@@ -43,6 +44,7 @@
 
 - (instancetype)initWithWholeCode:(NSString *)wholeCode extraParam:(NSDictionary *)extraParam defualtTabs:(NSArray<THKDynamicTabsModel *> *)tabs {
     if (self = [super init]) {
+        self.loadType = THKDynamicTabsLoadType_API;
         self.wholeCode = wholeCode;
         self.extraParam = extraParam;
         self.segmentTabs = tabs;
@@ -64,17 +66,18 @@
     return self;
 }
 
-- (void)setVCs:(NSArray<UIViewController *> *)childVCs titles:(NSArray<NSString *> *)childTitles{
-    self.isUseExternalDataSource = YES;
-    self.segmentTitles = childTitles;
-    self.arrayChildVC = childVCs;
-}
-
 - (void)setTabs:(NSArray<THKDynamicTabsModel *> *)tabs{
-    self.isUseExternalDataSource = YES;
+    self.loadType = THKDynamicTabsLoadType_Model;
     if (tabs && tabs.count > 0) {
         self.segmentTabs = tabs;
     }
+}
+
+
+- (void)setVCs:(NSArray<UIViewController *> *)childVCs titles:(NSArray<NSString *> *)childTitles{
+    self.loadType = THKDynamicTabsLoadType_Data;
+    self.segmentTitles = childTitles;
+    self.arrayChildVC = childVCs;
 }
 
 - (void)initialize {
@@ -87,55 +90,22 @@
 }
 
 - (void)loadTabs{
-    if (self.isUseExternalDataSource) {
-        if (self.segmentTabs) {
+    switch (self.loadType) {
+        case THKDynamicTabsLoadType_API:
+            [self requestConfigTabs];
+            break;
+        case THKDynamicTabsLoadType_Model:
             [self parseTabs:self.segmentTabs];
-        }else{
-            [self.tabsResultSubject sendNext:nil];
-        }
-    }else{
-        [self requestConfigTabs];
+            break;
+        case THKDynamicTabsLoadType_Data:
+            [self praseData];
+            break;
+        default:
+            break;
     }
 }
 
-- (void)requestConfigTabs {
-    {//重新请求时，取消上一次还未执行完的请求
-        [self.curReq cancel];
-        self.curReq = nil;
-    }
-    self.isRequestSuccess = NO;
-    
-    if (self.wholeCode == nil || self.wholeCode.length <= 0) {
-        [self parseTabs:self.segmentTabs];
-        return;
-    }
-    
-    NSAssert((self.wholeCode && self.wholeCode.length > 0), @"you have to set the valid 'wholeCode'");
-    THKDynamicTabsRequest *request = [[THKDynamicTabsRequest alloc] init];
-    if ([self.wholeCode isEqualToString:kDynamicTabsWholeCodeCompanyDetail]) {
-        request = [[THKCompanyDetailTabRequest alloc] init];
-    }
-    request.wholeCode = self.wholeCode;
-    request.extraParam = self.extraParam;
-    self.curReq = request;
-    @weakify(self);
-    [request sendSuccess:^(THKDynamicTabsResponse *response) {
-        @strongify(self);
-        if (response.status == THKStatusSuccess && response.data && response.data.count > 0) {
-            self.isRequestSuccess = YES;
-            [self parseTabs:response.data];
-        } else {
-            self.isRequestSuccess = NO;
-            [self parseTabs:self.segmentTabs];
-        }
-        
-    } failure:^(NSError * _Nonnull error) {
-        @strongify(self);
-        self.isRequestSuccess = NO;
-        [self parseTabs:self.segmentTabs];
-    }];
-}
-
+/// 方式1.解析模型
 - (void)parseTabs:(NSArray<THKDynamicTabsModel *> *)tabs {
 
     NSMutableArray *arrayVC = [NSMutableArray arrayWithCapacity:tabs.count];
@@ -197,6 +167,65 @@
     self.segmentTitles = arrayTitles;
     self.arrayChildVC = arrayVC;
     [self.tabsResultSubject sendNext:nil];
+}
+
+/// 方式2. 静态数据
+- (void)praseData{
+    @weakify(self);
+    NSArray <THKDynamicTabsModel *>* tabs = [self.segmentTitles tmui_map:^id _Nonnull(NSString * _Nonnull item) {
+        @strongify(self);
+        THKDynamicTabsModel *m = [[THKDynamicTabsModel alloc] init];
+        m.displayModel = [THKDynamicTabDisplayModel new];
+        m.displayModel.normalFont = UIFont(16);
+        m.displayModel.selectedFont = UIFontMedium(16);
+        m.title = item;
+        if (self.configDynamicTabButtonModelBlock) {
+            self.configDynamicTabButtonModelBlock(m.displayModel,m.tabId, m.title);
+        }
+        return m;
+    }];
+    self.segmentTabs = tabs;
+    
+    [self.tabsResultSubject sendNext:nil];
+}
+
+/// 方式3. 调用接口
+- (void)requestConfigTabs {
+    {//重新请求时，取消上一次还未执行完的请求
+        [self.curReq cancel];
+        self.curReq = nil;
+    }
+    self.isRequestSuccess = NO;
+    
+    if (self.wholeCode == nil || self.wholeCode.length <= 0) {
+        [self parseTabs:self.segmentTabs];
+        return;
+    }
+    
+    NSAssert((self.wholeCode && self.wholeCode.length > 0), @"you have to set the valid 'wholeCode'");
+    THKDynamicTabsRequest *request = [[THKDynamicTabsRequest alloc] init];
+    if ([self.wholeCode isEqualToString:kDynamicTabsWholeCodeCompanyDetail]) {
+        request = [[THKCompanyDetailTabRequest alloc] init];
+    }
+    request.wholeCode = self.wholeCode;
+    request.extraParam = self.extraParam;
+    self.curReq = request;
+    @weakify(self);
+    [request sendSuccess:^(THKDynamicTabsResponse *response) {
+        @strongify(self);
+        if (response.status == THKStatusSuccess && response.data && response.data.count > 0) {
+            self.isRequestSuccess = YES;
+            [self parseTabs:response.data];
+        } else {
+            self.isRequestSuccess = NO;
+            [self parseTabs:self.segmentTabs];
+        }
+        
+    } failure:^(NSError * _Nonnull error) {
+        @strongify(self);
+        self.isRequestSuccess = NO;
+        [self parseTabs:self.segmentTabs];
+    }];
 }
 
 /**

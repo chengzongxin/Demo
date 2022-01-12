@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "THKImageTabSegmentControl.h"
 #import "THKDynamicTabsViewModel.h"
-#import "TMUIPageWrapperScrollView.h"
+#import "THKDynamicTabsWrapperScrollView.h"
 #import "THKDynamicTabsPageVC.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -35,22 +35,36 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /// 背景ScrollView滑动时回调
-- (void)wrapperScrollViewDidScroll:(TMUIPageWrapperScrollView *)wrapperScrollView;
+- (void)wrapperScrollViewDidScroll:(THKDynamicTabsWrapperScrollView *)wrapperScrollView;
+
+/// 外层WrapperView滑动时回调
+/// @param scrollView 滚动视图
+/// @param diff 距离上次滚动偏移量
+- (void)wrapperScrollViewDidScroll:(UIScrollView *)scrollView diff:(CGFloat)diff;
+
+
+/// 内容ScrollView滑动时回调（通常是子vc的tableView或者collectionView）
+/// @param scrollView 滚动视图
+/// @param diff 距离上次滚动偏移量
+- (void)contentScrollViewDidScroll:(UIScrollView *)scrollView diff:(CGFloat)diff;
+
+///主VC开始刷新（非容器）
+- (void)dynamicTabsManagerMainVCBeginingRefresh;
 
 @end
 
 
-@interface THKDynamicTabsManager : NSObject<THKDynamicTabsPageVCDelegate,TMUIPageWrapperScrollViewDelegate>
+@interface THKDynamicTabsManager : NSObject<THKDynamicTabsPageVCDelegate,UIScrollViewDelegate>
 
 /**
  外部可根据需求定制sliderBar的样式，它的变化由viewmodel的segmentValueChangedSubject信号发出，外部不用再监听它的变化事件
  默认frame为CGRectMake(0, 0, kScreenWidth, 52.0-6)
  */
 @property (nonatomic, strong, readonly)     THKDynamicTabsViewModel         *viewModel;
-/// 常规效果时使用容器
-@property (nonatomic, strong, readonly)     UIView                          *wrapperView;
+/// 常规效果时使用容器（根View）
+@property (nonatomic, strong, readonly)     UIView                          *view;
 /// 吸顶效果时会包含的容器
-@property (nonatomic, strong, readonly)     TMUIPageWrapperScrollView       *wrapperScrollView;
+@property (nonatomic, strong, readonly)     THKDynamicTabsWrapperScrollView *wrapperScrollView;
 /// 吸顶效果时头部使用容器
 @property (nonatomic, strong, readonly)     UIView                          *headerWrapperView;
 /// slider菜单
@@ -58,7 +72,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 子VC集合容器
 @property (nonatomic, strong, readonly)     THKDynamicTabsPageVC            *pageContainerVC;
 /// 代理
-@property (nonatomic, weak) id<THKDynamicTabsManagerDelegate> delegate;
+@property (nonatomic, weak)             id<THKDynamicTabsManagerDelegate>   delegate;
+
+#pragma mark - 初始化集合
 /**
  暂时不可用，用initWithViewModel初始化
  */
@@ -83,9 +99,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL breakLayout;
 
+
+#pragma mark - 外部方法调用
+
 - (void)loadTabs;
 
 - (void)updateSliderbarHeight:(CGFloat)height;
+
+/// 是否子VC禁用滚动
+@property (nonatomic, assign) BOOL isPageVCScrollEnable;
 
 /**
  获取指定位置的vc
@@ -98,6 +120,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIViewController *)getCurrentViewController;
 
 @end
+
+
+@interface THKDynamicTabsManager (THKRefresh)
+
+- (void)setRefreshHeader:(CGFloat)inset;
+
+- (void)endRefreshing;
+
+@end
+
 
 NS_ASSUME_NONNULL_END
 
