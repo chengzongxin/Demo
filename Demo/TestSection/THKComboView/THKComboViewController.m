@@ -23,9 +23,8 @@
     THKComboView *comboView = [[THKComboView alloc] init];
     [self.view addSubview:comboView];
     [comboView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.view);
-//        make.size.mas_equalTo(CGSizeMake(50, 24));
-        
+        make.left.equalTo(@100);
+        make.top.equalTo(@100);
     }];
     _comboView = comboView;
 }
