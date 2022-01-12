@@ -7,6 +7,7 @@
 
 #import "THKExpandLabelViewController.h"
 #import "THKExpandLabel.h"
+#import "TMUIExpandLabel.h"
 //#import "UILabel+Expand.h"
 @interface THKExpandLabelViewController ()
 
@@ -19,7 +20,31 @@
     
     self.view.bgColor(@"white");
     
-    [self test2];
+//    [self test2];
+    
+    [self test3];
+}
+
+- (void)test3{
+    TMUIExpandLabel *label = [[TMUIExpandLabel alloc] init];
+    [self.view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).insets(NavigationContentTop + 20);
+        make.left.right.equalTo(self.view).insets(20);
+    }];
+//    label.text = @"fdsjkfhdsjko fdhos fasjfksdflfdsa fdslk fjkdsf dsghf kdsj fksdfj sdfsdhkf dshf kdshjf kjhds fkhgs jfhds jfhg sdfsdfas";
+    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
+//    label.expandString = attr;
+    label.attributedText = attr;
+    label.numberOfLines = 5;
+    label.showsExpansionTextWhenTruncated = YES;
+    
+//    @weakify(label);
+//    [label tmui_addSingerTapWithBlock:^{
+//        @strongify(label);
+//        NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(16) color:UIColor.tmui_randomColor lineSpacing:20];
+//        label.attributedText = attr;
+//    }];
 }
 
 - (void)test2{
@@ -29,11 +54,22 @@
         make.top.equalTo(self.view).insets(NavigationContentTop + 20);
         make.left.right.equalTo(self.view).insets(20);
     }];
-    
-    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(16) color:UIColor.tmui_randomColor lineSpacing:20];
+//    label.text = @"fdsjkfhdsjko fdhos fasjfksdflfdsa fdslk fjkdsf dsghf kdsj fksdfj sdfsdhkf dshf kdshjf kjhds fkhgs jfhds jfhg sdfsdfas";
+    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
 //    label.expandString = attr;
+    label.attributedText = attr;
     label.numberOfLines = 5;
+    label.showsExpansionTextWhenTruncated = YES;
+    
+    @weakify(label);
+    [label tmui_addSingerTapWithBlock:^{
+        @strongify(label);
+        NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(16) color:UIColor.tmui_randomColor lineSpacing:20];
+        label.attributedText = attr;
+    }];
 }
+
+
 
 - (void)test1{
     
