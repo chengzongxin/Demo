@@ -90,6 +90,7 @@
 		165CCBD6278E66DB00141EC0 /* THKDynamicTabsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 165CCBC7278E66DA00141EC0 /* THKDynamicTabsManager.m */; };
 		165CCBD7278E66DB00141EC0 /* THKImageTabSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 165CCBC8278E66DA00141EC0 /* THKImageTabSegmentControl.m */; };
 		165CCBD8278E66DB00141EC0 /* THKDynamicTabsScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 165CCBCB278E66DA00141EC0 /* THKDynamicTabsScrollView.m */; };
+		165CCBDB278E68AC00141EC0 /* Tab1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 165CCBDA278E68AC00141EC0 /* Tab1ViewController.m */; };
 		16611AAD2696870F0089E41B /* GEEnvironmentParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A752696870F0089E41B /* GEEnvironmentParameter.m */; };
 		16611AAE2696870F0089E41B /* GESwizzer.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A772696870F0089E41B /* GESwizzer.m */; };
 		16611AAF2696870F0089E41B /* GELocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16611A792696870F0089E41B /* GELocation.m */; };
@@ -499,6 +500,8 @@
 		165CCBCE278E66DA00141EC0 /* THKDynamicTabsPageVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsPageVM.h; sourceTree = "<group>"; };
 		165CCBCF278E66DA00141EC0 /* THKDynamicTabsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsManager.h; sourceTree = "<group>"; };
 		165CCBD0278E66DA00141EC0 /* THKImageTabSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKImageTabSegmentControl.h; sourceTree = "<group>"; };
+		165CCBD9278E68AC00141EC0 /* Tab1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tab1ViewController.h; sourceTree = "<group>"; };
+		165CCBDA278E68AC00141EC0 /* Tab1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tab1ViewController.m; sourceTree = "<group>"; };
 		16611A732696870F0089E41B /* Godeye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Godeye.h; sourceTree = "<group>"; };
 		16611A752696870F0089E41B /* GEEnvironmentParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEEnvironmentParameter.m; sourceTree = "<group>"; };
 		16611A762696870F0089E41B /* GELocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GELocation.h; sourceTree = "<group>"; };
@@ -1980,6 +1983,8 @@
 				1689DED42744DA220073BA68 /* DynamicTabChildVC.m */,
 				16529F6A2745F220002A3B65 /* DynamicTabDemoList.h */,
 				16529F6B2745F220002A3B65 /* DynamicTabDemoList.m */,
+				165CCBD9278E68AC00141EC0 /* Tab1ViewController.h */,
+				165CCBDA278E68AC00141EC0 /* Tab1ViewController.m */,
 			);
 			path = DynamicTabVC;
 			sourceTree = "<group>";
@@ -2833,6 +2838,7 @@
 				16F84A7926E5B40E00192B0A /* UIView+THKDiaryAnimation.m in Sources */,
 				16611B65269692D20089E41B /* THKMaterialClassificationViewCell.m in Sources */,
 				16611AC22696870F0089E41B /* Godeye.m in Sources */,
+				165CCBDB278E68AC00141EC0 /* Tab1ViewController.m in Sources */,
 				16DDC075274C8AEC000DAA29 /* THKNavigationController.m in Sources */,
 				16867A122692D76C00650023 /* TMCardComponentTitleSubTitleUpSideDownStyleCell.m in Sources */,
 				16192B382692E13E00967C73 /* THKBaseAnimation.m in Sources */,

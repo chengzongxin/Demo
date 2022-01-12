@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "ComponentViewController.h"
 #import "TestViewController.h"
+#import "Tab1ViewController.h"
 #pragma mark - THKTabBarController
 
 @interface THKTabBarItem : UITabBarItem
@@ -53,7 +54,7 @@
     // tab 1 组件
     [arrViewControllers safeAddObject:[[THKNavigationController alloc] initWithRootViewController:[[ComponentViewController alloc] init]]];
     // tab 2 测试
-    [arrViewControllers safeAddObject:[[THKNavigationController alloc] initWithRootViewController:[[TestViewController alloc] init]]];
+    [arrViewControllers safeAddObject:[[THKNavigationController alloc] initWithRootViewController:[[Tab1ViewController alloc] init]]];
     
     self.viewControllers = arrViewControllers;
     self.tabBar.translucent = NO;// 不透明

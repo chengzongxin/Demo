@@ -7,6 +7,7 @@
 
 #import "DynamicTabChildVC.h"
 #import <MJRefresh.h>
+#import "TestViewController.h"
 @interface DynamicTabChildVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -16,7 +17,11 @@
 @end
 
 @implementation DynamicTabChildVC
-
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    
+//    self.navigationController.navigationBar.hidden = NO;
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -66,6 +71,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"%@",indexPath);
+    [self.navigationController pushViewController:TestViewController.new animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
