@@ -139,7 +139,7 @@
             
             CGSize moreSize = CTLineGetBoundsWithOptions(moreLine, 0).size;
             CGFloat h = moreSize.height ;
-            self.clickArea = CGRectMake(w, totalHeight - h, moreSize.width, h);
+            self.clickArea = CGRectMake(w, totalHeight + self.lineSpace, moreSize.width, h);
 
             CFRelease(moreLine);
         }
