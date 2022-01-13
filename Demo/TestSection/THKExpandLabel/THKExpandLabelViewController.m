@@ -35,9 +35,10 @@
 //    label.text = @"fdsjkfhdsjko fdhos fasjfksdflfdsa fdslk fjkdsf dsghf kdsj fksdfj sdfsdhkf dshf kdshjf kjhds fkhgs jfhds jfhg sdfsdfas";
     NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
 //    label.expandString = attr;
+    label.maximumLines = 2;
     label.attributedText = attr;
-    label.numberOfLines = 5;
-    label.showsExpansionTextWhenTruncated = YES;
+//    label.numberOfLines = 5;
+//    label.showsExpansionTextWhenTruncated = YES;
     
 //    @weakify(label);
 //    [label tmui_addSingerTapWithBlock:^{

@@ -14,8 +14,6 @@
 @property (nonatomic, assign) BOOL isNewLine;
 @property(nonatomic)CGRect clickArea;
 
-/**限制最多行数 默认为3 */
-@property(nonatomic)NSUInteger maximumLines;
 
 //@property(nonatomic,copy)void(^action)(XYExpandableLabelActionType type, id info);
 /** 行间距  默认为0 */
@@ -47,15 +45,10 @@
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(actionNotificationReceived:) name:UIDeviceOrientationDidChangeNotification object:nil];
         self.userInteractionEnabled = YES;
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionGestureTapped:)]];
+        self.numberOfLines = 0;
     }
     return self;
 }
-
-//- (void)drawTextInRect:(CGRect)rect{
-//    [super drawTextInRect:rect];
-//
-//    [self drawText];
-//}
 
 - (void)setAttributedText:(NSAttributedString *)attributedText{
     [super setAttributedText:attributedText];
@@ -64,12 +57,6 @@
     if (self.originAttr == nil) {
         self.originAttr = attributedText;
     }
-}
-
-- (void)setNumberOfLines:(NSInteger)numberOfLines{
-    [super setNumberOfLines:numberOfLines];
-    
-    self.maximumLines = numberOfLines;
 }
 
 - (void)setIsExpanded:(BOOL)isExpanded{
@@ -203,8 +190,7 @@
                 //所限制的最后一行的内容 + "展开>" 处理刚刚只显示成一行内容 如果不只一行 一个一个字符的减掉到只有一行为止
                 NSMutableAttributedString *lastLineAttr = [[NSMutableAttributedString alloc] initWithAttributedString:[drawAttr attributedSubstringFromRange:NSMakeRange(0, drawAttr.length-j)]];
                 if ([lastLineAttr.string hasSuffix:@"\n"]) {
-                    [lastLineAttr deleteCharactersInRange:NSMakeRange(lastLineAttr.string.length - 3, 3)];
-//                    [lastLineAttr appendString:@"        "];
+                    [lastLineAttr deleteCharactersInRange:NSMakeRange(lastLineAttr.string.length - 1, 1)];
                 }
                 [lastLineAttr appendAttributedString:self.clickAttributedText];
                 //内容是否是只有一行
