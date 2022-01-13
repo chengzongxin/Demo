@@ -30,10 +30,11 @@
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).insets(NavigationContentTop + 20);
-        make.left.right.equalTo(self.view).insets(20);
+        make.left.right.equalTo(self.view).insets(40);
     }];
-//    label.text = @"fdsjkfhdsjko fdhos fasjfksdflfdsa fdslk fjkdsf dsghf kdsj fksdfj sdfsdhkf dshf kdshjf kjhds fkhgs jfhds jfhg sdfsdfas";
-    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
+//    [self contentStr]
+    NSString *str = [NSString tmui_random];
+    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
 //    label.expandString = attr;
     label.maximumLines = 2;
     label.attributedText = attr;

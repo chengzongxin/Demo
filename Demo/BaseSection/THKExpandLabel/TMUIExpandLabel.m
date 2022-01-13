@@ -25,9 +25,13 @@
 /** 字体大小 默认14*/
 @property (nonatomic, assign) CGFloat fontSize;
 
-
+@property (nonatomic, strong) NSMutableParagraphStyle *style;
 
 @property (nonatomic, strong) NSAttributedString *originAttr;
+@property (nonatomic, strong) NSAttributedString *shrinkAttr;
+@property (nonatomic, strong) NSAttributedString *expandAttr;
+
+@property (nonatomic, strong) UIView *debugView;
 
 @end
 
@@ -46,23 +50,30 @@
         self.userInteractionEnabled = YES;
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionGestureTapped:)]];
         self.numberOfLines = 0;
+//        self.debugView = [UIView new];
+//        [self addSubview:self.debugView];
+//        self.debugView.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
     }
     return self;
 }
 
+// 设置后，系统会自动调drawRect
 - (void)setAttributedText:(NSAttributedString *)attributedText{
-    [super setAttributedText:attributedText];
+    self.fontSize = attributedText.tmui_font.pointSize;
+    self.style = attributedText.tmui_paragraphStyle;
+    self.expandColor = UIColor.redColor;
+    self.lineSpace = 20;
     
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithAttributedString:attributedText];
+    attr.tmui_paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     
-    if (self.originAttr == nil) {
-        self.originAttr = attributedText;
-    }
+    self.originAttr = attr;
+    
+    [super setAttributedText:attr];
 }
 
 - (void)setIsExpanded:(BOOL)isExpanded{
     _isExpanded = isExpanded;
-    
-    self.numberOfLines = 0;
     
     [self setNeedsDisplay];
 }
@@ -74,18 +85,11 @@
 }
 
 - (void)drawText{
-//    self.originAttr = self.attributedText;
-//    self.maximumLines = self.numberOfLines;
-    self.fontSize = [self.attributedText tmui_font].pointSize;
-    self.expandColor = UIColor.redColor;
-    self.lineSpace = 20;
     if (self.isExpanded) {
         [self drawExpandText];
     }else{
         [self drawShrinkText];
     }
-    
-    [self setNeedsDisplay];
 }
 
 // 显示全部
@@ -106,6 +110,7 @@
     CGPoint origins[lines.count];
     CTFrameGetLineOrigins(ctFrame, CFRangeMake(0, 0), origins);
     CGFloat totalHeight = 0;
+    
     if (lines.count > line1Count) {
         self.isNewLine = YES;
         drawAttributedText = [[NSMutableAttributedString alloc] initWithAttributedString:_originAttr];
@@ -120,32 +125,31 @@
         self.isNewLine = NO;
     }
     
-    for (int i=0; i<lines.count; i++) {
+    for (int i = 0; i < lines.count; i++) {
         CTLineRef line = (__bridge CTLineRef)lines[i];
-        totalHeight += [self heightForCTLine:line];
-        
-        if (i == lines.count - 1) {
-            CTLineRef moreLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)self.clickAttributedText);
-            
+        if (i < lines.count - 1) {
+            // 前面几行
+            totalHeight += [self heightForCTLine:line];
+        }else if (i == lines.count - 1) {
+            // 最后一行
             NSArray *runs = (NSArray*)CTLineGetGlyphRuns(line);
-            CGFloat w = 0;
-            for (int i=0; i<runs.count; i++) {
-                if (i == runs.count - 1) {
-                    break;
-                }
+            CGFloat x = 0;
+            for (int i = 0; i < runs.count - 1; i++) {
                 CTRunRef run = (__bridge CTRunRef)runs[i];
-                w += CTRunGetTypographicBounds(run, CFRangeMake(0, 0), NULL, NULL, NULL);
+                x += CTRunGetTypographicBounds(run, CFRangeMake(0, 0), NULL, NULL, NULL);
             }
             
+            CTLineRef moreLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)self.clickAttributedText);
             CGSize moreSize = CTLineGetBoundsWithOptions(moreLine, 0).size;
-            CGFloat h = moreSize.height ;
-            self.clickArea = CGRectMake(w, totalHeight + self.lineSpace, moreSize.width, h);
-
+            self.clickArea = CGRectMake(x, totalHeight, moreSize.width, moreSize.height);
+            
             CFRelease(moreLine);
         }
-       
     }
-    self.attributedText = drawAttributedText;
+    self.expandAttr = drawAttributedText;
+    // 避免重复走一遍逻辑
+    [super setAttributedText:drawAttributedText];
+//    self.attributedText = drawAttributedText;
     CFRelease(ctFrame);
     CFRelease(path);
     CFRelease(setter);
@@ -155,10 +159,7 @@
 - (void)drawShrinkText{
     CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.bounds.size.width, UIScreen.mainScreen.bounds.size.height), nil);
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithAttributedString:_originAttr];
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.lineBreakMode = NSLineBreakByWordWrapping;
-    style.lineSpacing = self.lineSpace;
-    [attributed tmui_setAttribute:NSParagraphStyleAttributeName value:style];
+    [attributed tmui_setAttribute:NSParagraphStyleAttributeName value:self.style];
     // CTFrameRef
     CTFramesetterRef setter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attributed);
     CTFrameRef ctFrame = CTFramesetterCreateFrame(setter, CFRangeMake(0, attributed.length), path, NULL);
@@ -200,7 +201,7 @@
                     CTLineRef moreLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)self.clickAttributedText);
                     CGSize moreSize = CTLineGetBoundsWithOptions(moreLine, 0).size;
                     
-                    self.clickArea = CGRectMake(self.bounds.size.width-moreSize.width, totalHeight, moreSize.width, moreSize.height);
+                    self.clickArea = CGRectMake(self.bounds.size.width - moreSize.width, totalHeight, moreSize.width, moreSize.height);
                     
                     totalHeight += [self heightForCTLine:line];
                     CFRelease(moreLine);
@@ -216,7 +217,9 @@
         }
     }
 //    completion(totalHeight, drawAttributedText);
-    self.attributedText = drawAttributedText;
+    self.shrinkAttr = drawAttributedText;
+    // 避免重复走一遍逻辑
+    [super setAttributedText:drawAttributedText];
 //    CFRelease(ctFrame);  // 释放会crash
     CFRelease(setter);
     CFRelease(path);
@@ -239,6 +242,10 @@
     }
 }
 
+- (void)setClickArea:(CGRect)clickArea{
+    _clickArea = clickArea;
+//    _debugView.frame = clickArea;
+}
 
 
 -(NSAttributedString *)clickAttributedText{
