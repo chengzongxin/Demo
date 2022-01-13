@@ -11,6 +11,7 @@
 //#import "UILabel+Expand.h"
 @interface THKExpandLabelViewController ()
 
+@property (nonatomic, strong) UIView *debugView;
 @end
 
 @implementation THKExpandLabelViewController
@@ -20,6 +21,10 @@
     
     self.view.bgColor(@"white");
     
+    
+    self.debugView = [UIView new];
+    [self.view addSubview:self.debugView];
+    self.debugView.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
 //    [self test2];
     
     [self test3];
@@ -32,21 +37,18 @@
         make.top.equalTo(self.view).insets(NavigationContentTop + 20);
         make.left.right.equalTo(self.view).insets(40);
     }];
-//    [self contentStr]
-    NSString *str = [NSString tmui_random];
-    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
-//    label.expandString = attr;
-    label.maximumLines = 2;
-    label.attributedText = attr;
-//    label.numberOfLines = 5;
-//    label.showsExpansionTextWhenTruncated = YES;
     
-//    @weakify(label);
-//    [label tmui_addSingerTapWithBlock:^{
-//        @strongify(label);
-//        NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:[self contentStr] font:UIFont(16) color:UIColor.tmui_randomColor lineSpacing:20];
-//        label.attributedText = attr;
-//    }];
+    NSString *str = [NSString tmui_random:300];
+    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
+    label.maximumLines = (int)arc4random()%10;
+    label.attributedText = attr;
+    
+    label.clickActionBlock = ^(TMUIExpandLabelClickActionType clickType) {
+        NSLog(@"%lu",(unsigned long)clickType);
+    };
+    label.sizeChangeBlock = ^(CGSize size) {
+        NSLog(@"%@",NSStringFromCGSize(size));
+    };
 }
 
 - (void)test2{

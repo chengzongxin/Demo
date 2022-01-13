@@ -10,28 +10,24 @@
 @interface TMUIExpandLabel (){
     CGFloat _lineHeightErrorDimension; //误差值 默认为0.5
 }
-@property(nonatomic)BOOL isExpanded;
-@property (nonatomic, assign) BOOL isNewLine;
-@property(nonatomic)CGRect clickArea;
-
-
-//@property(nonatomic,copy)void(^action)(XYExpandableLabelActionType type, id info);
-/** 行间距  默认为0 */
-@property (nonatomic, assign) CGFloat lineSpace;
-/** text的颜色  默认blackColor*/
-//@property (nonatomic, strong) UIColor *textColor;
+/// 展开
+@property (nonatomic, assign ) BOOL isExpanded;
+/// 是否换行
+@property (nonatomic, assign ) BOOL isNewLine;
+/// 展开区域
+@property (nonatomic, assign) CGRect clickArea;
 /** 收起/展开颜色 默认blueColor*/
 @property (nonatomic, strong) UIColor *expandColor;
 /** 字体大小 默认14*/
 @property (nonatomic, assign) CGFloat fontSize;
-
+/// 段落样式
 @property (nonatomic, strong) NSMutableParagraphStyle *style;
-
+/// 原始文本
 @property (nonatomic, strong) NSAttributedString *originAttr;
+/// 收起文本
 @property (nonatomic, strong) NSAttributedString *shrinkAttr;
+/// 展开文本
 @property (nonatomic, strong) NSAttributedString *expandAttr;
-
-@property (nonatomic, strong) UIView *debugView;
 
 @end
 
@@ -50,9 +46,6 @@
         self.userInteractionEnabled = YES;
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionGestureTapped:)]];
         self.numberOfLines = 0;
-//        self.debugView = [UIView new];
-//        [self addSubview:self.debugView];
-//        self.debugView.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
     }
     return self;
 }
@@ -62,7 +55,6 @@
     self.fontSize = attributedText.tmui_font.pointSize;
     self.style = attributedText.tmui_paragraphStyle;
     self.expandColor = UIColor.redColor;
-    self.lineSpace = 20;
     
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithAttributedString:attributedText];
     attr.tmui_paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
@@ -149,7 +141,7 @@
     self.expandAttr = drawAttributedText;
     // 避免重复走一遍逻辑
     [super setAttributedText:drawAttributedText];
-//    self.attributedText = drawAttributedText;
+    !_sizeChangeBlock?:_sizeChangeBlock(CGSizeMake(self.width, totalHeight));
     CFRelease(ctFrame);
     CFRelease(path);
     CFRelease(setter);
@@ -216,10 +208,10 @@
             totalHeight += [self heightForCTLine:line];
         }
     }
-//    completion(totalHeight, drawAttributedText);
     self.shrinkAttr = drawAttributedText;
     // 避免重复走一遍逻辑
     [super setAttributedText:drawAttributedText];
+    !_sizeChangeBlock?:_sizeChangeBlock(CGSizeMake(self.width, totalHeight));
 //    CFRelease(ctFrame);  // 释放会crash
     CFRelease(setter);
     CFRelease(path);
@@ -238,7 +230,10 @@
 -(void)actionGestureTapped: (UITapGestureRecognizer*)sender{
     if (CGRectContainsPoint(_clickArea, [sender locationInView:self])) {
         self.isExpanded = !self.isExpanded;
-//        self.action ? self.action(0, @(self.contentView.frame.size.height)) : nil;
+        TMUIExpandLabelClickActionType type = self.isExpanded ? TMUIExpandLabelClickActionType_Expand : TMUIExpandLabelClickActionType_Shrink;
+        !_clickActionBlock?:_clickActionBlock(type);
+    }else{
+        !_clickActionBlock?:_clickActionBlock(TMUIExpandLabelClickActionType_Label);
     }
 }
 
@@ -283,7 +278,7 @@
     CGFloat leading;
     CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
     h = MAX(h, ascent + descent + leading);
-    return h + _lineHeightErrorDimension + self.lineSpace;
+    return h + _lineHeightErrorDimension + self.style.lineSpacing;
 }
 
 
