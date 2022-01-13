@@ -19,13 +19,12 @@ typedef void(^TMUIExpandLabelSizeChange)(CGSize size);
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TMUIExpandLabel : UILabel
-
-/**限制最多行数 默认为3 */
-@property(nonatomic)NSUInteger maximumLines;
+/// 默认行数
+@property (nonatomic, assign) NSInteger maxLine;
 /// 点击
-@property(nonatomic,copy) TMUIExpandLabelClickAction clickActionBlock;
+@property (nonatomic, copy) TMUIExpandLabelClickAction clickActionBlock;
 /// 尺寸改变
-@property(nonatomic,copy) TMUIExpandLabelSizeChange sizeChangeBlock;
+@property (nonatomic, copy) TMUIExpandLabelSizeChange sizeChangeBlock;
 
 @end
 

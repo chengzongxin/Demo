@@ -29,6 +29,7 @@
 /// 展开文本
 @property (nonatomic, strong) NSAttributedString *expandAttr;
 
+@property (nonatomic, strong) UIView *debugView;
 @end
 
 
@@ -46,6 +47,11 @@
         self.userInteractionEnabled = YES;
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionGestureTapped:)]];
         self.numberOfLines = 0;
+        self.maxLine = NSIntegerMax;
+        
+        self.debugView = [UIView new];
+        [self addSubview:self.debugView];
+        self.debugView.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
     }
     return self;
 }
@@ -55,10 +61,8 @@
     self.fontSize = attributedText.tmui_font.pointSize;
     self.style = attributedText.tmui_paragraphStyle;
     self.expandColor = UIColor.redColor;
-    
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithAttributedString:attributedText];
     attr.tmui_paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
-    
     self.originAttr = attr;
     
     [super setAttributedText:attr];
@@ -72,7 +76,7 @@
 
 - (void)drawRect:(CGRect)rect{
     [super drawRect:rect];
-    
+
     [self drawText];
 }
 
@@ -86,7 +90,6 @@
 
 // 显示全部
 - (void)drawExpandText{
-    
     CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.bounds.size.width, UIScreen.mainScreen.bounds.size.height), nil);
     //加了 "收起>"的Text
     NSMutableAttributedString *drawAttributedText = [[NSMutableAttributedString alloc] initWithAttributedString:_originAttr];
@@ -166,8 +169,9 @@
     
     NSMutableAttributedString *drawAttributedText = [NSMutableAttributedString new];
     
+    NSInteger maxLine = self.maxLine;
     for (int i=0; i<lines.count; i++) {
-        if (lines.count > _maximumLines && i == _maximumLines) {
+        if (lines.count > maxLine && i == maxLine) {
             break;
         }
         //获取行
@@ -177,14 +181,15 @@
         //截取这一行的text
         NSAttributedString *subAttr = [attributed attributedSubstringFromRange:NSMakeRange(range.location, range.length)];
         //当是限制的最多行数时
-        if (lines.count > _maximumLines && i == _maximumLines - 1) {
+        if (lines.count > maxLine && i == maxLine - 1) {
             NSMutableAttributedString *drawAttr = (NSMutableAttributedString*)subAttr;
-            for (int j=0; j<drawAttr.length; j++) {
+//            if ([drawAttr.string hasSuffix:@"\n"]) { // 剔除结尾有换行的情况
+//                [drawAttr deleteCharactersInRange:NSMakeRange(drawAttr.string.length - 1, 1)];
+//            }
+            for (int j = 0; j < drawAttr.length; j++) {
                 //所限制的最后一行的内容 + "展开>" 处理刚刚只显示成一行内容 如果不只一行 一个一个字符的减掉到只有一行为止
                 NSMutableAttributedString *lastLineAttr = [[NSMutableAttributedString alloc] initWithAttributedString:[drawAttr attributedSubstringFromRange:NSMakeRange(0, drawAttr.length-j)]];
-                if ([lastLineAttr.string hasSuffix:@"\n"]) {
-                    [lastLineAttr deleteCharactersInRange:NSMakeRange(lastLineAttr.string.length - 1, 1)];
-                }
+                
                 [lastLineAttr appendAttributedString:self.clickAttributedText];
                 //内容是否是只有一行
                 NSInteger number = [self numberOfLinesForAttributtedText:lastLineAttr];
@@ -239,22 +244,22 @@
 
 - (void)setClickArea:(CGRect)clickArea{
     _clickArea = clickArea;
-//    _debugView.frame = clickArea;
+    _debugView.frame = clickArea;
 }
 
 
 -(NSAttributedString *)clickAttributedText{
     if (_isExpanded) {
         if (_isNewLine) {
-            return [[NSAttributedString alloc] initWithString:@"\n收起＞" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
+            return [[NSAttributedString alloc] initWithString:@"\n收起" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
         } else {
-            return [[NSAttributedString alloc] initWithString:@" 收起＞" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
+            return [[NSAttributedString alloc] initWithString:@" 收起" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
         }
         
     }
     
-   NSMutableAttributedString *moreString = [[NSMutableAttributedString alloc] initWithString:@"......" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.textColor}];
-    NSAttributedString  *foldString = [[NSAttributedString alloc] initWithString:@"展开1212 ＞" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
+   NSMutableAttributedString *moreString = [[NSMutableAttributedString alloc] initWithString:@"..." attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.textColor}];
+    NSAttributedString  *foldString = [[NSAttributedString alloc] initWithString:@"展开" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
     [moreString appendAttributedString:foldString];
     return moreString;
 }

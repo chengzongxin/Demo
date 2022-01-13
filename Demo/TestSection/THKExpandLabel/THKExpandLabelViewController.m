@@ -38,9 +38,9 @@
         make.left.right.equalTo(self.view).insets(40);
     }];
     
-    NSString *str = [NSString tmui_random:300];
-    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
-    label.maximumLines = (int)arc4random()%10;
+    NSString *str = [self contentStr];// [NSString tmui_random:300];
+    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:(int)(arc4random()%20)];
+    label.maxLine = (int)(arc4random()%10);
     label.attributedText = attr;
     
     label.clickActionBlock = ^(TMUIExpandLabelClickActionType clickType) {
