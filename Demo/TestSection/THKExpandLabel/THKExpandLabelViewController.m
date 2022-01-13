@@ -122,7 +122,7 @@ THKIdentityView\n\
 包含TBTBaseNetwork库快速开发接口、\n\
 TMCardComponent瀑布流快速开发页面、\n\
 TMUIKit库搭建页面\n\
-THKDynamicTabsManager\n";
+THKDynamicTabsManager";
     return str;
 }
 

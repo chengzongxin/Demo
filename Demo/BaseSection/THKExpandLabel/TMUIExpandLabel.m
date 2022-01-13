@@ -195,13 +195,18 @@
                 NSInteger number = [self numberOfLinesForAttributtedText:lastLineAttr];
                 if (number == 1) {
                     [drawAttributedText appendAttributedString:lastLineAttr];
-                    CTLineRef moreLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)self.clickAttributedText);
-                    CGSize moreSize = CTLineGetBoundsWithOptions(moreLine, 0).size;
                     
-                    self.clickArea = CGRectMake(self.bounds.size.width - moreSize.width, totalHeight, moreSize.width, moreSize.height);
+                    CTLineRef lastLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)lastLineAttr);
+                    CGSize lastLineSize = CTLineGetBoundsWithOptions(lastLine, 0).size;
+                    
+                    CTLineRef expandLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)self.clickAttributedText);
+                    CGSize expandSize = CTLineGetBoundsWithOptions(expandLine, 0).size;
+                    
+                    
+                    self.clickArea = CGRectMake(lastLineSize.width - expandSize.width, totalHeight, expandSize.width, expandSize.height);
                     
                     totalHeight += [self heightForCTLine:line];
-                    CFRelease(moreLine);
+                    CFRelease(expandLine);
                     break;
                 }
             }
