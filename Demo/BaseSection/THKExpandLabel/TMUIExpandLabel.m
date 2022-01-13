@@ -29,7 +29,6 @@
 /// 展开文本
 @property (nonatomic, strong) NSAttributedString *expandAttr;
 
-@property (nonatomic, strong) UIView *debugView;
 @end
 
 
@@ -48,23 +47,20 @@
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionGestureTapped:)]];
         self.numberOfLines = 0;
         self.maxLine = NSIntegerMax;
-        
-        self.debugView = [UIView new];
-        [self addSubview:self.debugView];
-        self.debugView.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
     }
     return self;
 }
 
 // 设置后，系统会自动调drawRect
 - (void)setAttributedText:(NSAttributedString *)attributedText{
-    self.fontSize = attributedText.tmui_font.pointSize;
-    self.style = attributedText.tmui_paragraphStyle;
+    
+//    NSMutableAttributedString *attr = [self deleteReturn:attributedText.mutableCopy];
+    NSMutableAttributedString *attr = attributedText.mutableCopy;
+    self.fontSize = attr.tmui_font.pointSize;
+    self.style = attr.tmui_paragraphStyle;
     self.expandColor = UIColor.redColor;
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithAttributedString:attributedText];
     attr.tmui_paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     self.originAttr = attr;
-    
     [super setAttributedText:attr];
 }
 
@@ -73,6 +69,15 @@
     
     [self setNeedsDisplay];
 }
+
+//- (NSMutableAttributedString *)deleteReturn:(NSMutableAttributedString *)attr{
+//    if ([attr.string hasSuffix:@"\n"]) {
+//        [attr deleteCharactersInRange:NSMakeRange(attr.length - 3, 2)];
+//        return [self deleteReturn:attr];
+//    }else{
+//        return attr;
+//    }
+//}
 
 - (void)drawRect:(CGRect)rect{
     [super drawRect:rect];
@@ -123,8 +128,12 @@
     for (int i = 0; i < lines.count; i++) {
         CTLineRef line = (__bridge CTLineRef)lines[i];
         if (i < lines.count - 1) {
+            
+            [self addDebugView:totalHeight];
             // 前面几行
             totalHeight += [self heightForCTLine:line];
+            
+            
         }else if (i == lines.count - 1) {
             // 最后一行
             NSArray *runs = (NSArray*)CTLineGetGlyphRuns(line);
@@ -137,6 +146,8 @@
             CTLineRef moreLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)self.clickAttributedText);
             CGSize moreSize = CTLineGetBoundsWithOptions(moreLine, 0).size;
             self.clickArea = CGRectMake(x, totalHeight, moreSize.width, moreSize.height);
+            
+            [self addDebugView:totalHeight];
             
             CFRelease(moreLine);
         }
@@ -249,7 +260,6 @@
 
 - (void)setClickArea:(CGRect)clickArea{
     _clickArea = clickArea;
-    _debugView.frame = clickArea;
 }
 
 
@@ -291,5 +301,11 @@
     return h + _lineHeightErrorDimension + self.style.lineSpacing;
 }
 
+- (void)addDebugView:(CGFloat)y{
+//    UIView *view = [UIView new];
+//    view.frame = CGRectMake(0, y, self.width, 20);
+//    view.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
+//    [self addSubview:view];
+}
 
 @end
