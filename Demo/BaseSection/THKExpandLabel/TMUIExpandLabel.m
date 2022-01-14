@@ -59,6 +59,7 @@
     self.expandColor = UIColor.redColor;
     attr.tmui_paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     self.originAttr = attr;
+    self.attrType = TMUIExpandLabelAttrType_Origin;
     [super setAttributedText:attr];
 }
 
@@ -147,7 +148,7 @@
         }
     }
     self.expandAttr = drawAttributedText;
-    self.attrType = TMUIExpandLabelAttrType_Expand;
+    _attrType = TMUIExpandLabelAttrType_Expand;
     // 避免重复走一遍逻辑
     [super setAttributedText:drawAttributedText];
     !_sizeChangeBlock?:_sizeChangeBlock(CGSizeMake(self.width, totalHeight));
@@ -225,7 +226,7 @@
         }
     }
     self.shrinkAttr = drawAttributedText;
-    self.attrType = TMUIExpandLabelAttrType_Shrink;
+    _attrType = TMUIExpandLabelAttrType_Shrink;
     // 避免重复走一遍逻辑
     [super setAttributedText:drawAttributedText];
     !_sizeChangeBlock?:_sizeChangeBlock(CGSizeMake(self.width, totalHeight));
