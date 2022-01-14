@@ -27,6 +27,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TMUIExpandLabel : UILabel
 /// 默认行数
 @property (nonatomic, assign) NSInteger maxLine;
+/// 最大宽度
+@property (nonatomic, assign) CGFloat maxPreferWidth;
+/// 默认行数
+@property (nonatomic, assign) NSAttributedString *attributeString;
 /// 点击
 @property (nonatomic, copy) TMUIExpandLabelClickAction clickActionBlock;
 /// 尺寸改变

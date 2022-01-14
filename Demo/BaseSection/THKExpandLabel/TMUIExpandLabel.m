@@ -46,36 +46,58 @@
         self.userInteractionEnabled = YES;
         [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionGestureTapped:)]];
         self.numberOfLines = 0;
-        self.maxLine = NSIntegerMax;
+        _maxLine = 3;
+        _attrType = TMUIExpandLabelAttrType_Shrink;
     }
     return self;
 }
 
-// 设置后，系统会自动调drawRect
-- (void)setAttributedText:(NSAttributedString *)attributedText{
-    NSMutableAttributedString *attr = attributedText.mutableCopy;
+- (void)setMaxLine:(NSInteger)maxLine{
+    if (maxLine == 0) {
+        _maxLine = NSIntegerMax;
+        self.attrType = TMUIExpandLabelAttrType_Expand;
+    }else{
+        _maxLine = maxLine;
+        self.attrType = TMUIExpandLabelAttrType_Shrink;
+    }
+    
+//    [self drawText];
+    [self setNeedsDisplay];
+}
+
+- (void)setAttributeString:(NSAttributedString *)attributeString{
+    NSMutableAttributedString *attr = attributeString.mutableCopy;
     self.fontSize = attr.tmui_font.pointSize;
     self.style = attr.tmui_paragraphStyle;
     self.expandColor = UIColor.redColor;
     attr.tmui_paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     self.originAttr = attr;
-    self.attrType = TMUIExpandLabelAttrType_Origin;
-    [super setAttributedText:attr];
+//    self.attrType = TMUIExpandLabelAttrType_Origin;
+    
+//    [self drawText];
+    [self setNeedsDisplay];
+}
+
+- (void)drawRect:(CGRect)rect{
+    [super drawRect:rect];
+    
+    [self drawText];
 }
 
 - (void)setAttrType:(TMUIExpandLabelAttrType)attrType{
     if (_attrType != attrType) {
         _attrType = attrType;
         
-        [self setNeedsDisplay];
+//        [self setNeedsDisplay];
+        [self drawText];
     }
 }
 
-- (void)drawRect:(CGRect)rect{
-    [super drawRect:rect];
-
-    [self drawText];
-}
+//- (void)drawRect:(CGRect)rect{
+//    [super drawRect:rect];
+//
+//    [self drawText];
+//}
 
 - (void)drawText{
     if (self.attrType == TMUIExpandLabelAttrType_Expand) {
@@ -87,7 +109,7 @@
 
 // 显示全部
 - (void)drawExpandText{
-    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.bounds.size.width, UIScreen.mainScreen.bounds.size.height), nil);
+    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.maxPreferWidth, UIScreen.mainScreen.bounds.size.height), nil);
     //加了 "收起>"的Text
     NSMutableAttributedString *drawAttributedText = [[NSMutableAttributedString alloc] initWithAttributedString:_originAttr];
     [drawAttributedText appendAttributedString:self.clickAttributedText];
@@ -124,11 +146,9 @@
         CTLineRef line = (__bridge CTLineRef)lines[i];
         if (i < lines.count - 1) {
             
-            [self addDebugView:totalHeight];
+//            [self addDebugView:totalHeight];
             // 前面几行
             totalHeight += [self heightForCTLine:line];
-            
-            
         }else if (i == lines.count - 1) {
             // 最后一行
             NSArray *runs = (NSArray*)CTLineGetGlyphRuns(line);
@@ -141,8 +161,10 @@
             CTLineRef moreLine = CTLineCreateWithAttributedString((__bridge CFAttributedStringRef)self.clickAttributedText);
             CGSize moreSize = CTLineGetBoundsWithOptions(moreLine, 0).size;
             self.clickArea = CGRectMake(x, totalHeight, moreSize.width, moreSize.height);
-            
-            [self addDebugView:totalHeight];
+//            [self addDebugView:totalHeight];
+            if (self.isNewLine) {
+                totalHeight += moreSize.height;
+            }
             
             CFRelease(moreLine);
         }
@@ -150,7 +172,7 @@
     self.expandAttr = drawAttributedText;
     _attrType = TMUIExpandLabelAttrType_Expand;
     // 避免重复走一遍逻辑
-    [super setAttributedText:drawAttributedText];
+    [self setAttributedText:drawAttributedText];
     !_sizeChangeBlock?:_sizeChangeBlock(CGSizeMake(self.width, totalHeight));
     CFRelease(ctFrame);
     CFRelease(path);
@@ -159,7 +181,7 @@
 
 // 显示裁剪
 - (void)drawShrinkText{
-    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.bounds.size.width, UIScreen.mainScreen.bounds.size.height), nil);
+    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.maxPreferWidth, UIScreen.mainScreen.bounds.size.height), nil);
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithAttributedString:_originAttr];
     [attributed tmui_setAttribute:NSParagraphStyleAttributeName value:self.style];
     // CTFrameRef
@@ -211,7 +233,7 @@
                     
                     
                     self.clickArea = CGRectMake(lastLineSize.width - expandSize.width, totalHeight, expandSize.width, expandSize.height);
-                    
+//                    [self addDebugView:totalHeight];
                     totalHeight += [self heightForCTLine:line];
                     CFRelease(expandLine);
                     break;
@@ -228,7 +250,7 @@
     self.shrinkAttr = drawAttributedText;
     _attrType = TMUIExpandLabelAttrType_Shrink;
     // 避免重复走一遍逻辑
-    [super setAttributedText:drawAttributedText];
+    [self setAttributedText:drawAttributedText];
     !_sizeChangeBlock?:_sizeChangeBlock(CGSizeMake(self.width, totalHeight));
 //    CFRelease(ctFrame);  // 释放会crash
     CFRelease(setter);
@@ -288,7 +310,7 @@
 
 /** 计算text的行数 */
 -(NSInteger)numberOfLinesForAttributtedText: (NSAttributedString*)text {
-    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.bounds.size.width, UIScreen.mainScreen.bounds.size.height), nil);
+    CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.maxPreferWidth, UIScreen.mainScreen.bounds.size.height), nil);
     CTFramesetterRef setter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)text);
     CTFrameRef ctFrame = CTFramesetterCreateFrame(setter, CFRangeMake(0, text.length), path, nil);
     NSArray *lines = (NSArray*)CTFrameGetLines(ctFrame);
@@ -309,10 +331,10 @@
 }
 
 - (void)addDebugView:(CGFloat)y{
-//    UIView *view = [UIView new];
-//    view.frame = CGRectMake(0, y, self.width, 20);
-//    view.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
-//    [self addSubview:view];
+    UIView *view = [UIView new];
+    view.frame = CGRectMake(0, y, self.maxPreferWidth, 20);
+    view.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
+    [self addSubview:view];
 }
 
 @end

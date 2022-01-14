@@ -9,7 +9,67 @@
 #import "THKExpandLabel.h"
 #import "TMUIExpandLabel.h"
 //#import "UILabel+Expand.h"
-@interface THKExpandLabelViewController ()
+
+@interface TMUIExpandCell : UITableViewCell
+
+@property (nonatomic, strong) TMUIExpandLabel *label;
+@end
+
+@implementation TMUIExpandCell
+- (NSString *)contentStr {
+    NSString *str = @"\
+Demo开发版base\n\
+土巴兔项目独立工程，抽离了部分组件，可用于快速迭代开发使用，可配合Injection进行热部署进一步提高效率\n\
+包含：\n\
+THKBaseNetwork\n\
+TRouter\n\
+TMUIKit\n\
+TMCardComponent\n\
+THKDynamicTabsManager\n\
+THKIdentityView\n\
+包含TBTBaseNetwork库快速开发接口、\n\
+TMUIKit库搭建页面\n\
+THKDynamicTabsManager\n\
+TMCardComponent瀑布流快速开\n\
+";
+    return str;
+}
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        TMUIExpandLabel *label = [[TMUIExpandLabel alloc] init];
+        [self.contentView addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.equalTo(self.contentView).insets(20);
+            make.height.mas_equalTo(20).priorityLow();
+        }];
+        label.maxLine = 3;
+        label.maxPreferWidth = TMUI_SCREEN_WIDTH - 20 * 2;
+        
+        self.label = label;
+    }
+    return self;
+}
+
+@end
+
+@interface THKExpandAdpater : NSObject
+
+@property (nonatomic, assign) CGFloat cellHeight;
+
+@property (nonatomic, assign) NSInteger maxLine;
+
+@end
+
+@implementation THKExpandAdpater
+
+@end
+
+@interface THKExpandLabelViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) NSMutableArray <THKExpandAdpater *>* adapter;
 
 @end
 
@@ -18,10 +78,82 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.bgColor(@"white");
-//    [self test2];
+    _adapter = [NSMutableArray array];
+    for (int i = 0; i< 10; i++) {
+        THKExpandAdpater *a = [THKExpandAdpater new];
+        a.cellHeight = 144;
+        a.maxLine = 3;
+        [_adapter addObject:a];
+    }
     
-    [self test3];
+    [self.view addSubview:self.tableView];
+}
+
+
+#pragma mark UITableViewDelegate UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.adapter.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TMUIExpandCell *cell = (TMUIExpandCell *)[tableView dequeueReusableCellWithIdentifier:NSStringFromClass(TMUIExpandCell.class) forIndexPath:indexPath];
+    
+    THKExpandAdpater *a = _adapter[indexPath.row];
+    cell.label.maxLine = a.maxLine;
+    
+    NSString *str = [self contentStr];
+    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
+    cell.label.attributeString = attr;
+    
+    @weakify(self);
+    @weakify(cell);
+    cell.label.clickActionBlock = ^(TMUIExpandLabelClickActionType clickType) {
+        @strongify(self);
+        @strongify(cell);
+        NSLog(@"%lu",(unsigned long)clickType);
+        cell.label.maxLine = TMUIExpandLabelClickActionType_Expand == clickType? 0 : 3;
+        a.maxLine = TMUIExpandLabelClickActionType_Expand == clickType? 0 : 3;
+    };
+    cell.label.sizeChangeBlock = ^(CGSize size) {
+        @strongify(self);
+        NSLog(@"%@",NSStringFromCGSize(size));
+        [tableView performBatchUpdates:^{
+//            self.rowHeights[indexPath.row] = @(size.height + 40);
+            a.cellHeight = size.height + 40;
+        } completion:^(BOOL finished) {
+            
+        }];
+    };
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.adapter[indexPath.row].cellHeight;
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.sectionHeaderHeight = 0.0;
+        _tableView.sectionFooterHeight = 0.0;
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.estimatedRowHeight = UITableViewAutomaticDimension;
+        [_tableView registerClass:TMUIExpandCell.class forCellReuseIdentifier:NSStringFromClass(TMUIExpandCell.class)];
+    }
+    return _tableView;
 }
 
 - (void)test3{
@@ -101,7 +233,6 @@
      contentAttrDict:@{NSForegroundColorAttributeName:UIColorHex(#1A1C1A),NSFontAttributeName:UIFont(16)}];
 }
 
-
 - (NSString *)contentStr {
     NSString *str = @"\
 Demo开发版base\n\
@@ -120,5 +251,6 @@ TMCardComponent瀑布流快速开\n\
 ";
     return str;
 }
+
 
 @end
