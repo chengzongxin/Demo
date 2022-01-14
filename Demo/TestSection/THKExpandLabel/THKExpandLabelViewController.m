@@ -34,7 +34,7 @@
     
     NSString *str = [self contentStr];// [NSString tmui_random:300];
     NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
-    label.maxLine = 1;
+    label.maxLine = 3;
     label.attributedText = attr;
     
     label.clickActionBlock = ^(TMUIExpandLabelClickActionType clickType) {
@@ -116,7 +116,7 @@ THKIdentityView\n\
 包含TBTBaseNetwork库快速开发接口、\n\
 TMUIKit库搭建页面\n\
 THKDynamicTabsManager\n\
-TMCardComponent瀑布流快速开\
+TMCardComponent瀑布流快速开\n\
 ";
     return str;
 }

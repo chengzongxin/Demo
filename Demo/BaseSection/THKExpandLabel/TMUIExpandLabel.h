@@ -13,6 +13,12 @@ typedef enum : NSUInteger {
     TMUIExpandLabelClickActionType_Shrink,
 } TMUIExpandLabelClickActionType;
 
+typedef enum : NSUInteger {
+    TMUIExpandLabelAttrType_Origin,
+    TMUIExpandLabelAttrType_Shrink,
+    TMUIExpandLabelAttrType_Expand,
+} TMUIExpandLabelAttrType;
+
 typedef void(^TMUIExpandLabelClickAction)(TMUIExpandLabelClickActionType clickType);
 typedef void(^TMUIExpandLabelSizeChange)(CGSize size);
 

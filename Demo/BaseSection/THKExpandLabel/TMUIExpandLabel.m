@@ -10,8 +10,6 @@
 @interface TMUIExpandLabel (){
     CGFloat _lineHeightErrorDimension; //误差值 默认为0.5
 }
-/// 展开
-@property (nonatomic, assign ) BOOL isExpanded;
 /// 是否换行
 @property (nonatomic, assign ) BOOL isNewLine;
 /// 展开区域
@@ -28,6 +26,8 @@
 @property (nonatomic, strong) NSAttributedString *shrinkAttr;
 /// 展开文本
 @property (nonatomic, strong) NSAttributedString *expandAttr;
+/// 文本类型
+@property (nonatomic, assign) TMUIExpandLabelAttrType attrType;
 
 @end
 
@@ -53,8 +53,6 @@
 
 // 设置后，系统会自动调drawRect
 - (void)setAttributedText:(NSAttributedString *)attributedText{
-    
-//    NSMutableAttributedString *attr = [self deleteReturn:attributedText.mutableCopy];
     NSMutableAttributedString *attr = attributedText.mutableCopy;
     self.fontSize = attr.tmui_font.pointSize;
     self.style = attr.tmui_paragraphStyle;
@@ -64,20 +62,13 @@
     [super setAttributedText:attr];
 }
 
-- (void)setIsExpanded:(BOOL)isExpanded{
-    _isExpanded = isExpanded;
-    
-    [self setNeedsDisplay];
+- (void)setAttrType:(TMUIExpandLabelAttrType)attrType{
+    if (_attrType != attrType) {
+        _attrType = attrType;
+        
+        [self setNeedsDisplay];
+    }
 }
-
-//- (NSMutableAttributedString *)deleteReturn:(NSMutableAttributedString *)attr{
-//    if ([attr.string hasSuffix:@"\n"]) {
-//        [attr deleteCharactersInRange:NSMakeRange(attr.length - 3, 2)];
-//        return [self deleteReturn:attr];
-//    }else{
-//        return attr;
-//    }
-//}
 
 - (void)drawRect:(CGRect)rect{
     [super drawRect:rect];
@@ -86,7 +77,7 @@
 }
 
 - (void)drawText{
-    if (self.isExpanded) {
+    if (self.attrType == TMUIExpandLabelAttrType_Expand) {
         [self drawExpandText];
     }else{
         [self drawShrinkText];
@@ -156,6 +147,7 @@
         }
     }
     self.expandAttr = drawAttributedText;
+    self.attrType = TMUIExpandLabelAttrType_Expand;
     // 避免重复走一遍逻辑
     [super setAttributedText:drawAttributedText];
     !_sizeChangeBlock?:_sizeChangeBlock(CGSizeMake(self.width, totalHeight));
@@ -233,6 +225,7 @@
         }
     }
     self.shrinkAttr = drawAttributedText;
+    self.attrType = TMUIExpandLabelAttrType_Shrink;
     // 避免重复走一遍逻辑
     [super setAttributedText:drawAttributedText];
     !_sizeChangeBlock?:_sizeChangeBlock(CGSizeMake(self.width, totalHeight));
@@ -247,14 +240,20 @@
 #pragma mark - Action Method
 -(void)actionNotificationReceived: (NSNotification*)sender{
     if ([sender.name isEqualToString:UIDeviceOrientationDidChangeNotification]) {
-        self.isExpanded = self.isExpanded;
+        self.attrType = self.attrType;
     }
 }
 
 -(void)actionGestureTapped: (UITapGestureRecognizer*)sender{
     if (CGRectContainsPoint(_clickArea, [sender locationInView:self])) {
-        self.isExpanded = !self.isExpanded;
-        TMUIExpandLabelClickActionType type = self.isExpanded ? TMUIExpandLabelClickActionType_Expand : TMUIExpandLabelClickActionType_Shrink;
+        TMUIExpandLabelClickActionType type;
+        if (self.attrType == TMUIExpandLabelAttrType_Shrink) {
+            self.attrType = TMUIExpandLabelAttrType_Expand;
+            type = TMUIExpandLabelClickActionType_Expand;
+        }else{
+            self.attrType = TMUIExpandLabelAttrType_Shrink;
+            type = TMUIExpandLabelClickActionType_Shrink;
+        }
         !_clickActionBlock?:_clickActionBlock(type);
     }else{
         !_clickActionBlock?:_clickActionBlock(TMUIExpandLabelClickActionType_Label);
@@ -271,7 +270,7 @@
 }
 
 -(NSAttributedString *)clickAttributedText{
-    if (_isExpanded) {
+    if (self.attrType == TMUIExpandLabelAttrType_Expand) {
         if (_isNewLine) {
             return [[NSAttributedString alloc] initWithString:@" 收起" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
         } else {
