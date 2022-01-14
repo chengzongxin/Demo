@@ -11,7 +11,6 @@
 //#import "UILabel+Expand.h"
 @interface THKExpandLabelViewController ()
 
-@property (nonatomic, strong) UIView *debugView;
 @end
 
 @implementation THKExpandLabelViewController
@@ -20,11 +19,6 @@
     [super viewDidLoad];
     
     self.view.bgColor(@"white");
-    
-    
-    self.debugView = [UIView new];
-    [self.view addSubview:self.debugView];
-    self.debugView.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
 //    [self test2];
     
     [self test3];
@@ -39,8 +33,8 @@
     }];
     
     NSString *str = [self contentStr];// [NSString tmui_random:300];
-    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:(int)(arc4random()%20)];
-    label.maxLine = (int)(arc4random()%10);
+    NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
+    label.maxLine = 1;
     label.attributedText = attr;
     
     label.clickActionBlock = ^(TMUIExpandLabelClickActionType clickType) {
@@ -109,8 +103,8 @@
 
 
 - (NSString *)contentStr {
-    NSString *str = @"Demo\
-开发版base\n\
+    NSString *str = @"\
+Demo开发版base\n\
 土巴兔项目独立工程，抽离了部分组件，可用于快速迭代开发使用，可配合Injection进行热部署进一步提高效率\n\
 包含：\n\
 THKBaseNetwork\n\
@@ -120,9 +114,10 @@ TMCardComponent\n\
 THKDynamicTabsManager\n\
 THKIdentityView\n\
 包含TBTBaseNetwork库快速开发接口、\n\
-TMCardComponent瀑布流快速开发页面、\n\
 TMUIKit库搭建页面\n\
-THKDynamicTabsManager";
+THKDynamicTabsManager\n\
+TMCardComponent瀑布流快速开\
+";
     return str;
 }
 

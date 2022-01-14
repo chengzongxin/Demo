@@ -114,6 +114,9 @@
     if (lines.count > line1Count) {
         self.isNewLine = YES;
         drawAttributedText = [[NSMutableAttributedString alloc] initWithAttributedString:_originAttr];
+        if (![drawAttributedText.string hasSuffix:@"\n"]) { // 如果结尾没有换行，拼接换行，如果有换行还拼接会导致点击区域不准确
+            [drawAttributedText appendAttributedString:[self returnLine]];
+        }
         [drawAttributedText appendAttributedString:self.clickAttributedText];
         setter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)drawAttributedText);
         ctFrame = CTFramesetterCreateFrame(setter, CFRangeMake(0, drawAttributedText.length), path, NULL);
@@ -263,10 +266,14 @@
 }
 
 
+-(NSAttributedString *)returnLine{
+    return [[NSAttributedString alloc] initWithString:@"\n" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
+}
+
 -(NSAttributedString *)clickAttributedText{
     if (_isExpanded) {
         if (_isNewLine) {
-            return [[NSAttributedString alloc] initWithString:@"\n收起" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
+            return [[NSAttributedString alloc] initWithString:@" 收起" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
         } else {
             return [[NSAttributedString alloc] initWithString:@" 收起" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:self.fontSize], NSForegroundColorAttributeName: self.expandColor}];
         }
