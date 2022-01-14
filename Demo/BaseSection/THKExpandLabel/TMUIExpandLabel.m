@@ -61,8 +61,8 @@
         self.attrType = TMUIExpandLabelAttrType_Shrink;
     }
     
-//    [self drawText];
-    [self setNeedsDisplay];
+    [self drawText];
+//    [self setNeedsDisplay];
 }
 
 - (void)setAttributeString:(NSAttributedString *)attributeString{
@@ -88,9 +88,9 @@
     if (_attrType != attrType) {
         _attrType = attrType;
         
-//        [self setNeedsDisplay];
-        [self drawText];
+//        [self drawText];
     }
+    [self setNeedsDisplay];
 }
 
 //- (void)drawRect:(CGRect)rect{
@@ -271,10 +271,10 @@
     if (CGRectContainsPoint(_clickArea, [sender locationInView:self])) {
         TMUIExpandLabelClickActionType type;
         if (self.attrType == TMUIExpandLabelAttrType_Shrink) {
-            self.attrType = TMUIExpandLabelAttrType_Expand;
+            self.maxLine = 0;
             type = TMUIExpandLabelClickActionType_Expand;
         }else{
-            self.attrType = TMUIExpandLabelAttrType_Shrink;
+            self.maxLine = 3;
             type = TMUIExpandLabelClickActionType_Shrink;
         }
         !_clickActionBlock?:_clickActionBlock(type);

@@ -40,7 +40,7 @@ TMCardComponent瀑布流快速开\n\
         TMUIExpandLabel *label = [[TMUIExpandLabel alloc] init];
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.right.equalTo(self.contentView).insets(20);
+            make.top.left.right.equalTo(self.contentView);
             make.height.mas_equalTo(20).priorityLow();
         }];
         label.maxLine = 3;
@@ -78,6 +78,14 @@ TMCardComponent瀑布流快速开\n\
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [self.view addSubview:self.tableView];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    
     _adapter = [NSMutableArray array];
     for (int i = 0; i< 10; i++) {
         THKExpandAdpater *a = [THKExpandAdpater new];
@@ -86,9 +94,8 @@ TMCardComponent瀑布流快速开\n\
         [_adapter addObject:a];
     }
     
-    [self.view addSubview:self.tableView];
+    [self.tableView reloadData];
 }
-
 
 #pragma mark UITableViewDelegate UITableViewDataSource
 
@@ -110,24 +117,23 @@ TMCardComponent瀑布流快速开\n\
     NSMutableAttributedString *attr = [NSMutableAttributedString tmui_attributedStringWithString:str font:UIFont(18) color:UIColor.tmui_randomColor lineSpacing:20];
     cell.label.attributeString = attr;
     
-    @weakify(self);
     @weakify(cell);
     cell.label.clickActionBlock = ^(TMUIExpandLabelClickActionType clickType) {
-        @strongify(self);
         @strongify(cell);
         NSLog(@"%lu",(unsigned long)clickType);
-        cell.label.maxLine = TMUIExpandLabelClickActionType_Expand == clickType? 0 : 3;
-        a.maxLine = TMUIExpandLabelClickActionType_Expand == clickType? 0 : 3;
-    };
-    cell.label.sizeChangeBlock = ^(CGSize size) {
-        @strongify(self);
-        NSLog(@"%@",NSStringFromCGSize(size));
-        [tableView performBatchUpdates:^{
-//            self.rowHeights[indexPath.row] = @(size.height + 40);
-            a.cellHeight = size.height + 40;
-        } completion:^(BOOL finished) {
-            
-        }];
+        
+        cell.label.sizeChangeBlock = ^(CGSize size) {
+            NSLog(@"%@",NSStringFromCGSize(size));
+            if (@available(iOS 11.0, *)) {
+                [tableView performBatchUpdates:^{
+                    a.cellHeight = size.height;
+                } completion:^(BOOL finished) {
+                    
+                }];
+            } else {
+                // Fallback on earlier versions
+            }
+        };
     };
     return cell;
 }
