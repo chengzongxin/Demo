@@ -181,6 +181,12 @@
             make.height.equalTo(self.wrapperScrollView).offset(-self.viewModel.sliderBarHeight);
         }];
         
+        // 针对交互吸顶的样式，pageVC必须设置高度和屏幕高度
+        [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.mas_equalTo(0);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+            make.height.mas_equalTo(TMUI_SCREEN_HEIGHT - self.viewModel.sliderBarHeight);
+        }];
         
         self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
         self.wrapperScrollView.lockArea = self.viewModel.sliderBarHeight;
@@ -376,6 +382,8 @@
         THKDynamicTabsPageVM *vm = [[THKDynamicTabsPageVM alloc] init];
         if (self.viewModel.layout == THKDynamicTabsLayoutType_Custom) {
             vm.cutOutHeight = self.viewModel.cutOutHeight;
+        }else if(self.viewModel.layout == THKDynamicTabsLayoutType_Interaction) {
+            vm.cutOutHeight = 0;
         }else{
             vm.cutOutHeight = self.viewModel.cutOutHeight + self.viewModel.sliderBarHeight + NavigationContentTop;
         }

@@ -33,6 +33,11 @@
     
     
     [self.view addSubview:self.headerView];
+    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(NavigationContentTop+44);
+    }];
+    
     [self.headerView addSubview:self.topBar];
     [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
@@ -60,29 +65,30 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
-CGFloat _offsetY = 0.0;
-- (void)contentScrollViewDidScroll:(UIScrollView *)scrollView diff:(CGFloat)diff{
-//    if (wrapperScrollView.pin) {
-//        _offsetTabY += diff;
-//        if (_offsetTabY < -44) {
-//            _offsetTabY = -44;
-//        }
-//        if (_offsetTabY > kMaterialHomeTabHeight - 44) {
-//            _offsetTabY = kMaterialHomeTabHeight - 44;
-//        }
-//    }else{
-//        if (diff < 0) {
-//            diff = 0;
-//        }
-//        _offsetTabY -= diff;
-//        if (_offsetTabY < -44) {
-//            _offsetTabY = -44;
-//        }
-//    }
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     
-//    [self.headerView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.top.mas_equalTo(_offsetTabY);
-//    }];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
+CGFloat _lastOffsetY = 0.0;
+- (void)wrapperScrollViewDidScroll:(UIScrollView *)scrollView diff:(CGFloat)diff{
+    NSLog(@"%f",diff);
+    if (scrollView.thk_isAtTop){
+        return;
+    }
+    
+    _lastOffsetY += diff;
+    if (_lastOffsetY > 0) {
+        _lastOffsetY = 0;
+    }
+    if (_lastOffsetY < -NavigationContentTop) {
+        _lastOffsetY = -NavigationContentTop;
+    }
+    
+    [self.headerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_lastOffsetY);
+    }];
 }
 
 
@@ -100,10 +106,7 @@ CGFloat _offsetY = 0.0;
         };
         
         viewModel.layout = THKDynamicTabsLayoutType_Interaction;
-//        viewModel.cutOutHeight = 44;
-//        viewModel.sliderBarHeight = 44;
         viewModel.headerContentViewHeight = NavigationContentTop+44;
-//        viewModel.headerContentView = self.headerView;
         viewModel.headerContentView.backgroundColor = UIColor.tmui_randomColor;
         viewModel.parentVC = self;
         

@@ -23,7 +23,7 @@
     
     GroupTV(
             Section(
-                    Row.str(@"沉浸式交互Tab").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
+                    Row.str(@"交互头部和菜单Tab").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
                         Tab2ViewController *vc = [[Tab2ViewController alloc] init];
                         [self.navigationController pushViewController:vc animated:YES];
                     }),
