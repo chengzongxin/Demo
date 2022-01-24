@@ -141,6 +141,50 @@
             make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
             make.height.equalTo(self.view).offset(-self.viewModel.sliderBarHeight);
         }];
+    }else if (self.viewModel.layout == THKDynamicTabsLayoutType_Interaction) {
+        headerH = self.viewModel.headerContentViewHeight;
+        topH = headerH;
+        
+        [self.view addSubview:self.wrapperScrollView];
+//        [self.wrapperScrollView addSubview:self.headerWrapperView];
+//        [self.wrapperScrollView addSubview:self.sliderBar];
+        [self.wrapperScrollView addSubview:self.pageContainerVC.view];
+        
+        [self.wrapperScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self.view);
+        }];
+        
+//        [self.headerWrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(-topH);
+//            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+//            make.left.mas_offset(0);
+//            make.height.mas_equalTo(headerH);
+//        }];
+        
+//        if (self.viewModel.headerContentView) {
+//            [self.headerWrapperView addSubview:self.viewModel.headerContentView];
+//            [self.viewModel.headerContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.edges.equalTo(self.headerWrapperView);
+//            }];
+//        }
+//        
+//        [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(-self.viewModel.sliderBarHeight);
+//            make.left.mas_offset(0);
+//            make.height.mas_equalTo(self.viewModel.sliderBarHeight);
+//            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+//        }];
+        
+        [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.left.right.bottom.mas_equalTo(0);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+            make.height.equalTo(self.wrapperScrollView).offset(-self.viewModel.sliderBarHeight);
+        }];
+        
+        
+        self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
+        self.wrapperScrollView.lockArea = self.viewModel.sliderBarHeight;
+        self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
     }else{
         // 只添加pageVC
         [self.view addSubview:self.pageContainerVC.view];

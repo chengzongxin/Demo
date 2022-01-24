@@ -17,6 +17,7 @@ typedef enum : NSUInteger {
     THKDynamicTabsLayoutType_Custom = 0,    ///<自定义，需要外部手动布局
     THKDynamicTabsLayoutType_Normal,        ///<常规布局
     THKDynamicTabsLayoutType_Suspend,       ///<包含头部、Tab、吸顶效果布局
+    THKDynamicTabsLayoutType_Interaction,       ///<包含头部、Tab、吸顶效果布局
 } THKDynamicTabsLayoutType;
 
 typedef enum : NSUInteger {

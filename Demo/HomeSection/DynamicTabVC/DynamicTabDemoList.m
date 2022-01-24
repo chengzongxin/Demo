@@ -8,6 +8,8 @@
 #import "DynamicTabDemoList.h"
 #import "DynamicTabVC.h"
 #import "DynamicTabLevelVC.h"
+#import "Tab1ViewController.h"
+#import "Tab2ViewController.h"
 
 @interface DynamicTabDemoList ()
 
@@ -21,6 +23,14 @@
     
     GroupTV(
             Section(
+                    Row.str(@"沉浸式交互Tab").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
+                        Tab2ViewController *vc = [[Tab2ViewController alloc] init];
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }),
+                    Row.str(@"沉浸式交互Tab").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
+                        Tab1ViewController *vc = [[Tab1ViewController alloc] init];
+                        [self.navigationController pushViewController:vc animated:YES];
+                    }),
                     Row.str(@"单Tab组件").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
                         
                         DynamicTabVM *vm = [[DynamicTabVM alloc] init];
@@ -42,7 +52,7 @@
                         DynamicTabVC *vc = [[DynamicTabVC alloc] initWithViewModel:vm];
                         [self.navigationController pushViewController:vc animated:YES];
                     }),
-                    Row.str(@"沉浸式吸顶Tap").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
+                    Row.str(@"沉浸式吸顶Tab").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
                         DynamicTabVM *vm = [[DynamicTabVM alloc] init];
                         vm.isSuspend = DynamicTabStyle_Immersion;
                         DynamicTabVC *vc = [[DynamicTabVC alloc] initWithViewModel:vm];
