@@ -30,6 +30,9 @@
     [self.dynamicTabsManager.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
     }];
+    UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, StatusBarHeight)];
+    [self.view addSubview:statusView];
+    statusView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.5];
     
     
 //    [self.view addSubview:self.headerView];
@@ -86,8 +89,10 @@
         viewModel.layout = THKDynamicTabsLayoutType_Interaction;
         viewModel.headerContentView = self.topBar;
         viewModel.headerContentViewHeight = NavigationContentTop;
+        viewModel.sliderBarHeight = 60;
         viewModel.headerContentView.backgroundColor = UIColor.tmui_randomColor;
         viewModel.parentVC = self;
+        viewModel.lockArea = StatusBarHeight;
         
         _dynamicTabsManager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
         _dynamicTabsManager.delegate = self;

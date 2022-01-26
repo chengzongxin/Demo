@@ -178,12 +178,12 @@
         [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.bottom.mas_equalTo(0);
             make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
-            make.height.equalTo(self.wrapperScrollView).offset(-self.viewModel.sliderBarHeight);
+            make.height.equalTo(self.wrapperScrollView).offset(-self.viewModel.lockArea);
         }];
         
         
         self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
-        self.wrapperScrollView.lockArea = self.viewModel.sliderBarHeight;
+        self.wrapperScrollView.lockArea = self.viewModel.lockArea ?: self.viewModel.sliderBarHeight;
         self.wrapperScrollView.contentSize = CGSizeMake(0, TMUI_SCREEN_HEIGHT + topH);
     }else{
         // 只添加pageVC
@@ -378,7 +378,7 @@
         if (self.viewModel.layout == THKDynamicTabsLayoutType_Custom) {
             vm.cutOutHeight = self.viewModel.cutOutHeight;
         }else if(self.viewModel.layout == THKDynamicTabsLayoutType_Interaction) {
-            vm.cutOutHeight = 0;
+            vm.cutOutHeight = self.viewModel.lockArea;
         }else{
             vm.cutOutHeight = self.viewModel.cutOutHeight + self.viewModel.sliderBarHeight + NavigationContentTop;
         }
