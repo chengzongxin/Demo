@@ -7,6 +7,7 @@
 //
 
 #import "THKDynamicTabsScrollView.h"
+#import "THKDynamicTabsViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @class THKDynamicTabsWrapperScrollView;
@@ -34,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 首页切换页面时，系统私有方法会更改contentoffset，在切换的时候先禁用掉此功能以免抖动
 @property (nonatomic, assign) BOOL disableAdjustContentOffsetIfNecessary;
+
+/// manager的布局方式，对于THKDynamicTabsLayoutType_Interaction 需要特别处理
+@property (nonatomic, assign) THKDynamicTabsLayoutType layout;
 
 ///重新设置头部时，滑动动顶部时的动画
 @property (nonatomic, assign) BOOL resetHeaderScrollAnimated;

@@ -32,25 +32,25 @@
     }];
     
     
-    [self.view addSubview:self.headerView];
-    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(NavigationContentTop+44);
-    }];
-    
-    [self.headerView addSubview:self.topBar];
-    [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(NavigationContentTop);
-    }];
-    
-    [self.headerView addSubview:self.dynamicTabsManager.sliderBar];
-    [self.dynamicTabsManager.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(0);
-        make.left.mas_offset(0);
-        make.height.mas_equalTo(44);
-        make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
-    }];
+//    [self.view addSubview:self.headerView];
+//    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.right.mas_equalTo(0);
+//        make.height.mas_equalTo(NavigationContentTop+44);
+//    }];
+//
+//    [self.view addSubview:self.topBar];
+//    [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.right.mas_equalTo(0);
+//        make.height.mas_equalTo(NavigationContentTop);
+//    }];
+//
+//    [self.headerView addSubview:self.dynamicTabsManager.sliderBar];
+//    [self.dynamicTabsManager.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_equalTo(0);
+//        make.left.mas_offset(0);
+//        make.height.mas_equalTo(44);
+//        make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+//    }];
     
     NSArray *vcs = @[DynamicTabChildVC.new,DynamicTabChildVC.new,DynamicTabChildVC.new];
     NSArray *titles = @[@"12",@"12",@"12"];
@@ -71,27 +71,6 @@
     self.navigationController.navigationBar.hidden = NO;
 }
 
-CGFloat _lastOffsetY = 0.0;
-- (void)wrapperScrollViewDidScroll:(UIScrollView *)scrollView diff:(CGFloat)diff{
-    NSLog(@"%f",diff);
-    if (scrollView.thk_isAtTop){
-        return;
-    }
-    
-    _lastOffsetY += diff;
-    if (_lastOffsetY > 0) {
-        _lastOffsetY = 0;
-    }
-    if (_lastOffsetY < -NavigationContentTop) {
-        _lastOffsetY = -NavigationContentTop;
-    }
-    
-    [self.headerView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_lastOffsetY);
-    }];
-}
-
-
 - (THKDynamicTabsManager *)dynamicTabsManager {
     if (!_dynamicTabsManager) {
         THKDynamicTabsViewModel *viewModel = [[THKDynamicTabsViewModel alloc] init];
@@ -100,13 +79,13 @@ CGFloat _lastOffsetY = 0.0;
             configButtonModel.badgeImageColor = THKColor_RedPointColor;
             configButtonModel.normalColor = THKColor_999999;
             configButtonModel.selectedColor = THKColor_333333;
-            configButtonModel.scale = 0.9;
             configButtonModel.normalFont  = [UIFont fontWithName:@"PingFangSC-Regular" size:15.6];
             configButtonModel.selectedFont = [UIFont fontWithName:@"PingFangSC-Medium" size:16.7];
         };
         
         viewModel.layout = THKDynamicTabsLayoutType_Interaction;
-        viewModel.headerContentViewHeight = NavigationContentTop+44;
+        viewModel.headerContentView = self.topBar;
+        viewModel.headerContentViewHeight = NavigationContentTop;
         viewModel.headerContentView.backgroundColor = UIColor.tmui_randomColor;
         viewModel.parentVC = self;
         

@@ -143,37 +143,37 @@
         }];
     }else if (self.viewModel.layout == THKDynamicTabsLayoutType_Interaction) {
         headerH = self.viewModel.headerContentViewHeight;
-        topH = headerH;
+        topH = headerH + self.viewModel.sliderBarHeight;
         
         [self.view addSubview:self.wrapperScrollView];
-//        [self.wrapperScrollView addSubview:self.headerWrapperView];
-//        [self.wrapperScrollView addSubview:self.sliderBar];
+        [self.wrapperScrollView addSubview:self.headerWrapperView];
+        [self.wrapperScrollView addSubview:self.sliderBar];
         [self.wrapperScrollView addSubview:self.pageContainerVC.view];
         
         [self.wrapperScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
         }];
         
-//        [self.headerWrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(-topH);
-//            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
-//            make.left.mas_offset(0);
-//            make.height.mas_equalTo(headerH);
-//        }];
+        [self.headerWrapperView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(-topH);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+            make.left.mas_offset(0);
+            make.height.mas_equalTo(headerH);
+        }];
         
-//        if (self.viewModel.headerContentView) {
-//            [self.headerWrapperView addSubview:self.viewModel.headerContentView];
-//            [self.viewModel.headerContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                make.edges.equalTo(self.headerWrapperView);
-//            }];
-//        }
-//        
-//        [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.mas_equalTo(-self.viewModel.sliderBarHeight);
-//            make.left.mas_offset(0);
-//            make.height.mas_equalTo(self.viewModel.sliderBarHeight);
-//            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
-//        }];
+        if (self.viewModel.headerContentView) {
+            [self.headerWrapperView addSubview:self.viewModel.headerContentView];
+            [self.viewModel.headerContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(self.headerWrapperView);
+            }];
+        }
+        
+        [self.sliderBar mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(-self.viewModel.sliderBarHeight);
+            make.left.mas_offset(0);
+            make.height.mas_equalTo(self.viewModel.sliderBarHeight);
+            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
+        }];
         
         [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.right.bottom.mas_equalTo(0);
@@ -181,12 +181,6 @@
             make.height.equalTo(self.wrapperScrollView).offset(-self.viewModel.sliderBarHeight);
         }];
         
-        // 针对交互吸顶的样式，pageVC必须设置高度和屏幕高度
-        [self.pageContainerVC.view mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.right.bottom.mas_equalTo(0);
-            make.width.mas_equalTo(TMUI_SCREEN_WIDTH);
-            make.height.mas_equalTo(TMUI_SCREEN_HEIGHT - self.viewModel.sliderBarHeight);
-        }];
         
         self.wrapperScrollView.contentInset = UIEdgeInsetsMake(topH, 0, 0, 0);
         self.wrapperScrollView.lockArea = self.viewModel.sliderBarHeight;
@@ -291,8 +285,8 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(pageViewController:didScroll:progress:formIndex:toIndex:)]) {
         [self.delegate pageViewController:pageViewController didScroll:scrollView progress:progress formIndex:fromIndex toIndex:toIndex];
     }
-    // 切换时，把子VC的scrollView内容吸顶，避免下滑时，再置顶的抖动效果，提升体验
-    if (_wrapperScrollView) {
+    // 切换时，把子VC的scrollView内容吸顶，避免下滑时，再置顶的抖动效果，提升体验, 如果是交互布局，切换时不指定子vc
+    if (_wrapperScrollView && _viewModel.layout != THKDynamicTabsLayoutType_Interaction) {
         [_wrapperScrollView childViewControllerDidChanged:[self.pageContainerVC.controllersM safeObjectAtIndex:self.pageContainerVC.pageIndex]];
     }
 }
@@ -360,6 +354,7 @@
         _wrapperScrollView = [[THKDynamicTabsWrapperScrollView alloc] initWithFrame:UIScreen.mainScreen.bounds];
         _wrapperScrollView.showsHorizontalScrollIndicator = NO;
         _wrapperScrollView.scrollsToTop = YES;
+        _wrapperScrollView.layout = _viewModel.layout;
         _wrapperScrollView.delegate = self;
         if (@available(iOS 11.0, *)) {
             _wrapperScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

@@ -125,14 +125,24 @@ static void * const kTHKScrollViewContentOffsetKVOContext = (void*)&kTHKScrollVi
         if (_pin) {
             // 头部固定后，锁定不允许头部继续往上滑动
             if (object == self) {
-                [self scrollView:self setContentOffset:CGPointMake(0, -_lockArea)];
+                // 交互布局需要锁定wrapper位移
+                if (self.layout == THKDynamicTabsLayoutType_Interaction) {
+                    new = [self handleOffsetWhenInteraction:new];
+                    [self scrollView:self setContentOffset:new];
+                }else{
+                    [self scrollView:self setContentOffset:CGPointMake(0, -_lockArea)];
+                }
             }else{
 //                [self scrollView:_currentScrollView setContentOffset:new];
                 [self doCallBackContentChanged:object diff:diff];
             }
         }else{
             if (object == self) {
-                if (_currentScrollView.thk_isAddRefreshControl && self.thk_isAtTop) {
+                // 交互布局需要锁定wrapper位移
+                if (self.layout == THKDynamicTabsLayoutType_Interaction) {
+                    new = [self handleOffsetWhenInteraction:new];
+                    [self scrollView:self setContentOffset:new];
+                }else if (_currentScrollView.thk_isAddRefreshControl && self.thk_isAtTop) {
                     // 当子scrollView包含下拉刷新头部组件，自身不往下滑动，（去除弹簧效果，不下拉刷新，使子VC开启下拉刷新）
                     if (new.y < -self.contentInset.top) {
                         new.y = -self.contentInset.top;
@@ -172,10 +182,24 @@ static void * const kTHKScrollViewContentOffsetKVOContext = (void*)&kTHKScrollVi
         return NO;
     }
     
-    [self addObservedView:scrollView];
-    _currentScrollView = scrollView;
+    // 交互布局，需要一起滚动，不加入监听
+    if (self.layout != THKDynamicTabsLayoutType_Interaction) {
+        [self addObservedView:scrollView];
+        _currentScrollView = scrollView;
+    }
     
     return YES;
+}
+
+- (CGPoint)handleOffsetWhenInteraction:(CGPoint)new{
+    // -91-44  -44
+    if (new.y < -self.contentInset.top) {
+        new.y = -self.contentInset.top;
+    }
+    if (new.y > -_lockArea) {
+        new.y = -_lockArea;
+    }
+    return new;
 }
 
 - (BOOL)isNeedInteractiveScrollView:(UIScrollView *)scrollView{
