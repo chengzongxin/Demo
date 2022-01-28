@@ -34,6 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 2. 点击状态栏置顶功能
 - (UIScrollView *)contentScrollView;
 
+///页面滑动的过程中，偏移的位置。
+///子页面有view距离底部40，在滑动过程中需要添加offY偏移量，因为vc是固定高度
+-(void)contentScrollViewDidScrollOffY:(CGFloat)offY;
 @end
 
 NS_ASSUME_NONNULL_END

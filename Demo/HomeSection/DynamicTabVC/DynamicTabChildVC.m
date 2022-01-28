@@ -8,7 +8,8 @@
 #import "DynamicTabChildVC.h"
 #import <MJRefresh.h>
 #import "TestViewController.h"
-@interface DynamicTabChildVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "THKDynamicTabsProtocol.h"
+@interface DynamicTabChildVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsProtocol>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -51,8 +52,22 @@
             [self.tableView reloadData];
         });
     }];
+    self.bottomView = [[UIView alloc] init];
+    self.bottomView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.bottomView];
+    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(20);
+        make.right.mas_equalTo(-20);
+        make.bottom.mas_equalTo(-40);
+        make.height.mas_equalTo(100);
+    }];
 }
-
+-(void)contentScrollViewDidScrollOffY:(CGFloat)offY{
+    NSLog(@"=========>>>>%f ",offY);
+    [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-40 + offY);
+    }];
+}
 #pragma mark UITableViewDelegate UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
