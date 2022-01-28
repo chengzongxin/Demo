@@ -302,27 +302,18 @@
     if (scrollView == self.wrapperScrollView && [self.delegate respondsToSelector:@selector(wrapperScrollViewDidScroll:)]) {
         [self.delegate wrapperScrollViewDidScroll:self.wrapperScrollView];
     }
+    if (scrollView == self.wrapperScrollView){
+        [self _updateChildScrollViewOffYInWrapperScrollView];
+    }
 }
 
 
 /// 更新子vc的view在WrapperScrollView中偏移的位置
 -(void)_updateChildScrollViewOffYInWrapperScrollView{
-    if(self.viewModel.layout == THKDynamicTabsLayoutType_Interaction){
-        UIViewController *controller = [self getCurrentViewController];
-        if ([controller conformsToProtocol:@protocol(THKDynamicTabsProtocol)] && [controller respondsToSelector:@selector(contentScrollViewDidScrollOffY:)]) {
-            if (self.wrapperScrollView.pin) {
-                //锁定头部后，没有滑动的偏移量
-                [(UIViewController<THKDynamicTabsProtocol> *)controller contentScrollViewDidScrollOffY:0];
-            }else{
-                if(fabs(self.wrapperScrollView.contentOffset.y) < self.viewModel.lockArea){
-                    //向上滑动，超过头部后，没有滑动的偏移量
-                    [(UIViewController<THKDynamicTabsProtocol> *)controller contentScrollViewDidScrollOffY:0];
-                }else{
-                    //下滑时，最大值是（头部+silder的高度），没有滑动的偏移量
-                    [(UIViewController<THKDynamicTabsProtocol> *)controller contentScrollViewDidScrollOffY:MAX(self.wrapperScrollView.contentOffset.y, -(self.viewModel.sliderBarHeight + self.viewModel.headerContentViewHeight))+self.viewModel.lockArea];
-                }
-            }
-        }
+    
+    UIViewController <THKDynamicTabsManagerDelegate>*childVC = [self.pageContainerVC.controllersM safeObjectAtIndex:self.pageContainerVC.pageIndex];
+    if ([childVC respondsToSelector:@selector(wrapperScrollViewDidScroll:)]) {
+        [childVC wrapperScrollViewDidScroll:self.wrapperScrollView];
     }
 }
 // MARK: wrapper滚动回调
@@ -330,7 +321,7 @@
     if ([self.delegate respondsToSelector:@selector(wrapperScrollViewDidScroll:diff:)]){
         [self.delegate wrapperScrollViewDidScroll:pageWrapperScrollView diff:diff];
     }
-    [self _updateChildScrollViewOffYInWrapperScrollView];
+//    [self _updateChildScrollViewOffYInWrapperScrollView];
 }
 
 // MARK: content滚动回调

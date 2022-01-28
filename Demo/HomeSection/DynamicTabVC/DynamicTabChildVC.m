@@ -9,7 +9,8 @@
 #import <MJRefresh.h>
 #import "TestViewController.h"
 #import "THKDynamicTabsProtocol.h"
-@interface DynamicTabChildVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsProtocol>
+#import "THKDynamicTabsManager.h"
+@interface DynamicTabChildVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsManagerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -62,10 +63,11 @@
         make.height.mas_equalTo(100);
     }];
 }
--(void)contentScrollViewDidScrollOffY:(CGFloat)offY{
-    NSLog(@"=========>>>>%f ",offY);
+
+// 遵守wrapper滑动协议联动，这里回调的是最终值，不受交互偏移影响
+- (void)wrapperScrollViewDidScroll:(THKDynamicTabsWrapperScrollView *)wrapperScrollView{
     [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-40 + offY);
+        make.bottom.mas_equalTo(-40 + wrapperScrollView.contentOffset.y);
     }];
 }
 #pragma mark UITableViewDelegate UITableViewDataSource
