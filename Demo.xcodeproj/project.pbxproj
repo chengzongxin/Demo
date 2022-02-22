@@ -1999,6 +1999,14 @@
 			children = (
 				16976FC627795A5F00D477DA /* ComponentViewController.h */,
 				16976FC727795A5F00D477DA /* ComponentViewController.m */,
+				16B1F512275DF52700FF18C4 /* NewcomerProcess */,
+				16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */,
+				16DDC07F274CB68F000DAA29 /* BusinessSection */,
+				1689DEC927449F2C0073BA68 /* DynamicTabVC */,
+				16F5168F26D4C11D002500F7 /* DiaryBook */,
+				16611B29269692D10089E41B /* MaterialClassification */,
+				16611B54269692D20089E41B /* MaterialHotRank */,
+				16192C14269305EE00967C73 /* Request */,
 				16976FC927795B9B00D477DA /* THKExpandLabel */,
 				16FE9D7E277D915C0085CC07 /* THKComboView */,
 			);
@@ -2161,14 +2169,6 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				16B1F512275DF52700FF18C4 /* NewcomerProcess */,
-				16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */,
-				16DDC07F274CB68F000DAA29 /* BusinessSection */,
-				1689DEC927449F2C0073BA68 /* DynamicTabVC */,
-				16F5168F26D4C11D002500F7 /* DiaryBook */,
-				16611B29269692D10089E41B /* MaterialClassification */,
-				16611B54269692D20089E41B /* MaterialHotRank */,
-				16192C14269305EE00967C73 /* Request */,
 			);
 			path = HomeSection;
 			sourceTree = "<group>";
