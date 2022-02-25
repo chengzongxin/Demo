@@ -6,14 +6,12 @@
 //
 
 #import "ComponentViewController.h"
-#import "THKExpandLabelViewController.h"
 #import "THKComboViewController.h"
 #import "THKMaterialClassificationVC.h"
 #import "THKMaterialClassificationVM.h"
 #import "THKMaterialHotRankVC.h"
 #import "THKMaterialHotRankVM.h"
 #import "THKDiaryBookVC.h"
-#import "THKExpandLabel.h"
 #import "DynamicTabDemoList.h"
 #import "THKQuickCommentsView.h"
 #import "THKSelectMaterialHomeVC.h"
@@ -99,8 +97,8 @@
         [self createBtn]
         .str(@"展开Label")
         .onClick(^{
-            THKExpandLabelViewController *vc = [[THKExpandLabelViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
+//            THKExpandLabelViewController *vc = [[THKExpandLabelViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
         });
     
     id b8 =

@@ -153,7 +153,6 @@
 		1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1AD2680667C0059E9B0 /* UIViewController+Convenient.m */; };
 		1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1AE2680667C0059E9B0 /* UIColor+HexString.m */; };
 		1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 1669C1D62680673A0059E9B0 /* UIScrollView+TScroll.m */; };
-		166E10122787DD9B004874DF /* TMUIExpandLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166E10112787DD9B004874DF /* TMUIExpandLabel.m */; };
 		166FCBC426D8716700FA83A8 /* THKDiaryBookLastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 166FCBC326D8716700FA83A8 /* THKDiaryBookLastCell.m */; };
 		1677AC5F274B91D4001B0F66 /* THKQuickCommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677AC5E274B91D4001B0F66 /* THKQuickCommentsView.m */; };
 		1677AC62274B91EE001B0F66 /* THKQuickCommentsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677AC61274B91EE001B0F66 /* THKQuickCommentsViewModel.m */; };
@@ -218,8 +217,6 @@
 		1689DECF27449F4D0073BA68 /* DynamicTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DECE27449F4D0073BA68 /* DynamicTabVM.m */; };
 		1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DED42744DA220073BA68 /* DynamicTabChildVC.m */; };
 		16976FC827795A5F00D477DA /* ComponentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16976FC727795A5F00D477DA /* ComponentViewController.m */; };
-		16976FCC27795BEB00D477DA /* THKExpandLabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16976FCB27795BEB00D477DA /* THKExpandLabelViewController.m */; };
-		16976FD22779BA0A00D477DA /* UILabel+Fold.m in Sources */ = {isa = PBXBuildFile; fileRef = 16976FD12779BA0A00D477DA /* UILabel+Fold.m */; };
 		16A961EE274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961ED274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m */; };
 		16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F0274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m */; };
 		16A961F4274F2E1F002B6C89 /* THKMaterialTabEntranceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F3274F2E1F002B6C89 /* THKMaterialTabEntranceModel.m */; };
@@ -279,7 +276,6 @@
 		16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */; };
 		16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C54B268325E20024BA20 /* THKRequestCommand.m */; };
 		16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */; };
-		16EDCE9026DE26D500A3D5D2 /* THKExpandLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */; };
 		16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516AA26D4C2E5002500F7 /* THKDiaryBookModel.m */; };
@@ -630,8 +626,6 @@
 		1669C1AF2680667C0059E9B0 /* Define_Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define_Block.h; sourceTree = "<group>"; };
 		1669C1D62680673A0059E9B0 /* UIScrollView+TScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TScroll.m"; sourceTree = "<group>"; };
 		1669C1D72680673A0059E9B0 /* UIScrollView+TScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TScroll.h"; sourceTree = "<group>"; };
-		166E10102787DD9B004874DF /* TMUIExpandLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIExpandLabel.h; sourceTree = "<group>"; };
-		166E10112787DD9B004874DF /* TMUIExpandLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIExpandLabel.m; sourceTree = "<group>"; };
 		166FCBC226D8716700FA83A8 /* THKDiaryBookLastCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookLastCell.h; sourceTree = "<group>"; };
 		166FCBC326D8716700FA83A8 /* THKDiaryBookLastCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookLastCell.m; sourceTree = "<group>"; };
 		1677AC5D274B91D4001B0F66 /* THKQuickCommentsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKQuickCommentsView.h; sourceTree = "<group>"; };
@@ -770,10 +764,6 @@
 		1689DED42744DA220073BA68 /* DynamicTabChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabChildVC.m; sourceTree = "<group>"; };
 		16976FC627795A5F00D477DA /* ComponentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentViewController.h; sourceTree = "<group>"; };
 		16976FC727795A5F00D477DA /* ComponentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentViewController.m; sourceTree = "<group>"; };
-		16976FCA27795BEB00D477DA /* THKExpandLabelViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKExpandLabelViewController.h; sourceTree = "<group>"; };
-		16976FCB27795BEB00D477DA /* THKExpandLabelViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKExpandLabelViewController.m; sourceTree = "<group>"; };
-		16976FD02779BA0A00D477DA /* UILabel+Fold.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+Fold.h"; sourceTree = "<group>"; };
-		16976FD12779BA0A00D477DA /* UILabel+Fold.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Fold.m"; sourceTree = "<group>"; };
 		16A961EC274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3IndexTopTabRequest.h; sourceTree = "<group>"; };
 		16A961ED274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMaterialV3IndexTopTabRequest.m; sourceTree = "<group>"; };
 		16A961EF274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3IndexEntranceRequest.h; sourceTree = "<group>"; };
@@ -897,8 +887,6 @@
 		16E5C54B268325E20024BA20 /* THKRequestCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKRequestCommand.m; sourceTree = "<group>"; };
 		16E5C590268330270024BA20 /* MLeaksMessenger+HookAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MLeaksMessenger+HookAlert.h"; sourceTree = "<group>"; };
 		16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MLeaksMessenger+HookAlert.m"; sourceTree = "<group>"; };
-		16EDCE8E26DE26D500A3D5D2 /* THKExpandLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKExpandLabel.h; sourceTree = "<group>"; };
-		16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKExpandLabel.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		16F5169D26D4C2B8002500F7 /* THKDiaryBookVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookVM.h; sourceTree = "<group>"; };
@@ -1034,7 +1022,6 @@
 			children = (
 				165CCBBF278E66DA00141EC0 /* DynamicTabs */,
 				16DDC072274C8AD4000DAA29 /* BaseViewController */,
-				16A026402742652500C7E4B3 /* THKExpandLabel */,
 				16192AB32692DC2A00967C73 /* QuickMethod */,
 				16611B9826969D960089E41B /* YYAnimatedImageView */,
 				16192AA12692DB5800967C73 /* Depency */,
@@ -2007,7 +1994,6 @@
 				16611B29269692D10089E41B /* MaterialClassification */,
 				16611B54269692D20089E41B /* MaterialHotRank */,
 				16192C14269305EE00967C73 /* Request */,
-				16976FC927795B9B00D477DA /* THKExpandLabel */,
 				16FE9D7E277D915C0085CC07 /* THKComboView */,
 			);
 			path = ComponentSection;
@@ -2020,29 +2006,6 @@
 				1644D3CE276AF7EC00E91C66 /* TestViewController.m */,
 			);
 			path = TestSection;
-			sourceTree = "<group>";
-		};
-		16976FC927795B9B00D477DA /* THKExpandLabel */ = {
-			isa = PBXGroup;
-			children = (
-				16976FCA27795BEB00D477DA /* THKExpandLabelViewController.h */,
-				16976FCB27795BEB00D477DA /* THKExpandLabelViewController.m */,
-			);
-			name = THKExpandLabel;
-			path = Demo/TestSection/THKExpandLabel;
-			sourceTree = SOURCE_ROOT;
-		};
-		16A026402742652500C7E4B3 /* THKExpandLabel */ = {
-			isa = PBXGroup;
-			children = (
-				16EDCE8E26DE26D500A3D5D2 /* THKExpandLabel.h */,
-				16EDCE8F26DE26D500A3D5D2 /* THKExpandLabel.m */,
-				166E10102787DD9B004874DF /* TMUIExpandLabel.h */,
-				166E10112787DD9B004874DF /* TMUIExpandLabel.m */,
-				16976FD02779BA0A00D477DA /* UILabel+Fold.h */,
-				16976FD12779BA0A00D477DA /* UILabel+Fold.m */,
-			);
-			path = THKExpandLabel;
 			sourceTree = "<group>";
 		};
 		16A96202274F84C7002B6C89 /* Model */ = {
@@ -2806,7 +2769,6 @@
 				16611AB82696870F0089E41B /* GEWidgetProcessor.m in Sources */,
 				16867A052692D76C00650023 /* TMCardComponentScrollAdsIndicatorView.m in Sources */,
 				16192B4C2692E1B100967C73 /* THKBackPushRouter.m in Sources */,
-				166E10122787DD9B004874DF /* TMUIExpandLabel.m in Sources */,
 				16611B67269692D20089E41B /* THKMaterialClassificationRecommendRankCell.m in Sources */,
 				161C4CD62728EF7500C660DC /* THKDiaryInfoModel.m in Sources */,
 				16FE9D81277D916A0085CC07 /* THKComboView.m in Sources */,
@@ -2840,7 +2802,6 @@
 				16192B222692E13E00967C73 /* THKPushPopAsLocationToListForVideoDetailTransition.m in Sources */,
 				16867A0B2692D76C00650023 /* TMCardComponentLiveStyleCell.m in Sources */,
 				16611B6B269692D20089E41B /* THKMaterialTitleRankView.m in Sources */,
-				16976FD22779BA0A00D477DA /* UILabel+Fold.m in Sources */,
 				16F84A7926E5B40E00192B0A /* UIView+THKDiaryAnimation.m in Sources */,
 				16611B65269692D20089E41B /* THKMaterialClassificationViewCell.m in Sources */,
 				16611AC22696870F0089E41B /* Godeye.m in Sources */,
@@ -2929,7 +2890,6 @@
 				16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */,
 				161C4CD32728EF0C00C660DC /* THKDiaryProducer.m in Sources */,
 				168679962692B8AC00650023 /* THKMaterialRecommendRankResponse.m in Sources */,
-				16EDCE9026DE26D500A3D5D2 /* THKExpandLabel.m in Sources */,
 				16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */,
 				16E5C51E26830DCB0024BA20 /* THKIdentityView.m in Sources */,
 				16DDC0A2274CEFFE000DAA29 /* THKEntranceViewModel.m in Sources */,
@@ -3028,7 +2988,6 @@
 				1642AA5726D8F6D700F5FACD /* THKDiaryDirectoryCell.m in Sources */,
 				16867A352692D9B200650023 /* TRouter.m in Sources */,
 				16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */,
-				16976FCC27795BEB00D477DA /* THKExpandLabelViewController.m in Sources */,
 				1669C1B12680667C0059E9B0 /* UIButton+Convenient.m in Sources */,
 				16192BF72692FF5400967C73 /* THKSearchView.m in Sources */,
 				16867A072692D76C00650023 /* TMCardComponentDesignMasterStyleCell.m in Sources */,
