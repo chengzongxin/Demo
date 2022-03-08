@@ -99,7 +99,7 @@
 
 - (void)updateData{
     if (self.viewModel.iconUrl) {
-//        [self.iconImageView loadImageWithUrlStr:self.viewModel.iconUrl placeHolderImage:self.viewModel.iconLocal];
+        [self.iconImageView loadImageWithUrlStr:self.viewModel.iconUrl placeHolderImage:self.viewModel.iconLocal];
     }else{
         self.iconImageView.image = self.viewModel.iconLocal;
     }

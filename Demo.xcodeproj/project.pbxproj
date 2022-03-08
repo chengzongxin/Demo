@@ -2080,10 +2080,10 @@
 		16C10A6527D5937D001458BD /* TMUINavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				16C10A6727D5F75B001458BD /* TMUINavigationBar.h */,
-				16C10A6827D5F75B001458BD /* TMUINavigationBar.m */,
 				16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */,
 				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
+				16C10A6727D5F75B001458BD /* TMUINavigationBar.h */,
+				16C10A6827D5F75B001458BD /* TMUINavigationBar.m */,
 				16C10A6A27D6F467001458BD /* THKNavigationTitleView.h */,
 				16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */,
 				16C10A6D27D6F49C001458BD /* THKNavigationAvatarTitleView.h */,
