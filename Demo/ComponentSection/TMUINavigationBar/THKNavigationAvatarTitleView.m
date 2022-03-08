@@ -16,7 +16,6 @@
 @property (nonatomic, strong) THKAvatarView *avatarView;
 @property (nonatomic, strong) UILabel *nickNameLbl;
 @property (nonatomic, strong) THKFocusButtonView *focusBtn;
-@property (nonatomic, strong) UIButton *shareBtn;
 
 @end
 
@@ -37,7 +36,6 @@
     [self addSubview:self.avatarView];
     [self addSubview:self.nickNameLbl];
     [self addSubview:self.focusBtn];
-    [self addSubview:self.shareBtn];
     
     [self _addSubLayoutConstraints];
     [self _configSubUIs];
@@ -59,15 +57,9 @@
         make.trailing.mas_lessThanOrEqualTo(self.focusBtn.mas_leading).mas_offset(-4);
     }];
     
-    [self.shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.trailing.mas_equalTo(0);
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(40);
-        make.centerY.mas_equalTo(self.avatarView.mas_centerY);
-    }];
     [self.focusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(self.avatarView.mas_centerY);
-        make.trailing.mas_equalTo(self.shareBtn.mas_leading).mas_offset(-4);
+        make.trailing.mas_equalTo(-4);
         make.size.mas_equalTo(self.focusBtn.size);
     }];
 }
@@ -79,8 +71,6 @@
     
     self.nickNameLbl.font = UIFontMedium(16);
     self.nickNameLbl.textColor = [UIColor blackColor];
-    
-    [self.shareBtn setImage:[UIImage imageNamed:@"nav_share_black"] forState:0];
 }
 
 
@@ -98,15 +88,6 @@
 }
 
 
-
-
-- (void)updateFocusBtnState:(NSInteger)uid followStatus:(BOOL)followStaus{
-    self.focusBtn.focusId = uid;
-    [self.focusBtn setFocusStatus:followStaus];
-}
-
-
-
 #pragma mark - Event Respone
 
 #pragma mark - Delegate
@@ -116,7 +97,6 @@
 #pragma mark - Getters and Setters
 TMUI_PropertyLazyLoad(THKAvatarView, avatarView);
 TMUI_PropertyLazyLoad(UILabel, nickNameLbl);
-TMUI_PropertyLazyLoad(UIButton, shareBtn);
 
 - (THKFocusButtonView *)focusBtn{
     if (!_focusBtn) {

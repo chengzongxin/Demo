@@ -50,8 +50,6 @@ NS_ASSUME_NONNULL_BEGIN
 //注：9.10二级装企页面专用 0 透明底白字白图标 1 白底黑字黑图标。
 - (void)setStyle:(CGFloat)style;
 
-//，3D漫游页面也在用
-- (void)set3DDesignStyle:(CGFloat)style;
 @end
 
 NS_ASSUME_NONNULL_END

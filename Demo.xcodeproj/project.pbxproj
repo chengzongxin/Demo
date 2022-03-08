@@ -235,7 +235,6 @@
 		16B1F524275E001700FF18C4 /* THKNewcomerHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F523275E001700FF18C4 /* THKNewcomerHomeViewModel.m */; };
 		16B1F527275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F526275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m */; };
 		16B1F52A275E1B6D00FF18C4 /* THKNewcomerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F529275E1B6D00FF18C4 /* THKNewcomerAnimation.m */; };
-		16C10A6927D5F75B001458BD /* TMUINavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A6827D5F75B001458BD /* TMUINavigationBar.m */; };
 		16C10A6C27D6F467001458BD /* THKNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */; };
 		16C10A6F27D6F49C001458BD /* THKNavigationAvatarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A6E27D6F49C001458BD /* THKNavigationAvatarTitleView.m */; };
 		16C10A7227D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */; };
@@ -809,8 +808,6 @@
 		16B1F526275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageView.m; sourceTree = "<group>"; };
 		16B1F528275E1B6D00FF18C4 /* THKNewcomerAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerAnimation.h; sourceTree = "<group>"; };
 		16B1F529275E1B6D00FF18C4 /* THKNewcomerAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerAnimation.m; sourceTree = "<group>"; };
-		16C10A6727D5F75B001458BD /* TMUINavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUINavigationBar.h; sourceTree = "<group>"; };
-		16C10A6827D5F75B001458BD /* TMUINavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUINavigationBar.m; sourceTree = "<group>"; };
 		16C10A6A27D6F467001458BD /* THKNavigationTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationTitleView.h; sourceTree = "<group>"; };
 		16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationTitleView.m; sourceTree = "<group>"; };
 		16C10A6D27D6F49C001458BD /* THKNavigationAvatarTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationAvatarTitleView.h; sourceTree = "<group>"; };
@@ -2085,8 +2082,6 @@
 			children = (
 				16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */,
 				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
-				16C10A6727D5F75B001458BD /* TMUINavigationBar.h */,
-				16C10A6827D5F75B001458BD /* TMUINavigationBar.m */,
 				16C10A7627D72965001458BD /* THKNavigationBar.h */,
 				16C10A7727D72965001458BD /* THKNavigationBar.m */,
 				16C10A6A27D6F467001458BD /* THKNavigationTitleView.h */,
@@ -3062,7 +3057,6 @@
 				16611B60269692D20089E41B /* THKMaterialKnowledgeVM.m in Sources */,
 				1677AC62274B91EE001B0F66 /* THKQuickCommentsViewModel.m in Sources */,
 				16E5C4F22682E4040024BA20 /* THKPhpUploadRequest.m in Sources */,
-				16C10A6927D5F75B001458BD /* TMUINavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

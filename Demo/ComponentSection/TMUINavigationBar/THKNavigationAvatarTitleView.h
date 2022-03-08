@@ -11,9 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKNavigationAvatarTitleView : THKNavigationTitleView
-@property (nonatomic, strong, readonly) THKNavigationAvatarTitleViewModel *viewModel;
 
-- (void)updateFocusBtnState:(NSInteger)uid followStatus:(BOOL)followStaus;
+@property (nonatomic, strong, readonly) THKNavigationAvatarTitleViewModel *viewModel;
 
 @end
 

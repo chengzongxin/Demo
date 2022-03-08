@@ -245,9 +245,7 @@
 }
 
 ///注：9.10二级装企页面专用 0 透明底白字白图标 1 白底黑字黑图标。
-- (void)setStyle:(CGFloat)style
-{
-    //
+- (void)setStyle:(CGFloat)style{
     self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:style];
     if (style<.5) {
         _shareBtn.tmui_image = [UIImage imageNamed:@"icon_dec_search_white"];
@@ -265,22 +263,5 @@
         }
     }
 }
-//，3D漫游页面在用
-- (void)set3DDesignStyle:(CGFloat)style{
-    if (style<.5) {
-        _shareBtn.tmui_image = [UIImage imageNamed:@"icon_dec_search_white"];
-        _backBtn.tmui_image = [UIImage imageNamed:@"nav_back_white"];
-        if ([_contentSubView isKindOfClass:[UILabel class]]) {
-            //防止挡住图片
-            ((UILabel *)_contentSubView).textColor = [UIColor clearColor];
-        }
-    }
-    else {
-        _shareBtn.tmui_image = [UIImage imageNamed:@"icon_dec_search_new"];
-        _backBtn.tmui_image = [UIImage imageNamed:@"nav_back_black"];
-        if ([_contentSubView isKindOfClass:[UILabel class]]) {
-            ((UILabel *)_contentSubView).textColor = THKColor_333333;
-        }
-    }
-}
+
 @end
