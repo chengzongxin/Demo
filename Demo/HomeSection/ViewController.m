@@ -22,17 +22,45 @@
     self.title = @"首页";
     self.view.backgroundColor = UIColor.whiteColor;
     
+    [self homelist];
+}
+
+
+- (void)homelist{
+    id b1 =
+        [self createBtn]
+        .str(@"系统导航栏")
+        .onClick(^{
+            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            vc.type = 1;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
     
+    id b2 =
+        [self createBtn]
+        .str(@"自定义导航栏")
+        .onClick(^{
+            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            vc.type = 2;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
     
-    
-    
+    VerStack(b1,b2)
+    .gap(10)
+    .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }
 
 
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.navigationController pushViewController:THKCustomNavigationViewController.new animated:YES];
+- (UIButton *)createBtn{
+    return
+    Button
+    .color(@"white")
+    .bgColor(@"random")
+    .borderRadius(4)
+    .fixWH(TMUI_SCREEN_WIDTH - 40,44);
 }
+
 
 - (void)addMenu{
     TMUIFilterMenu *menu = [[TMUIFilterMenu alloc] init];
