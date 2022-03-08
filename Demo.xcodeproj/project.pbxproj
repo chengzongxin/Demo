@@ -240,6 +240,7 @@
 		16C10A6F27D6F49C001458BD /* THKNavigationAvatarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A6E27D6F49C001458BD /* THKNavigationAvatarTitleView.m */; };
 		16C10A7227D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */; };
 		16C10A7527D6FE07001458BD /* THKCustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */; };
+		16C10A7827D72965001458BD /* THKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7727D72965001458BD /* THKNavigationBar.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -818,6 +819,8 @@
 		16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationAvatarTitleViewModel.m; sourceTree = "<group>"; };
 		16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCustomNavigationViewController.h; sourceTree = "<group>"; };
 		16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCustomNavigationViewController.m; sourceTree = "<group>"; };
+		16C10A7627D72965001458BD /* THKNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationBar.h; sourceTree = "<group>"; };
+		16C10A7727D72965001458BD /* THKNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationBar.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2084,6 +2087,8 @@
 				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
 				16C10A6727D5F75B001458BD /* TMUINavigationBar.h */,
 				16C10A6827D5F75B001458BD /* TMUINavigationBar.m */,
+				16C10A7627D72965001458BD /* THKNavigationBar.h */,
+				16C10A7727D72965001458BD /* THKNavigationBar.m */,
 				16C10A6A27D6F467001458BD /* THKNavigationTitleView.h */,
 				16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */,
 				16C10A6D27D6F49C001458BD /* THKNavigationAvatarTitleView.h */,
@@ -2935,6 +2940,7 @@
 				16DDC0A8274CF980000DAA29 /* THKEntranceViewDetailCell.m in Sources */,
 				16DDC09B274CCA56000DAA29 /* THKSelectMaterialHomeVM.m in Sources */,
 				16C10A6F27D6F49C001458BD /* THKNavigationAvatarTitleView.m in Sources */,
+				16C10A7827D72965001458BD /* THKNavigationBar.m in Sources */,
 				16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */,
 				16611B5E269692D20089E41B /* THKMaterialClassificationVM.m in Sources */,
 				16192B3B2692E13E00967C73 /* UIViewController+PopGestureOfPercentDrivenInteractiveTransition.m in Sources */,
