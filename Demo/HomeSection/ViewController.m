@@ -9,6 +9,7 @@
 #import "TMUIFilterMenu.h"
 #import "TMUIFilterView.h"
 #import "THKCustomNavigationViewController.h"
+#import "TDSearchViewController.h"
 @interface ViewController ()
 
 @end
@@ -38,14 +39,23 @@
     
     id b2 =
         [self createBtn]
-        .str(@"自定义导航栏")
+        .str(@"自定义导航栏-常规样式")
         .onClick(^{
             THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
             vc.type = 2;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
-    VerStack(b1,b2)
+    id b3 =
+        [self createBtn]
+        .str(@"自定义导航栏-特殊样式")
+        .onClick(^{
+            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            vc.type = 3;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    
+    VerStack(b1,b2,b3)
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }

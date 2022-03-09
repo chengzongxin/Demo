@@ -6,29 +6,59 @@
 //
 
 #import "THKNavigationBar.h"
+
+
 @interface THKNavigationBar ()
-{
-    UIButton * _backBtn;
-    UIView * _contentView;
-    UIView * _contentSubView;
-    UIButton * _shareBtn;
-}
-@property (nonatomic, assign, readwrite) UIStatusBarStyle preferredStatusBarStyle;
+
+@property (nonatomic, strong) UIButton *backBtn;
+
+@property (nonatomic, strong) UILabel *titleLbl;
+
+@property (nonatomic, strong) UIView *contentView;
+
+@property (nonatomic, strong) UIView *contentSubView;
+
+@property (nonatomic, strong) UIButton *rightBtn;
+
+@property (nonatomic, assign) UIStatusBarStyle preferredStatusBarStyle;
+
 @end
+
 
 @implementation THKNavigationBar
 
-+ (instancetype)createInstance {
-    THKNavigationBar *view = [[self alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kTNavigationBarHeight())];
-    return view;
++ (void)initialize{
+    [self configStyle];
 }
 
++ (NSDictionary *)configStyle {
+    static NSDictionary *config = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        config = @{
+            @(THKNavigationBarStyle_Light):@{
+                @"backicon":[UIImage imageNamed:@"nav_back_black"],
+                @"background":UIColor.whiteColor,
+                @"righticon":[UIImage imageNamed:@"nav_back_black"],
+            },
+            @(THKNavigationBarStyle_Dark):@{
+                @"backicon":[UIImage imageNamed:@"nav_back_black"],
+                @"background":UIColor.blackColor,
+                @"righticon":[UIImage imageNamed:@"nav_back_black"],
+            },
+        };
+    });
+    return config;
+}
+
+
+
 - (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, kTNavigationBarHeight())]) {
         // 左
         UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _backBtn = backBtn;
-        [backBtn setImage:[UIImage imageNamed:@"nav_back_black"] forState:UIControlStateNormal]; //  icon_video_nav_back
+        [backBtn setImage:[UIImage imageNamed:@"nav_back_black"] forState:UIControlStateNormal];
         [backBtn addTarget:self action:@selector(navBackAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:backBtn];
         [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,18 +73,17 @@
         [self addSubview:contentView];
         [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.equalTo(backBtn.mas_trailing);
-          
             make.bottom.equalTo(self);
             make.height.equalTo(@44);
         }];
         
         // 右
-        UIButton * shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _shareBtn = shareBtn;
-        [shareBtn setImage:[UIImage imageNamed:@"note_share_w"] forState:UIControlStateNormal];
-        [shareBtn addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:shareBtn];
-        [shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _rightBtn = rightBtn;
+        [rightBtn setImage:[UIImage imageNamed:@"note_share_w"] forState:UIControlStateNormal];
+        [rightBtn addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:rightBtn];
+        [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.trailing.bottom.equalTo(self);
             make.height.equalTo(@44);
             make.width.equalTo(@54);
@@ -92,22 +121,69 @@
 #endif
 }
 
+
+#pragma mark - Public
+
+- (void)setTitle:(NSString *)title{
+    _title = title;
+    
+    [self addTitleViewToContentView:self.titleLbl];
+    
+    self.titleLbl.text = title;
+}
+
+- (void)setAttrTitle:(NSAttributedString *)attrTitle{
+    _attrTitle = attrTitle;
+   
+    [self addTitleViewToContentView:self.titleLbl];
+    
+    self.titleLbl.attributedText = attrTitle;
+}
+
+
+- (void)setTitleView:(UIView *)titleView{
+    _titleView = titleView;
+    
+    [self addTitleViewToContentView:titleView];
+}
+
+
+- (void)addTitleViewToContentView:(UIView *)titleView{
+    [_contentSubView removeFromSuperview];
+    
+    _contentSubView = titleView;
+    [_contentView addSubview:titleView];
+    [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(_contentView);
+    }];
+}
+
+- (void)setBarStyle:(THKNavigationBarStyle)barStyle{
+    _barStyle = barStyle;
+    switch (barStyle) {
+        case THKNavigationBarStyle_Light:
+        {
+            
+        }
+            break;
+        case THKNavigationBarStyle_Dark:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
 - (void)configContent:(__kindof UIView * (^)(UIView * contentView))blk;
 {
     if (blk) {
         UIView * subView = blk(_contentView);
         _contentSubView = subView;
     }
-}
-
-- (__kindof UIView *)contentSubView
-{
-    return _contentSubView;
-}
-
-- (void)setHideShareBtn:(BOOL)hideShareBtn
-{
-    _shareBtn.hidden = YES;
 }
 
 - (void)configLeftContent:(void (^)(UIButton * backBtn))blk
@@ -120,7 +196,7 @@
 - (void)configRightContent:(void (^)(UIButton * rightBtn))blk
 {
     if (blk) {
-        blk(_shareBtn);
+        blk(_rightBtn);
     }
 }
 
@@ -168,8 +244,8 @@
     [self foreachImageViewsIn:_backBtn toTintColor:currentTintColor];
     
     // 右边
-    if (_shareBtn && !_shareBtn.isHidden) {
-        [self foreachImageViewsIn:_shareBtn toTintColor:currentTintColor];
+    if (_rightBtn && !_rightBtn.isHidden) {
+        [self foreachImageViewsIn:_rightBtn toTintColor:currentTintColor];
     }
     // 中间视图
     for (UIView * v in subvs) {
@@ -248,7 +324,7 @@
 - (void)setStyle:(CGFloat)style{
     self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:style];
     if (style<.5) {
-        _shareBtn.tmui_image = [UIImage imageNamed:@"icon_dec_search_white"];
+        _rightBtn.tmui_image = [UIImage imageNamed:@"icon_dec_search_white"];
         _backBtn.tmui_image = [UIImage imageNamed:@"nav_back_white"];
         if ([_contentSubView isKindOfClass:[UILabel class]]) {
             //防止挡住图片
@@ -256,12 +332,26 @@
         }
     }
     else {
-        _shareBtn.tmui_image = [UIImage imageNamed:@"icon_dec_search_new"];
+        _rightBtn.tmui_image = [UIImage imageNamed:@"icon_dec_search_new"];
         _backBtn.tmui_image = [UIImage imageNamed:@"nav_back_black"];
         if ([_contentSubView isKindOfClass:[UILabel class]]) {
             ((UILabel *)_contentSubView).textColor = THKColor_333333;
         }
     }
 }
+
+
+
+#pragma mark - lazy getter
+- (UILabel *)titleLbl{
+    if (!_titleLbl) {
+        _titleLbl = [[UILabel alloc] init];
+        _titleLbl.font = UIFontMedium(18);
+        _titleLbl.textColor = UIColorHex(333333);
+        _titleLbl.textAlignment = NSTextAlignmentCenter;
+    }
+    return _titleLbl;
+}
+
 
 @end

@@ -240,6 +240,9 @@
 		16C10A7227D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */; };
 		16C10A7527D6FE07001458BD /* THKCustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */; };
 		16C10A7827D72965001458BD /* THKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7727D72965001458BD /* THKNavigationBar.m */; };
+		16C10A7C27D76443001458BD /* TMUISearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7B27D76443001458BD /* TMUISearchView.m */; };
+		16C10A7F27D835CC001458BD /* THKScrollHotwordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7D27D835CB001458BD /* THKScrollHotwordView.m */; };
+		16C10A8227D83809001458BD /* TDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A8127D83809001458BD /* TDSearchViewController.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -818,6 +821,12 @@
 		16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCustomNavigationViewController.m; sourceTree = "<group>"; };
 		16C10A7627D72965001458BD /* THKNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationBar.h; sourceTree = "<group>"; };
 		16C10A7727D72965001458BD /* THKNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationBar.m; sourceTree = "<group>"; };
+		16C10A7A27D76443001458BD /* TMUISearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUISearchView.h; sourceTree = "<group>"; };
+		16C10A7B27D76443001458BD /* TMUISearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUISearchView.m; sourceTree = "<group>"; };
+		16C10A7D27D835CB001458BD /* THKScrollHotwordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKScrollHotwordView.m; sourceTree = "<group>"; };
+		16C10A7E27D835CC001458BD /* THKScrollHotwordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKScrollHotwordView.h; sourceTree = "<group>"; };
+		16C10A8027D83809001458BD /* TDSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDSearchViewController.h; sourceTree = "<group>"; };
+		16C10A8127D83809001458BD /* TDSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDSearchViewController.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2010,6 +2019,7 @@
 			children = (
 				16976FC627795A5F00D477DA /* ComponentViewController.h */,
 				16976FC727795A5F00D477DA /* ComponentViewController.m */,
+				16C10A7927D763D2001458BD /* THKSearchView */,
 				16C10A6527D5937D001458BD /* TMUINavigationBar */,
 				16B1F512275DF52700FF18C4 /* NewcomerProcess */,
 				16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */,
@@ -2092,6 +2102,19 @@
 				16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */,
 			);
 			path = TMUINavigationBar;
+			sourceTree = "<group>";
+		};
+		16C10A7927D763D2001458BD /* THKSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				16C10A7A27D76443001458BD /* TMUISearchView.h */,
+				16C10A7B27D76443001458BD /* TMUISearchView.m */,
+				16C10A7E27D835CC001458BD /* THKScrollHotwordView.h */,
+				16C10A7D27D835CB001458BD /* THKScrollHotwordView.m */,
+				16C10A8027D83809001458BD /* TDSearchViewController.h */,
+				16C10A8127D83809001458BD /* TDSearchViewController.m */,
+			);
+			path = THKSearchView;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -2884,6 +2907,7 @@
 				16192B4F2692E1B100967C73 /* THKCustomRouter.m in Sources */,
 				16E5C4CE2682DE930024BA20 /* TBTNetworkPrivate.m in Sources */,
 				16192B2F2692E13E00967C73 /* THKMoveCardAnimation.m in Sources */,
+				16C10A7C27D76443001458BD /* TMUISearchView.m in Sources */,
 				16867A0A2692D76C00650023 /* TMCardComponentNormalStyleCell.m in Sources */,
 				1630D97F274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m in Sources */,
 				16611B64269692D20089E41B /* THKMaterialGoodsGrassVC.m in Sources */,
@@ -2923,6 +2947,7 @@
 				16192AB62692DC4500967C73 /* QuickMethod.m in Sources */,
 				16611AC32696870F0089E41B /* GETableView.m in Sources */,
 				16976FC827795A5F00D477DA /* ComponentViewController.m in Sources */,
+				16C10A8227D83809001458BD /* TDSearchViewController.m in Sources */,
 				16867A092692D76C00650023 /* TMCardComponentRecommendTagsBaseUICell.m in Sources */,
 				16E5C51B26830DCB0024BA20 /* THKIdentityTypeModel.m in Sources */,
 				16611B6C269692D20089E41B /* THKMaterialClassificationRecommendNormalCell.m in Sources */,
@@ -2992,6 +3017,7 @@
 				1689DE9C27449A700073BA68 /* THKTabBadgeRequest.m in Sources */,
 				16E5C4B82682DE4B0024BA20 /* THKBaseRequest.m in Sources */,
 				16192ABF2692DE6B00967C73 /* TTagShapeColorView.m in Sources */,
+				16C10A7F27D835CC001458BD /* THKScrollHotwordView.m in Sources */,
 				16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */,
 				1649086F26983FFB004DC831 /* THKPageContentScrollView.m in Sources */,
 				16192B282692E13E00967C73 /* THKLoadingAnimationView.m in Sources */,

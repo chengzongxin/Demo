@@ -9,27 +9,45 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+typedef enum : NSUInteger {
+    THKNavigationBarStyle_Light,
+    THKNavigationBarStyle_Dark,
+} THKNavigationBarStyle;
+
 /**
  顶部导航条整体视图，内部的实际展示内容可操作下面的navigationBar对象
  @note 外部不要用InitXxx方法初始化，直接用提供的便捷方法初始化即可，内部会根据设备型号生成合适高度的对象
+ 
+  Usage:
+    ```
+ // viewDidLoad 下添加下面3行代码：
+ self.navBarHidden = YES;
+ THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
+ [self.view addSubview:navBar];
+    ```
  */
 @interface THKNavigationBar : UIView
-@property (nonatomic, assign) BOOL hideShareBtn;
 
-/// 供外界VC访问，根据滑动percent，动态切换状态栏样式
-@property (nonatomic, assign, readonly) UIStatusBarStyle preferredStatusBarStyle;
-/**
- 返回一个合适高度的视图对象
- */
-+ (instancetype)createInstance;
-
-
+#pragma mark - Public Method ( Custom bar title & button item )
+// 简单设置标题
+@property (nonatomic, strong) NSString *title;
+// 简单设置标题富文本
+@property (nonatomic, strong) NSAttributedString *attrTitle;
+// titleView
+@property (nonatomic, strong) UIView *titleView;
+// back button
+@property (nonatomic, strong, readonly) UIButton *backBtn;
+// right button
+@property (nonatomic, strong, readonly) UIButton *rightBtn;
+// navigation bar style, defalt Normal is Light  white background, black content
+@property (nonatomic, assign) THKNavigationBarStyle barStyle;
+#pragma mark - public method by block
+// 自定义titleView
 - (void)configContent:(__kindof UIView * (^)(UIView * contentView))blk;
-
-- (__kindof UIView *)contentSubView;
-
+// 自定义返回按钮
 - (void)configLeftContent:(void (^)(UIButton * backBtn))blk;
-
+// 自定义右侧按钮
 - (void)configRightContent:(void (^)(UIButton * rightBtn))blk;
 
 /**
@@ -49,6 +67,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //注：9.10二级装企页面专用 0 透明底白字白图标 1 白底黑字黑图标。
 - (void)setStyle:(CGFloat)style;
+
+/// 供外界VC访问，根据滑动percent，动态切换状态栏样式
+@property (nonatomic, assign, readonly) UIStatusBarStyle preferredStatusBarStyle;
 
 @end
 

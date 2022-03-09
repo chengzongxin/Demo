@@ -27,13 +27,16 @@
         case 1:
         {
             [self systemNarbar];
-            lbl.text = @"系统导航栏";
         }
             break;
         case 2:
         {
-            [self customNavbar];
-            lbl.text = @"自定义导航栏";
+            [self customNavbar1];
+        }
+            break;
+        case 3:
+        {
+            [self customNavbar2];
         }
             break;
         default:
@@ -46,19 +49,18 @@
     self.navigationItem.titleView = [self getAvatarTitleView];
 }
 
-- (void)customNavbar{
+- (void)customNavbar1{
     self.navBarHidden = YES;
-    THKNavigationBar *navBar = [THKNavigationBar createInstance];
-    [navBar configContent:^__kindof UIView * _Nonnull(UIView * _Nonnull contentView) {
-        THKNavigationAvatarTitleView *titleView = [self getAvatarTitleView];
-        [contentView addSubview:titleView];
-        [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(contentView);
-        }];
-        return titleView;
-    }];
-    
-    
+    THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
+    navBar.title = @"标题😆";
+    [self.view addSubview:navBar];
+}
+
+
+- (void)customNavbar2{
+    self.navBarHidden = YES;
+    THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
+    navBar.titleView = [self getAvatarTitleView];
     [self.view addSubview:navBar];
 }
 
