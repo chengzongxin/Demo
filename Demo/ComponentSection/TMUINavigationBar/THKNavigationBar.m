@@ -27,30 +27,6 @@
 
 @implementation THKNavigationBar
 
-//+ (void)initialize{
-//    [self configStyle];
-//}
-//
-//+ (NSDictionary *)configStyle {
-//    static NSDictionary *config = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        config = @{
-//            @(THKNavigationBarStyle_Light):@{
-//                @"backicon":[UIImage imageNamed:@"nav_back_black"],
-//                @"background":UIColor.whiteColor,
-//                @"righticon":[UIImage imageNamed:@"nav_back_black"],
-//            },
-//            @(THKNavigationBarStyle_Dark):@{
-//                @"backicon":[UIImage imageNamed:@"nav_back_black"],
-//                @"background":UIColor.blackColor,
-//                @"righticon":[UIImage imageNamed:@"nav_back_black"],
-//            },
-//        };
-//    });
-//    return config;
-//}
-
 static NSDictionary *config = nil;
 static NSString const *kBackIconKey = @"kBackIconKey";
 static NSString const *kTintColorKey = @"kTintColorKey";
@@ -64,13 +40,13 @@ static NSString const *kRighticonKey = @"kRighticonKey";
                 kBackIconKey:[UIImage imageNamed:@"nav_back_black"],
                 kBackgroundKey:UIColor.whiteColor,
                 kTintColorKey:UIColor.blackColor,
-                kRighticonKey:[UIImage imageNamed:@"nav_back_black"],
+                kRighticonKey:[UIImage imageNamed:@"nav_share_black"],
             },
             @(THKNavigationBarStyle_Dark):@{
-                kBackIconKey:[UIImage imageNamed:@"nav_back_black"],
+                kBackIconKey:[UIImage imageNamed:@"nav_back_white"],
                 kBackgroundKey:UIColor.blackColor,
                 kTintColorKey:UIColor.whiteColor,
-                kRighticonKey:[UIImage imageNamed:@"nav_back_black"],
+                kRighticonKey:[UIImage imageNamed:@"nav_share_white"],
             },
         };
     
@@ -80,7 +56,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 
 + (void)setDefaultAppearance {
     THKNavigationBar *appearance = [THKNavigationBar appearance];
-    [appearance applyStyle:THKNavigationBarStyle_Dark];
+    [appearance applyStyle:THKNavigationBarStyle_Light];
     
 }
 
@@ -100,7 +76,6 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         // 左
         UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _backBtn = backBtn;
-        [backBtn setImage:[UIImage imageNamed:@"nav_back_black"] forState:UIControlStateNormal];
         [backBtn addTarget:self action:@selector(navBackAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:backBtn];
         [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -122,7 +97,6 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         // 右
         UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _rightBtn = rightBtn;
-        [rightBtn setImage:[UIImage imageNamed:@"note_share_w"] forState:UIControlStateNormal];
         [rightBtn addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:rightBtn];
         [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
