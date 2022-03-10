@@ -39,7 +39,7 @@
     
     id b2 =
         [self createBtn]
-        .str(@"自定义导航栏-常规样式1")
+        .str(@"自定义导航栏-常规样式（白色）")
         .onClick(^{
             THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
             vc.type = 2;
@@ -48,7 +48,7 @@
     
     id b3 =
         [self createBtn]
-        .str(@"自定义导航栏-常规样式2")
+        .str(@"自定义导航栏-常规样式（黑色）")
         .onClick(^{
             THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
             vc.type = 3;
@@ -57,14 +57,23 @@
     
     id b4 =
         [self createBtn]
-        .str(@"自定义导航栏-特殊样式")
+        .str(@"自定义导航栏-特殊样式（tab组件）")
         .onClick(^{
             THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
             vc.type = 4;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
-    VerStack(b1,b2,b3,b4)
+    id b5 =
+        [self createBtn]
+        .str(@"自定义导航栏-特殊样式（用户信息）")
+        .onClick(^{
+            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            vc.type = 5;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    
+    VerStack(b1,b2,b3,b4,b5)
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }

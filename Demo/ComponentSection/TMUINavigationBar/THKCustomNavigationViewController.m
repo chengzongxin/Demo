@@ -8,8 +8,11 @@
 #import "THKCustomNavigationViewController.h"
 #import "THKNavigationAvatarTitleView.h"
 #import "THKNavigationBar.h"
+#import "THKDynamicTabsManager.h"
 
 @interface THKCustomNavigationViewController ()
+
+@property (nonatomic, strong) THKDynamicTabsManager *manager;
 
 @end
 
@@ -26,22 +29,27 @@
     switch (self.type) {
         case 1:
         {
-            [self systemNarbar];
+            [self systemNarbar1];
         }
             break;
         case 2:
         {
-            [self customNavbar1];
+            [self customNavbar2];
         }
             break;
         case 3:
         {
-            [self customNavbar2];
+            [self customNavbar3];
         }
             break;
         case 4:
         {
-            [self customNavbar3];
+            [self customNavbar4];
+        }
+            break;
+        case 5:
+        {
+            [self customNavbar5];
         }
             break;
         default:
@@ -50,18 +58,18 @@
     
 }
 
-- (void)systemNarbar{
+- (void)systemNarbar1{
     self.navigationItem.titleView = [self getAvatarTitleView];
 }
 
-- (void)customNavbar1{
+- (void)customNavbar2{
     self.navBarHidden = YES;
     THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
     navBar.title = @"标题😆";
     [self.view addSubview:navBar];
 }
 
-- (void)customNavbar2{
+- (void)customNavbar3{
     self.navBarHidden = YES;
     THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
     navBar.title = @"标题😆";
@@ -69,7 +77,14 @@
     [self.view addSubview:navBar];
 }
 
-- (void)customNavbar3{
+- (void)customNavbar4{
+    self.navBarHidden = YES;
+    THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
+    navBar.titleView = [self tabsSliderBar];
+    [self.view addSubview:navBar];
+}
+
+- (void)customNavbar5{
     self.navBarHidden = YES;
     THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
     navBar.titleView = [self getAvatarTitleView];
@@ -87,5 +102,24 @@
     return titleView;
 }
 
+- (UIView *)tabsSliderBar{
+    UIViewController *vc1 = UIViewController.new;
+    vc1.view.backgroundColor = UIColor.tmui_randomColor;
+    UIViewController *vc2 = UIViewController.new;
+    vc2.view.backgroundColor = UIColor.tmui_randomColor;
+    
+    THKDynamicTabsViewModel *viewModel = [[THKDynamicTabsViewModel alloc] initWithVCs:@[vc1,vc2] titles:@[@"推荐",@"关注"]];
+    viewModel.layout = THKDynamicTabsLayoutType_Custom;
+    viewModel.parentVC = self;
+    THKDynamicTabsManager *manager = [[THKDynamicTabsManager alloc] initWithViewModel:viewModel];
+    [self.view addSubview:manager.view];
+    [manager.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    [manager loadTabs];
+    manager.sliderBar.minItemWidth = (TMUI_SCREEN_WIDTH - 54 * 2)/2;
+    _manager = manager;
+    return manager.sliderBar;
+}
 
 @end
