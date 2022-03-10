@@ -39,7 +39,7 @@
     
     id b2 =
         [self createBtn]
-        .str(@"自定义导航栏-常规样式")
+        .str(@"自定义导航栏-常规样式1")
         .onClick(^{
             THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
             vc.type = 2;
@@ -48,14 +48,23 @@
     
     id b3 =
         [self createBtn]
-        .str(@"自定义导航栏-特殊样式")
+        .str(@"自定义导航栏-常规样式2")
         .onClick(^{
             THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
             vc.type = 3;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
-    VerStack(b1,b2,b3)
+    id b4 =
+        [self createBtn]
+        .str(@"自定义导航栏-特殊样式")
+        .onClick(^{
+            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            vc.type = 4;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    
+    VerStack(b1,b2,b3,b4)
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }

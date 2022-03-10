@@ -37,7 +37,7 @@ typedef enum : NSUInteger {
 // titleView
 @property (nonatomic, strong) UIView *titleView;
 // back button
-@property (nonatomic, strong, readonly) UIButton *backBtn;
+@property (nonatomic, strong, readonly) UIButton *backBtn UI_APPEARANCE_SELECTOR;
 // right button
 @property (nonatomic, strong, readonly) UIButton *rightBtn;
 // navigation bar style, defalt Normal is Light  white background, black content

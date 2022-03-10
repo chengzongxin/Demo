@@ -39,6 +39,11 @@
             [self customNavbar2];
         }
             break;
+        case 4:
+        {
+            [self customNavbar3];
+        }
+            break;
         default:
             break;
     }
@@ -56,8 +61,15 @@
     [self.view addSubview:navBar];
 }
 
-
 - (void)customNavbar2{
+    self.navBarHidden = YES;
+    THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
+    navBar.title = @"标题😆";
+    navBar.barStyle = THKNavigationBarStyle_Dark;
+    [self.view addSubview:navBar];
+}
+
+- (void)customNavbar3{
     self.navBarHidden = YES;
     THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
     navBar.titleView = [self getAvatarTitleView];

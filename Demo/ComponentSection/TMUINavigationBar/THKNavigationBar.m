@@ -27,30 +27,72 @@
 
 @implementation THKNavigationBar
 
-+ (void)initialize{
-    [self configStyle];
-}
+//+ (void)initialize{
+//    [self configStyle];
+//}
+//
+//+ (NSDictionary *)configStyle {
+//    static NSDictionary *config = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        config = @{
+//            @(THKNavigationBarStyle_Light):@{
+//                @"backicon":[UIImage imageNamed:@"nav_back_black"],
+//                @"background":UIColor.whiteColor,
+//                @"righticon":[UIImage imageNamed:@"nav_back_black"],
+//            },
+//            @(THKNavigationBarStyle_Dark):@{
+//                @"backicon":[UIImage imageNamed:@"nav_back_black"],
+//                @"background":UIColor.blackColor,
+//                @"righticon":[UIImage imageNamed:@"nav_back_black"],
+//            },
+//        };
+//    });
+//    return config;
+//}
 
-+ (NSDictionary *)configStyle {
-    static NSDictionary *config = nil;
+static NSDictionary *config = nil;
+static NSString const *kBackIconKey = @"kBackIconKey";
+static NSString const *kTintColorKey = @"kTintColorKey";
+static NSString const *kBackgroundKey = @"kBackgroundKey";
+static NSString const *kRighticonKey = @"kRighticonKey";
++ (void)initialize {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         config = @{
             @(THKNavigationBarStyle_Light):@{
-                @"backicon":[UIImage imageNamed:@"nav_back_black"],
-                @"background":UIColor.whiteColor,
-                @"righticon":[UIImage imageNamed:@"nav_back_black"],
+                kBackIconKey:[UIImage imageNamed:@"nav_back_black"],
+                kBackgroundKey:UIColor.whiteColor,
+                kTintColorKey:UIColor.blackColor,
+                kRighticonKey:[UIImage imageNamed:@"nav_back_black"],
             },
             @(THKNavigationBarStyle_Dark):@{
-                @"backicon":[UIImage imageNamed:@"nav_back_black"],
-                @"background":UIColor.blackColor,
-                @"righticon":[UIImage imageNamed:@"nav_back_black"],
+                kBackIconKey:[UIImage imageNamed:@"nav_back_black"],
+                kBackgroundKey:UIColor.blackColor,
+                kTintColorKey:UIColor.whiteColor,
+                kRighticonKey:[UIImage imageNamed:@"nav_back_black"],
             },
         };
+    
+        [self setDefaultAppearance];
     });
-    return config;
 }
 
++ (void)setDefaultAppearance {
+    THKNavigationBar *appearance = [THKNavigationBar appearance];
+    [appearance applyStyle:THKNavigationBarStyle_Dark];
+    
+}
+
+- (void)applyStyle:(THKNavigationBarStyle)style{
+    NSDictionary *aStyle = config[@(self.barStyle)];
+    self.backBtn.tmui_image = aStyle[kBackIconKey];
+    self.backgroundColor = aStyle[kBackgroundKey];
+    self.rightBtn.tmui_image = aStyle[kRighticonKey];
+    if (self.title) {
+        self.titleLbl.textColor = aStyle[kTintColorKey];
+    }
+}
 
 
 - (instancetype)initWithFrame:(CGRect)frame {
