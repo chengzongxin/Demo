@@ -61,6 +61,7 @@
 - (void)setHotwords:(NSArray<NSString *> *)hotwords
 {
     [_scrollHotwordView setHotwords:hotwords];
+    [_scrollHotwordView startScroll];
 }
 
 - (void)startScroll

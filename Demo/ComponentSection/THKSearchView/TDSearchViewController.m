@@ -19,21 +19,32 @@
     
     self.view.backgroundColor = UIColor.whiteColor;
     
+    [self style1];
+    
+}
+
+- (void)style1{
     self.navBarHidden = YES;
-    
-    
-    
-    
     THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
     [self.view addSubview:navBar];
     
-    
     TMUISearchView *search = [[TMUISearchView alloc] init];
     [search setHotwords:@[@"123",@"456"]];
-    [search startScroll];
-    
     
     navBar.titleView = search;
 }
+
+- (void)style2{
+    self.navBarHidden = YES;
+    THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
+    [self.view addSubview:navBar];
+    
+    TMUISearchView *search = [[TMUISearchView alloc] init];
+    [search setHotwords:@[@"123",@"456"]];
+    
+    navBar.titleView = search;
+    
+}
+
 
 @end
