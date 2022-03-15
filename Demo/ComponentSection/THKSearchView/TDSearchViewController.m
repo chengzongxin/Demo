@@ -7,6 +7,7 @@
 
 #import "TDSearchViewController.h"
 #import "THKNavigationBar.h"
+#import "TMUISearchView.h"
 @interface TDSearchViewController ()
 
 @end
@@ -18,9 +19,32 @@
     
     self.view.backgroundColor = UIColor.whiteColor;
     
+    [self style1];
+    
+}
+
+- (void)style1{
     self.navBarHidden = YES;
     THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
     [self.view addSubview:navBar];
+    
+    TMUISearchView *search = [[TMUISearchView alloc] init];
+    [search setHotwords:@[@"123",@"456"]];
+    
+    navBar.titleView = search;
 }
+
+- (void)style2{
+    self.navBarHidden = YES;
+    THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
+    [self.view addSubview:navBar];
+    
+    TMUISearchView *search = [[TMUISearchView alloc] init];
+    [search setHotwords:@[@"123",@"456"]];
+    
+    navBar.titleView = search;
+    
+}
+
 
 @end

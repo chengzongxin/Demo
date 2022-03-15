@@ -25,7 +25,16 @@
     [_scrollHotwordView invalidateTimer];
 }
 
-- (void)thk_setupViews
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupViews];
+    }
+    return self;
+}
+
+- (void)setupViews
 {
     self.clipsToBounds = YES;
     self.backgroundColor = [UIColor whiteColor];
@@ -52,6 +61,7 @@
 - (void)setHotwords:(NSArray<NSString *> *)hotwords
 {
     [_scrollHotwordView setHotwords:hotwords];
+    [_scrollHotwordView startScroll];
 }
 
 - (void)startScroll

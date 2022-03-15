@@ -15,6 +15,13 @@ typedef enum : NSUInteger {
     THKNavigationBarStyle_Dark,
 } THKNavigationBarStyle;
 
+
+typedef enum : NSUInteger {
+    THKNavigationBarLayout_LeftCenterRight,
+    THKNavigationBarLayout_LeftCenter,
+    THKNavigationBarLayout_CenterRight,
+} THKNavigationBarLayout;
+
 /**
  顶部导航条整体视图，内部的实际展示内容可操作下面的navigationBar对象
  @note 外部不要用InitXxx方法初始化，直接用提供的便捷方法初始化即可，内部会根据设备型号生成合适高度的对象
@@ -42,6 +49,12 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong, readonly) UIButton *rightBtn;
 // navigation bar style, defalt Normal is Light  white background, black content
 @property (nonatomic, assign) THKNavigationBarStyle barStyle;
+// navigation bar layout syle
+@property (nonatomic, assign) THKNavigationBarLayout barLayout;
+
+@property (nonatomic, assign) BOOL hideBackButton;
+
+@property (nonatomic, assign) BOOL hideRightButton;
 #pragma mark - public method by block
 // 自定义titleView
 - (void)configContent:(__kindof UIView * (^)(UIView * contentView))blk;
