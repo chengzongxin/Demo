@@ -75,13 +75,32 @@
     
     id b6 =
         [self createBtn]
-        .str(@"🔍 搜索框")
+        .str(@"🔍 滚动搜索框")
         .onClick(^{
             TDSearchViewController *vc = [TDSearchViewController new];
+            vc.style = 0;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
-    VerStack(b1,b2,b3,b4,b5,b6)
+    id b7 =
+        [self createBtn]
+        .str(@"🔍 常规搜索框1")
+        .onClick(^{
+            TDSearchViewController *vc = [TDSearchViewController new];
+            vc.style = 1;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    
+    id b8 =
+        [self createBtn]
+        .str(@"🔍 城市搜索框2")
+        .onClick(^{
+            TDSearchViewController *vc = [TDSearchViewController new];
+            vc.style = 2;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    
+    VerStack(b1,b2,b3,b4,b5,b6,b7,b8)
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }

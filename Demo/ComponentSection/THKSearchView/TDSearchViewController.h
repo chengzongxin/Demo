@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TDSearchViewController : THKViewController
 
+@property (nonatomic, assign) NSInteger style;
+
 @end
 
 NS_ASSUME_NONNULL_END
