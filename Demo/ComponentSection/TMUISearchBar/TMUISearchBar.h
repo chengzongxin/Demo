@@ -21,9 +21,22 @@ typedef enum : NSUInteger {
 
 @interface TMUISearchBar : UIView
 
+#pragma mark - 初始化
 - (instancetype)initWithStyle:(TMUISearchBarStyle)style;
 
+#pragma mark - 属性成员
+@property (nonatomic, assign, readonly) TMUISearchBarStyle style;
+
+@property (nonatomic, strong, readonly) TMUIButton *cityBtn;
+
+@property (nonatomic, strong, readonly) UIView *seperator;
+
+@property (nonatomic, strong, readonly) UIImageView *searchIcon;
+
+@property (nonatomic, strong, readonly) TMUITextField *textField;
+
 #pragma mark - 方法接口
+@property (nonatomic, strong) NSString *placeHolder;
 /// 是否可输入，默认YES
 @property (nonatomic, assign) BOOL isCanInput;
 /// 最大文字长度

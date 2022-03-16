@@ -110,6 +110,11 @@
     _textField.maximumTextLength = maxTextLength;
 }
 
+- (void)setPlaceHolder:(NSString *)placeHolder{
+    _placeHolder = placeHolder;
+    _textField.placeholder = placeHolder;
+}
+
 #pragma mark - Action
 /// 城市按钮点击
 - (void)cityBtnClick:(UIButton *)btn{
@@ -182,7 +187,6 @@
         _textField.tintColor = kTo8toGreen;
         _textField.textColor = UIColorHex(1A1C1A);
         _textField.placeholderColor = UIColorHex(7E807E);
-        _textField.placeholder = @"请输入";
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.clipsToBounds = YES;
         _textField.font = UIFont(14);
@@ -191,6 +195,18 @@
     }
     return _textField;
 }
+
+#pragma mark - NSObject
+
+/// 当作为titleView时，在iOS11中导航栏上会缩成一团，需要重写这个方法解决
+- (CGSize)intrinsicContentSize{
+    if (CGSizeIsEmpty(self.bounds.size)) {
+        return UILayoutFittingExpandedSize;
+    }else{
+        return self.bounds.size;
+    }
+}
+
 
 
 @end

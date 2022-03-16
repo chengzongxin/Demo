@@ -2030,7 +2030,6 @@
 				16976FC727795A5F00D477DA /* ComponentViewController.m */,
 				8F6B0F6127E1DED5000B5F70 /* TMUISearchBar */,
 				8F6B0F6227E1DF01000B5F70 /* TMUIScrollSearchBar */,
-				16C10A7927D763D2001458BD /* THKSearchView */,
 				16C10A6527D5937D001458BD /* TMUINavigationBar */,
 				8F6B0F6327E1E2E6000B5F70 /* TMUINavigationTitleView */,
 				16B1F512275DF52700FF18C4 /* NewcomerProcess */,
@@ -2106,15 +2105,6 @@
 				16C10A7727D72965001458BD /* THKNavigationBar.m */,
 			);
 			path = TMUINavigationBar;
-			sourceTree = "<group>";
-		};
-		16C10A7927D763D2001458BD /* THKSearchView */ = {
-			isa = PBXGroup;
-			children = (
-				16C10A8027D83809001458BD /* TDSearchViewController.h */,
-				16C10A8127D83809001458BD /* TDSearchViewController.m */,
-			);
-			path = THKSearchView;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -2205,6 +2195,8 @@
 				161E58B427C90C03004742AC /* TMUIFilterViewLayout.m */,
 				16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */,
 				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
+				16C10A8027D83809001458BD /* TDSearchViewController.h */,
+				16C10A8127D83809001458BD /* TDSearchViewController.m */,
 			);
 			path = HomeSection;
 			sourceTree = "<group>";
