@@ -2032,6 +2032,7 @@
 				8F6B0F6227E1DF01000B5F70 /* TMUIScrollSearchBar */,
 				16C10A7927D763D2001458BD /* THKSearchView */,
 				16C10A6527D5937D001458BD /* TMUINavigationBar */,
+				8F6B0F6327E1E2E6000B5F70 /* TMUINavigationTitleView */,
 				16B1F512275DF52700FF18C4 /* NewcomerProcess */,
 				16DDC05B274C774C000DAA29 /* SelectMaterialHomeSection */,
 				16DDC07F274CB68F000DAA29 /* BusinessSection */,
@@ -2101,16 +2102,8 @@
 		16C10A6527D5937D001458BD /* TMUINavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */,
-				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
 				16C10A7627D72965001458BD /* THKNavigationBar.h */,
 				16C10A7727D72965001458BD /* THKNavigationBar.m */,
-				16C10A6A27D6F467001458BD /* THKNavigationTitleView.h */,
-				16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */,
-				16C10A6D27D6F49C001458BD /* THKNavigationAvatarTitleView.h */,
-				16C10A6E27D6F49C001458BD /* THKNavigationAvatarTitleView.m */,
-				16C10A7027D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.h */,
-				16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */,
 			);
 			path = TMUINavigationBar;
 			sourceTree = "<group>";
@@ -2210,6 +2203,8 @@
 				161E58B127C90B5C004742AC /* TMUIFilterView.m */,
 				161E58B327C90C03004742AC /* TMUIFilterViewLayout.h */,
 				161E58B427C90C03004742AC /* TMUIFilterViewLayout.m */,
+				16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */,
+				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
 			);
 			path = HomeSection;
 			sourceTree = "<group>";
@@ -2565,6 +2560,19 @@
 				8F6B0F5D27E1BF16000B5F70 /* TMUIScrollSearchContentView.m */,
 			);
 			path = TMUIScrollSearchBar;
+			sourceTree = "<group>";
+		};
+		8F6B0F6327E1E2E6000B5F70 /* TMUINavigationTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				16C10A6A27D6F467001458BD /* THKNavigationTitleView.h */,
+				16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */,
+				16C10A6D27D6F49C001458BD /* THKNavigationAvatarTitleView.h */,
+				16C10A6E27D6F49C001458BD /* THKNavigationAvatarTitleView.m */,
+				16C10A7027D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.h */,
+				16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */,
+			);
+			path = TMUINavigationTitleView;
 			sourceTree = "<group>";
 		};
 		A2B6A7B56530DB06D858E6DE /* Frameworks */ = {
