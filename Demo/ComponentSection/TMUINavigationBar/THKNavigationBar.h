@@ -52,9 +52,13 @@ typedef enum : NSUInteger {
 // navigation bar layout syle
 @property (nonatomic, assign) THKNavigationBarLayout barLayout;
 
-@property (nonatomic, assign) BOOL hideBackButton;
+@property (nonatomic, strong) UIBarButtonItem *leftBtnItem;
 
-@property (nonatomic, assign) BOOL hideRightButton;
+@property (nonatomic, strong) UIBarButtonItem *rightBtnItem;
+
+@property (nonatomic, assign) BOOL isBackButtonHidden;
+
+@property (nonatomic, assign) BOOL isRightButtonHidden;
 #pragma mark - public method by block
 // 自定义titleView
 - (void)configContent:(__kindof UIView * (^)(UIView * contentView))blk;

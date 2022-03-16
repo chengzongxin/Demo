@@ -73,6 +73,8 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, kTNavigationBarHeight())]) {
+        _isBackButtonHidden = NO;
+        _isRightButtonHidden = YES;
         // 左
         UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _backBtn = backBtn;
@@ -81,16 +83,6 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.bottom.equalTo(self);
             make.width.equalTo(@54);
-            make.height.equalTo(@44);
-        }];
-        
-        // 中
-        UIView * contentView = [[UIView alloc] init];
-        _contentView = contentView;
-        [self addSubview:contentView];
-        [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.equalTo(backBtn.mas_trailing);
-            make.bottom.equalTo(self);
             make.height.equalTo(@44);
         }];
         
@@ -103,7 +95,17 @@ static NSString const *kRighticonKey = @"kRighticonKey";
             make.trailing.bottom.equalTo(self);
             make.height.equalTo(@44);
             make.width.equalTo(@54);
-            make.leading.equalTo(contentView.mas_trailing);
+        }];
+        
+        // 中
+        UIView * contentView = [[UIView alloc] init];
+        _contentView = contentView;
+        [self addSubview:contentView];
+        [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(backBtn.mas_right);
+            make.right.equalTo(_rightBtn.mas_left);
+            make.bottom.equalTo(self);
+            make.height.equalTo(@44);
         }];
     }
     return self;
@@ -193,6 +195,45 @@ static NSString const *kRighticonKey = @"kRighticonKey";
     }
 }
 
+- (void)setIsBackButtonHidden:(BOOL)isBackButtonHidden{
+    if (_isBackButtonHidden != isBackButtonHidden) {
+        _isBackButtonHidden = isBackButtonHidden;
+        
+        [_backBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+            if (!isBackButtonHidden) {
+                make.width.equalTo(@54);
+                make.height.equalTo(@44);
+            }else{
+                make.width.equalTo(@0);
+                make.height.equalTo(@0);
+            }
+        }];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            [self layoutIfNeeded];
+        }];
+    }
+}
+
+- (void)setIsRightButtonHidden:(BOOL)isRightButtonHidden{
+    if (_isRightButtonHidden != isRightButtonHidden) {
+        _isRightButtonHidden = isRightButtonHidden;
+        
+        [_rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            if (!isRightButtonHidden) {
+                make.width.equalTo(@54);
+                make.height.equalTo(@44);
+            }else{
+                make.width.equalTo(@0);
+                make.height.equalTo(@0);
+            }
+        }];
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            [self layoutIfNeeded];
+        }];
+    }
+}
 
 - (void)configContent:(__kindof UIView * (^)(UIView * contentView))blk;
 {

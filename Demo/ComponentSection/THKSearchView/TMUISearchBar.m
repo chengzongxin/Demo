@@ -140,6 +140,7 @@
         _textField.tintColor = kTo8toGreen;
         _textField.textColor = UIColorHex(1A1C1A);
         _textField.placeholderColor = UIColorHex(7E807E);
+        _textField.placeholder = @"请输入";
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.clipsToBounds = YES;
         _textField.font = UIFont(14);
