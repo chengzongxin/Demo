@@ -25,7 +25,7 @@ func(self, selector);
 
 @implementation TDSearchViewController
 
-- (void)action{
+- (void)demoaction{
     UIEdgeInsets paddings = UIEdgeInsetsMake(24 + NavigationContentTop, 24 + self.view.tmui_safeAreaInsets.left, 24 +  self.view.tmui_safeAreaInsets.bottom, 24 + self.view.tmui_safeAreaInsets.right);
     
     TMUIFloatLayoutView *layoutView = [[TMUIFloatLayoutView alloc] tmui_initWithSize:TMUIFloatLayoutViewAutomaticalMaximumItemSize];
@@ -67,10 +67,30 @@ func(self, selector);
     _navBar = [[THKNavigationBar alloc] init];
     [self.view addSubview:_navBar];
     
-    [self action];
+    [self demoaction];
     
     NSString *method = [NSString stringWithFormat:@"style%zd",_style];
     invoke(method)
+    
+    TMUISearchBar *search = (TMUISearchBar *)_navBar.titleView;
+    if ([search isKindOfClass:TMUISearchBar.class]) {
+        
+        search.maxTextLength = 10;
+        __weak typeof(search) weakSearch = search;
+        search.cityClick = ^(UIButton * _Nonnull btn) {
+            NSLog(@"%@",btn);
+            [weakSearch setCurrentCity:@"广州"];
+        };
+        search.textClick = ^(UITextField * _Nonnull textField) {
+            NSLog(@"%@",textField);
+        };
+        search.textChange = ^(UITextField * _Nonnull textField, NSString * _Nonnull text) {
+            NSLog(@"%@",textField);
+        };
+        search.maxLength = ^(UITextField * _Nonnull textField, NSRange range, NSString * _Nonnull replacementString) {
+            NSLog(@"%@-%@-%@",textField,NSStringFromRange(range),replacementString);
+        };
+    }
 }
 
 

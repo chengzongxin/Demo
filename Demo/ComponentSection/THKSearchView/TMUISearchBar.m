@@ -9,8 +9,7 @@
 
 #define kImgName(imgName) [UIImage tmui_imageInBundleWithName:imgName]
 
-@interface TMUISearchBar ()
-
+@interface TMUISearchBar () <TMUITextFieldDelegate>
 
 @property (nonatomic, assign) TMUISearchBarStyle style;
 
@@ -39,6 +38,7 @@
 - (instancetype)initWithStyle:(TMUISearchBarStyle)style frame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.style = style;
+        self.isCanInput = YES;
         
         [self setupViews];
     }
@@ -101,6 +101,40 @@
     }
 }
 
+#pragma mark - Public
+- (void)setCurrentCity:(NSString *)cityName{
+    _cityBtn.tmui_text = cityName;
+}
+
+- (void)setMaxTextLength:(NSInteger)maxTextLength{
+    _textField.maximumTextLength = maxTextLength;
+}
+
+#pragma mark - Action
+/// 城市按钮点击
+- (void)cityBtnClick:(UIButton *)btn{
+    !_cityClick?:_cityClick(btn);
+}
+
+/// 文字发生改变
+- (void)textDidChanged:(UITextField *)textField{
+    !_textChange?:_textChange(textField,textField.text);
+}
+
+/// 文本框被点击
+- (void)textFieldDidClick:(UITapGestureRecognizer *)tap{
+    !_textClick?:_textClick(_textField);
+}
+
+#pragma mark - Delegate
+/// 输入框是否可点击
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return self.isCanInput;
+}
+
+- (void)textField:(TMUITextField *)textField didPreventTextChangeInRange:(NSRange)range replacementString:(NSString *)replacementString{
+    !_maxLength?:_maxLength(textField,range,replacementString);
+}
 
 
 #pragma mark - Getter & Setter
@@ -113,6 +147,7 @@
         _cityBtn.tmui_image = kImgName(@"tmui_searchBar_arrow");
         _cityBtn.tmui_titleColor = UIColorHex(1A1C1A);
         _cityBtn.tmui_font = UIFont(14);
+        [_cityBtn tmui_addTarget:self action:@selector(cityBtnClick:)];
     }
     return _cityBtn;
 }
@@ -144,11 +179,12 @@
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.clipsToBounds = YES;
         _textField.font = UIFont(14);
+        _textField.delegate = self;
+        [_textField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventAllEditingEvents];
+        [_textField addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textFieldDidClick:)]];
     }
     return _textField;
 }
-
-
 
 
 @end
