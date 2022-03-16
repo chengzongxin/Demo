@@ -117,7 +117,7 @@
 }
 
 /// 文字发生改变
-- (void)textDidChanged:(UITextField *)textField{
+- (void)textDidChange:(UITextField *)textField{
     !_textChange?:_textChange(textField,textField.text);
 }
 
@@ -136,6 +136,13 @@
     !_maxLength?:_maxLength(textField,range,replacementString);
 }
 
+- (void)setIsCanInput:(BOOL)isCanInput{
+    _isCanInput = isCanInput;
+    
+    if (isCanInput == NO) {
+        [_textField addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textFieldDidClick:)]];
+    }
+}
 
 #pragma mark - Getter & Setter
 - (UIButton *)cityBtn{
@@ -181,7 +188,6 @@
         _textField.font = UIFont(14);
         _textField.delegate = self;
         [_textField addTarget:self action:@selector(textDidChange:) forControlEvents:UIControlEventAllEditingEvents];
-        [_textField addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(textFieldDidClick:)]];
     }
     return _textField;
 }

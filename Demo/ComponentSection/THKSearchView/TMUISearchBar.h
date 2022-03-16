@@ -34,7 +34,7 @@ typedef enum : NSUInteger {
 #pragma mark - 事件响应
 /// 点击城市
 @property (nonatomic, copy) TMUISearchBarCityClickBlock cityClick;
-/// 点击输入框
+/// 点击输入框，只有禁用了输入事件（isCanInput = NO），才会响应
 @property (nonatomic, copy) TMUISearchBarTextClickBlock textClick;
 /// 文字改变
 @property (nonatomic, copy) TMUISearchBarTextChangeBlock textChange;

@@ -78,17 +78,18 @@ func(self, selector);
         search.maxTextLength = 10;
         __weak typeof(search) weakSearch = search;
         search.cityClick = ^(UIButton * _Nonnull btn) {
-            NSLog(@"%@",btn);
+            NSLog(@"【cityClick】：%@",btn);
             [weakSearch setCurrentCity:@"广州"];
         };
+//        search.isCanInput = NO; // 禁用输入才会到这里
         search.textClick = ^(UITextField * _Nonnull textField) {
-            NSLog(@"%@",textField);
+            NSLog(@"【textClick】：%@",textField);
         };
         search.textChange = ^(UITextField * _Nonnull textField, NSString * _Nonnull text) {
-            NSLog(@"%@",textField);
+            NSLog(@"【textChange】：%@\n%@",textField.text,textField);
         };
         search.maxLength = ^(UITextField * _Nonnull textField, NSRange range, NSString * _Nonnull replacementString) {
-            NSLog(@"%@-%@-%@",textField,NSStringFromRange(range),replacementString);
+            NSLog(@"【maxLength】：%@-%@-%@",textField,NSStringFromRange(range),replacementString);
         };
     }
 }
