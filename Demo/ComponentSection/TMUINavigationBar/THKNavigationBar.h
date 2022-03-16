@@ -52,10 +52,6 @@ typedef enum : NSUInteger {
 // navigation bar layout syle
 @property (nonatomic, assign) THKNavigationBarLayout barLayout;
 
-@property (nonatomic, strong) UIBarButtonItem *leftBtnItem;
-
-@property (nonatomic, strong) UIBarButtonItem *rightBtnItem;
-
 @property (nonatomic, assign) BOOL isBackButtonHidden;
 
 @property (nonatomic, assign) BOOL isRightButtonHidden;
