@@ -7,7 +7,7 @@
 
 #import "TDSearchViewController.h"
 #import "THKNavigationBar.h"
-#import "TMUISearchView.h"
+#import "TMUIScrollSearchBar.h"
 #import "TMUISearchBar.h"
 
 
@@ -76,7 +76,7 @@ func(self, selector);
 
 /// 滚动搜索
 - (void)style0{
-    TMUISearchView *search = [[TMUISearchView alloc] init];
+    TMUIScrollSearchBar *search = [[TMUIScrollSearchBar alloc] init];
     [search setHotwords:@[@"123",@"456"]];
     
     _navBar.titleView = search;

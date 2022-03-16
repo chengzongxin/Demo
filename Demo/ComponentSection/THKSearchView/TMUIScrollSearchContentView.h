@@ -1,16 +1,15 @@
 //
-//  THKScrollHotwordSearchView.h
-//  LMJVerticalScrollTextExample
+//  TMUIScrollSearchContentView.h
+//  Demo
 //
-//  Created by cl w on 2021/12/29.
-//  Copyright © 2021 LMJ. All rights reserved.
+//  Created by 程宗鑫 on 2022/3/16.
 //
 
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKScrollHotwordView : UIView
+@interface TMUIScrollSearchContentView : UIView
 
 //设置热词数组，支持重设
 //数组数量或者元素不同即判断为重设

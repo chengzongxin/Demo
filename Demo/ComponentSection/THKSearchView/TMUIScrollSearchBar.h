@@ -1,15 +1,15 @@
 //
-//  THKSearchView.h
+//  TMUIScrollSearchBar.h
 //  Demo
 //
-//  Created by Joe.cheng on 2022/3/8.
+//  Created by 程宗鑫 on 2022/3/16.
 //
 
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TMUISearchView : UIView
+@interface TMUIScrollSearchBar : UIView
 
 //设置热词数组，支持重设
 //数组数量或者元素不同即判断为重设
@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //停止滚动
 - (void)stopScroll;
+
+//停止计时器
+- (void)invalidateTimer;
 
 //定位
 - (void)scrollToIndex:(NSInteger)idx;
@@ -39,9 +42,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 //当前标题
 - (NSString *)currentTitle;
-
-//销毁计时器
-- (void)invalidateTimer;
 
 @end
 

@@ -1,28 +1,28 @@
 //
-//  THKSearchView.m
+//  TMUIScrollSearchBar.m
 //  Demo
 //
-//  Created by Joe.cheng on 2022/3/8.
+//  Created by 程宗鑫 on 2022/3/16.
 //
 
-#import "TMUISearchView.h"
-#import "THKScrollHotwordView.h"
-@interface TMUISearchView ()
+#import "TMUIScrollSearchBar.h"
+#import "TMUIScrollSearchContentView.h"
 
+@interface TMUIScrollSearchBar ()<CAAnimationDelegate>
 
 @property (nonatomic, strong) UIImageView *searchIcon;
 
-@property (nonatomic, strong) THKScrollHotwordView *scrollHotwordView;
-
+@property (nonatomic, strong) TMUIScrollSearchContentView *scrollContentView;
 
 @end
 
-@implementation TMUISearchView
+
+@implementation TMUIScrollSearchBar
 
 
 - (void)invalidateTimer
 {
-    [_scrollHotwordView invalidateTimer];
+    [_scrollContentView invalidateTimer];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -49,8 +49,8 @@
         make.size.mas_equalTo(CGSizeMake(16, 16));
     }];
     
-    [self addSubview:self.scrollHotwordView];
-    [_scrollHotwordView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self addSubview:self.scrollContentView];
+    [_scrollContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
         make.height.mas_equalTo(36);
         make.left.equalTo(_searchIcon.mas_right).with.offset(8);
@@ -60,57 +60,57 @@
 
 - (void)setHotwords:(NSArray<NSString *> *)hotwords
 {
-    [_scrollHotwordView setHotwords:hotwords];
-    [_scrollHotwordView startScroll];
+    [_scrollContentView setHotwords:hotwords];
+    [_scrollContentView startScroll];
 }
 
 - (void)startScroll
 {
-    [_scrollHotwordView startScroll];
+    [_scrollContentView startScroll];
 }
 
 - (void)scrollToIndex:(NSInteger)idx
 {
-    [_scrollHotwordView scrollToIndex:idx];
+    [_scrollContentView scrollToIndex:idx];
 }
 
 //定位
 - (void)scrollToHotword:(NSString *)word
 {
-    [_scrollHotwordView scrollToHotword:word];
+    [_scrollContentView scrollToHotword:word];
 }
 
 - (void)stopScroll
 {
-    [_scrollHotwordView stopScroll];
+    [_scrollContentView stopScroll];
 }
 
 - (NSInteger)currentIndex
 {
-    return [_scrollHotwordView currentIndex];
+    return [_scrollContentView currentIndex];
 }
 
 - (NSString *)currentTitle
 {
-    return [_scrollHotwordView currentTitle];
+    return [_scrollContentView currentTitle];
 }
 
 - (void)setClickHotwordBlock:(void (^)(NSInteger, NSString * _Nonnull))block
 {
-    [_scrollHotwordView setClickHotwordBlock:block];
+    [_scrollContentView setClickHotwordBlock:block];
 }
 
 - (void)setScrollToHotwordBlock:(void (^)(NSInteger, NSString * _Nonnull))block
 {
-    [_scrollHotwordView setScrollToHotwordBlock:block];
+    [_scrollContentView setScrollToHotwordBlock:block];
 }
 
-- (THKScrollHotwordView *)scrollHotwordView
+- (TMUIScrollSearchContentView *)scrollContentView
 {
-    if (!_scrollHotwordView) {
-        _scrollHotwordView = [[THKScrollHotwordView alloc] init];
+    if (!_scrollContentView) {
+        _scrollContentView = [[TMUIScrollSearchContentView alloc] init];
     }
-    return _scrollHotwordView;
+    return _scrollContentView;
 }
 
 - (UIImageView *)searchIcon {

@@ -1,15 +1,14 @@
 //
-//  THKScrollHotwordSearchView.m
-//  LMJVerticalScrollTextExample
+//  TMUIScrollSearchContentView.m
+//  Demo
 //
-//  Created by cl w on 2021/12/29.
-//  Copyright © 2021 LMJ. All rights reserved.
+//  Created by 程宗鑫 on 2022/3/16.
 //
 
-#import "THKScrollHotwordView.h"
+#import "TMUIScrollSearchContentView.h"
 #import "NSTimer+TMUI.h"
 
-@interface THKScrollHotwordView ()<CAAnimationDelegate>
+@interface TMUIScrollSearchContentView ()<CAAnimationDelegate>
 
 @property (nonatomic, copy) void(^block)(NSInteger idx,NSString *text);
 
@@ -31,9 +30,10 @@
 
 @property (nonatomic, assign) BOOL donotNeedReset;
 
+
 @end
 
-@implementation THKScrollHotwordView
+@implementation TMUIScrollSearchContentView
 
 - (void)dealloc
 {
@@ -286,5 +286,6 @@
     }
     return YES;
 }
+
 
 @end
