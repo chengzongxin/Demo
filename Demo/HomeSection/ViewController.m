@@ -100,7 +100,16 @@
             [self.navigationController pushViewController:vc animated:YES];
         });
     
-    VerStack(b1,b2,b3,b4,b5,b6,b7,b8)
+    id b9 =
+        [self createBtn]
+        .str(@"系统导航栏搜索框")
+        .onClick(^{
+            TDSearchViewController *vc = [TDSearchViewController new];
+            vc.style = 3;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    
+    VerStack(b1,b2,b3,b4,b5,b6,b7,b8,b9)
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }

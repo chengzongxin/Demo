@@ -56,4 +56,16 @@ typedef enum : NSUInteger {
 
 @end
 
+@interface UIBarButtonItem (TMUI_EX)
+
+/// 创建一个供系统导航栏使用的取消按钮（UIBarButtonItem）
++ (NSArray <UIBarButtonItem *> *)cancelItemWithTarget:(id)target action:(SEL)action;
+
++ (instancetype)tmui_itemWithTitle:(NSString *)title color:(UIColor *)color font:(UIFont *)font target:(id)target action:(SEL)action;
+- (instancetype)tmui_initWithTitle:(NSString *)title color:(UIColor *)color font:(UIFont *)font target:(id)target action:(SEL)action;
++ (instancetype)tmui_itemWithTitle:(NSString *)title color:(UIColor *)color font:(UIFont *)font size:(CGSize)size target:(id)target action:(SEL)action;
+- (instancetype)tmui_initWithTitle:(NSString *)title color:(UIColor *)color font:(UIFont *)font size:(CGSize)size target:(id)target action:(SEL)action;
+
+@end
+
 NS_ASSUME_NONNULL_END

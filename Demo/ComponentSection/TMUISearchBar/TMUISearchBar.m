@@ -210,3 +210,40 @@
 
 
 @end
+
+
+@implementation UIBarButtonItem (TMUI_EX)
+
+
+// [UIBarButtonItem itemWithTitle:@" 取消 " font:UIFont(14) titleColor:UIColorFromRGB(0x111111) target:self action:@selector(cancelClick)
++ (NSArray <UIBarButtonItem *> *)cancelItemWithTarget:(id)target action:(SEL)action{
+    UIBarButtonItem *space = [UIBarButtonItem tmui_fixedSpaceItemWithWidth:10];
+    UIBarButtonItem *item = [UIBarButtonItem tmui_itemWithTitle:@"取消" color:UIColorFromRGB(0x111111) font:UIFont(14) target:target action:action];
+    return @[item,space];
+}
+
++ (instancetype)tmui_itemWithTitle:(NSString *)title color:(UIColor *)color font:(UIFont *)font target:(id)target action:(SEL)action{
+    return [[self alloc] tmui_initWithTitle:title color:color font:font size:CGSizeZero target:target action:action];
+}
+
+- (instancetype)tmui_initWithTitle:(NSString *)title color:(UIColor *)color font:(UIFont *)font target:(id)target action:(SEL)action{
+    return [self tmui_initWithTitle:title color:color font:font size:CGSizeZero target:target action:action];
+}
+
++ (instancetype)tmui_itemWithTitle:(NSString *)title color:(UIColor *)color font:(UIFont *)font size:(CGSize)size target:(nonnull id)target action:(nonnull SEL)action {
+    return [[self alloc] tmui_initWithTitle:title color:color font:font size:size target:target action:action];
+}
+
+- (instancetype)tmui_initWithTitle:(NSString *)title color:(UIColor *)color font:(UIFont *)font size:(CGSize)size target:(id)target action:(SEL)action{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:title forState:UIControlStateNormal];
+    btn.titleLabel.font = font;
+    [btn setTitleColor:color forState:UIControlStateNormal];
+    if (!CGSizeIsEmpty(size)) {
+        btn.frame = CGRectMake(10, 0, size.width, size.height);
+    }
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    return [self initWithCustomView:btn];
+}
+
+@end

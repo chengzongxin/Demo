@@ -119,4 +119,15 @@ func(self, selector);
     _navBar.titleView = search;
 }
 
+- (void)style3{
+    self.navBarHidden = NO;
+    [_navBar removeFromSuperview];
+    
+    TMUISearchBar *search = [[TMUISearchBar alloc] initWithStyle:TMUISearchBarStyle_City];
+    
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.titleView = search;
+    self.navigationItem.rightBarButtonItems = [UIBarButtonItem cancelItemWithTarget:self action:@selector(navBackAction:)];
+}
+
 @end
