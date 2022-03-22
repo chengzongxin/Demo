@@ -240,7 +240,7 @@
     btn.titleLabel.font = font;
     [btn setTitleColor:color forState:UIControlStateNormal];
     if (!CGSizeIsEmpty(size)) {
-        btn.frame = CGRectMake(10, 0, size.width, size.height);
+        btn.frame = CGRectMake(0, 0, size.width, size.height);
     }
     [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     return [self initWithCustomView:btn];
