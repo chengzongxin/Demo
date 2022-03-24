@@ -82,7 +82,7 @@ func(self, selector);
             [weakSearch setCurrentCity:@"广州"];
         };
 //        search.isCanInput = NO; // 禁用输入才会到这里
-        search.textClick = ^(UITextField * _Nonnull textField) {
+        search.textBegin = ^(UITextField * _Nonnull textField) {
             NSLog(@"【textClick】：%@",textField);
         };
         search.textChange = ^(UITextField * _Nonnull textField, NSString * _Nonnull text) {
