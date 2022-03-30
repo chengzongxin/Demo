@@ -170,6 +170,14 @@ static CGFloat itemH = 36;
     if (self.allowsMultipleSelection == NO) {
         !_selectBlock?:_selectBlock(collectionView.indexPathsForSelectedItems);
         [self dismiss];
+    }else{
+        NSArray<NSIndexPath *> *selectItems = collectionView.indexPathsForSelectedItems;
+        for (NSIndexPath *idxP in selectItems) {
+            //  设置每组只选一个
+            if (idxP.section == indexPath.section && idxP.item != indexPath.item) {
+                [collectionView deselectItemAtIndexPath:idxP animated:NO];
+            }
+        }
     }
 }
 
