@@ -76,9 +76,9 @@
     filterModel1.items = @[@"南山区",@"宝安区",@"福田区",@"龙岗区",@"罗湖区",@"盐田区"];
     
     TMUIFilterModel *filterModel2 = [[TMUIFilterModel alloc] init];
-    filterModel2.title = @"装修公司所在区域";
-    filterModel2.subtitle = @"根据装修公司门店所在区域，选择方便到店的装修公司";
-    filterModel2.items = @[@"南山区",@"宝安区",@"福田区",@"龙岗区",@"罗湖区",@"盐田区"];
+    filterModel2.title = @"装修阶段";
+    filterModel2.subtitle = @"土巴兔平台根据装修公司综合服务能力排名";
+    filterModel2.items = @[@"全部",@"设计阶段",@"水电阶段",@"泥工阶段",@"油漆阶段",@"竣工阶段"];
     
     
     TMUIFilterView *filterView = [[TMUIFilterView alloc] init];
@@ -94,8 +94,10 @@
         NSMutableString *str = [NSMutableString string];
         for (NSIndexPath *idxP in indexPaths) {
             NSString *aAtr = filterView.models[idxP.section].items[idxP.item];
+            if (str.length) {
+                [str appendString:@","];
+            }
             [str appendString:aAtr];
-            [str appendString:@","];
         }
         self.b2.tmui_text = str;
     };

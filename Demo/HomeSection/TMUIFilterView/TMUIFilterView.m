@@ -73,7 +73,7 @@ static CGFloat TMUIToolBarHeight = 54;
 #pragma mark - Action
 
 - (void)confirmClick{
-    !_selectBlock?:_selectBlock(self.collectionView.indexPathsForSelectedItems);
+    [self doCallBack];
     [self dismiss];
 }
 
@@ -198,7 +198,7 @@ static CGFloat TMUIToolBarHeight = 54;
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.allowsMultipleSelection == NO) {
-        !_selectBlock?:_selectBlock(collectionView.indexPathsForSelectedItems);
+        [self doCallBack];
         [self dismiss];
     }else{
         NSArray<NSIndexPath *> *selectItems = collectionView.indexPathsForSelectedItems;
@@ -220,6 +220,13 @@ static CGFloat TMUIToolBarHeight = 54;
 - (CGFloat)contentHeight{
     CGFloat toolbarH = self.allowsMultipleSelection? TMUIToolBarHeight : 0;
     return self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset) + toolbarH;
+}
+
+- (void)doCallBack{
+    // 设置排序优先级，并组成数组
+    NSSortDescriptor *section = [NSSortDescriptor sortDescriptorWithKey:@"section" ascending:YES];
+    NSArray *sortedArray = [self.collectionView.indexPathsForSelectedItems sortedArrayUsingDescriptors:@[section]];
+    !_selectBlock?:_selectBlock(sortedArray);
 }
 
 #pragma mark - Getter && Setter

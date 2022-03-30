@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "TMUIFilterModel.h"
 
-typedef void(^TMUIFilterViewSelectBlock)(NSArray <NSIndexPath *>* indexPaths);
+typedef void(^TMUIFilterViewSelectBlock)(NSArray <NSIndexPath *>* _Nullable indexPaths);
 
 NS_ASSUME_NONNULL_BEGIN
 
