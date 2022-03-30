@@ -9,4 +9,14 @@
 
 @implementation TMUIFilterModel
 
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.defalutItem = NSNotFound;
+    }
+    return self;
+}
+
 @end

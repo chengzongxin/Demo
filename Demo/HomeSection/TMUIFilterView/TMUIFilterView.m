@@ -138,6 +138,12 @@ static CGFloat TMUIToolBarHeight = 54;
     }
     [self.collectionView reloadData];
     [self layoutIfNeeded];
+    // 设置默认选中
+    [models enumerateObjectsUsingBlock:^(TMUIFilterModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.defalutItem != NSNotFound) {
+            [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:obj.defalutItem inSection:idx] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+        }
+    }];
 }
 
 - (void)setTopInset:(CGFloat)topInset{
