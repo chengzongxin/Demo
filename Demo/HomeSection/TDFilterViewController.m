@@ -10,6 +10,10 @@
 
 @interface TDFilterViewController ()
 
+@property (nonatomic, strong) UIButton *b1;
+
+@property (nonatomic, strong) UIButton *b2;
+
 @end
 
 @implementation TDFilterViewController
@@ -19,23 +23,28 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
     
-    [Button.str(@"单选筛选组件").bgColor(@"random").addTo(self.view).onClick(^{
+    _b1 = Button.str(@"单选筛选组件").bgColor(@"random").addTo(self.view).onClick(^{
         [self filter1];
-    }) mas_makeConstraints:^(MASConstraintMaker *make) {
+    });
+    
+    [_b1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view).inset(20);
         make.top.mas_equalTo(200);
         make.height.mas_equalTo(44);
     }];
     
-    [Button.str(@"多选筛选组件").bgColor(@"random").addTo(self.view).onClick(^{
+    _b2 = Button.str(@"多选筛选组件").bgColor(@"random").addTo(self.view).onClick(^{
         [self filter2];
-    }) mas_makeConstraints:^(MASConstraintMaker *make) {
+    });
+    
+    [_b2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view).inset(20);
         make.top.mas_equalTo(264);
         make.height.mas_equalTo(44);
     }];
 }
 - (void)filter1{
+    
     TMUIFilterModel *filterModel1 = [[TMUIFilterModel alloc] init];
     filterModel1.title = @"装修公司所在区域";
     filterModel1.subtitle = @"根据装修公司门店所在区域，选择方便到店的装修公司";
@@ -46,8 +55,17 @@
     
     [filterView show];
     
+    @weakify(self);
+    @weakify(filterView);
     filterView.selectBlock = ^(NSArray<NSIndexPath *> *indexPaths) {
-        NSLog(@"%@",indexPaths);
+        @strongify(self);
+        @strongify(filterView);
+        NSMutableString *str = [NSMutableString string];
+        for (NSIndexPath *idxP in indexPaths) {
+            NSString *aAtr = filterView.models[idxP.section].items[idxP.item];
+            [str appendString:aAtr];
+        }
+        self.b1.tmui_text = str;
     };
 }
 
@@ -68,8 +86,18 @@
     
     [filterView show];
     
+    @weakify(self);
+    @weakify(filterView);
     filterView.selectBlock = ^(NSArray<NSIndexPath *> *indexPaths) {
-        NSLog(@"%@",indexPaths);
+        @strongify(self);
+        @strongify(filterView);
+        NSMutableString *str = [NSMutableString string];
+        for (NSIndexPath *idxP in indexPaths) {
+            NSString *aAtr = filterView.models[idxP.section].items[idxP.item];
+            [str appendString:aAtr];
+            [str appendString:@","];
+        }
+        self.b2.tmui_text = str;
     };
 }
 

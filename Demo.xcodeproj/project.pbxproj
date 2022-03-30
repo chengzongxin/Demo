@@ -225,6 +225,7 @@
 		16937D1727F3F20000212BF2 /* TMUIFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1627F3F20000212BF2 /* TMUIFilterCell.m */; };
 		16937D1A27F3FBBE00212BF2 /* TMUIFilterSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */; };
 		16937D1D27F4559600212BF2 /* TMUICustomCornerRadiusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1C27F4559600212BF2 /* TMUICustomCornerRadiusView.m */; };
+		16937D2027F45BEE00212BF2 /* TMUIFilterToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1F27F45BEE00212BF2 /* TMUIFilterToolbar.m */; };
 		16976FC827795A5F00D477DA /* ComponentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16976FC727795A5F00D477DA /* ComponentViewController.m */; };
 		16A961EE274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961ED274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m */; };
 		16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F0274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m */; };
@@ -797,6 +798,8 @@
 		16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIFilterSectionHeader.m; sourceTree = "<group>"; };
 		16937D1B27F4559600212BF2 /* TMUICustomCornerRadiusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUICustomCornerRadiusView.h; sourceTree = "<group>"; };
 		16937D1C27F4559600212BF2 /* TMUICustomCornerRadiusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUICustomCornerRadiusView.m; sourceTree = "<group>"; };
+		16937D1E27F45BEE00212BF2 /* TMUIFilterToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIFilterToolbar.h; sourceTree = "<group>"; };
+		16937D1F27F45BEE00212BF2 /* TMUIFilterToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIFilterToolbar.m; sourceTree = "<group>"; };
 		16976FC627795A5F00D477DA /* ComponentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentViewController.h; sourceTree = "<group>"; };
 		16976FC727795A5F00D477DA /* ComponentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentViewController.m; sourceTree = "<group>"; };
 		16A961EC274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3IndexTopTabRequest.h; sourceTree = "<group>"; };
@@ -2043,6 +2046,8 @@
 				16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */,
 				16937D1527F3F20000212BF2 /* TMUIFilterCell.h */,
 				16937D1627F3F20000212BF2 /* TMUIFilterCell.m */,
+				16937D1E27F45BEE00212BF2 /* TMUIFilterToolbar.h */,
+				16937D1F27F45BEE00212BF2 /* TMUIFilterToolbar.m */,
 				16937D1127F3EE6000212BF2 /* TMUIFilterModel.h */,
 				16937D1227F3EE6100212BF2 /* TMUIFilterModel.m */,
 			);
@@ -3019,6 +3024,7 @@
 				168679962692B8AC00650023 /* THKMaterialRecommendRankResponse.m in Sources */,
 				16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */,
 				16E5C51E26830DCB0024BA20 /* THKIdentityView.m in Sources */,
+				16937D2027F45BEE00212BF2 /* TMUIFilterToolbar.m in Sources */,
 				16DDC0A2274CEFFE000DAA29 /* THKEntranceViewModel.m in Sources */,
 				16DDC09F274CEFF2000DAA29 /* THKEntranceView.m in Sources */,
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,

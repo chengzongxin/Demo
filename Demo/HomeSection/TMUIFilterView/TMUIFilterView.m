@@ -9,9 +9,11 @@
 #import "TMUICustomCornerRadiusView.h"
 #import "TMUIFilterSectionHeader.h"
 #import "TMUIFilterCell.h"
+#import "TMUIFilterToolbar.h"
 
 static UIEdgeInsets itemPadding = {0,15,0,15};
 static CGFloat itemH = 36;
+static CGFloat TMUIToolBarHeight = 54;
 
 @interface TMUIFilterView () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -21,6 +23,7 @@ static CGFloat itemH = 36;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
+@property (nonatomic, strong) TMUIFilterToolbar *toolbar;
 
 @end
 
@@ -50,6 +53,7 @@ static CGFloat itemH = 36;
 - (void)setupviews{
     [self addSubview:self.contentView];
     [self.contentView addSubview:self.collectionView];
+    [self.contentView addSubview:self.toolbar];
     
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
@@ -59,9 +63,24 @@ static CGFloat itemH = 36;
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
     }];
+    
+    [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.contentView);
+        make.height.mas_equalTo(TMUIToolBarHeight);
+    }];
 }
 
 #pragma mark - Action
+
+- (void)confirmClick{
+    !_selectBlock?:_selectBlock(self.collectionView.indexPathsForSelectedItems);
+    [self dismiss];
+}
+
+- (void)resetClick{
+    [self.collectionView tmui_clearsSelection];
+}
+
 - (void)tapCover:(UITapGestureRecognizer *)tap{
     if ([tap locationInView:self].y > CGRectGetMaxY(self.contentView.frame)) {
         [self dismiss];
@@ -73,7 +92,7 @@ static CGFloat itemH = 36;
     UIViewController *topVC = UIViewController.new.tmui_topViewController;
     [topVC.view addSubview:self];
     // Perform animations
-    CGFloat contentH = self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset);
+    CGFloat contentH = [self contentHeight];
     
     
     [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -98,7 +117,7 @@ static CGFloat itemH = 36;
 }
 
 - (void)dismiss{
-    CGFloat contentH = self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset);
+    CGFloat contentH = [self contentHeight];
     dispatch_block_t animations = ^{
         [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(-contentH);
@@ -113,7 +132,10 @@ static CGFloat itemH = 36;
 
 - (void)setModels:(NSArray<TMUIFilterModel *> *)models{
     _models = models;
-    self.allowsMultipleSelection = models.count > 1;
+    if (models.count > 1) {
+        self.allowsMultipleSelection = YES;
+        self.toolbar.hidden = NO;
+    }
     [self.collectionView reloadData];
     [self layoutIfNeeded];
 }
@@ -195,6 +217,11 @@ static CGFloat itemH = 36;
     return CGSizeMake(width, itemH);
 }
 
+- (CGFloat)contentHeight{
+    CGFloat toolbarH = self.allowsMultipleSelection? TMUIToolBarHeight : 0;
+    return self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset) + toolbarH;
+}
+
 #pragma mark - Getter && Setter
 
 - (TMUICustomCornerRadiusView *)contentView{
@@ -241,6 +268,23 @@ static CGFloat itemH = 36;
         _flowLayout.sectionInset = itemPadding;
     }
     return _flowLayout;
+}
+
+- (TMUIFilterToolbar *)toolbar{
+    if (!_toolbar) {
+        _toolbar = [[TMUIFilterToolbar alloc] init];
+        _toolbar.hidden = YES;
+        @weakify(self);
+        _toolbar.tapItem = ^(NSInteger index) {
+            @strongify(self);
+            if (index == 0) {
+                [self resetClick];
+            }else if (index == 1) {
+                [self confirmClick];
+            }
+        };
+    }
+    return _toolbar;
 }
 
 #pragma mark - Super
