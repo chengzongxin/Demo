@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL disableAnimate;
 /// 距离顶部距离
 @property (nonatomic, assign) CGFloat topInset;
+/// 是否允许多选
+@property (nonatomic, assign) BOOL allowsMultipleSelection;
 
 - (void)show;
 - (void)dismiss;

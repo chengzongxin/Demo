@@ -39,28 +39,25 @@ static CGFloat itemH = 36;
     self.frame = CGRectMake(0, self.topInset, TMUI_SCREEN_WIDTH, TMUI_SCREEN_HEIGHT - self.topInset);
     self.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.5];
     self.userInteractionEnabled = YES;
-    @weakify(self);
-    [self tmui_addSingerTapWithBlock:^{
-        @strongify(self);
-        [self dismiss];
-    }];
+//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCover:)];
+//    [self addGestureRecognizer:gesture];
     self.selectColor = UIColorHex(22C77D);
 }
 
 - (void)setupviews{
-//    [self addSubview:self.contentView];
     [self addSubview:self.collectionView];
     
-//    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.left.right.equalTo(self);
-//        make.height.mas_equalTo(0);
-//    }];
-    
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(self);
         make.top.left.right.mas_equalTo(0);
         make.height.mas_equalTo(TMUI_SCREEN_HEIGHT);
     }];
+}
+
+#pragma mark - Action
+- (void)tapCover:(UITapGestureRecognizer *)tap{
+    if ([tap locationInView:self].y > CGRectGetMaxY(self.collectionView.frame)) {
+        [self dismiss];
+    }
 }
 
 #pragma mark - Public
@@ -110,15 +107,16 @@ static CGFloat itemH = 36;
     _models = models;
     [self.collectionView reloadData];
     [self layoutIfNeeded];
-//    CGSize size = [self.collectionView sizeThatFits:CGSizeMake(TMUI_SCREEN_WIDTH, CGFLOAT_MAX)];
-//    [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.height.mas_equalTo(size.height);
-//    }];
 }
 
 - (void)setTopInset:(CGFloat)topInset{
     _topInset = topInset;
     self.frame = CGRectMake(0, self.topInset, TMUI_SCREEN_WIDTH, TMUI_SCREEN_HEIGHT - self.topInset);
+}
+
+- (void)setAllowsMultipleSelection:(BOOL)allowsMultipleSelection{
+    _allowsMultipleSelection = allowsMultipleSelection;
+    _collectionView.allowsMultipleSelection = allowsMultipleSelection;
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -168,7 +166,7 @@ static CGFloat itemH = 36;
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+//    [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
     NSLog(@"%@",indexPath);
 }
 
@@ -197,6 +195,7 @@ static CGFloat itemH = 36;
         _collectionView.pagingEnabled = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
+        _collectionView.allowsMultipleSelection = NO;
 //        _collectionView.cornerRadius = 16;
         if (@available(iOS 11.0, *)) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -226,6 +225,11 @@ static CGFloat itemH = 36;
 
 #pragma mark - Super
 
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+    UIView *view = [super hitTest:point withEvent:event];
+    
+    return view;
+}
 
 
 //- (void)bindViewModel{

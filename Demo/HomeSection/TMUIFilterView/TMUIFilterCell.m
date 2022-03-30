@@ -44,7 +44,8 @@
         [_btn setTitleColor:UIColor.whiteColor forState:UIControlStateSelected];
         [_btn tmui_setNormalBackGroundColor:UIColorHex(F6F8F6) selectedBackGroundColor:UIColorHex(22C77D)];
         _btn.cornerRadius = 4;
-        _btn.enabled = NO;
+        _btn.userInteractionEnabled = NO;
+//        _btn.enabled = NO;
     }
     return _btn;
 }
