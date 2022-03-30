@@ -27,6 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
+    self.navigationController.navigationBar.barTintColor = UIColor.whiteColor;
     
     _b1 = Button.str(@"单选筛选组件").bgColor(@"random").addTo(self.view).onClick(^{
         [self filter1];

@@ -12,7 +12,7 @@ typedef void(^TMUIFilterViewSelectBlock)(NSArray <NSIndexPath *>* _Nullable inde
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TMUIFilterView : UIView
+@interface TMUIFilterView : UIControl
 
 #pragma mark - datas 数据源
 @property (nonatomic, copy) NSArray <TMUIFilterModel *> *models;

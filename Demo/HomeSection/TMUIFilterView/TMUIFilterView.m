@@ -13,7 +13,9 @@
 
 static UIEdgeInsets itemPadding = {0,15,0,15};
 static CGFloat itemH = 36;
-static CGFloat TMUIToolBarHeight = 54;
+static CGFloat TMUIFilterToolBarHeight = 54;
+static CGFloat TMUIFilterHeaderFullHeight = 72;
+static CGFloat TMUIFilterHeaderTitleHeight = 47;
 
 @interface TMUIFilterView () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
@@ -45,8 +47,7 @@ static CGFloat TMUIToolBarHeight = 54;
     self.frame = CGRectMake(0, self.topInset, TMUI_SCREEN_WIDTH, TMUI_SCREEN_HEIGHT - self.topInset);
     self.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.5];
     self.userInteractionEnabled = YES;
-//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapCover:)];
-//    [self addGestureRecognizer:gesture];
+    [self addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
     self.selectColor = UIColorHex(22C77D);
 }
 
@@ -66,7 +67,7 @@ static CGFloat TMUIToolBarHeight = 54;
     
     [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.contentView);
-        make.height.mas_equalTo(TMUIToolBarHeight);
+        make.height.mas_equalTo(TMUIFilterToolBarHeight);
     }];
 }
 
@@ -103,9 +104,6 @@ static CGFloat TMUIToolBarHeight = 54;
     
     [self layoutIfNeeded];
     
-    
-//    [_collectionView tmui_cornerDirect:UIRectCornerBottomLeft | UIRectCornerBottomRight radius:16];
-    
     dispatch_block_t animations = ^{
         [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(0);
@@ -126,7 +124,11 @@ static CGFloat TMUIToolBarHeight = 54;
         [self layoutIfNeeded];
     };
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:animations completion:^(BOOL finished) {
-        [self removeFromSuperview];
+        if (finished) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self removeFromSuperview];
+            });
+        }
     }];
 }
 
@@ -164,7 +166,15 @@ static CGFloat TMUIToolBarHeight = 54;
 
 #pragma mark headers
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(collectionView.width, 72);
+    NSString *title = self.models[section].title;
+    NSString *subtitle = self.models[section].subtitle;
+    CGFloat headerH = 0;
+    if (title.length > 0 && subtitle.length > 0) {
+        headerH = TMUIFilterHeaderFullHeight;
+    }else if (title.length > 0) {
+        headerH = TMUIFilterHeaderTitleHeight;
+    }
+    return CGSizeMake(collectionView.width, headerH);
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
@@ -224,7 +234,7 @@ static CGFloat TMUIToolBarHeight = 54;
 }
 
 - (CGFloat)contentHeight{
-    CGFloat toolbarH = self.allowsMultipleSelection? TMUIToolBarHeight : 0;
+    CGFloat toolbarH = self.allowsMultipleSelection? TMUIFilterToolBarHeight : 0;
     return self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset) + toolbarH;
 }
 
@@ -302,17 +312,17 @@ static CGFloat TMUIToolBarHeight = 54;
 
 #pragma mark - Super
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    UIView *view = [super hitTest:point withEvent:event];
-    
-    if (view == self) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self dismiss];
-        });
-    }
-    
-    return view;
-}
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
+//    UIView *view = [super hitTest:point withEvent:event];
+//
+//    if (view == self) {
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self dismiss];
+//        });
+//    }
+//
+//    return view;
+//}
 
 
 //- (void)bindViewModel{
