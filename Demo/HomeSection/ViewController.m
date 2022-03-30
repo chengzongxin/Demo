@@ -10,6 +10,7 @@
 #import "TMUIFilterView.h"
 #import "THKCustomNavigationViewController.h"
 #import "TDSearchViewController.h"
+#import "TDFilterViewController.h"
 @interface ViewController ()
 
 @end
@@ -109,7 +110,15 @@
             [self.navigationController pushViewController:vc animated:YES];
         });
     
-    VerStack(b1,b2,b3,b4,b5,b6,b7,b8,b9)
+    id b10 =
+        [self createBtn]
+        .str(@"筛选菜单")
+        .onClick(^{
+            TDFilterViewController *vc = [TDFilterViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    
+    VerStack(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10)
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }

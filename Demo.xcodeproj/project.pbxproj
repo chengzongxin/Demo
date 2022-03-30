@@ -219,6 +219,11 @@
 		1689DECC27449F410073BA68 /* DynamicTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DECB27449F410073BA68 /* DynamicTabVC.m */; };
 		1689DECF27449F4D0073BA68 /* DynamicTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DECE27449F4D0073BA68 /* DynamicTabVM.m */; };
 		1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1689DED42744DA220073BA68 /* DynamicTabChildVC.m */; };
+		16937D0D27F3EC8000212BF2 /* TDFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D0C27F3EC8000212BF2 /* TDFilterViewController.m */; };
+		16937D1027F3ED3E00212BF2 /* TMUIFilterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D0F27F3ED3E00212BF2 /* TMUIFilterViewModel.m */; };
+		16937D1327F3EE6100212BF2 /* TMUIFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1227F3EE6100212BF2 /* TMUIFilterModel.m */; };
+		16937D1727F3F20000212BF2 /* TMUIFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1627F3F20000212BF2 /* TMUIFilterCell.m */; };
+		16937D1A27F3FBBE00212BF2 /* TMUIFilterSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */; };
 		16976FC827795A5F00D477DA /* ComponentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16976FC727795A5F00D477DA /* ComponentViewController.m */; };
 		16A961EE274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961ED274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m */; };
 		16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F0274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m */; };
@@ -779,6 +784,16 @@
 		1689DECE27449F4D0073BA68 /* DynamicTabVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabVM.m; sourceTree = "<group>"; };
 		1689DED32744DA220073BA68 /* DynamicTabChildVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicTabChildVC.h; sourceTree = "<group>"; };
 		1689DED42744DA220073BA68 /* DynamicTabChildVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabChildVC.m; sourceTree = "<group>"; };
+		16937D0B27F3EC8000212BF2 /* TDFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDFilterViewController.h; sourceTree = "<group>"; };
+		16937D0C27F3EC8000212BF2 /* TDFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDFilterViewController.m; sourceTree = "<group>"; };
+		16937D0E27F3ED3E00212BF2 /* TMUIFilterViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIFilterViewModel.h; sourceTree = "<group>"; };
+		16937D0F27F3ED3E00212BF2 /* TMUIFilterViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIFilterViewModel.m; sourceTree = "<group>"; };
+		16937D1127F3EE6000212BF2 /* TMUIFilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIFilterModel.h; sourceTree = "<group>"; };
+		16937D1227F3EE6100212BF2 /* TMUIFilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIFilterModel.m; sourceTree = "<group>"; };
+		16937D1527F3F20000212BF2 /* TMUIFilterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIFilterCell.h; sourceTree = "<group>"; };
+		16937D1627F3F20000212BF2 /* TMUIFilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIFilterCell.m; sourceTree = "<group>"; };
+		16937D1827F3FBBE00212BF2 /* TMUIFilterSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIFilterSectionHeader.h; sourceTree = "<group>"; };
+		16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIFilterSectionHeader.m; sourceTree = "<group>"; };
 		16976FC627795A5F00D477DA /* ComponentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentViewController.h; sourceTree = "<group>"; };
 		16976FC727795A5F00D477DA /* ComponentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentViewController.m; sourceTree = "<group>"; };
 		16A961EC274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3IndexTopTabRequest.h; sourceTree = "<group>"; };
@@ -2014,6 +2029,21 @@
 			path = DynamicTabVC;
 			sourceTree = "<group>";
 		};
+		16937D1427F3F1E200212BF2 /* TMUIFilterView */ = {
+			isa = PBXGroup;
+			children = (
+				161E58B027C90B5C004742AC /* TMUIFilterView.h */,
+				161E58B127C90B5C004742AC /* TMUIFilterView.m */,
+				16937D1827F3FBBE00212BF2 /* TMUIFilterSectionHeader.h */,
+				16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */,
+				16937D1527F3F20000212BF2 /* TMUIFilterCell.h */,
+				16937D1627F3F20000212BF2 /* TMUIFilterCell.m */,
+				16937D1127F3EE6000212BF2 /* TMUIFilterModel.h */,
+				16937D1227F3EE6100212BF2 /* TMUIFilterModel.m */,
+			);
+			path = TMUIFilterView;
+			sourceTree = "<group>";
+		};
 		16976FC427795A1B00D477DA /* ComponentSection */ = {
 			isa = PBXGroup;
 			children = (
@@ -2179,14 +2209,17 @@
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
 				16648FA327CC5CCB00D5291B /* TMUIFilterMenu.h */,
 				16648FA427CC5CCB00D5291B /* TMUIFilterMenu.m */,
-				161E58B027C90B5C004742AC /* TMUIFilterView.h */,
-				161E58B127C90B5C004742AC /* TMUIFilterView.m */,
+				16937D1427F3F1E200212BF2 /* TMUIFilterView */,
+				16937D0E27F3ED3E00212BF2 /* TMUIFilterViewModel.h */,
+				16937D0F27F3ED3E00212BF2 /* TMUIFilterViewModel.m */,
 				161E58B327C90C03004742AC /* TMUIFilterViewLayout.h */,
 				161E58B427C90C03004742AC /* TMUIFilterViewLayout.m */,
 				16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */,
 				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
 				16C10A8027D83809001458BD /* TDSearchViewController.h */,
 				16C10A8127D83809001458BD /* TDSearchViewController.m */,
+				16937D0B27F3EC8000212BF2 /* TDFilterViewController.h */,
+				16937D0C27F3EC8000212BF2 /* TDFilterViewController.m */,
 			);
 			path = HomeSection;
 			sourceTree = "<group>";
@@ -2818,6 +2851,7 @@
 				168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */,
 				16B1F51E275E000000FF18C4 /* THKNewcomerStageView.m in Sources */,
 				16B1F52A275E1B6D00FF18C4 /* THKNewcomerAnimation.m in Sources */,
+				16937D1027F3ED3E00212BF2 /* TMUIFilterViewModel.m in Sources */,
 				16C10A6C27D6F467001458BD /* THKNavigationTitleView.m in Sources */,
 				1689DE8F274498280073BA68 /* THKDynamicTabsModel.m in Sources */,
 				16611B62269692D20089E41B /* THKMaterialRecommendRankVC.m in Sources */,
@@ -2941,6 +2975,7 @@
 				165CCBD6278E66DB00141EC0 /* THKDynamicTabsManager.m in Sources */,
 				16B1F51B275DFFEF00FF18C4 /* THKNewcomerHomeView.m in Sources */,
 				1642AA5126D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m in Sources */,
+				16937D1327F3EE6100212BF2 /* TMUIFilterModel.m in Sources */,
 				1630D985274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m in Sources */,
 				1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */,
 				1644D3CF276AF7EC00E91C66 /* TestViewController.m in Sources */,
@@ -2981,6 +3016,7 @@
 				16DDC0A2274CEFFE000DAA29 /* THKEntranceViewModel.m in Sources */,
 				16DDC09F274CEFF2000DAA29 /* THKEntranceView.m in Sources */,
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,
+				16937D1727F3F20000212BF2 /* TMUIFilterCell.m in Sources */,
 				16867A012692D76C00650023 /* TMCardComponentVideoSetsCell.m in Sources */,
 				16648FA527CC5CCB00D5291B /* TMUIFilterMenu.m in Sources */,
 				16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */,
@@ -3019,6 +3055,7 @@
 				160981E126D7A16500E1364F /* THKDiaryCircleView.m in Sources */,
 				1630D98F274DD7F9009A04FA /* THKSelectMaterialCommunicationVM.m in Sources */,
 				16867A112692D76C00650023 /* THKTextTagLabel.m in Sources */,
+				16937D0D27F3EC8000212BF2 /* TDFilterViewController.m in Sources */,
 				16192B3C2692E13E00967C73 /* THKPushPopBaseTransition.m in Sources */,
 				168679FE2692D76C00650023 /* TMCardComponentCollectionViewLayout.m in Sources */,
 				16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */,
@@ -3086,6 +3123,7 @@
 				16F516C326D4F964002500F7 /* THKDiaryBookCell.m in Sources */,
 				16C10A7527D6FE07001458BD /* THKCustomNavigationViewController.m in Sources */,
 				16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */,
+				16937D1A27F3FBBE00212BF2 /* TMUIFilterSectionHeader.m in Sources */,
 				16192B2E2692E13E00967C73 /* THKMoveCardInteractiveTransition.m in Sources */,
 				16611AD2269688C20089E41B /* TUUIDGenerator.m in Sources */,
 				16611B60269692D20089E41B /* THKMaterialKnowledgeVM.m in Sources */,
