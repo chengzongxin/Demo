@@ -14,8 +14,6 @@ static CGFloat itemH = 36;
 
 @interface TMUIFilterView () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
-@property (nonatomic, strong) UIView *contentView;
-
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
@@ -36,9 +34,16 @@ static CGFloat itemH = 36;
 }
 
 - (void)didInitalize{
-    self.column = 3;
-    self.frame = UIScreen.mainScreen.bounds;
+    _topInset = NavigationContentTop;
+    _column = 3;
+    self.frame = CGRectMake(0, self.topInset, TMUI_SCREEN_WIDTH, TMUI_SCREEN_HEIGHT - self.topInset);
     self.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.5];
+    self.userInteractionEnabled = YES;
+    @weakify(self);
+    [self tmui_addSingerTapWithBlock:^{
+        @strongify(self);
+        [self dismiss];
+    }];
     self.selectColor = UIColorHex(22C77D);
 }
 
@@ -53,7 +58,8 @@ static CGFloat itemH = 36;
     
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.edges.equalTo(self);
-        make.top.left.right.height.mas_equalTo(0);
+        make.top.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(TMUI_SCREEN_HEIGHT);
     }];
 }
 
@@ -62,7 +68,8 @@ static CGFloat itemH = 36;
     UIViewController *topVC = UIViewController.new.tmui_topViewController;
     [topVC.view addSubview:self];
     // Perform animations
-    CGFloat contentH = 500;
+    CGFloat contentH = self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset);
+    
     
     [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(-contentH);
@@ -71,6 +78,9 @@ static CGFloat itemH = 36;
     
     
     [self layoutIfNeeded];
+    
+    
+    [_collectionView tmui_cornerDirect:UIRectCornerBottomLeft | UIRectCornerBottomRight radius:16];
     
     dispatch_block_t animations = ^{
         [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -83,24 +93,32 @@ static CGFloat itemH = 36;
 }
 
 - (void)dismiss{
-    CGFloat duration = self.disableAnimate ? 0 : .5;
-    [UIView animateWithDuration:duration animations:^{
-        self.transform = CGAffineTransformMakeScale(0.01, 0.01);// 改成0会不显示动画
-        self.alpha = 0;
-    } completion:^(BOOL finished) {
-        self.hidden = YES;
-        self.alpha = 1;
-        self.transform = CGAffineTransformIdentity;//
+    CGFloat contentH = self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset);
+    dispatch_block_t animations = ^{
+        [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(-contentH);
+        }];
+        
+        [self layoutIfNeeded];
+    };
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveLinear animations:animations completion:^(BOOL finished) {
+        [self removeFromSuperview];
     }];
 }
 
 - (void)setModels:(NSArray<TMUIFilterModel *> *)models{
     _models = models;
     [self.collectionView reloadData];
+    [self layoutIfNeeded];
+//    CGSize size = [self.collectionView sizeThatFits:CGSizeMake(TMUI_SCREEN_WIDTH, CGFLOAT_MAX)];
+//    [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.height.mas_equalTo(size.height);
+//    }];
 }
 
 - (void)setTopInset:(CGFloat)topInset{
-    self.y = topInset;
+    _topInset = topInset;
+    self.frame = CGRectMake(0, self.topInset, TMUI_SCREEN_WIDTH, TMUI_SCREEN_HEIGHT - self.topInset);
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -145,12 +163,12 @@ static CGFloat itemH = 36;
     TMUIFilterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([TMUIFilterCell class])
                                                                            forIndexPath:indexPath];
     cell.btn.tmui_text = self.models[indexPath.section].items[indexPath.item];
-    cell.backgroundColor = UIColor.tmui_randomColor;
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
     NSLog(@"%@",indexPath);
 }
 
@@ -161,24 +179,31 @@ static CGFloat itemH = 36;
 }
 
 #pragma mark - Getter && Setter
-
-- (UIView *)contentView{
-    if (!_contentView) {
-        _contentView = [[UIView alloc] init];
-        _contentView.backgroundColor = UIColor.whiteColor;
-    }
-    return _contentView;
-}
+//
+//- (UIView *)contentView{
+//    if (!_contentView) {
+//        _contentView = [[UIView alloc] init];
+//        _contentView.backgroundColor = UIColor.whiteColor;
+//    }
+//    return _contentView;
+//}
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.flowLayout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.pagingEnabled = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
+//        _collectionView.cornerRadius = 16;
+        if (@available(iOS 11.0, *)) {
+            _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            // Fallback on earlier versions
+        }
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 20, 0);
         [_collectionView registerClass:TMUIFilterSectionHeader.class
             forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
                    withReuseIdentifier:NSStringFromClass(TMUIFilterSectionHeader.class)];

@@ -18,9 +18,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = UIColor.whiteColor;
+    
+    [Button.str(@"筛选").bgColor(@"random").addTo(self.view).onClick(^{
+        [self filter];
+    }) mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view).inset(20);
+        make.top.mas_equalTo(200);
+        make.height.mas_equalTo(44);
+    }];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+- (void)filter{
     TMUIFilterModel *filterModel1 = [[TMUIFilterModel alloc] init];
     filterModel1.title = @"装修公司所在区域";
     filterModel1.subtitle = @"根据装修公司门店所在区域，选择方便到店的装修公司";
