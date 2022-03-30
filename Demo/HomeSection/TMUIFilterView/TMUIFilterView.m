@@ -105,6 +105,7 @@ static CGFloat itemH = 36;
 
 - (void)setModels:(NSArray<TMUIFilterModel *> *)models{
     _models = models;
+    self.allowsMultipleSelection = models.count > 1;
     [self.collectionView reloadData];
     [self layoutIfNeeded];
 }
@@ -166,8 +167,10 @@ static CGFloat itemH = 36;
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    [collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-    NSLog(@"%@",indexPath);
+    if (self.allowsMultipleSelection == NO) {
+        !_selectBlock?:_selectBlock(collectionView.indexPathsForSelectedItems);
+        [self dismiss];
+    }
 }
 
 #pragma mark - Private
@@ -227,6 +230,12 @@ static CGFloat itemH = 36;
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView *view = [super hitTest:point withEvent:event];
+    
+    if (view == self) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self dismiss];
+        });
+    }
     
     return view;
 }

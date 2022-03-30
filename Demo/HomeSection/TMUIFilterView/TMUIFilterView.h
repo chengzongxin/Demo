@@ -8,6 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "TMUIFilterModel.h"
 
+typedef void(^TMUIFilterViewSelectBlock)(NSArray <NSIndexPath *>* indexPaths);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TMUIFilterView : UIView
@@ -29,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat topInset;
 /// 是否允许多选
 @property (nonatomic, assign) BOOL allowsMultipleSelection;
+
+@property (nonatomic, copy) TMUIFilterViewSelectBlock selectBlock;
 
 - (void)show;
 - (void)dismiss;
