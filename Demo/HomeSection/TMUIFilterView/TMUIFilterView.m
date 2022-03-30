@@ -48,17 +48,22 @@ static CGFloat itemH = 36;
 }
 
 - (void)setupviews{
-    [self addSubview:self.collectionView];
+    [self addSubview:self.contentView];
+    [self.contentView addSubview:self.collectionView];
     
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
         make.height.mas_equalTo(TMUI_SCREEN_HEIGHT);
+    }];
+    
+    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView);
     }];
 }
 
 #pragma mark - Action
 - (void)tapCover:(UITapGestureRecognizer *)tap{
-    if ([tap locationInView:self].y > CGRectGetMaxY(self.collectionView.frame)) {
+    if ([tap locationInView:self].y > CGRectGetMaxY(self.contentView.frame)) {
         [self dismiss];
     }
 }
@@ -71,7 +76,7 @@ static CGFloat itemH = 36;
     CGFloat contentH = self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset);
     
     
-    [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(-contentH);
         make.height.mas_equalTo(contentH);
     }];
@@ -80,10 +85,10 @@ static CGFloat itemH = 36;
     [self layoutIfNeeded];
     
     
-    [_collectionView tmui_cornerDirect:UIRectCornerBottomLeft | UIRectCornerBottomRight radius:16];
+//    [_collectionView tmui_cornerDirect:UIRectCornerBottomLeft | UIRectCornerBottomRight radius:16];
     
     dispatch_block_t animations = ^{
-        [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(0);
         }];
         
@@ -95,7 +100,7 @@ static CGFloat itemH = 36;
 - (void)dismiss{
     CGFloat contentH = self.collectionView.contentSize.height + UIEdgeInsetsGetVerticalValue(self.collectionView.contentInset);
     dispatch_block_t animations = ^{
-        [self.collectionView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [self.contentView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(-contentH);
         }];
         
