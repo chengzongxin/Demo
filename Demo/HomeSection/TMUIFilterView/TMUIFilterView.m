@@ -6,6 +6,7 @@
 //
 
 #import "TMUIFilterView.h"
+#import "TMUICustomCornerRadiusView.h"
 #import "TMUIFilterSectionHeader.h"
 #import "TMUIFilterCell.h"
 
@@ -13,6 +14,8 @@ static UIEdgeInsets itemPadding = {0,15,0,15};
 static CGFloat itemH = 36;
 
 @interface TMUIFilterView () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) TMUICustomCornerRadiusView *contentView;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -188,14 +191,15 @@ static CGFloat itemH = 36;
 }
 
 #pragma mark - Getter && Setter
-//
-//- (UIView *)contentView{
-//    if (!_contentView) {
-//        _contentView = [[UIView alloc] init];
-//        _contentView.backgroundColor = UIColor.whiteColor;
-//    }
-//    return _contentView;
-//}
+
+- (TMUICustomCornerRadiusView *)contentView{
+    if (!_contentView) {
+        _contentView = [[TMUICustomCornerRadiusView alloc] init];
+        _contentView.backgroundColor = UIColor.whiteColor;
+        _contentView.customCornerRadius = TMUICustomCornerRadiusMake(0, 0, 16, 16);
+    }
+    return _contentView;
+}
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {

@@ -224,6 +224,7 @@
 		16937D1327F3EE6100212BF2 /* TMUIFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1227F3EE6100212BF2 /* TMUIFilterModel.m */; };
 		16937D1727F3F20000212BF2 /* TMUIFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1627F3F20000212BF2 /* TMUIFilterCell.m */; };
 		16937D1A27F3FBBE00212BF2 /* TMUIFilterSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */; };
+		16937D1D27F4559600212BF2 /* TMUICustomCornerRadiusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16937D1C27F4559600212BF2 /* TMUICustomCornerRadiusView.m */; };
 		16976FC827795A5F00D477DA /* ComponentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16976FC727795A5F00D477DA /* ComponentViewController.m */; };
 		16A961EE274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961ED274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.m */; };
 		16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16A961F0274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m */; };
@@ -794,6 +795,8 @@
 		16937D1627F3F20000212BF2 /* TMUIFilterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIFilterCell.m; sourceTree = "<group>"; };
 		16937D1827F3FBBE00212BF2 /* TMUIFilterSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIFilterSectionHeader.h; sourceTree = "<group>"; };
 		16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIFilterSectionHeader.m; sourceTree = "<group>"; };
+		16937D1B27F4559600212BF2 /* TMUICustomCornerRadiusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUICustomCornerRadiusView.h; sourceTree = "<group>"; };
+		16937D1C27F4559600212BF2 /* TMUICustomCornerRadiusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUICustomCornerRadiusView.m; sourceTree = "<group>"; };
 		16976FC627795A5F00D477DA /* ComponentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentViewController.h; sourceTree = "<group>"; };
 		16976FC727795A5F00D477DA /* ComponentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentViewController.m; sourceTree = "<group>"; };
 		16A961EC274F1D90002B6C89 /* THKMaterialV3IndexTopTabRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMaterialV3IndexTopTabRequest.h; sourceTree = "<group>"; };
@@ -2034,6 +2037,8 @@
 			children = (
 				161E58B027C90B5C004742AC /* TMUIFilterView.h */,
 				161E58B127C90B5C004742AC /* TMUIFilterView.m */,
+				16937D1B27F4559600212BF2 /* TMUICustomCornerRadiusView.h */,
+				16937D1C27F4559600212BF2 /* TMUICustomCornerRadiusView.m */,
 				16937D1827F3FBBE00212BF2 /* TMUIFilterSectionHeader.h */,
 				16937D1927F3FBBE00212BF2 /* TMUIFilterSectionHeader.m */,
 				16937D1527F3F20000212BF2 /* TMUIFilterCell.h */,
@@ -2907,6 +2912,7 @@
 				16192AD62692E05700967C73 /* TUserAvatarView.m in Sources */,
 				16192B232692E13E00967C73 /* THKPushPopAsLocationToListTransition.m in Sources */,
 				16E5C4D02682DE930024BA20 /* TBTNetworkManager.m in Sources */,
+				16937D1D27F4559600212BF2 /* TMUICustomCornerRadiusView.m in Sources */,
 				16192B2A2692E13E00967C73 /* THKDiaryDetailLoadingAnimationView.m in Sources */,
 				1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */,
 				16611B74269692D20089E41B /* THKMaterialHotRankVC.m in Sources */,
