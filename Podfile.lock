@@ -46,6 +46,7 @@ PODS:
     - TMUIKit/TMUIComponents/TMUICellHeightCache (= 1.1.13)
     - TMUIKit/TMUIComponents/TMUICycleView (= 1.1.13)
     - TMUIKit/TMUIComponents/TMUIExpandLabel (= 1.1.13)
+    - TMUIKit/TMUIComponents/TMUIFilterView (= 1.1.13)
     - TMUIKit/TMUIComponents/TMUIFloatImagesView (= 1.1.13)
     - TMUIKit/TMUIComponents/TMUIFloatLayoutView (= 1.1.13)
     - TMUIKit/TMUIComponents/TMUIModalPresentationViewController (= 1.1.13)
@@ -153,6 +154,10 @@ PODS:
     - TMUIKit/TMUICore
     - TMUIKit/TMUIExtensions
   - TMUIKit/TMUIComponents/TMUIExpandLabel (1.1.13):
+    - Masonry (~> 1.1.0)
+    - TMUIKit/TMUICore
+    - TMUIKit/TMUIExtensions
+  - TMUIKit/TMUIComponents/TMUIFilterView (1.1.13):
     - Masonry (~> 1.1.0)
     - TMUIKit/TMUICore
     - TMUIKit/TMUIExtensions
@@ -268,7 +273,7 @@ DEPENDENCIES:
   - ReactiveObjC
   - TMEmptyView
   - TMToast
-  - TMUIKit (from `~/Desktop/TMUIKit/TMUIKit_Debug.podspec`)
+  - TMUIKit (from `~/tmuikit/TMUIKit_Debug.podspec`)
   - YYKit
 
 SPEC REPOS:
@@ -287,7 +292,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   TMUIKit:
-    :path: "~/Desktop/TMUIKit/TMUIKit_Debug.podspec"
+    :path: "~/tmuikit/TMUIKit_Debug.podspec"
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -299,9 +304,9 @@ SPEC CHECKSUMS:
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   TMEmptyView: e3cd62eb43561dfece7636abd236b19aae85b21a
   TMToast: be53d37df3e272beb0c94217e36243fd99000671
-  TMUIKit: ebbc51cc789ea5191dd4fa5bb6fba850fb3a44cc
+  TMUIKit: 65cf6e5f0346030fa6890dfeaeb9028b533ea575
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 90b46d27729d3f25b65b2afb6fa11772007a73e8
+PODFILE CHECKSUM: 79f6593f1fdaf165c2b1797328116c53857f3c53
 
 COCOAPODS: 1.10.0

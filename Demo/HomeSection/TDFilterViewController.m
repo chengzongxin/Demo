@@ -67,7 +67,7 @@
     
     @weakify(self);
     @weakify(filterView);
-    filterView.selectBlock = ^(NSArray<NSIndexPath *> *indexPaths) {
+    filterView.selectBlock = ^(NSArray<NSIndexPath *> * _Nullable indexPaths, NSArray<TMUIFilterCell *> * _Nullable cells) {
         @strongify(self);
         @strongify(filterView);
         NSMutableString *str = [NSMutableString string];
@@ -102,7 +102,7 @@
     
     @weakify(self);
     @weakify(filterView);
-    filterView.selectBlock = ^(NSArray<NSIndexPath *> *indexPaths) {
+    filterView.selectBlock = ^(NSArray<NSIndexPath *> * _Nullable indexPaths, NSArray<TMUIFilterCell *> * _Nullable cells) {
         @strongify(self);
         @strongify(filterView);
         NSMutableString *str = [NSMutableString string];
