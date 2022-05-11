@@ -22,6 +22,8 @@
 
 @property (nonatomic, assign) UIStatusBarStyle preferredStatusBarStyle;
 
+@property (nonatomic, assign) BOOL hasApplyAppearence;
+
 @end
 
 
@@ -56,11 +58,16 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 
 + (void)setDefaultAppearance {
     THKNavigationBar *appearance = [THKNavigationBar appearance];
+    // 应用外观时会走到这里，然后调用applyStyle设置属性，注意需要所有成员不为nil，否则应用失效
     [appearance applyStyle:THKNavigationBarStyle_Light];
     
 }
 
 - (void)applyStyle:(THKNavigationBarStyle)style{
+    if (self.hasApplyAppearence) {
+        // init 应用后，在view渲染的时候就不重复应用，避免覆盖后面修改了配置
+        return;
+    }
     NSDictionary *aStyle = config[@(self.barStyle)];
     self.backBtn.tmui_image = aStyle[kBackIconKey];
     self.backgroundColor = aStyle[kBackgroundKey];
@@ -107,6 +114,9 @@ static NSString const *kRighticonKey = @"kRighticonKey";
             make.bottom.equalTo(self);
             make.height.equalTo(@44);
         }];
+        
+        [self tmui_applyAppearance];
+        self.hasApplyAppearence = YES;
     }
     return self;
 }

@@ -43,7 +43,7 @@
         [self pageWrapperScrollViewRealChanged:self.wrapperScrollView diff:0];
     }];
     
-    [[RACObserve(self.viewModel, headerContentViewHeight) delay:0] subscribeNext:^(id  _Nullable x) {
+    [RACObserve(self.viewModel, headerContentViewHeight) subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         if ( self.viewModel.layout == THKDynamicTabsLayoutType_Suspend && self.headerWrapperView.superview) {
             CGFloat headerH = self.viewModel.headerContentViewHeight;

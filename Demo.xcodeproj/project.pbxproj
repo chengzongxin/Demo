@@ -2025,8 +2025,6 @@
 			children = (
 				16976FC627795A5F00D477DA /* ComponentViewController.h */,
 				16976FC727795A5F00D477DA /* ComponentViewController.m */,
-				16EB2659281008C200C2627C /* TMUIFeedContentView */,
-				16EB2658281008C200C2627C /* TMUIFeedImagesView */,
 				8F6B0F6227E1DF01000B5F70 /* TMUIScrollSearchBar */,
 				16C10A6527D5937D001458BD /* TMUINavigationBar */,
 				8F6B0F6327E1E2E6000B5F70 /* TMUINavigationTitleView */,
@@ -2408,20 +2406,6 @@
 				16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */,
 			);
 			path = Third;
-			sourceTree = "<group>";
-		};
-		16EB2658281008C200C2627C /* TMUIFeedImagesView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TMUIFeedImagesView;
-			sourceTree = "<group>";
-		};
-		16EB2659281008C200C2627C /* TMUIFeedContentView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TMUIFeedContentView;
 			sourceTree = "<group>";
 		};
 		16F5168F26D4C11D002500F7 /* DiaryBook */ = {
