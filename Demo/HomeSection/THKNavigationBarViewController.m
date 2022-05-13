@@ -17,11 +17,13 @@ IMP imp = [self methodForSelector:selector]; \
 void (*func)(id, SEL) = (void *)imp; \
 func(self, selector);
 
-@interface THKNavigationBarViewController ()
+@interface THKNavigationBarViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) THKNavigationBar *navBar;
 
 @property (nonatomic, strong) THKDynamicTabsManager *manager;
+
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -125,6 +127,13 @@ func(self, selector);
     [self.navBar bindViewModel:searchVM];
 }
 
+- (void)customNavbar7{
+    [self.view addSubview:self.tableView];
+    
+    [self.view bringSubviewToFront:self.navBar];
+    self.navBar.title = @"标题😆";
+    self.navBar.isRightButtonHidden = NO;
+}
 
 
 /// Tab 组件
@@ -146,6 +155,68 @@ func(self, selector);
     manager.sliderBar.minItemWidth = (TMUI_SCREEN_WIDTH - 54 * 2)/2;
     _manager = manager;
     return manager.sliderBar;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    NSLog(@"%f",offsetY);
+    
+    float percent = offsetY / 200.0;
+    if (percent < 0) {
+        percent = 0;
+    }
+    if (percent > 1) {
+        percent = 1;
+    }
+    
+    [self.navBar setNavigationBarColor:UIColor.whiteColor originTintColor:UIColor.whiteColor toTintColor:UIColor.blackColor gradientPercent:percent];
+}
+
+#pragma mark UITableViewDelegate UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 50;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
+    cell.textLabel.text = @(indexPath.row).stringValue;
+    cell.backgroundColor = [UIColor.tmui_randomColor colorWithAlphaComponent:0.3];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+- (UITableView *)tableView {
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView.backgroundColor = UIColor.grayColor;
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.sectionHeaderHeight = 0.0;
+        _tableView.sectionFooterHeight = 0.0;
+        _tableView.estimatedRowHeight = 0;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
+        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+    }
+    return _tableView;
+}
+
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return self.navBar.preferredStatusBarStyle;
 }
 
 @end

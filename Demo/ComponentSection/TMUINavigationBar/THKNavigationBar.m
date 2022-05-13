@@ -113,7 +113,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         [self addSubview:contentView];
         [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_backBtn.mas_right);
-            make.right.equalTo(_rightBtn.mas_left).offset(-20);
+            make.right.equalTo(_rightBtn.mas_left).offset(-54);
             make.bottom.equalTo(self);
             make.height.equalTo(@44);
         }];

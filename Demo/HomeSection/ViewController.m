@@ -84,7 +84,16 @@
             [self.navigationController pushViewController:vc animated:YES];
         });
     
-    VerStack(b1,b2,b3,b4,b5,b6)
+    id b7 =
+        [self createBtn]
+        .str(@"自定义导航栏-导航栏渐变")
+        .onClick(^{
+            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
+            vc.type = 7;
+            [self.navigationController pushViewController:vc animated:YES];
+        });
+    
+    VerStack(b1,b2,b3,b4,b5,b6,b7)
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }
