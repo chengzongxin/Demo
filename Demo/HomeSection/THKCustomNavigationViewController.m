@@ -111,14 +111,15 @@
 }
 
 - (THKNavigationAvatarTitleView *)getAvatarTitleView{
-    THKNavigationAvatarTitleViewModel *titleVM = [[THKNavigationAvatarTitleViewModel alloc] init];
-    titleVM.avatarUrl = @"https://pic.to8to.com/user/45/headphoto_172172845.jpg!330.jpg?1646703299";
-    titleVM.nickname = @"43432";
-    titleVM.identificationType = 12;
-    titleVM.subCategory = 0;
-    titleVM.uid = 172172845;
-    THKNavigationAvatarTitleView *titleView = [[THKNavigationAvatarTitleView alloc] initWithViewModel:titleVM];
-    return titleView;
+//    THKNavigationAvatarViewModel *titleVM = [[THKNavigationAvatarViewModel alloc] init];
+//    titleVM.avatarUrl = @"https://pic.to8to.com/user/45/headphoto_172172845.jpg!330.jpg?1646703299";
+//    titleVM.nickname = @"43432";
+//    titleVM.identificationType = 12;
+//    titleVM.subCategory = 0;
+//    titleVM.uid = 172172845;
+//    THKNavigationAvatarTitleView *titleView = [[THKNavigationAvatarTitleView alloc] initWithViewModel:titleVM];
+//    return titleView;
+    return nil;
 }
 
 - (UIView *)tabsSliderBar{

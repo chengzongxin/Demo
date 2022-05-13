@@ -11,7 +11,7 @@
 
 @interface THKNavigationAvatarTitleView ()
 
-@property (nonatomic, strong) THKNavigationAvatarTitleViewModel *viewModel;
+@property (nonatomic, strong) THKNavigationBarAvatarViewModel *viewModel;
 
 @property (nonatomic, strong) THKAvatarView *avatarView;
 @property (nonatomic, strong) UILabel *nickNameLbl;

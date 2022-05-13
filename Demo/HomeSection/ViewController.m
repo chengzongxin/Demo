@@ -11,6 +11,7 @@
 #import "THKCustomNavigationViewController.h"
 #import "TDSearchViewController.h"
 #import "TDFilterViewController.h"
+#import "THKNavigationBarViewController.h"
 @interface ViewController ()
 
 @end
@@ -31,55 +32,55 @@
 - (void)homelist{
     id b1 =
         [self createBtn]
-        .str(@"系统导航栏")
+        .str(@"自定义导航栏-常规样式（白色）")
         .onClick(^{
-            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
             vc.type = 1;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
     id b2 =
         [self createBtn]
-        .str(@"自定义导航栏-常规样式（白色）")
+        .str(@"自定义导航栏-常规样式（黑色）")
         .onClick(^{
-            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
             vc.type = 2;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
     id b3 =
         [self createBtn]
-        .str(@"自定义导航栏-常规样式（黑色）")
+        .str(@"自定义导航栏-特殊样式（tab组件）")
         .onClick(^{
-            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
             vc.type = 3;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
     id b4 =
         [self createBtn]
-        .str(@"自定义导航栏-特殊样式（tab组件）")
+        .str(@"自定义导航栏-特殊样式（用户信息）")
         .onClick(^{
-            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
             vc.type = 4;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
     id b5 =
         [self createBtn]
-        .str(@"自定义导航栏-特殊样式（用户信息）")
+        .str(@"自定义导航栏-特殊样式（搜索）🔍")
         .onClick(^{
-            THKCustomNavigationViewController *vc = [THKCustomNavigationViewController new];
+            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
             vc.type = 5;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
     id b6 =
         [self createBtn]
-        .str(@"🔍 滚动搜索框")
+        .str(@"自定义导航栏-特殊样式（城市搜索）🔍")
         .onClick(^{
-            TDSearchViewController *vc = [TDSearchViewController new];
-            vc.style = 0;
+            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
+            vc.type = 6;
             [self.navigationController pushViewController:vc animated:YES];
         });
     
@@ -122,6 +123,102 @@
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 }
+
+//
+//- (void)homelist{
+//    id b1 =
+//        [self createBtn]
+//        .str(@"系统导航栏")
+//        .onClick(^{
+//            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
+//            vc.type = 1;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b2 =
+//        [self createBtn]
+//        .str(@"自定义导航栏-常规样式（白色）")
+//        .onClick(^{
+//            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
+//            vc.type = 2;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b3 =
+//        [self createBtn]
+//        .str(@"自定义导航栏-常规样式（黑色）")
+//        .onClick(^{
+//            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
+//            vc.type = 3;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b4 =
+//        [self createBtn]
+//        .str(@"自定义导航栏-特殊样式（tab组件）")
+//        .onClick(^{
+//            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
+//            vc.type = 4;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b5 =
+//        [self createBtn]
+//        .str(@"自定义导航栏-特殊样式（用户信息）")
+//        .onClick(^{
+//            THKNavigationBarViewController *vc = [THKNavigationBarViewController new];
+//            vc.type = 5;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b6 =
+//        [self createBtn]
+//        .str(@"🔍 滚动搜索框")
+//        .onClick(^{
+//            TDSearchViewController *vc = [TDSearchViewController new];
+//            vc.style = 0;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b7 =
+//        [self createBtn]
+//        .str(@"🔍 常规搜索框1")
+//        .onClick(^{
+//            TDSearchViewController *vc = [TDSearchViewController new];
+//            vc.style = 1;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b8 =
+//        [self createBtn]
+//        .str(@"🔍 城市搜索框2")
+//        .onClick(^{
+//            TDSearchViewController *vc = [TDSearchViewController new];
+//            vc.style = 2;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b9 =
+//        [self createBtn]
+//        .str(@"系统导航栏搜索框")
+//        .onClick(^{
+//            TDSearchViewController *vc = [TDSearchViewController new];
+//            vc.style = 3;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    id b10 =
+//        [self createBtn]
+//        .str(@"筛选菜单")
+//        .onClick(^{
+//            TDFilterViewController *vc = [TDFilterViewController new];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//
+//    VerStack(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10)
+//    .gap(10)
+//    .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
+//}
 
 
 

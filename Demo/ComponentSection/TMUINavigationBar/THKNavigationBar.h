@@ -6,7 +6,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "THKView.h"
+#import "THKNavigationBarViewModel.h"
+#import "THKNavigationAvatarTitleView.h"
 NS_ASSUME_NONNULL_BEGIN
 
 
@@ -34,7 +36,7 @@ typedef enum : NSUInteger {
  [self.view addSubview:navBar];
     ```
  */
-@interface THKNavigationBar : UIView
+@interface THKNavigationBar : THKView
 
 #pragma mark - Public Method ( Custom bar title & button item )
 // 简单设置标题

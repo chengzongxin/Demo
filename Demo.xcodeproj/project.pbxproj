@@ -18,6 +18,8 @@
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
 		160981D226D76ED800E1364F /* THKDiaryBookCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */; };
 		160981E126D7A16500E1364F /* THKDiaryCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981E026D7A16500E1364F /* THKDiaryCircleView.m */; };
+		16162AE5282DF0B20034B431 /* THKNavigationBarAvatarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16162AE4282DF0B20034B431 /* THKNavigationBarAvatarViewModel.m */; };
+		16162AE8282DF0D40034B431 /* THKNavigationBarSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16162AE7282DF0D40034B431 /* THKNavigationBarSearchViewModel.m */; };
 		16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */; };
 		16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AAD2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m */; };
 		16192AB62692DC4500967C73 /* QuickMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AB52692DC4500967C73 /* QuickMethod.m */; };
@@ -239,10 +241,11 @@
 		16B1F52A275E1B6D00FF18C4 /* THKNewcomerAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B1F529275E1B6D00FF18C4 /* THKNewcomerAnimation.m */; };
 		16C10A6C27D6F467001458BD /* THKNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */; };
 		16C10A6F27D6F49C001458BD /* THKNavigationAvatarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A6E27D6F49C001458BD /* THKNavigationAvatarTitleView.m */; };
-		16C10A7227D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */; };
 		16C10A7527D6FE07001458BD /* THKCustomNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */; };
 		16C10A7827D72965001458BD /* THKNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A7727D72965001458BD /* THKNavigationBar.m */; };
 		16C10A8227D83809001458BD /* TDSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C10A8127D83809001458BD /* TDSearchViewController.m */; };
+		16C956D4282D03A40004FAB8 /* THKNavigationBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C956D3282D03A40004FAB8 /* THKNavigationBarViewModel.m */; };
+		16C956DA282D1DE20004FAB8 /* THKNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C956D9282D1DE20004FAB8 /* THKNavigationBarViewController.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -360,6 +363,10 @@
 		160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCellHeaderView.m; sourceTree = "<group>"; };
 		160981DF26D7A16500E1364F /* THKDiaryCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryCircleView.h; sourceTree = "<group>"; };
 		160981E026D7A16500E1364F /* THKDiaryCircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryCircleView.m; sourceTree = "<group>"; };
+		16162AE3282DF0B20034B431 /* THKNavigationBarAvatarViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationBarAvatarViewModel.h; sourceTree = "<group>"; };
+		16162AE4282DF0B20034B431 /* THKNavigationBarAvatarViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationBarAvatarViewModel.m; sourceTree = "<group>"; };
+		16162AE6282DF0D40034B431 /* THKNavigationBarSearchViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationBarSearchViewModel.h; sourceTree = "<group>"; };
+		16162AE7282DF0D40034B431 /* THKNavigationBarSearchViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationBarSearchViewModel.m; sourceTree = "<group>"; };
 		16192AA22692DB6300967C73 /* TSearchContentHighlightKeyWordsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchContentHighlightKeyWordsDefine.h; sourceTree = "<group>"; };
 		16192AA72692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStylesCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStylesCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
@@ -821,14 +828,16 @@
 		16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationTitleView.m; sourceTree = "<group>"; };
 		16C10A6D27D6F49C001458BD /* THKNavigationAvatarTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationAvatarTitleView.h; sourceTree = "<group>"; };
 		16C10A6E27D6F49C001458BD /* THKNavigationAvatarTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationAvatarTitleView.m; sourceTree = "<group>"; };
-		16C10A7027D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationAvatarTitleViewModel.h; sourceTree = "<group>"; };
-		16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationAvatarTitleViewModel.m; sourceTree = "<group>"; };
 		16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCustomNavigationViewController.h; sourceTree = "<group>"; };
 		16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCustomNavigationViewController.m; sourceTree = "<group>"; };
 		16C10A7627D72965001458BD /* THKNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationBar.h; sourceTree = "<group>"; };
 		16C10A7727D72965001458BD /* THKNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationBar.m; sourceTree = "<group>"; };
 		16C10A8027D83809001458BD /* TDSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDSearchViewController.h; sourceTree = "<group>"; };
 		16C10A8127D83809001458BD /* TDSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDSearchViewController.m; sourceTree = "<group>"; };
+		16C956D2282D03A40004FAB8 /* THKNavigationBarViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationBarViewModel.h; sourceTree = "<group>"; };
+		16C956D3282D03A40004FAB8 /* THKNavigationBarViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationBarViewModel.m; sourceTree = "<group>"; };
+		16C956D8282D1DE20004FAB8 /* THKNavigationBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNavigationBarViewController.h; sourceTree = "<group>"; };
+		16C956D9282D1DE20004FAB8 /* THKNavigationBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNavigationBarViewController.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2099,6 +2108,12 @@
 			children = (
 				16C10A7627D72965001458BD /* THKNavigationBar.h */,
 				16C10A7727D72965001458BD /* THKNavigationBar.m */,
+				16C956D2282D03A40004FAB8 /* THKNavigationBarViewModel.h */,
+				16C956D3282D03A40004FAB8 /* THKNavigationBarViewModel.m */,
+				16162AE3282DF0B20034B431 /* THKNavigationBarAvatarViewModel.h */,
+				16162AE4282DF0B20034B431 /* THKNavigationBarAvatarViewModel.m */,
+				16162AE6282DF0D40034B431 /* THKNavigationBarSearchViewModel.h */,
+				16162AE7282DF0D40034B431 /* THKNavigationBarSearchViewModel.m */,
 				16A0E64527FF26E300D655DA /* TMUINavigationBar.h */,
 				16A0E64627FF26E300D655DA /* TMUINavigationBar.m */,
 			);
@@ -2185,6 +2200,8 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				16C956D8282D1DE20004FAB8 /* THKNavigationBarViewController.h */,
+				16C956D9282D1DE20004FAB8 /* THKNavigationBarViewController.m */,
 				16648FA327CC5CCB00D5291B /* TMUIFilterMenu.h */,
 				16648FA427CC5CCB00D5291B /* TMUIFilterMenu.m */,
 				16937D0E27F3ED3E00212BF2 /* TMUIFilterViewModel.h */,
@@ -2549,8 +2566,6 @@
 				16C10A6B27D6F467001458BD /* THKNavigationTitleView.m */,
 				16C10A6D27D6F49C001458BD /* THKNavigationAvatarTitleView.h */,
 				16C10A6E27D6F49C001458BD /* THKNavigationAvatarTitleView.m */,
-				16C10A7027D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.h */,
-				16C10A7127D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m */,
 			);
 			path = TMUINavigationTitleView;
 			sourceTree = "<group>";
@@ -2853,6 +2868,7 @@
 				16192B2C2692E13E00967C73 /* THKViewController+THKLoadingAnimationView.m in Sources */,
 				16867A082692D76C00650023 /* TMCardComponentRecommendTagsCell.m in Sources */,
 				16A961FA274F5862002B6C89 /* THKMaterialV3CommunicateLabelRequest.m in Sources */,
+				16162AE8282DF0D40034B431 /* THKNavigationBarSearchViewModel.m in Sources */,
 				16192B4E2692E1B100967C73 /* THKRouterPathDefine.m in Sources */,
 				16611B73269692D20089E41B /* THKMaterialHotRankHeader.m in Sources */,
 				161E58B527C90C03004742AC /* TMUIFilterViewLayout.m in Sources */,
@@ -2868,7 +2884,6 @@
 				16611AC42696870F0089E41B /* GECollectionView.m in Sources */,
 				16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */,
 				16192B272692E13E00967C73 /* THKTextComponentView.m in Sources */,
-				16C10A7227D6F8A8001458BD /* THKNavigationAvatarTitleViewModel.m in Sources */,
 				16611ABC2696870F0089E41B /* GEStorage.m in Sources */,
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
 				1656463D279E8B1A005845BF /* Tab2ViewController.m in Sources */,
@@ -2991,9 +3006,11 @@
 				16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */,
 				16E5C51E26830DCB0024BA20 /* THKIdentityView.m in Sources */,
 				16DDC0A2274CEFFE000DAA29 /* THKEntranceViewModel.m in Sources */,
+				16C956DA282D1DE20004FAB8 /* THKNavigationBarViewController.m in Sources */,
 				16DDC09F274CEFF2000DAA29 /* THKEntranceView.m in Sources */,
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,
 				16867A012692D76C00650023 /* TMCardComponentVideoSetsCell.m in Sources */,
+				16C956D4282D03A40004FAB8 /* THKNavigationBarViewModel.m in Sources */,
 				16648FA527CC5CCB00D5291B /* TMUIFilterMenu.m in Sources */,
 				16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */,
 				16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */,
@@ -3095,6 +3112,7 @@
 				165CCBD2278E66DA00141EC0 /* THKDynamicTabsViewModel.m in Sources */,
 				16B1F527275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m in Sources */,
 				16867A342692D9B200650023 /* TRuntimeHelper.m in Sources */,
+				16162AE5282DF0B20034B431 /* THKNavigationBarAvatarViewModel.m in Sources */,
 				16F516C326D4F964002500F7 /* THKDiaryBookCell.m in Sources */,
 				16C10A7527D6FE07001458BD /* THKCustomNavigationViewController.m in Sources */,
 				16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */,

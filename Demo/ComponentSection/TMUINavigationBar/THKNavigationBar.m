@@ -6,9 +6,12 @@
 //
 
 #import "THKNavigationBar.h"
-
+#import "THKNavigationAvatarTitleView.h"
+#import "THKNavigationBarSearchViewModel.h"
 
 @interface THKNavigationBar ()
+
+@property (nonatomic, strong) THKNavigationBarViewModel *viewModel;
 
 @property (nonatomic, strong) UIButton *backBtn;
 
@@ -28,6 +31,7 @@
 
 
 @implementation THKNavigationBar
+@dynamic viewModel;
 
 static NSDictionary *config = nil;
 static NSString const *kBackIconKey = @"kBackIconKey";
@@ -68,18 +72,12 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         // init 应用后，在view渲染的时候就不重复应用，避免覆盖后面修改了配置
         return;
     }
-    NSDictionary *aStyle = config[@(self.barStyle)];
-    self.backBtn.tmui_image = aStyle[kBackIconKey];
-    self.backgroundColor = aStyle[kBackgroundKey];
-    self.rightBtn.tmui_image = aStyle[kRighticonKey];
-    if (self.title) {
-        self.titleLbl.textColor = aStyle[kTintColorKey];
-    }
+    [self setBarStyle:style];
 }
 
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, kTNavigationBarHeight())]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, tmui_navigationBarHeight())]) {
         _isBackButtonHidden = NO;
         _isRightButtonHidden = YES;
         // 左
@@ -152,6 +150,29 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 
 #pragma mark - Public
 
+- (void)bindViewModel{
+    [super bindViewModel];
+    
+    if (self.viewModel.contentType == THKNavigationBarContentType_Normal) {
+        // 常规导航栏
+        if (self.viewModel.attrTitle) {
+            [self setAttrTitle:self.viewModel.attrTitle];
+        } else if (self.viewModel.title) {
+            [self setTitle:self.viewModel.title];
+        }
+    }else if (self.viewModel.contentType == THKNavigationBarContentType_Avatar) {
+        // 用户信息
+        THKNavigationAvatarTitleView *avatar = [[THKNavigationAvatarTitleView alloc] initWithViewModel:self.viewModel];
+        self.titleView = avatar;
+    }else if (self.viewModel.contentType == THKNavigationBarContentType_Search) {
+        // 搜索
+        THKNavigationBarSearchViewModel *vm = (THKNavigationBarSearchViewModel *)self.viewModel;
+        TMUISearchBar *search = [[TMUISearchBar alloc] initWithStyle:vm.barStyle];
+        self.titleView = search;
+    }
+    
+}
+
 - (void)setTitle:(NSString *)title{
     _title = title;
     
@@ -188,20 +209,13 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 
 - (void)setBarStyle:(THKNavigationBarStyle)barStyle{
     _barStyle = barStyle;
-    switch (barStyle) {
-        case THKNavigationBarStyle_Light:
-        {
-            
-        }
-            break;
-        case THKNavigationBarStyle_Dark:
-        {
-            
-        }
-            break;
-            
-        default:
-            break;
+    
+    NSDictionary *aStyle = config[@(self.barStyle)];
+    self.backBtn.tmui_image = aStyle[kBackIconKey];
+    self.backgroundColor = aStyle[kBackgroundKey];
+    self.rightBtn.tmui_image = aStyle[kRighticonKey];
+    if (self.title) {
+        self.titleLbl.textColor = aStyle[kTintColorKey];
     }
 }
 
