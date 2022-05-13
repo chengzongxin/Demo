@@ -84,6 +84,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
     if (self = [super initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, tmui_navigationBarHeight())]) {
         _isBackButtonHidden = NO;
         _isRightButtonHidden = YES;
+        _titleViewEdgeInsetWhenHiddenEdgeButton = UIEdgeInsetsMake(0, 20, 0, 20);
         // 左
         UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _backBtn = backBtn;
@@ -172,6 +173,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         // 搜索
         THKNavigationBarSearchViewModel *vm = (THKNavigationBarSearchViewModel *)self.viewModel;
         self.searchBar = [[TMUISearchBar alloc] initWithStyle:vm.barStyle];
+        self.searchBar.showsCancelButton = vm.showsCancelButton;
         self.titleView = self.searchBar;
     }
     
@@ -207,7 +209,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
     _contentSubView = titleView;
     [_contentView addSubview:titleView];
     [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(_contentView);
+        make.edges.equalTo(_contentView).insets(self.titleViewInset);
     }];
 }
 
@@ -238,7 +240,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
             }];
             
             [_contentView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(_backBtn.mas_right).offset(20);
+                make.left.equalTo(_backBtn.mas_right).offset(_titleViewEdgeInsetWhenHiddenEdgeButton.left);
             }];
             
         }else{
@@ -275,7 +277,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
             }];
             
             [_contentView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(_rightBtn.mas_left).offset(-20);
+                make.right.equalTo(_rightBtn.mas_left).offset(-_titleViewEdgeInsetWhenHiddenEdgeButton.right);
             }];
         }else{
             [_rightBtn mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -293,6 +295,22 @@ static NSString const *kRighticonKey = @"kRighticonKey";
                 [self layoutIfNeeded];
             }];
         }
+    }
+}
+
+- (void)setTitleViewEdgeInsetWhenHiddenEdgeButton:(UIEdgeInsets)titleViewEdgeInsetWhenHiddenEdgeButton{
+    _titleViewEdgeInsetWhenHiddenEdgeButton = titleViewEdgeInsetWhenHiddenEdgeButton;
+    
+    if (_isBackButtonHidden) {
+        [_contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_backBtn.mas_right).offset(_titleViewEdgeInsetWhenHiddenEdgeButton.left);
+        }];
+    }
+    
+    if (_isRightButtonHidden) {
+        [_contentView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_rightBtn.mas_left).offset(-_titleViewEdgeInsetWhenHiddenEdgeButton.right);
+        }];
     }
 }
 

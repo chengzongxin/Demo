@@ -13,6 +13,7 @@
     [super initialize];
     
     self.contentType = THKNavigationBarContentType_Search;
+    self.showsCancelButton = YES;
 }
 
 @end

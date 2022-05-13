@@ -33,7 +33,7 @@ func(self, selector);
     TMUIFloatLayoutView *layoutView = [[TMUIFloatLayoutView alloc] tmui_initWithSize:TMUIFloatLayoutViewAutomaticalMaximumItemSize];
     layoutView.itemMargins = UIEdgeInsetsMake(0, 0, 8, 8);
     
-    NSArray *btns = @[@"显示/隐藏左边",@"显示/隐藏右边"];
+    NSArray *btns = @[@"显示/隐藏 返回按钮",@"显示/隐藏 分享按钮"];
     
     [btns enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         TMUIButton *btn = [TMUIButton tmui_button];
@@ -112,12 +112,16 @@ func(self, selector);
 
 - (void)customNavbar5{
     THKNavigationBarSearchViewModel *searchVM = [[THKNavigationBarSearchViewModel alloc] init];
+    self.navBar.titleViewEdgeInsetWhenHiddenEdgeButton = UIEdgeInsetsMake(0, 20, 0, 0);
+    self.navBar.titleViewInset = UIEdgeInsetsMake(4, 0, 4, 0);
     [self.navBar bindViewModel:searchVM];
 }
 
 - (void)customNavbar6{
     THKNavigationBarSearchViewModel *searchVM = [[THKNavigationBarSearchViewModel alloc] init];
     searchVM.barStyle = TMUISearchBarStyle_City;
+    self.navBar.titleViewEdgeInsetWhenHiddenEdgeButton = UIEdgeInsetsMake(0, 20, 0, 0);
+    self.navBar.titleViewInset = UIEdgeInsetsMake(4, 0, 4, 0);
     [self.navBar bindViewModel:searchVM];
 }
 

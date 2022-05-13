@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface THKNavigationBarSearchViewModel : THKNavigationBarViewModel
 
 @property (nonatomic, assign) TMUISearchBarStyle barStyle;
+/// 是否显示取消按钮，默认NO
+@property (nonatomic, assign) BOOL                              showsCancelButton;
 
 @end
 

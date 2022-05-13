@@ -90,8 +90,10 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong, readonly) UIButton *rightBtn;
 // navigation bar style, defalt Normal is Light  white background, black content
 @property (nonatomic, assign) THKNavigationBarStyle barStyle;
-// navigation bar layout syle
-@property (nonatomic, assign) THKNavigationBarLayout barLayout;
+/// titleView 内容缩进
+@property (nonatomic, assign) UIEdgeInsets titleViewInset;
+// navigation bar titleView Inset, defalut {0,20,0,20},titleView距离父视图左右边距
+@property (nonatomic, assign) UIEdgeInsets titleViewEdgeInsetWhenHiddenEdgeButton;
 // hidden back button
 - (void)setIsBackButtonHidden:(BOOL)isBackButtonHidden animate:(BOOL)animate;
 @property (nonatomic, assign) BOOL isBackButtonHidden;
