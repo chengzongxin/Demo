@@ -84,6 +84,10 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSAttributedString *attrTitle;
 // titleView
 @property (nonatomic, strong) UIView *titleView;
+// titleView
+@property (nonatomic, strong) UIImage *backgroundImage;
+// back button
+@property (nonatomic, strong, readonly) UIImageView *backgroundImageView;
 // back button
 @property (nonatomic, strong, readonly) UIButton *backBtn UI_APPEARANCE_SELECTOR;
 // right button

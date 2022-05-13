@@ -109,6 +109,8 @@ func(self, selector);
     avatarVM.identificationType = 12;
     avatarVM.subCategory = 0;
     avatarVM.uid = 172172845;
+    self.navBar.backgroundImage = UIImageMake(@"diary_nav_back");
+    self.navBar.backgroundImageView.contentMode = UIViewContentModeScaleToFill;
     [self.navBar bindViewModel:avatarVM];
 }
 

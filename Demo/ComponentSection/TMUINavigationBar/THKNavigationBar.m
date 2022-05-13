@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) THKNavigationBarViewModel *viewModel;
 
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+
 @property (nonatomic, strong) UIButton *backBtn;
 
 @property (nonatomic, strong) UILabel *titleLbl;
@@ -85,33 +87,32 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         _isBackButtonHidden = NO;
         _isRightButtonHidden = YES;
         _titleViewEdgeInsetWhenHiddenEdgeButton = UIEdgeInsetsMake(0, 20, 0, 20);
+        
+        // 背景
+        [self addSubview:self.backgroundImageView];
+        [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self);
+        }];
+        
         // 左
-        UIButton * backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _backBtn = backBtn;
-        [backBtn addTarget:self action:@selector(navBackAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:backBtn];
-        [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self addSubview:self.backBtn];
+        [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.leading.bottom.equalTo(self);
             make.width.equalTo(@54);
             make.height.equalTo(@44);
         }];
         
         // 右
-        UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _rightBtn = rightBtn;
-        [rightBtn addTarget:self action:@selector(navRightAction:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:rightBtn];
-        [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self addSubview:self.rightBtn];
+        [self.rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.trailing.bottom.equalTo(self);
             make.height.equalTo(@44);
             make.width.equalTo(@0);
         }];
         
         // 中
-        UIView * contentView = [[UIView alloc] init];
-        _contentView = contentView;
-        [self addSubview:contentView];
-        [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self addSubview:self.contentView];
+        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(_backBtn.mas_right);
             make.right.equalTo(_rightBtn.mas_left).offset(-54);
             make.bottom.equalTo(self);
@@ -314,6 +315,14 @@ static NSString const *kRighticonKey = @"kRighticonKey";
     }
 }
 
+- (void)setBackgroundImage:(UIImage *)backgroundImage{
+    self.backgroundImageView.image = backgroundImage;
+}
+
+- (UIImage *)backgroundImage{
+    return self.backgroundImageView.image;
+}
+
 - (void)configContent:(__kindof UIView * (^)(UIView * contentView))blk;
 {
     if (blk) {
@@ -479,6 +488,39 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 
 
 #pragma mark - lazy getter
+
+- (UIImageView *)backgroundImageView{
+    if (!_backgroundImageView) {
+        _backgroundImageView = [[UIImageView alloc] init];
+        _backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    }
+    return _backgroundImageView;
+}
+
+- (UIButton *)backBtn{
+    if (!_backBtn) {
+        _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_backBtn addTarget:self action:@selector(navBackAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _backBtn;
+}
+
+- (UIButton *)rightBtn{
+    if (!_rightBtn) {
+        _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_rightBtn addTarget:self action:@selector(navRightAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rightBtn;
+}
+
+- (UIView *)contentView{
+    if (!_contentView) {
+        _contentView = [[UIView alloc] init];
+    }
+    return _contentView;
+}
+
+
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
