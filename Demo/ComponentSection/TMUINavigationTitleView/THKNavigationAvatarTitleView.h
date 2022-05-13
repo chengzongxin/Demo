@@ -7,11 +7,20 @@
 
 #import "THKNavigationTitleView.h"
 #import "THKNavigationBarAvatarViewModel.h"
+#import "THKFocusButtonView.h"
+#import "THKAvatarView.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKNavigationAvatarTitleView : THKNavigationTitleView
 
 @property (nonatomic, strong, readonly) THKNavigationBarAvatarViewModel *viewModel;
+
+@property (nonatomic, strong, readonly) THKAvatarView *avatarView;
+
+@property (nonatomic, strong, readonly) UILabel *nickNameLbl;
+
+@property (nonatomic, strong, readonly) THKFocusButtonView *focusBtn;
 
 @end
 

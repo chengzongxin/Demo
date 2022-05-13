@@ -6,8 +6,6 @@
 //
 
 #import "THKNavigationAvatarTitleView.h"
-#import "THKFocusButtonView.h"
-#import "THKAvatarView.h"
 
 @interface THKNavigationAvatarTitleView ()
 
