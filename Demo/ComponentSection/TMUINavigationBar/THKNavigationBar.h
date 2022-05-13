@@ -24,6 +24,17 @@ typedef enum : NSUInteger {
     THKNavigationBarLayout_CenterRight,
 } THKNavigationBarLayout;
 
+
+/// 内容视图
+@protocol THKNavigationBarContentViewProtocol <NSObject>
+
+/// 只有设置对应的用户信息ViewModel才有值
+@property (nonatomic, strong, readonly) THKNavigationAvatarTitleView *avatarTitleView;
+/// 只有设置对应的搜索ViewModel才有值
+@property (nonatomic, strong, readonly) TMUISearchBar *searchBar;
+
+@end
+
 /**
  顶部导航条整体视图，内部的实际展示内容可操作下面的navigationBar对象
  @note 外部不要用InitXxx方法初始化，直接用提供的便捷方法初始化即可，内部会根据设备型号生成合适高度的对象
@@ -64,7 +75,7 @@ typedef enum : NSUInteger {
  
     ```
  */
-@interface THKNavigationBar : THKView
+@interface THKNavigationBar : THKView <THKNavigationBarContentViewProtocol>
 
 #pragma mark - Public Method ( Custom bar title & button item )
 // 简单设置标题
@@ -81,9 +92,11 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) THKNavigationBarStyle barStyle;
 // navigation bar layout syle
 @property (nonatomic, assign) THKNavigationBarLayout barLayout;
-
+// hidden back button
+- (void)setIsBackButtonHidden:(BOOL)isBackButtonHidden animate:(BOOL)animate;
 @property (nonatomic, assign) BOOL isBackButtonHidden;
-
+// hidden right button
+- (void)setIsRightButtonHidden:(BOOL)isRightButtonHidden animate:(BOOL)animate;
 @property (nonatomic, assign) BOOL isRightButtonHidden;
 #pragma mark - public method by block
 // 自定义titleView

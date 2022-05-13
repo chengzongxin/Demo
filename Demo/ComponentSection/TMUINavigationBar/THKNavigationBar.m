@@ -27,6 +27,10 @@
 
 @property (nonatomic, assign) BOOL hasApplyAppearence;
 
+@property (nonatomic, strong, readwrite) THKNavigationAvatarTitleView *avatarTitleView;
+
+@property (nonatomic, strong, readwrite) TMUISearchBar *searchBar;
+
 @end
 
 
@@ -94,7 +98,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         // 右
         UIButton * rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _rightBtn = rightBtn;
-        [rightBtn addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
+        [rightBtn addTarget:self action:@selector(navRightAction:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:rightBtn];
         [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.trailing.bottom.equalTo(self);
@@ -133,11 +137,11 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 #endif
 }
 
-- (void)shareAction
+- (void)navRightAction:(UIButton *)btn
 {
     UIViewController * nexResponder = self.viewController;
-    if ([nexResponder respondsToSelector:@selector(shareAction)]) {
-        [(id)nexResponder shareAction];
+    if ([nexResponder respondsToSelector:@selector(navRightAction:)]) {
+        [(id)nexResponder navRightAction:btn];
     }
 #if DEBUG
     else {
@@ -162,13 +166,13 @@ static NSString const *kRighticonKey = @"kRighticonKey";
         }
     }else if (self.viewModel.contentType == THKNavigationBarContentType_Avatar) {
         // 用户信息
-        THKNavigationAvatarTitleView *avatar = [[THKNavigationAvatarTitleView alloc] initWithViewModel:self.viewModel];
-        self.titleView = avatar;
+        self.avatarTitleView = [[THKNavigationAvatarTitleView alloc] initWithViewModel:self.viewModel];
+        self.titleView = self.avatarTitleView;
     }else if (self.viewModel.contentType == THKNavigationBarContentType_Search) {
         // 搜索
         THKNavigationBarSearchViewModel *vm = (THKNavigationBarSearchViewModel *)self.viewModel;
-        TMUISearchBar *search = [[TMUISearchBar alloc] initWithStyle:vm.barStyle];
-        self.titleView = search;
+        self.searchBar = [[TMUISearchBar alloc] initWithStyle:vm.barStyle];
+        self.titleView = self.searchBar;
     }
     
 }
@@ -220,6 +224,10 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 }
 
 - (void)setIsBackButtonHidden:(BOOL)isBackButtonHidden{
+    [self setIsBackButtonHidden:isBackButtonHidden animate:NO];
+}
+
+- (void)setIsBackButtonHidden:(BOOL)isBackButtonHidden animate:(BOOL)animate{
     if (_isBackButtonHidden != isBackButtonHidden) {
         _isBackButtonHidden = isBackButtonHidden;
         
@@ -244,13 +252,19 @@ static NSString const *kRighticonKey = @"kRighticonKey";
             }];
         }
         
-        [UIView animateWithDuration:0.2 animations:^{
-            [self layoutIfNeeded];
-        }];
+        if (animate) {
+            [UIView animateWithDuration:0.2 animations:^{
+                [self layoutIfNeeded];
+            }];
+        }
     }
 }
 
 - (void)setIsRightButtonHidden:(BOOL)isRightButtonHidden{
+    [self setIsRightButtonHidden:isRightButtonHidden animate:NO];
+}
+
+- (void)setIsRightButtonHidden:(BOOL)isRightButtonHidden animate:(BOOL)animate{
     if (_isRightButtonHidden != isRightButtonHidden) {
         _isRightButtonHidden = isRightButtonHidden;
         
@@ -274,9 +288,11 @@ static NSString const *kRighticonKey = @"kRighticonKey";
             }];
         }
         
-        [UIView animateWithDuration:0.2 animations:^{
-            [self layoutIfNeeded];
-        }];
+        if (animate) {
+            [UIView animateWithDuration:0.2 animations:^{
+                [self layoutIfNeeded];
+            }];
+        }
     }
 }
 
@@ -455,5 +471,9 @@ static NSString const *kRighticonKey = @"kRighticonKey";
     return _titleLbl;
 }
 
+
+@synthesize avatarTitleView;
+
+@synthesize searchBar;
 
 @end

@@ -11,6 +11,12 @@
 #import "THKNavigationBarAvatarViewModel.h"
 #import "THKNavigationBarSearchViewModel.h"
 
+#define invoke(method) \
+SEL selector = NSSelectorFromString(method); \
+IMP imp = [self methodForSelector:selector]; \
+void (*func)(id, SEL) = (void *)imp; \
+func(self, selector);
+
 @interface THKNavigationBarViewController ()
 
 @property (nonatomic, strong) THKNavigationBar *navBar;
@@ -21,10 +27,45 @@
 
 @implementation THKNavigationBarViewController
 
+- (void)demoaction{
+    UIEdgeInsets paddings = UIEdgeInsetsMake(24 + NavigationContentTop, 24 + self.view.tmui_safeAreaInsets.left, 24 +  self.view.tmui_safeAreaInsets.bottom, 24 + self.view.tmui_safeAreaInsets.right);
+    
+    TMUIFloatLayoutView *layoutView = [[TMUIFloatLayoutView alloc] tmui_initWithSize:TMUIFloatLayoutViewAutomaticalMaximumItemSize];
+    layoutView.itemMargins = UIEdgeInsetsMake(0, 0, 8, 8);
+    
+    NSArray *btns = @[@"显示/隐藏左边",@"显示/隐藏右边"];
+    
+    [btns enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        TMUIButton *btn = [TMUIButton tmui_button];
+        btn.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        btn.cornerRadius = 8;
+        btn.tmui_text = obj;
+        btn.tmui_titleColor = UIColorWhite;
+        btn.backgroundColor = UIColor.tmui_randomColor;
+        btn.tag = idx;
+        [btn tmui_addTarget:self action:@selector(btnClick:)];
+        [layoutView addSubview:btn];
+    }];
+    
+    layoutView.frame = CGRectMake(paddings.left, paddings.top, CGRectGetWidth(self.view.bounds) - UIEdgeInsetsGetHorizontalValue(paddings), TMUIViewSelfSizingHeight);
+    
+    [self.view addSubview:layoutView];
+}
+
+- (void)btnClick:(UIButton *)btn{
+    if (btn.tag == 0) {
+//        _navBar.isBackButtonHidden = !_navBar.isBackButtonHidden;
+        [_navBar setIsBackButtonHidden:!_navBar.isBackButtonHidden animate:YES];
+    }else if (btn.tag == 1) {
+//        _navBar.isRightButtonHidden = !_navBar.isRightButtonHidden;
+        [_navBar setIsRightButtonHidden:!_navBar.isRightButtonHidden animate:YES];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self demoaction];
     self.view.backgroundColor = UIColor.whiteColor;
     
     self.navBarHidden = YES;
@@ -34,47 +75,17 @@
 //        make.top.left.right.mas_equalTo(0);
 //        make.height.mas_equalTo(88);
 //    }];
-    
-    switch (self.type) {
-        case 1:
-        {
-            [self customNavbar1];
-        }
-            break;
-        case 2:
-        {
-            [self customNavbar2];
-        }
-            break;
-        case 3:
-        {
-            [self customNavbar3];
-        }
-            break;
-        case 4:
-        {
-            [self customNavbar4];
-        }
-            break;
-        case 5:
-        {
-            [self customNavbar5];
-        }
-            break;
-        case 6:
-        {
-            [self customNavbar6];
-        }
-            break;
-        default:
-            break;
-    }
+    NSString *method = [NSString stringWithFormat:@"customNavbar%zd",_type];
+    invoke(method)
     
     
     UILabel *lbl = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 200, 20)];
     [self.view addSubview:lbl];
     
+    NSLog(@"avatarTitleView = %@",self.navBar.avatarTitleView);
+    NSLog(@"searchBar = %@",self.navBar.searchBar);
 }
+
 
 - (void)customNavbar1{
     self.navBar.title = @"标题😆";
