@@ -77,7 +77,7 @@ static NSString const *kRighticonKey = @"kRighticonKey";
 
 
 - (instancetype)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, tmui_navigationBarHeight())]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, tmui_navigationBarHeight())]) {
         _isBackButtonHidden = NO;
         _isRightButtonHidden = YES;
         // 左

@@ -30,6 +30,10 @@
     self.navBarHidden = YES;
     self.navBar = [[THKNavigationBar alloc] init];
     [self.view addSubview:self.navBar];
+//    [self.navBar mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.right.mas_equalTo(0);
+//        make.height.mas_equalTo(88);
+//    }];
     
     switch (self.type) {
         case 1:

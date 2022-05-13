@@ -28,12 +28,40 @@ typedef enum : NSUInteger {
  顶部导航条整体视图，内部的实际展示内容可操作下面的navigationBar对象
  @note 外部不要用InitXxx方法初始化，直接用提供的便捷方法初始化即可，内部会根据设备型号生成合适高度的对象
  
-  Usage:
     ```
- // viewDidLoad 下添加下面3行代码：
+ Usage 0 :
+  --  < 显示导航栏只需要在 viewDidLoad 下添加下面3行代码：>
  self.navBarHidden = YES;
  THKNavigationBar *navBar = [[THKNavigationBar alloc] init];
  [self.view addSubview:navBar];
+ 
+ Usage 1:
+ --  < 常规显示标题：>
+ self.navBar.title = @"标题😆";
+ self.navBar.barStyle = THKNavigationBarStyle_Dark;
+  
+ Usage 2:
+ --  < 显示tab组件在导航栏上：>
+ self.navBar.titleView = [self tabsSliderBar];
+ 
+ Usage 3:
+ @note 必须使用 `THKNavigationBarAvatarViewModel`
+ --  < 显示用户信息包含头像、认证标识、名字、关注按钮、内部集成跳转、关注相关逻辑：>
+ THKNavigationBarAvatarViewModel *avatarVM = [[THKNavigationBarAvatarViewModel alloc] init];
+ avatarVM.avatarUrl = @"https://pic.to8to.com/user/45/headphoto_172172845.jpg!330.jpg?1646703299";
+ avatarVM.nickname = @"43432";
+ avatarVM.identificationType = 12;
+ avatarVM.subCategory = 0;
+ avatarVM.uid = 172172845;
+ [self.navBar bindViewModel:avatarVM];
+ 
+ Usage 4:
+ @note 必须使用 `THKNavigationBarSearchViewModel`
+ --  < 显示搜索框，包含常规搜索、城市搜索：>
+ THKNavigationBarSearchViewModel *searchVM = [[THKNavigationBarSearchViewModel alloc] init];
+ searchVM.barStyle = TMUISearchBarStyle_City;
+ [self.navBar bindViewModel:searchVM];
+ 
     ```
  */
 @interface THKNavigationBar : THKView
