@@ -60,20 +60,20 @@
     }
     
     self.navBarHidden = YES;
-    self.navigationView = [[TMUINavigationBar alloc] init];
-    // 设置标题
-    self.navigationView.title = @"标题";
-    [self.view addSubview:self.navigationView];
-
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    UIButton *rightButton1 = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-    UIButton *rightButton2 = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    UIButton *rightButton3 = [UIButton buttonWithType:UIButtonTypeInfoLight];
-
-    // 添加右边按钮
-    [self.navigationView addRightViews:@[rightButton, rightButton1, rightButton2, rightButton3]];
-    // 添加左边按钮
-    [self.navigationView addLeftViews:@[rightButton]];
+//    self.navigationView = [[TMUINavigationBar alloc] init];
+//    // 设置标题
+//    self.navigationView.title = @"标题";
+//    [self.view addSubview:self.navigationView];
+//
+//    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+//    UIButton *rightButton1 = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+//    UIButton *rightButton2 = [UIButton buttonWithType:UIButtonTypeInfoDark];
+//    UIButton *rightButton3 = [UIButton buttonWithType:UIButtonTypeInfoLight];
+//
+//    // 添加右边按钮
+//    [self.navigationView addRightViews:@[rightButton, rightButton1, rightButton2, rightButton3]];
+//    // 添加左边按钮
+//    [self.navigationView addLeftViews:@[rightButton]];
     
 }
 
