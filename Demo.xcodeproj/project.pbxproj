@@ -165,6 +165,7 @@
 		16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F1026DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m */; };
 		16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */; };
 		1683628F2831E3910034B822 /* TMUINavigationBar+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1683628E2831E3910034B822 /* TMUINavigationBar+Tool.m */; };
+		168362922831E72F0034B822 /* TMUINavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362912831E72F0034B822 /* TMUINavigationBarViewController.m */; };
 		168679922692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */; };
 		168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686798A2692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m */; };
 		168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686798D2692B8AC00650023 /* THKMaterialRecommendRankRequest.m */; };
@@ -666,6 +667,8 @@
 		16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = THKDiaryDirectoryServiceCell.xib; sourceTree = "<group>"; };
 		1683628D2831E3910034B822 /* TMUINavigationBar+Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMUINavigationBar+Tool.h"; sourceTree = "<group>"; };
 		1683628E2831E3910034B822 /* TMUINavigationBar+Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TMUINavigationBar+Tool.m"; sourceTree = "<group>"; };
+		168362902831E72F0034B822 /* TMUINavigationBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUINavigationBarViewController.h; sourceTree = "<group>"; };
+		168362912831E72F0034B822 /* TMUINavigationBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUINavigationBarViewController.m; sourceTree = "<group>"; };
 		168679862692B8AC00650023 /* THKMaterialRecommendKnowledgeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendKnowledgeRequest.h; sourceTree = "<group>"; };
 		168679872692B8AC00650023 /* THKMaterialRecommendRankRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankRequest.h; sourceTree = "<group>"; };
 		168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendGoodsGrassResponse.m; sourceTree = "<group>"; };
@@ -2207,6 +2210,8 @@
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
 				16C956D8282D1DE20004FAB8 /* THKNavigationBarViewController.h */,
 				16C956D9282D1DE20004FAB8 /* THKNavigationBarViewController.m */,
+				168362902831E72F0034B822 /* TMUINavigationBarViewController.h */,
+				168362912831E72F0034B822 /* TMUINavigationBarViewController.m */,
 				16648FA327CC5CCB00D5291B /* TMUIFilterMenu.h */,
 				16648FA427CC5CCB00D5291B /* TMUIFilterMenu.m */,
 				16937D0E27F3ED3E00212BF2 /* TMUIFilterViewModel.h */,
@@ -3018,6 +3023,7 @@
 				16C956D4282D03A40004FAB8 /* THKNavigationBarViewModel.m in Sources */,
 				16648FA527CC5CCB00D5291B /* TMUIFilterMenu.m in Sources */,
 				16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */,
+				168362922831E72F0034B822 /* TMUINavigationBarViewController.m in Sources */,
 				16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */,
 				16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */,
 				16DDC098274CCA3F000DAA29 /* THKSelectMaterialHomeVC.m in Sources */,
