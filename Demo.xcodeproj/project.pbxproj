@@ -166,6 +166,9 @@
 		16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */; };
 		1683628F2831E3910034B822 /* TMUINavigationBar+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1683628E2831E3910034B822 /* TMUINavigationBar+Tool.m */; };
 		168362922831E72F0034B822 /* TMUINavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362912831E72F0034B822 /* TMUINavigationBarViewController.m */; };
+		168362BB283262AC0034B822 /* TMUICycleCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362BA283262AC0034B822 /* TMUICycleCardView.m */; };
+		168362BE283263490034B822 /* TMUINavigationBarDemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362BD283263490034B822 /* TMUINavigationBarDemoListViewController.m */; };
+		168362C1283264EF0034B822 /* THKViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362C0283264EF0034B822 /* THKViewController+NavigationBar.m */; };
 		168679922692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */; };
 		168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686798A2692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m */; };
 		168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1686798D2692B8AC00650023 /* THKMaterialRecommendRankRequest.m */; };
@@ -668,6 +671,12 @@
 		1683628E2831E3910034B822 /* TMUINavigationBar+Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TMUINavigationBar+Tool.m"; sourceTree = "<group>"; };
 		168362902831E72F0034B822 /* TMUINavigationBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUINavigationBarViewController.h; sourceTree = "<group>"; };
 		168362912831E72F0034B822 /* TMUINavigationBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUINavigationBarViewController.m; sourceTree = "<group>"; };
+		168362B9283262AC0034B822 /* TMUICycleCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUICycleCardView.h; sourceTree = "<group>"; };
+		168362BA283262AC0034B822 /* TMUICycleCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUICycleCardView.m; sourceTree = "<group>"; };
+		168362BC283263490034B822 /* TMUINavigationBarDemoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUINavigationBarDemoListViewController.h; sourceTree = "<group>"; };
+		168362BD283263490034B822 /* TMUINavigationBarDemoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUINavigationBarDemoListViewController.m; sourceTree = "<group>"; };
+		168362BF283264EF0034B822 /* THKViewController+NavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "THKViewController+NavigationBar.h"; sourceTree = "<group>"; };
+		168362C0283264EF0034B822 /* THKViewController+NavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "THKViewController+NavigationBar.m"; sourceTree = "<group>"; };
 		168679862692B8AC00650023 /* THKMaterialRecommendKnowledgeRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendKnowledgeRequest.h; sourceTree = "<group>"; };
 		168679872692B8AC00650023 /* THKMaterialRecommendRankRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKMaterialRecommendRankRequest.h; sourceTree = "<group>"; };
 		168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKMaterialRecommendGoodsGrassResponse.m; sourceTree = "<group>"; };
@@ -1706,6 +1715,15 @@
 			path = InjectionIIIHelper;
 			sourceTree = "<group>";
 		};
+		168362B82832629F0034B822 /* TMUICycleCardView */ = {
+			isa = PBXGroup;
+			children = (
+				168362B9283262AC0034B822 /* TMUICycleCardView.h */,
+				168362BA283262AC0034B822 /* TMUICycleCardView.m */,
+			);
+			path = TMUICycleCardView;
+			sourceTree = "<group>";
+		};
 		168679852692B8AC00650023 /* MaterialClassificationRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -2109,6 +2127,14 @@
 		16C10A6527D5937D001458BD /* TMUINavigationBar */ = {
 			isa = PBXGroup;
 			children = (
+				168362BC283263490034B822 /* TMUINavigationBarDemoListViewController.h */,
+				168362BD283263490034B822 /* TMUINavigationBarDemoListViewController.m */,
+				16C956D8282D1DE20004FAB8 /* THKNavigationBarViewController.h */,
+				16C956D9282D1DE20004FAB8 /* THKNavigationBarViewController.m */,
+				16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */,
+				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
+				168362902831E72F0034B822 /* TMUINavigationBarViewController.h */,
+				168362912831E72F0034B822 /* TMUINavigationBarViewController.m */,
 				16C10A7627D72965001458BD /* THKNavigationBar.h */,
 				16C10A7727D72965001458BD /* THKNavigationBar.m */,
 				16C956D2282D03A40004FAB8 /* THKNavigationBarViewModel.h */,
@@ -2135,6 +2161,8 @@
 				1630D995274DE78D009A04FA /* THKTableViewCellProtocol.h */,
 				16F3B69C2586F40600E5ADE4 /* THKViewController.h */,
 				16F3B69D2586F40600E5ADE4 /* THKViewController.m */,
+				168362BF283264EF0034B822 /* THKViewController+NavigationBar.h */,
+				168362C0283264EF0034B822 /* THKViewController+NavigationBar.m */,
 				16E5C4932682DB640024BA20 /* THKViewControllerProtocol.h */,
 				16E5C54A268325E20024BA20 /* THKRequestCommand.h */,
 				16E5C54B268325E20024BA20 /* THKRequestCommand.m */,
@@ -2203,18 +2231,13 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				16C956D8282D1DE20004FAB8 /* THKNavigationBarViewController.h */,
-				16C956D9282D1DE20004FAB8 /* THKNavigationBarViewController.m */,
-				168362902831E72F0034B822 /* TMUINavigationBarViewController.h */,
-				168362912831E72F0034B822 /* TMUINavigationBarViewController.m */,
+				168362B82832629F0034B822 /* TMUICycleCardView */,
 				16648FA327CC5CCB00D5291B /* TMUIFilterMenu.h */,
 				16648FA427CC5CCB00D5291B /* TMUIFilterMenu.m */,
 				16937D0E27F3ED3E00212BF2 /* TMUIFilterViewModel.h */,
 				16937D0F27F3ED3E00212BF2 /* TMUIFilterViewModel.m */,
 				161E58B327C90C03004742AC /* TMUIFilterViewLayout.h */,
 				161E58B427C90C03004742AC /* TMUIFilterViewLayout.m */,
-				16C10A7327D6FE07001458BD /* THKCustomNavigationViewController.h */,
-				16C10A7427D6FE07001458BD /* THKCustomNavigationViewController.m */,
 				16C10A8027D83809001458BD /* TDSearchViewController.h */,
 				16C10A8127D83809001458BD /* TDSearchViewController.m */,
 				16937D0B27F3EC8000212BF2 /* TDFilterViewController.h */,
@@ -2845,6 +2868,7 @@
 				16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */,
 				16867A1A2692D76C00650023 /* TMCardComponentBaseListViewContontroller.m in Sources */,
 				168679972692B8AC00650023 /* THKMaterialRecommendKnowledgeResponse.m in Sources */,
+				168362BE283263490034B822 /* TMUINavigationBarDemoListViewController.m in Sources */,
 				168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */,
 				16B1F51E275E000000FF18C4 /* THKNewcomerStageView.m in Sources */,
 				16B1F52A275E1B6D00FF18C4 /* THKNewcomerAnimation.m in Sources */,
@@ -2878,6 +2902,7 @@
 				16611B73269692D20089E41B /* THKMaterialHotRankHeader.m in Sources */,
 				161E58B527C90C03004742AC /* TMUIFilterViewLayout.m in Sources */,
 				16B1F521275E000C00FF18C4 /* THKNewcomerHomeSelectStageViewModel.m in Sources */,
+				168362C1283264EF0034B822 /* THKViewController+NavigationBar.m in Sources */,
 				1642AA4126D8D95000F5FACD /* THKDiaryDirectoryVC.m in Sources */,
 				16611AB82696870F0089E41B /* GEWidgetProcessor.m in Sources */,
 				16867A052692D76C00650023 /* TMCardComponentScrollAdsIndicatorView.m in Sources */,
@@ -3040,6 +3065,7 @@
 				16192B302692E13E00967C73 /* THKMoveViewAnimation.m in Sources */,
 				16611AAE2696870F0089E41B /* GESwizzer.m in Sources */,
 				16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */,
+				168362BB283262AC0034B822 /* TMUICycleCardView.m in Sources */,
 				1689DECC27449F410073BA68 /* DynamicTabVC.m in Sources */,
 				16611ABD2696870F0089E41B /* GESnsTracker.m in Sources */,
 				16F516BD26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m in Sources */,
