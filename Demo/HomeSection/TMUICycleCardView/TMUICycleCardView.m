@@ -34,7 +34,9 @@
 }
 
 - (void)didInitalize{
-//    self.dataSource = [@[@1,@2,@3,@4,@5] mutableCopy];
+    self.autoScrollInterval = 2;
+    self.horSpacing = 16;
+    self.verSpacing = 4;
     [self addSubview:self.collectionView];
 }
 
@@ -85,7 +87,7 @@
     if (self.dataSource.count > 1) {
         if (!self.timer) {
             @weakify(self);
-            self.timer = [[TMUITimer alloc] initWithInterval:2 block:^{
+            self.timer = [[TMUITimer alloc] initWithInterval:self.autoScrollInterval block:^{
                 @strongify(self);
                 [self scroll];
             }];
@@ -166,8 +168,8 @@
 - (TMUICycleCardViewLayout *)layout {
     if (!_layout) {
         _layout = [[TMUICycleCardViewLayout alloc] init];
-        _layout.horSpacing = 16;
-        _layout.verSpacing = 4;
+        _layout.horSpacing = self.horSpacing;
+        _layout.verSpacing = self.verSpacing;
     }
     return _layout;
 }

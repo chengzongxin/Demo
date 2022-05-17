@@ -9,11 +9,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-//@protocol TMUICycleCardViewDataSource <NSObject>
-//
-//
-//@end
-
 typedef void(^TMUICycleCardViewConfigCellBlock)(UICollectionViewCell *cell,NSIndexPath *indexPath,id model);
 
 @interface TMUICycleCardView : UIView
@@ -21,6 +16,8 @@ typedef void(^TMUICycleCardViewConfigCellBlock)(UICollectionViewCell *cell,NSInd
 @property (nonatomic, assign) CGFloat horSpacing;
 /// 卡片底部之间的距离 默认 4
 @property (nonatomic, assign) CGFloat verSpacing;
+/// 自动滚动时长 默认2秒
+@property (nonatomic, assign) NSTimeInterval autoScrollInterval;
 /// 数据模型，配置后会自动刷新滚动视图
 @property (nonatomic, strong) NSArray *models;
 

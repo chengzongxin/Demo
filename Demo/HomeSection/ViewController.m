@@ -11,7 +11,6 @@
 
 @interface ViewController ()
 
-@property (nonatomic, strong) TMUICycleCardView *cycle;
 
 @end
 
@@ -27,7 +26,6 @@
     TMUICycleCardView *cycle = [[TMUICycleCardView alloc] initWithFrame:CGRectMake(100, 200, 230, 155)];
     [cycle registerCell:[CycleCardCell class]];
     [self.view addSubview:cycle];
-    self.cycle = cycle;
     [cycle configCell:^(UICollectionViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath, id  _Nonnull model) {
         CycleCardCell *cardCell = (CycleCardCell *)cell;
         cardCell.textLbl.text = model;
