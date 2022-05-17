@@ -9,9 +9,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+//@protocol TMUICycleCardViewDataSource <NSObject>
+//
+//
+//@end
+
+typedef void(^TMUICycleCardViewConfigCellBlock)(UICollectionViewCell *cell,NSIndexPath *indexPath,id model);
+
 @interface TMUICycleCardView : UIView
 
-- (void)scroll;
+@property (nonatomic, strong) NSArray *models;
+
+- (void)registerCell:(Class)cellClass;
+
+- (void)configCell:(TMUICycleCardViewConfigCellBlock)configBlock;
 
 @end
 

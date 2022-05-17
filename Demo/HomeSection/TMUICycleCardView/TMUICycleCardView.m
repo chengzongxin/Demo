@@ -15,6 +15,11 @@
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
+@property (nonatomic, strong) TMUITimer *timer;
+
+@property (nonatomic, copy) TMUICycleCardViewConfigCellBlock configBlock;
+
+@property (nonatomic, assign) Class cellClass;
 @end
 
 @implementation TMUICycleCardView
@@ -29,7 +34,7 @@
 }
 
 - (void)didInitalize{
-    self.dataSource = [@[@1,@2,@3,@4,@5] mutableCopy];
+//    self.dataSource = [@[@1,@2,@3,@4,@5] mutableCopy];
     [self addSubview:self.collectionView];
 }
 
@@ -41,6 +46,34 @@
 - (CGSize)sizeThatFits:(CGSize)size{
     CGSize fitSize = [super sizeThatFits:size];
     return fitSize;
+}
+
+- (void)registerCell:(Class)cellClass{
+    self.cellClass = cellClass;
+    [self.collectionView registerClass:cellClass
+          forCellWithReuseIdentifier:NSStringFromClass(cellClass)];
+}
+
+- (void)configCell:(TMUICycleCardViewConfigCellBlock)configBlock{
+    self.configBlock = configBlock;
+}
+
+- (void)setModels:(NSArray *)models{
+    _models = models;
+    
+    _dataSource = [models mutableCopy];
+    
+    [self.collectionView reloadData];
+    
+    if (self.dataSource.count > 1) {
+        if (!self.timer) {
+            @weakify(self);
+            self.timer = [[TMUITimer alloc] initWithInterval:2 block:^{
+                @strongify(self);
+                [self scroll];
+            }];
+        }
+    }
 }
 
 - (void)scroll{
@@ -61,11 +94,12 @@
         imgv.alpha = 0;
         [imgv removeFromSuperview];
     }];
+    id model = self.dataSource.firstObject;
     [self.dataSource removeFirstObject];
     [self.collectionView performBatchUpdates:^{
         [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
     } completion:^(BOOL finished) {
-        [self.dataSource addObject:@1];
+        [self.dataSource addObject:model];
         [self.collectionView performBatchUpdates:^{
             [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.dataSource.count - 1 inSection:0]]];
         } completion:nil];
@@ -78,9 +112,11 @@
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(self.cellClass)
                                                                            forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor.tmui_randomColor tmui_colorWithAlphaAddedToWhite:1];
+    if (self.configBlock) {
+        self.configBlock(cell, indexPath, self.dataSource[indexPath.item]);
+    }
     return cell;
 }
 
@@ -110,9 +146,6 @@
 - (TMUICycleCardViewLayout *)layout {
     if (!_layout) {
         _layout = [[TMUICycleCardViewLayout alloc] init];
-//        _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-//        _flowLayout.minimumInteritemSpacing = 10;
-//        _flowLayout.minimumLineSpacing = 10;
     }
     return _layout;
 }
