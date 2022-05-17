@@ -8,10 +8,6 @@
 #import "TMUICycleCardViewLayout.h"
 
 @interface TMUICycleCardViewLayout ()
-/// 卡片左右之间的距离
-@property (nonatomic, assign) CGFloat horSpacing;
-/// 卡片底部之间的距离
-@property (nonatomic, assign) CGFloat verSpacing;
 
 @property (nonatomic, strong) NSMutableArray <UICollectionViewLayoutAttributes *> *cacheAttrs;
 
@@ -24,8 +20,6 @@
 - (void)prepareLayout{
     [super prepareLayout];
     
-    _horSpacing = 10;
-    _verSpacing = 10;
     _cacheAttrs = [NSMutableArray array];
     
     NSInteger count = [self.collectionView numberOfItemsInSection:0];

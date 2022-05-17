@@ -10,6 +10,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TMUICycleCardViewLayout : UICollectionViewLayout
+/// 卡片左右之间的距离
+@property (nonatomic, assign) CGFloat horSpacing;
+/// 卡片底部之间的距离
+@property (nonatomic, assign) CGFloat verSpacing;
 
 @end
 

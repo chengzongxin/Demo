@@ -48,6 +48,23 @@
     return fitSize;
 }
 
+- (void)setHorSpacing:(CGFloat)horSpacing{
+    _horSpacing = horSpacing;
+    
+    self.layout.horSpacing = horSpacing;
+    
+    [self.layout invalidateLayout];
+}
+
+- (void)setVerSpacing:(CGFloat)verSpacing{
+    _verSpacing = verSpacing;
+    
+    self.layout.verSpacing = verSpacing;
+    
+    [self.layout invalidateLayout];
+}
+
+
 - (void)registerCell:(Class)cellClass{
     self.cellClass = cellClass;
     [self.collectionView registerClass:cellClass
@@ -81,27 +98,30 @@
 }
 
 - (void)scrollFirstCell{
-    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-    UIImage *img = [cell tmui_snapshotLayerImage];
-    UIImageView *imgv = [[UIImageView alloc] initWithImage:img];
-    imgv.frame = cell.frame;
-    [self.collectionView addSubview:imgv];
-    cell.alpha = 0;
-    [UIView animateWithDuration:0.3 animations:^{
-        imgv.transform = CGAffineTransformMakeTranslation(-imgv.width, 0);
-//        cell.x = -cell.width;
-    } completion:^(BOOL finished) {
-        imgv.alpha = 0;
-        [imgv removeFromSuperview];
-    }];
+    // 先把子一个元素添加到末尾
     id model = self.dataSource.firstObject;
-    [self.dataSource removeFirstObject];
+    [self.dataSource addObject:model];
     [self.collectionView performBatchUpdates:^{
-        [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
+        [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.dataSource.count - 1 inSection:0]]];
     } completion:^(BOOL finished) {
-        [self.dataSource addObject:model];
+        // 添加完成后，再删除第一个元素，并执行动画
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+        UIImage *img = [cell tmui_snapshotLayerImage];
+        UIImageView *imgv = [[UIImageView alloc] initWithImage:img];
+        imgv.frame = cell.frame;
+        [self.collectionView addSubview:imgv];
+        cell.alpha = 0;
+        [UIView animateWithDuration:0.3 animations:^{
+            imgv.transform = CGAffineTransformMakeTranslation(-imgv.width, 0);
+    //        cell.x = -cell.width;
+        } completion:^(BOOL finished) {
+            imgv.alpha = 0;
+            [imgv removeFromSuperview];
+        }];
+        
+        [self.dataSource removeFirstObject];
         [self.collectionView performBatchUpdates:^{
-            [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.dataSource.count - 1 inSection:0]]];
+            [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
         } completion:nil];
     }];
 }
@@ -146,6 +166,8 @@
 - (TMUICycleCardViewLayout *)layout {
     if (!_layout) {
         _layout = [[TMUICycleCardViewLayout alloc] init];
+        _layout.horSpacing = 16;
+        _layout.verSpacing = 4;
     }
     return _layout;
 }

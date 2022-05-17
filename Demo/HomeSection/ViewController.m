@@ -24,8 +24,7 @@
     self.title = @"首页";
     self.view.backgroundColor = UIColor.whiteColor;
     
-    TMUICycleCardView *cycle = [[TMUICycleCardView alloc] initWithFrame:CGRectMake(100, 200, 300, 200)];
-//    cycle.backgroundColor = UIColor.orangeColor;
+    TMUICycleCardView *cycle = [[TMUICycleCardView alloc] initWithFrame:CGRectMake(100, 200, 230, 155)];
     [cycle registerCell:[CycleCardCell class]];
     [self.view addSubview:cycle];
     self.cycle = cycle;
@@ -33,14 +32,9 @@
         CycleCardCell *cardCell = (CycleCardCell *)cell;
         cardCell.textLbl.text = model;
     }];
-    
-    cycle.models = @[@"1",@"2",@"3",@"4"];
+    // 设置数据
+    cycle.models = @[@"1",@"2",@"3"];
 }
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    [self.cycle scroll];
-}
-
 
 
 @end
