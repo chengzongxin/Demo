@@ -15,9 +15,6 @@
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
-@property (nonatomic, strong) UICollectionViewCell *firstCell;
-
-
 @end
 
 @implementation TMUICycleCardView
@@ -51,13 +48,22 @@
 }
 
 - (void)scrollFirstCell{
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    UIImage *img = [cell tmui_snapshotLayerImage];
+    UIImageView *imgv = [[UIImageView alloc] initWithImage:img];
+    imgv.frame = cell.frame;
+    [self.collectionView addSubview:imgv];
+    cell.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        imgv.transform = CGAffineTransformMakeTranslation(-imgv.width, 0);
+//        cell.x = -cell.width;
+    } completion:^(BOOL finished) {
+        imgv.alpha = 0;
+        [imgv removeFromSuperview];
+    }];
+    [self.dataSource removeFirstObject];
     [self.collectionView performBatchUpdates:^{
-        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        [UIView animateWithDuration:0.2 animations:^{
-            cell.transform = CGAffineTransformMakeTranslation(-cell.width, 0);
-        } completion:nil];
         [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
-        [self.dataSource removeFirstObject];
     } completion:^(BOOL finished) {
         [self.dataSource addObject:@1];
         [self.collectionView performBatchUpdates:^{
@@ -74,7 +80,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])
                                                                            forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor.tmui_randomColor tmui_colorWithAlphaAddedToWhite:0.6];
+    cell.backgroundColor = [UIColor.tmui_randomColor tmui_colorWithAlphaAddedToWhite:1];
     return cell;
 }
 
