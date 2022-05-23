@@ -38,7 +38,7 @@ func(self, selector);
     TMUIFloatLayoutView *layoutView = [[TMUIFloatLayoutView alloc] tmui_initWithSize:TMUIFloatLayoutViewAutomaticalMaximumItemSize];
     layoutView.itemMargins = UIEdgeInsetsMake(0, 0, 8, 8);
     
-    NSArray *btns = @[@"显示/隐藏 返回按钮",@"显示/隐藏 分享按钮"];
+    NSArray *btns = @[@"显示/隐藏 返回按钮",@"显示/隐藏 分享按钮",@"白色/黑色"];
     
     [btns enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         TMUIButton *btn = [TMUIButton tmui_button];
@@ -64,6 +64,8 @@ func(self, selector);
     }else if (btn.tag == 1) {
 //        _navBar.isRightButtonHidden = !_navBar.isRightButtonHidden;
         [_navBar setIsRightButtonHidden:!_navBar.isRightButtonHidden animate:YES];
+    }else if (btn.tag == 2) {
+        _navBar.barStyle = !_navBar.barStyle;
     }
 }
 
@@ -93,11 +95,41 @@ func(self, selector);
 
 - (void)customNavbar1{
     self.navBar.title = @"标题😆";
+    
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn1.tmui_image = [UIImage imageNamed:@"nav_back_black"];
+    [btn1 tmui_addTarget:self action:@selector(back)];
+    
+    UIButton *btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn2.tmui_image = [UIImage imageNamed:@"nav_back_black"];
+    [btn2 tmui_addTarget:self action:@selector(back)];
+    
+    UIImageView *img1 = ImageView.img(UIImageMake(@"nav_share_black"));
+    UIImageView *img2 = ImageView.img(UIImageMake(@"home_nav_search"));
+    
+    
+    [img1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(40);
+        make.height.mas_equalTo(40);
+    }];
+    [img2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(40);
+        make.height.mas_equalTo(40);
+    }];
+    
+    
+    [self.navBar setLeftViews:btn1,img1,nil];
+    [self.navBar setRightViews:UISwitch.new,img2,UISwitch.new,nil];
+}
+
+- (void)back{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)customNavbar2{
     self.navBar.title = @"标题😆";
     self.navBar.barStyle = TMUINavigationBarStyle_Dark;
+    self.navBar.rightViewType = TMUINavigationBarRightViewType_Share;
 }
 
 - (void)customNavbar3{
