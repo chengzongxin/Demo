@@ -108,18 +108,20 @@ func(self, selector);
     UIImageView *img2 = ImageView.img(UIImageMake(@"home_nav_search"));
     
     
-    [img1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(40);
-    }];
-    [img2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(40);
-        make.height.mas_equalTo(40);
-    }];
+//    [img1 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(40);
+//        make.height.mas_equalTo(40);
+//    }];
+//    [img2 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(40);
+//        make.height.mas_equalTo(40);
+//    }];
     
     
     [self.navBar setLeftViews:btn1,img1,nil];
-    [self.navBar setRightViews:UISwitch.new,img2,UISwitch.new,nil];
+//    [self.navBar setRightViews:UISwitch.new,img2,UISwitch.new,nil];
+    self.navBar.rightView = img2;
+//    [self.navBar setRightView:img2 size:CGSizeMake(60, 30)];
 }
 
 - (void)back{
