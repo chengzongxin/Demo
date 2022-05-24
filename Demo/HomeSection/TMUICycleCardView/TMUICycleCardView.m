@@ -101,31 +101,43 @@
 
 - (void)scrollFirstCell{
     // 先把子一个元素添加到末尾
+    
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    UIImage *img = [cell tmui_snapshotLayerImage];
+    UIImageView *imgv = [[UIImageView alloc] initWithImage:img];
+    imgv.frame = cell.frame;
+    [self.collectionView addSubview:imgv];
+    cell.alpha = 0;
+    [UIView animateWithDuration:0.2 animations:^{
+        imgv.transform = CGAffineTransformMakeTranslation(-imgv.width, 0);
+        //                cell.x = -cell.width;
+    } completion:^(BOOL finished) {
+        imgv.alpha = 0;
+        [imgv removeFromSuperview];
+    }];
+    
+    
+    
     id model = self.dataSource.firstObject;
-    [self.dataSource addObject:model];
+    [self.dataSource removeFirstObject];
+    [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
+    
     [self.collectionView performBatchUpdates:^{
+        [self.dataSource addObject:model];
         [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.dataSource.count - 1 inSection:0]]];
     } completion:^(BOOL finished) {
         // 添加完成后，再删除第一个元素，并执行动画
-        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
-        UIImage *img = [cell tmui_snapshotLayerImage];
-        UIImageView *imgv = [[UIImageView alloc] initWithImage:img];
-        imgv.frame = cell.frame;
-        [self.collectionView addSubview:imgv];
-        cell.alpha = 0;
-        [UIView animateWithDuration:0.3 animations:^{
-            imgv.transform = CGAffineTransformMakeTranslation(-imgv.width, 0);
-    //        cell.x = -cell.width;
-        } completion:^(BOOL finished) {
-            imgv.alpha = 0;
-            [imgv removeFromSuperview];
-        }];
-        
-        [self.dataSource removeFirstObject];
-        [self.collectionView performBatchUpdates:^{
-            [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
-        } completion:nil];
+
     }];
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//        [self.dataSource removeFirstObject];
+//        [self.collectionView performBatchUpdates:^{
+//            [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
+//        } completion:nil];
+//    });
+    
 }
 
 #pragma mark - UICollectionViewDataSource

@@ -66,27 +66,37 @@
     UICollectionViewLayoutAttributes* attributes = [self layoutAttributesForItemAtIndexPath:itemIndexPath];
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
     if (itemIndexPath.item == count - 1) {
+//        attributes.transform3D = CATransform3DMakeScale(0.1, 0.1, 1.0);
+//        attributes.transform = CGAffineTransformMakeTranslation(-100, 0);
 //        attributes.alpha = 0.0;
+//        CGRect frame = attributes.frame;
+//        frame.origin.x -= frame.size.width;
+//        attributes.frame = frame;
+//        CGAffineTransformMake(a,b,c,d,tx,ty)
+//        ad缩放bc旋转tx,ty位移，基础的2D矩阵
+//         公式
+//            x=ax+cy+tx
+//            y=bx+dy+ty
+        attributes.transform = CGAffineTransformMake(1, 0, 0, 1, -50, 0);
         attributes.zIndex = -1;
     }
     return attributes;
 }
 
 //删除时，cell在第一个位置，左移出
-- (UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
-    NSInteger count = [self.collectionView numberOfItemsInSection:0];
+//- (UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
+//    NSInteger count = [self.collectionView numberOfItemsInSection:0];
+//
 //    if (itemIndexPath.item == 0) {
 //        UICollectionViewLayoutAttributes* attributes = [self layoutAttributesForItemAtIndexPath:itemIndexPath];
-//        attributes.alpha = 0.0;
-//        attributes.transform3D = CATransform3DMakeScale(0.1, 0.1, 1.0);
-//        return attributes;
-//    }else
-    if (itemIndexPath.item < count) {
-        return [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
-    }else {
-        return nil;
-    }
-}
+////        attributes.transform = CGAffineTransformMake(1, 0, 0, 1, -attributes.frame.size.width, 0);
+//        attributes.hidden = YES;
+//        attributes.zIndex = -10;
+//        return nil;
+//    }else{
+//        return [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
+//    }
+//}
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds{
     return YES;
