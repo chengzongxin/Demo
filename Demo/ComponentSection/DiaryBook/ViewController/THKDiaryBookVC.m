@@ -51,6 +51,7 @@ static CGFloat const kBottomBarH = 50;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = UIColor.whiteColor;
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem tmui_itemWithTitle:@"返回" target:self action:@selector(back)];
     
 //    // 从日记本进入
     [self loadDataWithOffsetId:0];
@@ -59,13 +60,17 @@ static CGFloat const kBottomBarH = 50;
 //    [self loadDataWithDiaryId:2022012];
 }
 
+- (void)back{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 //
 - (void)loadDataWithOffsetId:(NSInteger)offsetId{
     @weakify(self);
     [self.producer loadDataWithOffsetId:offsetId complete:^(NSArray * _Nonnull datas, THKDiaryProductFromType fromType, NSInteger offset) {
         @strongify(self);
         [self.tableView reloadData];
-        [self.tableView scrollToRow:offset inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:NO];
+//        [self.tableView scrollToRow:offset inSection:0 atScrollPosition:UITableViewScrollPositionNone animated:NO];
     } failure:^(NSError * _Nonnull error) {
         
     }];

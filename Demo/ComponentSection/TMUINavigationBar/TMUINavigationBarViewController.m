@@ -60,10 +60,10 @@ func(self, selector);
 - (void)btnClick:(UIButton *)btn{
     if (btn.tag == 0) {
 //        _navBar.isBackButtonHidden = !_navBar.isBackButtonHidden;
-        [_navBar setIsBackButtonHidden:!_navBar.isBackButtonHidden animate:YES];
+//        [_navBar setIsBackButtonHidden:!_navBar.isBackButtonHidden animate:YES];
     }else if (btn.tag == 1) {
 //        _navBar.isRightButtonHidden = !_navBar.isRightButtonHidden;
-        [_navBar setIsRightButtonHidden:!_navBar.isRightButtonHidden animate:YES];
+//        [_navBar setIsRightButtonHidden:!_navBar.isRightButtonHidden animate:YES];
     }else if (btn.tag == 2) {
         _navBar.barStyle = !_navBar.barStyle;
     }
@@ -155,16 +155,16 @@ func(self, selector);
 - (void)customNavbar5{
     TMUISearchBar *search = [[TMUISearchBar alloc] initWithStyle:0];
     search.showsCancelButton = YES;
-    self.navBar.titleViewEdgeInsetWhenHiddenEdgeButton = UIEdgeInsetsMake(0, 20, 0, 0);
-    self.navBar.titleViewInset = UIEdgeInsetsMake(4, 0, 4, 0);
+//    self.navBar.titleViewEdgeInsetWhenHiddenEdgeButton = UIEdgeInsetsMake(0, 20, 0, 0);
     self.navBar.titleView = search;
+    self.navBar.titleViewInset = UIEdgeInsetsSetRight(self.navBar.titleViewInset, 0);
 }
 
 - (void)customNavbar6{
     TMUISearchBar *search = [[TMUISearchBar alloc] initWithStyle:1];
     search.showsCancelButton = YES;
-    self.navBar.titleViewEdgeInsetWhenHiddenEdgeButton = UIEdgeInsetsMake(0, 20, 0, 0);
-    self.navBar.titleViewInset = UIEdgeInsetsMake(4, 0, 4, 0);
+//    self.navBar.titleViewEdgeInsetWhenHiddenEdgeButton = UIEdgeInsetsMake(0, 20, 0, 0);
+    self.navBar.titleViewInset = UIEdgeInsetsSetRight(self.navBar.titleViewInset, 10);
     self.navBar.titleView = search;
 }
 
@@ -173,7 +173,7 @@ func(self, selector);
     
     [self.view bringSubviewToFront:self.navBar];
     self.navBar.title = @"标题😆";
-    self.navBar.isRightButtonHidden = NO;
+//    self.navBar.isRightButtonHidden = NO;
 }
 
 
