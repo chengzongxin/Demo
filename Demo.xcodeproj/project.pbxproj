@@ -75,7 +75,6 @@
 		1630D996274DE78D009A04FA /* THKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D993274DE78D009A04FA /* THKTableViewCell.m */; };
 		1630D9DC274E66BD009A04FA /* THKSelectMaterialTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D9DB274E66BD009A04FA /* THKSelectMaterialTopBar.m */; };
 		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
-		1640907528332F440081F089 /* TMUICycleCardViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640907428332F440081F089 /* TMUICycleCardViewLayout.m */; };
 		16409078283378430081F089 /* CycleCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16409077283378430081F089 /* CycleCardCell.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
 		1642AA3626D8C87200F5FACD /* THKDiaryBookBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1642AA3526D8C87200F5FACD /* THKDiaryBookBottomBar.xib */; };
@@ -168,7 +167,6 @@
 		16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */; };
 		1683628F2831E3910034B822 /* TMUINavigationBar+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1683628E2831E3910034B822 /* TMUINavigationBar+Tool.m */; };
 		168362922831E72F0034B822 /* TMUINavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362912831E72F0034B822 /* TMUINavigationBarViewController.m */; };
-		168362BB283262AC0034B822 /* TMUICycleCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362BA283262AC0034B822 /* TMUICycleCardView.m */; };
 		168362BE283263490034B822 /* TMUINavigationBarDemoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362BD283263490034B822 /* TMUINavigationBarDemoListViewController.m */; };
 		168362C1283264EF0034B822 /* THKViewController+NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 168362C0283264EF0034B822 /* THKViewController+NavigationBar.m */; };
 		168679922692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 168679882692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m */; };
@@ -297,6 +295,8 @@
 		16E5C52E26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C52C26830E7B0024BA20 /* THKPersonalDesignerConfigRequest.m */; };
 		16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C54B268325E20024BA20 /* THKRequestCommand.m */; };
 		16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */; };
+		16E85814283DD4C20065D336 /* TMUICycleCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E85811283DD4C20065D336 /* TMUICycleCardView.m */; };
+		16E85815283DD4C20065D336 /* TMUICycleCardViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E85813283DD4C20065D336 /* TMUICycleCardViewLayout.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */; };
 		16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516AA26D4C2E5002500F7 /* THKDiaryBookModel.m */; };
@@ -490,8 +490,6 @@
 		1630D9DB274E66BD009A04FA /* THKSelectMaterialTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialTopBar.m; sourceTree = "<group>"; };
 		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
 		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
-		1640907328332F440081F089 /* TMUICycleCardViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUICycleCardViewLayout.h; sourceTree = "<group>"; };
-		1640907428332F440081F089 /* TMUICycleCardViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUICycleCardViewLayout.m; sourceTree = "<group>"; };
 		16409076283378430081F089 /* CycleCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleCardCell.h; sourceTree = "<group>"; };
 		16409077283378430081F089 /* CycleCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CycleCardCell.m; sourceTree = "<group>"; };
 		1642AA2F26D8BFB200F5FACD /* THKDiaryBookBottomBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookBottomBar.h; sourceTree = "<group>"; };
@@ -678,8 +676,6 @@
 		1683628E2831E3910034B822 /* TMUINavigationBar+Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TMUINavigationBar+Tool.m"; sourceTree = "<group>"; };
 		168362902831E72F0034B822 /* TMUINavigationBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUINavigationBarViewController.h; sourceTree = "<group>"; };
 		168362912831E72F0034B822 /* TMUINavigationBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUINavigationBarViewController.m; sourceTree = "<group>"; };
-		168362B9283262AC0034B822 /* TMUICycleCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUICycleCardView.h; sourceTree = "<group>"; };
-		168362BA283262AC0034B822 /* TMUICycleCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUICycleCardView.m; sourceTree = "<group>"; };
 		168362BC283263490034B822 /* TMUINavigationBarDemoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUINavigationBarDemoListViewController.h; sourceTree = "<group>"; };
 		168362BD283263490034B822 /* TMUINavigationBarDemoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUINavigationBarDemoListViewController.m; sourceTree = "<group>"; };
 		168362BF283264EF0034B822 /* THKViewController+NavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "THKViewController+NavigationBar.h"; sourceTree = "<group>"; };
@@ -952,6 +948,10 @@
 		16E5C54B268325E20024BA20 /* THKRequestCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKRequestCommand.m; sourceTree = "<group>"; };
 		16E5C590268330270024BA20 /* MLeaksMessenger+HookAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MLeaksMessenger+HookAlert.h"; sourceTree = "<group>"; };
 		16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MLeaksMessenger+HookAlert.m"; sourceTree = "<group>"; };
+		16E85810283DD4C20065D336 /* TMUICycleCardViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMUICycleCardViewLayout.h; sourceTree = "<group>"; };
+		16E85811283DD4C20065D336 /* TMUICycleCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMUICycleCardView.m; sourceTree = "<group>"; };
+		16E85812283DD4C20065D336 /* TMUICycleCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMUICycleCardView.h; sourceTree = "<group>"; };
+		16E85813283DD4C20065D336 /* TMUICycleCardViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMUICycleCardViewLayout.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		16F5169D26D4C2B8002500F7 /* THKDiaryBookVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookVM.h; sourceTree = "<group>"; };
@@ -1724,17 +1724,6 @@
 			path = InjectionIIIHelper;
 			sourceTree = "<group>";
 		};
-		168362B82832629F0034B822 /* TMUICycleCardView */ = {
-			isa = PBXGroup;
-			children = (
-				168362B9283262AC0034B822 /* TMUICycleCardView.h */,
-				168362BA283262AC0034B822 /* TMUICycleCardView.m */,
-				1640907328332F440081F089 /* TMUICycleCardViewLayout.h */,
-				1640907428332F440081F089 /* TMUICycleCardViewLayout.m */,
-			);
-			path = TMUICycleCardView;
-			sourceTree = "<group>";
-		};
 		168679852692B8AC00650023 /* MaterialClassificationRequest */ = {
 			isa = PBXGroup;
 			children = (
@@ -2246,7 +2235,7 @@
 				16409077283378430081F089 /* CycleCardCell.m */,
 				16D9D58228348F2600DAB642 /* THKViewController+TMUINavigationBar.h */,
 				16D9D58328348F2600DAB642 /* THKViewController+TMUINavigationBar.m */,
-				168362B82832629F0034B822 /* TMUICycleCardView */,
+				16E8580F283DD4C20065D336 /* TMUICycleCardView */,
 				16648FA327CC5CCB00D5291B /* TMUIFilterMenu.h */,
 				16648FA427CC5CCB00D5291B /* TMUIFilterMenu.m */,
 				16937D0E27F3ED3E00212BF2 /* TMUIFilterViewModel.h */,
@@ -2466,6 +2455,17 @@
 				16E5C591268330280024BA20 /* MLeaksMessenger+HookAlert.m */,
 			);
 			path = Third;
+			sourceTree = "<group>";
+		};
+		16E8580F283DD4C20065D336 /* TMUICycleCardView */ = {
+			isa = PBXGroup;
+			children = (
+				16E85812283DD4C20065D336 /* TMUICycleCardView.h */,
+				16E85811283DD4C20065D336 /* TMUICycleCardView.m */,
+				16E85810283DD4C20065D336 /* TMUICycleCardViewLayout.h */,
+				16E85813283DD4C20065D336 /* TMUICycleCardViewLayout.m */,
+			);
+			path = TMUICycleCardView;
 			sourceTree = "<group>";
 		};
 		16F5168F26D4C11D002500F7 /* DiaryBook */ = {
@@ -3017,7 +3017,6 @@
 				1630D985274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m in Sources */,
 				1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */,
 				1644D3CF276AF7EC00E91C66 /* TestViewController.m in Sources */,
-				1640907528332F440081F089 /* TMUICycleCardViewLayout.m in Sources */,
 				16192B2B2692E13E00967C73 /* THKUGCGraphicDetailLoadingAnimationView.m in Sources */,
 				16867A182692D76C00650023 /* TMCardComponentCellDataModel.m in Sources */,
 				16867A332692D9B200650023 /* TRouterManager.m in Sources */,
@@ -3083,7 +3082,6 @@
 				16192B302692E13E00967C73 /* THKMoveViewAnimation.m in Sources */,
 				16611AAE2696870F0089E41B /* GESwizzer.m in Sources */,
 				16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */,
-				168362BB283262AC0034B822 /* TMUICycleCardView.m in Sources */,
 				1689DECC27449F410073BA68 /* DynamicTabVC.m in Sources */,
 				16611ABD2696870F0089E41B /* GESnsTracker.m in Sources */,
 				16F516BD26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m in Sources */,
@@ -3113,6 +3111,7 @@
 				16192B332692E13E00967C73 /* THKInteractiveTransition.m in Sources */,
 				16611ABB2696870F0089E41B /* GEDispatcher.m in Sources */,
 				1689DE9D27449A700073BA68 /* THKTabBadgeModel.m in Sources */,
+				16E85814283DD4C20065D336 /* TMUICycleCardView.m in Sources */,
 				16192B352692E13E00967C73 /* UIViewController+THKAnimationTransition.m in Sources */,
 				16E5C4B92682DE4B0024BA20 /* THKCommonPhpRequest.m in Sources */,
 				16B1F524275E001700FF18C4 /* THKNewcomerHomeViewModel.m in Sources */,
@@ -3170,6 +3169,7 @@
 				16611AD2269688C20089E41B /* TUUIDGenerator.m in Sources */,
 				16611B60269692D20089E41B /* THKMaterialKnowledgeVM.m in Sources */,
 				1677AC62274B91EE001B0F66 /* THKQuickCommentsViewModel.m in Sources */,
+				16E85815283DD4C20065D336 /* TMUICycleCardViewLayout.m in Sources */,
 				16E5C4F22682E4040024BA20 /* THKPhpUploadRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

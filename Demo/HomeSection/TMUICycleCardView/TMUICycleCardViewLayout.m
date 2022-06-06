@@ -27,10 +27,11 @@
         UICollectionViewLayoutAttributes *attr = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:[NSIndexPath indexPathForItem:i inSection:0]];
 //        attr.frame = self.collectionView.bounds;
         // 计算每个 cell 的宽度和高度
-        CGFloat x = i * _horSpacing * 2 + i * 20;
+        CGFloat x = i * _horSpacing * 2 + _horSpacing * i;
         CGFloat y = i * _verSpacing;
-        CGFloat width = self.collectionView.bounds.size.width * 0.8 - i * _horSpacing * 2;
-        CGFloat height = self.collectionView.bounds.size.height - i * _verSpacing * 2;
+        CGFloat maxShow = 3;
+        CGFloat width = (self.collectionView.bounds.size.width - _horSpacing * (maxShow - 1)) - i * _horSpacing * 2;
+        CGFloat height = (self.collectionView.bounds.size.height - _verSpacing * (maxShow - 1)) - i * _verSpacing * 2;
         attr.frame = CGRectMake(x, y, width, height);
         // 计算出缩放的比例
 //        CGFloat scaleX = width / attr.bounds.size.width;
@@ -64,20 +65,11 @@
 //插入前，cell在末尾，全透明
 - (UICollectionViewLayoutAttributes *)initialLayoutAttributesForAppearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
     UICollectionViewLayoutAttributes* attributes = [self layoutAttributesForItemAtIndexPath:itemIndexPath];
-    NSInteger count = [self.collectionView numberOfItemsInSection:0];
-    if (itemIndexPath.item == count - 1) {
-//        attributes.transform3D = CATransform3DMakeScale(0.1, 0.1, 1.0);
-//        attributes.transform = CGAffineTransformMakeTranslation(-100, 0);
+//    NSInteger count = [self.collectionView numberOfItemsInSection:0];
+    // 这里插入删除时会不准确，需要外界提供准确的数量
+    if (itemIndexPath.item == self.count - 1) {
 //        attributes.alpha = 0.0;
-//        CGRect frame = attributes.frame;
-//        frame.origin.x -= frame.size.width;
-//        attributes.frame = frame;
-//        CGAffineTransformMake(a,b,c,d,tx,ty)
-//        ad缩放bc旋转tx,ty位移，基础的2D矩阵
-//         公式
-//            x=ax+cy+tx
-//            y=bx+dy+ty
-        attributes.transform = CGAffineTransformMake(1, 0, 0, 1, -50, 0);
+        attributes.transform = CGAffineTransformMake(1, 0, 0, 1, -_horSpacing, 0);
         attributes.zIndex = -1;
     }
     return attributes;
@@ -86,15 +78,16 @@
 //删除时，cell在第一个位置，左移出
 //- (UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath{
 //    NSInteger count = [self.collectionView numberOfItemsInSection:0];
-//
-//    if (itemIndexPath.item == 0) {
-//        UICollectionViewLayoutAttributes* attributes = [self layoutAttributesForItemAtIndexPath:itemIndexPath];
-////        attributes.transform = CGAffineTransformMake(1, 0, 0, 1, -attributes.frame.size.width, 0);
-//        attributes.hidden = YES;
-//        attributes.zIndex = -10;
-//        return nil;
-//    }else{
+////    if (itemIndexPath.item == 0) {
+////        UICollectionViewLayoutAttributes* attributes = [self layoutAttributesForItemAtIndexPath:itemIndexPath];
+////        attributes.alpha = 0.0;
+////        attributes.transform3D = CATransform3DMakeScale(0.1, 0.1, 1.0);
+////        return attributes;
+////    }else
+//    if (itemIndexPath.item < count) {
 //        return [super finalLayoutAttributesForDisappearingItemAtIndexPath:itemIndexPath];
+//    }else {
+//        return nil;
 //    }
 //}
 

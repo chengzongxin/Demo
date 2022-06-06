@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 卡片底部之间的距离
 @property (nonatomic, assign) CGFloat verSpacing;
 
+@property (nonatomic, assign) NSInteger count;
+
 @end
 
 NS_ASSUME_NONNULL_END

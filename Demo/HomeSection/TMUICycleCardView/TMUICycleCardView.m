@@ -35,7 +35,7 @@
 
 - (void)didInitalize{
     self.autoScrollInterval = 2;
-    self.horSpacing = 16;
+    self.horSpacing = 10;
     self.verSpacing = 4;
     [self addSubview:self.collectionView];
 }
@@ -82,6 +82,8 @@
     
     _dataSource = [models mutableCopy];
     
+    self.layout.count = _dataSource.count;
+    
     [self.collectionView reloadData];
     
     if (self.dataSource.count > 1) {
@@ -92,31 +94,43 @@
                 [self scroll];
             }];
         }
+    }else{
+        [self pauseTimer];
+    }
+}
+
+- (void)pauseTimer{
+    if (self.timer) {
+        [self.timer pauseTimer];
+    }
+}
+
+- (void)resumeTimer{
+    if (self.timer) {
+        [self.timer resumeTimer];
     }
 }
 
 - (void)scroll{
-    [self scrollFirstCell];
+    if (self && self.window) {
+        [self scrollFirstCell];
+    }
 }
 
 - (void)scrollFirstCell{
-    // 先把子一个元素添加到末尾
-    
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
     UIImage *img = [cell tmui_snapshotLayerImage];
     UIImageView *imgv = [[UIImageView alloc] initWithImage:img];
     imgv.frame = cell.frame;
     [self.collectionView addSubview:imgv];
     cell.alpha = 0;
-    [UIView animateWithDuration:0.2 animations:^{
+    [UIView animateWithDuration:0.8 delay:0 usingSpringWithDamping:0.9 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         imgv.transform = CGAffineTransformMakeTranslation(-imgv.width, 0);
         //                cell.x = -cell.width;
     } completion:^(BOOL finished) {
         imgv.alpha = 0;
         [imgv removeFromSuperview];
     }];
-    
-    
     
     id model = self.dataSource.firstObject;
     [self.dataSource removeFirstObject];
@@ -125,19 +139,7 @@
     [self.collectionView performBatchUpdates:^{
         [self.dataSource addObject:model];
         [self.collectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.dataSource.count - 1 inSection:0]]];
-    } completion:^(BOOL finished) {
-        // 添加完成后，再删除第一个元素，并执行动画
-
-    }];
-    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//
-//        [self.dataSource removeFirstObject];
-//        [self.collectionView performBatchUpdates:^{
-//            [self.collectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
-//        } completion:nil];
-//    });
-    
+    } completion:nil];
 }
 
 #pragma mark - UICollectionViewDataSource

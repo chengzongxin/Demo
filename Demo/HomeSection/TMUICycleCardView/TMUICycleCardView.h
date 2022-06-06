@@ -30,6 +30,10 @@ typedef void(^TMUICycleCardViewConfigCellBlock)(UICollectionViewCell *cell,NSInd
 /// @param configBlock 在回调中配置cell元素
 - (void)configCell:(TMUICycleCardViewConfigCellBlock)configBlock;
 
+- (void)pauseTimer;
+
+- (void)resumeTimer;
+
 
 @end
 
