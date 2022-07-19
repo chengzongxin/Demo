@@ -149,6 +149,10 @@ func(self, selector);
     self.navBar.backgroundImageView.contentMode = UIViewContentModeScaleToFill;
 //    [self.navBar bindViewModel:avatarVM];
     THKNavigationAvatarTitleView *avatarTitleView = [[THKNavigationAvatarTitleView alloc] initWithViewModel:avatarVM];
+//    avatarTitleView.frame = CGRectMake(0, 0, 100, 30);
+    [avatarTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(250, 40));
+    }];
     self.navBar.titleView = avatarTitleView;
 }
 
