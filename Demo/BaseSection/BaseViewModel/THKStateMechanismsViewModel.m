@@ -184,7 +184,7 @@
     return _requestCommand;
 }
 
-- (THKBaseRequest *)requestWithInput:(id)input{return nil;}
+//- (THKBaseRequest *)requestWithInput:(id)input{return nil;}
 
 TMUI_PropertyLazyLoad(NSArray, data);
 TMUI_PropertyLazyLoad(RACSubject, emptySignal)

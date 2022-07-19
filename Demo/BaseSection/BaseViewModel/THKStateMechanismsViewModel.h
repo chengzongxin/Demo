@@ -21,9 +21,18 @@ typedef enum : NSUInteger {
     THKRefreshStatus_NoMoreData,
 } THKRefreshStatus;
 
+
+@protocol THKStateMechanismsViewModelProtocol <NSObject>
+
+@required
+/// 子类重写
+- (THKBaseRequest *)requestWithInput:(id)input;
+
+@end
+
 typedef NSArray *_Nullable(^AppendDataBlock)(THKResponse *);
 
-@interface THKStateMechanismsViewModel : THKViewModel
+@interface THKStateMechanismsViewModel : THKViewModel <THKStateMechanismsViewModelProtocol>
 
 @property (nonatomic, strong, readonly) THKRequestCommand *requestCommand;
 /// 数据源
@@ -34,10 +43,6 @@ typedef NSArray *_Nullable(^AppendDataBlock)(THKResponse *);
 /// @param scrollView 列表控件，tableView或者collectionView
 /// @param appendBlock 接口返回需要拼接的数据源
 - (void)bindWithView:(UIView *)view scrollView:(UIScrollView *)scrollView appenBlock:(NSArray * (^)(THKResponse *))appendBlock;
-
-
-/// 子类重写
-- (THKBaseRequest *)requestWithInput:(id)input;
 
 /// 添加头部刷新
 - (void)addRefreshHeader;
