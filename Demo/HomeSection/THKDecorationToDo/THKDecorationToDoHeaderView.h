@@ -6,6 +6,7 @@
 //
 
 #import "THKView.h"
+#import "THKDecorationToDoHeaderViewModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -9,12 +9,12 @@
 
 @implementation THKDecorationToDoHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+//- (CGSize)intrinsicContentSize{
+//    return CGSizeMake(TMUI_SCREEN_WIDTH, 100);
+//}
+//
+//- (CGSize)sizeThatFits:(CGSize)size{
+//    return CGSizeMake(TMUI_SCREEN_WIDTH, 100);
+//}
 
 @end

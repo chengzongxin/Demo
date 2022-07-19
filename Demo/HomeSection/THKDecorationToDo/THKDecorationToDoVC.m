@@ -8,12 +8,20 @@
 #import "THKDecorationToDoVC.h"
 #import "THKDecorationToDoCell.h"
 #import "THKDecorationToDoSectionHeaderView.h"
+#import "THKDecorationToDoHeaderView.h"
+#import "THKDynamicTabsWrapperScrollView.h"
+#import "THKPageBGScrollView.h"
+#import "THKDynamicTabsProtocol.h"
 
-@interface THKDecorationToDoVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface THKDecorationToDoVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsProtocol>
 
 @property (nonatomic, strong) THKDecorationToDoVM *viewModel;
 
+@property (nonatomic, strong) THKDynamicTabsWrapperScrollView *wrapperScrollView;
+
 @property (nonatomic, strong) UITableView *tableView;
+
+@property (nonatomic, strong) THKDecorationToDoHeaderView *headerView;
 
 
 
@@ -26,7 +34,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.view addSubview:self.tableView];
+    self.view.backgroundColor = UIColorWhite;
+    self.navBarHidden = YES;
+    [self.view addSubview:self.wrapperScrollView];
+    [self.wrapperScrollView addSubview:self.tableView];
+    [self.wrapperScrollView addSubview:self.headerView];
     
     
 }
@@ -86,6 +98,23 @@
     return 64;
 }
 
+
+
+- (THKDynamicTabsWrapperScrollView *)wrapperScrollView{
+    if (!_wrapperScrollView) {
+        _wrapperScrollView = [[THKDynamicTabsWrapperScrollView alloc] initWithFrame:self.view.bounds];
+        _wrapperScrollView.contentInset = UIEdgeInsetsMake(300, 0, 0, 0);
+        _wrapperScrollView.lockArea = tmui_navigationBarHeight()+50;
+        _wrapperScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH, 200 + self.view.height);
+        if (@available(iOS 11.0, *)) {
+            _wrapperScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = NO;
+        }
+    }
+    return _wrapperScrollView;
+}
+
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
@@ -103,5 +132,18 @@
     return _tableView;
 }
 
+- (THKDecorationToDoHeaderView *)headerView{
+    if (!_headerView) {
+        _headerView = [[THKDecorationToDoHeaderView alloc] initWithViewModel:THKDecorationToDoHeaderViewModel.new];
+        _headerView.frame = CGRectMake(0, -300, TMUI_SCREEN_WIDTH, 300);
+        _headerView.backgroundColor = UIColor.orangeColor;
+    }
+    return _headerView;
+}
+
+
+- (UIScrollView *)contentScrollView{
+    return _tableView;
+}
 
 @end
