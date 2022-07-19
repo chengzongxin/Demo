@@ -45,6 +45,7 @@ static inline CGFloat CGCustomFont(CGFloat value) {
 #import "THKResponse.h"
 #import "THKCommonDefine.h"
 #import "Define_Block.h"
+#import "UIViewController+THKNavigationBar.h"
 
 
 #endif /* PrefixHeader_pch */

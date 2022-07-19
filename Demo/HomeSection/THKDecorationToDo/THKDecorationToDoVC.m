@@ -13,6 +13,7 @@
 #import "THKPageBGScrollView.h"
 #import "THKDynamicTabsProtocol.h"
 
+
 @interface THKDecorationToDoVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsProtocol>
 
 @property (nonatomic, strong) THKDecorationToDoVM *viewModel;
@@ -34,8 +35,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.thk_title = @"装修待办";
+    self.thk_navBar.backgroundColor = UIColorClear;
     self.view.backgroundColor = UIColorWhite;
-    self.navBarHidden = YES;
+    
     [self.view addSubview:self.wrapperScrollView];
     [self.wrapperScrollView addSubview:self.tableView];
     [self.wrapperScrollView addSubview:self.headerView];

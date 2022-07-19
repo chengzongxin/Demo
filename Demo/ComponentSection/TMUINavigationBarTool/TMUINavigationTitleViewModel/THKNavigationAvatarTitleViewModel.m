@@ -5,9 +5,9 @@
 //  Created by Joe.cheng on 2022/5/13.
 //
 
-#import "THKNavigationBarAvatarViewModel.h"
+#import "THKNavigationAvatarTitleViewModel.h"
 
-@implementation THKNavigationBarAvatarViewModel
+@implementation THKNavigationAvatarTitleViewModel
 
 - (void)initialize{
     [super initialize];

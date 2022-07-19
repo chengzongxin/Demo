@@ -9,7 +9,9 @@
 #import "THKView.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKNavigationTitleView : THKView
+@interface THKNavigationTitleView : THKView //<ReactiveView>
+
+
 
 @end
 

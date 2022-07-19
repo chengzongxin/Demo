@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
     THKNavigationBarContentType_Search,
 } THKNavigationBarContentType;
 
-@interface THKNavigationBarViewModel : THKViewModel
+@interface THKNavigationTitleViewModel : THKViewModel
 ///// navigation bar style, defalt Normal is Light  white background, black content
 //@property (nonatomic, assign) THKNavigationBarStyle barStyle;
 /// 内容
