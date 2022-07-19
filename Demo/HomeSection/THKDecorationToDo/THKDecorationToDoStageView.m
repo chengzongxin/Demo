@@ -80,7 +80,7 @@
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    !_tapItem?:_tapItem(indexPath.item);
 }
 
 #pragma mark - Getter && Setter

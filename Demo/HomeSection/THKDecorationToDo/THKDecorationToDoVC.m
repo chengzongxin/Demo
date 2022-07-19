@@ -102,6 +102,16 @@
 }
 
 
+#pragma mark - Private
+- (void)scrollToSection:(NSInteger)section{
+    // 这里要先设置，吸顶pin，否则内部会阻拦手动滑动事件
+    [self.wrapperScrollView tmui_setValue:@1 forKey:@"pin"];;
+    CGPoint point = [self.tableView rectForHeaderInSection:section].origin;
+    [self.tableView setContentOffset:point animated:YES];
+//    [self.tableView scrollToRow:0 inSection:section atScrollPosition:UITableViewScrollPositionNone animated:YES];
+}
+
+#pragma mark - getter
 
 - (THKDynamicTabsWrapperScrollView *)wrapperScrollView{
     if (!_wrapperScrollView) {
@@ -140,6 +150,11 @@
         _headerView = [[THKDecorationToDoHeaderView alloc] initWithViewModel:THKDecorationToDoHeaderViewModel.new];
         _headerView.frame = CGRectMake(0, -300, TMUI_SCREEN_WIDTH, 300);
         _headerView.backgroundColor = UIColor.orangeColor;
+        @weakify(self);
+        _headerView.tapItem = ^(NSInteger index) {
+            @strongify(self);
+            [self scrollToSection:index];
+        };
     }
     return _headerView;
 }

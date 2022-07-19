@@ -61,6 +61,13 @@
     }];
 }
 
+
+- (void)setTapItem:(void (^)(NSInteger))tapItem{
+    _tapItem = tapItem;
+    self.stageView.tapItem = tapItem;
+}
+
+
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
