@@ -17,6 +17,8 @@
 #import "THKSelectMaterialHomeVC.h"
 #import "THKNewcomerProcessVC.h"
 #import "TMUINavigationBarDemoListViewController.h"
+#import "TMUICycleCardView.h"
+#import "CycleCardCell.h"
 
 @interface ComponentViewController ()
 
@@ -38,89 +40,109 @@
 
 
 - (void)homelist{
-    id b1 =
-        [self createBtn]
-        .str(@"如何选材")
-        .onClick(^{
-            TRouter *router = [TRouter routerWithName:THKRouterPage_SelectMaterialCategoryDetail
-                                                param:@{@"mainCategoryId" : @4}
-                                       jumpController:self];
-            [[TRouterManager sharedManager] performRouter:router];
-        });
-    
-    id b2 =
-        [self createBtn]
-        .str(@"热门排行榜")
-        .onClick(^{
-            THKMaterialHotRankVM *vm = [[THKMaterialHotRankVM alloc] init];
-            THKMaterialHotRankVC *vc = [[THKMaterialHotRankVC alloc] initWithViewModel:vm];
-            [self.navigationController pushViewController:vc animated:YES];
-        });
-    
-    
-    id b3 =
-        [self createBtn]
-        .str(@"日记本")
-        .onClick(^{
-            THKDiaryBookVM *vm = [[THKDiaryBookVM alloc] init];
-            THKDiaryBookVC *vc = [[THKDiaryBookVC alloc] initWithViewModel:vm];
-            [self.navigationController pushViewController:vc animated:YES];
-        });
-    
-    id b4 =
-        [self createBtn]
-        .str(@"Tab组件")
-        .onClick(^{
-            DynamicTabDemoList *vc = [[DynamicTabDemoList alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        });
-    
-    id b5 =
-        [self createBtn]
-        .str(@"选材")
-        .onClick(^{
-            THKSelectMaterialHomeVM *vm = [[THKSelectMaterialHomeVM alloc] init];
-            THKSelectMaterialHomeVC *vc = [[THKSelectMaterialHomeVC alloc] initWithViewModel:vm];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        });
-    
-    id b6 =
-        [self createBtn]
-        .str(@"新人流程")
-        .onClick(^{
-            THKNewcomerProcessVM *vm = [[THKNewcomerProcessVM alloc] init];
-            THKNewcomerProcessVC *vc = [[THKNewcomerProcessVC alloc] initWithViewModel:vm];
-            [vc showInSomeRootVC:self];
-        });
-    
-    id b7 =
-        [self createBtn]
-        .str(@"展开Label")
-        .onClick(^{
-//            THKExpandLabelViewController *vc = [[THKExpandLabelViewController alloc] init];
+//    id b1 =
+//        [self createBtn]
+//        .str(@"如何选材")
+//        .onClick(^{
+//            TRouter *router = [TRouter routerWithName:THKRouterPage_SelectMaterialCategoryDetail
+//                                                param:@{@"mainCategoryId" : @4}
+//                                       jumpController:self];
+//            [[TRouterManager sharedManager] performRouter:router];
+//        });
+//    
+//    id b2 =
+//        [self createBtn]
+//        .str(@"热门排行榜")
+//        .onClick(^{
+//            THKMaterialHotRankVM *vm = [[THKMaterialHotRankVM alloc] init];
+//            THKMaterialHotRankVC *vc = [[THKMaterialHotRankVC alloc] initWithViewModel:vm];
 //            [self.navigationController pushViewController:vc animated:YES];
-        });
-    
-    id b8 =
-        [self createBtn]
-        .str(@"连击")
-        .onClick(^{
-            THKComboViewController *vc = [[THKComboViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        });
-    
-    id b9 =
-        [self createBtn]
-        .str(@"导航栏")
-        .onClick(^{
-            TMUINavigationBarDemoListViewController *vc = [[TMUINavigationBarDemoListViewController alloc] init];
-            [self.navigationController pushViewController:vc animated:YES];
-        });
-    
-    VerStack(b1,b2,b3,b4,b5,b6,b7,b8,b9)
-    .gap(10)
-    .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
+//        });
+//    
+//    
+//    id b3 =
+//        [self createBtn]
+//        .str(@"日记本")
+//        .onClick(^{
+//            THKDiaryBookVM *vm = [[THKDiaryBookVM alloc] init];
+//            THKDiaryBookVC *vc = [[THKDiaryBookVC alloc] initWithViewModel:vm];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//    
+//    id b4 =
+//        [self createBtn]
+//        .str(@"Tab组件")
+//        .onClick(^{
+//            DynamicTabDemoList *vc = [[DynamicTabDemoList alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//    
+//    id b5 =
+//        [self createBtn]
+//        .str(@"选材")
+//        .onClick(^{
+//            THKSelectMaterialHomeVM *vm = [[THKSelectMaterialHomeVM alloc] init];
+//            THKSelectMaterialHomeVC *vc = [[THKSelectMaterialHomeVC alloc] initWithViewModel:vm];
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//    
+//    id b6 =
+//        [self createBtn]
+//        .str(@"新人流程")
+//        .onClick(^{
+//            THKNewcomerProcessVM *vm = [[THKNewcomerProcessVM alloc] init];
+//            THKNewcomerProcessVC *vc = [[THKNewcomerProcessVC alloc] initWithViewModel:vm];
+//            [vc showInSomeRootVC:self];
+//        });
+//    
+//    id b7 =
+//        [self createBtn]
+//        .str(@"展开Label")
+//        .onClick(^{
+////            THKExpandLabelViewController *vc = [[THKExpandLabelViewController alloc] init];
+////            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//    
+//    id b8 =
+//        [self createBtn]
+//        .str(@"连击")
+//        .onClick(^{
+//            THKComboViewController *vc = [[THKComboViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//    
+//    id b9 =
+//        [self createBtn]
+//        .str(@"导航栏")
+//        .onClick(^{
+//            TMUINavigationBarDemoListViewController *vc = [[TMUINavigationBarDemoListViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+//        });
+//    
+//    VerStack(b1,b2,b3,b4,b5,b6,b7,b8,b9)
+//    .gap(10)
+//    .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
+//    
+//    
+//    GroupTV(
+//            Section(
+//                    Row.str(@"交互头部和菜单Tab").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
+//                        TRouter *router = [TRouter routerWithName:THKRouterPage_SelectMaterialCategoryDetail
+//                                                            param:@{@"mainCategoryId" : @4}
+//                                                   jumpController:self];
+//                        [[TRouterManager sharedManager] performRouter:router];
+//                    }),
+//                    Row.str(@"沉浸式交互Tab").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
+//                        THKMaterialHotRankVM *vm = [[THKMaterialHotRankVM alloc] init];
+//                        THKMaterialHotRankVC *vc = [[THKMaterialHotRankVC alloc] initWithViewModel:vm];
+//                        [self.navigationController pushViewController:vc animated:YES];
+//                    }),
+//                    Row.str(@"单Tab组件").fnt(18).detailStr(@"动态tab子VC").subtitleStyle.cellHeightAuto.onClick(^{
+//                        
+//                    }),
+//                    )
+//            ).header(@0.01).footer(@0.01).embedIn(self.view);
 }
 
 
@@ -177,6 +199,19 @@
         });
         
     }
+}
+
+- (void)cycleCard{
+    
+    TMUICycleCardView *cycle = [[TMUICycleCardView alloc] initWithFrame:CGRectMake(100, 200, 230, 155)];
+    [cycle registerCell:[CycleCardCell class]];
+    [self.view addSubview:cycle];
+    [cycle configCell:^(UICollectionViewCell * _Nonnull cell, NSIndexPath * _Nonnull indexPath, id  _Nonnull model) {
+        CycleCardCell *cardCell = (CycleCardCell *)cell;
+        cardCell.textLbl.text = model;
+    }];
+    // 设置数据
+    cycle.models = @[@"1",@"2",@"3"];
 }
 
 //CAAnimation *_anim;

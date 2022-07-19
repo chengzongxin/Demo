@@ -6,11 +6,8 @@
 //
 
 #import "TMUINavigationBarDemoListViewController.h"
-#import "TMUIFilterMenu.h"
 #import "TMUIFilterView.h"
 #import "THKCustomNavigationViewController.h"
-#import "TDSearchViewController.h"
-#import "TDFilterViewController.h"
 #import "TMUINavigationBarViewController.h"
 
 @interface TMUINavigationBarDemoListViewController ()
@@ -112,16 +109,4 @@
     .fixWH(TMUI_SCREEN_WIDTH - 40,44);
 }
 
-
-- (void)addMenu{
-    TMUIFilterMenu *menu = [[TMUIFilterMenu alloc] init];
-    [self.view addSubview:menu];
-    [menu mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(NavigationContentTop);
-        make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(60);
-    }];
-    
-    
-}
 @end
