@@ -6,15 +6,85 @@
 //
 
 #import "THKDecorationToDoHeaderView.h"
+#import "THKDecorationToDoStageView.h"
+
+
+@interface THKDecorationToDoHeaderView ()
+
+@property (nonatomic, strong) UILabel *titleLbl;
+
+@property (nonatomic, strong) UILabel *subtitleLbl;
+
+@property (nonatomic, strong) THKDecorationToDoStageView *stageView;
+
+@end
 
 @implementation THKDecorationToDoHeaderView
 
-//- (CGSize)intrinsicContentSize{
-//    return CGSizeMake(TMUI_SCREEN_WIDTH, 100);
-//}
-//
-//- (CGSize)sizeThatFits:(CGSize)size{
-//    return CGSizeMake(TMUI_SCREEN_WIDTH, 100);
-//}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupSubviews];
+    }
+    return self;
+}
+
+- (void)bindViewModel{
+    [super bindViewModel];
+    
+    [self.stageView bindViewModel:THKViewModel.new];
+}
+
+
+- (void)setupSubviews{
+    [self addSubview:self.titleLbl];
+    [self addSubview:self.subtitleLbl];
+    [self addSubview:self.stageView];
+    
+    [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(10);
+        make.left.mas_equalTo(10);
+    }];
+    
+    [self.subtitleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLbl.mas_bottom).offset(20);
+        make.left.mas_equalTo(10);
+    }];
+    
+    [self.stageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.subtitleLbl.mas_bottom).offset(20);
+        make.left.right.mas_equalTo(0);
+        make.height.mas_equalTo(50);
+        make.bottom.mas_equalTo(0);
+    }];
+}
+
+- (UILabel *)titleLbl{
+    if (!_titleLbl) {
+        _titleLbl = [[UILabel alloc] init];
+        _titleLbl.text = @"Section一级标题";
+    }
+    return _titleLbl;
+}
+
+- (UILabel *)subtitleLbl{
+    if (!_subtitleLbl) {
+        _subtitleLbl = [[UILabel alloc] init];
+        _subtitleLbl.text = @"Section二级标题";
+        
+    }
+    return _subtitleLbl;
+}
+
+
+- (THKDecorationToDoStageView *)stageView{
+    if (!_stageView) {
+        _stageView = [[THKDecorationToDoStageView alloc] init];
+    }
+    return _stageView;
+}
+
 
 @end
