@@ -98,7 +98,7 @@
 //    return fitSize;
 //}
 
-- (void)setModel:(NSArray<THKDecorationToDoSection *> *)model{
+- (void)setModel:(NSArray<THKDecorationUpcomingModel *> *)model{
     _model = model;
     
     [self.collectionView reloadData];

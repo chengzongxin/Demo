@@ -55,10 +55,14 @@
     [super bindViewModel];
     
     @weakify(self);
-    [[RACObserve(self.viewModel, sections) ignore:nil] subscribeNext:^(id  _Nullable x) {
+    [[RACObserve(self.viewModel, stageList) ignore:nil] subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         THKDecorationToDoHeaderViewModel *headerVM = [[THKDecorationToDoHeaderViewModel alloc] initWithModel:x];
         [self.headerView bindViewModel:headerVM];
+    }];
+    
+    [[RACObserve(self.viewModel, upcomingList) ignore:nil] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
         [self.tableView reloadData];
     }];
     
@@ -77,7 +81,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     THKDecorationToDoSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(THKDecorationToDoSectionHeaderView.class)];
-    THKDecorationToDoSection *sectionModel = self.viewModel.sections[section];
+    THKDecorationUpcomingListModel *sectionModel = self.viewModel.upcomingList[section];
     headerView.model = sectionModel;
     
     headerView.tapSection = ^(UIButton * _Nonnull btn) {
@@ -88,16 +92,16 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.sections.count;
+    return self.viewModel.upcomingList.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.viewModel.sections[section].isOpen ? self.viewModel.sections[section].items.count : 0;
+    return self.viewModel.upcomingList[section].isOpen ? self.viewModel.upcomingList[section].childList.count : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     THKDecorationToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKDecorationToDoCell.class) forIndexPath:indexPath];
-    THKDecorationToDoItem *model =self.viewModel.sections[indexPath.section].items[indexPath.item];
+    THKDecorationUpcomingChildListModel *model =self.viewModel.upcomingList[indexPath.section].childList[indexPath.item];
     cell.model = model;
     return cell;
 }
@@ -214,7 +218,7 @@
 
 - (THKDecorationToDoHeaderView *)headerView{
     if (!_headerView) {
-        _headerView = [[THKDecorationToDoHeaderView alloc] initWithViewModel:THKDecorationToDoHeaderViewModel.new];
+        _headerView = [[THKDecorationToDoHeaderView alloc] init];
         _headerView.frame = CGRectMake(0, -kHeaderViewH, TMUI_SCREEN_WIDTH, kHeaderViewH);
         _headerView.backgroundColor = UIColor.orangeColor;
         @weakify(self);

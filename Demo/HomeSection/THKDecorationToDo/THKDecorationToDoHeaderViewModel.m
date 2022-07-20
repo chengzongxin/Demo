@@ -9,7 +9,7 @@
 
 @interface THKDecorationToDoHeaderViewModel ()
 
-@property (nonatomic, strong, readwrite) NSArray <THKDecorationToDoSection *>*model;
+@property (nonatomic, strong, readwrite) NSArray <THKDecorationUpcomingModel *>*model;
 
 
 @end

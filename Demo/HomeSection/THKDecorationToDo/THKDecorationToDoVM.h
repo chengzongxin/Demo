@@ -13,7 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoVM : THKStateMechanismsViewModel
 
-@property (nonatomic, copy, readonly) NSArray <THKDecorationToDoSection *>*sections;
+//@property (nonatomic, copy, readonly) NSArray <THKDecorationToDoSection *>*sections;
+
+@property (nonatomic, copy, readonly) NSArray <THKDecorationUpcomingModel *> *stageList;
+
+@property (nonatomic, copy, readonly) NSArray <THKDecorationUpcomingListModel *> *upcomingList;
 
 @property (nonatomic, strong ,readonly) RACSubject *emptySignal;
 

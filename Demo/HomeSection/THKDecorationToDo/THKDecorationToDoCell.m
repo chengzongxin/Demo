@@ -71,11 +71,11 @@
     }];
 }
 
-- (void)setModel:(THKDecorationToDoItem *)model{
+- (void)setModel:(THKDecorationUpcomingChildListModel *)model{
     _model = model;
     
-    _titleLbl.text = model.title;
-    _subtitleLbl.text = model.subtitle;
+    _titleLbl.text = model.childName;
+    _subtitleLbl.text = model.strategyTitle;
 }
 
 

@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoCell : UITableViewCell
 
-@property (nonatomic, strong) THKDecorationToDoItem *model;
+@property (nonatomic, strong) THKDecorationUpcomingChildListModel *model;
 
 @end
 

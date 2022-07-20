@@ -47,7 +47,7 @@
     !_tapSection?:_tapSection(btn);
 }
 
-- (void)setModel:(THKDecorationToDoSection *)model{
+- (void)setModel:(THKDecorationUpcomingListModel *)model{
     _model = model;
     
     if (model.isOpen) {
@@ -55,8 +55,8 @@
     }else{
         self.arrowBtn.tmui_image = UIImageMake(@"caret");
     }
-    _titleLbl.text = model.stageName;
-    _subtitleLbl.text = @(model.isOpen).stringValue;
+    _titleLbl.text = model.mainName;
+    _subtitleLbl.text = model.mainDesc;
 }
 
 

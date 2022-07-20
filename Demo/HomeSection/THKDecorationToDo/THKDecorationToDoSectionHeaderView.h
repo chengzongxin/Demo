@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void (^tapSection)(UIButton *btn);
 
-@property (nonatomic, strong) THKDecorationToDoSection *model;
+@property (nonatomic, strong) THKDecorationUpcomingListModel *model;
 
 @end
 

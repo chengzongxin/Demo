@@ -6,10 +6,13 @@
 //
 
 #import "THKResponse.h"
-
+#import "THKDecorationToDoModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationUpcomingListResponse : THKResponse
+
+@property (nonatomic, strong) NSArray <THKDecorationUpcomingModel *> *data;
+
 
 @end
 

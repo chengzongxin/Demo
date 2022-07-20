@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoHeaderViewModel : THKViewModel
 
-@property (nonatomic, strong, readonly) NSArray <THKDecorationToDoSection *> *model;
+@property (nonatomic, strong, readonly) NSArray <THKDecorationUpcomingModel *> *model;
 
 @end
 

@@ -11,14 +11,16 @@
 
 @interface THKDecorationToDoVM ()
 
-@property (nonatomic, copy) NSArray <THKDecorationToDoSection *>*sections;
 
+@property (nonatomic, copy) NSArray <THKDecorationUpcomingModel *> *stageList;
 
-@property (nonatomic, strong ,readwrite) RACSubject *emptySignal;
+@property (nonatomic, copy) NSArray <THKDecorationUpcomingListModel *> *upcomingList;
 
-@property (nonatomic, strong, readwrite) RACSubject *nodataSignal;
+@property (nonatomic, strong) RACSubject *emptySignal;
 
-@property (nonatomic, strong, readwrite) THKRequestCommand *editCommand;
+@property (nonatomic, strong) RACSubject *nodataSignal;
+
+@property (nonatomic, strong) THKRequestCommand *editCommand;
 //
 //@property (nonatomic, strong, readwrite) THKRequestCommand *listCommand;
 
@@ -34,25 +36,35 @@
     self.nodataSignal = RACSubject.subject;
     
     @weakify(self);
-    [self.requestCommand.nextSignal subscribeNext:^(id  _Nullable x) {
+    [self.requestCommand.nextSignal subscribeNext:^(THKDecorationUpcomingListResponse *  _Nullable x) {
         @strongify(self);
         
-        NSMutableArray <THKDecorationToDoSection *>*sections = [NSMutableArray array];
+        self.stageList = x.data;
+        NSMutableArray <THKDecorationUpcomingListModel *>*upcomingList = [NSMutableArray array];
         
-        for (int i = 0; i < 8; i++) {
-            THKDecorationToDoSection *section = [[THKDecorationToDoSection alloc] init];
-            NSMutableArray *items = [NSMutableArray array];
-            for (int j = 0; j < 10; j++) {
-                THKDecorationToDoItem *item = [[THKDecorationToDoItem alloc] init];
-                item.title = [NSString stringWithFormat:@"二级阶段-%d",j];
-                item.subtitle = [NSString stringWithFormat:@"阶段描述-%d",j];
-                [items addObject:item];
-            }
-            section.stageName = [NSString stringWithFormat:@"阶段%d",i];
-            section.items = items;
-            [sections addObject:section];
-        }
-        self.sections = sections;
+        [self.stageList enumerateObjectsUsingBlock:^(THKDecorationUpcomingModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [upcomingList addObjectsFromArray:obj.upcomingList];
+        }];
+        
+        self.upcomingList = upcomingList;
+        
+        
+//        NSMutableArray <THKDecorationToDoSection *>*sections = [NSMutableArray array];
+//
+//        for (int i = 0; i < 8; i++) {
+//            THKDecorationToDoSection *section = [[THKDecorationToDoSection alloc] init];
+//            NSMutableArray *items = [NSMutableArray array];
+//            for (int j = 0; j < 10; j++) {
+//                THKDecorationToDoItem *item = [[THKDecorationToDoItem alloc] init];
+//                item.title = [NSString stringWithFormat:@"二级阶段-%d",j];
+//                item.subtitle = [NSString stringWithFormat:@"阶段描述-%d",j];
+//                [items addObject:item];
+//            }
+//            section.stageName = [NSString stringWithFormat:@"阶段%d",i];
+//            section.items = items;
+//            [sections addObject:section];
+//        }
+//        self.sections = sections;
     }];
     
     [self.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {

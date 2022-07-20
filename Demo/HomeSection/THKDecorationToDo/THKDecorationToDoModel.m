@@ -7,14 +7,34 @@
 
 #import "THKDecorationToDoModel.h"
 
-@implementation THKDecorationToDoModel
+//@implementation THKDecorationToDoModel
+//
+//@end
+//
+//@implementation THKDecorationToDoItem
+//
+//@end
+//
+//@implementation THKDecorationToDoSection
+//
+//@end
+
+
+
+@implementation THKDecorationUpcomingChildListModel
 
 @end
 
-@implementation THKDecorationToDoItem
-
+@implementation THKDecorationUpcomingListModel
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"childList":THKDecorationUpcomingChildListModel.class};
+}
 @end
 
-@implementation THKDecorationToDoSection
+@implementation THKDecorationUpcomingModel
+
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"upcomingList":THKDecorationUpcomingListModel.class};
+}
 
 @end
