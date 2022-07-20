@@ -59,7 +59,7 @@
     [self.stageView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(self.subtitleLbl.mas_bottom).offset(20);
         make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(80);
         make.bottom.mas_equalTo(0);
     }];
 }
@@ -68,6 +68,10 @@
 - (void)setTapItem:(void (^)(NSInteger))tapItem{
     _tapItem = tapItem;
     self.stageView.tapItem = tapItem;
+}
+
+- (void)setSelectIndex:(NSInteger)selectIndex{
+    self.stageView.selectIndex = selectIndex;
 }
 
 

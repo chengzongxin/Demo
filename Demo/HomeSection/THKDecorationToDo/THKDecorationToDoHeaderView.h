@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) THKDecorationToDoHeaderViewModel *viewModel;
 
 @property (nonatomic, copy) void (^tapItem)(NSInteger index);
+
+@property (nonatomic, assign) NSInteger selectIndex;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -13,7 +13,7 @@
 #import "THKPageBGScrollView.h"
 #import "THKDynamicTabsProtocol.h"
 
-#define kStageMenuH 50
+#define kStageMenuH 80
 #define kStageSectionHeaderH 88
 #define kHeaderViewH 300
 
@@ -103,6 +103,27 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 64;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    NSLog(@"%@",self.tableView.indexPathsForVisibleRows);
+//    if (self.tableView.indexPathsForVisibleRows.count) {
+//        self.headerView.selectIndex = self.tableView.indexPathsForVisibleRows.firstObject.section;
+//    }
+    
+    CGFloat y = scrollView.contentOffset.y;
+    int firstSection = -1;
+    for (int i = 0; i < self.tableView.numberOfSections; i++) {
+        CGFloat sectionY = [self.tableView rectForSection:i].origin.y;
+        if (sectionY > y) {
+            firstSection = i;
+            break;
+        }
+    }
+    
+    if (firstSection != -1) {
+        self.headerView.selectIndex = firstSection;
+    }
 }
 
 

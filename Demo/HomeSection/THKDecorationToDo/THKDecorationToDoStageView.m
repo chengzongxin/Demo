@@ -33,11 +33,20 @@
     }];
 }
 
+- (void)setSelected:(BOOL)selected{
+    [super setSelected:selected];
+    
+    if (selected) {
+        self.backgroundColor = UIColor.tmui_randomColor;
+    }else{
+        self.backgroundColor = UIColor.whiteColor;
+    }
+}
+
 
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
-        _titleLbl.text = @"Section一级标题";
     }
     return _titleLbl;
 }
@@ -95,6 +104,12 @@
     [self.collectionView reloadData];
 }
 
+- (void)setSelectIndex:(NSInteger)selectIndex{
+    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:selectIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+//    THKDecorationToDoStageCell *cell = (THKDecorationToDoStageCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:selectIndex inSection:0]];
+//    cell.backgroundColor = UIColor.tmui_randomColor;
+}
+
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -102,14 +117,14 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(50, 50);
+    return CGSizeMake(100, 80);
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     THKDecorationToDoStageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKDecorationToDoStageCell class])
                                                                            forIndexPath:indexPath];
-    cell.backgroundColor = UIColor.tmui_randomColor;
+//    cell.backgroundColor = UIColor.tmui_randomColor;
     cell.titleLbl.text = self.model[indexPath.item].stageName;
     return cell;
 }
