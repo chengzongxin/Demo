@@ -51,9 +51,9 @@
     _model = model;
     
     if (model.isOpen) {
-        self.arrowBtn.tmui_image = UIImageMake(@"caret_open");
+        self.arrowBtn.tmui_image = UIImageMake(@"dec_todo_open");
     }else{
-        self.arrowBtn.tmui_image = UIImageMake(@"caret");
+        self.arrowBtn.tmui_image = UIImageMake(@"dec_todo_close");
     }
     _titleLbl.text = model.mainName;
     _subtitleLbl.text = model.mainDesc;

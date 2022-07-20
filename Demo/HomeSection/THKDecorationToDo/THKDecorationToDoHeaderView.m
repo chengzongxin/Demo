@@ -13,6 +13,10 @@
 
 @property (nonatomic, strong) THKDecorationToDoHeaderViewModel *viewModel;
 
+@property (nonatomic, strong) UIImageView *bgImgV;
+
+@property (nonatomic, strong) UIImageView *titleImgV;
+
 @property (nonatomic, strong) UILabel *titleLbl;
 
 @property (nonatomic, strong) UILabel *subtitleLbl;
@@ -42,25 +46,30 @@
 
 
 - (void)setupSubviews{
-    [self addSubview:self.titleLbl];
+    self.backgroundColor = UIColorHex(F6F8F6);
+    [self addSubview:self.bgImgV];
+    [self addSubview:self.titleImgV];
     [self addSubview:self.subtitleLbl];
     [self addSubview:self.stageView];
     
-    [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(10);
-        make.left.mas_equalTo(10);
+    [self.bgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(self);
+    }];
+    
+    [self.titleImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(106);
+        make.left.mas_equalTo(30);
     }];
     
     [self.subtitleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLbl.mas_bottom).offset(20);
-        make.left.mas_equalTo(10);
+        make.top.equalTo(self.titleImgV.mas_bottom).offset(10);
+        make.left.mas_equalTo(30);
     }];
     
     [self.stageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.subtitleLbl.mas_bottom).offset(20);
         make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(80);
-        make.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(62);
+        make.bottom.mas_equalTo(-15);
     }];
 }
 
@@ -74,19 +83,33 @@
     self.stageView.selectIndex = selectIndex;
 }
 
-
-- (UILabel *)titleLbl{
-    if (!_titleLbl) {
-        _titleLbl = [[UILabel alloc] init];
-        _titleLbl.text = @"Section一级标题";
+- (UIImageView *)bgImgV{
+    if (!_bgImgV) {
+        _bgImgV = [[UIImageView alloc] initWithImage:UIImageMake(@"dec_todo_headbg")];
     }
-    return _titleLbl;
+    return _bgImgV;
 }
+
+- (UIImageView *)titleImgV{
+    if (!_titleImgV) {
+        _titleImgV = [[UIImageView alloc] initWithImage:UIImageMake(@"dec_todo_title")];
+    }
+    return _titleImgV;
+}
+
+//- (UILabel *)titleLbl{
+//    if (!_titleLbl) {
+//        _titleLbl = [[UILabel alloc] init];
+//    }
+//    return _titleLbl;
+//}
 
 - (UILabel *)subtitleLbl{
     if (!_subtitleLbl) {
         _subtitleLbl = [[UILabel alloc] init];
-        _subtitleLbl.text = @"Section二级标题";
+        _subtitleLbl.text = @"帮你快速了解装修全流程～";
+        _subtitleLbl.textColor = UIColorPlaceholder;
+        _subtitleLbl.font = UIFont(14);
         
     }
     return _subtitleLbl;

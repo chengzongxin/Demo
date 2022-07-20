@@ -13,9 +13,9 @@
 #import "THKPageBGScrollView.h"
 #import "THKDynamicTabsProtocol.h"
 
-#define kStageMenuH 80
+#define kStageMenuH 62
 #define kStageSectionHeaderH 88
-#define kHeaderViewH 300
+#define kHeaderViewH 292
 
 @interface THKDecorationToDoVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsProtocol>
 
@@ -42,6 +42,7 @@
     
     self.thk_title = @"装修待办";
     self.thk_navBar.backgroundColor = UIColorClear;
+    self.thk_navBar.titleLbl.hidden = YES;
     self.view.backgroundColor = UIColorWhite;
     
     [self.view addSubview:self.wrapperScrollView];
@@ -115,10 +116,6 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    NSLog(@"%@",self.tableView.indexPathsForVisibleRows);
-//    if (self.tableView.indexPathsForVisibleRows.count) {
-//        self.headerView.selectIndex = self.tableView.indexPathsForVisibleRows.firstObject.section;
-//    }
     if (self.isScrolling) {
         return;
     }
@@ -138,8 +135,7 @@
     }
 }
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
     if (scrollView == self.tableView) {
         self.isScrolling = NO; // 还原主动执行选择的操作标志
     }
@@ -148,31 +144,10 @@
 #pragma mark - Private
 - (void)scrollToSection:(NSInteger)section{
     self.isScrolling = YES;
-//    [UIView beginAnimations:@"myAnimationId" context:nil];
-//    // Set duration here
-//    [UIView setAnimationDuration:0.2];
-//    [CATransaction begin];
-//    [CATransaction setCompletionBlock:complete];
-//
-//    [tableView beginUpdates];
-//    // my table changes
-//    scrollBlock();
-//    [tableView endUpdates];
-//
-//    [CATransaction commit];
-//    [UIView commitAnimations];
     
     CGPoint point = [self.tableView rectForHeaderInSection:section].origin;
     if (self.wrapperScrollView.pin) {
-        
-//        [UIView animateWithDuration:0.25 animations:^{
-                    
-            [self.tableView setContentOffset:point animated:YES];
-//                } completion:^(BOOL finished) {
-//
-//                    self.isScrolling = NO;
-//                }];
-        
+        [self.tableView setContentOffset:point animated:YES];
     }else{
         [self.wrapperScrollView setContentOffset:CGPointZero animated:YES];
         // 这里要先设置，吸顶pin，否则内部会阻拦手动滑动事件
@@ -220,7 +195,6 @@
     if (!_headerView) {
         _headerView = [[THKDecorationToDoHeaderView alloc] init];
         _headerView.frame = CGRectMake(0, -kHeaderViewH, TMUI_SCREEN_WIDTH, kHeaderViewH);
-        _headerView.backgroundColor = UIColor.orangeColor;
         @weakify(self);
         _headerView.tapItem = ^(NSInteger index) {
             @strongify(self);

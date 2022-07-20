@@ -9,6 +9,8 @@
 
 @interface THKDecorationToDoStageCell : UICollectionViewCell
 
+@property (nonatomic, strong) UIView *containerView;
+
 @property (nonatomic, strong) UILabel *titleLbl;
 
 @end
@@ -26,10 +28,16 @@
 }
 
 - (void)setupSubviews{
-    [self addSubview:self.titleLbl];
+    [self.contentView addSubview:self.containerView];
+    [self.containerView addSubview:self.titleLbl];
+    
+    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.contentView);
+    }];
     
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.bottom.mas_equalTo(0);
+        make.left.right.mas_equalTo(0);
+        make.bottom.mas_equalTo(-9);
     }];
 }
 
@@ -37,16 +45,27 @@
     [super setSelected:selected];
     
     if (selected) {
-        self.backgroundColor = UIColor.tmui_randomColor;
+        self.containerView.backgroundColor = UIColorMain;
+        self.titleLbl.textColor = UIColorWhite;
     }else{
-        self.backgroundColor = UIColor.whiteColor;
+        self.containerView.backgroundColor = UIColorWhite;
+        self.titleLbl.textColor = UIColorPlaceholder;
     }
 }
 
+- (UIView *)containerView{
+    if (!_containerView) {
+        _containerView = [[UIView alloc] init];
+        _containerView.cornerRadius = 12;
+    }
+    return _containerView;
+}
 
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
+        _titleLbl.textAlignment = NSTextAlignmentCenter;
+        _titleLbl.font = UIFont(14);
     }
     return _titleLbl;
 }
@@ -67,6 +86,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.selectIndex = -1;
         [self setupSubviews];
     }
     return self;
@@ -102,6 +122,8 @@
     _model = model;
     
     [self.collectionView reloadData];
+    
+    self.selectIndex = 0;
 }
 
 - (void)setSelectIndex:(NSInteger)selectIndex{
@@ -121,7 +143,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(100, 80);
+    return CGSizeMake(92, 62);
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -149,6 +171,7 @@
         _collectionView.pagingEnabled = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
         [_collectionView registerClass:[THKDecorationToDoStageCell class]
             forCellWithReuseIdentifier:NSStringFromClass([THKDecorationToDoStageCell class])];
     }
@@ -160,8 +183,8 @@
     if (!_flowLayout) {
         _flowLayout = [[UICollectionViewFlowLayout alloc] init];
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _flowLayout.minimumInteritemSpacing = 10;
-        _flowLayout.minimumLineSpacing = 10;
+        _flowLayout.minimumInteritemSpacing = 0;
+        _flowLayout.minimumLineSpacing = 12;
     }
     return _flowLayout;
 }
