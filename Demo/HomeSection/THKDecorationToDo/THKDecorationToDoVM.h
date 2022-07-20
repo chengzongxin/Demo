@@ -15,6 +15,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) NSArray <THKDecorationToDoSection *>*sections;
 
+@property (nonatomic, strong ,readonly) RACSubject *emptySignal;
+
+@property (nonatomic, strong, readonly) RACSubject *nodataSignal;
+
+@property (nonatomic, strong, readonly) THKRequestCommand *editCommand;
+//
+//@property (nonatomic, strong, readonly) THKRequestCommand *listCommand;
+
 @end
 
 NS_ASSUME_NONNULL_END

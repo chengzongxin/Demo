@@ -63,6 +63,9 @@
     }];
     
     [self.viewModel.requestCommand execute:nil];
+    
+//    [self.viewModel.stageCommand execute:nil];
+//    [self.viewModel.listCommand execute:nil];
 }
 
 

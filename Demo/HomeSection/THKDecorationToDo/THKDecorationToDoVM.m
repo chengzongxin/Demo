@@ -6,10 +6,21 @@
 //
 
 #import "THKDecorationToDoVM.h"
-#import "THKMaterialHotListRequest.h"
+#import "THKDecorationUpcomingListRequest.h"
+#import "THKDecorationUpcomingEditRequest.h"
+
 @interface THKDecorationToDoVM ()
 
 @property (nonatomic, copy) NSArray <THKDecorationToDoSection *>*sections;
+
+
+@property (nonatomic, strong ,readwrite) RACSubject *emptySignal;
+
+@property (nonatomic, strong, readwrite) RACSubject *nodataSignal;
+
+@property (nonatomic, strong, readwrite) THKRequestCommand *editCommand;
+//
+//@property (nonatomic, strong, readwrite) THKRequestCommand *listCommand;
 
 @end
 
@@ -18,6 +29,9 @@
 
 - (void)initialize{
     [super initialize];
+    
+    self.emptySignal = RACSubject.subject;
+    self.nodataSignal = RACSubject.subject;
     
     @weakify(self);
     [self.requestCommand.nextSignal subscribeNext:^(id  _Nullable x) {
@@ -39,19 +53,52 @@
             [sections addObject:section];
         }
         self.sections = sections;
-        
-        
-        
-        
     }];
+    
+    [self.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.emptySignal sendNext:nil];
+    }];
+    
+    
+//    [self.stageCommand.nextSignal subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"%@",x);
+//    }];
+    
+//    [self.listCommand.nextSignal subscribeNext:^(id  _Nullable x) {
+//        NSLog(@"%@",x);
+//    }];
+    
 }
 
 - (THKBaseRequest *)requestWithInput:(id)input{
-    THKMaterialHotListRequest *request = [[THKMaterialHotListRequest alloc] init];
-    request.page = 1;
-    request.size = 10;
+    THKDecorationUpcomingListRequest *request = [[THKDecorationUpcomingListRequest alloc] init];
     return request;
 }
 
+
+
+- (THKRequestCommand *)editCommand{
+    if (!_editCommand) {
+        _editCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
+            THKDecorationUpcomingEditRequest *request = [[THKDecorationUpcomingEditRequest alloc] init];
+            RACTupleUnpack(NSNumber *childId,NSString *todoStatus) = input;
+            request.childId = childId.integerValue;
+            request.todoStatus = todoStatus;
+            return request;
+        }];
+    }
+    return _editCommand;
+}
+
+
+//- (THKRequestCommand *)listCommand{
+//    if (!_listCommand) {
+//        _listCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
+//            return THKDecorationUpcomingListRequest.new;
+//        }];
+//    }
+//    return _listCommand;
+//}
 
 @end

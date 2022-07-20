@@ -26,7 +26,7 @@
         self.version = @"2.5";
         self.uid = 172176109;
         self.to8to_token = @"vBM5Pe1cQUgQyLkMSR8Dm8Qg9OOpHLLSLJbg-qoVY7xZP7moUuqPk0d3eTeAEuEf2ExBtV7tOc1-eP9r5mEJQlwQivw3yrR3WkSSR3QXtVvxRGJw9eNOk5pPc6CDHaFA";
-        self.appversion = @"9.11.0";
+        self.appversion = @"9.26.0";
         self.systemversion = [[UIDevice currentDevice] systemVersion];
         self.channel = @"appstore";
         self.idfa = @"00000000-0000-0000-0000-000000000000";
