@@ -108,11 +108,15 @@
 
 #pragma mark - Private
 - (void)scrollToSection:(NSInteger)section{
-    // 这里要先设置，吸顶pin，否则内部会阻拦手动滑动事件
-    [self.wrapperScrollView tmui_setValue:@1 forKey:@"pin"];;
     CGPoint point = [self.tableView rectForHeaderInSection:section].origin;
-    [self.tableView setContentOffset:point animated:YES];
-//    [self.tableView scrollToRow:0 inSection:section atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    if (self.wrapperScrollView.pin) {
+        [self.tableView setContentOffset:point animated:YES];
+    }else{
+        [self.wrapperScrollView setContentOffset:CGPointZero animated:YES];
+        // 这里要先设置，吸顶pin，否则内部会阻拦手动滑动事件
+        [self.wrapperScrollView tmui_setValue:@1 forKey:@"pin"];
+        [self.tableView setContentOffset:point animated:NO];
+    }
 }
 
 #pragma mark - getter
