@@ -27,6 +27,8 @@
 
 @property (nonatomic, strong) THKDecorationToDoHeaderView *headerView;
 
+@property (nonatomic, assign) BOOL isScrolling;
+
 
 
 @end
@@ -110,6 +112,9 @@
 //    if (self.tableView.indexPathsForVisibleRows.count) {
 //        self.headerView.selectIndex = self.tableView.indexPathsForVisibleRows.firstObject.section;
 //    }
+    if (self.isScrolling) {
+        return;
+    }
     
     CGFloat y = scrollView.contentOffset.y;
     int firstSection = -1;
@@ -126,12 +131,41 @@
     }
 }
 
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    if (scrollView == self.tableView) {
+        self.isScrolling = NO; // 还原主动执行选择的操作标志
+    }
+}
 
 #pragma mark - Private
 - (void)scrollToSection:(NSInteger)section{
+    self.isScrolling = YES;
+//    [UIView beginAnimations:@"myAnimationId" context:nil];
+//    // Set duration here
+//    [UIView setAnimationDuration:0.2];
+//    [CATransaction begin];
+//    [CATransaction setCompletionBlock:complete];
+//
+//    [tableView beginUpdates];
+//    // my table changes
+//    scrollBlock();
+//    [tableView endUpdates];
+//
+//    [CATransaction commit];
+//    [UIView commitAnimations];
+    
     CGPoint point = [self.tableView rectForHeaderInSection:section].origin;
     if (self.wrapperScrollView.pin) {
-        [self.tableView setContentOffset:point animated:YES];
+        
+//        [UIView animateWithDuration:0.25 animations:^{
+                    
+            [self.tableView setContentOffset:point animated:YES];
+//                } completion:^(BOOL finished) {
+//
+//                    self.isScrolling = NO;
+//                }];
+        
     }else{
         [self.wrapperScrollView setContentOffset:CGPointZero animated:YES];
         // 这里要先设置，吸顶pin，否则内部会阻拦手动滑动事件

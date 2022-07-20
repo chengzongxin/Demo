@@ -105,6 +105,10 @@
 }
 
 - (void)setSelectIndex:(NSInteger)selectIndex{
+    if (_selectIndex == selectIndex) {
+        return;
+    }
+    _selectIndex = selectIndex;
     [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:selectIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 //    THKDecorationToDoStageCell *cell = (THKDecorationToDoStageCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:selectIndex inSection:0]];
 //    cell.backgroundColor = UIColor.tmui_randomColor;
