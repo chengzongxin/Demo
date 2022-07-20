@@ -13,6 +13,9 @@
 #import "THKPageBGScrollView.h"
 #import "THKDynamicTabsProtocol.h"
 
+#define kStageMenuH 50
+#define kStageSectionHeaderH 88
+#define kHeaderViewH 300
 
 @interface THKDecorationToDoVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsProtocol>
 
@@ -52,6 +55,8 @@
     @weakify(self);
     [[RACObserve(self.viewModel, sections) ignore:nil] subscribeNext:^(id  _Nullable x) {
         @strongify(self);
+        THKDecorationToDoHeaderViewModel *headerVM = [[THKDecorationToDoHeaderViewModel alloc] initWithModel:x];
+        [self.headerView bindViewModel:headerVM];
         [self.tableView reloadData];
     }];
     
@@ -68,11 +73,8 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     THKDecorationToDoSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(THKDecorationToDoSectionHeaderView.class)];
     THKDecorationToDoSection *sectionModel = self.viewModel.sections[section];
-    if (sectionModel.isOpen) {
-        headerView.arrowBtn.tmui_image = UIImageMake(@"caret_open");
-    }else{
-        headerView.arrowBtn.tmui_image = UIImageMake(@"caret");
-    }
+    headerView.model = sectionModel;
+    
     headerView.tapSection = ^(UIButton * _Nonnull btn) {
         sectionModel.isOpen = !sectionModel.isOpen;
         [tableView reloadSection:section withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -89,7 +91,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKDecorationToDoCell.class) forIndexPath:indexPath];
+    THKDecorationToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKDecorationToDoCell.class) forIndexPath:indexPath];
+    THKDecorationToDoItem *model =self.viewModel.sections[indexPath.section].items[indexPath.item];
+    cell.model = model;
     return cell;
 }
 
@@ -116,9 +120,9 @@
 - (THKDynamicTabsWrapperScrollView *)wrapperScrollView{
     if (!_wrapperScrollView) {
         _wrapperScrollView = [[THKDynamicTabsWrapperScrollView alloc] initWithFrame:self.view.bounds];
-        _wrapperScrollView.contentInset = UIEdgeInsetsMake(300, 0, 0, 0);
-        _wrapperScrollView.lockArea = tmui_navigationBarHeight()+50;
-        _wrapperScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH, 200 + self.view.height);
+        _wrapperScrollView.contentInset = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
+        _wrapperScrollView.lockArea = tmui_navigationBarHeight() + kStageMenuH;
+        _wrapperScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH, kHeaderViewH + self.view.height);
         if (@available(iOS 11.0, *)) {
             _wrapperScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
@@ -130,7 +134,7 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, TMUI_SCREEN_HEIGHT - tmui_navigationBarHeight() - kStageMenuH) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0.0;
@@ -138,6 +142,7 @@
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
+        _tableView.contentInset = UIEdgeInsetsMake(0, 0, _tableView.height - kStageSectionHeaderH, 0);
         [_tableView registerClass:THKDecorationToDoCell.class forCellReuseIdentifier:NSStringFromClass(THKDecorationToDoCell.class)];
         [_tableView registerClass:THKDecorationToDoSectionHeaderView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(THKDecorationToDoSectionHeaderView.class)];
         
@@ -148,7 +153,7 @@
 - (THKDecorationToDoHeaderView *)headerView{
     if (!_headerView) {
         _headerView = [[THKDecorationToDoHeaderView alloc] initWithViewModel:THKDecorationToDoHeaderViewModel.new];
-        _headerView.frame = CGRectMake(0, -300, TMUI_SCREEN_WIDTH, 300);
+        _headerView.frame = CGRectMake(0, -kHeaderViewH, TMUI_SCREEN_WIDTH, kHeaderViewH);
         _headerView.backgroundColor = UIColor.orangeColor;
         @weakify(self);
         _headerView.tapItem = ^(NSInteger index) {

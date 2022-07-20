@@ -11,6 +11,8 @@
 
 @interface THKDecorationToDoHeaderView ()
 
+@property (nonatomic, strong) THKDecorationToDoHeaderViewModel *viewModel;
+
 @property (nonatomic, strong) UILabel *titleLbl;
 
 @property (nonatomic, strong) UILabel *subtitleLbl;
@@ -20,7 +22,7 @@
 @end
 
 @implementation THKDecorationToDoHeaderView
-
+@dynamic viewModel;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -34,7 +36,8 @@
 - (void)bindViewModel{
     [super bindViewModel];
     
-    [self.stageView bindViewModel:THKViewModel.new];
+//    [self.stageView bindWithModel:self.viewModel.model];
+    self.stageView.model = self.viewModel.model;
 }
 
 

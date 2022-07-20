@@ -47,11 +47,22 @@
     !_tapSection?:_tapSection(btn);
 }
 
+- (void)setModel:(THKDecorationToDoSection *)model{
+    _model = model;
+    
+    if (model.isOpen) {
+        self.arrowBtn.tmui_image = UIImageMake(@"caret_open");
+    }else{
+        self.arrowBtn.tmui_image = UIImageMake(@"caret");
+    }
+    _titleLbl.text = model.stageName;
+    _subtitleLbl.text = @(model.isOpen).stringValue;
+}
+
 
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
-        _titleLbl.text = @"Section一级标题";
     }
     return _titleLbl;
 }
@@ -59,7 +70,6 @@
 - (UILabel *)subtitleLbl{
     if (!_subtitleLbl) {
         _subtitleLbl = [[UILabel alloc] init];
-        _subtitleLbl.text = @"Section二级标题";
         
     }
     return _subtitleLbl;

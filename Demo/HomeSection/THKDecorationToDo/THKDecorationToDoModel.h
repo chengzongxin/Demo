@@ -15,11 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoItem : NSObject
 
+@property (nonatomic, copy) NSString *title;
+
+@property (nonatomic, copy) NSString *subtitle;
+
 @end
 
 @interface THKDecorationToDoSection : NSObject
 
 @property (nonatomic, copy) NSArray <THKDecorationToDoItem *>*items;
+
+@property (nonatomic, copy) NSString *stageName;
 
 @property (nonatomic, assign) BOOL isOpen;
 

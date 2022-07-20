@@ -71,6 +71,13 @@
     }];
 }
 
+- (void)setModel:(THKDecorationToDoItem *)model{
+    _model = model;
+    
+    _titleLbl.text = model.title;
+    _subtitleLbl.text = model.subtitle;
+}
+
 
 - (UIButton *)selectBtn{
     if (!_selectBtn) {

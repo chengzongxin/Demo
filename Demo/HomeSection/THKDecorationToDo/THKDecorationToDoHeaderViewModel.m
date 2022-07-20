@@ -7,6 +7,14 @@
 
 #import "THKDecorationToDoHeaderViewModel.h"
 
+@interface THKDecorationToDoHeaderViewModel ()
+
+@property (nonatomic, strong, readwrite) NSArray <THKDecorationToDoSection *>*model;
+
+
+@end
+
 @implementation THKDecorationToDoHeaderViewModel
+@dynamic model;
 
 @end

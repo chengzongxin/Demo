@@ -6,10 +6,12 @@
 //
 
 #import "THKViewModel.h"
-
+#import "THKDecorationToDoModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoHeaderViewModel : THKViewModel
+
+@property (nonatomic, strong, readonly) NSArray <THKDecorationToDoSection *> *model;
 
 @end
 

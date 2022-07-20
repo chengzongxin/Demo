@@ -11,6 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoHeaderView : THKView
+
+@property (nonatomic, strong, readonly) THKDecorationToDoHeaderViewModel *viewModel;
+
 @property (nonatomic, copy) void (^tapItem)(NSInteger index);
 @end
 

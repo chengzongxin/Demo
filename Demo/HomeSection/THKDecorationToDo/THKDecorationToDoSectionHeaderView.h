@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "THKDecorationToDoModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *arrowBtn;
 
 @property (nonatomic, copy) void (^tapSection)(UIButton *btn);
+
+@property (nonatomic, strong) THKDecorationToDoSection *model;
 
 @end
 

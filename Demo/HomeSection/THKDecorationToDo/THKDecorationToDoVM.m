@@ -30,8 +30,11 @@
             NSMutableArray *items = [NSMutableArray array];
             for (int j = 0; j < 10; j++) {
                 THKDecorationToDoItem *item = [[THKDecorationToDoItem alloc] init];
+                item.title = [NSString stringWithFormat:@"二级阶段-%d",j];
+                item.subtitle = [NSString stringWithFormat:@"阶段描述-%d",j];
                 [items addObject:item];
             }
+            section.stageName = [NSString stringWithFormat:@"阶段%d",i];
             section.items = items;
             [sections addObject:section];
         }
