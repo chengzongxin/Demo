@@ -120,7 +120,7 @@
     int firstSection = -1;
     for (int i = 0; i < self.tableView.numberOfSections; i++) {
         CGFloat sectionY = [self.tableView rectForSection:i].origin.y;
-        if (sectionY > y) {
+        if (sectionY > y - kStageMenuH / 2) {
             firstSection = i;
             break;
         }
