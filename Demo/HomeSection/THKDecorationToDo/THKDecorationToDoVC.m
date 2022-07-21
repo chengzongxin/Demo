@@ -213,7 +213,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0.0;
-        _tableView.sectionFooterHeight = 0.0;
+        _tableView.sectionFooterHeight = 15.0;
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
