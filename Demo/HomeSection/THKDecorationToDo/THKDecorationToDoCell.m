@@ -104,6 +104,8 @@
     _descLbl.text = model.childDesc;
     _strategyLbl.text = model.strategyTitle;
     _serviceLbl.text = model.toolTitle;
+    
+    [self setSelected:model.todoStatus animated:NO];
 }
 
 //- (void)isFirstCell:(BOOL)isFirst{
@@ -126,7 +128,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-    if (selected) {
+    
+    BOOL realSelect = self.model.todoStatus || selected;
+    
+    if (realSelect) {
         _selectBtn.tmui_image = UIImageMake(@"dec_todo_select");
         _titleLbl.textColor = UIColorTextPlaceholder;
     }else{
@@ -134,7 +139,7 @@
         _titleLbl.textColor = UIColorTextImportant;
     }
     
-    _titleLbl.attributedText = [self titleAttrStr:selected];
+    _titleLbl.attributedText = [self titleAttrStr:realSelect];
 }
 
 - (NSAttributedString *)titleAttrStr:(BOOL)selected{

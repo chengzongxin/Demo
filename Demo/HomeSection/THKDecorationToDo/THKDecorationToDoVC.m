@@ -97,20 +97,33 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.viewModel.upcomingList[section].isOpen ? self.viewModel.upcomingList[section].childList.count : 0;
+    THKDecorationUpcomingListModel *sectionModel = self.viewModel.upcomingList[section];
+    return sectionModel.isOpen ? sectionModel.childList.count : 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     THKDecorationToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKDecorationToDoCell.class) forIndexPath:indexPath];
-    THKDecorationUpcomingChildListModel *model =self.viewModel.upcomingList[indexPath.section].childList[indexPath.item];
+    THKDecorationUpcomingListModel *sectionModel = self.viewModel.upcomingList[indexPath.section];
+    THKDecorationUpcomingChildListModel *model = sectionModel.childList[indexPath.item];
     cell.model = model;
     cell.tapSelectBlock = ^(UIButton * _Nonnull btn) {
         if (model.todoStatus == 0) {
             model.todoStatus = 1;
-            [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+            sectionModel.completedNum++;
+//            [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
         }else{
             model.todoStatus = 0;
-            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+            sectionModel.completedNum--;
+//            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+        // 同步更新sectionHeader
+        THKDecorationToDoSectionHeaderView *headerView = (THKDecorationToDoSectionHeaderView *)[tableView headerViewForSection:indexPath.section];
+        headerView.model = sectionModel;
+        
+        if (sectionModel.completedNum == sectionModel.totalNum) {
+            sectionModel.isOpen = NO;
+            [tableView reloadSection:indexPath.section withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     };
     return cell;

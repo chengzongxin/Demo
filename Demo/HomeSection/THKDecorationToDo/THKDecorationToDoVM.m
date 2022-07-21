@@ -46,6 +46,10 @@
             [upcomingList addObjectsFromArray:obj.upcomingList];
         }];
         
+        [upcomingList tmui_forEach:^(THKDecorationUpcomingListModel * model) {
+            model.isOpen = (model.completedNum < model.totalNum);
+        }];
+        
         self.upcomingList = upcomingList;
         
         
