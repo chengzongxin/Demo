@@ -14,7 +14,7 @@
 #import "THKDynamicTabsProtocol.h"
 
 #define kStageMenuH 62
-#define kStageSectionHeaderH 88
+#define kStageSectionHeaderH 81
 #define kHeaderViewH 292
 
 @interface THKDecorationToDoVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsProtocol>
@@ -77,14 +77,14 @@
 
 #pragma mark UITableViewDelegate UITableViewDataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 88;
+    return kStageSectionHeaderH;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     THKDecorationToDoSectionHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:NSStringFromClass(THKDecorationToDoSectionHeaderView.class)];
     THKDecorationUpcomingListModel *sectionModel = self.viewModel.upcomingList[section];
     headerView.model = sectionModel;
-    
+    headerView.layer.zPosition = -1;
     headerView.tapSection = ^(UIButton * _Nonnull btn) {
         sectionModel.isOpen = !sectionModel.isOpen;
         [tableView reloadSection:section withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -104,6 +104,15 @@
     THKDecorationToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKDecorationToDoCell.class) forIndexPath:indexPath];
     THKDecorationUpcomingChildListModel *model =self.viewModel.upcomingList[indexPath.section].childList[indexPath.item];
     cell.model = model;
+    cell.tapItem = ^(UIButton * _Nonnull btn) {
+        if (model.todoStatus == 0) {
+            model.todoStatus = 1;
+            [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        }else{
+            model.todoStatus = 0;
+            [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    };
     return cell;
 }
 
@@ -112,7 +121,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64;
+    return 80;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{

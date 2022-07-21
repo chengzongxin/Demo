@@ -31,27 +31,28 @@
 
 - (void)setupSubviews{
     [self.contentView addSubview:self.containerView];
-    [self.contentView addSubview:self.titleLbl];
-    [self.contentView addSubview:self.subtitleLbl];
-    [self.contentView addSubview:self.arrowBtn];
+    [self.containerView addSubview:self.titleLbl];
+    [self.containerView addSubview:self.subtitleLbl];
+    [self.containerView addSubview:self.arrowBtn];
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.mas_equalTo(0);
     }];
     
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(10);
-        make.left.mas_equalTo(10);
+        make.top.mas_equalTo(16);
+        make.left.mas_equalTo(16);
+        make.height.mas_equalTo(24);
     }];
     
     [self.subtitleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-10);
-        make.left.mas_equalTo(10);
+        make.top.equalTo(self.titleLbl.mas_bottom).offset(6);
+        make.left.mas_equalTo(16);
     }];
     
     [self.arrowBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-40);
-        make.centerY.equalTo(self);
+        make.top.mas_equalTo(15);
+        make.right.mas_equalTo(-15);
     }];
 }
 
@@ -93,6 +94,8 @@
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
+        _titleLbl.textColor = UIColorTextImportant;
+        _titleLbl.font = [UIFont fontWithName:@"DINCondensed-Bold" size:18];
     }
     return _titleLbl;
 }
@@ -100,7 +103,8 @@
 - (UILabel *)subtitleLbl{
     if (!_subtitleLbl) {
         _subtitleLbl = [[UILabel alloc] init];
-        
+        _subtitleLbl.textColor = UIColorTextWeak;
+        _subtitleLbl.font = UIFont(14);
     }
     return _subtitleLbl;
 }
