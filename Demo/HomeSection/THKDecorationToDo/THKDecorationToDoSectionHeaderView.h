@@ -12,11 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoSectionHeaderView : UITableViewHeaderFooterView
 
-@property (nonatomic, strong) UILabel *titleLbl;
-
-@property (nonatomic, strong) UILabel *subtitleLbl;
-
-@property (nonatomic, strong) UIButton *arrowBtn;
 
 @property (nonatomic, copy) void (^tapSection)(UIButton *btn);
 

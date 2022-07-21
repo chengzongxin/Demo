@@ -9,6 +9,13 @@
 
 @interface THKDecorationToDoSectionHeaderView ()
 
+@property (nonatomic, strong) TMUICustomCornerRadiusView *containerView;
+
+@property (nonatomic, strong) UILabel *titleLbl;
+
+@property (nonatomic, strong) UILabel *subtitleLbl;
+
+@property (nonatomic, strong) UIButton *arrowBtn;
 
 @end
 
@@ -23,9 +30,14 @@
 }
 
 - (void)setupSubviews{
+    [self.contentView addSubview:self.containerView];
     [self.contentView addSubview:self.titleLbl];
     [self.contentView addSubview:self.subtitleLbl];
     [self.contentView addSubview:self.arrowBtn];
+    
+    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.bottom.mas_equalTo(0);
+    }];
     
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(10);
@@ -50,15 +62,33 @@
 - (void)setModel:(THKDecorationUpcomingListModel *)model{
     _model = model;
     
-    if (model.isOpen) {
-        self.arrowBtn.tmui_image = UIImageMake(@"dec_todo_open");
-    }else{
-        self.arrowBtn.tmui_image = UIImageMake(@"dec_todo_close");
-    }
+    [self open:model.isOpen];
     _titleLbl.text = model.mainName;
     _subtitleLbl.text = model.mainDesc;
 }
 
+- (void)open:(BOOL)open{
+    if (open) {
+        self.arrowBtn.tmui_image = UIImageMake(@"dec_todo_open");
+        [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(12);
+        }];
+    }else{
+        self.arrowBtn.tmui_image = UIImageMake(@"dec_todo_close");
+        [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(0);
+        }];
+    }
+}
+
+- (TMUICustomCornerRadiusView *)containerView{
+    if (!_containerView) {
+        _containerView = [[TMUICustomCornerRadiusView alloc] init];
+        _containerView.backgroundColor = UIColorWhite;
+        _containerView.customCornerRadius = TMUICustomCornerRadiusMake(12, 12, 12, 12);
+    }
+    return _containerView;
+}
 
 - (UILabel *)titleLbl{
     if (!_titleLbl) {

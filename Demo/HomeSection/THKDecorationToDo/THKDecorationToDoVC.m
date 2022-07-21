@@ -175,7 +175,10 @@
 
 - (UITableView *)tableView {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, TMUI_SCREEN_HEIGHT - tmui_navigationBarHeight() - kStageMenuH) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, TMUI_SCREEN_HEIGHT - tmui_navigationBarHeight() - kStageMenuH) style:TMUITableViewStyleInsetGrouped];
+        _tableView.tmui_insetGroupedCornerRadius = 12;
+        _tableView.tmui_insetGroupedHorizontalInset = 15;
+        _tableView.backgroundColor = UIColorHex(F6F8F6);
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0.0;
