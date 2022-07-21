@@ -19,9 +19,21 @@
 //
 //@end
 
+@interface THKDecorationUpcomingChildListModel ()
 
+@property (nonatomic, assign) CGFloat cellHeight;
+
+@end
 
 @implementation THKDecorationUpcomingChildListModel
+
+
+- (CGFloat)cellHeight{
+    if (_cellHeight == 0) {
+        _cellHeight = self.childDesc.length ? 101 : 80;
+    }
+    return _cellHeight;
+}
 
 @end
 

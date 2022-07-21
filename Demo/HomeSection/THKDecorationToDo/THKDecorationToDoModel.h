@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *childName;  /// <  子项名称
 
+@property (nonatomic, copy) NSString *childDesc;  /// < 子项描述
+
 @property (nonatomic, copy) NSString *strategyRouting;  /// <  攻略路由
 
 @property (nonatomic, copy) NSString *strategyTitle;  /// <  攻略标题
@@ -44,6 +46,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *toolRouting;  /// <  关联工具路由
 
 @property (nonatomic, copy) NSString *toolTitle;  /// < 关联工具标题
+
+/// 本地计算逻辑
+@property (nonatomic, assign, readonly) CGFloat cellHeight;
 
 @end
 

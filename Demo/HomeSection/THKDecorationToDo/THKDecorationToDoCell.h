@@ -13,8 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) THKDecorationUpcomingChildListModel *model;
 
-@property (nonatomic, copy) void (^tapItem)(UIButton *btn);
+@property (nonatomic, copy) void (^tapSelectBlock)(UIButton *btn);
 
+@property (nonatomic, copy) void (^tapStragegyBlock)(UILabel *lbl);
+
+@property (nonatomic, copy) void (^tapServiceBlock)(UILabel *lbl);
 
 //- (void)isFirstCell:(BOOL)isFirst;
 

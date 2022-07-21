@@ -17,8 +17,11 @@
 
 @property (nonatomic, strong) UILabel *titleLbl;
 
-@property (nonatomic, strong) UILabel *subtitleLbl;
+@property (nonatomic, strong) UILabel *descLbl;
 
+@property (nonatomic, strong) UILabel *strategyLbl;
+
+@property (nonatomic, strong) UILabel *serviceLbl;
 
 @end
 
@@ -51,7 +54,9 @@
     [self.containerView addSubview:self.line];
     [self.containerView addSubview:self.selectBtn];
     [self.containerView addSubview:self.titleLbl];
-    [self.containerView addSubview:self.subtitleLbl];
+    [self.containerView addSubview:self.descLbl];
+    [self.containerView addSubview:self.strategyLbl];
+    [self.containerView addSubview:self.serviceLbl];
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.bottom.mas_equalTo(0);
@@ -76,9 +81,19 @@
         make.height.mas_equalTo(22);
     }];
     
-    [self.subtitleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLbl.mas_bottom).offset(8);
+    [self.descLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLbl.mas_bottom).offset(1);
         make.left.equalTo(self.titleLbl);
+    }];
+    
+    [self.strategyLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-15.5);
+        make.left.equalTo(self.titleLbl);
+    }];
+    
+    [self.serviceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-15.5);
+        make.left.equalTo(self.strategyLbl.mas_right).offset(15);
     }];
 }
 
@@ -86,7 +101,9 @@
     _model = model;
     
     _titleLbl.attributedText = [self titleAttrStr:model.todoStatus];
-    _subtitleLbl.text = model.strategyTitle;
+    _descLbl.text = model.childDesc;
+    _strategyLbl.text = model.strategyTitle;
+    _serviceLbl.text = model.toolTitle;
 }
 
 //- (void)isFirstCell:(BOOL)isFirst{
@@ -102,7 +119,7 @@
 //}
 
 - (void)selectBtnClick:(UIButton *)btn{
-    !_tapItem?:_tapItem(btn);
+    !_tapSelectBlock?:_tapSelectBlock(btn);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -111,7 +128,7 @@
     // Configure the view for the selected state
     if (selected) {
         _selectBtn.tmui_image = UIImageMake(@"dec_todo_select");
-        _titleLbl.textColor = UIColorPlaceholder;
+        _titleLbl.textColor = UIColorTextPlaceholder;
     }else{
         _selectBtn.tmui_image = UIImageMake(@"dec_todo_unselect");
         _titleLbl.textColor = UIColorTextImportant;
@@ -163,18 +180,50 @@
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
         _titleLbl.textColor = UIColorTextImportant;
-        _titleLbl.font = [UIFont fontWithName:@"DINCondensed-Bold" size:16];
+        _titleLbl.font = [UIFont fontWithName:@"DINAlternate-Bold" size:16];
     }
     return _titleLbl;
 }
 
-- (UILabel *)subtitleLbl{
-    if (!_subtitleLbl) {
-        _subtitleLbl = [[UILabel alloc] init];
-        _subtitleLbl.textColor = UIColorMain;
-        _subtitleLbl.font = UIFont(14);
+- (UILabel *)descLbl{
+    if (!_descLbl) {
+        _descLbl = [[UILabel alloc] init];
+        _descLbl.textColor = UIColorTextPlaceholder;
+        _descLbl.font = UIFont(12);
     }
-    return _subtitleLbl;
+    return _descLbl;
+}
+
+- (UILabel *)strategyLbl{
+    if (!_strategyLbl) {
+        _strategyLbl = [[UILabel alloc] init];
+        _strategyLbl.textColor = UIColorMain;
+        _strategyLbl.font = UIFont(14);
+        @weakify(self);
+        [_strategyLbl tmui_addSingerTapWithBlock:^{
+            @strongify(self);
+            if (self.tapStragegyBlock) {
+                self.tapStragegyBlock(self.strategyLbl);
+            }
+        }];
+    }
+    return _strategyLbl;
+}
+
+- (UILabel *)serviceLbl{
+    if (!_serviceLbl) {
+        _serviceLbl = [[UILabel alloc] init];
+        _serviceLbl.textColor = UIColorMain;
+        _serviceLbl.font = UIFont(14);
+        @weakify(self);
+        [_serviceLbl tmui_addSingerTapWithBlock:^{
+            @strongify(self);
+            if (self.tapServiceBlock) {
+                self.tapServiceBlock(self.serviceLbl);
+            }
+        }];
+    }
+    return _serviceLbl;
 }
 
 

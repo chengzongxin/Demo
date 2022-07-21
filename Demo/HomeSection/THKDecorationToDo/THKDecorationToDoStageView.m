@@ -47,15 +47,18 @@
     if (selected) {
         self.containerView.backgroundColor = UIColorMain;
         self.titleLbl.textColor = UIColorWhite;
+        self.titleLbl.font = UIFontMedium(14);
     }else{
         self.containerView.backgroundColor = UIColorWhite;
         self.titleLbl.textColor = UIColorPlaceholder;
+        self.titleLbl.font = UIFont(14);
     }
 }
 
 - (UIView *)containerView{
     if (!_containerView) {
         _containerView = [[UIView alloc] init];
+        _containerView.backgroundColor = UIColorWhite;
         _containerView.cornerRadius = 12;
     }
     return _containerView;
@@ -66,6 +69,7 @@
         _titleLbl = [[UILabel alloc] init];
         _titleLbl.textAlignment = NSTextAlignmentCenter;
         _titleLbl.font = UIFont(14);
+        _titleLbl.textColor = UIColorPlaceholder;
     }
     return _titleLbl;
 }

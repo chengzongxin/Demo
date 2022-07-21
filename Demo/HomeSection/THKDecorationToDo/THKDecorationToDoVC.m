@@ -104,7 +104,7 @@
     THKDecorationToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKDecorationToDoCell.class) forIndexPath:indexPath];
     THKDecorationUpcomingChildListModel *model =self.viewModel.upcomingList[indexPath.section].childList[indexPath.item];
     cell.model = model;
-    cell.tapItem = ^(UIButton * _Nonnull btn) {
+    cell.tapSelectBlock = ^(UIButton * _Nonnull btn) {
         if (model.todoStatus == 0) {
             model.todoStatus = 1;
             [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
@@ -121,7 +121,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return self.viewModel.upcomingList[indexPath.section].childList[indexPath.item].cellHeight;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -152,6 +152,10 @@
 
 #pragma mark - Private
 - (void)scrollToSection:(NSInteger)section{
+    if (section >= self.tableView.numberOfSections) {
+        return;
+    }
+    
     self.isScrolling = YES;
     
     CGPoint point = [self.tableView rectForHeaderInSection:section].origin;

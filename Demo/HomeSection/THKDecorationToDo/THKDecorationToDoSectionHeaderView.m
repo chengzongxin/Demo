@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) UILabel *titleLbl;
 
+@property (nonatomic, strong) UILabel *todoCountLbl;
+
 @property (nonatomic, strong) UILabel *subtitleLbl;
 
 @property (nonatomic, strong) UIButton *arrowBtn;
@@ -32,6 +34,7 @@
 - (void)setupSubviews{
     [self.contentView addSubview:self.containerView];
     [self.containerView addSubview:self.titleLbl];
+    [self.containerView addSubview:self.todoCountLbl];
     [self.containerView addSubview:self.subtitleLbl];
     [self.containerView addSubview:self.arrowBtn];
     
@@ -42,6 +45,12 @@
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(16);
         make.left.mas_equalTo(16);
+        make.height.mas_equalTo(24);
+    }];
+    
+    [self.todoCountLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.titleLbl);
+        make.left.equalTo(self.titleLbl.mas_right).offset(10);
         make.height.mas_equalTo(24);
     }];
     
@@ -65,6 +74,7 @@
     
     [self open:model.isOpen];
     _titleLbl.text = model.mainName;
+    _todoCountLbl.text = [NSString stringWithFormat:@"%ld/%ld",(long)model.completedNum,(long)model.totalNum];
     _subtitleLbl.text = model.mainDesc;
 }
 
@@ -95,9 +105,18 @@
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
         _titleLbl.textColor = UIColorTextImportant;
-        _titleLbl.font = [UIFont fontWithName:@"DINCondensed-Bold" size:18];
+        _titleLbl.font = [UIFont fontWithName:@"DINAlternate-Bold" size:18];
     }
     return _titleLbl;
+}
+
+- (UILabel *)todoCountLbl{
+    if (!_todoCountLbl) {
+        _todoCountLbl = [[UILabel alloc] init];
+        _todoCountLbl.textColor = UIColorTextImportant;
+        _todoCountLbl.font = [UIFont fontWithName:@"DINAlternate-Bold" size:18];
+    }
+    return _todoCountLbl;
 }
 
 - (UILabel *)subtitleLbl{
