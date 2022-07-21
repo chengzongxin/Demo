@@ -106,7 +106,9 @@
     THKDecorationUpcomingListModel *sectionModel = self.viewModel.upcomingList[indexPath.section];
     THKDecorationUpcomingChildListModel *model = sectionModel.childList[indexPath.item];
     cell.model = model;
+    @weakify(self);
     cell.tapSelectBlock = ^(UIButton * _Nonnull btn) {
+        @strongify(self);
         if (model.todoStatus == 0) {
             model.todoStatus = 1;
             sectionModel.completedNum++;
@@ -117,6 +119,7 @@
 //            [tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
         [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+        
         // 同步更新sectionHeader
         THKDecorationToDoSectionHeaderView *headerView = (THKDecorationToDoSectionHeaderView *)[tableView headerViewForSection:indexPath.section];
         headerView.model = sectionModel;
@@ -125,6 +128,8 @@
             sectionModel.isOpen = NO;
             [tableView reloadSection:indexPath.section withRowAnimation:UITableViewRowAnimationAutomatic];
         }
+        
+        [self.viewModel.editCommand execute:model];
     };
     return cell;
 }

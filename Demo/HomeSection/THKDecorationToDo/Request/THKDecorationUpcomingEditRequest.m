@@ -13,7 +13,7 @@
 }
 
 - (NSString *)requestUrl {
-    return @"/dhs/decoration/upcoming/list";
+    return @"/dhs/decoration/upcoming/edit";
 }
 
 - (THKHttpMethod)httpMethod {

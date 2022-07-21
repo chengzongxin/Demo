@@ -96,11 +96,11 @@
 
 - (THKRequestCommand *)editCommand{
     if (!_editCommand) {
-        _editCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
+        _editCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(THKDecorationUpcomingChildListModel * _Nonnull input) {
             THKDecorationUpcomingEditRequest *request = [[THKDecorationUpcomingEditRequest alloc] init];
-            RACTupleUnpack(NSNumber *childId,NSString *todoStatus) = input;
-            request.childId = childId.integerValue;
-            request.todoStatus = todoStatus;
+//            RACTupleUnpack(NSNumber *childId,NSString *todoStatus) = input;
+            request.childId = input.childId;
+            request.todoStatus = @(input.todoStatus).stringValue;
             return request;
         }];
     }
