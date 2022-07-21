@@ -105,7 +105,7 @@
     _strategyLbl.text = model.strategyTitle;
     _serviceLbl.text = model.toolTitle;
     
-    [self setSelected:model.todoStatus animated:NO];
+    [self selectCell];
 }
 
 //- (void)isFirstCell:(BOOL)isFirst{
@@ -124,12 +124,10 @@
     !_tapSelectBlock?:_tapSelectBlock(btn);
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+- (void)selectCell{
     
-    BOOL realSelect = self.model.todoStatus || selected;
+    BOOL realSelect = self.model.todoStatus;
     
     if (realSelect) {
         _selectBtn.tmui_image = UIImageMake(@"dec_todo_select");
@@ -141,6 +139,24 @@
     
     _titleLbl.attributedText = [self titleAttrStr:realSelect];
 }
+
+//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+//    [super setSelected:selected animated:animated];
+//
+//    // Configure the view for the selected state
+//
+//    BOOL realSelect = self.model.todoStatus || selected;
+//
+//    if (realSelect) {
+//        _selectBtn.tmui_image = UIImageMake(@"dec_todo_select");
+//        _titleLbl.textColor = UIColorTextPlaceholder;
+//    }else{
+//        _selectBtn.tmui_image = UIImageMake(@"dec_todo_unselect");
+//        _titleLbl.textColor = UIColorTextImportant;
+//    }
+//
+//    _titleLbl.attributedText = [self titleAttrStr:realSelect];
+//}
 
 - (NSAttributedString *)titleAttrStr:(BOOL)selected{
     if (!self.model) {
