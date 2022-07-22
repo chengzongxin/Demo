@@ -11,7 +11,13 @@
 
 @property (nonatomic, strong) UIView *containerView;
 
+@property (nonatomic, strong) UIImageView *numImgV;
+
 @property (nonatomic, strong) UILabel *titleLbl;
+
+@property (nonatomic, strong) NSIndexPath *indexPath;
+
+@property (nonatomic, strong) THKDecorationUpcomingModel *model;
 
 @end
 
@@ -29,16 +35,29 @@
 
 - (void)setupSubviews{
     [self.contentView addSubview:self.containerView];
+    [self.contentView addSubview:self.numImgV];
     [self.containerView addSubview:self.titleLbl];
     
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
     }];
     
+    [self.numImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(10);
+        make.centerX.equalTo(self.contentView);
+    }];
+    
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
         make.bottom.mas_equalTo(-9);
     }];
+}
+
+- (void)setModel:(THKDecorationUpcomingModel *)model{
+    _model = model;
+    
+    self.titleLbl.text = model.stageName;
+    self.numImgV.image = [UIImage imageNamed:[NSString stringWithFormat:@"dec_todo_%02ld_black",(long)self.indexPath.item + 1]];
 }
 
 - (void)setSelected:(BOOL)selected{
@@ -48,10 +67,12 @@
         self.containerView.backgroundColor = UIColorMain;
         self.titleLbl.textColor = UIColorWhite;
         self.titleLbl.font = UIFontMedium(14);
+        self.numImgV.image = [UIImage imageNamed:[NSString stringWithFormat:@"dec_todo_%02ld",(long)self.indexPath.item + 1]];
     }else{
         self.containerView.backgroundColor = UIColorWhite;
         self.titleLbl.textColor = UIColorPlaceholder;
         self.titleLbl.font = UIFont(14);
+        self.numImgV.image = [UIImage imageNamed:[NSString stringWithFormat:@"dec_todo_%02ld_black",(long)self.indexPath.item + 1]];
     }
 }
 
@@ -62,6 +83,13 @@
         _containerView.cornerRadius = 12;
     }
     return _containerView;
+}
+
+- (UIImageView *)numImgV{
+    if (!_numImgV) {
+        _numImgV = [[UIImageView alloc] init];
+    }
+    return _numImgV;
 }
 
 - (UILabel *)titleLbl{
@@ -127,7 +155,10 @@
     
     [self.collectionView reloadData];
     
-    self.selectIndex = 0;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.selectIndex = 0;
+    });
+    
 }
 
 - (void)setSelectIndex:(NSInteger)selectIndex{
@@ -136,8 +167,6 @@
     }
     _selectIndex = selectIndex;
     [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:selectIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-//    THKDecorationToDoStageCell *cell = (THKDecorationToDoStageCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:selectIndex inSection:0]];
-//    cell.backgroundColor = UIColor.tmui_randomColor;
 }
 
 
@@ -154,8 +183,8 @@
     
     THKDecorationToDoStageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([THKDecorationToDoStageCell class])
                                                                            forIndexPath:indexPath];
-//    cell.backgroundColor = UIColor.tmui_randomColor;
-    cell.titleLbl.text = self.model[indexPath.item].stageName;
+    cell.indexPath = indexPath;
+    cell.model = self.model[indexPath.item];
     return cell;
 }
 
