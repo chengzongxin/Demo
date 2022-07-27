@@ -247,6 +247,7 @@
         
         [self.thk_navBar setNavigationBarColor:UIColorWhite originTintColor:UIColorTextRegular toTintColor:UIColorTextRegular gradientPercent:percent];
         self.thk_navBar.titleLbl.alpha = percent;
+        [self.headerView.stageView setGradientPercent:percent];
     }else if (scrollView == self.tableView) {
         
         if (self.isScrolling) {
@@ -329,7 +330,7 @@
     if (!_wrapperScrollView) {
         _wrapperScrollView = [[THKDynamicTabsWrapperScrollView alloc] initWithFrame:self.view.bounds];
         _wrapperScrollView.contentInset = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
-        _wrapperScrollView.lockArea = tmui_navigationBarHeight() + 10 + kStageMenuH + 15;
+        _wrapperScrollView.lockArea = tmui_navigationBarHeight() + 10 + kStageMenuH + 10;
         _wrapperScrollView.delegate = self;
         _wrapperScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH, kHeaderViewH + self.view.height);
         if (@available(iOS 11.0, *)) {
@@ -355,7 +356,7 @@
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.contentInset = UIEdgeInsetsMake(0, 0, _tableView.height - kStageSectionHeaderH, 0);
+//        _tableView.contentInset = UIEdgeInsetsMake(0, 0, _tableView.height - kStageSectionHeaderH, 0);
         [_tableView registerClass:THKDecorationToDoCell.class forCellReuseIdentifier:NSStringFromClass(THKDecorationToDoCell.class)];
         [_tableView registerClass:THKDecorationToDoSectionHeaderView.class forHeaderFooterViewReuseIdentifier:NSStringFromClass(THKDecorationToDoSectionHeaderView.class)];
         

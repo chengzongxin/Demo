@@ -69,8 +69,8 @@
     
     [self.stageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(62);
-        make.bottom.mas_equalTo(-15);
+        make.height.mas_equalTo(82);
+        make.bottom.mas_equalTo(0);
     }];
 }
 

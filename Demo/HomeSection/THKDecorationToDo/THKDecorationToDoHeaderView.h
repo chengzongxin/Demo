@@ -7,7 +7,7 @@
 
 #import "THKView.h"
 #import "THKDecorationToDoHeaderViewModel.h"
-
+#import "THKDecorationToDoStageView.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoHeaderView : THKView
@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger selectIndex;
 
+@property (nonatomic, strong, readonly) THKDecorationToDoStageView *stageView;
 @end
 
 NS_ASSUME_NONNULL_END

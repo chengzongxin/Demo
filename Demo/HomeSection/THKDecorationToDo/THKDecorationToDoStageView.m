@@ -134,7 +134,7 @@
     }];
 
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
+        make.edges.mas_equalTo(UIEdgeInsetsMake(10, 0, 10, 0));
     }];
 }
 
@@ -167,6 +167,10 @@
         self.selectIndex = 0;
     });
     
+}
+
+- (void)setGradientPercent:(CGFloat)percent{
+    self.effectView.alpha = percent;
 }
 
 - (void)setSelectIndex:(NSInteger)selectIndex{
@@ -207,8 +211,11 @@
     if (!_effectView) {
         UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
         _effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
-        _effectView.alpha = 0.5;
-//        _effectView.tmui_foregroundColor = UIColorHex(F6F8F6);
+        _effectView.tmui_foregroundColor = UIColorHex(F6F8F6);
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, 82)];
+        [view tmui_gradientWithColors:@[UIColorHex(FFFFFF),[UIColorHex(F6F8F6) colorWithAlphaComponent:0]] gradientType:TMUIGradientTypeTopToBottom locations:@[@0.3]];
+        [_effectView.contentView addSubview:view];
+        _effectView.alpha = 0.0;
     }
     return _effectView;
 }
