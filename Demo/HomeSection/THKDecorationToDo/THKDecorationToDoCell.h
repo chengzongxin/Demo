@@ -19,6 +19,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void (^tapServiceBlock)(UILabel *lbl);
 
+@property (nonatomic, strong, readonly) UIButton *selectBtn;
+
+@property (nonatomic, strong, readonly) UILabel *titleLbl;
+
+@property (nonatomic, strong, readonly) UILabel *descLbl;
+
+@property (nonatomic, strong, readonly) UILabel *strategyLbl;
+
+@property (nonatomic, strong, readonly) UILabel *serviceLbl;
+
 //- (void)isFirstCell:(BOOL)isFirst;
 
 @end

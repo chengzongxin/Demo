@@ -12,12 +12,15 @@
 #import "THKDynamicTabsWrapperScrollView.h"
 #import "THKPageBGScrollView.h"
 #import "THKDynamicTabsProtocol.h"
+//#import "THKHalfPresentLoginVC.h"
+#import "THKDecorationToDoVM+Godeye.h"
+#import <ReactiveObjC.h>
 
 #define kStageMenuH 62
 #define kStageSectionHeaderH 81
 #define kHeaderViewH 292
 
-@interface THKDecorationToDoVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsProtocol>
+@interface THKDecorationToDoVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsWrapperScrollViewDelegate,THKDynamicTabsProtocol>
 
 @property (nonatomic, strong) THKDecorationToDoVM *viewModel;
 
@@ -41,8 +44,8 @@
     [super viewDidLoad];
     
     self.thk_title = @"装修待办";
+    self.thk_navBar.titleLbl.alpha = 0;
     self.thk_navBar.backgroundColor = UIColorClear;
-    self.thk_navBar.titleLbl.hidden = YES;
     self.view.backgroundColor = UIColorWhite;
     
     [self.view addSubview:self.wrapperScrollView];
@@ -59,6 +62,7 @@
     [[RACObserve(self.viewModel, stageList) ignore:nil] subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         THKDecorationToDoHeaderViewModel *headerVM = [[THKDecorationToDoHeaderViewModel alloc] initWithModel:x];
+        headerVM.subtitle = self.viewModel.subtitle;
         [self.headerView bindViewModel:headerVM];
     }];
     
@@ -67,10 +71,14 @@
         [self.tableView reloadData];
     }];
     
-    [self.viewModel.requestCommand execute:nil];
+    // 登录成功
+    [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:kHomeNotRefresh object:nil] takeUntil:[self rac_willDeallocSignal]] subscribeNext:^(NSNotification * _Nullable notification) {
+        @strongify(self);
+        // 登录后，刷新列表
+        [self.viewModel.requestCommand execute:nil];
+    }];
     
-//    [self.viewModel.stageCommand execute:nil];
-//    [self.viewModel.listCommand execute:nil];
+    [self.viewModel.requestCommand execute:nil];
 }
 
 
@@ -85,10 +93,25 @@
     THKDecorationUpcomingListModel *sectionModel = self.viewModel.upcomingList[section];
     headerView.model = sectionModel;
     headerView.layer.zPosition = -1;
+    @weakify(self);
+    @weakify(headerView);
     headerView.tapSection = ^(UIButton * _Nonnull btn) {
+        @strongify(self);
+        @strongify(headerView);
         sectionModel.isOpen = !sectionModel.isOpen;
-        [tableView reloadSection:section withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadSection:section withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+        [self.viewModel listUnfoldClick:headerView.arrowBtn widgetTitle:sectionModel.mainName widgetTag:[NSString stringWithFormat:@"%@%@",sectionModel.serialNumber,sectionModel.stageName]];
+        
+        [self.viewModel saveUpcomingListCachWithMainId:sectionModel.mainId isOpen:sectionModel.isOpen];
     };
+    
+    if (!sectionModel.isExposeUnfoldBtn) {
+        sectionModel.isExposeUnfoldBtn = YES;
+        
+        [self.viewModel listUnfoldShow:headerView.arrowBtn widgetTitle:sectionModel.mainName widgetTag:[NSString stringWithFormat:@"%@%@",sectionModel.serialNumber,sectionModel.stageName]];
+    }
+    
     return headerView;
 }
 
@@ -107,30 +130,102 @@
     THKDecorationUpcomingChildListModel *model = sectionModel.childList[indexPath.item];
     cell.model = model;
     @weakify(self);
+    @weakify(cell);
+    @weakify(tableView);
+    // 选择子项
     cell.tapSelectBlock = ^(UIButton * _Nonnull btn) {
         @strongify(self);
-        if (model.todoStatus == 0) {
-            model.todoStatus = 1;
-            sectionModel.completedNum++;
-//            [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-        }else{
-            model.todoStatus = 0;
-            sectionModel.completedNum--;
-//            [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        }
-        [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+        @strongify(cell);
+        @strongify(tableView);
+//        if (![kCurrentUser isLoginStatus]) {
+//            [THKHalfPresentLoginVC judgeLoginStateWithLoginedHandler:^(id obj) {
+//
+//            } failHandler:^(id obj) {
+//            }];
+//            return;
+//        }
         
-        // 同步更新sectionHeader
-        THKDecorationToDoSectionHeaderView *headerView = (THKDecorationToDoSectionHeaderView *)[tableView headerViewForSection:indexPath.section];
-        headerView.model = sectionModel;
+        void (^updateUIBlock)(BOOL,BOOL) = ^void(BOOL updateModel,BOOL fold) {
+            @strongify(self);
+            @strongify(tableView);
+            if (updateModel) {
+                // 更新模型数据
+                if (model.todoStatus == 0) {
+                    model.todoStatus = 1;
+                    sectionModel.completedNum++;
+                }else{
+                    model.todoStatus = 0;
+                    sectionModel.completedNum--;
+                }
+                [tableView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationAutomatic];
+                
+                // 同步更新sectionHeader
+                THKDecorationToDoSectionHeaderView *headerView = (THKDecorationToDoSectionHeaderView *)[tableView headerViewForSection:indexPath.section];
+                headerView.model = sectionModel;
+            }
+            
+            if (fold) {
+                // 折叠
+                if (sectionModel.completedNum == sectionModel.totalNum) {
+                    sectionModel.isOpen = NO;
+                    [tableView reloadSection:indexPath.section withRowAnimation:UITableViewRowAnimationAutomatic];
+                    
+                    [self.viewModel saveUpcomingListCachWithMainId:sectionModel.mainId isOpen:sectionModel.isOpen];
+                }
+                
+            }
+            
+        };
         
-        if (sectionModel.completedNum == sectionModel.totalNum) {
-            sectionModel.isOpen = NO;
-            [tableView reloadSection:indexPath.section withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
+        // 本地更新
+        updateUIBlock(YES,NO);
+       
         
-        [self.viewModel.editCommand execute:model];
+        [self.viewModel editModelRequest:model success:^{
+            // 成功折叠
+            updateUIBlock(NO,YES);
+        } fail:^{
+            // 失败恢复
+            updateUIBlock(YES,NO);
+        }];
+        
+        [self.viewModel listCheckOffClick:cell.selectBtn widgetTitle:model.childName widgetSubtitle:sectionModel.mainName widgetTag:sectionModel.widgetTag];
     };
+    // 攻略
+    cell.tapStragegyBlock = ^(UILabel * _Nonnull lbl) {
+        @strongify(self);
+        @strongify(cell);
+        if (!tmui_isNullString(model.strategyTitle)) {
+            [self.viewModel listLearnMoreClick:cell.strategyLbl widgetTitle:model.strategyTitle widgetSubtitle:sectionModel.mainName widgetTag:sectionModel.widgetTag widgetIndex:0 widgetValue:model.childName widgetType:@"装修攻略"];
+        }
+        
+        [[TRouterManager sharedManager] performRouter:[TRouter routerFromUrl:model.strategyRouting]];
+    };
+    // 服务工具
+    cell.tapServiceBlock = ^(UILabel * _Nonnull lbl) {
+        @strongify(self);
+        @strongify(cell);
+        if (!tmui_isNullString(model.toolTitle)) {
+            [self.viewModel listLearnMoreClick:cell.serviceLbl widgetTitle:model.toolTitle widgetSubtitle:sectionModel.mainName widgetTag:sectionModel.widgetTag widgetIndex:1 widgetValue:model.childName widgetType:@"装修工具"];
+        }
+        
+        [[TRouterManager sharedManager] performRouter:[TRouter routerFromUrl:model.toolRouting]];
+    };
+    
+    if (!model.isExpose) {
+        model.isExpose = YES;
+        
+        [self.viewModel listCheckOffShow:cell.selectBtn widgetTitle:model.childName widgetSubtitle:sectionModel.mainName widgetTag:sectionModel.widgetTag];
+        
+        if (!tmui_isNullString(model.strategyTitle)) {
+            [self.viewModel listLearnMoreShow:cell.strategyLbl widgetTitle:model.strategyTitle widgetSubtitle:sectionModel.mainName widgetTag:sectionModel.widgetTag widgetIndex:0 widgetValue:model.childName widgetType:@"装修攻略"];
+        }
+        
+        if (!tmui_isNullString(model.toolTitle)) {
+            [self.viewModel listLearnMoreShow:cell.serviceLbl widgetTitle:model.toolTitle widgetSubtitle:sectionModel.mainName widgetTag:sectionModel.widgetTag widgetIndex:1 widgetValue:model.childName widgetType:@"装修工具"];
+        }
+    }
+    
     return cell;
 }
 
@@ -143,22 +238,58 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (self.isScrolling) {
-        return;
-    }
     
-    CGFloat y = scrollView.contentOffset.y;
-    int firstSection = -1;
-    for (int i = 0; i < self.tableView.numberOfSections; i++) {
-        CGFloat sectionY = [self.tableView rectForSection:i].origin.y;
-        if (sectionY > y - kStageMenuH / 2) {
-            firstSection = i;
-            break;
+    if (scrollView == self.wrapperScrollView) {
+        CGFloat minY = -self.wrapperScrollView.contentInset.top;
+        CGFloat maxY = -self.wrapperScrollView.lockArea;
+        CGFloat offY = self.wrapperScrollView.contentOffset.y;
+        CGFloat percent = (offY - minY) / (maxY - minY);
+        
+        [self.thk_navBar setNavigationBarColor:UIColorWhite originTintColor:UIColorTextRegular toTintColor:UIColorTextRegular gradientPercent:percent];
+        self.thk_navBar.titleLbl.alpha = percent;
+    }else if (scrollView == self.tableView) {
+        
+        if (self.isScrolling) {
+            return;
         }
-    }
-    
-    if (firstSection != -1) {
-        self.headerView.selectIndex = firstSection;
+        
+        
+        int firstSection = -1;
+        
+        CGFloat y = scrollView.contentOffset.y;
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:CGPointMake(100, y)];
+        if (indexPath) {
+            // 有cell
+            firstSection = (int)indexPath.section;
+        }else{
+            // 没有cell，获取section
+            for (int i = 0; i < self.tableView.numberOfSections; i++) {
+                CGFloat sectionY = [self.tableView rectForSection:i].origin.y;
+                if (sectionY > y - kStageSectionHeaderH) {
+                    firstSection = i;
+                    break;
+                }
+            }
+        }
+        
+        // 定位到stageList
+        if (firstSection != -1) {
+            THKDecorationUpcomingListModel *selectModel = [self.viewModel.upcomingList tmui_safeObjectAtIndex:firstSection];
+            __block NSInteger selectIdx = NSNotFound;
+            
+            [self.viewModel.stageList enumerateObjectsUsingBlock:^(THKDecorationUpcomingModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj.serialNumber isEqualToString:selectModel.serialNumber]) {
+                    selectIdx = idx;
+                    *stop = YES;
+                }
+            }];
+            
+            if (selectIdx != NSNotFound) {
+                self.headerView.selectIndex = selectIdx;
+            }
+            
+        }
     }
 }
 
@@ -187,13 +318,19 @@
     }
 }
 
+- (void)selectModel:(THKDecorationUpcomingListModel *)model{
+    
+}
+
+
 #pragma mark - getter
 
 - (THKDynamicTabsWrapperScrollView *)wrapperScrollView{
     if (!_wrapperScrollView) {
         _wrapperScrollView = [[THKDynamicTabsWrapperScrollView alloc] initWithFrame:self.view.bounds];
         _wrapperScrollView.contentInset = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
-        _wrapperScrollView.lockArea = tmui_navigationBarHeight() + kStageMenuH;
+        _wrapperScrollView.lockArea = tmui_navigationBarHeight() + 10 + kStageMenuH + 15;
+        _wrapperScrollView.delegate = self;
         _wrapperScrollView.contentSize = CGSizeMake(TMUI_SCREEN_WIDTH, kHeaderViewH + self.view.height);
         if (@available(iOS 11.0, *)) {
             _wrapperScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -234,6 +371,18 @@
         _headerView.tapItem = ^(NSInteger index) {
             @strongify(self);
             [self scrollToSection:index];
+            
+            THKDecorationUpcomingModel *model = self.viewModel.stageList[index];
+            if (!model.isExposeStageCard) {
+                [self.viewModel stageCardClick:nil widgetTitle:model.widgetTag];
+                model.isExposeStageCard = YES;
+            }
+            
+        };
+        _headerView.exposeItem = ^(NSInteger index) {
+            @strongify(self);
+            THKDecorationUpcomingModel *model = self.viewModel.stageList[index];
+            [self.viewModel stageCardShow:nil widgetTitle:model.widgetTag];
         };
     }
     return _headerView;
@@ -242,6 +391,19 @@
 
 - (UIScrollView *)contentScrollView{
     return _tableView;
+}
+
+#pragma mark - NSObject
++ (BOOL)canHandleRouter:(TRouter *)router {
+//    if ([router routerMatch:THKRouterPage_todoList]) {
+//        return YES;
+//    }
+    return NO;
+}
+
++ (id)createVCWithRouter:(TRouter *)router {
+    THKDecorationToDoVM *viewModel = [[THKDecorationToDoVM alloc] init];
+    return  [[self alloc] initWithViewModel:viewModel];
 }
 
 @end

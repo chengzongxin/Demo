@@ -8,7 +8,5 @@
 #import "THKDecorationUpcomingListResponse.h"
 
 @implementation THKDecorationUpcomingListResponse
-+ (NSDictionary *)mj_objectClassInArray{
-    return @{@"data":THKDecorationUpcomingModel.class};
-}
+
 @end

@@ -9,7 +9,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@interface THKDecorationUpcomingEditModel : NSObject
+
+@property (nonatomic, assign) NSInteger status;
+
+@property (nonatomic, strong) NSString *desc;
+
+@end
+
 @interface THKDecorationUpcomingEditResponse : THKResponse
+
+@property (nonatomic, strong) THKDecorationUpcomingEditModel *data;
 
 @end
 

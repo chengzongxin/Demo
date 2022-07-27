@@ -11,8 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationUpcomingListResponse : THKResponse
 
-@property (nonatomic, strong) NSArray <THKDecorationUpcomingModel *> *data;
-
+@property (nonatomic, strong) THKDecorationToDoModel *data;
 
 @end
 

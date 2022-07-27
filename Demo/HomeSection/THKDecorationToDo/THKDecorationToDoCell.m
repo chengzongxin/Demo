@@ -78,22 +78,26 @@
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.selectBtn);
         make.left.equalTo(self.selectBtn.mas_right).offset(8);
+        make.right.mas_lessThanOrEqualTo(-15);
         make.height.mas_equalTo(22);
     }];
     
     [self.descLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLbl.mas_bottom).offset(1);
         make.left.equalTo(self.titleLbl);
+        make.right.mas_lessThanOrEqualTo(-15);
     }];
     
     [self.strategyLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-15.5);
         make.left.equalTo(self.titleLbl);
+        make.right.mas_lessThanOrEqualTo(-15);
     }];
     
     [self.serviceLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-15.5);
         make.left.equalTo(self.strategyLbl.mas_right).offset(15);
+        make.right.mas_lessThanOrEqualTo(-15);
     }];
 }
 
@@ -102,8 +106,12 @@
     
     _titleLbl.attributedText = [self titleAttrStr:model.todoStatus];
     _descLbl.text = model.childDesc;
-    _strategyLbl.text = model.strategyTitle;
-    _serviceLbl.text = model.toolTitle;
+    _strategyLbl.attributedText = [self stringAppendIcon:model.strategyTitle icon:UIImageMake(@"dec_todo_arrow")];
+    _serviceLbl.attributedText = [self stringAppendIcon:model.toolTitle icon:UIImageMake(@"dec_todo_arrow")];
+    
+    [self.serviceLbl mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.strategyLbl.mas_right).offset(_strategyLbl.attributedText.length?15:0);
+    }];
     
     [self selectCell];
 }
@@ -167,6 +175,17 @@
         [titleAttr tmui_setAttribute:NSStrikethroughStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle]];
     }
     return titleAttr;
+}
+
+- (NSAttributedString *)stringAppendIcon:(NSString *)str icon:(UIImage *)icon{
+    if (tmui_isNullString(str)) {
+        return nil;
+    }
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:str];
+    if (icon) {
+        [attr appendAttributedString:[NSAttributedString tmui_attributedStringWithImage:icon baselineOffset:-3 leftMargin:0 rightMargin:0]];
+    }
+    return attr;
 }
 
 

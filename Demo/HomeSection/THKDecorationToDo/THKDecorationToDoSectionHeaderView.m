@@ -45,6 +45,7 @@
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(16);
         make.left.mas_equalTo(16);
+        make.right.mas_lessThanOrEqualTo(-100);
         make.height.mas_equalTo(24);
     }];
     
@@ -57,6 +58,7 @@
     [self.subtitleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLbl.mas_bottom).offset(6);
         make.left.mas_equalTo(16);
+        make.right.mas_lessThanOrEqualTo(-15);
     }];
     
     [self.arrowBtn mas_makeConstraints:^(MASConstraintMaker *make) {

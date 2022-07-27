@@ -42,6 +42,7 @@
     
 //    [self.stageView bindWithModel:self.viewModel.model];
     self.stageView.model = self.viewModel.model;
+    self.subtitleLbl.text = self.viewModel.subtitle;
 }
 
 
@@ -77,6 +78,11 @@
 - (void)setTapItem:(void (^)(NSInteger))tapItem{
     _tapItem = tapItem;
     self.stageView.tapItem = tapItem;
+}
+
+- (void)setExposeItem:(void (^)(NSInteger))exposeItem{
+    _exposeItem = exposeItem;
+    self.stageView.exposeItem = exposeItem;
 }
 
 - (void)setSelectIndex:(NSInteger)selectIndex{

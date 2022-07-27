@@ -6,12 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "TObjectKit.h"
 NS_ASSUME_NONNULL_BEGIN
 
-//@interface THKDecorationToDoModel : NSObject
-//
-//@end
 //
 //@interface THKDecorationToDoItem : NSObject
 //
@@ -47,8 +44,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *toolTitle;  /// < 关联工具标题
 
+@property (nonatomic, assign) NSInteger stageId;  /// <  透传阶段id
+
+@property (nonatomic, copy) NSString *stageName;  /// < 透传阶段名称
+
 /// 本地计算逻辑
 @property (nonatomic, assign, readonly) CGFloat cellHeight;
+
+@property (nonatomic, assign) BOOL isExpose;
 
 @end
 
@@ -66,9 +69,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSString *mainName;  /// <  主项名称
 
+@property (nonatomic, copy) NSString *serialNumber;  /// <  透传序号数
+
+@property (nonatomic, assign) NSInteger stageId;  /// <  透传阶段id
+
+@property (nonatomic, copy) NSString *stageName;  /// < 透传阶段名称
+
 @property (nonatomic, assign) NSInteger totalNum;  /// <  子项总数
 
 @property (nonatomic, assign) BOOL isOpen;
+
+@property (nonatomic, assign) BOOL isExposeUnfoldBtn;
+
+@property (nonatomic, strong, readonly) NSString *widgetTag;
 
 @end
 
@@ -82,8 +95,31 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) NSArray <THKDecorationUpcomingListModel *> *upcomingList;
 
+@property (nonatomic, assign) BOOL isExposeStageCard;
+
+@property (nonatomic, strong, readonly) NSString *widgetTag;
 
 @end
+
+
+@interface THKDecorationToDoModel : NSObject
+
+@property (nonatomic, strong) NSArray <THKDecorationUpcomingModel *> *stageList;
+
+@property (nonatomic, copy) NSString *desc;
+
+@end
+
+
+/// 缓存记录展开、收起
+@interface THKDecorationUpcomingListCacheModel : TObject
+
+@property (nonatomic, assign) NSInteger mainId;  /// <  主项id
+
+@property (nonatomic, assign) BOOL isOpen;
+
+@end
+
 
 
 

@@ -7,6 +7,10 @@
 
 #import "THKDecorationUpcomingEditResponse.h"
 
+@implementation THKDecorationUpcomingEditModel
+
+@end
+
 @implementation THKDecorationUpcomingEditResponse
 
 @end

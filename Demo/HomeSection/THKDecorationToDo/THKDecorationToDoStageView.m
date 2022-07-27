@@ -106,6 +106,8 @@
 
 @interface THKDecorationToDoStageView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
+@property (nonatomic, strong) UIVisualEffectView *effectView;
+
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
@@ -118,14 +120,18 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.selectIndex = -1;
         [self setupSubviews];
     }
     return self;
 }
 
 - (void)setupSubviews{
+    [self addSubview:self.effectView];
     [self addSubview:self.collectionView];
+    
+    [self.effectView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
 
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self);
@@ -152,6 +158,8 @@
 
 - (void)setModel:(NSArray<THKDecorationUpcomingModel *> *)model{
     _model = model;
+    
+    self.selectIndex = -1;
     
     [self.collectionView reloadData];
     
@@ -185,6 +193,7 @@
                                                                            forIndexPath:indexPath];
     cell.indexPath = indexPath;
     cell.model = self.model[indexPath.item];
+    !_exposeItem?:_exposeItem(indexPath.item);
     return cell;
 }
 
@@ -194,6 +203,16 @@
 }
 
 #pragma mark - Getter && Setter
+- (UIVisualEffectView *)effectView{
+    if (!_effectView) {
+        UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+        _effectView = [[UIVisualEffectView alloc] initWithEffect:blur];
+        _effectView.alpha = 0.5;
+//        _effectView.tmui_foregroundColor = UIColorHex(F6F8F6);
+    }
+    return _effectView;
+}
+
 
 - (UICollectionView *)collectionView {
     if (!_collectionView) {

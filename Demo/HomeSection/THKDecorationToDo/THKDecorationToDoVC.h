@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKDecorationToDoVC : THKViewController
+@interface THKDecorationToDoVC : THKViewController<TRouterProtocol>
 
 @property (nonatomic, strong, readonly) THKDecorationToDoVM *viewModel;
 

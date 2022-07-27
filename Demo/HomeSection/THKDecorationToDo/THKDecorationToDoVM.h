@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationToDoVM : THKStateMechanismsViewModel
 
-//@property (nonatomic, copy, readonly) NSArray <THKDecorationToDoSection *>*sections;
+@property (nonatomic, strong, readonly) NSString *subtitle;
 
 @property (nonatomic, copy, readonly) NSArray <THKDecorationUpcomingModel *> *stageList;
 
@@ -26,6 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) THKRequestCommand *editCommand;
 //
 //@property (nonatomic, strong, readonly) THKRequestCommand *listCommand;
+
+
+- (void)saveUpcomingListCachWithMainId:(NSInteger)mainId isOpen:(BOOL)isOpen;
+
+- (THKDecorationUpcomingListCacheModel *)readUpcomingListCachWithMainId:(NSInteger)mainId;
+
+
+
+- (void)editModelRequest:(THKDecorationUpcomingChildListModel *)model success:(void (^)(void))success fail:(void (^)(void))fail;
 
 @end
 

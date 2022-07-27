@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) THKDecorationUpcomingListModel *model;
 
+
+@property (nonatomic, strong, readonly) UIButton *arrowBtn;
+
 @end
 
 NS_ASSUME_NONNULL_END

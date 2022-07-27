@@ -7,10 +7,6 @@
 
 #import "THKDecorationToDoModel.h"
 
-//@implementation THKDecorationToDoModel
-//
-//@end
-//
 //@implementation THKDecorationToDoItem
 //
 //@end
@@ -41,6 +37,11 @@
 + (NSDictionary *)mj_objectClassInArray{
     return @{@"childList":THKDecorationUpcomingChildListModel.class};
 }
+
+- (NSString *)widgetTag{
+    return [NSString stringWithFormat:@"%@ %@",self.serialNumber,self.stageName];
+}
+
 @end
 
 @implementation THKDecorationUpcomingModel
@@ -48,5 +49,23 @@
 + (NSDictionary *)mj_objectClassInArray{
     return @{@"upcomingList":THKDecorationUpcomingListModel.class};
 }
+
+- (NSString *)widgetTag{
+    return [NSString stringWithFormat:@"%@ %@",self.serialNumber,self.stageName];
+}
+
+
+@end
+
+
+@implementation THKDecorationToDoModel
+
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"stageList":THKDecorationUpcomingModel.class};
+}
+@end
+
+
+@implementation THKDecorationUpcomingListCacheModel
 
 @end

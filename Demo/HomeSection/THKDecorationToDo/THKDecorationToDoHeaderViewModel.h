@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSArray <THKDecorationUpcomingModel *> *model;
 
+@property (nonatomic, strong) NSString *subtitle;
+
 @end
 
 NS_ASSUME_NONNULL_END
