@@ -44,6 +44,18 @@
     }
 }
 
+- (void)recordBtnTouchDown:(UIButton *)btn{
+    if ([self.delegate respondsToSelector:@selector(recordBtnTouchDown:)]) {
+        [self.delegate recordBtnTouchDown:btn];
+    }
+}
+
+- (void)recordBtnTouchUp:(UIButton *)btn{
+    if ([self.delegate respondsToSelector:@selector(recordBtnTouchUp:)]) {
+        [self.delegate recordBtnTouchUp:btn];
+    }
+}
+
 - (THKOnlineDesignHouseDemandView *)demandView{
     if (!_demandView) {
         _demandView = [[THKOnlineDesignHouseDemandView alloc] init];
@@ -55,7 +67,10 @@
     if (!_recordBtn) {
         _recordBtn = [UIButton tmui_button];
         _recordBtn.tmui_text = @"按住说话";
-        [_recordBtn tmui_addTarget:self action:@selector(clickRecordBtn:)];
+        [_recordBtn addTarget:self action:@selector(recordBtnTouchDown:) forControlEvents:UIControlEventTouchDown];
+        [_recordBtn addTarget:self action:@selector(recordBtnTouchUp:) forControlEvents:UIControlEventTouchUpInside];
+        [_recordBtn addTarget:self action:@selector(recordBtnTouchUp:) forControlEvents:UIControlEventTouchUpOutside];
+        
     }
     return _recordBtn;
 }

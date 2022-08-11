@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)clickRecordBtn:(UIButton *)btn;
 
+- (void)recordBtnTouchDown:(UIButton *)btn;
+
+- (void)recordBtnTouchUp:(UIButton *)btn;
+
 @end
 
 @interface THKOnlineDesignBaseCell : UICollectionViewCell<THKOnlineDesignBaseCellProtocol>

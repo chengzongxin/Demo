@@ -14,6 +14,7 @@
 #import "THKOnlineDesignHouseStyleCell.h"
 #import "THKOnlineDesignHouseBudgetCell.h"
 #import "THKOnlineDesignHouseDemandCell.h"
+#import "THKRecordTool.h"
 
 static CGFloat const kHeaderHeight = 150.0;
 
@@ -62,6 +63,19 @@ static CGFloat const kHeaderHeight = 150.0;
 
 - (void)clickRecordBtn:(UIButton *)btn{
     NSLog(@"%@",btn);
+}
+
+- (void)recordBtnTouchDown:(UIButton *)btn{
+    NSLog(@"recordBtnTouchDown - %@",btn);
+    [[THKRecordTool sharedInstance] startRecord];
+}
+
+- (void)recordBtnTouchUp:(UIButton *)btn{
+    NSLog(@"recordBtnTouchDUp - %@",btn);
+    [[THKRecordTool sharedInstance] stopRecord];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[THKRecordTool sharedInstance] play];
+    });
 }
 
 #pragma mark UICollectionViewDataSource

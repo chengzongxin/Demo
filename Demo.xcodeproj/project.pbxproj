@@ -301,6 +301,7 @@
 		16B2E6E828A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6E728A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.m */; };
 		16B2E6EB28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6EA28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m */; };
 		16B2E6EE28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */; };
+		16B2E6F228A5298C00D385B6 /* THKRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6F128A5298C00D385B6 /* THKRecordTool.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -973,6 +974,8 @@
 		16B2E6EA28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseDemandCell.m; sourceTree = "<group>"; };
 		16B2E6EC28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseDemandView.h; sourceTree = "<group>"; };
 		16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseDemandView.m; sourceTree = "<group>"; };
+		16B2E6F028A5298C00D385B6 /* THKRecordTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKRecordTool.h; sourceTree = "<group>"; };
+		16B2E6F128A5298C00D385B6 /* THKRecordTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKRecordTool.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2397,6 +2400,7 @@
 				16B2E6CA28A490EF00D385B6 /* THKOnlineDesignVC.h */,
 				16B2E6CB28A490EF00D385B6 /* THKOnlineDesignVC.m */,
 				16B2E6DC28A5097600D385B6 /* View */,
+				16B2E6EF28A5297100D385B6 /* Recorder */,
 				16B2E6CD28A4913200D385B6 /* THKOnlineDesignVM.h */,
 				16B2E6CE28A4913200D385B6 /* THKOnlineDesignVM.m */,
 				16B2E6D928A4B4CB00D385B6 /* THKOnlineDesignModel.h */,
@@ -2428,6 +2432,15 @@
 				16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		16B2E6EF28A5297100D385B6 /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				16B2E6F028A5298C00D385B6 /* THKRecordTool.h */,
+				16B2E6F128A5298C00D385B6 /* THKRecordTool.m */,
+			);
+			path = Recorder;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -3375,6 +3388,7 @@
 				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
 				16192B4B2692E1B100967C73 /* THKRouterConfig.m in Sources */,
 				16611AAD2696870F0089E41B /* GEEnvironmentParameter.m in Sources */,
+				16B2E6F228A5298C00D385B6 /* THKRecordTool.m in Sources */,
 				16192B3A2692E13E00967C73 /* UIViewController+THKAnimation.m in Sources */,
 				1630D992274DDD11009A04FA /* THKSelectMaterialCommunicationCellVM.m in Sources */,
 				160981D226D76ED800E1364F /* THKDiaryBookCellHeaderView.m in Sources */,
