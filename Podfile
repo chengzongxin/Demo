@@ -16,8 +16,8 @@ target 'Demo' do
   pod 'YYKit'
   pod 'LookinServer', :configurations => ['Debug'] #界面查看工具
 #  pod 'MLeaksFinder', :configurations => ['Debug'] #检测内存泄漏
-#  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git'
-  pod 'TMUIKit', :path => '~/tmuikit/TMUIKit_Debug.podspec'
+  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git'
+#  pod 'TMUIKit', :path => '~/tmuikit/TMUIKit_Debug.podspec'
   pod 'TMEmptyView'
   pod 'TMToast'
   pod 'MJRefresh'

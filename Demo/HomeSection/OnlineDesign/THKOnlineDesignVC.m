@@ -6,8 +6,11 @@
 //
 
 #import "THKOnlineDesignVC.h"
+#import "THKOnlineDesignHeader.h"
 #import "THKOnlineDesignSectionHeader.h"
 #import "THKOnlineDesignCell.h"
+
+static CGFloat const kHeaderHeight = 150.0;
 
 @interface THKOnlineDesignVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -16,6 +19,8 @@
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) THKOnlineDesignHeader *header;
 
 @end
 
@@ -27,9 +32,22 @@
     [super viewDidLoad];
     
     [self.view addSubview:self.collectionView];
+    
+    [self.viewModel.requestCommand execute:nil];
 }
 
 #pragma mark - Public
+- (void)bindViewModel{
+    @weakify(self);
+    [self.viewModel.requestCommand.nextSignal subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.collectionView reloadData];
+    }];
+    
+    [self.viewModel.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
+            
+    }];
+}
 
 #pragma mark - Event Respone
 
@@ -44,11 +62,11 @@
 
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 10;
+    return self.viewModel.datas.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return self.viewModel.datas[section].item.items.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -94,7 +112,6 @@
         _collectionView.backgroundColor = UIColorHex(#DEEEFF);
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         if (@available(iOS 11.0, *)) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
@@ -103,8 +120,18 @@
         [_collectionView registerClass:THKOnlineDesignSectionHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionHeader.class)];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(UICollectionReusableView.class)];
         [_collectionView registerClass:THKOnlineDesignCell.class forCellWithReuseIdentifier:NSStringFromClass(THKOnlineDesignCell.class)];
+        
+        _collectionView.contentInset = UIEdgeInsetsMake(kHeaderHeight, 0, 0, 0);
+        [_collectionView insertSubview:self.header atIndex:0];
     }
     return _collectionView;
+}
+
+- (THKOnlineDesignHeader *)header{
+    if (!_header) {
+        _header = [[THKOnlineDesignHeader alloc] initWithFrame:CGRectMake(0, -kHeaderHeight, TMUI_SCREEN_WIDTH, kHeaderHeight)];
+    }
+    return _header;
 }
 
 #pragma mark - Supperclass
