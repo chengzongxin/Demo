@@ -8,6 +8,7 @@
 #import "THKRecordTool.h"
 #import <AVFoundation/AVFoundation.h>
 
+//#define kRecordFilePath @"/Users/joe.cheng/Desktop/TMUIKit_AssociateProject/OnlineDesign.caf"
 #define kRecordFilePath tmui_filePathAtDocumentWithName(@"OnlineDesign.caf")
 
 @interface THKRecordTool ()
@@ -54,6 +55,8 @@ SHARED_INSTANCE_FOR_CLASS;
 
 
 - (void)play{
+    
+    [self setupPlayer];
     [_audioPlayer prepareToPlay];
     [_audioPlayer play];
 }

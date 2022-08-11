@@ -67,5 +67,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>请允许使用您的麦克风</string>
 </dict>
 </plist>

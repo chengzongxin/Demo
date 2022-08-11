@@ -3722,8 +3722,6 @@
 					"\"UIKit\"",
 					"-framework",
 					"\"YYKit\"",
-					"-Xlinker",
-					"-interposable",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
