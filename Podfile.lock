@@ -289,7 +289,7 @@ DEPENDENCIES:
   - ReactiveObjC
   - TMEmptyView
   - TMToast
-  - TMUIKit (from `~/tmuikit/TMUIKit_Debug.podspec`)
+  - TMUIKit (from `https://github.com/chengzongxin/TMUIKit.git`)
   - YYKit
 
 SPEC REPOS:
@@ -308,7 +308,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   TMUIKit:
-    :path: "~/tmuikit/TMUIKit_Debug.podspec"
+    :git: https://github.com/chengzongxin/TMUIKit.git
+
+CHECKOUT OPTIONS:
+  TMUIKit:
+    :commit: fb50bf8e8935025400941b8c49af31a5ba35e5e5
+    :git: https://github.com/chengzongxin/TMUIKit.git
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
@@ -323,6 +328,6 @@ SPEC CHECKSUMS:
   TMUIKit: 0b06a89efcb972b02c0f582d5e686cafddca0a63
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: c89969c9c04f86ec0588de69dc4a8fe40446cf47
+PODFILE CHECKSUM: 50f13353c7125cfced6b144bfa930a376b482a3f
 
 COCOAPODS: 1.10.0
