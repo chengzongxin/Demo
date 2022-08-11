@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@class THKOnlineDesignItemModel;
+@class THKOnlineDesignItemModel,THKOnlineDesignItemDemandModel;
 
 @interface THKOnlineDesignModel : NSObject
 
@@ -34,8 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray <NSString *> *houseBudget;
 
-@property (nonatomic, strong)  NSArray <NSString *> *demandDesc;
-
+@property (nonatomic, strong) NSArray <NSString *> *demandDesc;
 ///  本地处理
 @property (nonatomic, strong) NSArray <NSString *> *items;
 

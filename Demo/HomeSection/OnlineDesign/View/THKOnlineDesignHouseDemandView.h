@@ -1,5 +1,5 @@
 //
-//  THKOnlineDesignCell.h
+//  THKOnlineDesignHouseDemandView.h
 //  Demo
 //
 //  Created by Joe.cheng on 2022/8/11.
@@ -9,7 +9,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKOnlineDesignCell : UICollectionViewCell
+@interface THKOnlineDesignHouseDemandView : UIView
+
+@property (nonatomic, strong) NSArray *demands;
 
 @end
 

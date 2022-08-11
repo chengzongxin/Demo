@@ -8,11 +8,16 @@
 #import "THKOnlineDesignVC.h"
 #import "THKOnlineDesignHeader.h"
 #import "THKOnlineDesignSectionHeader.h"
-#import "THKOnlineDesignCell.h"
+#import "THKOnlineDesignBaseCell.h"
+#import "THKOnlineDesignHouseTypeCell.h"
+#import "THKOnlineDesignHouseNameCell.h"
+#import "THKOnlineDesignHouseStyleCell.h"
+#import "THKOnlineDesignHouseBudgetCell.h"
+#import "THKOnlineDesignHouseDemandCell.h"
 
 static CGFloat const kHeaderHeight = 150.0;
 
-@interface THKOnlineDesignVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface THKOnlineDesignVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,THKOnlineDesignBaseCellDelegate>
 
 @property (nonatomic, strong) THKOnlineDesignVM *viewModel;
 
@@ -21,6 +26,8 @@ static CGFloat const kHeaderHeight = 150.0;
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) THKOnlineDesignHeader *header;
+
+@property (nonatomic, strong) TMUIOrderedDictionary *cellDict;
 
 @end
 
@@ -53,11 +60,35 @@ static CGFloat const kHeaderHeight = 150.0;
 
 #pragma mark - Delegate
 
+- (void)clickRecordBtn:(UIButton *)btn{
+    NSLog(@"%@",btn);
+}
+
 #pragma mark UICollectionViewDataSource
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CGFloat column = 4;
-    CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - (self.layout.minimumInteritemSpacing)*(column - 1))/column);
-    return CGSizeMake(width, 50);
+    switch (indexPath.section) {
+        case 0:
+        case 1:
+            return CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset), 50);
+            break;
+        case 2:
+        case 3:
+            {
+                CGFloat column = 4;
+                CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - (self.layout.minimumInteritemSpacing)*(column - 1))/column);
+                return CGSizeMake(width, 50);
+            }
+            break;
+        case 4:
+        {
+            return CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset), 100);
+        }
+            break;
+        default:
+            break;
+    }
+    return CGSizeZero;
+    
 }
 
 
@@ -70,7 +101,12 @@ static CGFloat const kHeaderHeight = 150.0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    THKOnlineDesignCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKOnlineDesignCell.class) forIndexPath:indexPath];
+    NSInteger type = self.viewModel.datas[indexPath.section].item.type;
+    Class cls = self.cellDict[@(type)];
+    NSString *cellIdentifier = NSStringFromClass(cls);
+    THKOnlineDesignBaseCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    cell.delegate = self;
+    [cell bindWithModel:self.viewModel.datas[indexPath.section].item.items[indexPath.item]];
     cell.backgroundColor = UIColor.tmui_randomColor;
     return cell;
 }
@@ -78,6 +114,7 @@ static CGFloat const kHeaderHeight = 150.0;
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
         THKOnlineDesignSectionHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionHeader.class) forIndexPath:indexPath];
+        header.titleLbl.text = self.viewModel.datas[indexPath.section].title;
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
         UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(UICollectionReusableView.class) forIndexPath:indexPath];
@@ -91,6 +128,7 @@ static CGFloat const kHeaderHeight = 150.0;
 }
 
 #pragma mark - Private
+
 
 #pragma mark - Getters and Setters
 
@@ -119,10 +157,16 @@ static CGFloat const kHeaderHeight = 150.0;
         }
         [_collectionView registerClass:THKOnlineDesignSectionHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionHeader.class)];
         [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(UICollectionReusableView.class)];
-        [_collectionView registerClass:THKOnlineDesignCell.class forCellWithReuseIdentifier:NSStringFromClass(THKOnlineDesignCell.class)];
+//        [_collectionView registerClass:THKOnlineDesignBaseCell.class forCellWithReuseIdentifier:NSStringFromClass(THKOnlineDesignBaseCell.class)];
         
         _collectionView.contentInset = UIEdgeInsetsMake(kHeaderHeight, 0, 0, 0);
         [_collectionView insertSubview:self.header atIndex:0];
+        
+        @weakify(_collectionView);
+        [self.cellDict.allValues enumerateObjectsUsingBlock:^(Class  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            @strongify(_collectionView);
+            [_collectionView registerClass:obj forCellWithReuseIdentifier:NSStringFromClass(obj)];
+        }];
     }
     return _collectionView;
 }
@@ -132,6 +176,20 @@ static CGFloat const kHeaderHeight = 150.0;
         _header = [[THKOnlineDesignHeader alloc] initWithFrame:CGRectMake(0, -kHeaderHeight, TMUI_SCREEN_WIDTH, kHeaderHeight)];
     }
     return _header;
+}
+
+- (TMUIOrderedDictionary *)cellDict{
+    if (!_cellDict) {
+        _cellDict = [[TMUIOrderedDictionary alloc] initWithKeysAndObjects:
+                     @0,THKOnlineDesignBaseCell.class,
+                     @1,THKOnlineDesignHouseTypeCell.class,
+                     @2,THKOnlineDesignHouseNameCell.class,
+                     @3,THKOnlineDesignHouseStyleCell.class,
+                     @4,THKOnlineDesignHouseBudgetCell.class,
+                     @5,THKOnlineDesignHouseDemandCell.class,
+        nil];
+    }
+    return _cellDict;
 }
 
 #pragma mark - Supperclass

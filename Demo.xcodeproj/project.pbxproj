@@ -292,9 +292,15 @@
 		16B2E6CC28A490EF00D385B6 /* THKOnlineDesignVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6CB28A490EF00D385B6 /* THKOnlineDesignVC.m */; };
 		16B2E6CF28A4913200D385B6 /* THKOnlineDesignVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6CE28A4913200D385B6 /* THKOnlineDesignVM.m */; };
 		16B2E6D228A4A86600D385B6 /* THKOnlineDesignSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6D128A4A86600D385B6 /* THKOnlineDesignSectionHeader.m */; };
-		16B2E6D528A4A87B00D385B6 /* THKOnlineDesignCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6D428A4A87B00D385B6 /* THKOnlineDesignCell.m */; };
+		16B2E6D528A4A87B00D385B6 /* THKOnlineDesignBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6D428A4A87B00D385B6 /* THKOnlineDesignBaseCell.m */; };
 		16B2E6D828A4B0A500D385B6 /* THKOnlineDesignHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6D728A4B0A500D385B6 /* THKOnlineDesignHeader.m */; };
 		16B2E6DB28A4B4CB00D385B6 /* THKOnlineDesignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6DA28A4B4CB00D385B6 /* THKOnlineDesignModel.m */; };
+		16B2E6DF28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6DE28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.m */; };
+		16B2E6E228A50A6F00D385B6 /* THKOnlineDesignHouseNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6E128A50A6F00D385B6 /* THKOnlineDesignHouseNameCell.m */; };
+		16B2E6E528A50A7B00D385B6 /* THKOnlineDesignHouseStyleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6E428A50A7B00D385B6 /* THKOnlineDesignHouseStyleCell.m */; };
+		16B2E6E828A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6E728A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.m */; };
+		16B2E6EB28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6EA28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m */; };
+		16B2E6EE28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -949,12 +955,24 @@
 		16B2E6CE28A4913200D385B6 /* THKOnlineDesignVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignVM.m; sourceTree = "<group>"; };
 		16B2E6D028A4A86600D385B6 /* THKOnlineDesignSectionHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignSectionHeader.h; sourceTree = "<group>"; };
 		16B2E6D128A4A86600D385B6 /* THKOnlineDesignSectionHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignSectionHeader.m; sourceTree = "<group>"; };
-		16B2E6D328A4A87B00D385B6 /* THKOnlineDesignCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignCell.h; sourceTree = "<group>"; };
-		16B2E6D428A4A87B00D385B6 /* THKOnlineDesignCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignCell.m; sourceTree = "<group>"; };
+		16B2E6D328A4A87B00D385B6 /* THKOnlineDesignBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignBaseCell.h; sourceTree = "<group>"; };
+		16B2E6D428A4A87B00D385B6 /* THKOnlineDesignBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignBaseCell.m; sourceTree = "<group>"; };
 		16B2E6D628A4B0A500D385B6 /* THKOnlineDesignHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHeader.h; sourceTree = "<group>"; };
 		16B2E6D728A4B0A500D385B6 /* THKOnlineDesignHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHeader.m; sourceTree = "<group>"; };
 		16B2E6D928A4B4CB00D385B6 /* THKOnlineDesignModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignModel.h; sourceTree = "<group>"; };
 		16B2E6DA28A4B4CB00D385B6 /* THKOnlineDesignModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignModel.m; sourceTree = "<group>"; };
+		16B2E6DD28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseTypeCell.h; sourceTree = "<group>"; };
+		16B2E6DE28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseTypeCell.m; sourceTree = "<group>"; };
+		16B2E6E028A50A6F00D385B6 /* THKOnlineDesignHouseNameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseNameCell.h; sourceTree = "<group>"; };
+		16B2E6E128A50A6F00D385B6 /* THKOnlineDesignHouseNameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseNameCell.m; sourceTree = "<group>"; };
+		16B2E6E328A50A7B00D385B6 /* THKOnlineDesignHouseStyleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseStyleCell.h; sourceTree = "<group>"; };
+		16B2E6E428A50A7B00D385B6 /* THKOnlineDesignHouseStyleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseStyleCell.m; sourceTree = "<group>"; };
+		16B2E6E628A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseBudgetCell.h; sourceTree = "<group>"; };
+		16B2E6E728A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseBudgetCell.m; sourceTree = "<group>"; };
+		16B2E6E928A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseDemandCell.h; sourceTree = "<group>"; };
+		16B2E6EA28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseDemandCell.m; sourceTree = "<group>"; };
+		16B2E6EC28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseDemandView.h; sourceTree = "<group>"; };
+		16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseDemandView.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2378,18 +2396,38 @@
 			children = (
 				16B2E6CA28A490EF00D385B6 /* THKOnlineDesignVC.h */,
 				16B2E6CB28A490EF00D385B6 /* THKOnlineDesignVC.m */,
-				16B2E6D628A4B0A500D385B6 /* THKOnlineDesignHeader.h */,
-				16B2E6D728A4B0A500D385B6 /* THKOnlineDesignHeader.m */,
-				16B2E6D028A4A86600D385B6 /* THKOnlineDesignSectionHeader.h */,
-				16B2E6D128A4A86600D385B6 /* THKOnlineDesignSectionHeader.m */,
-				16B2E6D328A4A87B00D385B6 /* THKOnlineDesignCell.h */,
-				16B2E6D428A4A87B00D385B6 /* THKOnlineDesignCell.m */,
+				16B2E6DC28A5097600D385B6 /* View */,
 				16B2E6CD28A4913200D385B6 /* THKOnlineDesignVM.h */,
 				16B2E6CE28A4913200D385B6 /* THKOnlineDesignVM.m */,
 				16B2E6D928A4B4CB00D385B6 /* THKOnlineDesignModel.h */,
 				16B2E6DA28A4B4CB00D385B6 /* THKOnlineDesignModel.m */,
 			);
 			path = OnlineDesign;
+			sourceTree = "<group>";
+		};
+		16B2E6DC28A5097600D385B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				16B2E6D628A4B0A500D385B6 /* THKOnlineDesignHeader.h */,
+				16B2E6D728A4B0A500D385B6 /* THKOnlineDesignHeader.m */,
+				16B2E6D028A4A86600D385B6 /* THKOnlineDesignSectionHeader.h */,
+				16B2E6D128A4A86600D385B6 /* THKOnlineDesignSectionHeader.m */,
+				16B2E6D328A4A87B00D385B6 /* THKOnlineDesignBaseCell.h */,
+				16B2E6D428A4A87B00D385B6 /* THKOnlineDesignBaseCell.m */,
+				16B2E6DD28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.h */,
+				16B2E6DE28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.m */,
+				16B2E6E028A50A6F00D385B6 /* THKOnlineDesignHouseNameCell.h */,
+				16B2E6E128A50A6F00D385B6 /* THKOnlineDesignHouseNameCell.m */,
+				16B2E6E328A50A7B00D385B6 /* THKOnlineDesignHouseStyleCell.h */,
+				16B2E6E428A50A7B00D385B6 /* THKOnlineDesignHouseStyleCell.m */,
+				16B2E6E628A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.h */,
+				16B2E6E728A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.m */,
+				16B2E6E928A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.h */,
+				16B2E6EA28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m */,
+				16B2E6EC28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.h */,
+				16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -3133,6 +3171,7 @@
 				16A961F7274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.m in Sources */,
 				1685A68E289121E50032E474 /* TObject+TNSCodingHelp.m in Sources */,
 				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
+				16B2E6E828A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.m in Sources */,
 				168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */,
 				16867A0D2692D76C00650023 /* TMCardComponentOldTopicAndQaStyleCell.m in Sources */,
 				16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */,
@@ -3147,6 +3186,7 @@
 				16611AD1269688C20089E41B /* KeychainItemWrapper.m in Sources */,
 				16611B6D269692D20089E41B /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
 				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
+				16B2E6DF28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.m in Sources */,
 				16409078283378430081F089 /* CycleCardCell.m in Sources */,
 				16867A0F2692D76C00650023 /* TMCardComponentCellBottomView.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
@@ -3288,6 +3328,7 @@
 				16611AC52696870F0089E41B /* RegistScrollViewProxy.m in Sources */,
 				16867A0C2692D76C00650023 /* TMCardComponentQaStyleCell.m in Sources */,
 				16192AB62692DC4500967C73 /* QuickMethod.m in Sources */,
+				16B2E6E228A50A6F00D385B6 /* THKOnlineDesignHouseNameCell.m in Sources */,
 				16611AC32696870F0089E41B /* GETableView.m in Sources */,
 				16B2E6CF28A4913200D385B6 /* THKOnlineDesignVM.m in Sources */,
 				16976FC827795A5F00D477DA /* ComponentViewController.m in Sources */,
@@ -3304,6 +3345,7 @@
 				16DDC09B274CCA56000DAA29 /* THKSelectMaterialHomeVM.m in Sources */,
 				16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */,
 				16611B5E269692D20089E41B /* THKMaterialClassificationVM.m in Sources */,
+				16B2E6EE28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m in Sources */,
 				16192B3B2692E13E00967C73 /* UIViewController+PopGestureOfPercentDrivenInteractiveTransition.m in Sources */,
 				166FCBC426D8716700FA83A8 /* THKDiaryBookLastCell.m in Sources */,
 				16E5C4CF2682DE930024BA20 /* TBTBaseRequest.m in Sources */,
@@ -3328,6 +3370,7 @@
 				16611AAF2696870F0089E41B /* GELocation.m in Sources */,
 				16611B71269692D20089E41B /* THKMaterialClassificationVC.m in Sources */,
 				165CCBD3278E66DA00141EC0 /* THKDynamicTabsPageVM.m in Sources */,
+				16B2E6E528A50A7B00D385B6 /* THKOnlineDesignHouseStyleCell.m in Sources */,
 				16611B72269692D20089E41B /* THKMaterialHotRankVM.m in Sources */,
 				1669C1D82680673A0059E9B0 /* UIScrollView+TScroll.m in Sources */,
 				16192B4B2692E1B100967C73 /* THKRouterConfig.m in Sources */,
@@ -3377,7 +3420,7 @@
 				16611AB92696870F0089E41B /* GETrackerModel.m in Sources */,
 				16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				165CCBD1278E66DA00141EC0 /* THKDynamicTabsWrapperScrollView.m in Sources */,
-				16B2E6D528A4A87B00D385B6 /* THKOnlineDesignCell.m in Sources */,
+				16B2E6D528A4A87B00D385B6 /* THKOnlineDesignBaseCell.m in Sources */,
 				1642AA4B26D8EE6A00F5FACD /* THKDiaryDirectoryChildVC.m in Sources */,
 				1630D98C274DD7D0009A04FA /* THKAvatarView.m in Sources */,
 				16F84A5826E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m in Sources */,
@@ -3409,6 +3452,7 @@
 				16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */,
 				16192B362692E13E00967C73 /* THKTransitionAnimation.m in Sources */,
 				16867A132692D76C00650023 /* TMCardComponentNotSupportCell.m in Sources */,
+				16B2E6EB28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m in Sources */,
 				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
 				1685A68D289121E50032E474 /* TObject.m in Sources */,

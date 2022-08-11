@@ -26,7 +26,7 @@
             section1.title = @"我家小区户型";
             THKOnlineDesignItemModel *item1 = [[THKOnlineDesignItemModel alloc] init];
             item1.type = 1;
-            item1.picUrl = @"123";
+            item1.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
             section1.item = item1;
             [arr addObject:section1];
             
@@ -34,7 +34,7 @@
             section2.title = @"我家小区名称";
             THKOnlineDesignItemModel *item2 = [[THKOnlineDesignItemModel alloc] init];
             item2.type = 2;
-            item2.houseAreaName = @"123";
+            item2.houseAreaName = @"瑞雪春堂";
             section2.item = item2;
             [arr addObject:section2];
             
@@ -42,6 +42,7 @@
             section3.title = @"我喜欢的装修风格";
             THKOnlineDesignItemModel *item3 = [[THKOnlineDesignItemModel alloc] init];
             item3.type = 3;
+            item3.houseStyles = @[@"现代简约",@"日式",@"原木"];
             section3.item = item3;
             [arr addObject:section3];
             
@@ -49,6 +50,7 @@
             section4.title = @"我的装修预算";
             THKOnlineDesignItemModel *item4 = [[THKOnlineDesignItemModel alloc] init];
             item4.type = 4;
+            item4.houseBudget = @[@"3-5",@"6-10",@"11-20"];
             section4.item = item4;
             [arr addObject:section4];
             
@@ -56,6 +58,7 @@
             section5.title = @"需求描述";
             THKOnlineDesignItemModel *item5 = [[THKOnlineDesignItemModel alloc] init];
             item5.type = 5;
+            item5.demandDesc = @[@"123",@"345"];
             section5.item = item5;
             [arr addObject:section5];
             

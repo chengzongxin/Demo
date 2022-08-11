@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignSectionHeader : UICollectionReusableView
 
+@property (nonatomic, strong, readonly) UILabel *titleLbl;
+
 @end
 
 NS_ASSUME_NONNULL_END
