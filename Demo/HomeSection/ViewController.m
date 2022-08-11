@@ -6,8 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "THKDecorationToDoVC.h"
-#import "THKDecorationToDoVM.h"
+#import "THKOnlineDesignVC.h"
 @interface ViewController ()
 
 @end
@@ -29,7 +28,7 @@
 }
 
 - (void)push{
-    THKDecorationToDoVC *vc = [[THKDecorationToDoVC alloc] initWithViewModel:THKDecorationToDoVM.new];
+    THKOnlineDesignVC *vc = [[THKOnlineDesignVC alloc] initWithViewModel:THKOnlineDesignVM.new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

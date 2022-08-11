@@ -10,9 +10,22 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
+@implementation NSObject (InjectionIIIHelper)
 
-@implementation InjectionIIIHelper
-
++ (void)load{
+    
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        
+    //    //给UIViewController 注册injected 方法
+    //    class_addMethod([UIViewController class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
+    //    //给uiview 注册injected 方法
+    //    class_addMethod([UIView class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
+    //    //统一添加 injected 方法
+        class_addMethod([NSObject class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
+    });
+}
 
 /**
  InjectionIII 热部署会调用的一个方法，
@@ -20,24 +33,31 @@
  */
 void injected (id self, SEL _cmd) {
     //vc 刷新
-    if ([self isKindOfClass:[UIViewController class]]) {
-        [self loadView];
-        [self viewDidLoad];
-        [self viewWillLayoutSubviews];
-        [self viewWillAppear:NO];
-    }
-    //view 刷新
-    else if ([self isKindOfClass:[UIView class]]){
-        UIViewController *vc = [InjectionIIIHelper viewControllerSupportView:self];
-        if (vc && [vc isKindOfClass:[UIViewController class]]) {
-            [vc loadView];
-            [vc viewDidLoad];
-            [vc viewWillLayoutSubviews];
-            [vc viewWillAppear:NO];
+//    NSLog(@"%@--%@,",self,[self class]);
+    
+    UIViewController *topVC = [TMUIHelper topViewController];
+    
+    [NSOperationQueue.mainQueue addOperationWithBlock:^{
+            
+        if ([topVC isKindOfClass:[UIViewController class]]) {
+            [topVC loadView];
+            [topVC viewDidLoad];
+            [topVC viewWillLayoutSubviews];
+            [topVC viewWillAppear:NO];
         }
-    }
+        //view 刷新
+        else if ([self isKindOfClass:[UIView class]]){
+            UIViewController *vc = [NSObject viewControllerSupportView:self];
+            if (vc && [vc isKindOfClass:[UIViewController class]]) {
+                [vc loadView];
+                [vc viewDidLoad];
+                [vc viewWillLayoutSubviews];
+                [vc viewWillAppear:NO];
+            }
+        }
+    }];
+    
 }
-
 /**
  获取view 所属的vc，失败为nil
  */
@@ -50,6 +70,12 @@ void injected (id self, SEL _cmd) {
     }
     return nil;
 }
+
+@end
+
+
+@implementation InjectionIIIHelper
+
 
 + (void)load
 {
@@ -64,12 +90,10 @@ void injected (id self, SEL _cmd) {
         [[NSNotificationCenter defaultCenter] removeObserver:observer];
     }];
     
-//    //给UIViewController 注册injected 方法
-//    class_addMethod([UIViewController class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
-//    //给uiview 注册injected 方法
-//    class_addMethod([UIView class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
-//    //统一添加 injected 方法
-    class_addMethod([NSObject class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
+    
+//    [NSNotificationCenter.defaultCenter addObserverForName:@"INJECTION_BUNDLE_NOTIFICATION" object:nil queue:NSOperationQueue.mainQueue usingBlock:^(NSNotification * _Nonnull note) {
+//        NSLog(@"note ---- %@",note);
+//    }];
     
 #endif
 }
