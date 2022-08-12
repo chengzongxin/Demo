@@ -6,9 +6,12 @@
 //
 
 #import "THKOnlineDesignHouseDemandView.h"
+#import "THKRecordTool.h"
 
 @interface THKOnlineDesignHouseDemandView ()
 
+
+@property (nonatomic, strong) UIStackView *stackView;
 
 @end
 
@@ -23,9 +26,35 @@
     return self;
 }
 
+- (void)setDemands:(NSArray<NSString *> *)demands{
+    _demands = demands;
+    
+    [demands enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        TMUIButton *btn = [TMUIButton tmui_button];
+        btn.tmui_text = obj;
+        [btn tmui_addTarget:self action:@selector(btnClick:)];
+        [self.stackView addSubview:btn];
+    }];
+    
+}
+
+- (void)btnClick:(UIButton *)btn{
+    [[THKRecordTool sharedInstance] play:btn.tmui_text];
+}
 
 - (void)setupSubviews{
-    
+    [self addSubview:self.stackView];
+    [self.stackView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+}
+
+- (UIStackView *)stackView{
+    if (!_stackView) {
+        _stackView = [[UIStackView alloc] init];
+        _stackView.axis = UILayoutConstraintAxisVertical;
+    }
+    return _stackView;
 }
 
 

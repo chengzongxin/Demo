@@ -41,7 +41,7 @@
             break;
         case 5:
         {
-            return @[self.demandDesc];
+            return @[self.demandDesc?:@[]];
         }
             break;
             

@@ -17,6 +17,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSArray <THKOnlineDesignSectionModel *> *datas;
 
+@property (nonatomic, strong, readonly) RACCommand *addAudioCommand;
+
+@property (nonatomic, strong, readonly) RACSubject *refreshSignal;
+
+@property (nonatomic, strong, readonly) RACSubject *emptySignal;
+
 @end
 
 NS_ASSUME_NONNULL_END

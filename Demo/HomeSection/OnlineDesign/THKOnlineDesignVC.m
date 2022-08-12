@@ -40,26 +40,30 @@ static CGFloat const kHeaderHeight = 150.0;
     [super viewDidLoad];
     
     [self.view addSubview:self.collectionView];
-    
-    [self.viewModel.requestCommand execute:nil];
 }
 
 #pragma mark - Public
 - (void)bindViewModel{
     @weakify(self);
-    [self.viewModel.requestCommand.nextSignal subscribeNext:^(id  _Nullable x) {
+    [self.viewModel.refreshSignal subscribeNext:^(id  _Nullable x) {
         @strongify(self);
+        [self.view.tmui_emptyView remove];
         [self.collectionView reloadData];
     }];
     
-    [self.viewModel.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
-            
+    [self.viewModel.emptySignal subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [TMEmptyView showEmptyInView:self.view contentType:[x integerValue]];
     }];
     
     [THKRecordTool sharedInstance].recordFinish = ^(NSString *filePath) {
         // 录音完成
-        [[THKRecordTool sharedInstance] play:filePath];
+        [self.viewModel.addAudioCommand execute:filePath];
+//        [[THKRecordTool sharedInstance] play:filePath];
     };
+    
+    
+    [self.viewModel.requestCommand execute:nil];
 }
 
 #pragma mark - Event Respone
