@@ -29,13 +29,15 @@
 - (void)setDemands:(NSArray<NSString *> *)demands{
     _demands = demands;
     
+    [self.stackView tmui_removeAllSubviews];
+    
     [demands enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         TMUIButton *btn = [TMUIButton tmui_button];
         btn.tmui_text = obj;
+        btn.backgroundColor = UIColor.tmui_randomColor;
         [btn tmui_addTarget:self action:@selector(btnClick:)];
-        [self.stackView addSubview:btn];
+        [self.stackView addArrangedSubview:btn];
     }];
-    
 }
 
 - (void)btnClick:(UIButton *)btn{

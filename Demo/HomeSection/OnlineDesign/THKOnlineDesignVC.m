@@ -76,7 +76,9 @@ static CGFloat const kHeaderHeight = 150.0;
 
 - (void)recordBtnTouchDown:(UIButton *)btn{
     NSLog(@"recordBtnTouchDown - %@",btn);
-    [[THKRecordTool sharedInstance] startRecord:@"OnlineDesign1"];
+    NSString *timespace = [NSDate.date.tmui_stringWithDateFormatYMDHMS tmui_stringByReplacingPattern:@"[-: ]" withString:@""];
+    NSString *fileName = [NSString stringWithFormat:@"OnlineDesign1_%@",timespace];
+    [[THKRecordTool sharedInstance] startRecord:fileName];
 }
 
 - (void)recordBtnTouchUp:(UIButton *)btn{
@@ -101,7 +103,8 @@ static CGFloat const kHeaderHeight = 150.0;
             break;
         case 4:
         {
-            return CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset), 100);
+            NSArray *demans = self.viewModel.datas[indexPath.section].item.items[indexPath.item];
+            return CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset), 22 * demans.count + 44 + 20);
         }
             break;
         default:

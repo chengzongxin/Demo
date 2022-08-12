@@ -16,7 +16,7 @@
 #endif
 
 @interface THKRecordTool ()<AVAudioRecorderDelegate>{
-    NSMutableDictionary *_recordSettings;
+    NSDictionary *_recordSettings;
 }
 
 @property (nonatomic, strong) AVAudioRecorder *audioRecorder;
@@ -47,12 +47,13 @@ SHARED_INSTANCE_FOR_CLASS;
     UInt32 doChangeDefault = 1;
     AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker, sizeof(doChangeDefault), &doChangeDefault);
     
-    _recordSettings = [[NSMutableDictionary alloc] init];
-    [_recordSettings setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey: AVFormatIDKey];
-    [_recordSettings setValue :[NSNumber numberWithFloat:11025.0] forKey: AVSampleRateKey];
-    [_recordSettings setValue :[NSNumber numberWithInt:2] forKey: AVNumberOfChannelsKey];
-    [_recordSettings setValue :[NSNumber numberWithInt:AVAudioQualityHigh] forKey:AVEncoderAudioQualityKey];
-    
+    _recordSettings = @{
+        AVFormatIDKey : @(kAudioFormatLinearPCM),// 音频格式
+        AVSampleRateKey : @44100.0f,// 录音采样率(Hz) 如：AVSampleRateKey==8000/44100/96000（影响音频的质量）
+        AVNumberOfChannelsKey : @2,// 音频通道数 1 或 2
+        AVEncoderBitDepthHintKey : @16,// 线性音频的位深度 8、16、24、32
+        AVEncoderAudioQualityKey : @(AVAudioQualityHigh)// 录音的质量
+    };
 }
 
 - (void)setupRecorder:(NSString *)fileName{
@@ -67,7 +68,7 @@ SHARED_INSTANCE_FOR_CLASS;
 - (void)setupPlayer:(NSString *)urlString{
     //----------------AVAudioPlayer----------------
     NSError *playerError;
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL URLWithString:urlString] error:&playerError];
+    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:urlString] error:&playerError];
     if (_audioPlayer) {
         _audioPlayer.volume = 1.0;
     } else {
@@ -98,6 +99,7 @@ SHARED_INSTANCE_FOR_CLASS;
 /* audioRecorderDidFinishRecording:successfully: is called when a recording has been finished or stopped. This method is NOT called if the recorder is stopped due to an interruption. */
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
     NSString *path = [LameTool audioToMP3:recorder.url.absoluteString isDeleteSourchFile:YES];
+//    NSString *path = recorder.url.absoluteString;
     NSLog(@"path = %@",path);
     if (self.recordFinish) {
         self.recordFinish(path);

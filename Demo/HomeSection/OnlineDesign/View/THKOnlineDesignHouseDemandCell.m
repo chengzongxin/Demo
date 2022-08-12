@@ -23,7 +23,10 @@
     [self.contentView addSubview:self.recordBtn];
     
     [self.demandView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView);
+//        make.edges.equalTo(self.contentView);
+        make.top.left.right.equalTo(self.contentView);
+//        make.height.equalTo(self.contentView);
+        make.bottom.equalTo(self.contentView.mas_bottom).inset(64);
     }];
     
     [self.recordBtn mas_makeConstraints:^(MASConstraintMaker *make) {
