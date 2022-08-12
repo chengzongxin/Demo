@@ -7,16 +7,20 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^recordFinishBlock)(NSString * _Nullable filePath);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKRecordTool : NSObject
 SHARED_INSTANCE_FOR_HEADER;
 
-- (void)startRecord;
+@property (nonatomic, copy) recordFinishBlock recordFinish;
+
+- (void)startRecord:(NSString *)fileName;
 
 - (void)stopRecord;
 
-- (void)play;
+- (void)play:(NSString *)urlString;
 
 @end
 

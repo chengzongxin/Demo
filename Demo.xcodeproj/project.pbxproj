@@ -63,6 +63,8 @@
 		161C4CD32728EF0C00C660DC /* THKDiaryProducer.m in Sources */ = {isa = PBXBuildFile; fileRef = 161C4CD12728EF0C00C660DC /* THKDiaryProducer.m */; };
 		161C4CD62728EF7500C660DC /* THKDiaryInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 161C4CD52728EF7500C660DC /* THKDiaryInfoModel.m */; };
 		161C4CDC2728F6C400C660DC /* THKDirDetailDiaryPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 161C4CDB2728F6C400C660DC /* THKDirDetailDiaryPageRequest.m */; };
+		1622298B28A5EF3A005826CF /* LameTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1622298728A5EF3A005826CF /* LameTool.m */; };
+		1622298F28A5F149005826CF /* lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1622298E28A5F148005826CF /* lame.a */; };
 		1630D97F274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */; };
 		1630D985274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D984274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m */; };
 		1630D98B274DD7D0009A04FA /* THKAvatarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D987274DD7D0009A04FA /* THKAvatarViewModel.m */; };
@@ -516,6 +518,10 @@
 		161C4CD52728EF7500C660DC /* THKDiaryInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDiaryInfoModel.m; sourceTree = "<group>"; };
 		161C4CDA2728F6C400C660DC /* THKDirDetailDiaryPageRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDirDetailDiaryPageRequest.h; sourceTree = "<group>"; };
 		161C4CDB2728F6C400C660DC /* THKDirDetailDiaryPageRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDirDetailDiaryPageRequest.m; sourceTree = "<group>"; };
+		1622298728A5EF3A005826CF /* LameTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LameTool.m; sourceTree = "<group>"; };
+		1622298928A5EF3A005826CF /* LameTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameTool.h; sourceTree = "<group>"; };
+		1622298D28A5F13D005826CF /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		1622298E28A5F148005826CF /* lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lame.a; sourceTree = "<group>"; };
 		1630D97D274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialCommunicationVC.h; sourceTree = "<group>"; };
 		1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialCommunicationVC.m; sourceTree = "<group>"; };
 		1630D983274DD66F009A04FA /* THKSelectMaterialCommunicationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialCommunicationCell.h; sourceTree = "<group>"; };
@@ -1130,6 +1136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1622298F28A5F149005826CF /* lame.a in Frameworks */,
 				D0F618EC38E0A587ED43D1B6 /* Pods_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1467,6 +1474,17 @@
 				1686799B2692B8BA00650023 /* MaterialHotRankRequest */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		1622298628A5EF3A005826CF /* LameTool */ = {
+			isa = PBXGroup;
+			children = (
+				1622298928A5EF3A005826CF /* LameTool.h */,
+				1622298728A5EF3A005826CF /* LameTool.m */,
+				1622298D28A5F13D005826CF /* lame.h */,
+				1622298E28A5F148005826CF /* lame.a */,
+			);
+			path = LameTool;
 			sourceTree = "<group>";
 		};
 		1630D986274DD722009A04FA /* THKSelectMaterialCommunicationCell */ = {
@@ -2439,6 +2457,7 @@
 			children = (
 				16B2E6F028A5298C00D385B6 /* THKRecordTool.h */,
 				16B2E6F128A5298C00D385B6 /* THKRecordTool.m */,
+				1622298628A5EF3A005826CF /* LameTool */,
 			);
 			path = Recorder;
 			sourceTree = "<group>";
@@ -3202,6 +3221,7 @@
 				16B2E6DF28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.m in Sources */,
 				16409078283378430081F089 /* CycleCardCell.m in Sources */,
 				16867A0F2692D76C00650023 /* TMCardComponentCellBottomView.m in Sources */,
+				1622298B28A5EF3A005826CF /* LameTool.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
 				16834F0B26DC820D0082268C /* THKDiaryCircle.m in Sources */,
 				1689DEC527449B530073BA68 /* THKTabClearBadgeResponse.m in Sources */,
@@ -3670,6 +3690,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Demo/HomeSection/OnlineDesign/LameTool",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -3746,6 +3770,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Demo/HomeSection/OnlineDesign/LameTool",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

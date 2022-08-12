@@ -55,6 +55,11 @@ static CGFloat const kHeaderHeight = 150.0;
     [self.viewModel.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
             
     }];
+    
+    [THKRecordTool sharedInstance].recordFinish = ^(NSString *filePath) {
+        // 录音完成
+        [[THKRecordTool sharedInstance] play:filePath];
+    };
 }
 
 #pragma mark - Event Respone
@@ -67,15 +72,12 @@ static CGFloat const kHeaderHeight = 150.0;
 
 - (void)recordBtnTouchDown:(UIButton *)btn{
     NSLog(@"recordBtnTouchDown - %@",btn);
-    [[THKRecordTool sharedInstance] startRecord];
+    [[THKRecordTool sharedInstance] startRecord:@"OnlineDesign1"];
 }
 
 - (void)recordBtnTouchUp:(UIButton *)btn{
     NSLog(@"recordBtnTouchDUp - %@",btn);
     [[THKRecordTool sharedInstance] stopRecord];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[THKRecordTool sharedInstance] play];
-    });
 }
 
 #pragma mark UICollectionViewDataSource
