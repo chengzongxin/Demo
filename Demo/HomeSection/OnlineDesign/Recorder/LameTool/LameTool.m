@@ -42,11 +42,11 @@
         unsigned char mp3_buffer[MP3_SIZE];
         
         lame_t lame = lame_init();
-        lame_set_num_channels(lame, 1); // 单声道
-        lame_set_in_samplerate(lame, 16000);// 16K采样率
+        lame_set_num_channels(lame, 2); // 单声道
+        lame_set_in_samplerate(lame, 44100);// 16K采样率
         lame_set_VBR(lame, vbr_default);
         lame_set_brate(lame, 128);// 压缩的比特率为128K
-        lame_set_mode(lame, 1);
+        lame_set_mode(lame, 0);
         lame_set_quality(lame, 2);
         lame_init_params(lame);
         
