@@ -33,6 +33,9 @@ static CGFloat const kHeaderHeight = 150.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.thk_title = @"";
+    self.thk_navBar.backgroundColor = UIColorClear;
+    
     [self.view addSubview:self.collectionView];
 }
 
