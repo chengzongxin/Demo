@@ -41,11 +41,11 @@
     self.demandView.demands = model;
 }
 
-- (void)clickRecordBtn:(UIButton *)btn{
-    if ([self.delegate respondsToSelector:@selector(clickRecordBtn:)]) {
-        [self.delegate clickRecordBtn:btn];
-    }
-}
+//- (void)clickRecordBtn:(UIButton *)btn{
+//    if ([self.delegate respondsToSelector:@selector(clickRecordBtn:)]) {
+//        [self.delegate clickRecordBtn:btn];
+//    }
+//}
 
 - (void)recordBtnTouchDown:(UIButton *)btn{
     if ([self.delegate respondsToSelector:@selector(recordBtnTouchDown:)]) {

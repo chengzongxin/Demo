@@ -8,13 +8,8 @@
 #import "THKOnlineDesignVC.h"
 #import "THKOnlineDesignHeader.h"
 #import "THKOnlineDesignSectionHeader.h"
-#import "THKOnlineDesignBaseCell.h"
-#import "THKOnlineDesignHouseTypeCell.h"
-#import "THKOnlineDesignHouseNameCell.h"
-#import "THKOnlineDesignHouseStyleCell.h"
-#import "THKOnlineDesignHouseBudgetCell.h"
-#import "THKOnlineDesignHouseDemandCell.h"
 #import "THKRecordTool.h"
+#import "THKOnlineDesignSearchAreaVC.h"
 
 static CGFloat const kHeaderHeight = 150.0;
 
@@ -28,7 +23,6 @@ static CGFloat const kHeaderHeight = 150.0;
 
 @property (nonatomic, strong) THKOnlineDesignHeader *header;
 
-@property (nonatomic, strong) TMUIOrderedDictionary *cellDict;
 
 @end
 
@@ -44,6 +38,7 @@ static CGFloat const kHeaderHeight = 150.0;
 
 #pragma mark - Public
 - (void)bindViewModel{
+    self.viewModel.vcLayout = self.layout;
     @weakify(self);
     [self.viewModel.refreshSignal subscribeNext:^(id  _Nullable x) {
         @strongify(self);
@@ -70,8 +65,10 @@ static CGFloat const kHeaderHeight = 150.0;
 
 #pragma mark - Delegate
 
-- (void)clickRecordBtn:(UIButton *)btn{
-    NSLog(@"%@",btn);
+- (void)searchAreaBtnClick:(UIButton *)btn{
+    THKOnlineDesignSearchAreaVM *vm = [[THKOnlineDesignSearchAreaVM alloc] init];
+    THKOnlineDesignSearchAreaVC *vc = [[THKOnlineDesignSearchAreaVC alloc] initWithViewModel:vm];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)recordBtnTouchDown:(UIButton *)btn{
@@ -88,30 +85,7 @@ static CGFloat const kHeaderHeight = 150.0;
 
 #pragma mark UICollectionViewDataSource
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.section) {
-        case 0:
-        case 1:
-            return CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset), 50);
-            break;
-        case 2:
-        case 3:
-            {
-                CGFloat column = 4;
-                CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - (self.layout.minimumInteritemSpacing)*(column - 1))/column);
-                return CGSizeMake(width, 50);
-            }
-            break;
-        case 4:
-        {
-            NSArray *demans = self.viewModel.datas[indexPath.section].item.items[indexPath.item];
-            return CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset), 22 * demans.count + 44 + 20);
-        }
-            break;
-        default:
-            break;
-    }
-    return CGSizeZero;
-    
+    return self.viewModel.datas[indexPath.section].item.itemSize;
 }
 
 
@@ -124,8 +98,8 @@ static CGFloat const kHeaderHeight = 150.0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger type = self.viewModel.datas[indexPath.section].item.type;
-    Class cls = self.cellDict[@(type)];
+//    NSInteger type = self.viewModel.datas[indexPath.section].item.type;
+    Class cls = self.viewModel.datas[indexPath.section].item.cellClass;
     NSString *cellIdentifier = NSStringFromClass(cls);
     THKOnlineDesignBaseCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
@@ -186,7 +160,7 @@ static CGFloat const kHeaderHeight = 150.0;
         [_collectionView insertSubview:self.header atIndex:0];
         
         @weakify(_collectionView);
-        [self.cellDict.allValues enumerateObjectsUsingBlock:^(Class  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.viewModel.cellDict.allValues enumerateObjectsUsingBlock:^(Class  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             @strongify(_collectionView);
             [_collectionView registerClass:obj forCellWithReuseIdentifier:NSStringFromClass(obj)];
         }];
@@ -200,21 +174,6 @@ static CGFloat const kHeaderHeight = 150.0;
     }
     return _header;
 }
-
-- (TMUIOrderedDictionary *)cellDict{
-    if (!_cellDict) {
-        _cellDict = [[TMUIOrderedDictionary alloc] initWithKeysAndObjects:
-                     @0,THKOnlineDesignBaseCell.class,
-                     @1,THKOnlineDesignHouseTypeCell.class,
-                     @2,THKOnlineDesignHouseNameCell.class,
-                     @3,THKOnlineDesignHouseStyleCell.class,
-                     @4,THKOnlineDesignHouseBudgetCell.class,
-                     @5,THKOnlineDesignHouseDemandCell.class,
-        nil];
-    }
-    return _cellDict;
-}
-
 #pragma mark - Supperclass
 
 #pragma mark - NSObject

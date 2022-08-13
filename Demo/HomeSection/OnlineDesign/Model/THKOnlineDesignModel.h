@@ -26,6 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger type;
 
+@property (nonatomic, strong) Class cellClass;
+
+@property (nonatomic, assign) CGSize itemSize;
+
 @property (nonatomic, strong) NSString *picUrl;
 
 @property (nonatomic, strong) NSString *houseAreaName;

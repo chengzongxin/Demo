@@ -19,10 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol THKOnlineDesignBaseCellDelegate <NSObject>
 
-- (void)clickRecordBtn:(UIButton *)btn;
-
+- (void)searchAreaBtnClick:(UIButton *)btn;
+// 按住录音
 - (void)recordBtnTouchDown:(UIButton *)btn;
-
+// 松起录音
 - (void)recordBtnTouchUp:(UIButton *)btn;
 
 @end
