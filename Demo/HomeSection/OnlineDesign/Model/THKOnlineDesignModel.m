@@ -26,20 +26,15 @@
             break;
         case 2:
         {
-            return @[self.houseAreaName];
+            return self.houseStyles;
         }
             break;
         case 3:
         {
-            return self.houseStyles;
-        }
-            break;
-        case 4:
-        {
             return self.houseBudget;
         }
             break;
-        case 5:
+        case 4:
         {
             return @[self.demandDesc?:@[]];
         }

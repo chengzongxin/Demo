@@ -8,14 +8,20 @@
 #import "THKOnlineDesignVC.h"
 #import "THKOnlineDesignHeader.h"
 #import "THKOnlineDesignSectionHeader.h"
+#import "THKOnlineDesignSectionFooter.h"
 #import "THKRecordTool.h"
 #import "THKOnlineDesignSearchAreaVC.h"
 
-static CGFloat const kHeaderHeight = 150.0;
+static CGFloat const kBGCoverHeight = 252;
+static CGFloat const kHeaderHeight = 100;
 
 @interface THKOnlineDesignVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,THKOnlineDesignBaseCellDelegate>
 
 @property (nonatomic, strong) THKOnlineDesignVM *viewModel;
+
+@property (nonatomic, strong) UIImageView *bgImgV;
+
+@property (nonatomic, strong) UIView *contentBgView;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
@@ -33,8 +39,11 @@ static CGFloat const kHeaderHeight = 150.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.thk_title = @"";
+    self.view.backgroundColor = UIColorWhite;
+    
     self.thk_navBar.backgroundColor = UIColorClear;
+    
+    [self.view addSubview:self.bgImgV];
     
     [self.view addSubview:self.collectionView];
 }
@@ -107,17 +116,18 @@ static CGFloat const kHeaderHeight = 150.0;
     THKOnlineDesignBaseCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
     [cell bindWithModel:self.viewModel.datas[indexPath.section].item.items[indexPath.item]];
-    cell.backgroundColor = UIColor.tmui_randomColor;
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (kind == UICollectionElementKindSectionHeader) {
         THKOnlineDesignSectionHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionHeader.class) forIndexPath:indexPath];
-        header.titleLbl.text = self.viewModel.datas[indexPath.section].title;
+        THKOnlineDesignSectionModel *sectionModel = self.viewModel.datas[indexPath.section];
+        header.numLbl.text = @(sectionModel.item.type).stringValue;
+        header.titleLbl.text = sectionModel.title;
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
-        UICollectionReusableView *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(UICollectionReusableView.class) forIndexPath:indexPath];
+        THKOnlineDesignSectionFooter *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionFooter.class) forIndexPath:indexPath];
         return footer;
     }
     
@@ -132,12 +142,30 @@ static CGFloat const kHeaderHeight = 150.0;
 
 #pragma mark - Getters and Setters
 
+- (UIImageView *)bgImgV{
+    if (!_bgImgV) {
+        _bgImgV = [[UIImageView alloc] initWithImage:UIImageMake(@"od_bg_head")];
+        CGFloat bgImgH = _bgImgV.image.size.height/_bgImgV.image.size.width*TMUI_SCREEN_WIDTH;
+        _bgImgV.frame = CGRectMake(0, 0, TMUI_SCREEN_WIDTH, bgImgH);
+    }
+    return _bgImgV;
+}
+
+- (UIView *)contentBgView{
+    if (!_contentBgView) {
+        _contentBgView = [[UIView alloc] initWithFrame:CGRectMake(0, -kHeaderHeight, TMUI_SCREEN_WIDTH, 1000)];
+        _contentBgView.backgroundColor = UIColorHex(D8DCE2);
+        _contentBgView.userInteractionEnabled = NO;
+    }
+    return _contentBgView;
+}
+
 - (UICollectionViewFlowLayout *)layout{
     if (!_layout) {
         _layout = [[UICollectionViewFlowLayout alloc] init];
         _layout.headerReferenceSize = CGSizeMake(self.view.bounds.size.width, 50);
-        _layout.footerReferenceSize = CGSizeMake(self.view.bounds.size.width, 25);
-        _layout.sectionInset = UIEdgeInsetsMake(10, 22, 10, 22); // item 间距
+        _layout.footerReferenceSize = CGSizeMake(self.view.bounds.size.width, 0);
+        _layout.sectionInset = UIEdgeInsetsMake(0, 22, 0, 22); // item 间距
         _layout.minimumLineSpacing = 10;  // 两行之间间隔
         _layout.minimumInteritemSpacing = 10; // 两列之间间隔
     }
@@ -147,20 +175,24 @@ static CGFloat const kHeaderHeight = 150.0;
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
-        _collectionView.backgroundColor = UIColorHex(#DEEEFF);
+        _collectionView.backgroundColor = UIColorClear;//
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
+        _collectionView.bounces = NO;
         if (@available(iOS 11.0, *)) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
             self.automaticallyAdjustsScrollViewInsets = NO;
         }
         [_collectionView registerClass:THKOnlineDesignSectionHeader.class forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionHeader.class)];
-        [_collectionView registerClass:UICollectionReusableView.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(UICollectionReusableView.class)];
+        [_collectionView registerClass:THKOnlineDesignSectionFooter.class forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionFooter.class)];
 //        [_collectionView registerClass:THKOnlineDesignBaseCell.class forCellWithReuseIdentifier:NSStringFromClass(THKOnlineDesignBaseCell.class)];
         
-        _collectionView.contentInset = UIEdgeInsetsMake(kHeaderHeight, 0, 0, 0);
+        _collectionView.contentInset = UIEdgeInsetsMake(kHeaderHeight+kBGCoverHeight, 0, 40, 0);
         [_collectionView insertSubview:self.header atIndex:0];
+        [_collectionView insertSubview:self.contentBgView atIndex:0];
+        self.contentBgView.layer.zPosition = -100;
+//        [_collectionView.layer insertSublayer:self.contentBgView.layer atIndex:0];
         
         @weakify(_collectionView);
         [self.viewModel.cellDict.allValues enumerateObjectsUsingBlock:^(Class  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

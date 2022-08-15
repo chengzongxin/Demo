@@ -17,6 +17,8 @@
 
 - (void)setupSubviews{
     [self.contentView addSubview:self.budgetLbl];
+    self.contentView.cornerRadius = 8;
+    self.contentView.backgroundColor = [UIColorHex(F9F9F9) colorWithAlphaComponent:0.78];
     
     [self.budgetLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView);
@@ -31,8 +33,9 @@
 - (UILabel *)budgetLbl{
     if (!_budgetLbl) {
         _budgetLbl = [[UILabel alloc] init];
-        _budgetLbl.font = UIFont(18);
+        _budgetLbl.font = UIFont(13);
         _budgetLbl.textColor = UIColorDark;
+        _budgetLbl.textAlignment = NSTextAlignmentCenter;
     }
     return _budgetLbl;
 }

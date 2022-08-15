@@ -314,6 +314,9 @@
 		16B2E6EB28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6EA28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m */; };
 		16B2E6EE28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */; };
 		16B2E6F228A5298C00D385B6 /* THKRecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B2E6F128A5298C00D385B6 /* THKRecordTool.m */; };
+		16B3EA2328A9E1F400B3C791 /* od_bg_head@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA2128A9E1F400B3C791 /* od_bg_head@2x.png */; };
+		16B3EA2428A9E1F400B3C791 /* od_bg_head@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA2228A9E1F400B3C791 /* od_bg_head@3x.png */; };
+		16B3EA2728A9FC1400B3C791 /* THKOnlineDesignSectionFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA2628A9FC1400B3C791 /* THKOnlineDesignSectionFooter.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -1012,6 +1015,10 @@
 		16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseDemandView.m; sourceTree = "<group>"; };
 		16B2E6F028A5298C00D385B6 /* THKRecordTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKRecordTool.h; sourceTree = "<group>"; };
 		16B2E6F128A5298C00D385B6 /* THKRecordTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKRecordTool.m; sourceTree = "<group>"; };
+		16B3EA2128A9E1F400B3C791 /* od_bg_head@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_bg_head@2x.png"; sourceTree = "<group>"; };
+		16B3EA2228A9E1F400B3C791 /* od_bg_head@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_bg_head@3x.png"; sourceTree = "<group>"; };
+		16B3EA2528A9FC1400B3C791 /* THKOnlineDesignSectionFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignSectionFooter.h; sourceTree = "<group>"; };
+		16B3EA2628A9FC1400B3C791 /* THKOnlineDesignSectionFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignSectionFooter.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2485,6 +2492,7 @@
 				16212FC128A741160079A086 /* ViewModel */,
 				16212FC028A741160079A086 /* Model */,
 				16B2E6EF28A5297100D385B6 /* Recorder */,
+				16B3EA2028A9E1DE00B3C791 /* Resource */,
 			);
 			path = OnlineDesign;
 			sourceTree = "<group>";
@@ -2496,6 +2504,8 @@
 				16B2E6D728A4B0A500D385B6 /* THKOnlineDesignHeader.m */,
 				16B2E6D028A4A86600D385B6 /* THKOnlineDesignSectionHeader.h */,
 				16B2E6D128A4A86600D385B6 /* THKOnlineDesignSectionHeader.m */,
+				16B3EA2528A9FC1400B3C791 /* THKOnlineDesignSectionFooter.h */,
+				16B3EA2628A9FC1400B3C791 /* THKOnlineDesignSectionFooter.m */,
 				16B2E6D328A4A87B00D385B6 /* THKOnlineDesignBaseCell.h */,
 				16B2E6D428A4A87B00D385B6 /* THKOnlineDesignBaseCell.m */,
 				16B2E6DD28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.h */,
@@ -2534,6 +2544,15 @@
 				1622298628A5EF3A005826CF /* LameTool */,
 			);
 			path = Recorder;
+			sourceTree = "<group>";
+		};
+		16B3EA2028A9E1DE00B3C791 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				16B3EA2128A9E1F400B3C791 /* od_bg_head@2x.png */,
+				16B3EA2228A9E1F400B3C791 /* od_bg_head@3x.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -3136,11 +3155,13 @@
 				1685A677289120DC0032E474 /* dec_todo_close@3x.png in Resources */,
 				1685A663289120DC0032E474 /* dec_todo_02_black@2x.png in Resources */,
 				1685A679289120DC0032E474 /* dec_todo_open@3x.png in Resources */,
+				16B3EA2328A9E1F400B3C791 /* od_bg_head@2x.png in Resources */,
 				1685A667289120DC0032E474 /* dec_todo_05_black@3x.png in Resources */,
 				1685A672289120DC0032E474 /* dec_todo_01@2x.png in Resources */,
 				1685A66F289120DC0032E474 /* dec_todo_01@3x.png in Resources */,
 				16FE9D92277D92260085CC07 /* diary_combo_num_3@3x.png in Resources */,
 				16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */,
+				16B3EA2428A9E1F400B3C791 /* od_bg_head@3x.png in Resources */,
 				1685A66D289120DC0032E474 /* dec_todo_03@2x.png in Resources */,
 				1685A662289120DC0032E474 /* dec_todo_05_black@2x.png in Resources */,
 				1685A67E289120DC0032E474 /* dec_todo_02@3x.png in Resources */,
@@ -3285,6 +3306,7 @@
 				168679972692B8AC00650023 /* THKMaterialRecommendKnowledgeResponse.m in Sources */,
 				168679932692B8AC00650023 /* THKMaterialRecommendGoodsGrassRequest.m in Sources */,
 				16B1F51E275E000000FF18C4 /* THKNewcomerStageView.m in Sources */,
+				16B3EA2728A9FC1400B3C791 /* THKOnlineDesignSectionFooter.m in Sources */,
 				16B1F52A275E1B6D00FF18C4 /* THKNewcomerAnimation.m in Sources */,
 				1689DE8F274498280073BA68 /* THKDynamicTabsModel.m in Sources */,
 				16611B62269692D20089E41B /* THKMaterialRecommendRankVC.m in Sources */,
