@@ -6,12 +6,12 @@
 //
 
 #import "THKOnlineDesignHouseDemandView.h"
-#import "THKRecordTool.h"
+#import "THKOnlineDesignAudioView.h"
 
 @interface THKOnlineDesignHouseDemandView ()
 
 
-@property (nonatomic, strong) UIStackView *stackView;
+//@property (nonatomic, strong) UIStackView *stackView;
 
 @end
 
@@ -21,43 +21,54 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setupSubviews];
+//        [self setupSubviews];
+        self.axis = UILayoutConstraintAxisVertical;
+        self.distribution = UIStackViewDistributionFillEqually;
+        self.alignment = UIStackViewAlignmentLeading;
+        self.spacing = 14;
     }
     return self;
 }
 
-- (void)setDemands:(NSArray<NSString *> *)demands{
+- (void)setDemands:(NSArray<THKAudioDescription *> *)demands{
     _demands = demands;
     
-    [self.stackView tmui_removeAllSubviews];
+    [self tmui_removeAllSubviews];
     
-    [demands enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        TMUIButton *btn = [TMUIButton tmui_button];
-        btn.tmui_text = obj;
-        btn.backgroundColor = UIColor.tmui_randomColor;
-        [btn tmui_addTarget:self action:@selector(btnClick:)];
-        [self.stackView addArrangedSubview:btn];
+    [demands enumerateObjectsUsingBlock:^(THKAudioDescription * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        THKOnlineDesignAudioView *audioView = [self createAudioView:obj.duration idx:idx];
+        [self addArrangedSubview:audioView];
     }];
 }
 
-- (void)btnClick:(UIButton *)btn{
-    [[THKRecordTool sharedInstance] play:btn.tmui_text];
+- (THKOnlineDesignAudioView *)createAudioView:(NSInteger)time idx:(NSUInteger)idx{
+    THKOnlineDesignAudioView *audioView = [[THKOnlineDesignAudioView alloc] init];
+    audioView.cornerRadius = 16;
+    audioView.tag = idx;
+    audioView.timeInterval = time;
+    self.clickPlayBlock = audioView.clickPlayBlock;
+    self.clickCloseBlock = audioView.clickCloseBlock;
+    return audioView;
 }
 
-- (void)setupSubviews{
-    [self addSubview:self.stackView];
-    [self.stackView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self);
-    }];
-}
+//- (void)btnClick:(UIButton *)btn{
+//    [[THKRecordTool sharedInstance] play:btn.tmui_text];
+//}
 
-- (UIStackView *)stackView{
-    if (!_stackView) {
-        _stackView = [[UIStackView alloc] init];
-        _stackView.axis = UILayoutConstraintAxisVertical;
-    }
-    return _stackView;
-}
+//- (void)setupSubviews{
+//    [self addSubview:self.stackView];
+//    [self.stackView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(self);
+//    }];
+//}
+
+//- (UIStackView *)stackView{
+//    if (!_stackView) {
+//        _stackView = [[UIStackView alloc] init];
+//        _stackView.axis = UILayoutConstraintAxisVertical;
+//    }
+//    return _stackView;
+//}
 
 
 @end

@@ -143,7 +143,7 @@
     CGFloat audioH = 0;
     NSInteger count = demands.count;
     if (count) {
-        audioH = count * 32 + (count - 1) * 14;
+        audioH = count * 32 + (count - 1) * 14 + 17;
     }
     return CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), audioH + 95 + 48);
 }

@@ -7,7 +7,17 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^recordFinishBlock)(NSString * _Nullable filePath);
+@class THKAudioDescription;
+
+typedef void(^recordFinishBlock)(THKAudioDescription * _Nullable audioDesc);
+
+@interface THKAudioDescription : NSObject
+
+@property (nonatomic, strong) NSString *filePath;
+
+@property (nonatomic, assign) NSUInteger duration;
+
+@end
 
 NS_ASSUME_NONNULL_BEGIN
 

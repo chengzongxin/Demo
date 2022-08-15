@@ -6,6 +6,7 @@
 //
 
 #import "THKOnlineDesignBaseCell.h"
+#import "THKRecordTool.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

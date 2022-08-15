@@ -15,6 +15,8 @@
 #define kRecordDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
 #endif
 
+@implementation THKAudioDescription @end
+
 @interface THKRecordTool ()<AVAudioRecorderDelegate>{
     NSDictionary *_recordSettings;
 }
@@ -56,30 +58,32 @@ SHARED_INSTANCE_FOR_CLASS;
     };
 }
 
-- (void)setupRecorder:(NSString *)fileName{
+- (AVAudioRecorder *)setupRecorder:(NSString *)fileName{
     //----------------AVAudioRecorder----------------
     NSURL *url = [NSURL URLWithString:[kRecordDirectory stringByAppendingPathComponent:[fileName stringByAppendingPathExtension:@"caf"]]];
-    _audioRecorder = [[AVAudioRecorder alloc] initWithURL:url settings:_recordSettings error:nil];
-    _audioRecorder.delegate = self;
-    _audioRecorder.meteringEnabled = YES;
-    [_audioRecorder prepareToRecord];
+    AVAudioRecorder *audioRecorder = [[AVAudioRecorder alloc] initWithURL:url settings:_recordSettings error:nil];
+    audioRecorder.delegate = self;
+    audioRecorder.meteringEnabled = YES;
+    [audioRecorder prepareToRecord];
+    return audioRecorder;
 }
 
-- (void)setupPlayer:(NSString *)urlString{
+- (AVAudioPlayer *)setupPlayer:(NSString *)urlString{
     //----------------AVAudioPlayer----------------
     NSError *playerError;
-    _audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:urlString] error:&playerError];
-    if (_audioPlayer) {
-        _audioPlayer.volume = 1.0;
+    AVAudioPlayer *audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:urlString] error:&playerError];
+    if (audioPlayer) {
+        audioPlayer.volume = 1.0;
     } else {
         NSLog(@"Error: %@", [playerError localizedDescription]);
     }
+    return audioPlayer;
 }
 
 #pragma mark - Public
 
 - (void)startRecord:(NSString *)fileName{
-    [self setupRecorder:fileName];
+    _audioRecorder = [self setupRecorder:fileName];
     [_audioRecorder record];
 }
 
@@ -88,7 +92,7 @@ SHARED_INSTANCE_FOR_CLASS;
 }
 
 - (void)play:(NSString *)urlString{
-    [self setupPlayer:urlString];
+    _audioPlayer = [self setupPlayer:urlString];
     [_audioPlayer prepareToPlay];
     [_audioPlayer play];
 }
@@ -99,10 +103,13 @@ SHARED_INSTANCE_FOR_CLASS;
 /* audioRecorderDidFinishRecording:successfully: is called when a recording has been finished or stopped. This method is NOT called if the recorder is stopped due to an interruption. */
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
     NSString *path = [LameTool audioToMP3:recorder.url.absoluteString isDeleteSourchFile:YES];
-//    NSString *path = recorder.url.absoluteString;
     NSLog(@"path = %@",path);
-    if (self.recordFinish) {
-        self.recordFinish(path);
+    AVAudioPlayer *player = [self setupPlayer:path];
+    if (self.recordFinish && player) {
+        THKAudioDescription *desc = [[THKAudioDescription alloc] init];
+        desc.filePath = path;
+        desc.duration = MAX(1, player.duration);
+        self.recordFinish(desc);
     }
 }
 

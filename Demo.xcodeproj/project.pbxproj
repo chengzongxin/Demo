@@ -321,6 +321,23 @@
 		16B3EA3528AA1CE300B3C791 /* od_record_black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3128AA1CE300B3C791 /* od_record_black@3x.png */; };
 		16B3EA3628AA1CE300B3C791 /* od_record_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3228AA1CE300B3C791 /* od_record_white@2x.png */; };
 		16B3EA3728AA1CE300B3C791 /* od_record_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3328AA1CE300B3C791 /* od_record_black@2x.png */; };
+		16B3EA3A28AA22BD00B3C791 /* THKOnlineDesignAudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA3928AA22BD00B3C791 /* THKOnlineDesignAudioView.m */; };
+		16B3EA4B28AA25EF00B3C791 /* 编辑@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3B28AA25ED00B3C791 /* 编辑@2x.png */; };
+		16B3EA4C28AA25EF00B3C791 /* 关闭@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3C28AA25ED00B3C791 /* 关闭@3x.png */; };
+		16B3EA4D28AA25EF00B3C791 /* od_record_close_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3D28AA25ED00B3C791 /* od_record_close_icon@2x.png */; };
+		16B3EA4E28AA25EF00B3C791 /* 箭头右绿@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3E28AA25ED00B3C791 /* 箭头右绿@3x.png */; };
+		16B3EA4F28AA25EF00B3C791 /* 右箭头黑@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3F28AA25ED00B3C791 /* 右箭头黑@2x.png */; };
+		16B3EA5028AA25EF00B3C791 /* 右箭头黑@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4028AA25ED00B3C791 /* 右箭头黑@3x.png */; };
+		16B3EA5128AA25EF00B3C791 /* 加号绿@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4128AA25ED00B3C791 /* 加号绿@3x.png */; };
+		16B3EA5228AA25EF00B3C791 /* od_record_close_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4228AA25EE00B3C791 /* od_record_close_icon@3x.png */; };
+		16B3EA5328AA25EF00B3C791 /* 加号绿上传户型@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4328AA25EE00B3C791 /* 加号绿上传户型@2x.png */; };
+		16B3EA5428AA25EF00B3C791 /* 加号绿@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4428AA25EE00B3C791 /* 加号绿@2x.png */; };
+		16B3EA5528AA25EF00B3C791 /* 编辑@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4528AA25EE00B3C791 /* 编辑@3x.png */; };
+		16B3EA5628AA25EF00B3C791 /* 重新上传户型@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4628AA25EE00B3C791 /* 重新上传户型@3x.png */; };
+		16B3EA5728AA25EF00B3C791 /* 箭头右绿@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4728AA25EE00B3C791 /* 箭头右绿@2x.png */; };
+		16B3EA5828AA25EF00B3C791 /* 重新上传户型@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4828AA25EE00B3C791 /* 重新上传户型@2x.png */; };
+		16B3EA5928AA25EF00B3C791 /* 关闭@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4928AA25EE00B3C791 /* 关闭@2x.png */; };
+		16B3EA5A28AA25EF00B3C791 /* 加号绿上传户型@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4A28AA25EE00B3C791 /* 加号绿上传户型@3x.png */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -1027,6 +1044,24 @@
 		16B3EA3128AA1CE300B3C791 /* od_record_black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_record_black@3x.png"; sourceTree = "<group>"; };
 		16B3EA3228AA1CE300B3C791 /* od_record_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_record_white@2x.png"; sourceTree = "<group>"; };
 		16B3EA3328AA1CE300B3C791 /* od_record_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_record_black@2x.png"; sourceTree = "<group>"; };
+		16B3EA3828AA22BD00B3C791 /* THKOnlineDesignAudioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignAudioView.h; sourceTree = "<group>"; };
+		16B3EA3928AA22BD00B3C791 /* THKOnlineDesignAudioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignAudioView.m; sourceTree = "<group>"; };
+		16B3EA3B28AA25ED00B3C791 /* 编辑@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑@2x.png"; sourceTree = "<group>"; };
+		16B3EA3C28AA25ED00B3C791 /* 关闭@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关闭@3x.png"; sourceTree = "<group>"; };
+		16B3EA3D28AA25ED00B3C791 /* od_record_close_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_record_close_icon@2x.png"; sourceTree = "<group>"; };
+		16B3EA3E28AA25ED00B3C791 /* 箭头右绿@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右绿@3x.png"; sourceTree = "<group>"; };
+		16B3EA3F28AA25ED00B3C791 /* 右箭头黑@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右箭头黑@2x.png"; sourceTree = "<group>"; };
+		16B3EA4028AA25ED00B3C791 /* 右箭头黑@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右箭头黑@3x.png"; sourceTree = "<group>"; };
+		16B3EA4128AA25ED00B3C791 /* 加号绿@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号绿@3x.png"; sourceTree = "<group>"; };
+		16B3EA4228AA25EE00B3C791 /* od_record_close_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_record_close_icon@3x.png"; sourceTree = "<group>"; };
+		16B3EA4328AA25EE00B3C791 /* 加号绿上传户型@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号绿上传户型@2x.png"; sourceTree = "<group>"; };
+		16B3EA4428AA25EE00B3C791 /* 加号绿@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号绿@2x.png"; sourceTree = "<group>"; };
+		16B3EA4528AA25EE00B3C791 /* 编辑@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑@3x.png"; sourceTree = "<group>"; };
+		16B3EA4628AA25EE00B3C791 /* 重新上传户型@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重新上传户型@3x.png"; sourceTree = "<group>"; };
+		16B3EA4728AA25EE00B3C791 /* 箭头右绿@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右绿@2x.png"; sourceTree = "<group>"; };
+		16B3EA4828AA25EE00B3C791 /* 重新上传户型@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重新上传户型@2x.png"; sourceTree = "<group>"; };
+		16B3EA4928AA25EE00B3C791 /* 关闭@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关闭@2x.png"; sourceTree = "<group>"; };
+		16B3EA4A28AA25EE00B3C791 /* 加号绿上传户型@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号绿上传户型@3x.png"; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2530,6 +2565,8 @@
 				16B2E6EA28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m */,
 				16B2E6EC28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.h */,
 				16B2E6ED28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m */,
+				16B3EA3828AA22BD00B3C791 /* THKOnlineDesignAudioView.h */,
+				16B3EA3928AA22BD00B3C791 /* THKOnlineDesignAudioView.m */,
 				16212FCB28A778420079A086 /* THKOnlineDesignSearchAreaContentView.h */,
 				16212FCC28A778420079A086 /* THKOnlineDesignSearchAreaContentView.m */,
 				16212FCE28A778BE0079A086 /* THKOnlineDesignSearchAreaHotView.h */,
@@ -2563,6 +2600,22 @@
 				16B3EA3028AA1CE200B3C791 /* od_record_white@3x.png */,
 				16B3EA3328AA1CE300B3C791 /* od_record_black@2x.png */,
 				16B3EA3128AA1CE300B3C791 /* od_record_black@3x.png */,
+				16B3EA3B28AA25ED00B3C791 /* 编辑@2x.png */,
+				16B3EA4528AA25EE00B3C791 /* 编辑@3x.png */,
+				16B3EA4928AA25EE00B3C791 /* 关闭@2x.png */,
+				16B3EA3C28AA25ED00B3C791 /* 关闭@3x.png */,
+				16B3EA3D28AA25ED00B3C791 /* od_record_close_icon@2x.png */,
+				16B3EA4228AA25EE00B3C791 /* od_record_close_icon@3x.png */,
+				16B3EA4428AA25EE00B3C791 /* 加号绿@2x.png */,
+				16B3EA4128AA25ED00B3C791 /* 加号绿@3x.png */,
+				16B3EA4328AA25EE00B3C791 /* 加号绿上传户型@2x.png */,
+				16B3EA4A28AA25EE00B3C791 /* 加号绿上传户型@3x.png */,
+				16B3EA4728AA25EE00B3C791 /* 箭头右绿@2x.png */,
+				16B3EA3E28AA25ED00B3C791 /* 箭头右绿@3x.png */,
+				16B3EA3F28AA25ED00B3C791 /* 右箭头黑@2x.png */,
+				16B3EA4028AA25ED00B3C791 /* 右箭头黑@3x.png */,
+				16B3EA4828AA25EE00B3C791 /* 重新上传户型@2x.png */,
+				16B3EA4628AA25EE00B3C791 /* 重新上传户型@3x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -3130,30 +3183,41 @@
 				16FE9D97277D92260085CC07 /* diary_combo_num_×@3x.png in Resources */,
 				1685A676289120DC0032E474 /* dec_todo_04@2x.png in Resources */,
 				1685A67B289120DC0032E474 /* dec_todo_04@3x.png in Resources */,
+				16B3EA5428AA25EF00B3C791 /* 加号绿@2x.png in Resources */,
 				1685A661289120DC0032E474 /* dec_todo_headbg@3x.png in Resources */,
+				16B3EA5928AA25EF00B3C791 /* 关闭@2x.png in Resources */,
 				16FE9D99277D92260085CC07 /* diary_combo_num_4@3x.png in Resources */,
+				16B3EA4C28AA25EF00B3C791 /* 关闭@3x.png in Resources */,
 				1685A670289120DC0032E474 /* dec_todo_unselect@3x.png in Resources */,
 				1685A665289120DC0032E474 /* dec_todo_05@3x.png in Resources */,
+				16B3EA5828AA25EF00B3C791 /* 重新上传户型@2x.png in Resources */,
 				1685A67D289120DC0032E474 /* dec_todo_02@2x.png in Resources */,
 				1685A666289120DC0032E474 /* dec_todo_02_black@3x.png in Resources */,
 				16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */,
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
+				16B3EA5028AA25EF00B3C791 /* 右箭头黑@3x.png in Resources */,
 				1685A671289120DC0032E474 /* dec_todo_unselect@2x.png in Resources */,
 				1685A65F289120DC0032E474 /* dec_todo_04_black@3x.png in Resources */,
 				16B3EA3428AA1CE300B3C791 /* od_record_white@3x.png in Resources */,
+				16B3EA5328AA25EF00B3C791 /* 加号绿上传户型@2x.png in Resources */,
 				1685A673289120DC0032E474 /* dec_todo_title@2x.png in Resources */,
 				1685A66A289120DC0032E474 /* dec_todo_04_black@2x.png in Resources */,
+				16B3EA5528AA25EF00B3C791 /* 编辑@3x.png in Resources */,
 				16FE9D98277D92260085CC07 /* diary_combo_num_9@3x.png in Resources */,
 				16FE9D91277D92260085CC07 /* diary_combo_num_2@3x.png in Resources */,
 				1685A660289120DC0032E474 /* dec_todo_03_black@3x.png in Resources */,
 				16FE9D9A277D92260085CC07 /* diary_combo_num_8@3x.png in Resources */,
 				160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */,
+				16B3EA5728AA25EF00B3C791 /* 箭头右绿@2x.png in Resources */,
 				16611B6E269692D20089E41B /* THKMaterialClassificationRecommendRankCell.xib in Resources */,
+				16B3EA4B28AA25EF00B3C791 /* 编辑@2x.png in Resources */,
 				1685A67F289120DC0032E474 /* dec_todo_01_black@3x.png in Resources */,
+				16B3EA4D28AA25EF00B3C791 /* od_record_close_icon@2x.png in Resources */,
 				16B3EA3528AA1CE300B3C791 /* od_record_black@3x.png in Resources */,
 				16FE9D93277D92260085CC07 /* diary_combo_num_6@3x.png in Resources */,
 				1685A668289120DC0032E474 /* dec_todo_headbg@2x.png in Resources */,
 				1685A674289120DC0032E474 /* dec_todo_03@3x.png in Resources */,
+				16B3EA4E28AA25EF00B3C791 /* 箭头右绿@3x.png in Resources */,
 				1685A669289120DC0032E474 /* dec_todo_03_black@2x.png in Resources */,
 				1685A65E289120DC0032E474 /* dec_todo_arrow@2x.png in Resources */,
 				1685A664289120DC0032E474 /* dec_todo_05@2x.png in Resources */,
@@ -3161,19 +3225,24 @@
 				16FE9D90277D92260085CC07 /* diary_combo_num_1@3x.png in Resources */,
 				1685A678289120DC0032E474 /* dec_todo_open@2x.png in Resources */,
 				1685A66C289120DC0032E474 /* dec_todo_select@2x.png in Resources */,
+				16B3EA4F28AA25EF00B3C791 /* 右箭头黑@2x.png in Resources */,
 				16FE9D96277D92260085CC07 /* diary_combo_num_7@3x.png in Resources */,
+				16B3EA5228AA25EF00B3C791 /* od_record_close_icon@3x.png in Resources */,
 				1685A67A289120DC0032E474 /* dec_todo_close@2x.png in Resources */,
 				1685A675289120DC0032E474 /* dec_todo_select@3x.png in Resources */,
 				16B3EA3628AA1CE300B3C791 /* od_record_white@2x.png in Resources */,
 				16FE9D94277D92260085CC07 /* diary_combo_num_0@3x.png in Resources */,
 				1685A67C289120DC0032E474 /* dec_todo_01_black@2x.png in Resources */,
 				1685A677289120DC0032E474 /* dec_todo_close@3x.png in Resources */,
+				16B3EA5A28AA25EF00B3C791 /* 加号绿上传户型@3x.png in Resources */,
 				1685A663289120DC0032E474 /* dec_todo_02_black@2x.png in Resources */,
 				1685A679289120DC0032E474 /* dec_todo_open@3x.png in Resources */,
 				16B3EA2328A9E1F400B3C791 /* od_bg_head@2x.png in Resources */,
 				1685A667289120DC0032E474 /* dec_todo_05_black@3x.png in Resources */,
 				1685A672289120DC0032E474 /* dec_todo_01@2x.png in Resources */,
+				16B3EA5628AA25EF00B3C791 /* 重新上传户型@3x.png in Resources */,
 				1685A66F289120DC0032E474 /* dec_todo_01@3x.png in Resources */,
+				16B3EA5128AA25EF00B3C791 /* 加号绿@3x.png in Resources */,
 				16FE9D92277D92260085CC07 /* diary_combo_num_3@3x.png in Resources */,
 				16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */,
 				16B3EA2428A9E1F400B3C791 /* od_bg_head@3x.png in Resources */,
@@ -3348,6 +3417,7 @@
 				1689DEC427449B530073BA68 /* THKTabClearBadgeRequest.m in Sources */,
 				1630D9DC274E66BD009A04FA /* THKSelectMaterialTopBar.m in Sources */,
 				16F516B726D4F7D2002500F7 /* THKDiaryBookInfoView.m in Sources */,
+				16B3EA3A28AA22BD00B3C791 /* THKOnlineDesignAudioView.m in Sources */,
 				168679A02692B8BA00650023 /* THKMaterialHotListResponse.m in Sources */,
 				16192B2C2692E13E00967C73 /* THKViewController+THKLoadingAnimationView.m in Sources */,
 				16867A082692D76C00650023 /* TMCardComponentRecommendTagsCell.m in Sources */,

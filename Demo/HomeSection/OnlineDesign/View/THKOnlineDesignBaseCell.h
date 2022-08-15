@@ -24,12 +24,18 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)recordBtnTouchDown:(UIButton *)btn;
 // 松起录音
 - (void)recordBtnTouchUp:(UIButton *)btn;
+// 播放录音
+- (void)recordPlayClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath;
+// 删除录音
+- (void)recordCloseClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath;
 
 @end
 
 @interface THKOnlineDesignBaseCell : UICollectionViewCell<THKOnlineDesignBaseCellProtocol>
 
 @property (nonatomic, weak) id<THKOnlineDesignBaseCellDelegate> delegate;
+
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 @end
 

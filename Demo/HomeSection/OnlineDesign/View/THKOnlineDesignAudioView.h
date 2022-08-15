@@ -1,17 +1,17 @@
 //
-//  THKOnlineDesignHouseDemandView.h
+//  THKOnlineDesignAudioView.h
 //  Demo
 //
-//  Created by Joe.cheng on 2022/8/11.
+//  Created by Joe.cheng on 2022/8/15.
 //
 
 #import <UIKit/UIKit.h>
-#import "THKRecordTool.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKOnlineDesignHouseDemandView : UIStackView
+@interface THKOnlineDesignAudioView : UIView
 
-@property (nonatomic, strong) NSArray <THKAudioDescription *>*demands;
+@property (nonatomic, assign) NSInteger timeInterval;
 
 @property (nonatomic, copy) void (^clickPlayBlock)(UIView *,NSUInteger idx);
 

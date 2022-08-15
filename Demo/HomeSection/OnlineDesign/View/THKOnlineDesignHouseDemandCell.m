@@ -7,6 +7,7 @@
 
 #import "THKOnlineDesignHouseDemandCell.h"
 #import "THKOnlineDesignHouseDemandView.h"
+
 @interface THKOnlineDesignHouseDemandCell ()<TMUITextViewDelegate>
 
 @property (nonatomic, strong) TMUITextView *textView;
@@ -39,9 +40,9 @@
     }];
     
     [self.demandView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.textView.mas_bottom).offset(5);
-        make.left.right.equalTo(self.contentView);
-        make.bottom.equalTo(self.contentView.mas_bottom).inset(64);
+        make.top.equalTo(self.textView.mas_bottom);
+        make.left.right.equalTo(self.contentView).inset(15);
+        make.height.mas_equalTo(0);
     }];
     
     [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -58,15 +59,18 @@
     }];
 }
 
-- (void)bindWithModel:(NSArray *)model{
+- (void)bindWithModel:(NSArray <THKAudioDescription *> *)model{
     self.demandView.demands = model;
+    if (model.count) {
+        [self.demandView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(model.count * 32 + (model.count - 1) * 14);
+        }];
+    }else{
+        [self.demandView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(0);
+        }];
+    }
 }
-
-//- (void)clickRecordBtn:(UIButton *)btn{
-//    if ([self.delegate respondsToSelector:@selector(clickRecordBtn:)]) {
-//        [self.delegate clickRecordBtn:btn];
-//    }
-//}
 
 - (void)recordBtnTouchDown:(UIButton *)btn{
     if ([self.delegate respondsToSelector:@selector(recordBtnTouchDown:)]) {
@@ -77,6 +81,18 @@
 - (void)recordBtnTouchUp:(UIButton *)btn{
     if ([self.delegate respondsToSelector:@selector(recordBtnTouchUp:)]) {
         [self.delegate recordBtnTouchUp:btn];
+    }
+}
+
+- (void)recordPlayClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(recordPlayClick:idx:indexPath:)]) {
+        [self.delegate recordPlayClick:view idx:idx indexPath:indexPath];
+    }
+}
+
+- (void)recordCloseClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath{
+    if ([self.delegate respondsToSelector:@selector(recordCloseClick:idx:indexPath:)]) {
+        [self.delegate recordCloseClick:view idx:idx indexPath:indexPath];
     }
 }
 
@@ -95,6 +111,15 @@
 - (THKOnlineDesignHouseDemandView *)demandView{
     if (!_demandView) {
         _demandView = [[THKOnlineDesignHouseDemandView alloc] init];
+        @weakify(self);
+        _demandView.clickPlayBlock = ^(UIView * _Nonnull view, NSUInteger idx) {
+            @strongify(self);
+            [self recordPlayClick:view idx:idx indexPath:self.indexPath];
+        };
+        _demandView.clickCloseBlock = ^(UIButton * _Nonnull btn, NSUInteger idx) {
+            @strongify(self);
+            [self recordCloseClick:btn idx:idx indexPath:self.indexPath];
+        };
     }
     return _demandView;
 }

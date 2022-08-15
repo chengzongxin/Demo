@@ -6,9 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "THKRecordTool.h"
 NS_ASSUME_NONNULL_BEGIN
-@class THKOnlineDesignItemModel,THKOnlineDesignItemDemandModel;
+@class THKOnlineDesignItemModel;
 
 @interface THKOnlineDesignModel : NSObject
 
@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) THKOnlineDesignItemModel *item;
 
 @end
+
 
 @interface THKOnlineDesignItemModel : NSObject
 
@@ -38,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray <NSString *> *houseBudget;
 
-@property (nonatomic, strong) NSArray <NSString *> *demandDesc;
+@property (nonatomic, strong) NSArray <THKAudioDescription *> *demandDesc;
 ///  本地处理
 @property (nonatomic, strong) NSArray <NSString *> *items;
 

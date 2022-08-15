@@ -63,9 +63,9 @@ static CGFloat const kHeaderHeight = 100;
         [TMEmptyView showEmptyInView:self.view contentType:[x integerValue]];
     }];
     
-    [THKRecordTool sharedInstance].recordFinish = ^(NSString *filePath) {
+    [THKRecordTool sharedInstance].recordFinish = ^(THKAudioDescription * _Nullable audioDesc) {
         // 录音完成
-        [self.viewModel.addAudioCommand execute:filePath];
+        [self.viewModel.addAudioCommand execute:audioDesc];
 //        [[THKRecordTool sharedInstance] play:filePath];
     };
     
@@ -93,6 +93,21 @@ static CGFloat const kHeaderHeight = 100;
 - (void)recordBtnTouchUp:(UIButton *)btn{
     NSLog(@"recordBtnTouchDUp - %@",btn);
     [[THKRecordTool sharedInstance] stopRecord];
+}
+
+- (void)recordPlayClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath{
+    THKAudioDescription *demandDesc = self.viewModel.datas[indexPath.section].item.demandDesc[idx];
+    [[THKRecordTool sharedInstance] play:demandDesc.filePath];
+}
+
+- (void)recordCloseClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath{
+    [self.collectionView performBatchUpdates:^{
+        THKAudioDescription *demandDesc = self.viewModel.datas[indexPath.section].item.demandDesc[idx];
+        [self.viewModel.datas[indexPath.section].item.demandDesc tmui_arrayByRemovingObject:demandDesc];
+        [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 #pragma mark UICollectionViewDataSource
@@ -128,6 +143,7 @@ static CGFloat const kHeaderHeight = 100;
     NSString *cellIdentifier = NSStringFromClass(cls);
     THKOnlineDesignBaseCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.delegate = self;
+    cell.indexPath = indexPath;
     [cell bindWithModel:self.viewModel.datas[indexPath.section].item.items[indexPath.item]];
     return cell;
 }
@@ -166,9 +182,11 @@ static CGFloat const kHeaderHeight = 100;
 
 - (UIView *)contentBgView{
     if (!_contentBgView) {
-        _contentBgView = [[UIView alloc] initWithFrame:CGRectMake(0, -kHeaderHeight, TMUI_SCREEN_WIDTH, 1000)];
+        _contentBgView = [[UIView alloc] initWithFrame:CGRectMake(0, -kHeaderHeight, TMUI_SCREEN_WIDTH, 2000)];
         _contentBgView.backgroundColor = UIColorHex(D8DCE2);
         _contentBgView.userInteractionEnabled = NO;
+//#warning DEBUG
+//        _contentBgView.hidden = YES;
     }
     return _contentBgView;
 }
