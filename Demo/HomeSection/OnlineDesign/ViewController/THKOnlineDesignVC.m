@@ -76,7 +76,7 @@ static CGFloat const kHeaderHeight = 100;
 
 #pragma mark - Delegate
 
-- (void)searchAreaBtnClick:(UIButton *)btn{
+- (void)searchAreaBtnClick:(UIView *)btn{
     THKOnlineDesignSearchAreaVM *vm = [[THKOnlineDesignSearchAreaVM alloc] init];
     THKOnlineDesignSearchAreaVC *vc = [[THKOnlineDesignSearchAreaVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];

@@ -78,7 +78,7 @@ typedef enum : NSUInteger {
                 item1.type = THKOnlineDesignItemDataType_HouseType;
                 item1.cellClass = self.cellDict[@(item1.type)];
                 item1.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
-                item1.itemSize = CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), 50);
+                item1.itemSize = CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), 75);
                 section1.item = item1;
                 [arr addObject:section1];
                 
