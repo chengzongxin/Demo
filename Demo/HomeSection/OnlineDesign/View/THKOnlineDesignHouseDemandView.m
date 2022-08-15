@@ -33,7 +33,12 @@
 - (void)setDemands:(NSArray<THKAudioDescription *> *)demands{
     _demands = demands;
     
-    [self tmui_removeAllSubviews];
+    NSArray *subviews = self.subviews;
+    
+    for (UIView *view in subviews) {
+        [view removeFromSuperview];
+        [self removeArrangedSubview:view];
+    }
     
     [demands enumerateObjectsUsingBlock:^(THKAudioDescription * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         THKOnlineDesignAudioView *audioView = [self createAudioView:obj.duration idx:idx];
@@ -46,8 +51,8 @@
     audioView.cornerRadius = 16;
     audioView.tag = idx;
     audioView.timeInterval = time;
-    self.clickPlayBlock = audioView.clickPlayBlock;
-    self.clickCloseBlock = audioView.clickCloseBlock;
+    audioView.clickPlayBlock = self.clickPlayBlock;
+    audioView.clickCloseBlock = self.clickCloseBlock;
     return audioView;
 }
 

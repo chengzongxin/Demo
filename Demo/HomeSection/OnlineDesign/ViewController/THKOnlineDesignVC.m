@@ -63,10 +63,9 @@ static CGFloat const kHeaderHeight = 100;
         [TMEmptyView showEmptyInView:self.view contentType:[x integerValue]];
     }];
     
+    // 录音完成
     [THKRecordTool sharedInstance].recordFinish = ^(THKAudioDescription * _Nullable audioDesc) {
-        // 录音完成
         [self.viewModel.addAudioCommand execute:audioDesc];
-//        [[THKRecordTool sharedInstance] play:filePath];
     };
     
     
@@ -102,11 +101,12 @@ static CGFloat const kHeaderHeight = 100;
 
 - (void)recordCloseClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath{
     [self.collectionView performBatchUpdates:^{
-        THKAudioDescription *demandDesc = self.viewModel.datas[indexPath.section].item.demandDesc[idx];
-        [self.viewModel.datas[indexPath.section].item.demandDesc tmui_arrayByRemovingObject:demandDesc];
-        [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+        [self.viewModel.deleteAudioCommand execute:@(idx)];
     } completion:^(BOOL finished) {
-        
+        THKOnlineDesignHouseDemandCell *cell = (THKOnlineDesignHouseDemandCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
+        [cell bindWithModel:self.viewModel.datas[indexPath.section].item.items[indexPath.item]];
+        // 不能使用刷新，触发刷新会清除textView
+//        [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
     }];
 }
 

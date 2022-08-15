@@ -8,6 +8,15 @@
 #import <Foundation/Foundation.h>
 #import "THKRecordTool.h"
 NS_ASSUME_NONNULL_BEGIN
+
+typedef enum : NSUInteger {
+    THKOnlineDesignItemDataType_None = 0,
+    THKOnlineDesignItemDataType_HouseType,
+    THKOnlineDesignItemDataType_HouseStyle,
+    THKOnlineDesignItemDataType_HouseBudget,
+    THKOnlineDesignItemDataType_HouseDemand,
+} THKOnlineDesignItemDataType;
+
 @class THKOnlineDesignItemModel;
 
 @interface THKOnlineDesignModel : NSObject
@@ -25,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignItemModel : NSObject
 
-@property (nonatomic, assign) NSInteger type;
+@property (nonatomic, assign) THKOnlineDesignItemDataType type;
 
 @property (nonatomic, strong) Class cellClass;
 

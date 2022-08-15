@@ -10,7 +10,7 @@
 #import "LameTool.h"
 
 #if TARGET_OS_SIMULATOR
-#define kRecordDirectory @"/Users/joe.cheng/Desktop"
+#define kRecordDirectory @"/Users/joe.cheng/Desktop/AudioRecord"
 #else
 #define kRecordDirectory [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
 #endif
@@ -108,7 +108,7 @@ SHARED_INSTANCE_FOR_CLASS;
     if (self.recordFinish && player) {
         THKAudioDescription *desc = [[THKAudioDescription alloc] init];
         desc.filePath = path;
-        desc.duration = MAX(1, player.duration);
+        desc.duration = ceil(player.duration);
         self.recordFinish(desc);
     }
 }

@@ -19,22 +19,22 @@
 
 - (NSArray<NSString *> *)items{
     switch (self.type) {
-        case 1:
+        case THKOnlineDesignItemDataType_HouseType:
         {
             return @[self.picUrl];
         }
             break;
-        case 2:
+        case THKOnlineDesignItemDataType_HouseStyle:
         {
             return self.houseStyles;
         }
             break;
-        case 3:
+        case THKOnlineDesignItemDataType_HouseBudget:
         {
             return self.houseBudget;
         }
             break;
-        case 4:
+        case THKOnlineDesignItemDataType_HouseDemand:
         {
             return @[self.demandDesc?:@[]];
         }
