@@ -78,6 +78,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    !_selectHouseTypeBlock?:_selectHouseTypeBlock(@"");
 }
 
 #pragma mark - Private

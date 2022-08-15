@@ -72,7 +72,7 @@
 		16212FDC28A77B090079A086 /* THKOnlineDesignSearchHouseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FDB28A77B090079A086 /* THKOnlineDesignSearchHouseListView.m */; };
 		16212FDF28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FDE28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m */; };
 		16212FE228A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FE128A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m */; };
-		16212FE528A799130079A086 /* THKOnlineDesignHouseListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FE428A799130079A086 /* THKOnlineDesignHouseListVM.m */; };
+		16212FE528A799130079A086 /* THKOnlineDesignHouseTypeListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FE428A799130079A086 /* THKOnlineDesignHouseTypeListVM.m */; };
 		1622298B28A5EF3A005826CF /* LameTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1622298728A5EF3A005826CF /* LameTool.m */; };
 		1622298F28A5F149005826CF /* lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1622298E28A5F148005826CF /* lame.a */; };
 		1630D97F274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */; };
@@ -573,8 +573,8 @@
 		16212FDE28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignSearchAreaListCell.m; sourceTree = "<group>"; };
 		16212FE028A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseTypeListVC.h; sourceTree = "<group>"; };
 		16212FE128A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseTypeListVC.m; sourceTree = "<group>"; };
-		16212FE328A799130079A086 /* THKOnlineDesignHouseListVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseListVM.h; sourceTree = "<group>"; };
-		16212FE428A799130079A086 /* THKOnlineDesignHouseListVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseListVM.m; sourceTree = "<group>"; };
+		16212FE328A799130079A086 /* THKOnlineDesignHouseTypeListVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseTypeListVM.h; sourceTree = "<group>"; };
+		16212FE428A799130079A086 /* THKOnlineDesignHouseTypeListVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseTypeListVM.m; sourceTree = "<group>"; };
 		1622298728A5EF3A005826CF /* LameTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LameTool.m; sourceTree = "<group>"; };
 		1622298928A5EF3A005826CF /* LameTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameTool.h; sourceTree = "<group>"; };
 		1622298D28A5F13D005826CF /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
@@ -1594,8 +1594,8 @@
 				16B2E6CE28A4913200D385B6 /* THKOnlineDesignVM.m */,
 				16212FC528A747B60079A086 /* THKOnlineDesignSearchAreaVM.h */,
 				16212FC628A747B60079A086 /* THKOnlineDesignSearchAreaVM.m */,
-				16212FE328A799130079A086 /* THKOnlineDesignHouseListVM.h */,
-				16212FE428A799130079A086 /* THKOnlineDesignHouseListVM.m */,
+				16212FE328A799130079A086 /* THKOnlineDesignHouseTypeListVM.h */,
+				16212FE428A799130079A086 /* THKOnlineDesignHouseTypeListVM.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3428,7 +3428,7 @@
 				16867A0F2692D76C00650023 /* TMCardComponentCellBottomView.m in Sources */,
 				1622298B28A5EF3A005826CF /* LameTool.m in Sources */,
 				16212FD928A77AFC0079A086 /* THKOnlineDesignSearchAreaListView.m in Sources */,
-				16212FE528A799130079A086 /* THKOnlineDesignHouseListVM.m in Sources */,
+				16212FE528A799130079A086 /* THKOnlineDesignHouseTypeListVM.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
 				16834F0B26DC820D0082268C /* THKDiaryCircle.m in Sources */,
 				1689DEC527449B530073BA68 /* THKTabClearBadgeResponse.m in Sources */,

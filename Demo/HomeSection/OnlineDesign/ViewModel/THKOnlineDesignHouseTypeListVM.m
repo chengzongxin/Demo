@@ -5,8 +5,8 @@
 //  Created by Joe.cheng on 2022/8/13.
 //
 
-#import "THKOnlineDesignHouseListVM.h"
+#import "THKOnlineDesignHouseTypeListVM.h"
 
-@implementation THKOnlineDesignHouseListVM
+@implementation THKOnlineDesignHouseTypeListVM
 
 @end

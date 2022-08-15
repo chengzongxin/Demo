@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignSearchAreaVC : THKViewController
 
-@property (nonatomic, strong) THKOnlineDesignSearchAreaVM *viewModel;
+@property (nonatomic, strong, readonly) THKOnlineDesignSearchAreaVM *viewModel;
+
+@property (nonatomic, copy) void (^selectHouseTypeBlock)(id houseTypeMdel);
 
 @end
 

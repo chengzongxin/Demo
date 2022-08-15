@@ -20,6 +20,8 @@ typedef enum : NSUInteger {
 
 @interface THKOnlineDesignSearchAreaVC ()<TMUISearchBarDelegate>
 
+@property (nonatomic, strong) THKOnlineDesignSearchAreaVM *viewModel;
+
 @property (nonatomic, strong) TMUISearchBar *searchBar;
 
 @property (nonatomic, assign) THKOnlineDesignSearchAreaContentType contentType;
@@ -35,7 +37,7 @@ typedef enum : NSUInteger {
 @end
 
 @implementation THKOnlineDesignSearchAreaVC
-
+@dynamic viewModel;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -90,9 +92,10 @@ typedef enum : NSUInteger {
 }
 
 - (void)pushHouseListVC{
-    THKOnlineDesignHouseListVM *vm = [[THKOnlineDesignHouseListVM alloc] init];
+    THKOnlineDesignHouseTypeListVM *vm = [[THKOnlineDesignHouseTypeListVM alloc] init];
     THKOnlineDesignHouseTypeListVC *vc = [[THKOnlineDesignHouseTypeListVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
+    vc.selectHouseTypeBlock = self.selectHouseTypeBlock;
 }
 
 - (TMUISearchBar *)searchBar{

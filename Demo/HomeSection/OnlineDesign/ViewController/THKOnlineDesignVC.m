@@ -87,6 +87,9 @@ static CGFloat const kHeaderHeight = 100;
     THKOnlineDesignSearchAreaVM *vm = [[THKOnlineDesignSearchAreaVM alloc] init];
     THKOnlineDesignSearchAreaVC *vc = [[THKOnlineDesignSearchAreaVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
+    vc.selectHouseTypeBlock = ^(id  _Nonnull houseTypeMdel) {
+        
+    };
 }
 
 - (void)recordBtnTouchDown:(UIButton *)btn{
