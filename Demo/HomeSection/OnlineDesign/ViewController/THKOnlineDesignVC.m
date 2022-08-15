@@ -11,6 +11,7 @@
 #import "THKOnlineDesignSectionFooter.h"
 #import "THKRecordTool.h"
 #import "THKOnlineDesignSearchAreaVC.h"
+#import "THKOnlineDesignHomeConfigRequest.h"
 
 static CGFloat const kBGCoverHeight = 252;
 static CGFloat const kHeaderHeight = 100;
@@ -46,6 +47,12 @@ static CGFloat const kHeaderHeight = 100;
     [self.view addSubview:self.bgImgV];
     
     [self.view addSubview:self.collectionView];
+    
+    [[THKOnlineDesignHomeConfigRequest new] sendSuccess:^(id  _Nonnull response) {
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
 }
 
 #pragma mark - Public

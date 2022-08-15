@@ -10,7 +10,7 @@
 #import "THKOnlineDesignSearchAreaHotView.h"
 #import "THKOnlineDesignSearchAreaListView.h"
 #import "THKOnlineDesignSearchHouseListView.h"
-#import "THKOnlineDesignHouseListVC.h"
+#import "THKOnlineDesignHouseTypeListVC.h"
 
 typedef enum : NSUInteger {
     THKOnlineDesignSearchAreaContentType_Hot,
@@ -48,7 +48,7 @@ typedef enum : NSUInteger {
     [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(THKNavBarHeight + 20);
         make.left.right.equalTo(self.view).inset(20);
-        make.height.mas_equalTo(36);
+        make.height.mas_equalTo(46);
     }];
     
     [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -91,7 +91,7 @@ typedef enum : NSUInteger {
 
 - (void)pushHouseListVC{
     THKOnlineDesignHouseListVM *vm = [[THKOnlineDesignHouseListVM alloc] init];
-    THKOnlineDesignHouseListVC *vc = [[THKOnlineDesignHouseListVC alloc] initWithViewModel:vm];
+    THKOnlineDesignHouseTypeListVC *vc = [[THKOnlineDesignHouseTypeListVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

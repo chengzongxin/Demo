@@ -9,7 +9,7 @@
 #import "THKOnlineDesignHouseListVM.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKOnlineDesignHouseListVC : THKViewController
+@interface THKOnlineDesignHouseTypeListVC : THKViewController
 
 @end
 

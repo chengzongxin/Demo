@@ -71,7 +71,7 @@
 		16212FD928A77AFC0079A086 /* THKOnlineDesignSearchAreaListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FD828A77AFC0079A086 /* THKOnlineDesignSearchAreaListView.m */; };
 		16212FDC28A77B090079A086 /* THKOnlineDesignSearchHouseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FDB28A77B090079A086 /* THKOnlineDesignSearchHouseListView.m */; };
 		16212FDF28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FDE28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m */; };
-		16212FE228A7963E0079A086 /* THKOnlineDesignHouseListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FE128A7963E0079A086 /* THKOnlineDesignHouseListVC.m */; };
+		16212FE228A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FE128A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m */; };
 		16212FE528A799130079A086 /* THKOnlineDesignHouseListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FE428A799130079A086 /* THKOnlineDesignHouseListVM.m */; };
 		1622298B28A5EF3A005826CF /* LameTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1622298728A5EF3A005826CF /* LameTool.m */; };
 		1622298F28A5F149005826CF /* lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1622298E28A5F148005826CF /* lame.a */; };
@@ -338,6 +338,9 @@
 		16B3EA5828AA25EF00B3C791 /* 重新上传户型@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4828AA25EE00B3C791 /* 重新上传户型@2x.png */; };
 		16B3EA5928AA25EF00B3C791 /* 关闭@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4928AA25EE00B3C791 /* 关闭@2x.png */; };
 		16B3EA5A28AA25EF00B3C791 /* 加号绿上传户型@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4A28AA25EE00B3C791 /* 加号绿上传户型@3x.png */; };
+		16B3EA5E28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA5D28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m */; };
+		16B3EA6128AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA6028AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m */; };
+		16B3EA6428AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA6328AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -568,8 +571,8 @@
 		16212FDB28A77B090079A086 /* THKOnlineDesignSearchHouseListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignSearchHouseListView.m; sourceTree = "<group>"; };
 		16212FDD28A783830079A086 /* THKOnlineDesignSearchAreaListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignSearchAreaListCell.h; sourceTree = "<group>"; };
 		16212FDE28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignSearchAreaListCell.m; sourceTree = "<group>"; };
-		16212FE028A7963E0079A086 /* THKOnlineDesignHouseListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseListVC.h; sourceTree = "<group>"; };
-		16212FE128A7963E0079A086 /* THKOnlineDesignHouseListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseListVC.m; sourceTree = "<group>"; };
+		16212FE028A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseTypeListVC.h; sourceTree = "<group>"; };
+		16212FE128A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseTypeListVC.m; sourceTree = "<group>"; };
 		16212FE328A799130079A086 /* THKOnlineDesignHouseListVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseListVM.h; sourceTree = "<group>"; };
 		16212FE428A799130079A086 /* THKOnlineDesignHouseListVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseListVM.m; sourceTree = "<group>"; };
 		1622298728A5EF3A005826CF /* LameTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LameTool.m; sourceTree = "<group>"; };
@@ -1062,6 +1065,12 @@
 		16B3EA4828AA25EE00B3C791 /* 重新上传户型@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重新上传户型@2x.png"; sourceTree = "<group>"; };
 		16B3EA4928AA25EE00B3C791 /* 关闭@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关闭@2x.png"; sourceTree = "<group>"; };
 		16B3EA4A28AA25EE00B3C791 /* 加号绿上传户型@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号绿上传户型@3x.png"; sourceTree = "<group>"; };
+		16B3EA5C28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHomeConfigRequest.h; sourceTree = "<group>"; };
+		16B3EA5D28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeConfigRequest.m; sourceTree = "<group>"; };
+		16B3EA5F28AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHomeConfigResponse.h; sourceTree = "<group>"; };
+		16B3EA6028AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeConfigResponse.m; sourceTree = "<group>"; };
+		16B3EA6228AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseTypeListCell.h; sourceTree = "<group>"; };
+		16B3EA6328AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseTypeListCell.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -1563,8 +1572,8 @@
 				16B2E6CB28A490EF00D385B6 /* THKOnlineDesignVC.m */,
 				16212FC228A747AD0079A086 /* THKOnlineDesignSearchAreaVC.h */,
 				16212FC328A747AD0079A086 /* THKOnlineDesignSearchAreaVC.m */,
-				16212FE028A7963E0079A086 /* THKOnlineDesignHouseListVC.h */,
-				16212FE128A7963E0079A086 /* THKOnlineDesignHouseListVC.m */,
+				16212FE028A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.h */,
+				16212FE128A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2534,6 +2543,7 @@
 				16B2E6DC28A5097600D385B6 /* View */,
 				16212FC128A741160079A086 /* ViewModel */,
 				16212FC028A741160079A086 /* Model */,
+				16B3EA5B28AA72CD00B3C791 /* Request */,
 				16B2E6EF28A5297100D385B6 /* Recorder */,
 				16B3EA2028A9E1DE00B3C791 /* Resource */,
 			);
@@ -2577,6 +2587,8 @@
 				16212FDE28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m */,
 				16212FDA28A77B090079A086 /* THKOnlineDesignSearchHouseListView.h */,
 				16212FDB28A77B090079A086 /* THKOnlineDesignSearchHouseListView.m */,
+				16B3EA6228AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.h */,
+				16B3EA6328AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2618,6 +2630,17 @@
 				16B3EA4628AA25EE00B3C791 /* 重新上传户型@3x.png */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		16B3EA5B28AA72CD00B3C791 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				16B3EA5C28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.h */,
+				16B3EA5D28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m */,
+				16B3EA5F28AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.h */,
+				16B3EA6028AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		16C532CC25761E1600210A3C /* BaseViewModel */ = {
@@ -3395,6 +3418,7 @@
 				16B1F52A275E1B6D00FF18C4 /* THKNewcomerAnimation.m in Sources */,
 				1689DE8F274498280073BA68 /* THKDynamicTabsModel.m in Sources */,
 				16611B62269692D20089E41B /* THKMaterialRecommendRankVC.m in Sources */,
+				16B3EA6428AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m in Sources */,
 				16DDC070274C79B7000DAA29 /* THKTabBarController.m in Sources */,
 				16611AD1269688C20089E41B /* KeychainItemWrapper.m in Sources */,
 				16611B6D269692D20089E41B /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
@@ -3605,6 +3629,7 @@
 				16611AAE2696870F0089E41B /* GESwizzer.m in Sources */,
 				16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */,
 				1689DECC27449F410073BA68 /* DynamicTabVC.m in Sources */,
+				16B3EA6128AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m in Sources */,
 				16611ABD2696870F0089E41B /* GESnsTracker.m in Sources */,
 				16F516BD26D4F8B9002500F7 /* THKDiaryBookInfoViewModel.m in Sources */,
 				160106E42553DD8000FE4B77 /* SceneDelegate.m in Sources */,
@@ -3647,6 +3672,7 @@
 				1642AA4B26D8EE6A00F5FACD /* THKDiaryDirectoryChildVC.m in Sources */,
 				1630D98C274DD7D0009A04FA /* THKAvatarView.m in Sources */,
 				16F84A5826E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m in Sources */,
+				16B3EA5E28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m in Sources */,
 				16192B4D2692E1B100967C73 /* TRouterManager+Config.m in Sources */,
 				167233712886B8B700901743 /* THKNavigationSearchTitleViewModel.m in Sources */,
 				165CCBD5278E66DB00141EC0 /* THKDynamicTabsPageVC.m in Sources */,
@@ -3676,7 +3702,7 @@
 				16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */,
 				16192B362692E13E00967C73 /* THKTransitionAnimation.m in Sources */,
 				16867A132692D76C00650023 /* TMCardComponentNotSupportCell.m in Sources */,
-				16212FE228A7963E0079A086 /* THKOnlineDesignHouseListVC.m in Sources */,
+				16212FE228A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m in Sources */,
 				16B2E6EB28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m in Sources */,
 				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
