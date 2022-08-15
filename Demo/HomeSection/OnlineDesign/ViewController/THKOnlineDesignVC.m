@@ -134,7 +134,8 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.viewModel.datas[section].item.items.count;
+    THKOnlineDesignSectionModel *sectionModel = self.viewModel.datas[section];
+    return sectionModel.isFold ? 0 : sectionModel.item.items.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -154,6 +155,17 @@ static CGFloat const kHeaderHeight = 100;
         THKOnlineDesignSectionModel *sectionModel = self.viewModel.datas[indexPath.section];
         header.numLbl.text = @(sectionModel.item.type).stringValue;
         header.titleLbl.text = sectionModel.title;
+        if (sectionModel.isFold) {
+            header.selectString = sectionModel.item.items[sectionModel.selectIdx];
+        }else{
+            header.selectString = nil;
+        }
+        @weakify(self);
+        header.editBlock = ^(UIButton * _Nonnull btn) {
+            @strongify(self);
+            sectionModel.isFold = NO;
+            [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
+        };
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
         THKOnlineDesignSectionFooter *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionFooter.class) forIndexPath:indexPath];
@@ -164,6 +176,12 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    THKOnlineDesignSectionModel *sectionModel = self.viewModel.datas[indexPath.section];
+    if (sectionModel.item.type == THKOnlineDesignItemDataType_HouseStyle || sectionModel.item.type == THKOnlineDesignItemDataType_HouseBudget) {
+        sectionModel.isFold = YES;
+        sectionModel.selectIdx = indexPath.item;
+        [collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
+    }
 }
 
 #pragma mark - Private

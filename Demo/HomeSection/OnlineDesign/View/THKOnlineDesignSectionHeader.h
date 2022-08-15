@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) UILabel *titleLbl;
 
+@property (nonatomic, copy, nullable) NSString *selectString;
+
+@property (nonatomic, copy) void (^editBlock)(UIButton *btn);
+
 @end
 
 NS_ASSUME_NONNULL_END

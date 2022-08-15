@@ -29,6 +29,10 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) THKOnlineDesignItemModel *item;
 
+@property (nonatomic, assign) BOOL isFold;
+
+@property (nonatomic, assign) NSInteger selectIdx;
+
 @end
 
 

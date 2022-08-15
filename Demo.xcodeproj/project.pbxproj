@@ -322,7 +322,7 @@
 		16B3EA3628AA1CE300B3C791 /* od_record_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3228AA1CE300B3C791 /* od_record_white@2x.png */; };
 		16B3EA3728AA1CE300B3C791 /* od_record_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3328AA1CE300B3C791 /* od_record_black@2x.png */; };
 		16B3EA3A28AA22BD00B3C791 /* THKOnlineDesignAudioView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA3928AA22BD00B3C791 /* THKOnlineDesignAudioView.m */; };
-		16B3EA4B28AA25EF00B3C791 /* 编辑@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3B28AA25ED00B3C791 /* 编辑@2x.png */; };
+		16B3EA4B28AA25EF00B3C791 /* od_house_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3B28AA25ED00B3C791 /* od_house_edit@2x.png */; };
 		16B3EA4C28AA25EF00B3C791 /* 关闭@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3C28AA25ED00B3C791 /* 关闭@3x.png */; };
 		16B3EA4D28AA25EF00B3C791 /* od_record_close_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3D28AA25ED00B3C791 /* od_record_close_icon@2x.png */; };
 		16B3EA4E28AA25EF00B3C791 /* 箭头右绿@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA3E28AA25ED00B3C791 /* 箭头右绿@3x.png */; };
@@ -332,7 +332,7 @@
 		16B3EA5228AA25EF00B3C791 /* od_record_close_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4228AA25EE00B3C791 /* od_record_close_icon@3x.png */; };
 		16B3EA5328AA25EF00B3C791 /* 加号绿上传户型@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4328AA25EE00B3C791 /* 加号绿上传户型@2x.png */; };
 		16B3EA5428AA25EF00B3C791 /* 加号绿@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4428AA25EE00B3C791 /* 加号绿@2x.png */; };
-		16B3EA5528AA25EF00B3C791 /* 编辑@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4528AA25EE00B3C791 /* 编辑@3x.png */; };
+		16B3EA5528AA25EF00B3C791 /* od_house_edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4528AA25EE00B3C791 /* od_house_edit@3x.png */; };
 		16B3EA5628AA25EF00B3C791 /* 重新上传户型@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4628AA25EE00B3C791 /* 重新上传户型@3x.png */; };
 		16B3EA5728AA25EF00B3C791 /* 箭头右绿@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4728AA25EE00B3C791 /* 箭头右绿@2x.png */; };
 		16B3EA5828AA25EF00B3C791 /* 重新上传户型@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B3EA4828AA25EE00B3C791 /* 重新上传户型@2x.png */; };
@@ -1046,7 +1046,7 @@
 		16B3EA3328AA1CE300B3C791 /* od_record_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_record_black@2x.png"; sourceTree = "<group>"; };
 		16B3EA3828AA22BD00B3C791 /* THKOnlineDesignAudioView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignAudioView.h; sourceTree = "<group>"; };
 		16B3EA3928AA22BD00B3C791 /* THKOnlineDesignAudioView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignAudioView.m; sourceTree = "<group>"; };
-		16B3EA3B28AA25ED00B3C791 /* 编辑@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑@2x.png"; sourceTree = "<group>"; };
+		16B3EA3B28AA25ED00B3C791 /* od_house_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_house_edit@2x.png"; sourceTree = "<group>"; };
 		16B3EA3C28AA25ED00B3C791 /* 关闭@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关闭@3x.png"; sourceTree = "<group>"; };
 		16B3EA3D28AA25ED00B3C791 /* od_record_close_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_record_close_icon@2x.png"; sourceTree = "<group>"; };
 		16B3EA3E28AA25ED00B3C791 /* 箭头右绿@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右绿@3x.png"; sourceTree = "<group>"; };
@@ -1056,7 +1056,7 @@
 		16B3EA4228AA25EE00B3C791 /* od_record_close_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_record_close_icon@3x.png"; sourceTree = "<group>"; };
 		16B3EA4328AA25EE00B3C791 /* 加号绿上传户型@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号绿上传户型@2x.png"; sourceTree = "<group>"; };
 		16B3EA4428AA25EE00B3C791 /* 加号绿@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号绿@2x.png"; sourceTree = "<group>"; };
-		16B3EA4528AA25EE00B3C791 /* 编辑@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑@3x.png"; sourceTree = "<group>"; };
+		16B3EA4528AA25EE00B3C791 /* od_house_edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "od_house_edit@3x.png"; sourceTree = "<group>"; };
 		16B3EA4628AA25EE00B3C791 /* 重新上传户型@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重新上传户型@3x.png"; sourceTree = "<group>"; };
 		16B3EA4728AA25EE00B3C791 /* 箭头右绿@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右绿@2x.png"; sourceTree = "<group>"; };
 		16B3EA4828AA25EE00B3C791 /* 重新上传户型@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重新上传户型@2x.png"; sourceTree = "<group>"; };
@@ -2600,8 +2600,8 @@
 				16B3EA3028AA1CE200B3C791 /* od_record_white@3x.png */,
 				16B3EA3328AA1CE300B3C791 /* od_record_black@2x.png */,
 				16B3EA3128AA1CE300B3C791 /* od_record_black@3x.png */,
-				16B3EA3B28AA25ED00B3C791 /* 编辑@2x.png */,
-				16B3EA4528AA25EE00B3C791 /* 编辑@3x.png */,
+				16B3EA3B28AA25ED00B3C791 /* od_house_edit@2x.png */,
+				16B3EA4528AA25EE00B3C791 /* od_house_edit@3x.png */,
 				16B3EA4928AA25EE00B3C791 /* 关闭@2x.png */,
 				16B3EA3C28AA25ED00B3C791 /* 关闭@3x.png */,
 				16B3EA3D28AA25ED00B3C791 /* od_record_close_icon@2x.png */,
@@ -3202,7 +3202,7 @@
 				16B3EA5328AA25EF00B3C791 /* 加号绿上传户型@2x.png in Resources */,
 				1685A673289120DC0032E474 /* dec_todo_title@2x.png in Resources */,
 				1685A66A289120DC0032E474 /* dec_todo_04_black@2x.png in Resources */,
-				16B3EA5528AA25EF00B3C791 /* 编辑@3x.png in Resources */,
+				16B3EA5528AA25EF00B3C791 /* od_house_edit@3x.png in Resources */,
 				16FE9D98277D92260085CC07 /* diary_combo_num_9@3x.png in Resources */,
 				16FE9D91277D92260085CC07 /* diary_combo_num_2@3x.png in Resources */,
 				1685A660289120DC0032E474 /* dec_todo_03_black@3x.png in Resources */,
@@ -3210,7 +3210,7 @@
 				160106EC2553DD8000FE4B77 /* Assets.xcassets in Resources */,
 				16B3EA5728AA25EF00B3C791 /* 箭头右绿@2x.png in Resources */,
 				16611B6E269692D20089E41B /* THKMaterialClassificationRecommendRankCell.xib in Resources */,
-				16B3EA4B28AA25EF00B3C791 /* 编辑@2x.png in Resources */,
+				16B3EA4B28AA25EF00B3C791 /* od_house_edit@2x.png in Resources */,
 				1685A67F289120DC0032E474 /* dec_todo_01_black@3x.png in Resources */,
 				16B3EA4D28AA25EF00B3C791 /* od_record_close_icon@2x.png in Resources */,
 				16B3EA3528AA1CE300B3C791 /* od_record_black@3x.png in Resources */,

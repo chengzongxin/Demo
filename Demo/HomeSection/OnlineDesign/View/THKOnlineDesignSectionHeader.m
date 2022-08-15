@@ -12,6 +12,11 @@
 @property (nonatomic, strong) UILabel *numLbl;
 
 @property (nonatomic, strong) UILabel *titleLbl;
+
+@property (nonatomic, strong) UILabel *selectLbl;
+
+@property (nonatomic, strong) UIButton *editBtn;
+
 @end
 
 
@@ -31,6 +36,8 @@
 - (void)setupViews{
     [self addSubview:self.numLbl];
     [self addSubview:self.titleLbl];
+    [self addSubview:self.selectLbl];
+    [self addSubview:self.editBtn];
     
     [self.numLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
@@ -42,6 +49,28 @@
         make.centerY.equalTo(self);
         make.left.equalTo(self.numLbl.mas_right).offset(4);
     }];
+    
+    [self.selectLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.right.equalTo(self).offset(-65);
+    }];
+    
+    [self.editBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.right.equalTo(self).offset(-40);
+    }];
+}
+
+- (void)setSelectString:(NSString *)selectString{
+    _selectString = selectString;
+    
+    if (tmui_isNullString(selectString)) {
+        self.selectLbl.text = nil;
+        self.editBtn.hidden = YES;
+    }else{
+        self.selectLbl.text = selectString;
+        self.editBtn.hidden = NO;
+    }
 }
 
 - (UILabel *)numLbl{
@@ -63,6 +92,30 @@
         _titleLbl.textColor = UIColorDark;
     }
     return _titleLbl;
+}
+
+- (UILabel *)selectLbl{
+    if (!_selectLbl) {
+        _selectLbl = [UILabel new];
+        _selectLbl.font = UIFontSemibold(14);
+        _selectLbl.textColor = UIColorDark;
+    }
+    return _selectLbl;
+}
+
+- (UIButton *)editBtn{
+    if (!_editBtn) {
+        _editBtn = [UIButton tmui_button];
+        _editBtn.tmui_image = UIImageMake(@"od_house_edit");
+        @weakify(self);
+        [_editBtn tmui_addActionBlock:^(NSInteger tag) {
+            @strongify(self);
+            if (self.editBlock) {
+                self.editBlock(self.editBtn);
+            }
+        } forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _editBtn;
 }
 
 @end
