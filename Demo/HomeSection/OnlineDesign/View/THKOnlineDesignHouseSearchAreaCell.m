@@ -28,6 +28,8 @@
         _button = [TMUIButton tmui_button];
         _button.backgroundColor = UIColorGreen;
         _button.tmui_titleColor = UIColorWhite;
+        _button.cornerRadius = 8;
+        _button.tmui_font = UIFontMedium(18);
         _button.tmui_text = @"搜索我家小区";
         @weakify(self);
         [[_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {

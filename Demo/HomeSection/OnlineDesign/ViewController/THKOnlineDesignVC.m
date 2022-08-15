@@ -96,6 +96,19 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 #pragma mark UICollectionViewDataSource
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return CGSizeMake(self.view.bounds.size.width, 50);
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    if (collectionView.numberOfSections - 1 == section) {
+        return CGSizeMake(self.view.bounds.size.width, 120);
+    }else{
+        return CGSizeZero;
+    }
+}
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return self.viewModel.datas[indexPath.section].item.itemSize;
 }

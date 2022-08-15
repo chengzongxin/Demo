@@ -114,8 +114,7 @@
                 item4.type = 4;
                 item4.cellClass = self.cellDict[@(item4.type)];
                 
-                NSArray *demans = item4.demandDesc;
-                CGSize item4Size = CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), 22 * demans.count + 44 + 20);
+                CGSize item4Size = [self demandSize:item4.demandDesc];
                 item4.itemSize = item4Size;
                 section4.item = item4;
                 [arr addObject:section4];
@@ -128,8 +127,7 @@
                     section4.item.demandDesc = [NSMutableArray array];
                 }
                 section4.item.demandDesc = [section4.item.demandDesc tmui_arrayByAddObject:input];
-                NSArray *demans = section4.item.demandDesc;
-                CGSize item4Size = CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), 22 * demans.count + 44 + 20);
+                CGSize item4Size = [self demandSize:section4.item.demandDesc];
                 section4.item.itemSize = item4Size;
             }
             
@@ -138,6 +136,16 @@
         }];
     }
     return _requestCommand;
+}
+
+- (CGSize)demandSize:(NSArray *)demands{
+    // 32 高度，14的间隙
+    CGFloat audioH = 0;
+    NSInteger count = demands.count;
+    if (count) {
+        audioH = count * 32 + (count - 1) * 14;
+    }
+    return CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), audioH + 95 + 48);
 }
 
 - (RACCommand *)addAudioCommand{
