@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy) void (^tapItem)(NSInteger idx);
 
+@property (nonatomic, copy) void (^clickUploadBlock)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

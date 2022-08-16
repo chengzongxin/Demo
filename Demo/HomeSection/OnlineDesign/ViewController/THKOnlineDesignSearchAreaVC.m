@@ -11,6 +11,8 @@
 #import "THKOnlineDesignSearchAreaListView.h"
 #import "THKOnlineDesignSearchHouseListView.h"
 #import "THKOnlineDesignHouseTypeListVC.h"
+#import "THKOnlineDesignUploadHouseTypeView.h"
+#import "THKOnlineDesignUploadHouseVC.h"
 
 typedef enum : NSUInteger {
     THKOnlineDesignSearchAreaContentType_Hot,
@@ -91,6 +93,12 @@ typedef enum : NSUInteger {
     }];
 }
 
+- (void)clickUpload{
+    THKOnlineDesignUploadHouseVM *vm = [[THKOnlineDesignUploadHouseVM alloc] init];
+    THKOnlineDesignUploadHouseVC *vc = [[THKOnlineDesignUploadHouseVC alloc] initWithViewModel:vm];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)pushHouseListVC{
     THKOnlineDesignHouseTypeListVM *vm = [[THKOnlineDesignHouseTypeListVM alloc] init];
     THKOnlineDesignHouseTypeListVC *vc = [[THKOnlineDesignHouseTypeListVC alloc] initWithViewModel:vm];
@@ -102,6 +110,13 @@ typedef enum : NSUInteger {
     if (!_searchBar) {
         _searchBar = [[TMUISearchBar alloc] initWithStyle:TMUISearchBarStyle_City];
         _searchBar.delegate = self;
+        THKOnlineDesignUploadHouseTypeView *inputAccessoryView = [[THKOnlineDesignUploadHouseTypeView alloc] initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, 40)];
+        @weakify(self);
+        inputAccessoryView.clickUploadBlock = ^{
+            @strongify(self);
+            [self clickUpload];
+        };
+        _searchBar.textField.inputAccessoryView = inputAccessoryView;
     }
     return _searchBar;
 }
@@ -121,6 +136,10 @@ typedef enum : NSUInteger {
         _hotView.tapItem = ^(NSInteger idx) {
             @strongify(self);
             [self pushHouseListVC];
+        };
+        _hotView.clickUploadBlock = ^{
+            @strongify(self);
+            [self clickUpload];
         };
     }
     return _hotView;

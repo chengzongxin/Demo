@@ -23,6 +23,8 @@
 @implementation THKOnlineDesignHouseTypeCell
 
 - (void)setupSubviews{
+    self.contentView.backgroundColor = UIColorHex(F1F2F3);
+    self.contentView.cornerRadius = 8;
     [self.contentView addSubview:self.picImgV];
     [self.contentView addSubview:self.areaLbl];
     [self.contentView addSubview:self.typeLbl];

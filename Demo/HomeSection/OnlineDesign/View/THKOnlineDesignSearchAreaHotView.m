@@ -6,12 +6,15 @@
 //
 
 #import "THKOnlineDesignSearchAreaHotView.h"
+#import "THKOnlineDesignUploadHouseTypeView.h"
 
 @interface THKOnlineDesignSearchAreaHotView ()
 
 @property (nonatomic, strong) UILabel *titleLbl;
 
 @property (nonatomic, strong) TMUIFloatLayoutView *floatLayoutView;
+
+@property (nonatomic, strong) THKOnlineDesignUploadHouseTypeView *uploadView;
 
 @end
 
@@ -28,10 +31,17 @@
 
 - (void)didInitalilze{
     [self addSubview:self.titleLbl];
+    [self addSubview:self.uploadView];
     
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(20);
         make.left.mas_equalTo(20);
+    }];
+    
+    [self.uploadView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self);
+        make.bottom.mas_equalTo(-tmui_safeAreaBottomInset());
+        make.height.mas_equalTo(40);
     }];
     
     [self addSubview:self.floatLayoutView];
@@ -42,6 +52,10 @@
     
     UIEdgeInsets padding = UIEdgeInsetsMake(60, 20, 20, 20);
     self.floatLayoutView.frame = CGRectMake(padding.left, padding.top, CGRectGetWidth(self.bounds) - UIEdgeInsetsGetHorizontalValue(padding), TMUIViewSelfSizingHeight);
+}
+
+- (void)setClickUploadBlock:(void (^)(void))clickUploadBlock{
+    _uploadView.clickUploadBlock = clickUploadBlock;
 }
 
 - (void)setAreaList:(NSArray<NSString *> *)areaList{
@@ -100,6 +114,13 @@
 //        _floatLayoutView.layer.borderColor = UIColorSeparator.CGColor;
     }
     return _floatLayoutView;
+}
+
+- (THKOnlineDesignUploadHouseTypeView *)uploadView{
+    if (!_uploadView) {
+        _uploadView = THKOnlineDesignUploadHouseTypeView.new;
+    }
+    return _uploadView;
 }
 
 @end
