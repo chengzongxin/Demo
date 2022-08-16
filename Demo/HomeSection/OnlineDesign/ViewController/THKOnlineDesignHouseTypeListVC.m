@@ -7,6 +7,7 @@
 
 #import "THKOnlineDesignHouseTypeListVC.h"
 #import "THKOnlineDesignHouseTypeListCell.h"
+#import "THKOnlineDesignModel.h"
 
 @interface THKOnlineDesignHouseTypeListVC () <UICollectionViewDelegate,UICollectionViewDataSource,TMUISearchBarDelegate>
 
@@ -78,7 +79,13 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    !_selectHouseTypeBlock?:_selectHouseTypeBlock(@"");
+    if (self.selectHouseTypeBlock) {
+        THKOnlineDesignItemHouseTypeModel *model = [THKOnlineDesignItemHouseTypeModel new];
+        model.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
+        model.houseArea = @"万科云城1期";
+        model.houseType = @"4室1厅·128㎡";
+        self.selectHouseTypeBlock(model);
+    }
 }
 
 #pragma mark - Private

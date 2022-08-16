@@ -7,11 +7,12 @@
 
 #import "THKViewController.h"
 #import "THKOnlineDesignHouseTypeListVM.h"
+#import "THKOnlineDesignModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignHouseTypeListVC : THKViewController
 
-@property (nonatomic, copy) void (^selectHouseTypeBlock)(id houseTypeMdel);
+@property (nonatomic, copy) void (^selectHouseTypeBlock)(THKOnlineDesignItemHouseTypeModel * houseTypeMdel);
 
 @end
 

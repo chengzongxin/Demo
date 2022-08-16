@@ -97,6 +97,7 @@ typedef enum : NSUInteger {
     THKOnlineDesignUploadHouseVM *vm = [[THKOnlineDesignUploadHouseVM alloc] init];
     THKOnlineDesignUploadHouseVC *vc = [[THKOnlineDesignUploadHouseVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
+    vc.selectHouseTypeBlock = self.selectHouseTypeBlock;
 }
 
 - (void)pushHouseListVC{

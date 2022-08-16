@@ -17,6 +17,14 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
+@property (nonatomic, strong) TMUITextField *areaNameTF;
+
+@property (nonatomic, strong) UIButton *houseTypeBtn;
+
+@property (nonatomic, strong) TMUITextField *areaMeterTF;
+
+@property (nonatomic, strong) UIButton *commitButton;
+
 @end
 
 @implementation THKOnlineDesignUploadHouseVC
@@ -32,8 +40,26 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(THKNavBarInsets);
     }];
+    
+    [self.view addSubview:self.commitButton];
+    
+    [self.commitButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view).inset(20);
+        make.height.mas_equalTo(50);
+        make.bottom.mas_equalTo(-tmui_safeAreaBottomInset());
+    }];
 }
 
+
+- (void)commit:(UIButton *)btn{
+    if (self.selectHouseTypeBlock) {
+        THKOnlineDesignItemHouseTypeModel *model = [THKOnlineDesignItemHouseTypeModel new];
+        model.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
+        model.houseArea = self.areaNameTF.text;
+        model.houseType = [NSString stringWithFormat:@"%@·%@㎡",self.houseTypeBtn.tmui_text,self.areaMeterTF.text];//@"4室1厅·128㎡"
+        self.selectHouseTypeBlock(model);
+    }
+}
 
 #pragma mark UITableViewDelegate UITableViewDataSource
 
@@ -84,6 +110,8 @@
                 make.height.mas_equalTo(20);
                 make.width.mas_equalTo(103);
             }];
+            
+            self.areaNameTF = tf;
         }
             break;
         case 1:
@@ -113,6 +141,8 @@
                 make.right.equalTo(cell.rightContentView);
                 make.centerY.equalTo(cell.rightContentView);
             }];
+            
+            self.houseTypeBtn = btn;
         }
             break;
         case 2:
@@ -142,6 +172,8 @@
                 make.right.equalTo(cell.rightContentView);
                 make.centerY.equalTo(cell.rightContentView);
             }];
+            
+            self.areaMeterTF = tf;
         }
             break;
             
@@ -175,5 +207,20 @@
     }
     return _header;
 }
+
+
+- (UIButton *)commitButton{
+    if (!_commitButton) {
+        _commitButton = [TMUIButton tmui_button];
+        _commitButton.backgroundColor = UIColorGreen;
+        _commitButton.tmui_titleColor = UIColorWhite;
+        _commitButton.cornerRadius = 8;
+        _commitButton.tmui_font = UIFontMedium(18);
+        _commitButton.tmui_text = @"确认提交";
+        [_commitButton tmui_addTarget:self action:@selector(commit:)];
+    }
+    return _commitButton;
+}
+
 
 @end
