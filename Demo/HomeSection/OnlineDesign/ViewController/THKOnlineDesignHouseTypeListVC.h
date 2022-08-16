@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignHouseTypeListVC : THKViewController
 
+@property (nonatomic, strong, readonly) THKOnlineDesignHouseTypeListVM *viewModel;
+
 @property (nonatomic, copy) void (^selectHouseTypeBlock)(THKOnlineDesignItemHouseTypeModel * houseTypeMdel);
 
 @end

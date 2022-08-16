@@ -13,6 +13,8 @@
 
 @interface THKOnlineDesignHouseTypeListVC () <UICollectionViewDelegate,UICollectionViewDataSource,TMUISearchBarDelegate>
 
+@property (nonatomic, strong) THKOnlineDesignHouseTypeListVM *viewModel;
+
 @property (nonatomic, strong) TMUISearchBar *searchBar;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
@@ -24,6 +26,7 @@
 @end
 
 @implementation THKOnlineDesignHouseTypeListVC
+@dynamic viewModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,6 +67,20 @@
     
 }
 
+- (void)bindViewModel{
+    [super bindViewModel];
+    
+    [self.viewModel bindWithView:self.view scrollView:self.collectionView appenBlock:^NSArray * _Nonnull(THKResponse * _Nonnull x) {
+        THKOnlineDesignSearchHouseResponse *response = (THKOnlineDesignSearchHouseResponse *)x;
+        return response.data.items;
+    }];
+    
+    [self.viewModel addRefreshHeader];
+    [self.viewModel addRefreshFooter];
+    
+    [self.viewModel.requestCommand execute:@1];
+}
+
 
 #pragma mark UICollectionViewDataSource
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -78,11 +95,13 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return self.viewModel.data.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     THKOnlineDesignHouseTypeListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKOnlineDesignHouseTypeListCell.class) forIndexPath:indexPath];
+    THKOnlineDesignHouseListItemModel *model = self.viewModel.data[indexPath.row];
+    cell.model = model;
     return cell;
 }
 

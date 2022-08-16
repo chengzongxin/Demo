@@ -110,8 +110,9 @@ typedef enum : NSUInteger {
     vc.selectHouseTypeBlock = self.selectHouseTypeBlock;
 }
 
-- (void)pushHouseListVC{
+- (void)pushHouseListVC:(NSString *)wd{
     THKOnlineDesignHouseTypeListVM *vm = [[THKOnlineDesignHouseTypeListVM alloc] init];
+    vm.wd = wd;
     THKOnlineDesignHouseTypeListVC *vc = [[THKOnlineDesignHouseTypeListVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
     vc.selectHouseTypeBlock = self.selectHouseTypeBlock;
@@ -147,7 +148,7 @@ typedef enum : NSUInteger {
         @weakify(self);
         _hotView.tapItem = ^(NSInteger idx) {
             @strongify(self);
-            [self pushHouseListVC];
+            [self pushHouseListVC:self.hotView.areaList[idx]];
         };
         _hotView.clickUploadBlock = ^{
             @strongify(self);
@@ -163,7 +164,7 @@ typedef enum : NSUInteger {
         @weakify(self);
         _areaView.tapItem = ^(NSInteger idx) {
             @strongify(self);
-            [self pushHouseListVC];
+            [self pushHouseListVC:self.areaView.items[idx].community_name];
         };
     }
     return _areaView;

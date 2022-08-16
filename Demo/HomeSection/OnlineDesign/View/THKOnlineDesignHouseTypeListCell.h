@@ -6,10 +6,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "THKOnlineDesignHouseListModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignHouseTypeListCell : UICollectionViewCell
+
+@property (nonatomic, strong) THKOnlineDesignHouseListItemModel *model;
 
 @end
 

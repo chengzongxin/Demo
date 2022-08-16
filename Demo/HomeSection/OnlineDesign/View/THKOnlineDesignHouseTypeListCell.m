@@ -48,6 +48,13 @@
     }];
 }
 
+- (void)setModel:(THKOnlineDesignHouseListItemModel *)model{
+    _model = model;
+    
+    [self.imgV loadImageWithUrlStr:model.image];
+    self.titleLbl.text = [NSString stringWithFormat:@"%@%@",model.structure,model.building_area];
+}
+
 - (UIView *)bgView{
     if (!_bgView) {
         _bgView = [UIView new];

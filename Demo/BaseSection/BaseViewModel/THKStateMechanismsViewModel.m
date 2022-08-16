@@ -59,7 +59,7 @@
         }
         
         // 空页面更新
-        if (x.status != THKStatusSuccess) {
+        if (x.status != THKStatusSuccess && x.errorCode != 0) {
             [self.emptySignal sendNext:@(TMEmptyContentTypeServerErr)];
         }else if (self.data.count == 0) {
             [self.emptySignal sendNext:@(TMEmptyContentTypeNoData)];
