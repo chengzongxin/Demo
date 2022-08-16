@@ -8,6 +8,8 @@
 #import "THKOnlineDesignHouseTypeListVC.h"
 #import "THKOnlineDesignHouseTypeListCell.h"
 #import "THKOnlineDesignModel.h"
+#import "THKOnlineDesignUploadNoHouseTypeView.h"
+#import "THKOnlineDesignUploadHouseVC.h"
 
 @interface THKOnlineDesignHouseTypeListVC () <UICollectionViewDelegate,UICollectionViewDataSource,TMUISearchBarDelegate>
 
@@ -16,6 +18,8 @@
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+
+@property (nonatomic, strong) THKOnlineDesignUploadNoHouseTypeView *noHouseView;
 
 @end
 
@@ -42,6 +46,22 @@
         make.bottom.mas_equalTo(0);
     }];
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.collectionView.numberOfSections && ([self.collectionView numberOfItemsInSection:0] > 12)) {
+            
+            [self.view addSubview:self.noHouseView];
+            [self.noHouseView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.right.equalTo(self.view).inset(20);
+                make.bottom.mas_equalTo(-88);
+                make.height.mas_equalTo(75);
+            }];
+        }else{
+            [self.collectionView addSubview:self.noHouseView];
+            self.noHouseView.frame = CGRectMake(20, self.collectionView.contentSize.height, TMUI_SCREEN_WIDTH - 40, 75);
+        }
+    });
+    
+    
 }
 
 
@@ -58,7 +78,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -89,6 +109,12 @@
 }
 
 #pragma mark - Private
+- (void)pushUploadVC{
+    THKOnlineDesignUploadHouseVM *vm = [[THKOnlineDesignUploadHouseVM alloc] init];
+    THKOnlineDesignUploadHouseVC *vc = [[THKOnlineDesignUploadHouseVC alloc] initWithViewModel:vm];
+    [self.navigationController pushViewController:vc animated:YES];
+    vc.selectHouseTypeBlock = self.selectHouseTypeBlock;
+}
 
 #pragma mark - Getters and Setters
 - (TMUISearchBar *)searchBar{
@@ -117,7 +143,7 @@
 //        _collectionView.backgroundColor = UIColorHex(#DEEEFF);
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 160, 0);
         if (@available(iOS 11.0, *)) {
             _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         } else {
@@ -130,5 +156,17 @@
     return _collectionView;
 }
 
+
+- (THKOnlineDesignUploadNoHouseTypeView *)noHouseView{
+    if (!_noHouseView) {
+        _noHouseView = [THKOnlineDesignUploadNoHouseTypeView new];
+        @weakify(self);
+        _noHouseView.clickUploadBlock = ^{
+            @strongify(self);
+            [self pushUploadVC];
+        };
+    }
+    return _noHouseView;
+}
 
 @end

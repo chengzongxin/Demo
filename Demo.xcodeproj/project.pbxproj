@@ -392,6 +392,7 @@
 		16F0A66D28AB4B7C00B0B081 /* THKOnlineDesignUploadHouseVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F0A66C28AB4B7C00B0B081 /* THKOnlineDesignUploadHouseVM.m */; };
 		16F0A67028AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F0A66F28AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m */; };
 		16F0A67328AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F0A67228AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m */; };
+		16F0A67628AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F0A67528AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */; };
 		16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516AA26D4C2E5002500F7 /* THKDiaryBookModel.m */; };
@@ -1183,6 +1184,8 @@
 		16F0A66F28AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignUploadHouseHeader.m; sourceTree = "<group>"; };
 		16F0A67128AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignUploadHouseCell.h; sourceTree = "<group>"; };
 		16F0A67228AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignUploadHouseCell.m; sourceTree = "<group>"; };
+		16F0A67428AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignUploadNoHouseTypeView.h; sourceTree = "<group>"; };
+		16F0A67528AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignUploadNoHouseTypeView.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		16F5169D26D4C2B8002500F7 /* THKDiaryBookVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookVM.h; sourceTree = "<group>"; };
@@ -2600,6 +2603,8 @@
 				16212FCC28A778420079A086 /* THKOnlineDesignSearchAreaContentView.m */,
 				16F0A66528AB3DDA00B0B081 /* THKOnlineDesignUploadHouseTypeView.h */,
 				16F0A66628AB3DDA00B0B081 /* THKOnlineDesignUploadHouseTypeView.m */,
+				16F0A67428AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.h */,
+				16F0A67528AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m */,
 				16212FCE28A778BE0079A086 /* THKOnlineDesignSearchAreaHotView.h */,
 				16212FCF28A778BE0079A086 /* THKOnlineDesignSearchAreaHotView.m */,
 				16212FD728A77AFC0079A086 /* THKOnlineDesignSearchAreaListView.h */,
@@ -3512,6 +3517,7 @@
 				1672336F2886B8B700901743 /* UIViewController+THKNavigationBar.m in Sources */,
 				16F0A66A28AB4B6B00B0B081 /* THKOnlineDesignUploadHouseVC.m in Sources */,
 				16867A312692D9B200650023 /* NSObject+TRouter.m in Sources */,
+				16F0A67628AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m in Sources */,
 				16611B68269692D20089E41B /* THKMaterialClassificationRecommendCellFooter.m in Sources */,
 				16611B69269692D20089E41B /* THKMaterialClassificationRecommendNormalHeader.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
