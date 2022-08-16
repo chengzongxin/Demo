@@ -17,11 +17,12 @@
 
 @implementation THKOnlineDesignItemModel
 
-- (NSArray<NSString *> *)items{
+- (NSArray *)items{
     switch (self.type) {
         case THKOnlineDesignItemDataType_HouseType:
+        case THKOnlineDesignItemDataType_HouseTypeModel:
         {
-            return @[self.picUrl];
+            return @[self.houseType?:@[]];
         }
             break;
         case THKOnlineDesignItemDataType_HouseStyle:
@@ -46,5 +47,9 @@
             break;
     }
 }
+
+@end
+
+@implementation THKOnlineDesignItemHouseTypeModel
 
 @end

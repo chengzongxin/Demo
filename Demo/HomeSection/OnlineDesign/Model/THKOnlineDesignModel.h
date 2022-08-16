@@ -15,9 +15,10 @@ typedef enum : NSUInteger {
     THKOnlineDesignItemDataType_HouseStyle,
     THKOnlineDesignItemDataType_HouseBudget,
     THKOnlineDesignItemDataType_HouseDemand,
+    THKOnlineDesignItemDataType_HouseTypeModel,
 } THKOnlineDesignItemDataType;
 
-@class THKOnlineDesignItemModel;
+@class THKOnlineDesignItemModel,THKOnlineDesignItemHouseTypeModel;
 
 @interface THKOnlineDesignModel : NSObject
 
@@ -44,9 +45,10 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, assign) CGSize itemSize;
 
-@property (nonatomic, strong) NSString *picUrl;
+// 对应数据
+@property (nonatomic, strong) THKOnlineDesignItemHouseTypeModel *houseType;
 
-@property (nonatomic, strong) NSString *houseAreaName;
+//@property (nonatomic, strong) NSString *houseAreaName;
 
 @property (nonatomic, strong) NSArray <NSString *> *houseStyles;
 
@@ -54,7 +56,17 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) NSArray <THKAudioDescription *> *demandDesc;
 ///  本地处理
-@property (nonatomic, strong) NSArray <NSString *> *items;
+@property (nonatomic, strong) NSArray *items;
+
+@end
+
+@interface THKOnlineDesignItemHouseTypeModel : NSObject
+
+@property (nonatomic, strong) NSString *picUrl;
+
+@property (nonatomic, strong) NSString *houseArea;
+
+@property (nonatomic, strong) NSString *houseType;
 
 @end
 

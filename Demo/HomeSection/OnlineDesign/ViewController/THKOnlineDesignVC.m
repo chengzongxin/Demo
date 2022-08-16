@@ -83,12 +83,23 @@ static CGFloat const kHeaderHeight = 100;
 
 #pragma mark - Delegate
 
+- (void)houseTypeEditClick:(UIView *)btn indexPath:(NSIndexPath *)indexPath{
+    [self searchAreaBtnClick:btn];
+}
+
 - (void)searchAreaBtnClick:(UIView *)btn{
     THKOnlineDesignSearchAreaVM *vm = [[THKOnlineDesignSearchAreaVM alloc] init];
     THKOnlineDesignSearchAreaVC *vc = [[THKOnlineDesignSearchAreaVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
+    @weakify(self);
     vc.selectHouseTypeBlock = ^(id  _Nonnull houseTypeMdel) {
-        
+        @strongify(self);
+        THKOnlineDesignItemHouseTypeModel *model = [THKOnlineDesignItemHouseTypeModel new];
+        model.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
+        model.houseArea = @"万科云城1期";
+        model.houseType = @"4室1厅·128㎡";
+        [self.viewModel.selectHouseTypeCommand execute:model];
+        [self.navigationController popToViewController:self animated:YES];
     };
 }
 
@@ -163,7 +174,11 @@ static CGFloat const kHeaderHeight = 100;
     if (kind == UICollectionElementKindSectionHeader) {
         THKOnlineDesignSectionHeader *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionHeader.class) forIndexPath:indexPath];
         THKOnlineDesignSectionModel *sectionModel = self.viewModel.datas[indexPath.section];
-        header.numLbl.text = @(sectionModel.item.type).stringValue;
+        if (sectionModel.item.type == THKOnlineDesignItemDataType_HouseTypeModel) {
+            header.numLbl.text = @"1";
+        }else{
+            header.numLbl.text = @(sectionModel.item.type).stringValue;
+        }
         header.titleLbl.text = sectionModel.title;
         if (sectionModel.isFold) {
             header.selectString = sectionModel.item.items[sectionModel.selectIdx];

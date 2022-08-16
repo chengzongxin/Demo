@@ -18,7 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @protocol THKOnlineDesignBaseCellDelegate <NSObject>
-
+// 点击修改
+- (void)houseTypeEditClick:(UIView *)btn indexPath:(NSIndexPath *)indexPath;
+// 点击搜索
 - (void)searchAreaBtnClick:(UIView *)btn;
 // 按住录音
 - (void)recordBtnTouchDown:(UIButton *)btn;

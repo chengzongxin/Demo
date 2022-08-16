@@ -8,14 +8,17 @@
 #import "THKOnlineDesignVM.h"
 
 typedef enum : NSUInteger {
-    THKOnlineDesignAudioOperateType_None,
-    THKOnlineDesignAudioOperateType_Add,
-    THKOnlineDesignAudioOperateType_Del,
-} THKOnlineDesignAudioOperateType;
+    THKOnlineDesignOperateType_None,
+    THKOnlineDesignOperateType_SelectHouseType,
+    THKOnlineDesignOperateType_AddAudio,
+    THKOnlineDesignOperateType_DelAudio,
+} THKOnlineDesignOperateType;
 
 @interface THKOnlineDesignVM ()
 
 @property (nonatomic, strong) THKRequestCommand *requestCommand;
+
+@property (nonatomic, strong) RACCommand *selectHouseTypeCommand;
 
 @property (nonatomic, strong) RACCommand *addAudioCommand;
 
@@ -52,13 +55,13 @@ typedef enum : NSUInteger {
 - (TMUIOrderedDictionary *)cellDict{
     if (!_cellDict) {
         _cellDict = [[TMUIOrderedDictionary alloc] initWithKeysAndObjects:
-                     @0,THKOnlineDesignBaseCell.class,
-                     @1,THKOnlineDesignHouseSearchAreaCell.class,
-//                     @1,THKOnlineDesignHouseTypeCell.class,
-                     @2,THKOnlineDesignHouseStyleCell.class,
-                     @3,THKOnlineDesignHouseBudgetCell.class,
-                     @4,THKOnlineDesignHouseDemandCell.class,
-                     @5,THKOnlineDesignHouseNameCell.class, //  废弃
+                     @(THKOnlineDesignItemDataType_None),THKOnlineDesignBaseCell.class,
+                     @(THKOnlineDesignItemDataType_HouseType),THKOnlineDesignHouseSearchAreaCell.class,
+                     @(THKOnlineDesignItemDataType_HouseStyle),THKOnlineDesignHouseStyleCell.class,
+                     @(THKOnlineDesignItemDataType_HouseBudget),THKOnlineDesignHouseBudgetCell.class,
+                     @(THKOnlineDesignItemDataType_HouseDemand),THKOnlineDesignHouseDemandCell.class,
+                     @(THKOnlineDesignItemDataType_HouseTypeModel),THKOnlineDesignHouseTypeCell.class, // 有户型
+                     @6,THKOnlineDesignHouseNameCell.class, //  废弃
         nil];
     }
     return _cellDict;
@@ -73,11 +76,10 @@ typedef enum : NSUInteger {
                 
                 NSMutableArray *arr = [NSMutableArray array];
                 THKOnlineDesignSectionModel *section1 = [[THKOnlineDesignSectionModel alloc] init];
-                section1.title = @"我家小区户型";
+                section1.title = @"匹配我家小区的户型";
                 THKOnlineDesignItemModel *item1 = [[THKOnlineDesignItemModel alloc] init];
                 item1.type = THKOnlineDesignItemDataType_HouseType;
                 item1.cellClass = self.cellDict[@(item1.type)];
-                item1.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
                 item1.itemSize = CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), 75);
                 section1.item = item1;
                 [arr addObject:section1];
@@ -131,9 +133,17 @@ typedef enum : NSUInteger {
             }else{
 //                RACTuple *tuple = (RACTuple *)input;
                 RACTupleUnpack(id typeID,id data) = input;
-                THKOnlineDesignAudioOperateType type = [typeID integerValue];
-                
-                if (type == THKOnlineDesignAudioOperateType_Add) {
+                THKOnlineDesignOperateType type = [typeID integerValue];
+                if (type == THKOnlineDesignOperateType_SelectHouseType) {
+                    THKOnlineDesignItemHouseTypeModel *model = data;
+                    
+                    THKOnlineDesignItemModel *item1 = [self getHouseTypeModel].item;
+                    item1.type = THKOnlineDesignItemDataType_HouseTypeModel;
+                    item1.houseType = model;
+                    item1.cellClass = self.cellDict[@(item1.type)];
+                    item1.itemSize = CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), 80);
+                    
+                } else if (type == THKOnlineDesignOperateType_AddAudio) {
                     THKAudioDescription *audioData = data;
                     // 增加录音
                     THKOnlineDesignSectionModel *section4 = [self getDemandSection];
@@ -143,7 +153,8 @@ typedef enum : NSUInteger {
                     section4.item.demandDesc = [section4.item.demandDesc tmui_arrayByAddObject:audioData];
                     CGSize item4Size = [self demandSize:section4.item.demandDesc];
                     section4.item.itemSize = item4Size;
-                }else if (type == THKOnlineDesignAudioOperateType_Del){
+                    
+                }else if (type == THKOnlineDesignOperateType_DelAudio){
                     NSInteger idx = [data integerValue];
                     // 删除录音
                     THKOnlineDesignSectionModel *section4 = [self getDemandSection];
@@ -159,6 +170,17 @@ typedef enum : NSUInteger {
         }];
     }
     return _requestCommand;
+}
+
+- (THKOnlineDesignSectionModel *)getHouseTypeModel{
+    THKOnlineDesignSectionModel *model = nil;
+    for (THKOnlineDesignSectionModel *aModel in self.datas) {
+        if (aModel.item.type == THKOnlineDesignItemDataType_HouseType || aModel.item.type == THKOnlineDesignItemDataType_HouseTypeModel ) {
+            model = aModel;
+            break;
+        }
+    }
+    return model;
 }
 
 - (THKOnlineDesignSectionModel *)getDemandSection{
@@ -188,7 +210,7 @@ typedef enum : NSUInteger {
         _addAudioCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 @strongify(self);
-                [self.requestCommand execute:RACTuplePack(@(THKOnlineDesignAudioOperateType_Add),input)];
+                [self.requestCommand execute:RACTuplePack(@(THKOnlineDesignOperateType_AddAudio),input)];
                 [subscriber sendNext:nil];
                 [subscriber sendCompleted];
                 
@@ -207,7 +229,7 @@ typedef enum : NSUInteger {
         _deleteAudioCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 @strongify(self);
-                [self.requestCommand execute:RACTuplePack(@(THKOnlineDesignAudioOperateType_Del),input)];
+                [self.requestCommand execute:RACTuplePack(@(THKOnlineDesignOperateType_DelAudio),input)];
                 [subscriber sendNext:nil];
                 [subscriber sendCompleted];
                 
@@ -218,6 +240,25 @@ typedef enum : NSUInteger {
         }];
     }
     return _deleteAudioCommand;
+}
+
+- (RACCommand *)selectHouseTypeCommand{
+    if (!_selectHouseTypeCommand) {
+        @weakify(self);
+        _selectHouseTypeCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                @strongify(self);
+                [self.requestCommand execute:RACTuplePack(@(THKOnlineDesignOperateType_SelectHouseType),input)];
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+                
+                return [RACDisposable disposableWithBlock:^{
+                    
+                }];
+            }];
+        }];
+    }
+    return _selectHouseTypeCommand;
 }
 
 @end
