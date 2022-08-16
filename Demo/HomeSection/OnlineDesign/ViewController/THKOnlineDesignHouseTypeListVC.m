@@ -121,6 +121,12 @@
     if (!_searchBar) {
         _searchBar = [[TMUISearchBar alloc] initWithStyle:TMUISearchBarStyle_City];
         _searchBar.delegate = self;
+        _searchBar.isCanInput = NO;
+        @weakify(self);
+        _searchBar.textBegin = ^(UITextField * _Nonnull textField) {
+            @strongify(self);
+            [self.navigationController popViewControllerAnimated:NO];
+        };
     }
     return _searchBar;
 }
