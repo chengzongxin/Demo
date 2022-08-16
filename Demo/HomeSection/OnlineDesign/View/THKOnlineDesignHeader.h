@@ -11,6 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignHeader : UIView
 
+@property (nonatomic, strong, readonly) UILabel *titleLbl;
+
+@property (nonatomic, strong, readonly) UILabel *subtitleLbl;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -17,6 +17,8 @@
 #import "THKOnlineDesignHouseBudgetCell.h"
 #import "THKOnlineDesignHouseDemandCell.h"
 
+#import "THKOnlineDesignHomeConfigRequest.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignVM : THKViewModel
@@ -38,6 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) RACSubject *emptySignal;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *vcLayout;
+
+
+@property (nonatomic, strong, readonly) NSString *topImgUrl;
+@property (nonatomic, strong, readonly) NSString *topContent1;
+@property (nonatomic, strong, readonly) NSString *topContent2;
+@property (nonatomic, strong, readonly) NSString *topContent3;
 
 @end
 

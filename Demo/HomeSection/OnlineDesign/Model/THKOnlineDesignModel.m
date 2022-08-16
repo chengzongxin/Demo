@@ -37,7 +37,7 @@
             break;
         case THKOnlineDesignItemDataType_HouseDemand:
         {
-            return @[self.demandDesc?:@[]];
+            return @[self.demandModel?:@[]];
         }
             break;
             
@@ -51,5 +51,9 @@
 @end
 
 @implementation THKOnlineDesignItemHouseTypeModel
+
+@end
+
+@implementation THKOnlineDesignItemDemandModel
 
 @end

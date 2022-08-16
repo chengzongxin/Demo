@@ -393,6 +393,7 @@
 		16F0A67028AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F0A66F28AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m */; };
 		16F0A67328AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F0A67228AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m */; };
 		16F0A67628AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F0A67528AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m */; };
+		16F0A67928AB907500B0B081 /* THKOnlineDesignHomeConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F0A67828AB907500B0B081 /* THKOnlineDesignHomeConfigModel.m */; };
 		16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F3B69D2586F40600E5ADE4 /* THKViewController.m */; };
 		16F5169F26D4C2B8002500F7 /* THKDiaryBookVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F5169E26D4C2B8002500F7 /* THKDiaryBookVM.m */; };
 		16F516AB26D4C2E5002500F7 /* THKDiaryBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F516AA26D4C2E5002500F7 /* THKDiaryBookModel.m */; };
@@ -1186,6 +1187,8 @@
 		16F0A67228AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignUploadHouseCell.m; sourceTree = "<group>"; };
 		16F0A67428AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignUploadNoHouseTypeView.h; sourceTree = "<group>"; };
 		16F0A67528AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignUploadNoHouseTypeView.m; sourceTree = "<group>"; };
+		16F0A67728AB907500B0B081 /* THKOnlineDesignHomeConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHomeConfigModel.h; sourceTree = "<group>"; };
+		16F0A67828AB907500B0B081 /* THKOnlineDesignHomeConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeConfigModel.m; sourceTree = "<group>"; };
 		16F3B69C2586F40600E5ADE4 /* THKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKViewController.h; sourceTree = "<group>"; };
 		16F3B69D2586F40600E5ADE4 /* THKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKViewController.m; sourceTree = "<group>"; };
 		16F5169D26D4C2B8002500F7 /* THKDiaryBookVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookVM.h; sourceTree = "<group>"; };
@@ -1603,6 +1606,8 @@
 			children = (
 				16B2E6D928A4B4CB00D385B6 /* THKOnlineDesignModel.h */,
 				16B2E6DA28A4B4CB00D385B6 /* THKOnlineDesignModel.m */,
+				16F0A67728AB907500B0B081 /* THKOnlineDesignHomeConfigModel.h */,
+				16F0A67828AB907500B0B081 /* THKOnlineDesignHomeConfigModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3674,6 +3679,7 @@
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,
 				1689DE92274498280073BA68 /* THKDynamicTabsRequestManager.m in Sources */,
 				16F516B126D4C328002500F7 /* THKDiaryBookVC.m in Sources */,
+				16F0A67928AB907500B0B081 /* THKOnlineDesignHomeConfigModel.m in Sources */,
 				16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */,
 				160981E126D7A16500E1364F /* THKDiaryCircleView.m in Sources */,
 				1630D98F274DD7F9009A04FA /* THKSelectMaterialCommunicationVM.m in Sources */,

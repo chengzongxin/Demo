@@ -7,6 +7,7 @@
 
 #import "THKOnlineDesignHouseDemandCell.h"
 #import "THKOnlineDesignHouseDemandView.h"
+#import "THKOnlineDesignModel.h"
 
 @interface THKOnlineDesignHouseDemandCell ()<TMUITextViewDelegate>
 
@@ -59,17 +60,19 @@
     }];
 }
 
-- (void)bindWithModel:(NSArray <THKAudioDescription *> *)model{
-    self.demandView.demands = model;
-    if (model.count) {
+- (void)bindWithModel:(THKOnlineDesignItemDemandModel *)model{
+    self.demandView.demands = model.demandDesc;
+    if (model.demandDesc.count) {
         [self.demandView mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(model.count * 32 + (model.count - 1) * 14);
+            make.height.mas_equalTo(model.demandDesc.count * 32 + (model.demandDesc.count - 1) * 14);
         }];
     }else{
         [self.demandView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(0);
         }];
     }
+    
+    self.textView.placeholder = model.demandPlacehoder;
 }
 
 - (void)recordBtnTouchDown:(UIButton *)btn{

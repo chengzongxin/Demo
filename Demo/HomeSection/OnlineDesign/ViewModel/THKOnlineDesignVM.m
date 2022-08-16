@@ -32,6 +32,12 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) TMUIOrderedDictionary *cellDict;
 
+
+@property (nonatomic, strong) NSString *topImgUrl;
+@property (nonatomic, strong) NSString *topContent1;
+@property (nonatomic, strong) NSString *topContent2;
+@property (nonatomic, strong) NSString *topContent3;
+
 @end
 
 @implementation THKOnlineDesignVM
@@ -43,7 +49,12 @@ typedef enum : NSUInteger {
     self.emptySignal = RACSubject.subject;
     
     @weakify(self);
-    [self.requestCommand.nextSignal subscribe:self.refreshSignal];
+//    [self.requestCommand.nextSignal subscribe:self.refreshSignal];
+    [self.requestCommand.nextSignal subscribeNext:^(id _Nullable x) {
+        @strongify(self);
+        [self.refreshSignal sendNext:nil];
+    }];
+    
     [self.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         [self.emptySignal sendNext:@(TMEmptyContentTypeNetErr)];
@@ -72,64 +83,86 @@ typedef enum : NSUInteger {
     if (!_requestCommand) {
         _requestCommand = [THKRequestCommand commandMake:^(id  _Nonnull input, id<RACSubscriber>  _Nonnull subscriber) {
             
-            if (self.datas.count == 0) {
+            if (input == nil) {
+               
+                THKOnlineDesignHomeConfigRequest *request = [THKOnlineDesignHomeConfigRequest new];
+                [request.rac_requestSignal subscribeNext:^(THKOnlineDesignHomeConfigResponse * _Nullable x) {
+                    
+                    THKOnlineDesignHomeConfigModel *data = x.data;
+                    
+                    self.topImgUrl = data.topImgUrl;
+                    self.topContent1 = data.topContent1;
+                    self.topContent2 = data.topContent2;
+                    self.topContent3 = data.topContent3;
+                    
+                    NSMutableArray *arr = [NSMutableArray array];
+                    for (THKOnlineDesignHomeConfigColumnList *list in data.columnList) {
+                        if ([list.columnType isEqualToString:@"housePlan"]) {
+                            THKOnlineDesignSectionModel *section1 = [[THKOnlineDesignSectionModel alloc] init];
+                            section1.title = list.title;// @"匹配我家小区的户型";
+                            THKOnlineDesignItemModel *item1 = [[THKOnlineDesignItemModel alloc] init];
+                            item1.type = THKOnlineDesignItemDataType_HouseType;
+                            item1.cellClass = self.cellDict[@(item1.type)];
+                            item1.itemSize = CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), 75);
+                            section1.item = item1;
+                            [arr addObject:section1];
+                        }else if ([list.columnType isEqualToString:@"styleTag"]) {
+                            CGFloat column = 4;
+                            CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset) - (self.vcLayout.minimumInteritemSpacing)*(column - 1))/column);
+                            CGSize item3Size = CGSizeMake(width, 50);
+                            
+                            THKOnlineDesignSectionModel *section2 = [[THKOnlineDesignSectionModel alloc] init];
+                            section2.title = list.title; //@"我喜欢的装修风格";
+                            THKOnlineDesignItemModel *item2 = [[THKOnlineDesignItemModel alloc] init];
+                            item2.type = THKOnlineDesignItemDataType_HouseStyle;
+                            item2.cellClass = self.cellDict[@(item2.type)];
+                            item2.itemSize = item3Size;
+                            item2.houseStyles = [list.optionList tmui_map:^id _Nonnull(THKOnlineDesignHomeConfigColumnOptionList * _Nonnull item) {
+                                return item.name;
+                            }];
+                            section2.item = item2;
+                            [arr addObject:section2];
+                        }else if ([list.columnType isEqualToString:@"budgetTag"]) {
+                            CGFloat column = 4;
+                            CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset) - (self.vcLayout.minimumInteritemSpacing)*(column - 1))/column);
+                            CGSize item3Size = CGSizeMake(width, 50);
+                            
+                            THKOnlineDesignSectionModel *section3 = [[THKOnlineDesignSectionModel alloc] init];
+                            section3.title = list.title; //@"我的装修预算";
+                            THKOnlineDesignItemModel *item3 = [[THKOnlineDesignItemModel alloc] init];
+                            item3.type = THKOnlineDesignItemDataType_HouseBudget;
+                            item3.cellClass = self.cellDict[@(item3.type)];
+                            item3.itemSize = item3Size;
+                            item3.houseBudget =  [list.optionList tmui_map:^id _Nonnull(THKOnlineDesignHomeConfigColumnOptionList * _Nonnull item) {
+                                return item.name;
+                            }];
+                            section3.item = item3;
+                            [arr addObject:section3];
+                        }else if ([list.columnType isEqualToString:@"desc"]) {
+                            
+                            THKOnlineDesignSectionModel *section4 = [[THKOnlineDesignSectionModel alloc] init];
+                            section4.title = list.title; //@"需求描述";
+                            THKOnlineDesignItemModel *item4 = [[THKOnlineDesignItemModel alloc] init];
+                            item4.type = THKOnlineDesignItemDataType_HouseDemand;
+                            item4.cellClass = self.cellDict[@(item4.type)];
+                            item4.demandModel = [THKOnlineDesignItemDemandModel new];
+                            item4.demandModel.demandPlacehoder = list.desc;
+                            
+                            CGSize item4Size = [self demandSize:item4.demandModel.demandDesc];
+                            item4.itemSize = item4Size;
+                            section4.item = item4;
+                            [arr addObject:section4];
+                        }
+                    }
+                    self.datas = arr;
+                    
+                    [subscriber sendNext:nil];
+                } error:^(NSError * _Nullable error) {
+                    [subscriber sendError:error];
+                } completed:^{
+                    [subscriber sendCompleted];
+                }];
                 
-                NSMutableArray *arr = [NSMutableArray array];
-                THKOnlineDesignSectionModel *section1 = [[THKOnlineDesignSectionModel alloc] init];
-                section1.title = @"匹配我家小区的户型";
-                THKOnlineDesignItemModel *item1 = [[THKOnlineDesignItemModel alloc] init];
-                item1.type = THKOnlineDesignItemDataType_HouseType;
-                item1.cellClass = self.cellDict[@(item1.type)];
-                item1.itemSize = CGSizeMake(TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset), 75);
-                section1.item = item1;
-                [arr addObject:section1];
-                
-//                THKOnlineDesignSectionModel *section2 = [[THKOnlineDesignSectionModel alloc] init];
-//                section2.title = @"我家小区名称";
-//                THKOnlineDesignItemModel *item2 = [[THKOnlineDesignItemModel alloc] init];
-//                item2.type = 2;
-//                item2.houseAreaName = @"瑞雪春堂";
-//                section2.item = item2;
-//                [arr addObject:section2];
-                
-                CGFloat column = 4;
-                CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.vcLayout.sectionInset) - (self.vcLayout.minimumInteritemSpacing)*(column - 1))/column);
-                CGSize item3Size = CGSizeMake(width, 50);
-                
-                THKOnlineDesignSectionModel *section2 = [[THKOnlineDesignSectionModel alloc] init];
-                section2.title = @"我喜欢的装修风格";
-                THKOnlineDesignItemModel *item2 = [[THKOnlineDesignItemModel alloc] init];
-                item2.type = THKOnlineDesignItemDataType_HouseStyle;
-                item2.cellClass = self.cellDict[@(item2.type)];
-                item2.itemSize = item3Size;
-                item2.houseStyles = @[@"现代简约",@"日式",@"原木",@"日式",@"原木",@"日式"];
-                section2.item = item2;
-                [arr addObject:section2];
-                
-                THKOnlineDesignSectionModel *section3 = [[THKOnlineDesignSectionModel alloc] init];
-                section3.title = @"我的装修预算";
-                THKOnlineDesignItemModel *item3 = [[THKOnlineDesignItemModel alloc] init];
-                item3.type = THKOnlineDesignItemDataType_HouseBudget;
-                item3.cellClass = self.cellDict[@(item3.type)];
-                item3.itemSize = item3Size;
-                item3.houseBudget = @[@"3-5",@"6-10",@"11-20",@"6-10",@"11-20",@"6-10"];
-                section3.item = item3;
-                [arr addObject:section3];
-                
-                
-                
-                THKOnlineDesignSectionModel *section4 = [[THKOnlineDesignSectionModel alloc] init];
-                section4.title = @"需求描述";
-                THKOnlineDesignItemModel *item4 = [[THKOnlineDesignItemModel alloc] init];
-                item4.type = THKOnlineDesignItemDataType_HouseDemand;
-                item4.cellClass = self.cellDict[@(item4.type)];
-                
-                CGSize item4Size = [self demandSize:item4.demandDesc];
-                item4.itemSize = item4Size;
-                section4.item = item4;
-                [arr addObject:section4];
-                
-                self.datas = arr;
             }else{
 //                RACTuple *tuple = (RACTuple *)input;
                 RACTupleUnpack(id typeID,id data) = input;
@@ -147,26 +180,27 @@ typedef enum : NSUInteger {
                     THKAudioDescription *audioData = data;
                     // 增加录音
                     THKOnlineDesignSectionModel *section4 = [self getDemandSection];
-                    if (section4.item.demandDesc.count == 0) {
-                        section4.item.demandDesc = [NSMutableArray array];
+                    if (section4.item.demandModel.demandDesc.count == 0) {
+                        section4.item.demandModel.demandDesc = [NSMutableArray array];
                     }
-                    section4.item.demandDesc = [section4.item.demandDesc tmui_arrayByAddObject:audioData];
-                    CGSize item4Size = [self demandSize:section4.item.demandDesc];
+                    section4.item.demandModel.demandDesc = [section4.item.demandModel.demandDesc tmui_arrayByAddObject:audioData];
+                    CGSize item4Size = [self demandSize:section4.item.demandModel.demandDesc];
                     section4.item.itemSize = item4Size;
                     
                 }else if (type == THKOnlineDesignOperateType_DelAudio){
                     NSInteger idx = [data integerValue];
                     // 删除录音
                     THKOnlineDesignSectionModel *section4 = [self getDemandSection];
-                    section4.item.demandDesc = [section4.item.demandDesc tmui_arrayByRemovingObjectAtIndex:idx];
-                    CGSize item4Size = [self demandSize:section4.item.demandDesc];
+                    section4.item.demandModel.demandDesc = [section4.item.demandModel.demandDesc tmui_arrayByRemovingObjectAtIndex:idx];
+                    CGSize item4Size = [self demandSize:section4.item.demandModel.demandDesc];
                     section4.item.itemSize = item4Size;
                 }
                 
+                
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
             }
             
-            [subscriber sendNext:nil];
-            [subscriber sendCompleted];
         }];
     }
     return _requestCommand;

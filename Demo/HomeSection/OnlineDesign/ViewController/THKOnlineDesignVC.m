@@ -11,7 +11,6 @@
 #import "THKOnlineDesignSectionFooter.h"
 #import "THKRecordTool.h"
 #import "THKOnlineDesignSearchAreaVC.h"
-#import "THKOnlineDesignHomeConfigRequest.h"
 
 static CGFloat const kBGCoverHeight = 252;
 static CGFloat const kHeaderHeight = 100;
@@ -47,18 +46,26 @@ static CGFloat const kHeaderHeight = 100;
     [self.view addSubview:self.bgImgV];
     
     [self.view addSubview:self.collectionView];
-    
-    [[THKOnlineDesignHomeConfigRequest new] sendSuccess:^(id  _Nonnull response) {
-        
-    } failure:^(NSError * _Nonnull error) {
-        
-    }];
 }
 
 #pragma mark - Public
 - (void)bindViewModel{
     self.viewModel.vcLayout = self.layout;
     @weakify(self);
+    [[RACObserve(self.viewModel, topImgUrl) ignore:nil] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [[YYWebImageManager sharedManager] requestImageWithURL:[NSURL URLWithString:x] options:0 progress:nil transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
+            if (image) {
+                self.bgImgV.image = image;
+            }else{
+                NSLog(@"%@",error);
+            }
+        }];
+    }];
+    
+    RAC(self.header.titleLbl,text) = [RACObserve(self.viewModel, topContent1) ignore:nil];
+    RAC(self.header.subtitleLbl,text) = [RACObserve(self.viewModel, topContent2) ignore:nil];
+    
     [self.viewModel.refreshSignal subscribeNext:^(id  _Nullable x) {
         @strongify(self);
         [self.view.tmui_emptyView remove];
@@ -112,7 +119,7 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 - (void)recordPlayClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath{
-    THKAudioDescription *demandDesc = self.viewModel.datas[indexPath.section].item.demandDesc[idx];
+    THKAudioDescription *demandDesc = self.viewModel.datas[indexPath.section].item.demandModel.demandDesc[idx];
     [[THKRecordTool sharedInstance] play:demandDesc.filePath];
 }
 

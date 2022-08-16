@@ -6,10 +6,13 @@
 //
 
 #import "THKResponse.h"
+#import "THKOnlineDesignHomeConfigModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignHomeConfigResponse : THKResponse
+
+@property (nonatomic, strong) THKOnlineDesignHomeConfigModel *data;
 
 @end
 
