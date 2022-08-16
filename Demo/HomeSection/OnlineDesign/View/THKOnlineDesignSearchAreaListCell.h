@@ -6,10 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "THKOnlineDesignAreaListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignSearchAreaListCell : UITableViewCell
+
+@property (nonatomic, strong) NSString *keyWord;
+
+@property (nonatomic, strong) THKOnlineDesignAreaListDataItem *model;
 
 @end
 

@@ -41,22 +41,34 @@
     [self.contentView addSubview:self.subtitleLbl];
     
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(20);
+        make.top.mas_equalTo(12);
         make.left.mas_equalTo(20);
     }];
     
     
     [self.subtitleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.titleLbl.mas_bottom).offset(5);
+        make.top.equalTo(self.titleLbl.mas_bottom).offset(4);
         make.left.mas_equalTo(20);
     }];
+}
+
+- (void)setModel:(THKOnlineDesignAreaListDataItem *)model{
+    _model = model;
+    
+    _titleLbl.text = model.community_name;
+    
+    if ([_titleLbl.text containsString:self.keyWord]) {
+        [_titleLbl tmui_setAttributesString:self.keyWord color:UIColorGreen font:UIFontMedium(16)];
+    }
+    
+    _subtitleLbl.text = model.district;
 }
 
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
-        _titleLbl.textColor = UIColorDark;
-        _titleLbl.font = UIFont(20);
+        _titleLbl.textColor = UIColorPrimary;
+        _titleLbl.font = UIFontMedium(16);
         _titleLbl.text = @"万科云城1栋A座";
     }
     return _titleLbl;
@@ -66,7 +78,7 @@
     if (!_subtitleLbl) {
         _subtitleLbl = [[UILabel alloc] init];
         _subtitleLbl.textColor = UIColorPlaceholder;
-        _subtitleLbl.font = UIFont(16);
+        _subtitleLbl.font = UIFont(12);
         _subtitleLbl.text = @"深圳市南山区-西丽";
     }
     return _subtitleLbl;

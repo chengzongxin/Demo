@@ -6,10 +6,14 @@
 //
 
 #import "THKViewModel.h"
+#import "THKRequestCommand.h"
+#import "THKOnlineDesignSearchAreaRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignSearchAreaVM : THKViewModel
+
+@property (nonatomic, strong, readonly) THKRequestCommand *requestCommand;
 
 @end
 

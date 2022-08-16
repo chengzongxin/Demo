@@ -64,11 +64,21 @@ typedef enum : NSUInteger {
     self.contentType = THKOnlineDesignSearchAreaContentType_Hot;
 }
 
+- (void)bindViewModel{
+    @weakify(self);
+    [self.viewModel.requestCommand.nextSignal subscribeNext:^(THKOnlineDesignSearchAreaResponse *  _Nullable x) {
+        @strongify(self);
+        self.areaView.keyWord = self.searchBar.text;
+        self.areaView.items = x.data.items;
+    }];
+}
+
 - (void)searchBarTextChange:(TMUISearchBar *)searchBar textField:(UITextField *)textField{
     if (textField.text.length == 0) {
         self.contentType = THKOnlineDesignSearchAreaContentType_Hot;
     }else{
         self.contentType = THKOnlineDesignSearchAreaContentType_AreaList;
+        [self.viewModel.requestCommand execute:RACTuplePack(textField.text,@(1130))];
     }
 }
 
@@ -118,6 +128,7 @@ typedef enum : NSUInteger {
             [self clickUpload];
         };
         _searchBar.textField.inputAccessoryView = inputAccessoryView;
+        _searchBar.currentCity = @"深圳";
     }
     return _searchBar;
 }

@@ -32,7 +32,11 @@
     }];
 }
 
-
+- (void)setItems:(NSArray<THKOnlineDesignAreaListDataItem *> *)items{
+    _items = items;
+    
+    [self.tableView reloadData];
+}
 
 #pragma mark UITableViewDelegate UITableViewDataSource
 
@@ -41,11 +45,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     THKOnlineDesignSearchAreaListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKOnlineDesignSearchAreaListCell.class) forIndexPath:indexPath];
+    cell.selectionStyle = 0;
+    cell.keyWord = self.keyWord;
+    cell.model = self.items[indexPath.row];
     return cell;
 }
 
@@ -56,7 +63,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 88;
+    return 66;
 }
 
 - (UITableView *)tableView {
