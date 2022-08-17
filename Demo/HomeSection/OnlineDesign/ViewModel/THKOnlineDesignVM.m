@@ -72,6 +72,12 @@ typedef enum : NSUInteger {
 /// 需求描述
 @property (nonatomic, strong) NSString *requirementDesc;
 
+/// 来源 0-默认 1-用户手动新增 2-3d
+@property (nonatomic, assign) NSString *planSource;
+
+/// 来源id
+@property (nonatomic, assign) NSInteger planSourceId;
+
 
 @end
 
@@ -267,7 +273,8 @@ typedef enum : NSUInteger {
                     self.area = [model.buildArea intValue];
                     self.communityName = model.houseArea;
                     self.houseTag = model.houseTag;
-                    
+                    self.planSource = model.planSource;
+                    self.planSourceId = model.planSourceId;
                     
                     THKOnlineDesignItemModel *item1 = [self getHouseTypeModel].item;
                     item1.type = THKOnlineDesignItemDataType_HouseTypeModel;
@@ -321,6 +328,8 @@ typedef enum : NSUInteger {
                 request.columnList = self.columnList;
                 request.communityName = self.communityName;
                 request.houseTag = self.houseTag;
+                request.planSource = self.planSource;
+                request.planSourceId = self.planSourceId;
 //                request.id = 123;
 //                request.planImgList = nil;
 //                request.recordingInfoList = @[@"123",@"456"];

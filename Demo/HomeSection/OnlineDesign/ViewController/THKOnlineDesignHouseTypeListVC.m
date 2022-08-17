@@ -125,6 +125,9 @@
         data.houseArea = model.community_name;
         data.houseType = model.structure;
         data.buildArea = model.building_area;
+        data.planSource = @"2";
+#warning placeSourceId
+        data.planSourceId = model.id;
         self.selectHouseTypeBlock(data);
     }
 }

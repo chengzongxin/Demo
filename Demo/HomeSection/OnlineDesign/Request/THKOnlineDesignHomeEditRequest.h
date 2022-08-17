@@ -37,6 +37,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// 需求描述
 @property (nonatomic, strong) NSString *requirementDesc;
 
+/// 来源 0-默认 1-用户手动新增 2-3d
+@property (nonatomic, assign) NSString *planSource;
+
+/// 来源id
+@property (nonatomic, assign) NSInteger planSourceId;
 
 @end
 
