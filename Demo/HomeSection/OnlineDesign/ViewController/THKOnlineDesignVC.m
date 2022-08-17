@@ -87,6 +87,9 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 #pragma mark - Event Respone
+- (void)clickCommit{
+    [self.viewModel.commitCommand execute:nil];
+}
 
 #pragma mark - Delegate
 
@@ -197,6 +200,11 @@ static CGFloat const kHeaderHeight = 100;
         return header;
     } else if (kind == UICollectionElementKindSectionFooter) {
         THKOnlineDesignSectionFooter *footer = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:NSStringFromClass(THKOnlineDesignSectionFooter.class) forIndexPath:indexPath];
+        @weakify(self);
+        footer.commitClickBlock = ^(UIButton * _Nonnull btn) {
+            @strongify(self);
+            [self clickCommit];
+        };
         return footer;
     }
     
@@ -209,7 +217,10 @@ static CGFloat const kHeaderHeight = 100;
         sectionModel.isFold = YES;
         sectionModel.selectIdx = indexPath.item;
         [collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
+        
+        [self.viewModel.selectItem sendNext:RACTuplePack(@(sectionModel.item.type),@(indexPath.item))];
     }
+    
 }
 
 #pragma mark - Private

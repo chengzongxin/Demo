@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKOnlineDesignSectionFooter : UICollectionReusableView
 
+@property (nonatomic, copy) void (^commitClickBlock)(UIButton *btn);
+
 @end
 
 NS_ASSUME_NONNULL_END

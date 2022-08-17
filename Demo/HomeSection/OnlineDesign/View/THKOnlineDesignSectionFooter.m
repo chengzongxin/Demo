@@ -43,6 +43,13 @@
         _button.cornerRadius = 8;
         _button.tmui_font = UIFontMedium(18);
         _button.tmui_text = @"提交获取我家方案";
+        @weakify(self);
+        [[_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+            @strongify(self);
+            if (self.commitClickBlock) {
+                self.commitClickBlock(x);
+            }
+        }];
     }
     return _button;
 }

@@ -18,6 +18,8 @@
 #import "THKOnlineDesignHouseDemandCell.h"
 
 #import "THKOnlineDesignHomeConfigRequest.h"
+#import "THKOnlineDesignHomeEditRequest.h"
+#import "THKOnlineDesignHomeDetailRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -38,6 +40,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) RACSubject *refreshSignal;
 
 @property (nonatomic, strong, readonly) RACSubject *emptySignal;
+
+@property (nonatomic, strong, readonly) RACCommand *commitCommand;
+
+@property (nonatomic, strong, readonly) RACSubject *selectItem;
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *vcLayout;
 

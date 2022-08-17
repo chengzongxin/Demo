@@ -72,6 +72,11 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) NSString *imageFilePath;
 
+
+
+/// 户型信息全码
+@property (nonatomic, strong) NSString *houseTag;
+
 @end
 
 @interface THKOnlineDesignItemDemandModel : NSObject

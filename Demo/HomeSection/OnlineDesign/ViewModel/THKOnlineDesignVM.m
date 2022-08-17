@@ -28,6 +28,13 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) RACSubject *emptySignal;
 
+@property (nonatomic, strong) RACCommand *commitCommand;
+
+
+@property (nonatomic, strong) RACCommand *detailRequest;
+
+@property (nonatomic, strong) RACSubject *selectItem;
+
 @property (nonatomic, strong) NSArray <THKOnlineDesignSectionModel *> *datas;
 
 @property (nonatomic, strong) TMUIOrderedDictionary *cellDict;
@@ -37,6 +44,34 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *topContent1;
 @property (nonatomic, strong) NSString *topContent2;
 @property (nonatomic, strong) NSString *topContent3;
+@property (nonatomic, strong) NSArray <THKOnlineDesignHomeConfigColumnList *> *dataColumnList;
+
+
+#pragma mark - API Request
+/// 面积(单位m²)
+@property (nonatomic, assign) NSInteger area;
+
+/// 栏目列表
+@property (nonatomic, strong) NSArray <THKOnlineDesignHomeConfigColumnList *> *columnList;
+
+/// 小区名称
+@property (nonatomic, strong) NSString *communityName;
+
+/// 户型信息全码
+@property (nonatomic, strong) NSString *houseTag;
+
+/// 主键id
+@property (nonatomic, assign) NSInteger id;
+
+/// 户型图信息
+@property (nonatomic, strong) NSArray *planImgList;
+
+/// 语音信息列表
+@property (nonatomic, strong) NSArray *recordingInfoList;
+
+/// 需求描述
+@property (nonatomic, strong) NSString *requirementDesc;
+
 
 @end
 
@@ -59,6 +94,40 @@ typedef enum : NSUInteger {
         @strongify(self);
         [self.emptySignal sendNext:@(TMEmptyContentTypeNetErr)];
     }];
+    
+    [self.selectItem subscribeNext:^(RACTuple * _Nullable x) {
+        @strongify(self);
+//         RACTuplePack(@(sectionModel.item.type),@(indexPath.item))
+        THKOnlineDesignItemDataType type = [x.first intValue];
+        NSInteger item = [x.second integerValue];
+        __block NSMutableArray <THKOnlineDesignHomeConfigColumnList *>*columnList = [self.columnList mutableCopy];
+        [self.dataColumnList enumerateObjectsUsingBlock:^(THKOnlineDesignHomeConfigColumnList * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if (type == THKOnlineDesignItemDataType_HouseStyle && [obj.columnType isEqualToString:@"styleTag"]) {
+                columnList = [[columnList tmui_filter:^BOOL(THKOnlineDesignHomeConfigColumnList * _Nonnull item) {
+                    return ![item.columnType isEqualToString:@"styleTag"];
+                }] mutableCopy];
+                THKOnlineDesignHomeConfigColumnList *data = [THKOnlineDesignHomeConfigColumnList new];
+                data.columnType = @"styleTag";
+                THKOnlineDesignHomeConfigColumnOptionList *optionList = [THKOnlineDesignHomeConfigColumnOptionList new];
+                optionList.id = obj.optionList[item].id;
+                optionList.name = obj.optionList[item].name;
+                data.optionList = @[optionList];
+                [columnList addObject:data];
+            }else if (type == THKOnlineDesignItemDataType_HouseBudget && [obj.columnType isEqualToString:@"budgetTag"]) {
+                columnList = [[columnList tmui_filter:^BOOL(THKOnlineDesignHomeConfigColumnList * _Nonnull item) {
+                    return ![item.columnType isEqualToString:@"budgetTag"];
+                }] mutableCopy];
+                THKOnlineDesignHomeConfigColumnList *data = [THKOnlineDesignHomeConfigColumnList new];
+                data.columnType = @"budgetTag";
+                THKOnlineDesignHomeConfigColumnOptionList *optionList = [THKOnlineDesignHomeConfigColumnOptionList new];
+                optionList.id = obj.optionList[item].id;
+                optionList.name = obj.optionList[item].name;
+                data.optionList = @[optionList];
+                [columnList addObject:data];
+            }
+        }];
+        self.columnList = columnList;
+    }];
 }
 
 
@@ -78,13 +147,35 @@ typedef enum : NSUInteger {
     return _cellDict;
 }
 
+- (RACCommand *)detailRequest{
+    if (!_detailRequest) {
+        _detailRequest = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                THKOnlineDesignHomeDetailRequest *request = [[THKOnlineDesignHomeDetailRequest alloc] init];
+                [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
+                    [subscriber sendNext:x];
+                } error:^(NSError * _Nullable error) {
+                    [subscriber sendError:error];
+                } completed:^{
+                    [subscriber sendCompleted];
+                }];
+                
+                return [RACDisposable disposableWithBlock:^{
+                    
+                }];
+            }];
+        }];
+    }
+    return _detailRequest;
+}
+
 
 - (THKRequestCommand *)requestCommand{
     if (!_requestCommand) {
         _requestCommand = [THKRequestCommand commandMake:^(id  _Nonnull input, id<RACSubscriber>  _Nonnull subscriber) {
             
             if (input == nil) {
-               
+                [self.detailRequest execute:nil];
                 THKOnlineDesignHomeConfigRequest *request = [THKOnlineDesignHomeConfigRequest new];
                 [request.rac_requestSignal subscribeNext:^(THKOnlineDesignHomeConfigResponse * _Nullable x) {
                     
@@ -94,6 +185,7 @@ typedef enum : NSUInteger {
                     self.topContent1 = data.topContent1;
                     self.topContent2 = data.topContent2;
                     self.topContent3 = data.topContent3;
+                    self.dataColumnList = data.columnList;
                     
                     NSMutableArray *arr = [NSMutableArray array];
                     for (THKOnlineDesignHomeConfigColumnList *list in data.columnList) {
@@ -164,11 +256,18 @@ typedef enum : NSUInteger {
                 }];
                 
             }else{
+                // 编辑
 //                RACTuple *tuple = (RACTuple *)input;
                 RACTupleUnpack(id typeID,id data) = input;
                 THKOnlineDesignOperateType type = [typeID integerValue];
                 if (type == THKOnlineDesignOperateType_SelectHouseType) {
                     THKOnlineDesignItemHouseTypeModel *model = data;
+                    
+#pragma mark - 接口数据
+                    self.area = [model.buildArea intValue];
+                    self.communityName = model.houseArea;
+                    self.houseTag = model.houseTag;
+                    
                     
                     THKOnlineDesignItemModel *item1 = [self getHouseTypeModel].item;
                     item1.type = THKOnlineDesignItemDataType_HouseTypeModel;
@@ -205,6 +304,40 @@ typedef enum : NSUInteger {
     }
     return _requestCommand;
 }
+
+
+- (RACCommand *)commitCommand{
+    if (!_commitCommand) {
+        @weakify(self);
+        _commitCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                @strongify(self);
+                THKOnlineDesignHomeEditRequest *request = [THKOnlineDesignHomeEditRequest new];
+                request.area = self.area;
+                request.columnList = self.columnList;
+                request.communityName = self.communityName;
+                request.houseTag = self.houseTag;
+//                request.id = 123;
+//                request.planImgList = nil;
+//                request.recordingInfoList = @[@"123",@"456"];
+                request.requirementDesc = @"hhhhh";
+                [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
+                    [subscriber sendNext:x];
+                } error:^(NSError * _Nullable error) {
+                    [subscriber sendError:error];
+                } completed:^{
+                    [subscriber sendCompleted];
+                }];
+                return [RACDisposable disposableWithBlock:^{
+                    
+                }];
+            }];
+        }];
+    }
+    return _commitCommand;
+}
+
+
 
 - (THKOnlineDesignSectionModel *)getHouseTypeModel{
     THKOnlineDesignSectionModel *model = nil;
@@ -294,5 +427,8 @@ typedef enum : NSUInteger {
     }
     return _selectHouseTypeCommand;
 }
+
+TMUI_PropertyLazyLoad(RACSubject, selectItem);
+TMUI_PropertyLazyLoad(NSMutableArray, columnList);
 
 @end

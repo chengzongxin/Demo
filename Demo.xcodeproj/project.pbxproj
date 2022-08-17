@@ -343,6 +343,8 @@
 		16B3EA6428AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA6328AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m */; };
 		16CF07AE28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07AD28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m */; };
 		16CF07B128AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07B028AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.m */; };
+		16CF07B428AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07B328AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.m */; };
+		16CF07B728AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07B628AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -1090,6 +1092,10 @@
 		16CF07AD28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeEditRequest.m; sourceTree = "<group>"; };
 		16CF07AF28AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHomeEditResponse.h; sourceTree = "<group>"; };
 		16CF07B028AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeEditResponse.m; sourceTree = "<group>"; };
+		16CF07B228AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHomeDetailRequest.h; sourceTree = "<group>"; };
+		16CF07B328AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeDetailRequest.m; sourceTree = "<group>"; };
+		16CF07B528AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHomeDetailResponse.h; sourceTree = "<group>"; };
+		16CF07B628AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeDetailResponse.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2714,6 +2720,10 @@
 				16CF07AD28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m */,
 				16CF07AF28AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.h */,
 				16CF07B028AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.m */,
+				16CF07B228AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.h */,
+				16CF07B328AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.m */,
+				16CF07B528AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.h */,
+				16CF07B628AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -3497,6 +3507,7 @@
 				16B3EA6428AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m in Sources */,
 				16DDC070274C79B7000DAA29 /* THKTabBarController.m in Sources */,
 				16611AD1269688C20089E41B /* KeychainItemWrapper.m in Sources */,
+				16CF07B428AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.m in Sources */,
 				16611B6D269692D20089E41B /* THKMaterialClassificationRecommendRankHeader.m in Sources */,
 				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
 				16B2E6DF28A50A1500D385B6 /* THKOnlineDesignHouseTypeCell.m in Sources */,
@@ -3589,6 +3600,7 @@
 				16611B7F269693DA0089E41B /* THKPageBGScrollView.m in Sources */,
 				16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */,
 				16192BFD2693012100967C73 /* TCaseDetailTopBar.m in Sources */,
+				16CF07B728AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.m in Sources */,
 				16192B372692E13E00967C73 /* THKAnimationPanDelegate.m in Sources */,
 				16867A172692D76C00650023 /* TMCardComponentHelper.m in Sources */,
 				16867A0E2692D76C00650023 /* TMCardLiveStatusView.m in Sources */,
