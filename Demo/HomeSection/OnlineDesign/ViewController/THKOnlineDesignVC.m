@@ -92,7 +92,7 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 #pragma mark - Delegate
-
+#pragma mark - <Cell Event>
 - (void)houseTypeEditClick:(UIView *)btn indexPath:(NSIndexPath *)indexPath{
     [self searchAreaBtnClick:btn];
 }
@@ -137,7 +137,11 @@ static CGFloat const kHeaderHeight = 100;
     }];
 }
 
-#pragma mark UICollectionViewDataSource
+- (void)demandInput:(TMUITextView *)view text:(NSString *)text heightChange:(BOOL)heightChange height:(CGFloat)height indexPath:(NSIndexPath *)indexPath{
+    [self.viewModel updateDemandDesc:text];
+}
+
+#pragma mark - <UICollectionViewDataSource>
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     return CGSizeMake(self.view.bounds.size.width, 50);

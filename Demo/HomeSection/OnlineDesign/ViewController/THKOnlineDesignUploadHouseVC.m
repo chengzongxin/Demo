@@ -25,6 +25,8 @@
 
 @property (nonatomic, strong) UIButton *commitButton;
 
+@property (nonatomic, strong) NSString *houseTag;
+
 @end
 
 @implementation THKOnlineDesignUploadHouseVC
@@ -56,7 +58,9 @@
         THKOnlineDesignItemHouseTypeModel *model = [THKOnlineDesignItemHouseTypeModel new];
         model.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
         model.houseArea = self.areaNameTF.text;
-        model.houseType = [NSString stringWithFormat:@"%@·%@㎡",self.houseTypeBtn.tmui_text,self.areaMeterTF.text];//@"4室1厅·128㎡"
+        model.houseType = self.houseTypeBtn.tmui_text;//@"4室1厅·128㎡"
+        model.houseTag = self.houseTag;
+        model.buildArea = self.areaMeterTF.text;
         self.selectHouseTypeBlock(model);
     }
 }
@@ -127,11 +131,18 @@
                 make.top.bottom.equalTo(cell.rightContentView);
                 make.right.mas_equalTo(-54);
             }];
+            @weakify(self);
             [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIButton * _Nullable x) {
+                @strongify(self);
+                NSArray *texts = [self.viewModel.styleTags tmui_map:^id _Nonnull(THKOnlineDesignHouseStyleTagModel * _Nonnull item) {
+                    return item.name;
+                }];
                 [TMUIPickerView showSinglePickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
                     config.title = @"请选择户型";
-                } texts:@[@"一居室",@"二居室",@"三居室",@"四居室"] selectBlock:^(NSInteger idx, NSString * _Nonnull text) {
+                } texts:texts selectBlock:^(NSInteger idx, NSString * _Nonnull text) {
+                    @strongify(self);
                     x.tmui_text = text;
+                    self.houseTag = self.viewModel.styleTags[idx].houseTag;
                 }];
             }];
             

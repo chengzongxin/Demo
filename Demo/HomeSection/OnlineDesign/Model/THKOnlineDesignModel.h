@@ -61,20 +61,17 @@ typedef enum : NSUInteger {
 @end
 
 @interface THKOnlineDesignItemHouseTypeModel : NSObject
-
+// 图片链接
 @property (nonatomic, strong) NSString *picUrl;
-
+// 小区名
 @property (nonatomic, strong) NSString *houseArea;
-
+// 户型
 @property (nonatomic, strong) NSString *houseType;
-
+// 建筑面积
 @property (nonatomic, strong) NSString *buildArea;
-
+// 本地路径
 @property (nonatomic, strong) NSString *imageFilePath;
-
-
-
-/// 户型信息全码
+// 户型信息全码
 @property (nonatomic, strong) NSString *houseTag;
 
 @end

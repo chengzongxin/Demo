@@ -53,6 +53,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSString *topContent2;
 @property (nonatomic, strong, readonly) NSString *topContent3;
 
+- (void)updateDemandDesc:(NSString *)demandDesc;
+
 @end
 
 NS_ASSUME_NONNULL_END

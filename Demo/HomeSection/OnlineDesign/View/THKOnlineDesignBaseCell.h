@@ -30,6 +30,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)recordPlayClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath;
 // 删除录音
 - (void)recordCloseClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath;
+// 输入文字
+- (void)demandInput:(TMUITextView *)view text:(NSString *)text heightChange:(BOOL)heightChange height:(CGFloat)height indexPath:(NSIndexPath *)indexPath;
 
 @end
 

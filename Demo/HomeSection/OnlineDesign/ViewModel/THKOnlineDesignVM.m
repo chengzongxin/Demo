@@ -305,6 +305,10 @@ typedef enum : NSUInteger {
     return _requestCommand;
 }
 
+- (void)updateDemandDesc:(NSString *)demandDesc{
+    self.requirementDesc = demandDesc;
+}
+
 
 - (RACCommand *)commitCommand{
     if (!_commitCommand) {
@@ -320,7 +324,7 @@ typedef enum : NSUInteger {
 //                request.id = 123;
 //                request.planImgList = nil;
 //                request.recordingInfoList = @[@"123",@"456"];
-                request.requirementDesc = @"hhhhh";
+                request.requirementDesc = self.requirementDesc;
                 [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
                     [subscriber sendNext:x];
                 } error:^(NSError * _Nullable error) {

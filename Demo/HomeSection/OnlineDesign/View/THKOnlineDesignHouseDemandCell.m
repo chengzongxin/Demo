@@ -75,6 +75,8 @@
     self.textView.placeholder = model.demandPlacehoder;
 }
 
+#pragma mark - CallBack Event
+
 - (void)recordBtnTouchDown:(UIButton *)btn{
     if ([self.delegate respondsToSelector:@selector(recordBtnTouchDown:)]) {
         [self.delegate recordBtnTouchDown:btn];
@@ -97,6 +99,49 @@
     if ([self.delegate respondsToSelector:@selector(recordCloseClick:idx:indexPath:)]) {
         [self.delegate recordCloseClick:view idx:idx indexPath:indexPath];
     }
+}
+
+
+#pragma mark - Delegate
+
+- (void)textViewDidChange:(TMUITextView *)textView{
+    if ([self.delegate respondsToSelector:@selector(demandInput:text:heightChange:height:indexPath:)]) {
+        [self.delegate demandInput:textView text:textView.text heightChange:NO height:0 indexPath:self.indexPath];
+    }
+}
+
+/**
+ *  输入框高度发生变化时的回调，当实现了这个方法后，文字输入过程中就会不断去计算输入框新内容的高度，并通过这个方法通知到 delegate
+ *  @note 只有当内容高度与当前输入框的高度不一致时才会调用到这里，所以无需在内部做高度是否变化的判断。
+ */
+- (void)textView:(TMUITextView *)textView newHeightAfterTextChanged:(CGFloat)height{
+    if ([self.delegate respondsToSelector:@selector(demandInput:text:heightChange:height:indexPath:)]) {
+        [self.delegate demandInput:textView text:textView.text heightChange:YES height:height indexPath:self.indexPath];
+    }
+}
+
+
+/**
+ *  用户点击键盘的 return 按钮时的回调（return 按钮本质上是输入换行符“\n”）
+ *  @return 返回 YES 表示程序认为当前的点击是为了进行类似“发送”之类的操作，所以最终“\n”并不会被输入到文本框里。返回 NO 表示程序认为当前的点击只是普通的输入，所以会继续询问 textView:shouldChangeTextInRange:replacementText: 方法，根据该方法的返回结果来决定是否要输入这个“\n”。
+ *  @see maximumTextLength
+ */
+- (BOOL)textViewShouldReturn:(TMUITextView *)textView{
+    [textView resignFirstResponder];
+    return YES;
+}
+
+/**
+ *  配合 `maximumTextLength` 属性使用，在输入文字超过限制时被调用（此时文字已被自动裁剪到符合最大长度要求）。
+ *
+ *  @param textView 触发的 textView
+ *  @param range 要变化的文字的位置，length > 0 表示文字被自动裁剪前，输入框已有一段文字被选中。
+ *  @param replacementText 要变化的文字
+ */
+- (void)textView:(TMUITextView *)textView didPreventTextChangeInRange:(NSRange)range replacementText:(NSString *)replacementText{
+//    if ([self.delegate respondsToSelector:@selector(demandInput:text:heightChange:height:indexPath:)]) {
+//        [self.delegate demandInput:textView text:textView.text heightChange:YES height:height indexPath:self.indexPath];
+//    }
 }
 
 - (TMUITextView *)textView{
