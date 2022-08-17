@@ -68,6 +68,10 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) NSString *houseType;
 
+@property (nonatomic, strong) NSString *buildArea;
+
+@property (nonatomic, strong) NSString *imageFilePath;
+
 @end
 
 @interface THKOnlineDesignItemDemandModel : NSObject

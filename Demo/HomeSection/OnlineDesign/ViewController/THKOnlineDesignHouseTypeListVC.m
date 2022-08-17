@@ -119,11 +119,13 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.selectHouseTypeBlock) {
-        THKOnlineDesignItemHouseTypeModel *model = [THKOnlineDesignItemHouseTypeModel new];
-        model.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
-        model.houseArea = @"万科云城1期";
-        model.houseType = @"4室1厅·128㎡";
-        self.selectHouseTypeBlock(model);
+        THKOnlineDesignHouseListItemModel *model = self.viewModel.data[indexPath.row];
+        THKOnlineDesignItemHouseTypeModel *data = [THKOnlineDesignItemHouseTypeModel new];
+        data.picUrl = model.image;
+        data.houseArea = model.community_name;
+        data.houseType = model.structure;
+        data.buildArea = model.building_area;
+        self.selectHouseTypeBlock(data);
     }
 }
 
@@ -139,8 +141,8 @@
 - (TMUISearchBar *)searchBar{
     if (!_searchBar) {
         _searchBar = [[TMUISearchBar alloc] initWithStyle:TMUISearchBarStyle_City];
-        _searchBar.delegate = self;
         _searchBar.isCanInput = NO;
+        _searchBar.text = self.viewModel.wd;
         @weakify(self);
         _searchBar.textBegin = ^(UITextField * _Nonnull textField) {
             @strongify(self);

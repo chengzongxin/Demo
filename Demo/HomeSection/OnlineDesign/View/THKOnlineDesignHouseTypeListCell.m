@@ -52,7 +52,7 @@
     _model = model;
     
     [self.imgV loadImageWithUrlStr:model.image];
-    self.titleLbl.text = [NSString stringWithFormat:@"%@%@",model.structure,model.building_area];
+    self.titleLbl.text = [NSString stringWithFormat:@"%.0f㎡·%@",model.building_area.floatValue,model.structure];
 }
 
 - (UIView *)bgView{

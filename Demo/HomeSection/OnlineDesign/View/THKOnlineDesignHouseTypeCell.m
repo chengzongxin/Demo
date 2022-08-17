@@ -56,7 +56,7 @@
     
     [self.picImgV loadImageWithUrlStr:model.picUrl];
     self.areaLbl.text = model.houseArea;
-    self.typeLbl.text = model.houseType;
+    self.typeLbl.text = [NSString stringWithFormat:@"%0.f㎡·%@",model.buildArea.floatValue,model.houseType];
 }
 
 - (UIImageView *)picImgV{
