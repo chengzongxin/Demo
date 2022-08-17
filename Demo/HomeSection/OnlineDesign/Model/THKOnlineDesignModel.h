@@ -88,6 +88,8 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) NSString *demandPlacehoder;
 
+@property (nonatomic, strong) NSString *text;
+
 @end
 
 

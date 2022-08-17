@@ -73,6 +73,7 @@
     }
     
     self.textView.placeholder = model.demandPlacehoder;
+    self.textView.text = model.text;
 }
 
 #pragma mark - CallBack Event

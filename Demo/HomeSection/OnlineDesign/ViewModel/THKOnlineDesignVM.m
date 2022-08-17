@@ -333,7 +333,20 @@
                 }];
                 section2.item = item2;
                 [arr addObject:section2];
-                
+               
+            if (data2.data) {
+                [data2.data.columnList enumerateObjectsUsingBlock:^(THKOnlineDesignHomeEditColumnList * _Nonnull obj1, NSUInteger idx1, BOOL * _Nonnull stop) {
+                    if ([obj1.columnType isEqualToString:@"styleTag"]) {
+                        [list.optionList enumerateObjectsUsingBlock:^(THKOnlineDesignHomeConfigColumnOptionList * _Nonnull obj2, NSUInteger idx2, BOOL * _Nonnull stop) {
+                            if ([obj2.id isEqualToString:obj1.idList.firstObject]) {
+                                section2.isFold = YES;
+                                section2.selectIdx = idx2;
+                                [self.selectItem sendNext:RACTuplePack(@(THKOnlineDesignItemDataType_HouseStyle),@(idx2))];
+                            }
+                        }];
+                    }
+                }];
+            }
 //            }
             
         }else if ([list.columnType isEqualToString:@"budgetTag"]) {
@@ -352,6 +365,20 @@
             }];
             section3.item = item3;
             [arr addObject:section3];
+            
+            if (data2.data) {
+                [data2.data.columnList enumerateObjectsUsingBlock:^(THKOnlineDesignHomeEditColumnList * _Nonnull obj1, NSUInteger idx1, BOOL * _Nonnull stop) {
+                    if ([obj1.columnType isEqualToString:@"budgetTag"]) {
+                        [list.optionList enumerateObjectsUsingBlock:^(THKOnlineDesignHomeConfigColumnOptionList * _Nonnull obj2, NSUInteger idx2, BOOL * _Nonnull stop) {
+                            if ([obj2.id isEqualToString:obj1.idList.firstObject]) {
+                                section3.isFold = YES;
+                                section3.selectIdx = idx2;
+                                [self.selectItem sendNext:RACTuplePack(@(THKOnlineDesignItemDataType_HouseBudget),@(idx2))];
+                            }
+                        }];
+                    }
+                }];
+            }
         }else if ([list.columnType isEqualToString:@"desc"]) {
             
             THKOnlineDesignSectionModel *section4 = [[THKOnlineDesignSectionModel alloc] init];
@@ -366,6 +393,10 @@
             item4.itemSize = item4Size;
             section4.item = item4;
             [arr addObject:section4];
+            
+            if (data2.data.requirementDesc.length > 0) {
+                item4.demandModel.text = data2.data.requirementDesc;
+            }
         }
     }
     self.datas = arr;
