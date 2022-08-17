@@ -129,7 +129,7 @@
         model.planImgList = @[img];
         model.houseArea = cellModel.community_name;
         model.houseType = cellModel.structure;
-        model.buildArea = cellModel.building_area;
+        model.buildArea = [cellModel.building_area integerValue];
         model.planSource = @"2";
 #warning placeSourceId
         model.planSourceId = cellModel.id;

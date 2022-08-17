@@ -83,7 +83,7 @@ static CGFloat const kHeaderHeight = 100;
     };
     
     
-    [self.viewModel.requestCommand execute:nil];
+    [self.viewModel.requestCommand execute:RACTuplePack(@(self.viewModel.status),nil)];
 }
 
 #pragma mark - Event Respone

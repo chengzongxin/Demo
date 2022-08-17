@@ -7,6 +7,18 @@
 
 #import "THKOnlineDesignHomeDetailResponse.h"
 
+
+@implementation THKOnlineDesignHomeDetailModel
+
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"columnList":THKOnlineDesignHomeEditColumnList.class,
+             @"planImgList":THKOnlineDesignHomeEditPlanImgList.class,
+             @"recordingInfoList":THKOnlineDesignHomeEditRecordingInfoList.class
+    };
+}
+
+@end
+
 @implementation THKOnlineDesignHomeDetailResponse
 
 @end

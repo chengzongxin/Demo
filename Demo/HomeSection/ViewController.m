@@ -28,7 +28,9 @@
 }
 
 - (void)push{
-    THKOnlineDesignVC *vc = [[THKOnlineDesignVC alloc] initWithViewModel:THKOnlineDesignVM.new];
+    THKOnlineDesignVM *vm = [[THKOnlineDesignVM alloc] init];
+    vm.status = THKOnlineDesignOperateType_Edit;
+    THKOnlineDesignVC *vc = [[THKOnlineDesignVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

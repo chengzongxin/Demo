@@ -69,7 +69,7 @@ typedef enum : NSUInteger {
 // 户型
 @property (nonatomic, strong) NSString *houseType;
 // 建筑面积
-@property (nonatomic, strong) NSString *buildArea;
+@property (nonatomic, assign) NSInteger buildArea;
 // 本地路径
 @property (nonatomic, strong) NSArray <NSString *> *imageFilePath;
 // 户型信息全码

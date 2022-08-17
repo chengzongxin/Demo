@@ -61,7 +61,7 @@
         model.houseArea = self.areaNameTF.text;
         model.houseType = self.houseTypeBtn.tmui_text;//@"4室1厅·128㎡"
         model.houseTag = self.houseTag;
-        model.buildArea = self.areaMeterTF.text;
+        model.buildArea = [self.areaMeterTF.text integerValue];
         model.planSource = @"1";
         self.selectHouseTypeBlock(model);
     }

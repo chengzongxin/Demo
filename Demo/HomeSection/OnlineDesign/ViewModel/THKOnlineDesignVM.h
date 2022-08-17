@@ -23,7 +23,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum : NSUInteger {
+    THKOnlineDesignOperateType_AddPlan,
+    THKOnlineDesignOperateType_Edit,
+    THKOnlineDesignOperateType_SelectHouseType,
+    THKOnlineDesignOperateType_AddAudio,
+    THKOnlineDesignOperateType_DelAudio,
+} THKOnlineDesignOperateType;
+
+
 @interface THKOnlineDesignVM : THKViewModel
+
+@property (nonatomic, assign) THKOnlineDesignOperateType status;
 
 @property (nonatomic, strong, readonly) THKRequestCommand *requestCommand;
 
