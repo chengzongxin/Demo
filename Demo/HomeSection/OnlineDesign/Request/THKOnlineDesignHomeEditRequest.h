@@ -28,6 +28,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface THKOnlineDesignHomeEditIdList : NSObject
+
+@property (nonatomic, assign) NSInteger duration;
+
+@property (nonatomic, strong) NSString *recordingUrl;
+
+@end
+
+
+@interface THKOnlineDesignHomeEditColumnList : NSObject
+
+@property (nonatomic, strong) NSString *columnType;
+
+@property (nonatomic, strong) NSArray <NSString *> *idList;
+
+@end
+
 @interface THKOnlineDesignHomeEditRequest : THKBaseRequest
 
 
@@ -35,7 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger area;
 
 /// 栏目列表
-@property (nonatomic, strong) NSArray <THKOnlineDesignHomeConfigColumnList *> *columnList;
+@property (nonatomic, strong) NSArray <THKOnlineDesignHomeEditColumnList *> *columnList;
+//@property (nonatomic, strong) NSArray <THKOnlineDesignHomeEditIdList *> *idList;
 
 /// 小区名称
 @property (nonatomic, strong) NSString *communityName;

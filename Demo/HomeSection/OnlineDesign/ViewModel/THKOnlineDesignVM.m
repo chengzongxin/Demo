@@ -334,7 +334,14 @@ typedef enum : NSUInteger {
                     
                     THKOnlineDesignHomeEditRequest *request = [THKOnlineDesignHomeEditRequest new];
                     request.area = self.area;
-                    request.columnList = self.columnList;
+                    request.columnList = [self.columnList tmui_map:^id _Nonnull(THKOnlineDesignHomeConfigColumnList * _Nonnull item) {
+                        THKOnlineDesignHomeEditColumnList *requestColoumnList = [[THKOnlineDesignHomeEditColumnList alloc] init];
+                        requestColoumnList.columnType = item.columnType;
+                        requestColoumnList.idList = [item.optionList tmui_map:^id _Nonnull(THKOnlineDesignHomeConfigColumnOptionList * _Nonnull item) {
+                            return item.id;
+                        }];
+                        return requestColoumnList;
+                    }];
                     request.communityName = self.communityName;
                     request.houseTag = self.houseTag;
                     request.planSource = self.planSource;

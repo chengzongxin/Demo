@@ -15,6 +15,10 @@
 
 @end
 
+@implementation THKOnlineDesignHomeEditColumnList
+
+@end
+
 @implementation THKOnlineDesignHomeEditRequest
 - (NSString *)requestDomain {
     return kJavaServerC2Domain;
