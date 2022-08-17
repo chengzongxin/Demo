@@ -24,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)searchAreaBtnClick:(UIView *)btn;
 // 按住录音
 - (void)recordBtnTouchDown:(UIButton *)btn;
+// 取消录音
+- (void)cancelRecordVoice:(UIButton *)btn;
+// 向上滑动 提示松开取消录音
+- (void)upswipeCancelRecordVoice:(UIButton *)btn;
+// 手指重新滑动到范围内 提示向上取消录音
+- (void)downSwipeContinueRecordVoice:(UIButton *)btn;
 // 松起录音
 - (void)recordBtnTouchUp:(UIButton *)btn;
 // 播放录音

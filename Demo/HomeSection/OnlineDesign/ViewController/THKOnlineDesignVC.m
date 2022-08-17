@@ -11,6 +11,7 @@
 #import "THKOnlineDesignSectionFooter.h"
 #import "THKRecordTool.h"
 #import "THKOnlineDesignSearchAreaVC.h"
+#import "THKRecordAnimationView.h"
 
 static CGFloat const kBGCoverHeight = 252;
 static CGFloat const kHeaderHeight = 100;
@@ -29,6 +30,7 @@ static CGFloat const kHeaderHeight = 100;
 
 @property (nonatomic, strong) THKOnlineDesignHeader *header;
 
+@property (nonatomic, strong) THKRecordAnimationView *recordAnimationView;
 
 @end
 
@@ -114,11 +116,15 @@ static CGFloat const kHeaderHeight = 100;
     NSString *timespace = [NSDate.date.tmui_stringWithDateFormatYMDHMS tmui_stringByReplacingPattern:@"[-: ]" withString:@""];
     NSString *fileName = [NSString stringWithFormat:@"OnlineDesign1_%@",timespace];
     [[THKRecordTool sharedInstance] startRecord:fileName];
+    
+    [self showRecordAnimation];
 }
 
 - (void)recordBtnTouchUp:(UIButton *)btn{
     NSLog(@"recordBtnTouchDUp - %@",btn);
     [[THKRecordTool sharedInstance] stopRecord];
+    
+    [self stopRecordAnimation];
 }
 
 - (void)recordPlayClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath{
@@ -228,7 +234,13 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 #pragma mark - Private
+- (void)showRecordAnimation{
+    [self.recordAnimationView playInView:self.view];
+}
 
+- (void)stopRecordAnimation{
+    [self.recordAnimationView stop];
+}
 
 #pragma mark - Getters and Setters
 
@@ -301,6 +313,14 @@ static CGFloat const kHeaderHeight = 100;
     }
     return _header;
 }
+
+- (THKRecordAnimationView *)recordAnimationView{
+    if (!_recordAnimationView) {
+        _recordAnimationView = [[THKRecordAnimationView alloc] initWithFrame:self.view.bounds];
+    }
+    return _recordAnimationView;
+}
+
 #pragma mark - Supperclass
 
 #pragma mark - NSObject

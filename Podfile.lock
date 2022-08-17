@@ -15,6 +15,23 @@ PODS:
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
   - LookinServer (1.0.4)
+  - Lottie (2.5.3):
+    - Lottie/AnimatableLayers (= 2.5.3)
+    - Lottie/AnimatableProperties (= 2.5.3)
+    - Lottie/Extensions (= 2.5.3)
+    - Lottie/MacCompatibility (= 2.5.3)
+    - Lottie/Models (= 2.5.3)
+    - Lottie/Private (= 2.5.3)
+    - Lottie/PublicHeaders (= 2.5.3)
+    - Lottie/RenderSystem (= 2.5.3)
+  - Lottie/AnimatableLayers (2.5.3)
+  - Lottie/AnimatableProperties (2.5.3)
+  - Lottie/Extensions (2.5.3)
+  - Lottie/MacCompatibility (2.5.3)
+  - Lottie/Models (2.5.3)
+  - Lottie/Private (2.5.3)
+  - Lottie/PublicHeaders (2.5.3)
+  - Lottie/RenderSystem (2.5.3)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
   - MJExtension (3.4.1)
@@ -283,6 +300,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - LookinServer
+  - Lottie
   - MBProgressHUD
   - MJExtension
   - MJRefresh
@@ -293,6 +311,8 @@ DEPENDENCIES:
   - YYKit
 
 SPEC REPOS:
+  "git@repo.we.com:ios/tspecsrepo.git":
+    - Lottie
   http://repo.we.com/ios/tspecsrepo.git:
     - TMEmptyView
     - TMToast
@@ -318,6 +338,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   LookinServer: 743c1681771d0a8dcc38825325a080c3186404a5
+  Lottie: dfaf1dd45c3221e574199cd68d87ac94f58894e3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJExtension: 21c5f6f8c4d5d8844b7ae8fbae08fed0b501f961
@@ -328,6 +349,6 @@ SPEC CHECKSUMS:
   TMUIKit: 0b06a89efcb972b02c0f582d5e686cafddca0a63
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 50f13353c7125cfced6b144bfa930a376b482a3f
+PODFILE CHECKSUM: 3400c6e9eb79b8bae8b4eda677f7c37c7c4ef608
 
 COCOAPODS: 1.10.0

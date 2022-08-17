@@ -347,6 +347,10 @@
 		16CF07B728AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07B628AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.m */; };
 		16CF07BA28ACBDD20072FD15 /* THKOnlineDesignHouseStyleTagRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07B928ACBDD20072FD15 /* THKOnlineDesignHouseStyleTagRequest.m */; };
 		16CF07BD28ACBDE10072FD15 /* THKOnlineDesignHouseStyleTagResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07BC28ACBDE10072FD15 /* THKOnlineDesignHouseStyleTagResponse.m */; };
+		16CF07C028AD12120072FD15 /* lot_online_design_record.json in Resources */ = {isa = PBXBuildFile; fileRef = 16CF07BE28AD12120072FD15 /* lot_online_design_record.json */; };
+		16CF07C128AD12120072FD15 /* lot_online_design_distribute.json in Resources */ = {isa = PBXBuildFile; fileRef = 16CF07BF28AD12120072FD15 /* lot_online_design_distribute.json */; };
+		16CF07C328AD12190072FD15 /* img_online_design_distribute.png in Resources */ = {isa = PBXBuildFile; fileRef = 16CF07C228AD12190072FD15 /* img_online_design_distribute.png */; };
+		16CF07C628AD17500072FD15 /* THKRecordAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07C528AD17500072FD15 /* THKRecordAnimationView.m */; };
 		16CF0B6B2684174F00072D6C /* THKStateMechanismsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */; };
 		16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC069274C77EA000DAA29 /* THKSelectMaterialTabVC.m */; };
 		16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DDC06C274C780D000DAA29 /* THKSelectMaterialTabVM.m */; };
@@ -1102,6 +1106,11 @@
 		16CF07B928ACBDD20072FD15 /* THKOnlineDesignHouseStyleTagRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseStyleTagRequest.m; sourceTree = "<group>"; };
 		16CF07BB28ACBDE10072FD15 /* THKOnlineDesignHouseStyleTagResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseStyleTagResponse.h; sourceTree = "<group>"; };
 		16CF07BC28ACBDE10072FD15 /* THKOnlineDesignHouseStyleTagResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseStyleTagResponse.m; sourceTree = "<group>"; };
+		16CF07BE28AD12120072FD15 /* lot_online_design_record.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lot_online_design_record.json; sourceTree = "<group>"; };
+		16CF07BF28AD12120072FD15 /* lot_online_design_distribute.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lot_online_design_distribute.json; sourceTree = "<group>"; };
+		16CF07C228AD12190072FD15 /* img_online_design_distribute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_online_design_distribute.png; sourceTree = "<group>"; };
+		16CF07C428AD17500072FD15 /* THKRecordAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKRecordAnimationView.h; sourceTree = "<group>"; };
+		16CF07C528AD17500072FD15 /* THKRecordAnimationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKRecordAnimationView.m; sourceTree = "<group>"; };
 		16CF0B692684174F00072D6C /* THKStateMechanismsViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKStateMechanismsViewModel.h; sourceTree = "<group>"; };
 		16CF0B6A2684174F00072D6C /* THKStateMechanismsViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKStateMechanismsViewModel.m; sourceTree = "<group>"; };
 		16DDC068274C77EA000DAA29 /* THKSelectMaterialTabVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTabVC.h; sourceTree = "<group>"; };
@@ -2664,6 +2673,8 @@
 				16F0A66F28AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m */,
 				16F0A67128AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.h */,
 				16F0A67228AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m */,
+				16CF07C428AD17500072FD15 /* THKRecordAnimationView.h */,
+				16CF07C528AD17500072FD15 /* THKRecordAnimationView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2703,6 +2714,9 @@
 				16B3EA4028AA25ED00B3C791 /* od_arrow_black_icon@3x.png */,
 				16B3EA4828AA25EE00B3C791 /* 重新上传户型@2x.png */,
 				16B3EA4628AA25EE00B3C791 /* 重新上传户型@3x.png */,
+				16CF07C228AD12190072FD15 /* img_online_design_distribute.png */,
+				16CF07BF28AD12120072FD15 /* lot_online_design_distribute.json */,
+				16CF07BE28AD12120072FD15 /* lot_online_design_record.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -3313,12 +3327,14 @@
 				1685A666289120DC0032E474 /* dec_todo_02_black@3x.png in Resources */,
 				16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */,
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
+				16CF07C028AD12120072FD15 /* lot_online_design_record.json in Resources */,
 				16B3EA5028AA25EF00B3C791 /* od_arrow_black_icon@3x.png in Resources */,
 				1685A671289120DC0032E474 /* dec_todo_unselect@2x.png in Resources */,
 				1685A65F289120DC0032E474 /* dec_todo_04_black@3x.png in Resources */,
 				16B3EA3428AA1CE300B3C791 /* od_record_white@3x.png in Resources */,
 				16B3EA5328AA25EF00B3C791 /* 加号绿上传户型@2x.png in Resources */,
 				1685A673289120DC0032E474 /* dec_todo_title@2x.png in Resources */,
+				16CF07C328AD12190072FD15 /* img_online_design_distribute.png in Resources */,
 				1685A66A289120DC0032E474 /* dec_todo_04_black@2x.png in Resources */,
 				16B3EA5528AA25EF00B3C791 /* od_house_edit@3x.png in Resources */,
 				16FE9D98277D92260085CC07 /* diary_combo_num_9@3x.png in Resources */,
@@ -3356,6 +3372,7 @@
 				1685A663289120DC0032E474 /* dec_todo_02_black@2x.png in Resources */,
 				1685A679289120DC0032E474 /* dec_todo_open@3x.png in Resources */,
 				16B3EA2328A9E1F400B3C791 /* od_bg_head@2x.png in Resources */,
+				16CF07C128AD12120072FD15 /* lot_online_design_distribute.json in Resources */,
 				1685A667289120DC0032E474 /* dec_todo_05_black@3x.png in Resources */,
 				1685A672289120DC0032E474 /* dec_todo_01@2x.png in Resources */,
 				16B3EA5628AA25EF00B3C791 /* 重新上传户型@3x.png in Resources */,
@@ -3791,6 +3808,7 @@
 				16611AB02696870F0089E41B /* GEProcessor+GodeyePrivate.m in Sources */,
 				16529F6C2745F220002A3B65 /* DynamicTabDemoList.m in Sources */,
 				16611B80269693DA0089E41B /* THKPageContentViewController.m in Sources */,
+				16CF07C628AD17500072FD15 /* THKRecordAnimationView.m in Sources */,
 				16192B2D2692E13E00967C73 /* THKMoveViewInteractiveTransition.m in Sources */,
 				16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,

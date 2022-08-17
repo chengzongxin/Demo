@@ -22,6 +22,7 @@ target 'Demo' do
   pod 'TMToast'
   pod 'MJRefresh'
   pod 'MBProgressHUD'
+  pod 'Lottie'
 #  pod 'YYWebImage', '1.0.5'
 
   target 'DemoTests' do

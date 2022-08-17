@@ -9,6 +9,39 @@
 #import "THKOnlineDesignHouseDemandView.h"
 #import "THKOnlineDesignModel.h"
 
+@protocol SwipVoiceButtonDelegate <NSObject>
+@optional
+- (void)swipVoiceButtonOffset:(CGFloat)offset; //上移偏移量
+
+@end
+static CGFloat const kOverRangeY = 50.0f;
+@interface THKSwipVoiceButton : TMUIButton
+
+@property(nonatomic, weak) id<SwipVoiceButtonDelegate> delegate;
+@end
+
+@implementation THKSwipVoiceButton
+
+- (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint point = [touch locationInView:self];
+    CGFloat offset = 0;
+    if(point.y < -kOverRangeY) { //上移
+        offset = -kOverRangeY;
+    } else if(point.y > 0) {
+        offset = 0;
+    } else {
+        offset = point.y;
+    }
+    //NSLog(@"point%f", offset);
+    if(_delegate && [_delegate respondsToSelector:@selector(swipVoiceButtonOffset:)]) {
+        [_delegate swipVoiceButtonOffset:offset];
+    }
+    return [super continueTrackingWithTouch:touch withEvent:event];
+}
+
+
+@end
+
 @interface THKOnlineDesignHouseDemandCell ()<TMUITextViewDelegate>
 
 @property (nonatomic, strong) TMUITextView *textView;
@@ -17,7 +50,7 @@
 
 @property (nonatomic, strong) UIView *line;
 
-@property (nonatomic, strong) TMUIButton *recordBtn;
+@property (nonatomic, strong) THKSwipVoiceButton *recordBtn;
 
 @end
 
@@ -87,6 +120,24 @@
 - (void)recordBtnTouchUp:(UIButton *)btn{
     if ([self.delegate respondsToSelector:@selector(recordBtnTouchUp:)]) {
         [self.delegate recordBtnTouchUp:btn];
+    }
+}
+
+- (void)cancelRecordVoice:(UIButton *)btn{
+    if ([self.delegate respondsToSelector:@selector(cancelRecordVoice:)]) {
+        [self.delegate cancelRecordVoice:btn];
+    }
+}
+
+- (void)upswipeCancelRecordVoice:(UIButton *)btn{
+    if ([self.delegate respondsToSelector:@selector(upswipeCancelRecordVoice:)]) {
+        [self.delegate upswipeCancelRecordVoice:btn];
+    }
+}
+
+- (void)downSwipeContinueRecordVoice:(UIButton *)btn{
+    if ([self.delegate respondsToSelector:@selector(downSwipeContinueRecordVoice:)]) {
+        [self.delegate downSwipeContinueRecordVoice:btn];
     }
 }
 
@@ -181,17 +232,20 @@
     return _line;
 }
 
-- (TMUIButton *)recordBtn{
+- (THKSwipVoiceButton *)recordBtn{
     if (!_recordBtn) {
-        _recordBtn = [TMUIButton tmui_button];
+        _recordBtn = [[THKSwipVoiceButton alloc] init];
         _recordBtn.tmui_titleColor = UIColorDark;
         _recordBtn.tmui_font = UIFontSemibold(14);
         _recordBtn.tmui_text = @"按住说话";
         _recordBtn.tmui_image = UIImageMake(@"od_record_black");
         _recordBtn.spacingBetweenImageAndTitle = 6;
-        [_recordBtn addTarget:self action:@selector(recordBtnTouchDown:) forControlEvents:UIControlEventTouchDown];
-        [_recordBtn addTarget:self action:@selector(recordBtnTouchUp:) forControlEvents:UIControlEventTouchUpInside];
-        [_recordBtn addTarget:self action:@selector(recordBtnTouchUp:) forControlEvents:UIControlEventTouchUpOutside];
+        
+        [_recordBtn addTarget:self action:@selector(recordBtnTouchDown:) forControlEvents:UIControlEventTouchDown]; //开始录音
+        [_recordBtn addTarget:self action:@selector(recordBtnTouchUp:) forControlEvents:UIControlEventTouchUpInside]; //录音结束
+        [_recordBtn addTarget:self action:@selector(cancelRecordVoice:) forControlEvents:UIControlEventTouchUpOutside]; //取消录音
+        [_recordBtn addTarget:self action:@selector(upswipeCancelRecordVoice:) forControlEvents:UIControlEventTouchDragExit]; //向上滑动 提示松开取消录音
+        [_recordBtn addTarget:self action:@selector(downSwipeContinueRecordVoice:) forControlEvents:UIControlEventTouchDragEnter]; //手指重新滑动到范围内 提示向上取消录音
         
     }
     return _recordBtn;
