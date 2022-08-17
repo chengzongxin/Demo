@@ -175,6 +175,7 @@
     // 用户id
     [THKBaseNetworkManager sharedManager].userIdBlock = ^NSString * _Nullable{
         return [NSString stringWithFormat:@"%d", 172175695];
+//        return [NSString stringWithFormat:@"%d", 172175695 - (int)arc4random()%10000];
     };
     
     // token

@@ -64,7 +64,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSInteger id;
 
 /// 户型图信息
-@property (nonatomic, strong) NSArray *planImgList;
+@property (nonatomic, strong) NSArray <THKOnlineDesignHomeEditPlanImgList *>*planImgList;
 
 /// 语音信息列表
 @property (nonatomic, strong) NSArray *recordingInfoList;
@@ -342,10 +342,12 @@ typedef enum : NSUInteger {
                         }];
                         return requestColoumnList;
                     }];
+                    
                     request.communityName = self.communityName;
                     request.houseTag = self.houseTag;
                     request.planSource = self.planSource;
                     request.planSourceId = self.planSourceId;
+                    request.planImgList = self.planImgList;
     //                request.id = 123;
     //                request.planImgList = nil;
     //                request.recordingInfoList = @[@"123",@"456"];
@@ -363,6 +365,13 @@ typedef enum : NSUInteger {
                 
                 if (self.imageFilePath) {
                     // 上传户型图片
+                    self.planImgList = [self.imageFilePath tmui_map:^id _Nonnull(NSString * _Nonnull item) {
+                        THKOnlineDesignHomeEditPlanImgList *imgList = [[THKOnlineDesignHomeEditPlanImgList alloc] init];
+                        imgList.imgUrl = item;
+                        imgList.imgWidth = 100;
+                        imgList.imgHeight = 100;
+                        return imgList;
+                    }];
                     uploadHouseList();
                 }else{
                     uploadHouseList();
