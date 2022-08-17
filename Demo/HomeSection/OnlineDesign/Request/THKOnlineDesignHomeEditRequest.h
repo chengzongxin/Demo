@@ -10,6 +10,24 @@
 #import "THKOnlineDesignHomeConfigModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
+@interface THKOnlineDesignHomeEditPlanImgList : NSObject
+
+@property (nonatomic, strong) NSString *imgUrl;
+
+@property (nonatomic, assign) NSInteger imgWidth;
+
+@property (nonatomic, assign) NSInteger imgHeight;
+
+@end
+
+@interface THKOnlineDesignHomeEditRecordingInfoList : NSObject
+
+@property (nonatomic, assign) NSInteger duration;
+
+@property (nonatomic, strong) NSString *recordingUrl;
+
+@end
+
 @interface THKOnlineDesignHomeEditRequest : THKBaseRequest
 
 
@@ -29,10 +47,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger id;
 
 /// 户型图信息
-@property (nonatomic, strong) NSArray *planImgList;
+@property (nonatomic, strong) NSArray <THKOnlineDesignHomeEditPlanImgList *>*planImgList;
 
 /// 语音信息列表
-@property (nonatomic, strong) NSArray *recordingInfoList;
+@property (nonatomic, strong) NSArray <THKOnlineDesignHomeEditRecordingInfoList *>*recordingInfoList;
 
 /// 需求描述
 @property (nonatomic, strong) NSString *requirementDesc;

@@ -119,16 +119,21 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.selectHouseTypeBlock) {
-        THKOnlineDesignHouseListItemModel *model = self.viewModel.data[indexPath.row];
-        THKOnlineDesignItemHouseTypeModel *data = [THKOnlineDesignItemHouseTypeModel new];
-        data.picUrl = model.image;
-        data.houseArea = model.community_name;
-        data.houseType = model.structure;
-        data.buildArea = model.building_area;
-        data.planSource = @"2";
+        THKOnlineDesignHouseListItemModel *cellModel = self.viewModel.data[indexPath.row];
+        THKOnlineDesignItemHouseTypeModel *model = [THKOnlineDesignItemHouseTypeModel new];
+//        data.picUrl = model.image;
+        THKOnlineDesignHomeEditPlanImgList *img = [THKOnlineDesignHomeEditPlanImgList new];
+        img.imgUrl = cellModel.image;
+        img.imgWidth = 100;
+        img.imgHeight = 100;
+        model.planImgList = @[img];
+        model.houseArea = cellModel.community_name;
+        model.houseType = cellModel.structure;
+        model.buildArea = cellModel.building_area;
+        model.planSource = @"2";
 #warning placeSourceId
-        data.planSourceId = model.id;
-        self.selectHouseTypeBlock(data);
+        model.planSourceId = cellModel.id;
+        self.selectHouseTypeBlock(model);
     }
 }
 

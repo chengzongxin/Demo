@@ -54,7 +54,7 @@
 - (void)bindWithModel:(THKOnlineDesignItemHouseTypeModel *)model{
     [super bindWithModel:model];
     
-    [self.picImgV loadImageWithUrlStr:model.picUrl];
+    [self.picImgV loadImageWithUrlStr:model.planImgList.firstObject.imgUrl];
     self.areaLbl.text = model.houseArea;
     self.typeLbl.text = [NSString stringWithFormat:@"%0.f㎡·%@",model.buildArea.floatValue,model.houseType];
 }

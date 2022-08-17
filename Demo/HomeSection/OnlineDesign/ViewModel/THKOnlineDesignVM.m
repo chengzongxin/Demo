@@ -79,6 +79,10 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSInteger planSourceId;
 
 
+
+@property (nonatomic, strong) NSArray <NSString *> *imageFilePath;
+
+
 @end
 
 @implementation THKOnlineDesignVM
@@ -275,6 +279,8 @@ typedef enum : NSUInteger {
                     self.houseTag = model.houseTag;
                     self.planSource = model.planSource;
                     self.planSourceId = model.planSourceId;
+                    self.planImgList = model.planImgList;
+                    self.imageFilePath = model.imageFilePath;
                     
                     THKOnlineDesignItemModel *item1 = [self getHouseTypeModel].item;
                     item1.type = THKOnlineDesignItemDataType_HouseTypeModel;
@@ -323,24 +329,38 @@ typedef enum : NSUInteger {
         _commitCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
             return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
                 @strongify(self);
-                THKOnlineDesignHomeEditRequest *request = [THKOnlineDesignHomeEditRequest new];
-                request.area = self.area;
-                request.columnList = self.columnList;
-                request.communityName = self.communityName;
-                request.houseTag = self.houseTag;
-                request.planSource = self.planSource;
-                request.planSourceId = self.planSourceId;
-//                request.id = 123;
-//                request.planImgList = nil;
-//                request.recordingInfoList = @[@"123",@"456"];
-                request.requirementDesc = self.requirementDesc;
-                [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
-                    [subscriber sendNext:x];
-                } error:^(NSError * _Nullable error) {
-                    [subscriber sendError:error];
-                } completed:^{
-                    [subscriber sendCompleted];
-                }];
+                
+                void (^uploadHouseList)(void) = ^void(void) {
+                    
+                    THKOnlineDesignHomeEditRequest *request = [THKOnlineDesignHomeEditRequest new];
+                    request.area = self.area;
+                    request.columnList = self.columnList;
+                    request.communityName = self.communityName;
+                    request.houseTag = self.houseTag;
+                    request.planSource = self.planSource;
+                    request.planSourceId = self.planSourceId;
+    //                request.id = 123;
+    //                request.planImgList = nil;
+    //                request.recordingInfoList = @[@"123",@"456"];
+                    request.requirementDesc = self.requirementDesc;
+                    [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
+                        [subscriber sendNext:x];
+                    } error:^(NSError * _Nullable error) {
+                        [subscriber sendError:error];
+                    } completed:^{
+                        [subscriber sendCompleted];
+                    }];
+                };
+                
+    
+                
+                if (self.imageFilePath) {
+                    // 上传户型图片
+                    uploadHouseList();
+                }else{
+                    uploadHouseList();
+                }
+                
                 return [RACDisposable disposableWithBlock:^{
                     
                 }];

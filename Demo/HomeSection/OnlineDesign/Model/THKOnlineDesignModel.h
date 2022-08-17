@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "THKRecordTool.h"
+#import "THKOnlineDesignHomeEditRequest.h"
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
@@ -62,7 +63,7 @@ typedef enum : NSUInteger {
 
 @interface THKOnlineDesignItemHouseTypeModel : NSObject
 // 图片链接
-@property (nonatomic, strong) NSString *picUrl;
+@property (nonatomic, strong) NSArray <THKOnlineDesignHomeEditPlanImgList *> *planImgList;
 // 小区名
 @property (nonatomic, strong) NSString *houseArea;
 // 户型
@@ -70,7 +71,7 @@ typedef enum : NSUInteger {
 // 建筑面积
 @property (nonatomic, strong) NSString *buildArea;
 // 本地路径
-@property (nonatomic, strong) NSString *imageFilePath;
+@property (nonatomic, strong) NSArray <NSString *> *imageFilePath;
 // 户型信息全码
 @property (nonatomic, strong) NSString *houseTag;
 /// 来源 0-默认 1-用户手动新增 2-3d

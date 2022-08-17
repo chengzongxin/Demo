@@ -7,6 +7,14 @@
 
 #import "THKOnlineDesignHomeEditRequest.h"
 
+@implementation THKOnlineDesignHomeEditPlanImgList
+
+@end
+
+@implementation THKOnlineDesignHomeEditRecordingInfoList
+
+@end
+
 @implementation THKOnlineDesignHomeEditRequest
 - (NSString *)requestDomain {
     return kJavaServerC2Domain;

@@ -56,7 +56,8 @@
 - (void)commit:(UIButton *)btn{
     if (self.selectHouseTypeBlock) {
         THKOnlineDesignItemHouseTypeModel *model = [THKOnlineDesignItemHouseTypeModel new];
-        model.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
+//        model.picUrl = @"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg";
+        model.imageFilePath = @[@"https://pic.to8to.com/live/day_210918/20210918_a4256baeb11537c067e8ksHmwDZgxbxI.jpg"];
         model.houseArea = self.areaNameTF.text;
         model.houseType = self.houseTypeBtn.tmui_text;//@"4室1厅·128㎡"
         model.houseTag = self.houseTag;
