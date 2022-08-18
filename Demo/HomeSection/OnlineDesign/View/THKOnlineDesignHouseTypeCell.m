@@ -36,7 +36,7 @@
     }];
     
     [self.areaLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.picImgV.mas_right).offset(15);
+        make.left.equalTo(self.picImgV.mas_right).offset(15).priorityHigh();
         make.top.mas_equalTo(15);
     }];
     
@@ -54,9 +54,20 @@
 - (void)bindWithModel:(THKOnlineDesignItemHouseTypeModel *)model{
     [super bindWithModel:model];
     
-    [self.picImgV loadImageWithUrlStr:model.planImgList.firstObject.imgUrl];
+    if (model.planImgList.firstObject.imgUrl.length) {
+        
+        [self.picImgV loadImageWithUrlStr:model.planImgList.firstObject.imgUrl];
+        
+        [self.areaLbl mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.picImgV.mas_right).offset(15);
+        }];
+    }else{
+        [self.areaLbl mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(15);
+        }];
+    }
     self.areaLbl.text = model.houseArea;
-    self.typeLbl.text = [NSString stringWithFormat:@"%d㎡·%@",model.buildArea,model.houseType];
+    self.typeLbl.text = [NSString stringWithFormat:@"%ld㎡·%@",(long)model.buildArea,model.houseType];
 }
 
 - (UIImageView *)picImgV{
