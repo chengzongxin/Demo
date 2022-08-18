@@ -32,6 +32,8 @@ SHARED_INSTANCE_FOR_HEADER;
 
 - (BOOL)deleteRecording;
 
+- (void)deleteFilePath:(NSString *)filePath;
+
 - (void)play:(NSString *)urlString;
 
 @end

@@ -86,7 +86,16 @@ static CGFloat const kHeaderHeight = 100;
     
     // 录音完成
     [THKRecordTool sharedInstance].recordFinish = ^(THKAudioDescription * _Nullable audioDesc) {
+        [self stopRecordAnimation];
+        
+        if (audioDesc.duration < 3) {
+            [TMToast toast:@"录音太短了，少于3秒"];
+            [[THKRecordTool sharedInstance] deleteFilePath:audioDesc.filePath];
+            return;
+        }
+        
         [self.viewModel.addAudioCommand execute:audioDesc];
+        
     };
     
     [self.viewModel.commitCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
@@ -128,7 +137,6 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 - (void)recordBtnTouchDown:(UIButton *)btn{
-    NSLog(@"recordBtnTouchDown - %@",btn);
     NSString *timespace = [NSDate.date.tmui_stringWithDateFormatYMDHMS tmui_stringByReplacingPattern:@"[-: ]" withString:@""];
     NSString *fileName = [NSString stringWithFormat:@"OnlineDesign1_%@",timespace];
     [[THKRecordTool sharedInstance] startRecord:fileName];
@@ -137,10 +145,7 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 - (void)recordBtnTouchUp:(UIButton *)btn{
-    NSLog(@"recordBtnTouchDUp - %@",btn);
     [[THKRecordTool sharedInstance] stopRecord];
-    
-    [self stopRecordAnimation];
 }
 
 - (void)recordPlayClick:(UIView *)view idx:(NSUInteger)idx indexPath:(NSIndexPath *)indexPath{

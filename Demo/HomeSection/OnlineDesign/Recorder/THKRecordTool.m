@@ -85,7 +85,7 @@ SHARED_INSTANCE_FOR_CLASS;
 
 - (void)startRecord:(NSString *)fileName{
     _audioRecorder = [self setupRecorder:fileName];
-    [_audioRecorder record];
+    [_audioRecorder recordForDuration:60];
 }
 
 - (void)stopRecord{
@@ -96,6 +96,10 @@ SHARED_INSTANCE_FOR_CLASS;
     _isDeleteFile = YES;
     [self stopRecord];
     return [_audioRecorder deleteRecording];
+}
+
+- (void)deleteFilePath:(NSString *)filePath{
+    [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
 }
 
 - (void)play:(NSString *)urlString{
@@ -119,7 +123,7 @@ SHARED_INSTANCE_FOR_CLASS;
     if (self.recordFinish && player) {
         THKAudioDescription *desc = [[THKAudioDescription alloc] init];
         desc.filePath = path;
-        desc.duration = ceil(player.duration);
+        desc.duration = player.duration;
         self.recordFinish(desc);
     }
 }
