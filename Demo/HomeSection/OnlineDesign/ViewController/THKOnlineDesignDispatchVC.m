@@ -5,7 +5,7 @@
 //  Created by Joe.cheng on 2022/8/11.
 //
 
-#import "THKOnlineDesignVC.h"
+#import "THKOnlineDesignDispatchVC.h"
 #import "THKOnlineDesignHeader.h"
 #import "THKOnlineDesignSectionHeader.h"
 #import "THKOnlineDesignSectionFooter.h"
@@ -17,9 +17,9 @@
 static CGFloat const kBGCoverHeight = 252;
 static CGFloat const kHeaderHeight = 100;
 
-@interface THKOnlineDesignVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,THKOnlineDesignBaseCellDelegate>
+@interface THKOnlineDesignDispatchVC ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,THKOnlineDesignBaseCellDelegate>
 
-@property (nonatomic, strong) THKOnlineDesignVM *viewModel;
+@property (nonatomic, strong) THKOnlineDesignDispatchVM *viewModel;
 
 @property (nonatomic, strong) UIImageView *bgImgV;
 
@@ -37,7 +37,7 @@ static CGFloat const kHeaderHeight = 100;
 
 @end
 
-@implementation THKOnlineDesignVC
+@implementation THKOnlineDesignDispatchVC
 @dynamic viewModel;
 
 #pragma mark - Lifecycle (dealloc init viewDidLoad memoryWarning...)
@@ -385,7 +385,7 @@ static CGFloat const kHeaderHeight = 100;
 }
 
 + (id)createVCWithRouter:(TRouter *)router {
-    THKOnlineDesignVM *viewModel = [[THKOnlineDesignVM alloc] init];
+    THKOnlineDesignDispatchVM *viewModel = [[THKOnlineDesignDispatchVM alloc] init];
     return  [[self alloc] initWithViewModel:viewModel];
 }
 

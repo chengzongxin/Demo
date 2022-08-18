@@ -32,7 +32,7 @@ typedef enum : NSUInteger {
 } THKOnlineDesignOperateType;
 
 
-@interface THKOnlineDesignVM : THKViewModel
+@interface THKOnlineDesignDispatchVM : THKViewModel
 
 @property (nonatomic, assign) THKOnlineDesignOperateType status;
 

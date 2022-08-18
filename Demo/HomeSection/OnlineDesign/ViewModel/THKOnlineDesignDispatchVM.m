@@ -5,9 +5,9 @@
 //  Created by Joe.cheng on 2022/8/11.
 //
 
-#import "THKOnlineDesignVM.h"
+#import "THKOnlineDesignDispatchVM.h"
 
-@interface THKOnlineDesignVM ()
+@interface THKOnlineDesignDispatchVM ()
 
 @property (nonatomic, strong) THKRequestCommand *requestCommand;
 
@@ -79,7 +79,7 @@
 
 @end
 
-@implementation THKOnlineDesignVM
+@implementation THKOnlineDesignDispatchVM
 
 - (void)initialize{
     [super initialize];

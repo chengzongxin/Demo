@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "THKOnlineDesignVC.h"
+#import "THKOnlineDesignDispatchVC.h"
 @interface ViewController ()
 
 @end
@@ -28,9 +28,9 @@
 }
 
 - (void)push{
-    THKOnlineDesignVM *vm = [[THKOnlineDesignVM alloc] init];
+    THKOnlineDesignDispatchVM *vm = [[THKOnlineDesignDispatchVM alloc] init];
     vm.status = THKOnlineDesignOperateType_Edit;
-    THKOnlineDesignVC *vc = [[THKOnlineDesignVC alloc] initWithViewModel:vm];
+    THKOnlineDesignDispatchVC *vc = [[THKOnlineDesignDispatchVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
