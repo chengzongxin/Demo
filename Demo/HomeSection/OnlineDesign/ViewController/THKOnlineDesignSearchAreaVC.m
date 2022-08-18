@@ -13,6 +13,7 @@
 #import "THKOnlineDesignHouseTypeListVC.h"
 #import "THKOnlineDesignUploadHouseTypeView.h"
 #import "THKOnlineDesignUploadHouseVC.h"
+#import "TMEmptyView+THKOnlineDesignEmptyView.h"
 
 typedef enum : NSUInteger {
     THKOnlineDesignSearchAreaContentType_Hot,
@@ -70,6 +71,21 @@ typedef enum : NSUInteger {
         @strongify(self);
         self.areaView.keyWord = self.searchBar.text;
         self.areaView.items = x.data.items;
+        if (x.data.items.count == 0) {
+            [TMEmptyView showOnlineDesignEmptyInView:self.view safeMargin:UIEdgeInsetsMake(CGRectGetMaxY(self.searchBar.frame) + 20, 0, 0, 0) contentType:TMEmptyContentTypeNoData configContentBlock:^(NSObject<TMEmptyContentItemProtocol> * _Nonnull content) {
+                content.title = @"无户型信息";
+                content.desc = nil;
+            } clickBlock:^{
+                @strongify(self);
+                [self pushUploadVC];
+            }];
+            
+        }
+    }];
+    
+    [self.viewModel.requestCommand.errorSignal subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [TMEmptyView showEmptyInView:self.view contentType:TMEmptyContentTypeNetErr];
     }];
 }
 
@@ -85,7 +101,7 @@ typedef enum : NSUInteger {
 
 - (void)setContentType:(THKOnlineDesignSearchAreaContentType)contentType{
     _contentType = contentType;
-    
+    [self.view.tmui_emptyView remove];
     if (contentType == THKOnlineDesignSearchAreaContentType_Hot) {
         [self setupContentView:self.hotView];
     }else if (contentType == THKOnlineDesignSearchAreaContentType_AreaList) {
@@ -103,7 +119,7 @@ typedef enum : NSUInteger {
     }];
 }
 
-- (void)clickUpload{
+- (void)pushUploadVC{
     THKOnlineDesignUploadHouseVM *vm = [[THKOnlineDesignUploadHouseVM alloc] init];
     THKOnlineDesignUploadHouseVC *vc = [[THKOnlineDesignUploadHouseVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
@@ -126,7 +142,7 @@ typedef enum : NSUInteger {
         @weakify(self);
         inputAccessoryView.clickUploadBlock = ^{
             @strongify(self);
-            [self clickUpload];
+            [self pushUploadVC];
         };
         _searchBar.textField.inputAccessoryView = inputAccessoryView;
         _searchBar.currentCity = @"深圳";
@@ -152,7 +168,7 @@ typedef enum : NSUInteger {
         };
         _hotView.clickUploadBlock = ^{
             @strongify(self);
-            [self clickUpload];
+            [self pushUploadVC];
         };
     }
     return _hotView;

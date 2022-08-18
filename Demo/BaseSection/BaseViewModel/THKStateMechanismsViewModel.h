@@ -49,6 +49,9 @@ typedef NSArray *_Nullable(^AppendDataBlock)(THKResponse *);
 /// 添加尾部刷新
 - (void)addRefreshFooter;
 
+@property (nonatomic, strong, readonly) RACSubject *emptySignal;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

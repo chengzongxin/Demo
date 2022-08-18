@@ -10,6 +10,7 @@
 #import "THKOnlineDesignModel.h"
 #import "THKOnlineDesignUploadNoHouseTypeView.h"
 #import "THKOnlineDesignUploadHouseVC.h"
+#import "TMEmptyView+THKOnlineDesignEmptyView.h"
 
 @interface THKOnlineDesignHouseTypeListVC () <UICollectionViewDelegate,UICollectionViewDataSource,TMUISearchBarDelegate>
 
@@ -70,9 +71,27 @@
 - (void)bindViewModel{
     [super bindViewModel];
     
+    @weakify(self);
     [self.viewModel bindWithView:self.view scrollView:self.collectionView appenBlock:^NSArray * _Nonnull(THKResponse * _Nonnull x) {
         THKOnlineDesignSearchHouseResponse *response = (THKOnlineDesignSearchHouseResponse *)x;
         return response.data.items;
+    }];
+    
+    [self.viewModel.emptySignal subscribeNext:^(NSNumber *x) {
+        @strongify(self);
+        if (x.integerValue == TMEmptyContentTypeNoData) {
+            [TMEmptyView showOnlineDesignEmptyInView:self.view safeMargin:UIEdgeInsetsMake(CGRectGetMaxY(self.searchBar.frame) + 20, 0, 0, 0) contentType:TMEmptyContentTypeNoData configContentBlock:^(NSObject<TMEmptyContentItemProtocol> * _Nonnull content) {
+                content.title = @"无户型信息";
+                content.desc = nil;
+            } clickBlock:^{
+                @strongify(self);
+                [self pushUploadVC];
+            }];
+        }else if (x) {
+            [TMEmptyView showEmptyInView:self.view contentType:x.integerValue];
+        }else{
+            [self.view.tmui_emptyView remove];
+        }
     }];
     
     [self.viewModel addRefreshHeader];

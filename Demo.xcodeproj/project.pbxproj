@@ -341,6 +341,7 @@
 		16B3EA5E28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA5D28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m */; };
 		16B3EA6128AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA6028AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m */; };
 		16B3EA6428AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B3EA6328AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m */; };
+		16CEA54628ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA54528ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m */; };
 		16CF07AE28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07AD28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m */; };
 		16CF07B128AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07B028AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.m */; };
 		16CF07B428AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07B328AC878F0072FD15 /* THKOnlineDesignHomeDetailRequest.m */; };
@@ -1094,6 +1095,8 @@
 		16B3EA6028AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeConfigResponse.m; sourceTree = "<group>"; };
 		16B3EA6228AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHouseTypeListCell.h; sourceTree = "<group>"; };
 		16B3EA6328AA756700B3C791 /* THKOnlineDesignHouseTypeListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHouseTypeListCell.m; sourceTree = "<group>"; };
+		16CEA54428ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMEmptyView+THKOnlineDesignEmptyView.h"; sourceTree = "<group>"; };
+		16CEA54528ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TMEmptyView+THKOnlineDesignEmptyView.m"; sourceTree = "<group>"; };
 		16CF07AC28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHomeEditRequest.h; sourceTree = "<group>"; };
 		16CF07AD28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOnlineDesignHomeEditRequest.m; sourceTree = "<group>"; };
 		16CF07AF28AC7D9E0072FD15 /* THKOnlineDesignHomeEditResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignHomeEditResponse.h; sourceTree = "<group>"; };
@@ -2675,6 +2678,8 @@
 				16F0A67228AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m */,
 				16CF07C428AD17500072FD15 /* THKRecordAnimationView.h */,
 				16CF07C528AD17500072FD15 /* THKRecordAnimationView.m */,
+				16CEA54428ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.h */,
+				16CEA54528ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3597,6 +3602,7 @@
 				16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */,
 				16192AD62692E05700967C73 /* TUserAvatarView.m in Sources */,
 				16192B232692E13E00967C73 /* THKPushPopAsLocationToListTransition.m in Sources */,
+				16CEA54628ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m in Sources */,
 				16E5C4D02682DE930024BA20 /* TBTNetworkManager.m in Sources */,
 				1685A683289120DC0032E474 /* THKDecorationUpcomingListRequest.m in Sources */,
 				16192B2A2692E13E00967C73 /* THKDiaryDetailLoadingAnimationView.m in Sources */,
@@ -4097,7 +4103,7 @@
 					"-framework",
 					"\"YYKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-ambiguous-macro";
