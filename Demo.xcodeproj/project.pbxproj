@@ -2618,7 +2618,7 @@
 			path = NewcomerProcess;
 			sourceTree = "<group>";
 		};
-		16B2E6C928A490D500D385B6 /* OnlineDesign */ = {
+		16B2E6C928A490D500D385B6 /* OnlineDesignDispatch */ = {
 			isa = PBXGroup;
 			children = (
 				16212FBF28A740FD0079A086 /* ViewController */,
@@ -2629,7 +2629,7 @@
 				16B2E6EF28A5297100D385B6 /* Recorder */,
 				16B3EA2028A9E1DE00B3C791 /* Resource */,
 			);
-			path = OnlineDesign;
+			path = OnlineDesignDispatch;
 			sourceTree = "<group>";
 		};
 		16B2E6DC28A5097600D385B6 /* View */ = {
@@ -2844,7 +2844,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				16B2E6C928A490D500D385B6 /* OnlineDesign */,
+				16B2E6C928A490D500D385B6 /* OnlineDesignDispatch */,
 			);
 			path = HomeSection;
 			sourceTree = "<group>";
