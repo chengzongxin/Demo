@@ -12,6 +12,7 @@
 #import "THKRecordTool.h"
 #import "THKOnlineDesignSearchAreaVC.h"
 #import "THKRecordAnimationView.h"
+#import "THKOnlineDesignDistributeAnimationView.h"
 
 static CGFloat const kBGCoverHeight = 252;
 static CGFloat const kHeaderHeight = 100;
@@ -31,6 +32,8 @@ static CGFloat const kHeaderHeight = 100;
 @property (nonatomic, strong) THKOnlineDesignHeader *header;
 
 @property (nonatomic, strong) THKRecordAnimationView *recordAnimationView;
+
+@property (nonatomic, strong) THKOnlineDesignDistributeAnimationView *loadingAnimationView;
 
 @end
 
@@ -86,6 +89,16 @@ static CGFloat const kHeaderHeight = 100;
         [self.viewModel.addAudioCommand execute:audioDesc];
     };
     
+    [self.viewModel.commitCommand.executionSignals.switchToLatest subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self stopLoadingAnimation];
+    }];
+    
+    [self.viewModel.commitCommand.errors subscribeNext:^(NSError * _Nullable x) {
+        @strongify(self);
+        [TMToast toast:@"网络异常！请稍后再试"];
+        [self stopLoadingAnimation];
+    }];
     
     [self.viewModel.requestCommand execute:RACTuplePack(@(self.viewModel.status),nil)];
 }
@@ -93,6 +106,7 @@ static CGFloat const kHeaderHeight = 100;
 #pragma mark - Event Respone
 - (void)clickCommit{
     [self.viewModel.commitCommand execute:nil];
+    [self showLoadingAnimation];
 }
 
 #pragma mark - Delegate
@@ -258,6 +272,14 @@ static CGFloat const kHeaderHeight = 100;
     [self.recordAnimationView stop];
 }
 
+- (void)showLoadingAnimation{
+    [self.loadingAnimationView playInView:self.view];
+}
+
+- (void)stopLoadingAnimation{
+    [self.loadingAnimationView stop];
+}
+
 #pragma mark - Getters and Setters
 
 - (UIImageView *)bgImgV{
@@ -335,6 +357,13 @@ static CGFloat const kHeaderHeight = 100;
         _recordAnimationView = [[THKRecordAnimationView alloc] initWithFrame:self.view.bounds];
     }
     return _recordAnimationView;
+}
+
+- (THKOnlineDesignDistributeAnimationView *)loadingAnimationView{
+    if (!_loadingAnimationView) {
+        _loadingAnimationView = [[THKOnlineDesignDistributeAnimationView alloc] initWithFrame:self.view.bounds];
+    }
+    return _loadingAnimationView;
 }
 
 #pragma mark - Supperclass
