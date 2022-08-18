@@ -19,6 +19,7 @@
 
 @interface THKRecordTool ()<AVAudioRecorderDelegate>{
     NSDictionary *_recordSettings;
+    BOOL _isDeleteFile;
 }
 
 @property (nonatomic, strong) AVAudioRecorder *audioRecorder;
@@ -91,6 +92,12 @@ SHARED_INSTANCE_FOR_CLASS;
     [_audioRecorder stop];
 }
 
+- (BOOL)deleteRecording{
+    _isDeleteFile = YES;
+    [self stopRecord];
+    return [_audioRecorder deleteRecording];
+}
+
 - (void)play:(NSString *)urlString{
     _audioPlayer = [self setupPlayer:urlString];
     [_audioPlayer prepareToPlay];
@@ -102,6 +109,10 @@ SHARED_INSTANCE_FOR_CLASS;
 #pragma mark <AVAudioRecorderDelegate>
 /* audioRecorderDidFinishRecording:successfully: is called when a recording has been finished or stopped. This method is NOT called if the recorder is stopped due to an interruption. */
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag{
+    if (_isDeleteFile) {
+        _isDeleteFile = NO;
+        return;
+    }
     NSString *path = [LameTool audioToMP3:recorder.url.absoluteString isDeleteSourchFile:YES];
     NSLog(@"path = %@",path);
     AVAudioPlayer *player = [self setupPlayer:path];

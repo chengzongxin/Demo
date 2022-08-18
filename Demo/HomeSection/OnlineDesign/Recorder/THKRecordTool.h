@@ -30,6 +30,8 @@ SHARED_INSTANCE_FOR_HEADER;
 
 - (void)stopRecord;
 
+- (BOOL)deleteRecording;
+
 - (void)play:(NSString *)urlString;
 
 @end

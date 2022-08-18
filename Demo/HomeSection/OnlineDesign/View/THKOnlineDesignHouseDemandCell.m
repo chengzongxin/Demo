@@ -9,32 +9,24 @@
 #import "THKOnlineDesignHouseDemandView.h"
 #import "THKOnlineDesignModel.h"
 
-@protocol SwipVoiceButtonDelegate <NSObject>
+@protocol THKSwipVoiceButtonDelegate <NSObject>
 @optional
-- (void)swipVoiceButtonOffset:(CGFloat)offset; //上移偏移量
+- (void)swipVoiceButtonOffset:(CGPoint)offset; //上移偏移量
 
 @end
-static CGFloat const kOverRangeY = 50.0f;
+static CGFloat const kOffsetY = 50;
 @interface THKSwipVoiceButton : TMUIButton
-
-@property(nonatomic, weak) id<SwipVoiceButtonDelegate> delegate;
+@property(nonatomic, weak) id<THKSwipVoiceButtonDelegate> delegate;
+@property (nonatomic, assign) CGPoint offset;
 @end
 
 @implementation THKSwipVoiceButton
 
 - (BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     CGPoint point = [touch locationInView:self];
-    CGFloat offset = 0;
-    if(point.y < -kOverRangeY) { //上移
-        offset = -kOverRangeY;
-    } else if(point.y > 0) {
-        offset = 0;
-    } else {
-        offset = point.y;
-    }
-    //NSLog(@"point%f", offset);
-    if(_delegate && [_delegate respondsToSelector:@selector(swipVoiceButtonOffset:)]) {
-        [_delegate swipVoiceButtonOffset:offset];
+    self.offset = point;
+    if([self.delegate respondsToSelector:@selector(swipVoiceButtonOffset:)]) {
+        [self.delegate swipVoiceButtonOffset:point];
     }
     return [super continueTrackingWithTouch:touch withEvent:event];
 }
@@ -42,7 +34,7 @@ static CGFloat const kOverRangeY = 50.0f;
 
 @end
 
-@interface THKOnlineDesignHouseDemandCell ()<TMUITextViewDelegate>
+@interface THKOnlineDesignHouseDemandCell ()<TMUITextViewDelegate,THKSwipVoiceButtonDelegate>
 
 @property (nonatomic, strong) TMUITextView *textView;
 
@@ -129,9 +121,11 @@ static CGFloat const kOverRangeY = 50.0f;
     }
 }
 
-- (void)upswipeCancelRecordVoice:(UIButton *)btn{
-    if ([self.delegate respondsToSelector:@selector(upswipeCancelRecordVoice:)]) {
-        [self.delegate upswipeCancelRecordVoice:btn];
+- (void)upswipeCancelRecordVoice:(THKSwipVoiceButton *)btn{
+    if (btn.offset.y < -kOffsetY) {
+        if ([self.delegate respondsToSelector:@selector(upswipeCancelRecordVoice:)]) {
+            [self.delegate upswipeCancelRecordVoice:btn];
+        }
     }
 }
 
@@ -155,6 +149,12 @@ static CGFloat const kOverRangeY = 50.0f;
 
 
 #pragma mark - Delegate
+
+- (void)swipVoiceButtonOffset:(CGPoint)offset{
+//    if (offset.y < -kOffsetY) {
+//        [self upswipeCancelRecordVoice:self.recordBtn];
+//    }
+}
 
 - (void)textViewDidChange:(TMUITextView *)textView{
     if ([self.delegate respondsToSelector:@selector(demandInput:text:heightChange:height:indexPath:)]) {
@@ -240,6 +240,7 @@ static CGFloat const kOverRangeY = 50.0f;
         _recordBtn.tmui_text = @"按住说话";
         _recordBtn.tmui_image = UIImageMake(@"od_record_black");
         _recordBtn.spacingBetweenImageAndTitle = 6;
+        _recordBtn.delegate = self;
         
         [_recordBtn addTarget:self action:@selector(recordBtnTouchDown:) forControlEvents:UIControlEventTouchDown]; //开始录音
         [_recordBtn addTarget:self action:@selector(recordBtnTouchUp:) forControlEvents:UIControlEventTouchUpInside]; //录音结束

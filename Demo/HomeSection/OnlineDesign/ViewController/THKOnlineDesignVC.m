@@ -58,7 +58,9 @@ static CGFloat const kHeaderHeight = 100;
         @strongify(self);
         [[YYWebImageManager sharedManager] requestImageWithURL:[NSURL URLWithString:x] options:0 progress:nil transform:nil completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
             if (image) {
-                self.bgImgV.image = image;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.bgImgV.image = image;
+                });
             }else{
                 NSLog(@"%@",error);
             }
@@ -141,6 +143,20 @@ static CGFloat const kHeaderHeight = 100;
         // 不能使用刷新，触发刷新会清除textView
 //        [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
     }];
+}
+
+- (void)cancelRecordVoice:(UIButton *)btn{
+    
+}
+
+- (void)upswipeCancelRecordVoice:(UIButton *)btn{
+    [[THKRecordTool sharedInstance] deleteRecording];
+    
+    [self stopRecordAnimation];
+}
+
+- (void)downSwipeContinueRecordVoice:(UIButton *)btn{
+    
 }
 
 - (void)demandInput:(TMUITextView *)view text:(NSString *)text heightChange:(BOOL)heightChange height:(CGFloat)height indexPath:(NSIndexPath *)indexPath{
