@@ -64,7 +64,7 @@
     [super setSelected:selected];
     
     if (selected) {
-        self.containerView.backgroundColor = UIColorMain;
+        self.containerView.backgroundColor = UIColorGreen;
         self.titleLbl.textColor = UIColorWhite;
         self.titleLbl.font = UIFontMedium(14);
         self.numImgV.image = [UIImage imageNamed:[NSString stringWithFormat:@"dec_todo_%02ld",(long)self.indexPath.item + 1]];

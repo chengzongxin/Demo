@@ -4109,7 +4109,7 @@
 					"-framework",
 					"\"YYKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.czx.test1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-ambiguous-macro";

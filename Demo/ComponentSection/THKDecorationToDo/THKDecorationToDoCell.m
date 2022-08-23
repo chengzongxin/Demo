@@ -237,7 +237,7 @@
 - (UILabel *)strategyLbl{
     if (!_strategyLbl) {
         _strategyLbl = [[UILabel alloc] init];
-        _strategyLbl.textColor = UIColorMain;
+        _strategyLbl.textColor = UIColorGreen;
         _strategyLbl.font = UIFont(14);
         @weakify(self);
         [_strategyLbl tmui_addSingerTapWithBlock:^{
@@ -253,7 +253,7 @@
 - (UILabel *)serviceLbl{
     if (!_serviceLbl) {
         _serviceLbl = [[UILabel alloc] init];
-        _serviceLbl.textColor = UIColorMain;
+        _serviceLbl.textColor = UIColorGreen;
         _serviceLbl.font = UIFont(14);
         @weakify(self);
         [_serviceLbl tmui_addSingerTapWithBlock:^{
