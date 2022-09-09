@@ -311,7 +311,8 @@ DEPENDENCIES:
   - YYKit
 
 SPEC REPOS:
-  http://repo.we.com/ios/tspecsrepo.git:
+  "git@repo.we.com:ios/tspecsrepo.git":
+    - Lottie
     - TMEmptyView
     - TMToast
   https://github.com/CocoaPods/Specs.git:
@@ -323,8 +324,6 @@ SPEC REPOS:
     - MJRefresh
     - ReactiveObjC
     - YYKit
-  "ssh://joe.cheng@192.168.55.30:29418/ios/tspecsrepo.git":
-    - Lottie
 
 EXTERNAL SOURCES:
   TMUIKit:
@@ -344,11 +343,11 @@ SPEC CHECKSUMS:
   MJExtension: 21c5f6f8c4d5d8844b7ae8fbae08fed0b501f961
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
-  TMEmptyView: e3cd62eb43561dfece7636abd236b19aae85b21a
-  TMToast: be53d37df3e272beb0c94217e36243fd99000671
+  TMEmptyView: 8b412988dff4645b0cccab14bc81c1d0f3624eab
+  TMToast: fc27b1e26653252ba220e2c208dbb73ac5abb786
   TMUIKit: 146adc821ea4e407e8255b44c6e302e27a70c0df
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
 PODFILE CHECKSUM: c262b4eaeda70db910a20aa7cabcc2daebdfe035
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.10.0

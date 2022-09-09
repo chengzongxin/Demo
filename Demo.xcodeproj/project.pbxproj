@@ -18,6 +18,9 @@
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
 		160981D226D76ED800E1364F /* THKDiaryBookCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */; };
 		160981E126D7A16500E1364F /* THKDiaryCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981E026D7A16500E1364F /* THKDiaryCircleView.m */; };
+		161376F628CAF1180015E378 /* THKAssignFinishWeChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 161376F528CAF1180015E378 /* THKAssignFinishWeChatView.m */; };
+		161376F928CB08980015E378 /* assign_finish_wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 161376F728CB08980015E378 /* assign_finish_wechat@2x.png */; };
+		161376FA28CB08980015E378 /* assign_finish_wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 161376F828CB08980015E378 /* assign_finish_wechat@3x.png */; };
 		16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */; };
 		16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AAD2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m */; };
 		16192AB62692DC4500967C73 /* QuickMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AB52692DC4500967C73 /* QuickMethod.m */; };
@@ -485,6 +488,10 @@
 		160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCellHeaderView.m; sourceTree = "<group>"; };
 		160981DF26D7A16500E1364F /* THKDiaryCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryCircleView.h; sourceTree = "<group>"; };
 		160981E026D7A16500E1364F /* THKDiaryCircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryCircleView.m; sourceTree = "<group>"; };
+		161376F428CAF1180015E378 /* THKAssignFinishWeChatView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKAssignFinishWeChatView.h; sourceTree = "<group>"; };
+		161376F528CAF1180015E378 /* THKAssignFinishWeChatView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKAssignFinishWeChatView.m; sourceTree = "<group>"; };
+		161376F728CB08980015E378 /* assign_finish_wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assign_finish_wechat@2x.png"; sourceTree = "<group>"; };
+		161376F828CB08980015E378 /* assign_finish_wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assign_finish_wechat@3x.png"; sourceTree = "<group>"; };
 		16192AA22692DB6300967C73 /* TSearchContentHighlightKeyWordsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchContentHighlightKeyWordsDefine.h; sourceTree = "<group>"; };
 		16192AA72692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStylesCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStylesCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
@@ -2844,6 +2851,10 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				161376F428CAF1180015E378 /* THKAssignFinishWeChatView.h */,
+				161376F528CAF1180015E378 /* THKAssignFinishWeChatView.m */,
+				161376F728CB08980015E378 /* assign_finish_wechat@2x.png */,
+				161376F828CB08980015E378 /* assign_finish_wechat@3x.png */,
 				16B2E6C928A490D500D385B6 /* OnlineDesignDispatch */,
 			);
 			path = HomeSection;
@@ -3326,6 +3337,7 @@
 				1685A676289120DC0032E474 /* dec_todo_04@2x.png in Resources */,
 				1685A67B289120DC0032E474 /* dec_todo_04@3x.png in Resources */,
 				16B3EA5428AA25EF00B3C791 /* od_house_search_icon@2x.png in Resources */,
+				161376FA28CB08980015E378 /* assign_finish_wechat@3x.png in Resources */,
 				1685A661289120DC0032E474 /* dec_todo_headbg@3x.png in Resources */,
 				16B3EA5928AA25EF00B3C791 /* 关闭@2x.png in Resources */,
 				16FE9D99277D92260085CC07 /* diary_combo_num_4@3x.png in Resources */,
@@ -3377,6 +3389,7 @@
 				16B3EA3628AA1CE300B3C791 /* od_record_white@2x.png in Resources */,
 				16FE9D94277D92260085CC07 /* diary_combo_num_0@3x.png in Resources */,
 				1685A67C289120DC0032E474 /* dec_todo_01_black@2x.png in Resources */,
+				161376F928CB08980015E378 /* assign_finish_wechat@2x.png in Resources */,
 				1685A677289120DC0032E474 /* dec_todo_close@3x.png in Resources */,
 				16B3EA5A28AA25EF00B3C791 /* 加号绿上传户型@3x.png in Resources */,
 				1685A663289120DC0032E474 /* dec_todo_02_black@2x.png in Resources */,
@@ -3838,6 +3851,7 @@
 				1689DECF27449F4D0073BA68 /* DynamicTabVM.m in Sources */,
 				16611AB52696870F0089E41B /* UIView+Godeye.m in Sources */,
 				16611B61269692D20089E41B /* THKMaterialGoodsGrassVM.m in Sources */,
+				161376F628CAF1180015E378 /* THKAssignFinishWeChatView.m in Sources */,
 				16867A162692D76C00650023 /* TMCardComponentDataInfoObjects.m in Sources */,
 				1689DE90274498280073BA68 /* THKCompanyDetailTabRequest.m in Sources */,
 				16212FDF28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m in Sources */,
