@@ -6,10 +6,12 @@
 //
 
 #import "THKResponse.h"
-
+#import "THKHomeQueryCardModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKHomeQueryCardResponse : THKResponse
+
+@property (nonatomic, strong) THKHomeQueryCardModel *data;
 
 @end
 

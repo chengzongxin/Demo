@@ -97,6 +97,7 @@
 		16529F692745ED09002A3B65 /* DynamicTabLevelVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16529F682745ED09002A3B65 /* DynamicTabLevelVM.m */; };
 		16529F6C2745F220002A3B65 /* DynamicTabDemoList.m in Sources */ = {isa = PBXBuildFile; fileRef = 16529F6B2745F220002A3B65 /* DynamicTabDemoList.m */; };
 		1656463D279E8B1A005845BF /* Tab2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1656463C279E8B1A005845BF /* Tab2ViewController.m */; };
+		1658395D28D336E80030F832 /* THKHomeQueryCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1658395C28D336E80030F832 /* THKHomeQueryCardModel.m */; };
 		165CCBD1278E66DA00141EC0 /* THKDynamicTabsWrapperScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 165CCBC1278E66DA00141EC0 /* THKDynamicTabsWrapperScrollView.m */; };
 		165CCBD2278E66DA00141EC0 /* THKDynamicTabsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 165CCBC2278E66DA00141EC0 /* THKDynamicTabsViewModel.m */; };
 		165CCBD3278E66DA00141EC0 /* THKDynamicTabsPageVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 165CCBC3278E66DA00141EC0 /* THKDynamicTabsPageVM.m */; };
@@ -433,6 +434,7 @@
 		16FE858A28D30D15000AC352 /* THKHomeEditCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858928D30D15000AC352 /* THKHomeEditCardRequest.m */; };
 		16FE858D28D30D1E000AC352 /* THKHomeEditCardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858C28D30D1E000AC352 /* THKHomeEditCardResponse.m */; };
 		16FE859728D31F5B000AC352 /* THKHouseCardConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE859628D31F5B000AC352 /* THKHouseCardConfigModel.m */; };
+		16FE859A28D32D5B000AC352 /* THKMyHomeDesignDemandsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE859928D32D5B000AC352 /* THKMyHomeDesignDemandsModel.m */; };
 		16FE9D81277D916A0085CC07 /* THKComboView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE9D80277D916A0085CC07 /* THKComboView.m */; };
 		16FE9D84277D91900085CC07 /* THKComboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE9D83277D91900085CC07 /* THKComboViewController.m */; };
 		16FE9D90277D92260085CC07 /* diary_combo_num_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FE9D85277D92240085CC07 /* diary_combo_num_1@3x.png */; };
@@ -658,6 +660,8 @@
 		16529F6B2745F220002A3B65 /* DynamicTabDemoList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DynamicTabDemoList.m; sourceTree = "<group>"; };
 		1656463B279E8B1A005845BF /* Tab2ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tab2ViewController.h; sourceTree = "<group>"; };
 		1656463C279E8B1A005845BF /* Tab2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tab2ViewController.m; sourceTree = "<group>"; };
+		1658395B28D336E80030F832 /* THKHomeQueryCardModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHomeQueryCardModel.h; sourceTree = "<group>"; };
+		1658395C28D336E80030F832 /* THKHomeQueryCardModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHomeQueryCardModel.m; sourceTree = "<group>"; };
 		165CCBC0278E66DA00141EC0 /* THKDynamicTabsScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKDynamicTabsScrollView.h; sourceTree = "<group>"; };
 		165CCBC1278E66DA00141EC0 /* THKDynamicTabsWrapperScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDynamicTabsWrapperScrollView.m; sourceTree = "<group>"; };
 		165CCBC2278E66DA00141EC0 /* THKDynamicTabsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THKDynamicTabsViewModel.m; sourceTree = "<group>"; };
@@ -1292,6 +1296,8 @@
 		16FE858C28D30D1E000AC352 /* THKHomeEditCardResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHomeEditCardResponse.m; sourceTree = "<group>"; };
 		16FE859528D31F5B000AC352 /* THKHouseCardConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHouseCardConfigModel.h; sourceTree = "<group>"; };
 		16FE859628D31F5B000AC352 /* THKHouseCardConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHouseCardConfigModel.m; sourceTree = "<group>"; };
+		16FE859828D32D5B000AC352 /* THKMyHomeDesignDemandsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsModel.h; sourceTree = "<group>"; };
+		16FE859928D32D5B000AC352 /* THKMyHomeDesignDemandsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsModel.m; sourceTree = "<group>"; };
 		16FE9D7F277D916A0085CC07 /* THKComboView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKComboView.h; sourceTree = "<group>"; };
 		16FE9D80277D916A0085CC07 /* THKComboView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKComboView.m; sourceTree = "<group>"; };
 		16FE9D82277D91900085CC07 /* THKComboViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKComboViewController.h; sourceTree = "<group>"; };
@@ -3224,8 +3230,12 @@
 		16FE859428D31F3C000AC352 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				16FE859828D32D5B000AC352 /* THKMyHomeDesignDemandsModel.h */,
+				16FE859928D32D5B000AC352 /* THKMyHomeDesignDemandsModel.m */,
 				16FE859528D31F5B000AC352 /* THKHouseCardConfigModel.h */,
 				16FE859628D31F5B000AC352 /* THKHouseCardConfigModel.m */,
+				1658395B28D336E80030F832 /* THKHomeQueryCardModel.h */,
+				1658395C28D336E80030F832 /* THKHomeQueryCardModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3677,6 +3687,7 @@
 				16FE9D84277D91900085CC07 /* THKComboViewController.m in Sources */,
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				16611AC62696870F0089E41B /* GEScrollViewExposeManger.m in Sources */,
+				16FE859A28D32D5B000AC352 /* THKMyHomeDesignDemandsModel.m in Sources */,
 				16A96200274F72A1002B6C89 /* THKSelectMaterialConst.m in Sources */,
 				1630D98B274DD7D0009A04FA /* THKAvatarViewModel.m in Sources */,
 				16E5C4B42682DE4B0024BA20 /* THKResponse.m in Sources */,
@@ -3951,6 +3962,7 @@
 				16B1F527275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m in Sources */,
 				16867A342692D9B200650023 /* TRuntimeHelper.m in Sources */,
 				16F516C326D4F964002500F7 /* THKDiaryBookCell.m in Sources */,
+				1658395D28D336E80030F832 /* THKHomeQueryCardModel.m in Sources */,
 				16E5C5022682E5920024BA20 /* TSimpleDataObject.m in Sources */,
 				16192B2E2692E13E00967C73 /* THKMoveCardInteractiveTransition.m in Sources */,
 				16611AD2269688C20089E41B /* TUUIDGenerator.m in Sources */,

@@ -13,6 +13,10 @@
 
 @property (nonatomic, strong) UITextField *textField;
 
+
+@property (nonatomic, strong) THKMyHomeDesignDemandsModel *model;
+
+
 @end
 
 @implementation THKMyHomeDesignDemandsCell
@@ -49,6 +53,14 @@
     }];
 }
 
+
+- (void)bindWithModel:(THKMyHomeDesignDemandsModel *)model{
+    self.model = model;
+    
+    self.titleLbl.text = model.title;
+    self.textField.text = model.content;
+}
+
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
@@ -63,7 +75,7 @@
     if (!_textField) {
         _textField = [[UITextField alloc] init];
         _textField.font = UIFont(18);
-        _textField.placeholder = @"请输入小区名称";
+        _textField.placeholder = @"请输入";
         [_textField tmui_setPlaceholderColor:UIColorPlaceholder];
     }
     return _textField;

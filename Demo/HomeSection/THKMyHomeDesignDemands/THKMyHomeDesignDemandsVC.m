@@ -8,13 +8,7 @@
 #import "THKMyHomeDesignDemandsVC.h"
 #import "THKMyHomeDesignDemandsCell.h"
 
-//typedef enum : NSUInteger {
-//    <#MyEnumValueA#>,
-//    <#MyEnumValueB#>,
-//    <#MyEnumValueC#>,
-//} <#MyEnum#>;
-
-@interface THKMyHomeDesignDemandsVC () <UITableViewDelegate,UITableViewDataSource>
+@interface THKMyHomeDesignDemandsVC () <UITableViewDelegate,UITableViewDataSource,THKMyHomeDesignDemandsCellDelegate>
 
 @property (nonatomic, strong) THKMyHomeDesignDemandsVM *viewModel;
 
@@ -34,25 +28,30 @@
 - (void)bindViewModel{
     [super bindViewModel];
     
-    
-    [self.viewModel.configCommand.nextSignal subscribeNext:^(id  _Nullable x) {
-            
+    @weakify(self);
+    [[RACObserve(self.viewModel, cellModels) ignore:nil] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.tableView reloadData];
     }];
     
-    [self.viewModel.queryCommand.nextSignal subscribeNext:^(id  _Nullable x) {
-            
+    UIButton *btn = [UIButton tmui_button];
+    btn.tmui_text = @"commit";
+    btn.backgroundColor = UIColorGreen;
+    btn.frame = CGRectMake(20, 500, TMUI_SCREEN_WIDTH - 40, 44);
+    [self.view addSubview:btn];
+    [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        @strongify(self);
+        [self.viewModel.editCommand execute:nil];
     }];
     
-    [self.viewModel.editCommand.nextSignal subscribeNext:^(id  _Nullable x) {
-            
-    }];
     
-    [self.viewModel.configCommand execute:nil];
-    [self.viewModel.queryCommand execute:nil];
-    [self.viewModel.editCommand execute:nil];
 }
 
 
+#pragma mark - Actions
+- (void)editCell:(THKMyHomeDesignDemandsCell *)cell type:(THKMyHomeDesignDemandsModelType)type data:(id)data{
+    [self.viewModel.editCellCommand execute:RACTuplePack(cell,@(type),data)];
+}
 
 #pragma mark UITableViewDelegate UITableViewDataSource
 
@@ -61,11 +60,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.viewModel.cellModels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     THKMyHomeDesignDemandsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKMyHomeDesignDemandsCell.class) forIndexPath:indexPath];
+    [cell bindWithModel:self.viewModel.cellModels[indexPath.row]];
+    cell.delegate = self;
     return cell;
 }
 
