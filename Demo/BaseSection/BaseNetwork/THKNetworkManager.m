@@ -169,18 +169,18 @@
 //    [[THKAppGroupHandler shareInstane] syncFirstId:[GEEnvironmentParameter defaultParameter].first_id];
     
     ///  开发
-    [TRequestParameter sharedParameter].accountId = 11277046;//
+    [TRequestParameter sharedParameter].accountId = 172176637;//
     [TRequestParameter sharedParameter].first_id = @"2CC5559F-EDC1-4F2A-8192-36BAAECF573C";
     [TRequestParameter sharedParameter].isnew = 0;
     // 用户id
     [THKBaseNetworkManager sharedManager].userIdBlock = ^NSString * _Nullable{
-        return [NSString stringWithFormat:@"%d", 172175695];
+        return [NSString stringWithFormat:@"%d", 172176637];
 //        return [NSString stringWithFormat:@"%d", 172175695 - (int)arc4random()%10000];
     };
     
     // token
     [THKBaseNetworkManager sharedManager].tokenBlock = ^NSString * _Nullable{
-        return @"vBM5Pe1cQUgQyLkMSR8Dm0sXQoiAESCZqMLkoALijXnKgrH7GA6kFz5z5t6dROFx2iV-gTkxzCQaXuh-_wGYD1wQivw3yrR3WkSSR3QXtVvxRGJw9eNOk5pPc6CDHaFA";
+        return @"vBM5Pe1cQUgQyLkMSR8DmzTzSLWPvbmJQN7ku_zUtE6HYUEnU9En9bQ2iuBdwzpXzRJDwgJ5OuGYAEHK1hl1yAMjct-18ytc1xZIyByuXxbxRGJw9eNOk5pPc6CDHaFA";
     };
     
     

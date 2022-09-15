@@ -18,9 +18,6 @@
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
 		160981D226D76ED800E1364F /* THKDiaryBookCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */; };
 		160981E126D7A16500E1364F /* THKDiaryCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981E026D7A16500E1364F /* THKDiaryCircleView.m */; };
-		161376F628CAF1180015E378 /* THKAssignFinishWeChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 161376F528CAF1180015E378 /* THKAssignFinishWeChatView.m */; };
-		161376F928CB08980015E378 /* assign_finish_wechat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 161376F728CB08980015E378 /* assign_finish_wechat@2x.png */; };
-		161376FA28CB08980015E378 /* assign_finish_wechat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 161376F828CB08980015E378 /* assign_finish_wechat@3x.png */; };
 		16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */; };
 		16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AAD2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m */; };
 		16192AB62692DC4500967C73 /* QuickMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AB52692DC4500967C73 /* QuickMethod.m */; };
@@ -426,6 +423,16 @@
 		16F84A5826E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A5726E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m */; };
 		16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A6626E5AEDF00192B0A /* THKFocusButtonView.m */; };
 		16F84A7926E5B40E00192B0A /* UIView+THKDiaryAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A7826E5B40E00192B0A /* UIView+THKDiaryAnimation.m */; };
+		16FE857328D303B1000AC352 /* THKMyHomeDesignDemandsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857228D303B1000AC352 /* THKMyHomeDesignDemandsVC.m */; };
+		16FE857628D303BA000AC352 /* THKMyHomeDesignDemandsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857528D303BA000AC352 /* THKMyHomeDesignDemandsVM.m */; };
+		16FE857928D30829000AC352 /* THKMyHomeDesignDemandsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857828D30829000AC352 /* THKMyHomeDesignDemandsCell.m */; };
+		16FE857E28D30C7E000AC352 /* THKHouseCardConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857D28D30C7E000AC352 /* THKHouseCardConfigRequest.m */; };
+		16FE858128D30C88000AC352 /* THKHouseCardConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858028D30C88000AC352 /* THKHouseCardConfigResponse.m */; };
+		16FE858428D30CEE000AC352 /* THKHomeQueryCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858328D30CEE000AC352 /* THKHomeQueryCardRequest.m */; };
+		16FE858728D30CFA000AC352 /* THKHomeQueryCardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858628D30CFA000AC352 /* THKHomeQueryCardResponse.m */; };
+		16FE858A28D30D15000AC352 /* THKHomeEditCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858928D30D15000AC352 /* THKHomeEditCardRequest.m */; };
+		16FE858D28D30D1E000AC352 /* THKHomeEditCardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858C28D30D1E000AC352 /* THKHomeEditCardResponse.m */; };
+		16FE859728D31F5B000AC352 /* THKHouseCardConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE859628D31F5B000AC352 /* THKHouseCardConfigModel.m */; };
 		16FE9D81277D916A0085CC07 /* THKComboView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE9D80277D916A0085CC07 /* THKComboView.m */; };
 		16FE9D84277D91900085CC07 /* THKComboViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE9D83277D91900085CC07 /* THKComboViewController.m */; };
 		16FE9D90277D92260085CC07 /* diary_combo_num_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FE9D85277D92240085CC07 /* diary_combo_num_1@3x.png */; };
@@ -488,10 +495,6 @@
 		160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCellHeaderView.m; sourceTree = "<group>"; };
 		160981DF26D7A16500E1364F /* THKDiaryCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryCircleView.h; sourceTree = "<group>"; };
 		160981E026D7A16500E1364F /* THKDiaryCircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryCircleView.m; sourceTree = "<group>"; };
-		161376F428CAF1180015E378 /* THKAssignFinishWeChatView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKAssignFinishWeChatView.h; sourceTree = "<group>"; };
-		161376F528CAF1180015E378 /* THKAssignFinishWeChatView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKAssignFinishWeChatView.m; sourceTree = "<group>"; };
-		161376F728CB08980015E378 /* assign_finish_wechat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assign_finish_wechat@2x.png"; sourceTree = "<group>"; };
-		161376F828CB08980015E378 /* assign_finish_wechat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "assign_finish_wechat@3x.png"; sourceTree = "<group>"; };
 		16192AA22692DB6300967C73 /* TSearchContentHighlightKeyWordsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchContentHighlightKeyWordsDefine.h; sourceTree = "<group>"; };
 		16192AA72692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiStylesCollectionViewWaterfallLayout.h; sourceTree = "<group>"; };
 		16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiStylesCollectionViewWaterfallLayout.m; sourceTree = "<group>"; };
@@ -1269,6 +1272,26 @@
 		16F84A6626E5AEDF00192B0A /* THKFocusButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKFocusButtonView.m; sourceTree = "<group>"; };
 		16F84A7726E5B40E00192B0A /* UIView+THKDiaryAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+THKDiaryAnimation.h"; sourceTree = "<group>"; };
 		16F84A7826E5B40E00192B0A /* UIView+THKDiaryAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+THKDiaryAnimation.m"; sourceTree = "<group>"; };
+		16FE857128D303B1000AC352 /* THKMyHomeDesignDemandsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsVC.h; sourceTree = "<group>"; };
+		16FE857228D303B1000AC352 /* THKMyHomeDesignDemandsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsVC.m; sourceTree = "<group>"; };
+		16FE857428D303BA000AC352 /* THKMyHomeDesignDemandsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsVM.h; sourceTree = "<group>"; };
+		16FE857528D303BA000AC352 /* THKMyHomeDesignDemandsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsVM.m; sourceTree = "<group>"; };
+		16FE857728D30829000AC352 /* THKMyHomeDesignDemandsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsCell.h; sourceTree = "<group>"; };
+		16FE857828D30829000AC352 /* THKMyHomeDesignDemandsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsCell.m; sourceTree = "<group>"; };
+		16FE857C28D30C7E000AC352 /* THKHouseCardConfigRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHouseCardConfigRequest.h; sourceTree = "<group>"; };
+		16FE857D28D30C7E000AC352 /* THKHouseCardConfigRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHouseCardConfigRequest.m; sourceTree = "<group>"; };
+		16FE857F28D30C88000AC352 /* THKHouseCardConfigResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHouseCardConfigResponse.h; sourceTree = "<group>"; };
+		16FE858028D30C88000AC352 /* THKHouseCardConfigResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHouseCardConfigResponse.m; sourceTree = "<group>"; };
+		16FE858228D30CEE000AC352 /* THKHomeQueryCardRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHomeQueryCardRequest.h; sourceTree = "<group>"; };
+		16FE858328D30CEE000AC352 /* THKHomeQueryCardRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHomeQueryCardRequest.m; sourceTree = "<group>"; };
+		16FE858528D30CFA000AC352 /* THKHomeQueryCardResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHomeQueryCardResponse.h; sourceTree = "<group>"; };
+		16FE858628D30CFA000AC352 /* THKHomeQueryCardResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHomeQueryCardResponse.m; sourceTree = "<group>"; };
+		16FE858828D30D15000AC352 /* THKHomeEditCardRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHomeEditCardRequest.h; sourceTree = "<group>"; };
+		16FE858928D30D15000AC352 /* THKHomeEditCardRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHomeEditCardRequest.m; sourceTree = "<group>"; };
+		16FE858B28D30D1E000AC352 /* THKHomeEditCardResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHomeEditCardResponse.h; sourceTree = "<group>"; };
+		16FE858C28D30D1E000AC352 /* THKHomeEditCardResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHomeEditCardResponse.m; sourceTree = "<group>"; };
+		16FE859528D31F5B000AC352 /* THKHouseCardConfigModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHouseCardConfigModel.h; sourceTree = "<group>"; };
+		16FE859628D31F5B000AC352 /* THKHouseCardConfigModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHouseCardConfigModel.m; sourceTree = "<group>"; };
 		16FE9D7F277D916A0085CC07 /* THKComboView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKComboView.h; sourceTree = "<group>"; };
 		16FE9D80277D916A0085CC07 /* THKComboView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKComboView.m; sourceTree = "<group>"; };
 		16FE9D82277D91900085CC07 /* THKComboViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKComboViewController.h; sourceTree = "<group>"; };
@@ -2851,10 +2874,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				161376F428CAF1180015E378 /* THKAssignFinishWeChatView.h */,
-				161376F528CAF1180015E378 /* THKAssignFinishWeChatView.m */,
-				161376F728CB08980015E378 /* assign_finish_wechat@2x.png */,
-				161376F828CB08980015E378 /* assign_finish_wechat@3x.png */,
+				16FE857A28D30BFB000AC352 /* THKMyHomeDesignDemands */,
 				16B2E6C928A490D500D385B6 /* OnlineDesignDispatch */,
 			);
 			path = HomeSection;
@@ -3167,6 +3187,49 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		16FE857A28D30BFB000AC352 /* THKMyHomeDesignDemands */ = {
+			isa = PBXGroup;
+			children = (
+				16FE857128D303B1000AC352 /* THKMyHomeDesignDemandsVC.h */,
+				16FE857228D303B1000AC352 /* THKMyHomeDesignDemandsVC.m */,
+				16FE857428D303BA000AC352 /* THKMyHomeDesignDemandsVM.h */,
+				16FE857528D303BA000AC352 /* THKMyHomeDesignDemandsVM.m */,
+				16FE857728D30829000AC352 /* THKMyHomeDesignDemandsCell.h */,
+				16FE857828D30829000AC352 /* THKMyHomeDesignDemandsCell.m */,
+				16FE859428D31F3C000AC352 /* Model */,
+				16FE857B28D30C2F000AC352 /* Request */,
+			);
+			path = THKMyHomeDesignDemands;
+			sourceTree = "<group>";
+		};
+		16FE857B28D30C2F000AC352 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				16FE857C28D30C7E000AC352 /* THKHouseCardConfigRequest.h */,
+				16FE857D28D30C7E000AC352 /* THKHouseCardConfigRequest.m */,
+				16FE857F28D30C88000AC352 /* THKHouseCardConfigResponse.h */,
+				16FE858028D30C88000AC352 /* THKHouseCardConfigResponse.m */,
+				16FE858228D30CEE000AC352 /* THKHomeQueryCardRequest.h */,
+				16FE858328D30CEE000AC352 /* THKHomeQueryCardRequest.m */,
+				16FE858528D30CFA000AC352 /* THKHomeQueryCardResponse.h */,
+				16FE858628D30CFA000AC352 /* THKHomeQueryCardResponse.m */,
+				16FE858828D30D15000AC352 /* THKHomeEditCardRequest.h */,
+				16FE858928D30D15000AC352 /* THKHomeEditCardRequest.m */,
+				16FE858B28D30D1E000AC352 /* THKHomeEditCardResponse.h */,
+				16FE858C28D30D1E000AC352 /* THKHomeEditCardResponse.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		16FE859428D31F3C000AC352 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16FE859528D31F5B000AC352 /* THKHouseCardConfigModel.h */,
+				16FE859628D31F5B000AC352 /* THKHouseCardConfigModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		16FE9D7E277D915C0085CC07 /* THKComboView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3337,7 +3400,6 @@
 				1685A676289120DC0032E474 /* dec_todo_04@2x.png in Resources */,
 				1685A67B289120DC0032E474 /* dec_todo_04@3x.png in Resources */,
 				16B3EA5428AA25EF00B3C791 /* od_house_search_icon@2x.png in Resources */,
-				161376FA28CB08980015E378 /* assign_finish_wechat@3x.png in Resources */,
 				1685A661289120DC0032E474 /* dec_todo_headbg@3x.png in Resources */,
 				16B3EA5928AA25EF00B3C791 /* 关闭@2x.png in Resources */,
 				16FE9D99277D92260085CC07 /* diary_combo_num_4@3x.png in Resources */,
@@ -3389,7 +3451,6 @@
 				16B3EA3628AA1CE300B3C791 /* od_record_white@2x.png in Resources */,
 				16FE9D94277D92260085CC07 /* diary_combo_num_0@3x.png in Resources */,
 				1685A67C289120DC0032E474 /* dec_todo_01_black@2x.png in Resources */,
-				161376F928CB08980015E378 /* assign_finish_wechat@2x.png in Resources */,
 				1685A677289120DC0032E474 /* dec_todo_close@3x.png in Resources */,
 				16B3EA5A28AA25EF00B3C791 /* 加号绿上传户型@3x.png in Resources */,
 				1685A663289120DC0032E474 /* dec_todo_02_black@2x.png in Resources */,
@@ -3625,6 +3686,7 @@
 				16E5C4D02682DE930024BA20 /* TBTNetworkManager.m in Sources */,
 				1685A683289120DC0032E474 /* THKDecorationUpcomingListRequest.m in Sources */,
 				16192B2A2692E13E00967C73 /* THKDiaryDetailLoadingAnimationView.m in Sources */,
+				16FE857928D30829000AC352 /* THKMyHomeDesignDemandsCell.m in Sources */,
 				1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */,
 				16611B74269692D20089E41B /* THKMaterialHotRankVC.m in Sources */,
 				1672336F2886B8B700901743 /* UIViewController+THKNavigationBar.m in Sources */,
@@ -3702,6 +3764,7 @@
 				16DDC07E274C9424000DAA29 /* THKSelectMaterialHeaderViewModel.m in Sources */,
 				165CCBD6278E66DB00141EC0 /* THKDynamicTabsManager.m in Sources */,
 				16212FC728A747B60079A086 /* THKOnlineDesignSearchAreaVM.m in Sources */,
+				16FE858728D30CFA000AC352 /* THKHomeQueryCardResponse.m in Sources */,
 				16B1F51B275DFFEF00FF18C4 /* THKNewcomerHomeView.m in Sources */,
 				16F0A67028AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m in Sources */,
 				1642AA5126D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m in Sources */,
@@ -3718,6 +3781,7 @@
 				16867A332692D9B200650023 /* TRouterManager.m in Sources */,
 				16192B252692E13E00967C73 /* THKComponentView.m in Sources */,
 				16611B5F269692D20089E41B /* THKMaterialRecommendRankVM.m in Sources */,
+				16FE857E28D30C7E000AC352 /* THKHouseCardConfigRequest.m in Sources */,
 				16F0A67F28ABA48000B0B081 /* THKOnlineDesignSearchAreaResponse.m in Sources */,
 				1689DE93274498290073BA68 /* THKDynamicTabsResponse.m in Sources */,
 				16611AC52696870F0089E41B /* RegistScrollViewProxy.m in Sources */,
@@ -3741,6 +3805,7 @@
 				16DDC09B274CCA56000DAA29 /* THKSelectMaterialHomeVM.m in Sources */,
 				16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */,
 				16611B5E269692D20089E41B /* THKMaterialClassificationVM.m in Sources */,
+				16FE858A28D30D15000AC352 /* THKHomeEditCardRequest.m in Sources */,
 				16B2E6EE28A50E8900D385B6 /* THKOnlineDesignHouseDemandView.m in Sources */,
 				16192B3B2692E13E00967C73 /* UIViewController+PopGestureOfPercentDrivenInteractiveTransition.m in Sources */,
 				166FCBC426D8716700FA83A8 /* THKDiaryBookLastCell.m in Sources */,
@@ -3796,6 +3861,7 @@
 				16F0A67928AB907500B0B081 /* THKOnlineDesignHomeConfigModel.m in Sources */,
 				16E5C50C2682E6F80024BA20 /* NSURLSession+hook_httpdns_urlprotocol_inject.m in Sources */,
 				160981E126D7A16500E1364F /* THKDiaryCircleView.m in Sources */,
+				16FE858128D30C88000AC352 /* THKHouseCardConfigResponse.m in Sources */,
 				1630D98F274DD7F9009A04FA /* THKSelectMaterialCommunicationVM.m in Sources */,
 				16867A112692D76C00650023 /* THKTextTagLabel.m in Sources */,
 				16192B3C2692E13E00967C73 /* THKPushPopBaseTransition.m in Sources */,
@@ -3826,6 +3892,7 @@
 				1642AA4B26D8EE6A00F5FACD /* THKDiaryDirectoryChildVC.m in Sources */,
 				1630D98C274DD7D0009A04FA /* THKAvatarView.m in Sources */,
 				16F84A5826E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m in Sources */,
+				16FE857328D303B1000AC352 /* THKMyHomeDesignDemandsVC.m in Sources */,
 				16B3EA5E28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m in Sources */,
 				16192B4D2692E1B100967C73 /* TRouterManager+Config.m in Sources */,
 				167233712886B8B700901743 /* THKNavigationSearchTitleViewModel.m in Sources */,
@@ -3844,6 +3911,7 @@
 				1685A65D289120DC0032E474 /* THKDecorationToDoHeaderViewModel.m in Sources */,
 				16611AC02696870F0089E41B /* GELoginTracker.m in Sources */,
 				16867A152692D76C00650023 /* TMCardComponentTool.m in Sources */,
+				16FE857628D303BA000AC352 /* THKMyHomeDesignDemandsVM.m in Sources */,
 				16F0A67328AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m in Sources */,
 				16E5C5012682E5920024BA20 /* TRequestParameter.m in Sources */,
 				16611AB32696870F0089E41B /* UITabBarController+Godeye.m in Sources */,
@@ -3851,7 +3919,6 @@
 				1689DECF27449F4D0073BA68 /* DynamicTabVM.m in Sources */,
 				16611AB52696870F0089E41B /* UIView+Godeye.m in Sources */,
 				16611B61269692D20089E41B /* THKMaterialGoodsGrassVM.m in Sources */,
-				161376F628CAF1180015E378 /* THKAssignFinishWeChatView.m in Sources */,
 				16867A162692D76C00650023 /* TMCardComponentDataInfoObjects.m in Sources */,
 				1689DE90274498280073BA68 /* THKCompanyDetailTabRequest.m in Sources */,
 				16212FDF28A783830079A086 /* THKOnlineDesignSearchAreaListCell.m in Sources */,
@@ -3860,6 +3927,7 @@
 				16192B362692E13E00967C73 /* THKTransitionAnimation.m in Sources */,
 				16867A132692D76C00650023 /* TMCardComponentNotSupportCell.m in Sources */,
 				16212FE228A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m in Sources */,
+				16FE858428D30CEE000AC352 /* THKHomeQueryCardRequest.m in Sources */,
 				16B2E6EB28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m in Sources */,
 				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
@@ -3877,6 +3945,8 @@
 				16F0A66728AB3DDA00B0B081 /* THKOnlineDesignUploadHouseTypeView.m in Sources */,
 				16867A072692D76C00650023 /* TMCardComponentDesignMasterStyleCell.m in Sources */,
 				165CCBD2278E66DA00141EC0 /* THKDynamicTabsViewModel.m in Sources */,
+				16FE858D28D30D1E000AC352 /* THKHomeEditCardResponse.m in Sources */,
+				16FE859728D31F5B000AC352 /* THKHouseCardConfigModel.m in Sources */,
 				16212FDC28A77B090079A086 /* THKOnlineDesignSearchHouseListView.m in Sources */,
 				16B1F527275E0C8300FF18C4 /* THKNewcomerHomeSelectStageView.m in Sources */,
 				16867A342692D9B200650023 /* TRuntimeHelper.m in Sources */,

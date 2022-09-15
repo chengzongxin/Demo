@@ -22,16 +22,16 @@
     self = [super init];
     if (self) {
         NSString *uuid =[[[UIDevice currentDevice] identifierForVendor] UUIDString];
-        self.t8t_device_id = uuid ? uuid : @"0";
+        self.t8t_device_id = @"CDF1E9AD-6041-49F6-BC41-C8570A1C9A95";//uuid ? uuid : @"0";
         self.version = @"2.5";
-        self.uid = 172176109;
-        self.to8to_token = @"vBM5Pe1cQUgQyLkMSR8Dm8Qg9OOpHLLSLJbg-qoVY7xZP7moUuqPk0d3eTeAEuEf2ExBtV7tOc1-eP9r5mEJQlwQivw3yrR3WkSSR3QXtVvxRGJw9eNOk5pPc6CDHaFA";
-        self.appversion = @"9.26.0";
+        self.uid = 172176637;
+        self.to8to_token = @"vBM5Pe1cQUgQyLkMSR8DmzTzSLWPvbmJQN7ku_zUtE6HYUEnU9En9bQ2iuBdwzpXzRJDwgJ5OuGYAEHK1hl1yAMjct-18ytc1xZIyByuXxbxRGJw9eNOk5pPc6CDHaFA";
+        self.appversion = @"9.30.1";
         self.systemversion = [[UIDevice currentDevice] systemVersion];
         self.channel = @"appstore";
         self.idfa = @"00000000-0000-0000-0000-000000000000";
         self.appostype = 2;//标识是ios
-        self.deviceModel = [self deviceModel];
+        self.deviceModel = @"iPhone13,4";//[self deviceModel];
     }
     return self;
 }
@@ -98,6 +98,13 @@
 //        [TRequestParameter sharedParameter].cityName  = _cityName;
 //        [THKAppGroupHandler shareInstane].cityId = _cityid;
 //    }
+    
+    
+    dic[@"citySource"] = @(3);
+    
+    // 9.5.1 添加公参 appName
+    dic[@"appName"] = @"to8to-app";
+    
     return dic;
 }
 

@@ -29,7 +29,7 @@
     [GEEnvironmentParameter defaultParameter].app_name = @"to8to_ios";
     [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":[TUUIDGenerator getUUID]}];
     [[THKNetworkManager sharedManager] setupNetwork];
-    [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":@"4298F251-E93C-478E-AA05-B46E47F02BEC"}];
+    [[TRequestParameter sharedParameter] appendDicParameter:@{@"uuid":@"2CC5559F-EDC1-4F2A-8192-36BAAECF573C"}];
     // 域名映射
     [THKIdentityConfigManager.shareInstane loadConfigWithResultBlock:^{
         // lanch app
