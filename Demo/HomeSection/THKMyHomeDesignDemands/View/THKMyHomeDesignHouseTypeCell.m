@@ -76,7 +76,7 @@
 }
 
 + (CGFloat)cellHeightWithModel:(THKMyHomeDesignDemandsModel *)model{
-    return 100;
+    return 84;
 }
 
 - (UILabel *)titleLbl{

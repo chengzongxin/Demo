@@ -98,7 +98,7 @@
         m.type = THKMyHomeDesignDemandsModelType_HouseType;
         m.title = @"房屋信息";
         m.content = data2.communityName;
-        m.contentDesc = [NSString stringWithFormat:@"%@·%@",data2.houseTagName,data2.areaStr];
+        m.contentDesc = [NSString stringWithFormat:@"%@·%@",data2.houseName,data2.areaStr];
         self.dataRequest.communityName = data2.communityName;
         self.dataRequest.houseTag = data2.houseTag;
         self.dataRequest.area = data2.areaStr.integerValue;

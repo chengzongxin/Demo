@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , copy) NSString              * communityName;
 @property (nonatomic , assign) NSInteger              decorateType;
 @property (nonatomic , copy) NSArray <NSString *>              * styleTagArray;
-@property (nonatomic , copy) NSString              * houseTagName;
+@property (nonatomic , copy) NSString              * houseName;
 @property (nonatomic , copy) NSString              * requirementDesc;
 
 /// 来源 0-默认 1-用户手动新增 2-3d
