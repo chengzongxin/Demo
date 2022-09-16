@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol THKMyHomeDesignDemandsCellDelegate <NSObject>
 
-- (void)editCell:(THKMyHomeDesignDemandsBaseCell *)cell type:(THKMyHomeDesignDemandsModelType)type data:(id)data;
+- (void)editCell:(THKMyHomeDesignDemandsBaseCell *)cell type:(THKMyHomeDesignDemandsModelType)type model:(THKMyHomeDesignDemandsModel *)model data:(nullable id)data;
 
 @end
 

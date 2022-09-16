@@ -110,7 +110,8 @@
 
 
 #pragma mark - Actions
-- (void)editCell:(THKMyHomeDesignSelectCell *)cell type:(THKMyHomeDesignDemandsModelType)type data:(id)data{
+- (void)editCell:(THKMyHomeDesignSelectCell *)cell type:(THKMyHomeDesignDemandsModelType)type model:(nonnull THKMyHomeDesignDemandsModel *)model data:(nullable id)data{
+    NSLog(@"%@-%lu-%@",cell,(unsigned long)type,data);
     [self.viewModel.editCellCommand execute:RACTuplePack(cell,@(type),data)];
 }
 

@@ -37,4 +37,8 @@
 
 - (void)setupSubviews{}
 
+@synthesize delegate;
+
+@synthesize model;
+
 @end

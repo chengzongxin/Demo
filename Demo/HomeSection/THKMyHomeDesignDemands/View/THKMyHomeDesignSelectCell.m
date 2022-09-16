@@ -7,7 +7,7 @@
 
 #import "THKMyHomeDesignSelectCell.h"
 
-@interface THKMyHomeDesignSelectCell ()
+@interface THKMyHomeDesignSelectCell ()<UITextFieldDelegate>
 
 @property (nonatomic, strong) UILabel *titleLbl;
 
@@ -37,6 +37,12 @@
     }];
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if ([self.delegate respondsToSelector:@selector(editCell:type:model:data:)]) {
+        [self.delegate editCell:self type:self.model.type model:self.model data:nil];
+    }
+    return NO;
+}
 
 - (void)bindWithModel:(THKMyHomeDesignDemandsModel *)model{
     self.model = model;
@@ -64,8 +70,9 @@
         _textField = [[UITextField alloc] init];
         _textField.textColor = UIColorDark;
         _textField.font = UIFontMedium(16);
-        _textField.placeholder = @"请输入";
+        _textField.placeholder = @"待补充";
         [_textField tmui_setPlaceholderColor:UIColorPlaceholder];
+        _textField.delegate = self;
     }
     return _textField;
 }

@@ -64,6 +64,12 @@
     self.textView.text = model.content;
 }
 
+- (void)textViewDidChange:(TMUITextView *)textView{
+    if ([self.delegate respondsToSelector:@selector(editCell:type:model:data:)]) {
+        [self.delegate editCell:self type:self.model.type model:self.model data:textView.text];
+    }
+}
+
 - (UILabel *)titleLbl{
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
@@ -77,14 +83,15 @@
 - (TMUITextView *)textView{
     if (!_textView) {
         _textView = [[TMUITextView alloc] init];
-        _textView.backgroundColor = UIColorClear;
+        _textView.backgroundColor = UIColorBackgroundLight;
         _textView.delegate = self;
-        _textView.placeholder = @"描述一下我家设计需求，例如学习习惯、个人偏好等，方便设计师更好出设计方案";
+        _textView.placeholder = @"待补充";
         _textView.textContainerInset = UIEdgeInsetsMake(15, 15, 15, 15);
         _textView.placeholderMargins = UIEdgeInsetsMake(-2, 0, 0, 0);
         _textView.font = UIFont(14);
         _textView.placeholderColor = UIColorPlaceholder;
         _textView.maximumTextLength = 500;
+        _textView.cornerRadius = 8;
     }
     return _textView;
 }
