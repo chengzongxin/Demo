@@ -9,7 +9,7 @@
 
 @implementation THKMaterialV3IndexTopTabRequest
 - (NSString *)requestDomain {
-    return kJavaServerC2Domain;
+    return kJavaServerDomain;
 }
 
 - (NSString *)requestUrl {

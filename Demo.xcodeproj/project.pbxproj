@@ -347,6 +347,7 @@
 		16C8F69628D417C70032E7CD /* THKMyHomeDesignRequirementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8F69528D417C70032E7CD /* THKMyHomeDesignRequirementCell.m */; };
 		16C8F69928D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8F69828D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.m */; };
 		16C8F69C28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8F69B28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.m */; };
+		16C8F69F28D481B90032E7CD /* THKhomeSendCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8F69E28D481B90032E7CD /* THKhomeSendCardRequest.m */; };
 		16CEA54628ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA54528ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m */; };
 		16CEA54B28AE0E1400A02A0E /* THKOnlineDesignDistributeAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA54A28AE0E1400A02A0E /* THKOnlineDesignDistributeAnimationView.m */; };
 		16CF07AE28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07AD28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m */; };
@@ -1125,6 +1126,8 @@
 		16C8F69828D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsBaseCell.m; sourceTree = "<group>"; };
 		16C8F69A28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignHouseTypeCell.h; sourceTree = "<group>"; };
 		16C8F69B28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignHouseTypeCell.m; sourceTree = "<group>"; };
+		16C8F69D28D481B90032E7CD /* THKhomeSendCardRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKhomeSendCardRequest.h; sourceTree = "<group>"; };
+		16C8F69E28D481B90032E7CD /* THKhomeSendCardRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKhomeSendCardRequest.m; sourceTree = "<group>"; };
 		16CEA54428ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMEmptyView+THKOnlineDesignEmptyView.h"; sourceTree = "<group>"; };
 		16CEA54528ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TMEmptyView+THKOnlineDesignEmptyView.m"; sourceTree = "<group>"; };
 		16CEA54928AE0E1400A02A0E /* THKOnlineDesignDistributeAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignDistributeAnimationView.h; sourceTree = "<group>"; };
@@ -3256,6 +3259,8 @@
 				16FE858928D30D15000AC352 /* THKHomeEditCardRequest.m */,
 				16FE858B28D30D1E000AC352 /* THKHomeEditCardResponse.h */,
 				16FE858C28D30D1E000AC352 /* THKHomeEditCardResponse.m */,
+				16C8F69D28D481B90032E7CD /* THKhomeSendCardRequest.h */,
+				16C8F69E28D481B90032E7CD /* THKhomeSendCardRequest.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -3929,6 +3934,7 @@
 				16192B352692E13E00967C73 /* UIViewController+THKAnimationTransition.m in Sources */,
 				16E5C4B92682DE4B0024BA20 /* THKCommonPhpRequest.m in Sources */,
 				16B1F524275E001700FF18C4 /* THKNewcomerHomeViewModel.m in Sources */,
+				16C8F69F28D481B90032E7CD /* THKhomeSendCardRequest.m in Sources */,
 				16611AB42696870F0089E41B /* UINavigationController+Godeye.m in Sources */,
 				1685A680289120DC0032E474 /* THKDecorationUpcomingListResponse.m in Sources */,
 				16611AB92696870F0089E41B /* GETrackerModel.m in Sources */,

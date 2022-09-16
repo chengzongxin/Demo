@@ -12,7 +12,7 @@
 
 - (NSString *)requestUrl {
     if (self.badgeType == THKTabBadgeType_Follow) {
-        return [NSString stringWithFormat:@"%@%@/ics/follow/unread", kJavaServerC2Domain, kJavaServerPath];
+        return [NSString stringWithFormat:@"%@%@/ics/follow/unread", kJavaServerDomain, kJavaServerPath];
     }
     return nil;
 }

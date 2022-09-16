@@ -17,7 +17,7 @@
     return @"/gw/app/startUpConfig";
 }
 - (NSString *)requestUrl {
-    return [NSString stringWithFormat:@"%@%@%@",kJavaServerC1Domain,kJavaServerPath,@"/gw/app/startUpConfig"];
+    return [NSString stringWithFormat:@"%@%@%@",kJavaServerDomain,kJavaServerPath,@"/gw/app/startUpConfig"];
 }
 
 - (THKHttpMethod)httpMethod {

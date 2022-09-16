@@ -9,7 +9,7 @@
 
 @implementation THKHouseCardConfigRequest
 - (NSString *)requestDomain {
-    return kJavaServerC2Domain;
+    return kJavaServerDomain;
 }
 
 - (NSString *)requestUrl {

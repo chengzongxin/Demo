@@ -1,19 +1,19 @@
 //
-//  THKOnlineDesignHomeConfigRequest.m
+//  THKhomeSendCardRequest.m
 //  Demo
 //
-//  Created by Joe.cheng on 2022/8/15.
+//  Created by Joe.cheng on 2022/9/16.
 //
 
-#import "THKOnlineDesignHomeConfigRequest.h"
+#import "THKhomeSendCardRequest.h"
 
-@implementation THKOnlineDesignHomeConfigRequest
+@implementation THKhomeSendCardRequest
 - (NSString *)requestDomain {
     return kJavaServerDomain;
 }
 
 - (NSString *)requestUrl {
-    return @"/tls/home/config";
+    return @"/tls/home/send/card";
 }
 
 - (THKHttpMethod)httpMethod {
@@ -25,7 +25,7 @@
 }
 
 - (Class)modelClass {
-    return [THKOnlineDesignHomeConfigResponse class];
+    return [THKResponse class];
 }
 
 @end

@@ -23,9 +23,9 @@
 
 - (NSString *)requestDomain {
     if ([self.wholeCode isEqualToString:kDynamicTabsWholeCodeLocalDiaryChannel]) {
-        return kJavaServerC2Domain;
+        return kJavaServerDomain;
     }
-    return kJavaServerC1Domain;
+    return kJavaServerDomain;
 }
 
 - (NSString *)requestUrl {

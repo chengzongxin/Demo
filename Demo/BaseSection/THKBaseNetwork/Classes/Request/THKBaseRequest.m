@@ -135,7 +135,7 @@ typedef NS_ENUM(NSUInteger, TBTResponseError) {
         }else {
             requestPath = kSheJiBenPath;
         }
-    } else if ([requestDomain isEqualToString:kJavaServerDomain] || [requestDomain isEqualToString:kJavaServerC1Domain] || [requestDomain isEqualToString:kJavaServerC2Domain]) {// Java接口
+    } else if ([requestDomain isEqualToString:kJavaServerDomain]) {// Java接口
         if (requestPath.length > 0) {
             if ([requestPath hasPrefix:@"/"]) {
                 requestPath = [NSString stringWithFormat:@"%@%@", kJavaServerPath, requestPath];
@@ -258,13 +258,19 @@ typedef NS_ENUM(NSUInteger, TBTResponseError) {
     NSString *requestPath;
     
     THKBaseNetworkManager *manager = [THKBaseNetworkManager sharedManager];
-    
+    NSString *appName = @"tbt-app";
+    if (manager.parameters) {
+        NSString *temp = [manager.parameters objectForKey:@"appName"];
+        if (temp && temp.length > 0) {
+            appName = temp;
+        }
+    }
     if (self.needLoginAuthentication && manager.userId.integerValue > 0) {// 用户已登录, 拼接用户ID和Token
         requestPath = [NSString stringWithFormat:@"%@?uid=%@&ticket=%@&source=%@&appName=%@&isChange=%@",
-                       path, manager.userId, manager.token, @"tbt-app", @"tbt-app", @"true"];
+                       path, manager.userId, manager.token, @"tbt-app", appName, @"true"];
     } else {
         requestPath = [NSString stringWithFormat:@"%@?source=%@&appName=%@&isChange=%@",
-                       path, @"tbt-app", @"tbt-app", @"true"];
+                       path, @"tbt-app", appName, @"true"];
     }
     
     return requestPath;
