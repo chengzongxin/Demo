@@ -13,30 +13,12 @@
 
 @property (nonatomic, strong) UITextField *textField;
 
-
 @property (nonatomic, strong) THKMyHomeDesignDemandsModel *model;
 
 
 @end
 
 @implementation THKMyHomeDesignDemandsCell
-
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        [self setupSubviews];
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setupSubviews];
-    }
-    return self;
-}
 
 - (void)setupSubviews{
     [self.contentView addSubview:self.titleLbl];
@@ -65,7 +47,7 @@
     if (!_titleLbl) {
         _titleLbl = [[UILabel alloc] init];
         _titleLbl.textColor = UIColorDark;
-        _titleLbl.font = UIFontMedium(14);
+        _titleLbl.font = UIFont(16);
         _titleLbl.text = @"小区名称";
     }
     return _titleLbl;
@@ -74,7 +56,8 @@
 - (UITextField *)textField{
     if (!_textField) {
         _textField = [[UITextField alloc] init];
-        _textField.font = UIFont(18);
+        _textField.textColor = UIColorDark;
+        _textField.font = UIFontMedium(16);
         _textField.placeholder = @"请输入";
         [_textField tmui_setPlaceholderColor:UIColorPlaceholder];
     }
