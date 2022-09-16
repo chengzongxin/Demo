@@ -18,18 +18,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol THKMyHomeDesignDemandsBaseCellProtocol <NSObject>
 
+@property (nonatomic, weak) id <THKMyHomeDesignDemandsCellDelegate> delegate;
+
+@property (nonatomic, strong) THKMyHomeDesignDemandsModel *model;
+
 - (void)setupSubviews;
 
 - (void)bindWithModel:(THKMyHomeDesignDemandsModel *)model;
 
-@property (nonatomic, weak) id <THKMyHomeDesignDemandsCellDelegate> delegate;
-
-- (CGFloat)cellHeight;
++ (CGFloat)cellHeightWithModel:(THKMyHomeDesignDemandsModel *)model;
 
 @end
 
 @interface THKMyHomeDesignDemandsBaseCell : UITableViewCell<THKMyHomeDesignDemandsBaseCellProtocol>
 
++ (CGFloat)cellHeightWithModel:(THKMyHomeDesignDemandsModel *)model;
 
 @end
 

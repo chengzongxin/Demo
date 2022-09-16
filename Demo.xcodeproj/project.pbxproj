@@ -430,7 +430,7 @@
 		16F84A7926E5B40E00192B0A /* UIView+THKDiaryAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A7826E5B40E00192B0A /* UIView+THKDiaryAnimation.m */; };
 		16FE857328D303B1000AC352 /* THKMyHomeDesignDemandsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857228D303B1000AC352 /* THKMyHomeDesignDemandsVC.m */; };
 		16FE857628D303BA000AC352 /* THKMyHomeDesignDemandsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857528D303BA000AC352 /* THKMyHomeDesignDemandsVM.m */; };
-		16FE857928D30829000AC352 /* THKMyHomeDesignDemandsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857828D30829000AC352 /* THKMyHomeDesignDemandsCell.m */; };
+		16FE857928D30829000AC352 /* THKMyHomeDesignSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857828D30829000AC352 /* THKMyHomeDesignSelectCell.m */; };
 		16FE857E28D30C7E000AC352 /* THKHouseCardConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857D28D30C7E000AC352 /* THKHouseCardConfigRequest.m */; };
 		16FE858128D30C88000AC352 /* THKHouseCardConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858028D30C88000AC352 /* THKHouseCardConfigResponse.m */; };
 		16FE858428D30CEE000AC352 /* THKHomeQueryCardRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE858328D30CEE000AC352 /* THKHomeQueryCardRequest.m */; };
@@ -1292,8 +1292,8 @@
 		16FE857228D303B1000AC352 /* THKMyHomeDesignDemandsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsVC.m; sourceTree = "<group>"; };
 		16FE857428D303BA000AC352 /* THKMyHomeDesignDemandsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsVM.h; sourceTree = "<group>"; };
 		16FE857528D303BA000AC352 /* THKMyHomeDesignDemandsVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsVM.m; sourceTree = "<group>"; };
-		16FE857728D30829000AC352 /* THKMyHomeDesignDemandsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsCell.h; sourceTree = "<group>"; };
-		16FE857828D30829000AC352 /* THKMyHomeDesignDemandsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsCell.m; sourceTree = "<group>"; };
+		16FE857728D30829000AC352 /* THKMyHomeDesignSelectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignSelectCell.h; sourceTree = "<group>"; };
+		16FE857828D30829000AC352 /* THKMyHomeDesignSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignSelectCell.m; sourceTree = "<group>"; };
 		16FE857C28D30C7E000AC352 /* THKHouseCardConfigRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHouseCardConfigRequest.h; sourceTree = "<group>"; };
 		16FE857D28D30C7E000AC352 /* THKHouseCardConfigRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKHouseCardConfigRequest.m; sourceTree = "<group>"; };
 		16FE857F28D30C88000AC352 /* THKHouseCardConfigResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKHouseCardConfigResponse.h; sourceTree = "<group>"; };
@@ -2838,8 +2838,8 @@
 			children = (
 				16C8F69728D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.h */,
 				16C8F69828D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.m */,
-				16FE857728D30829000AC352 /* THKMyHomeDesignDemandsCell.h */,
-				16FE857828D30829000AC352 /* THKMyHomeDesignDemandsCell.m */,
+				16FE857728D30829000AC352 /* THKMyHomeDesignSelectCell.h */,
+				16FE857828D30829000AC352 /* THKMyHomeDesignSelectCell.m */,
 				16C8F69428D417C70032E7CD /* THKMyHomeDesignRequirementCell.h */,
 				16C8F69528D417C70032E7CD /* THKMyHomeDesignRequirementCell.m */,
 				16C8F68928D4079B0032E7CD /* THKMyHomeDesignDemandsSendView.h */,
@@ -3726,7 +3726,7 @@
 				1685A683289120DC0032E474 /* THKDecorationUpcomingListRequest.m in Sources */,
 				16C8F68B28D4079B0032E7CD /* THKMyHomeDesignDemandsSendView.m in Sources */,
 				16192B2A2692E13E00967C73 /* THKDiaryDetailLoadingAnimationView.m in Sources */,
-				16FE857928D30829000AC352 /* THKMyHomeDesignDemandsCell.m in Sources */,
+				16FE857928D30829000AC352 /* THKMyHomeDesignSelectCell.m in Sources */,
 				1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */,
 				16611B74269692D20089E41B /* THKMaterialHotRankVC.m in Sources */,
 				1672336F2886B8B700901743 /* UIViewController+THKNavigationBar.m in Sources */,

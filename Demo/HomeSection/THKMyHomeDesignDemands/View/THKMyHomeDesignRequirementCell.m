@@ -13,12 +13,11 @@
 
 @property (nonatomic, strong) TMUITextView *textView;
 
-@property (nonatomic, strong) THKMyHomeDesignDemandsModel *model;
-
 @end
 
 @implementation THKMyHomeDesignRequirementCell
-
+@synthesize delegate = _delegate;
+@synthesize model = _model;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -43,7 +42,8 @@
     
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20);
-        make.centerY.equalTo(self.contentView);
+//        make.centerY.equalTo(self.contentView);
+        make.top.mas_equalTo(20);
     }];
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -53,6 +53,9 @@
     }];
 }
 
++ (CGFloat)cellHeightWithModel:(THKMyHomeDesignDemandsModel *)model{
+    return 200;
+}
 
 - (void)bindWithModel:(THKMyHomeDesignDemandsModel *)model{
     self.model = model;

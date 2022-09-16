@@ -1,24 +1,26 @@
 //
-//  THKMyHomeDesignDemandsCell.m
+//  THKMyHomeDesignSelectCell.m
 //  Demo
 //
 //  Created by Joe.cheng on 2022/9/15.
 //
 
-#import "THKMyHomeDesignDemandsCell.h"
+#import "THKMyHomeDesignSelectCell.h"
 
-@interface THKMyHomeDesignDemandsCell ()
+@interface THKMyHomeDesignSelectCell ()
 
 @property (nonatomic, strong) UILabel *titleLbl;
 
 @property (nonatomic, strong) UITextField *textField;
 
-@property (nonatomic, strong) THKMyHomeDesignDemandsModel *model;
 
 
 @end
 
-@implementation THKMyHomeDesignDemandsCell
+@implementation THKMyHomeDesignSelectCell
+@synthesize delegate = _delegate;
+@synthesize model = _model;
+
 
 - (void)setupSubviews{
     [self.contentView addSubview:self.titleLbl];
@@ -41,6 +43,10 @@
     
     self.titleLbl.text = model.title;
     self.textField.text = model.content;
+}
+
++ (CGFloat)cellHeightWithModel:(THKMyHomeDesignDemandsModel *)model{
+    return 60;
 }
 
 - (UILabel *)titleLbl{

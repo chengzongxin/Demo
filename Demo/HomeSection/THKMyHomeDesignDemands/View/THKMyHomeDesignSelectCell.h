@@ -1,5 +1,5 @@
 //
-//  THKMyHomeDesignDemandsCell.h
+//  THKMyHomeDesignSelectCell.h
 //  Demo
 //
 //  Created by Joe.cheng on 2022/9/15.
@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-@interface THKMyHomeDesignDemandsCell : THKMyHomeDesignDemandsBaseCell
+@interface THKMyHomeDesignSelectCell : THKMyHomeDesignDemandsBaseCell
 
 @end
 

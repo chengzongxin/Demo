@@ -6,7 +6,7 @@
 //
 
 #import "THKMyHomeDesignDemandsVC.h"
-#import "THKMyHomeDesignDemandsCell.h"
+#import "THKMyHomeDesignSelectCell.h"
 #import "THKMyHouseHeaderView.h"
 #import "THKMyHomeDesignDemandsSendView.h"
 #import "THKMyHomeDesignRequirementCell.h"
@@ -16,16 +16,16 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-
 //IM-我的家-头部
 @property (nonatomic, strong)   THKMyHouseHeaderView *headerView;
 
 //IM-我的家，背景图
 @property (nonatomic, strong)   UIImageView *bgImageView;
 
-
 //IM-我的家，发送的UI
 @property (nonatomic, strong)   THKMyHomeDesignDemandsSendView *sendView;
+
+@property (nonatomic, strong)   TMUIOrderedDictionary *cellDict;
 
 @end
 
@@ -110,7 +110,7 @@
 
 
 #pragma mark - Actions
-- (void)editCell:(THKMyHomeDesignDemandsCell *)cell type:(THKMyHomeDesignDemandsModelType)type data:(id)data{
+- (void)editCell:(THKMyHomeDesignSelectCell *)cell type:(THKMyHomeDesignDemandsModelType)type data:(id)data{
     [self.viewModel.editCellCommand execute:RACTuplePack(cell,@(type),data)];
 }
 
@@ -130,18 +130,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     THKMyHomeDesignDemandsModel *model = self.viewModel.cellModels[indexPath.row];
-    if (model.type == THKMyHomeDesignDemandsModelType_SpecialDemand) {
-        THKMyHomeDesignRequirementCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKMyHomeDesignDemandsCell.class) forIndexPath:indexPath];
-        [cell bindWithModel:self.viewModel.cellModels[indexPath.row]];
-        cell.delegate = self;
-        return cell;
-    }else{
-        THKMyHomeDesignDemandsCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKMyHomeDesignDemandsCell.class) forIndexPath:indexPath];
-        [cell bindWithModel:self.viewModel.cellModels[indexPath.row]];
-        cell.delegate = self;
-        return cell;
-    }
-    return nil;
+    Class cellClass = self.cellDict[@(model.type)];
+    THKMyHomeDesignDemandsBaseCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(cellClass) forIndexPath:indexPath];
+    [cell bindWithModel:self.viewModel.cellModels[indexPath.row]];
+    cell.delegate = self;
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -149,7 +142,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    THKMyHomeDesignDemandsModel *model = self.viewModel.cellModels[indexPath.row];
+    Class cellClass = self.cellDict[@(model.type)];
+    if (class_getClassMethod(cellClass, @selector(cellHeightWithModel:))) {
+        CGFloat height  = 0;
+        [cellClass tmui_performSelector:@selector(cellHeightWithModel:) withPrimitiveReturnValue:&height arguments:&model,nil];
+        return height;
+    }
+    return 0;
 }
 
 - (UITableView *)tableView {
@@ -163,12 +163,12 @@
         _tableView.estimatedRowHeight = 52;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
-        [_tableView tmui_registerCellWithClass:THKMyHomeDesignDemandsCell.class];
-        [_tableView tmui_registerCellWithClass:THKMyHomeDesignRequirementCell.class];
-        
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.bounces = NO;
+        [self.cellDict.allValues.tmui_reverse enumerateObjectsUsingBlock:^(Class  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [_tableView tmui_registerCellWithClass:obj];
+        }];
     }
     return _tableView;
 }
@@ -192,6 +192,22 @@
         _sendView.backgroundColor = UIColor.whiteColor;
     }
     return _sendView;
+}
+
+- (TMUIOrderedDictionary *)cellDict{
+    if (!_cellDict) {
+        _cellDict = [[TMUIOrderedDictionary alloc] initWithKeysAndObjects:
+                     @(THKMyHomeDesignDemandsModelType_CommunityName),THKMyHomeDesignSelectCell.class,
+                     @(THKMyHomeDesignDemandsModelType_HouseArea),THKMyHomeDesignSelectCell.class,
+                     @(THKMyHomeDesignDemandsModelType_HouseType),THKMyHomeDesignSelectCell.class,
+                     @(THKMyHomeDesignDemandsModelType_Style),THKMyHomeDesignSelectCell.class,
+                     @(THKMyHomeDesignDemandsModelType_Budget),THKMyHomeDesignSelectCell.class,
+                     @(THKMyHomeDesignDemandsModelType_Decorate),THKMyHomeDesignSelectCell.class,
+                     @(THKMyHomeDesignDemandsModelType_Population),THKMyHomeDesignSelectCell.class,
+                     @(THKMyHomeDesignDemandsModelType_SpecialDemand),THKMyHomeDesignRequirementCell.class,
+        nil];
+    }
+    return _cellDict;
 }
 
 @end
