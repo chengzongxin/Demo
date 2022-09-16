@@ -30,12 +30,12 @@
         bottom = 34;
     }
     [self.sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(48);
+        make.height.mas_equalTo(50);
         make.left.mas_equalTo(16);
         make.right.mas_equalTo(-16);
         make.bottom.mas_equalTo(-bottom);
     }];
-    self.sendButton.cornerRadius = 24;
+    self.sendButton.cornerRadius = 10;
     
     
 }

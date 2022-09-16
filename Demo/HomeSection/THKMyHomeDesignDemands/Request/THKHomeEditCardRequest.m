@@ -48,4 +48,31 @@
     return [THKHomeEditCardResponse class];
 }
 
+
+- (void)setStyleCode:(NSString *)code{
+    [self setColumnListTag:@"styleTag" code:code];
+}
+
+- (void)setBudgetCode:(NSString *)code{
+    [self setColumnListTag:@"budgetTag" code:code];
+}
+
+- (void)setColumnListTag:(NSString *)tag code:(NSString *)code{
+    NSMutableArray <THKOnlineDesignHomeEditColumnList *> *columnList = [self.columnList mutableCopy];
+    columnList = [[columnList tmui_filter:^BOOL(THKOnlineDesignHomeEditColumnList * _Nonnull item) {
+        return ![item.columnType isEqualToString:tag];
+    }] mutableCopy];
+    
+    THKOnlineDesignHomeEditColumnList *list = [THKOnlineDesignHomeEditColumnList new];
+    list.columnType = tag;
+    list.idList = @[code];
+    if (columnList == nil) {
+        columnList = [NSMutableArray array];
+    }
+    [columnList addObject:list];
+    self.columnList = columnList;
+}
+
+
+
 @end

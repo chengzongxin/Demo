@@ -42,6 +42,14 @@
         make.right.mas_equalTo(-16);
         make.centerY.equalTo(self.contentView);
     }];
+    
+    @weakify(self);
+    [self.contentView tmui_addSingerTapWithBlock:^{
+        @strongify(self);
+        if ([self.delegate respondsToSelector:@selector(editCell:type:model:data:)]) {
+            [self.delegate editCell:self type:self.model.type model:self.model data:nil];
+        }
+    }];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{

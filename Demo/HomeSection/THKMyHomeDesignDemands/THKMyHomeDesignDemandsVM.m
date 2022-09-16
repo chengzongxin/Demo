@@ -8,7 +8,6 @@
 #import "THKMyHomeDesignDemandsVM.h"
 #import "THKHouseCardConfigRequest.h"
 #import "THKHomeQueryCardRequest.h"
-#import "THKHomeEditCardRequest.h"
 
 @interface THKMyHomeDesignDemandsVM ()
 
@@ -16,15 +15,18 @@
 
 @property (nonatomic, strong) THKRequestCommand *queryCommand;
 
-@property (nonatomic, strong) THKRequestCommand *editCommand;
+@property (nonatomic, strong) THKRequestCommand *commitCommand;
 
 @property (nonatomic, strong) RACCommand *editCellCommand;
 
 @property (nonatomic, strong) NSArray <THKMyHomeDesignDemandsModel *> *cellModels;
 
-//
-//
+
+
 #pragma mark - 接口
+
+@property (nonatomic, strong) THKHouseCardConfigModel *configModel;
+
 @property (nonatomic, strong) THKHomeEditCardRequest *dataRequest;
 
 ////房屋面积
@@ -85,6 +87,12 @@
     THKHouseCardConfigModel *data1 = response1.data;
     THKHomeQueryCardModel *data2 = response2.data;
     
+    self.configModel = data1;
+    
+    self.dataRequest.id = data2.id;
+    self.dataRequest.planSource = data2.planSource;
+    self.dataRequest.planSourceId = data2.planSourceId;
+    
     {
         THKMyHomeDesignDemandsModel *m = [THKMyHomeDesignDemandsModel new];
         m.type = THKMyHomeDesignDemandsModelType_HouseType;
@@ -120,8 +128,14 @@
         THKMyHomeDesignDemandsModel *m = [THKMyHomeDesignDemandsModel new];
         m.type = THKMyHomeDesignDemandsModelType_Style;
         m.title = @"装修风格";
-        m.content = data2.styleTagName;
-        self.dataRequest.styleTag = data2.styleTag;
+        m.content = data2.styleName;
+        
+        [data2.columnList enumerateObjectsUsingBlock:^(THKHomeQueryCardModelColumnListModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.columnType isEqualToString:@"styleTag"]) {
+                [self.dataRequest setStyleCode:obj.idList.firstObject];
+            }
+        }];
+        
         [arr addObject:m];
     }
     
@@ -129,8 +143,13 @@
         THKMyHomeDesignDemandsModel *m = [THKMyHomeDesignDemandsModel new];
         m.type = THKMyHomeDesignDemandsModelType_Budget;
         m.title = @"装修预算";
-        m.content = data2.budgetTagName;
-        self.dataRequest.budgetTag = data2.budgetTag;
+        m.content = data2.budgetName;
+        
+        [data2.columnList enumerateObjectsUsingBlock:^(THKHomeQueryCardModelColumnListModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj.columnType isEqualToString:@"budgetTag"]) {
+                [self.dataRequest setBudgetCode:obj.idList.firstObject];
+            }
+        }];
         [arr addObject:m];
     }
     
@@ -167,6 +186,64 @@
 }
 
 
+- (RACCommand *)editCellCommand{
+    if (!_editCellCommand) {
+        _editCellCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+            return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+                
+                RACTupleUnpack(NSNumber *modelType,NSString *idStr, NSString *text) = input;
+                THKMyHomeDesignDemandsModelType type = modelType.integerValue;
+                NSLog(@"%lu,%@,%@",(unsigned long)type,idStr,text);
+                
+                
+//                switch (type) {
+//                    case THKMyHomeDesignDemandsModelType_HouseType:
+//                    {
+//                        //  跳转分派前户型选择页
+//                    }
+//                        break;
+//                    case THKMyHomeDesignDemandsModelType_Style:
+//                    {
+//                        self.dataRequest.styleTag = idStr;
+//                    }
+//                        break;
+//                    case THKMyHomeDesignDemandsModelType_Budget:
+//                    {
+//                        self.dataRequest.budgetTag = idStr;
+//                    }
+//                        break;
+//                    case THKMyHomeDesignDemandsModelType_Decorate:
+//                    {
+////                        self.dataRequest.decorateType = data2.decorateType;
+//                    }
+//                        break;
+//                    case THKMyHomeDesignDemandsModelType_Population:
+//                    {
+//
+//                    }
+//                        break;
+//                    case THKMyHomeDesignDemandsModelType_SpecialDemand:
+//                    {
+//
+//                    }
+//                        break;
+//
+//                    default:
+//                        break;
+//                }
+                
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+                return [RACDisposable disposableWithBlock:^{
+                    NSLog(@"editCellCommand dispose");
+                }];
+            }];
+        }];
+    }
+    return _editCellCommand;
+}
+
+
 - (THKRequestCommand *)configCommand{
     if (!_configCommand) {
         _configCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
@@ -185,15 +262,15 @@
     return _queryCommand;
 }
 
-- (THKRequestCommand *)editCommand{
-    if (!_editCommand) {
+- (THKRequestCommand *)commitCommand{
+    if (!_commitCommand) {
         @weakify(self);
-        _editCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
+        _commitCommand = [THKRequestCommand commandMakeWithRequest:^THKBaseRequest *(id  _Nonnull input) {
             @strongify(self);
             return self.dataRequest;
         }];
     }
-    return _editCommand;
+    return _commitCommand;
 }
 
 TMUI_PropertyLazyLoad(THKHomeEditCardRequest, dataRequest);

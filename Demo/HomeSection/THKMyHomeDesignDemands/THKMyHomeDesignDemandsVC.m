@@ -105,7 +105,7 @@
     
     
     
-    self.sendView.sendButton.rac_command = self.viewModel.editCommand;
+    self.sendView.sendButton.rac_command = self.viewModel.commitCommand;
     
 //    [self.sendView.sendButton addTarget:self action:@selector(sendAction:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -114,7 +114,92 @@
 #pragma mark - Actions
 - (void)editCell:(THKMyHomeDesignSelectCell *)cell type:(THKMyHomeDesignDemandsModelType)type model:(nonnull THKMyHomeDesignDemandsModel *)model data:(nullable id)data{
     NSLog(@"%@-%lu-%@",cell,(unsigned long)type,data);
-    [self.viewModel.editCellCommand execute:RACTuplePack(cell,@(type),data)];
+    switch (type) {
+        case THKMyHomeDesignDemandsModelType_HouseType:
+        {
+            //  跳转分派前户型选择页
+        }
+            break;
+        case THKMyHomeDesignDemandsModelType_Style:
+        {
+            NSArray <THKHouseCardConfigStyleListItem *> *items = self.viewModel.configModel.styleList;
+            NSArray <NSString *> *texts = [items tmui_map:^id _Nonnull(THKHouseCardConfigStyleListItem * _Nonnull item) {
+                return item.name;
+            }];
+            
+            [TMUIPickerView showSinglePickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
+                
+            } texts:texts selectBlock:^(NSInteger idx, NSString * _Nonnull text) {
+                [self.viewModel.dataRequest setStyleCode:items[idx].wholeCode];
+                model.content = text;
+                [cell bindWithModel:model];
+            }];
+        }
+            break;
+        case THKMyHomeDesignDemandsModelType_Budget:
+        {
+            NSArray <THKHouseCardConfigBudgetListItem *> *items = self.viewModel.configModel.budgetList;
+            NSArray <NSString *> *texts = [items tmui_map:^id _Nonnull(THKHouseCardConfigBudgetListItem * _Nonnull item) {
+                return item.name;
+            }];
+            
+            [TMUIPickerView showSinglePickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
+                
+            } texts:texts selectBlock:^(NSInteger idx, NSString * _Nonnull text) {
+                [self.viewModel.dataRequest setBudgetCode:items[idx].wholeCode];
+                model.content = text;
+                [cell bindWithModel:model];
+            }];
+        }
+            break;
+        case THKMyHomeDesignDemandsModelType_Decorate:
+        {
+            NSArray <THKHouseCardConfigDecorateTypeListItem *> *items = self.viewModel.configModel.decorateTypeList;
+            NSArray <NSString *> *texts = [items tmui_map:^id _Nonnull(THKHouseCardConfigDecorateTypeListItem * _Nonnull item) {
+                return item.decorateTypeName;
+            }];
+            
+            [TMUIPickerView showSinglePickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
+                
+            } texts:texts selectBlock:^(NSInteger idx, NSString * _Nonnull text) {
+//                [self.viewModel.editCellCommand execute:RACTuplePack(@(type),@(items[idx].decorateTypeId),text)];
+                self.viewModel.dataRequest.decorateType = items[idx].decorateTypeId;
+                model.content = text;
+                [cell bindWithModel:model];
+            }];
+        }
+            break;
+        case THKMyHomeDesignDemandsModelType_Population:
+        {
+            NSArray <THKHouseCardConfigPopulationTypeListItem *> *items = self.viewModel.configModel.populationTypeList;
+            NSArray <NSString *> *texts = [items tmui_map:^id _Nonnull(THKHouseCardConfigPopulationTypeListItem * _Nonnull item) {
+                return item.populationTypeName;
+            }];
+            
+            [TMUIPickerView showSinglePickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
+                
+            } texts:texts selectBlock:^(NSInteger idx, NSString * _Nonnull text) {
+//                [self.viewModel.editCellCommand execute:RACTuplePack(@(type),@(items[idx].populationTypeId),text)];
+                self.viewModel.dataRequest.populationType = items[idx].populationTypeId;
+                model.content = text;
+                [cell bindWithModel:model];
+            }];
+        }
+            break;
+        case THKMyHomeDesignDemandsModelType_SpecialDemand:
+        {
+//            [self.viewModel.editCellCommand execute:RACTuplePack(@(type),nil,data)];
+            self.viewModel.dataRequest.requirementDesc = data;
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)showPickerViewWithTexts:(NSArray <NSString *> *)texts selectBlock:(void (^)(NSInteger idx,NSString *text))selectBlock{
+    
 }
 
 //-(void)sendAction:(UIButton*)button{
