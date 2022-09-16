@@ -10,6 +10,8 @@
 #import "THKMyHouseHeaderView.h"
 #import "THKMyHomeDesignDemandsSendView.h"
 #import "THKMyHomeDesignRequirementCell.h"
+#import "THKMyHomeDesignHouseTypeCell.h"
+
 @interface THKMyHomeDesignDemandsVC () <UITableViewDelegate,UITableViewDataSource,THKMyHomeDesignDemandsCellDelegate>
 
 @property (nonatomic, strong) THKMyHomeDesignDemandsVM *viewModel;
@@ -198,9 +200,7 @@
 - (TMUIOrderedDictionary *)cellDict{
     if (!_cellDict) {
         _cellDict = [[TMUIOrderedDictionary alloc] initWithKeysAndObjects:
-                     @(THKMyHomeDesignDemandsModelType_CommunityName),THKMyHomeDesignSelectCell.class,
-                     @(THKMyHomeDesignDemandsModelType_HouseArea),THKMyHomeDesignSelectCell.class,
-                     @(THKMyHomeDesignDemandsModelType_HouseType),THKMyHomeDesignSelectCell.class,
+                     @(THKMyHomeDesignDemandsModelType_HouseType),THKMyHomeDesignHouseTypeCell.class,
                      @(THKMyHomeDesignDemandsModelType_Style),THKMyHomeDesignSelectCell.class,
                      @(THKMyHomeDesignDemandsModelType_Budget),THKMyHomeDesignSelectCell.class,
                      @(THKMyHomeDesignDemandsModelType_Decorate),THKMyHomeDesignSelectCell.class,

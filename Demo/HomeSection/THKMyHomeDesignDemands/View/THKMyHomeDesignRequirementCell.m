@@ -54,7 +54,7 @@
 }
 
 + (CGFloat)cellHeightWithModel:(THKMyHomeDesignDemandsModel *)model{
-    return 200;
+    return 144;
 }
 
 - (void)bindWithModel:(THKMyHomeDesignDemandsModel *)model{

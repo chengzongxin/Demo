@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UITextField *textField;
 
-
+@property (nonatomic, strong) UIImageView *arrowImageView;
 
 @end
 
@@ -25,6 +25,7 @@
 - (void)setupSubviews{
     [self.contentView addSubview:self.titleLbl];
     [self.contentView addSubview:self.textField];
+    [self.contentView addSubview:self.arrowImageView];
     
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20);
@@ -32,7 +33,13 @@
     }];
     
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLbl.mas_right).offset(20);
+        make.left.equalTo(self.titleLbl.mas_right).offset(24);
+        make.centerY.equalTo(self.contentView);
+    }];
+    
+    [self.arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(10, 10));
+        make.right.mas_equalTo(-16);
         make.centerY.equalTo(self.contentView);
     }];
 }
@@ -77,5 +84,12 @@
     return _textField;
 }
 
+- (UIImageView *)arrowImageView{
+    if (!_arrowImageView) {
+        _arrowImageView = [[UIImageView alloc] init];
+        _arrowImageView.image = [UIImage imageNamed:@"icon_myInfo_arrow"];
+    }
+    return _arrowImageView;
+}
 
 @end

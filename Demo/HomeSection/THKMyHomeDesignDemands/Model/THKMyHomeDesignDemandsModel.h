@@ -10,8 +10,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
-    THKMyHomeDesignDemandsModelType_CommunityName,
-    THKMyHomeDesignDemandsModelType_HouseArea,
     THKMyHomeDesignDemandsModelType_HouseType,
     THKMyHomeDesignDemandsModelType_Style,
     THKMyHomeDesignDemandsModelType_Budget,
@@ -27,6 +25,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSString *title;
 
 @property (nonatomic, strong) NSString *content;
+
+@property (nonatomic, strong) NSString *contentDesc;
 
 @end
 

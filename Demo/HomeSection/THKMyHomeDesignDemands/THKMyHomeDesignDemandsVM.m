@@ -87,30 +87,33 @@
     
     {
         THKMyHomeDesignDemandsModel *m = [THKMyHomeDesignDemandsModel new];
-        m.type = THKMyHomeDesignDemandsModelType_CommunityName;
-        m.title = @"小区名称";
+        m.type = THKMyHomeDesignDemandsModelType_HouseType;
+        m.title = @"房屋信息";
         m.content = data2.communityName;
+        m.contentDesc = [NSString stringWithFormat:@"%@·%@",data2.houseTagName,data2.areaStr];
         self.dataRequest.communityName = data2.communityName;
-        [arr addObject:m];
-    }
-    
-    {
-        THKMyHomeDesignDemandsModel *m = [THKMyHomeDesignDemandsModel new];
-        m.type = THKMyHomeDesignDemandsModelType_HouseArea;
-        m.title = @"房屋面积";
-        m.content = data2.areaStr;
+        self.dataRequest.houseTag = data2.houseTag;
         self.dataRequest.area = data2.areaStr.integerValue;
         [arr addObject:m];
     }
     
-    if (data1.houseList.count) {
-        THKMyHomeDesignDemandsModel *m = [THKMyHomeDesignDemandsModel new];
-        m.type = THKMyHomeDesignDemandsModelType_HouseType;
-        m.title = @"房屋户型";
-        m.content = data2.houseTagName;
-        self.dataRequest.houseTag = data2.houseTag;
-        [arr addObject:m];
-    }
+//    {
+//        THKMyHomeDesignDemandsModel *m = [THKMyHomeDesignDemandsModel new];
+//        m.type = THKMyHomeDesignDemandsModelType_HouseArea;
+//        m.title = @"房屋面积";
+//        m.content = data2.areaStr;
+//        self.dataRequest.area = data2.areaStr.integerValue;
+//        [arr addObject:m];
+//    }
+//
+//    if (data1.houseList.count) {
+//        THKMyHomeDesignDemandsModel *m = [THKMyHomeDesignDemandsModel new];
+//        m.type = THKMyHomeDesignDemandsModelType_HouseType;
+//        m.title = @"房屋户型";
+//        m.content = data2.houseTagName;
+//        self.dataRequest.houseTag = data2.houseTag;
+//        [arr addObject:m];
+//    }
     
     
     if (data1.styleList.count) {

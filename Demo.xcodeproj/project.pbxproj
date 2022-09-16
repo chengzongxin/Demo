@@ -346,6 +346,7 @@
 		16C8F68F28D408A70032E7CD /* THKMyHouseHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8F68D28D408A70032E7CD /* THKMyHouseHeaderView.m */; };
 		16C8F69628D417C70032E7CD /* THKMyHomeDesignRequirementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8F69528D417C70032E7CD /* THKMyHomeDesignRequirementCell.m */; };
 		16C8F69928D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8F69828D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.m */; };
+		16C8F69C28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C8F69B28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.m */; };
 		16CEA54628ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA54528ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m */; };
 		16CEA54B28AE0E1400A02A0E /* THKOnlineDesignDistributeAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CEA54A28AE0E1400A02A0E /* THKOnlineDesignDistributeAnimationView.m */; };
 		16CF07AE28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 16CF07AD28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m */; };
@@ -1122,6 +1123,8 @@
 		16C8F69528D417C70032E7CD /* THKMyHomeDesignRequirementCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignRequirementCell.m; sourceTree = "<group>"; };
 		16C8F69728D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsBaseCell.h; sourceTree = "<group>"; };
 		16C8F69828D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsBaseCell.m; sourceTree = "<group>"; };
+		16C8F69A28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignHouseTypeCell.h; sourceTree = "<group>"; };
+		16C8F69B28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignHouseTypeCell.m; sourceTree = "<group>"; };
 		16CEA54428ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TMEmptyView+THKOnlineDesignEmptyView.h"; sourceTree = "<group>"; };
 		16CEA54528ADEADF00A02A0E /* TMEmptyView+THKOnlineDesignEmptyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "TMEmptyView+THKOnlineDesignEmptyView.m"; sourceTree = "<group>"; };
 		16CEA54928AE0E1400A02A0E /* THKOnlineDesignDistributeAnimationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOnlineDesignDistributeAnimationView.h; sourceTree = "<group>"; };
@@ -2838,6 +2841,8 @@
 			children = (
 				16C8F69728D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.h */,
 				16C8F69828D41D8A0032E7CD /* THKMyHomeDesignDemandsBaseCell.m */,
+				16C8F69A28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.h */,
+				16C8F69B28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.m */,
 				16FE857728D30829000AC352 /* THKMyHomeDesignSelectCell.h */,
 				16FE857828D30829000AC352 /* THKMyHomeDesignSelectCell.m */,
 				16C8F69428D417C70032E7CD /* THKMyHomeDesignRequirementCell.h */,
@@ -3731,6 +3736,7 @@
 				16611B74269692D20089E41B /* THKMaterialHotRankVC.m in Sources */,
 				1672336F2886B8B700901743 /* UIViewController+THKNavigationBar.m in Sources */,
 				16F0A66A28AB4B6B00B0B081 /* THKOnlineDesignUploadHouseVC.m in Sources */,
+				16C8F69C28D4479D0032E7CD /* THKMyHomeDesignHouseTypeCell.m in Sources */,
 				16867A312692D9B200650023 /* NSObject+TRouter.m in Sources */,
 				16F0A67628AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m in Sources */,
 				16611B68269692D20089E41B /* THKMaterialClassificationRecommendCellFooter.m in Sources */,
