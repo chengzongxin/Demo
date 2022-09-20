@@ -2686,10 +2686,7 @@
 				16B10EED28D95F2800561A6D /* THKGraphicDetailVC.m */,
 				16B10EEF28D95F3700561A6D /* THKGraphicDetailVM.h */,
 				16B10EF028D95F3700561A6D /* THKGraphicDetailVM.m */,
-				16B10EF328D9610B00561A6D /* THKMeituDetailv2Request.h */,
-				16B10EF428D9610B00561A6D /* THKMeituDetailv2Request.m */,
-				16B10EF628D9614100561A6D /* THKMeituDetailv2Response.h */,
-				16B10EF728D9614100561A6D /* THKMeituDetailv2Response.m */,
+				16B10F3228D9A2EB00561A6D /* Request */,
 				16B10F0D28D96E1400561A6D /* Model */,
 				16B10F0628D96B7700561A6D /* View */,
 			);
@@ -2720,6 +2717,17 @@
 				16B10F0F28D96E3100561A6D /* THKGraphicDetailModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		16B10F3228D9A2EB00561A6D /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				16B10EF328D9610B00561A6D /* THKMeituDetailv2Request.h */,
+				16B10EF428D9610B00561A6D /* THKMeituDetailv2Request.m */,
+				16B10EF628D9614100561A6D /* THKMeituDetailv2Response.h */,
+				16B10EF728D9614100561A6D /* THKMeituDetailv2Response.m */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		16B1F512275DF52700FF18C4 /* NewcomerProcess */ = {
