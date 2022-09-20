@@ -6,11 +6,12 @@
 //
 
 #import "THKResponse.h"
-
+#import "THKGraphicDetailModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKMeituDetailv2Response : THKResponse
 
+@property (nonatomic, strong) THKGraphicDetailModel *data;
 
 @end
 
