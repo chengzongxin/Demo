@@ -1,23 +1,24 @@
 //
-//  THKGraphicDetailCell.h
+//  THKGraphicDetailStageCell.h
 //  Demo
 //
 //  Created by Joe.cheng on 2022/9/20.
 //
 
-#import "THKTableViewCell.h"
+#import <UIKit/UIKit.h>
 #import "THKGraphicDetailModel.h"
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKGraphicDetailCell : THKTableViewCell
+@interface THKGraphicDetailStageCell : UICollectionViewCell
+
+@property (nonatomic, strong) UIView *containerView;
 
 @property (nonatomic, strong) UILabel *titleLbl;
 
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 @property (nonatomic, strong) THKGraphicDetailContentListItem *model;
 
-+ (CGFloat)heightWithModel:(THKGraphicDetailContentListItem *)model;
 
 @end
 

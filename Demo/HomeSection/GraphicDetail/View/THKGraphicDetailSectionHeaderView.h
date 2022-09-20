@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) UILabel *titleLbl;
 
+@property (nonatomic, strong) NSString *text;
+
 @end
 
 NS_ASSUME_NONNULL_END

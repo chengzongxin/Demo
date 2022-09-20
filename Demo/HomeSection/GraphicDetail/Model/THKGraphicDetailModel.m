@@ -27,8 +27,14 @@
 
 @end
 
+@implementation THKGraphicDetailContentListItem
+
+@end
+
 @implementation THKGraphicDetailModel
 + (NSDictionary *)mj_objectClassInArray{
-    return @{@"imgInfo":THKGraphicDetailImgInfoItem.class};
+    return @{@"imgInfo":THKGraphicDetailImgInfoItem.class,
+             @"contentList":THKGraphicDetailContentListItem.class
+    };
 }
 @end

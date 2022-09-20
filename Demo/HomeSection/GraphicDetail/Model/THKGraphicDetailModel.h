@@ -50,6 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface THKGraphicDetailContentListItem :NSObject
+@property (nonatomic , copy) NSString              * anchor;
+@property (nonatomic , copy) NSString              * anchorContent;
+
+@end
+
+
 @interface THKGraphicDetailModel : NSObject
 @property (nonatomic , copy) NSString              * sharePic;
 @property (nonatomic , assign) NSInteger              subCategory;
@@ -89,6 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , assign) NSInteger              recommendType;
 @property (nonatomic , copy) NSString              * shareUrl;
 @property (nonatomic , copy) NSString              * location;
+@property (nonatomic , strong) NSArray <THKGraphicDetailContentListItem *>              * contentList;
 @property (nonatomic , assign) NSInteger              status;
 @property (nonatomic , assign) NSInteger              collectStatus;
 @end

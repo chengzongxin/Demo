@@ -19,6 +19,7 @@
 //#import "TMUINavigationBarDemoListViewController.h"
 #import "TMUICycleCardView.h"
 #import "CycleCardCell.h"
+#import "THKDecorationToDoVC.h"
 
 @interface ComponentViewController ()
 
@@ -119,8 +120,18 @@
 //            TMUINavigationBarDemoListViewController *vc = [[TMUINavigationBarDemoListViewController alloc] init];
 //            [self.navigationController pushViewController:vc animated:YES];
         });
+    
+    id b10 =
+        [self createBtn]
+        .str(@"TODO")
+        .onClick(^{
+//            TMUINavigationBarDemoListViewController *vc = [[TMUINavigationBarDemoListViewController alloc] init];
+//            [self.navigationController pushViewController:vc animated:YES];
+            THKDecorationToDoVC *vc = [[THKDecorationToDoVC alloc] initWithViewModel:THKDecorationToDoVM.new];
+            [self.navigationController pushViewController:vc animated:YES];
+        });
 
-    VerStack(b1,b2,b3,b4,b5,b6,b7,b8,b9)
+    VerStack(b1,b2,b3,b4,b5,b6,b7,b8,b9,b10)
     .gap(10)
     .embedIn(UIScrollView.new.embedIn(self.view), 0, 20, 80);
 //

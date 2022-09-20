@@ -11,6 +11,8 @@
 
 @property (nonatomic, strong) UILabel *titleLbl;
 
+@property (nonatomic, strong) UIView *line;
+
 @end
 
 @implementation THKGraphicDetailSectionHeaderView
@@ -24,14 +26,30 @@
 }
 
 - (void)setupSubviews{
+    self.contentView.backgroundColor = UIColor.whiteColor;
+    [self.contentView addSubview:self.line];
     [self.contentView addSubview:self.titleLbl];
     
     [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(0);
+        make.top.mas_equalTo(20);
         make.left.mas_equalTo(20);
-        make.right.mas_lessThanOrEqualTo(0);
+        make.right.mas_lessThanOrEqualTo(-20);
         make.height.mas_equalTo(22);
     }];
+    
+    [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.titleLbl);
+        make.right.equalTo(self.titleLbl.mas_right).offset(4);
+        make.bottom.equalTo(self.titleLbl);
+        make.height.mas_equalTo(8);
+    }];
+}
+
+
+- (void)setText:(NSString *)text{
+    _text = text;
+    
+    self.titleLbl.text = text;
 }
 
 - (UILabel *)titleLbl{
@@ -43,9 +61,12 @@
     return _titleLbl;
 }
 
-
-- (CGSize)intrinsicContentSize{
-    return CGSizeMake(TMUI_SCREEN_WIDTH, 32);
+- (UIView *)line{
+    if (!_line) {
+        _line = [UIView new];
+        _line.backgroundColor = [UIColorGreen colorWithAlphaComponent:0.2];
+    }
+    return _line;
 }
 
 @end
