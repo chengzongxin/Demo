@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "THKMyHomeDesignDemandsVC.h"
+#import "THKGraphicDetailVC.h"
 
 @interface ViewController ()
 
@@ -29,8 +29,8 @@
 }
 
 - (void)push{
-    THKMyHomeDesignDemandsVM *vm = [THKMyHomeDesignDemandsVM new];
-    THKMyHomeDesignDemandsVC *vc = [[THKMyHomeDesignDemandsVC alloc] initWithViewModel:vm];
+    THKGraphicDetailVM *vm = [THKGraphicDetailVM new];
+    THKGraphicDetailVC *vc = [[THKGraphicDetailVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
