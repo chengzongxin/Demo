@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) NSArray <THKGraphicDetailContentListItem *> *contentList;
 
+
+@property (nonatomic , strong, readonly) NSArray <THKGraphicDetailImgInfoItem *>              * imgInfo;
+
 @end
 
 NS_ASSUME_NONNULL_END

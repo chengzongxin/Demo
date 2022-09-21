@@ -12,6 +12,7 @@
 #import "THKDynamicTabsWrapperScrollView.h"
 #import "THKGraphicDetailHeaderView.h"
 #import "THKGraphicDetailStageView.h"
+#import "THKGraphicDetailSpaceView.h"
 
 #define kHeaderViewH 292
 #define kStageMenuH 62
@@ -29,6 +30,8 @@
 
 @property (nonatomic, strong) THKGraphicDetailHeaderView *headerView;
 
+@property (nonatomic, strong) THKGraphicDetailSpaceView *spaceView;
+
 @end
 
 @implementation THKGraphicDetailVC
@@ -45,6 +48,12 @@
     [self.wrapperScrollView addSubview:self.stageView];
     [self.wrapperScrollView addSubview:self.tableView];
     
+    [self.headerView addSubview:self.spaceView];
+    [self.spaceView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(66);
+    }];
+    
 }
 
 - (void)bindViewModel{
@@ -58,6 +67,12 @@
 //        [self.headerView bindViewModel:headerVM];
         self.stageView.model = x;
         [self.tableView reloadData];
+    }];
+    
+    [[RACObserve(self.viewModel, imgInfo) ignore:nil] subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        
+        self.spaceView.model = x;
     }];
     
 //    1011138
@@ -144,6 +159,7 @@
     if (!_headerView) {
         _headerView = [[THKGraphicDetailHeaderView alloc] init];
         _headerView.frame = CGRectMake(0, -kHeaderViewH-kStageMenuH, TMUI_SCREEN_WIDTH, kHeaderViewH);
+        _headerView.backgroundColor = UIColorGrayDarken;
     }
     return _headerView;
 }
@@ -159,6 +175,13 @@
         };
     }
     return _stageView;
+}
+
+- (THKGraphicDetailSpaceView *)spaceView{
+    if (!_spaceView) {
+        _spaceView = [[THKGraphicDetailSpaceView alloc] init];
+    }
+    return _spaceView;
 }
 
 - (UITableView *)tableView {

@@ -13,6 +13,8 @@
 
 @property (nonatomic, copy) NSArray <THKGraphicDetailContentListItem *> *contentList;
 
+@property (nonatomic , strong) NSArray <THKGraphicDetailImgInfoItem *>              * imgInfo;
+
 @end
 
 @implementation THKGraphicDetailVM
@@ -25,6 +27,7 @@
         NSLog(@"%@",x);
         @strongify(self);
         self.contentList = x.data.contentList;
+        self.imgInfo = x.data.imgInfo;
     }];
 }
 
