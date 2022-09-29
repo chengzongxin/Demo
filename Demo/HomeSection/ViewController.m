@@ -23,6 +23,7 @@
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //        [self push];
 //    });
+    [self showInputingStatus];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -56,34 +57,33 @@
 
 #pragma mark - 定时输入
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+- (void)showInputingStatus{
+    @weakify(self);
+    [[self rac_signalForSelector:@selector(viewWillAppear:)] subscribeNext:^(RACTuple * _Nullable x) {
+        @strongify(self);
+        [self showInputing];
+    }];
     
-    
-    [self showInputing];
+    [[self rac_signalForSelector:@selector(viewWillDisappear:)] subscribeNext:^(RACTuple * _Nullable x) {
+        @strongify(self);
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    }];
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-}
 
 - (void)dealloc{
     NSLog(@"delloc %@",self);
 }
 
 - (void)showInputing{
+    [self tmui_bindObject:self.thk_title forKey:@"self.thk_title"];
     self.thk_title = @"正在输入中...";
-    
-    [self performSelector:@selector(cancelInput) afterDelay:5];
+    [self performSelector:@selector(cancelInput) withObject:nil afterDelay:5];
 }
 
 - (void)cancelInput{
-    
-    self.thk_title = @"";
-    
-    [self performSelector:@selector(showInputing) afterDelay:2];
+    self.thk_title = [self tmui_getBoundObjectForKey:@"self.thk_title"];
+    [self performSelector:@selector(showInputing) withObject:nil afterDelay:2];
 }
 
 @end
