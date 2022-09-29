@@ -18,6 +18,7 @@
 		160107722553EA3400FE4B77 /* THKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160107702553EA3300FE4B77 /* THKViewModel.m */; };
 		160609A428E547DE005F3EA0 /* THKValuePointIntroductionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 160609A328E547DE005F3EA0 /* THKValuePointIntroductionVC.m */; };
 		160609A728E547EB005F3EA0 /* THKValuePointIntroductionVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 160609A628E547EB005F3EA0 /* THKValuePointIntroductionVM.m */; };
+		160609AA28E57287005F3EA0 /* THKValuePointIntroductionBottomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 160609A928E57287005F3EA0 /* THKValuePointIntroductionBottomButton.m */; };
 		160981D226D76ED800E1364F /* THKDiaryBookCellHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */; };
 		160981E126D7A16500E1364F /* THKDiaryCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160981E026D7A16500E1364F /* THKDiaryCircleView.m */; };
 		1618293828E2A30A00875943 /* THKCeterAlignLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1618293728E2A30A00875943 /* THKCeterAlignLayout.m */; };
@@ -518,6 +519,8 @@
 		160609A328E547DE005F3EA0 /* THKValuePointIntroductionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKValuePointIntroductionVC.m; sourceTree = "<group>"; };
 		160609A528E547EB005F3EA0 /* THKValuePointIntroductionVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKValuePointIntroductionVM.h; sourceTree = "<group>"; };
 		160609A628E547EB005F3EA0 /* THKValuePointIntroductionVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKValuePointIntroductionVM.m; sourceTree = "<group>"; };
+		160609A828E57287005F3EA0 /* THKValuePointIntroductionBottomButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKValuePointIntroductionBottomButton.h; sourceTree = "<group>"; };
+		160609A928E57287005F3EA0 /* THKValuePointIntroductionBottomButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKValuePointIntroductionBottomButton.m; sourceTree = "<group>"; };
 		160981D026D76ED800E1364F /* THKDiaryBookCellHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryBookCellHeaderView.h; sourceTree = "<group>"; };
 		160981D126D76ED800E1364F /* THKDiaryBookCellHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryBookCellHeaderView.m; sourceTree = "<group>"; };
 		160981DF26D7A16500E1364F /* THKDiaryCircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryCircleView.h; sourceTree = "<group>"; };
@@ -3024,6 +3027,8 @@
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
 				160609A228E547DE005F3EA0 /* THKValuePointIntroductionVC.h */,
 				160609A328E547DE005F3EA0 /* THKValuePointIntroductionVC.m */,
+				160609A828E57287005F3EA0 /* THKValuePointIntroductionBottomButton.h */,
+				160609A928E57287005F3EA0 /* THKValuePointIntroductionBottomButton.m */,
 				160609A528E547EB005F3EA0 /* THKValuePointIntroductionVM.h */,
 				160609A628E547EB005F3EA0 /* THKValuePointIntroductionVM.m */,
 			);
@@ -4046,6 +4051,7 @@
 				16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */,
 				1649086F26983FFB004DC831 /* THKPageContentScrollView.m in Sources */,
 				16192B282692E13E00967C73 /* THKLoadingAnimationView.m in Sources */,
+				160609AA28E57287005F3EA0 /* THKValuePointIntroductionBottomButton.m in Sources */,
 				16867A022692D76C00650023 /* TMCardComponentTitleAndSubTitleStyleCell.m in Sources */,
 				16192B332692E13E00967C73 /* THKInteractiveTransition.m in Sources */,
 				16611ABB2696870F0089E41B /* GEDispatcher.m in Sources */,
