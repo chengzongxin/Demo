@@ -7,6 +7,7 @@
 
 #import "ViewController.h"
 #import "THKValuePointIntroductionVC.h"
+#import "THKOpenWXProgramAlertView.h"
 
 @interface ViewController ()
 
@@ -19,13 +20,21 @@
     
     self.view.backgroundColor = UIColorWhite;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self push];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self push];
+//    });
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self push];
+//    [self push];
+    [THKOpenWXProgramAlertView showAlertWithConfirmBlock:^(THKOpenWXProgramAlertView * _Nonnull alertView) {
+        NSLog(@"confirm");
+        [alertView dismiss];
+    } cancelBlock:^(THKOpenWXProgramAlertView * _Nonnull alertView) {
+        NSLog(@"cancel");
+        [alertView dismiss];
+    }];
+    
 }
 
 - (void)push{
@@ -40,6 +49,9 @@
     THKValuePointIntroductionVC *vc = [[THKValuePointIntroductionVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+#pragma mark - 弹窗
+
 
 
 #pragma mark - 定时输入

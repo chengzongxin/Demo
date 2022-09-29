@@ -79,6 +79,7 @@
 		16212FE528A799130079A086 /* THKOnlineDesignHouseTypeListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FE428A799130079A086 /* THKOnlineDesignHouseTypeListVM.m */; };
 		1622298B28A5EF3A005826CF /* LameTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1622298728A5EF3A005826CF /* LameTool.m */; };
 		1622298F28A5F149005826CF /* lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1622298E28A5F148005826CF /* lame.a */; };
+		1627D7FF28E58C56002AE4F6 /* THKOpenWXProgramAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627D7FE28E58C56002AE4F6 /* THKOpenWXProgramAlertView.m */; };
 		1630D97F274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */; };
 		1630D985274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D984274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m */; };
 		1630D98B274DD7D0009A04FA /* THKAvatarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D987274DD7D0009A04FA /* THKAvatarViewModel.m */; };
@@ -646,6 +647,8 @@
 		1622298928A5EF3A005826CF /* LameTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameTool.h; sourceTree = "<group>"; };
 		1622298D28A5F13D005826CF /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		1622298E28A5F148005826CF /* lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lame.a; sourceTree = "<group>"; };
+		1627D7FD28E58C56002AE4F6 /* THKOpenWXProgramAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKOpenWXProgramAlertView.h; sourceTree = "<group>"; };
+		1627D7FE28E58C56002AE4F6 /* THKOpenWXProgramAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKOpenWXProgramAlertView.m; sourceTree = "<group>"; };
 		1630D97D274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialCommunicationVC.h; sourceTree = "<group>"; };
 		1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialCommunicationVC.m; sourceTree = "<group>"; };
 		1630D983274DD66F009A04FA /* THKSelectMaterialCommunicationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialCommunicationCell.h; sourceTree = "<group>"; };
@@ -3038,6 +3041,8 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				1627D7FD28E58C56002AE4F6 /* THKOpenWXProgramAlertView.h */,
+				1627D7FE28E58C56002AE4F6 /* THKOpenWXProgramAlertView.m */,
 				1627D7FC28E580AC002AE4F6 /* ValuePointIntroduction */,
 			);
 			path = HomeSection;
@@ -3903,6 +3908,7 @@
 				16E5C51A26830DCB0024BA20 /* THKIdentityConfigManager.m in Sources */,
 				16DDC0A5274CF059000DAA29 /* THKEntranceViewCell.m in Sources */,
 				165CCBD7278E66DB00141EC0 /* THKImageTabSegmentControl.m in Sources */,
+				1627D7FF28E58C56002AE4F6 /* THKOpenWXProgramAlertView.m in Sources */,
 				16867A1B2692D76C00650023 /* TMCardComponentBaseListView.m in Sources */,
 				16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */,
 				168679952692B8AC00650023 /* THKMaterialRecommendKnowledgeRequest.m in Sources */,
