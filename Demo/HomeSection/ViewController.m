@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "THKGraphicDetailVC.h"
+#import "THKValuePointIntroductionVC.h"
 
 @interface ViewController ()
 
@@ -29,8 +29,15 @@
 }
 
 - (void)push{
-    THKGraphicDetailVM *vm = [THKGraphicDetailVM new];
-    THKGraphicDetailVC *vc = [[THKGraphicDetailVC alloc] initWithViewModel:vm];
+    THKValuePointIntroductionVM *vm = [THKValuePointIntroductionVM new];
+    
+    THKValuePointImg *img1 = [THKValuePointImg createImgWith:@"https://cdn.pixabay.com/photo/2020/03/31/19/20/dog-4988985_1280.jpg" width:6000 height:4000];
+    THKValuePointImg *img2 = [THKValuePointImg createImgWith:@"https://cdn.pixabay.com/photo/2022/05/21/09/30/cat-7211080_1280.jpg" width:6000 height:8000];
+    THKValuePointImg *img3 = [THKValuePointImg createImgWith:@"https://media.istockphoto.com/photos/little-kitten-sitting-on-a-street-near-the-car-wheel-picture-id1337794362" width:6000 height:6000];
+    
+    vm.imgs = @[img1,img2,img3];
+    
+    THKValuePointIntroductionVC *vc = [[THKValuePointIntroductionVC alloc] initWithViewModel:vm];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
