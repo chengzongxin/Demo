@@ -7,14 +7,14 @@
 
 #import "THKGraphicDetailSpaceView.h"
 #import "THKGraphicDetailSpaceCell.h"
-
+#import "THKCeterAlignLayout.h"
 @interface THKGraphicDetailSpaceView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) UIVisualEffectView *effectView;
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
-@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) THKCeterAlignLayout *flowLayout;
 
 @end
 
@@ -127,11 +127,11 @@
     return _collectionView;
 }
 
-- (UICollectionViewFlowLayout *)flowLayout {
+- (THKCeterAlignLayout *)flowLayout {
     if (!_flowLayout) {
-        _flowLayout = [[UICollectionViewFlowLayout alloc] init];
+        _flowLayout = [[THKCeterAlignLayout alloc] init];
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        _flowLayout.minimumInteritemSpacing = 0;
+        _flowLayout.minimumInteritemSpacing = 28;
         _flowLayout.minimumLineSpacing = 12;
     }
     return _flowLayout;

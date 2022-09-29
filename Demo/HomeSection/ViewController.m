@@ -34,4 +34,37 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+
+#pragma mark - 定时输入
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    
+    [self showInputing];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+}
+
+- (void)dealloc{
+    NSLog(@"delloc %@",self);
+}
+
+- (void)showInputing{
+    self.thk_title = @"正在输入中...";
+    
+    [self performSelector:@selector(cancelInput) afterDelay:5];
+}
+
+- (void)cancelInput{
+    
+    self.thk_title = @"";
+    
+    [self performSelector:@selector(showInputing) afterDelay:2];
+}
+
 @end
