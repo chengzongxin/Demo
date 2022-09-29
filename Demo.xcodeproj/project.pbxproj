@@ -1795,6 +1795,19 @@
 			path = LameTool;
 			sourceTree = "<group>";
 		};
+		1627D7FC28E580AC002AE4F6 /* ValuePointIntroduction */ = {
+			isa = PBXGroup;
+			children = (
+				160609A228E547DE005F3EA0 /* THKValuePointIntroductionVC.h */,
+				160609A328E547DE005F3EA0 /* THKValuePointIntroductionVC.m */,
+				160609A828E57287005F3EA0 /* THKValuePointIntroductionBottomButton.h */,
+				160609A928E57287005F3EA0 /* THKValuePointIntroductionBottomButton.m */,
+				160609A528E547EB005F3EA0 /* THKValuePointIntroductionVM.h */,
+				160609A628E547EB005F3EA0 /* THKValuePointIntroductionVM.m */,
+			);
+			path = ValuePointIntroduction;
+			sourceTree = "<group>";
+		};
 		1630D986274DD722009A04FA /* THKSelectMaterialCommunicationCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -3025,12 +3038,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				160609A228E547DE005F3EA0 /* THKValuePointIntroductionVC.h */,
-				160609A328E547DE005F3EA0 /* THKValuePointIntroductionVC.m */,
-				160609A828E57287005F3EA0 /* THKValuePointIntroductionBottomButton.h */,
-				160609A928E57287005F3EA0 /* THKValuePointIntroductionBottomButton.m */,
-				160609A528E547EB005F3EA0 /* THKValuePointIntroductionVM.h */,
-				160609A628E547EB005F3EA0 /* THKValuePointIntroductionVM.m */,
+				1627D7FC28E580AC002AE4F6 /* ValuePointIntroduction */,
 			);
 			path = HomeSection;
 			sourceTree = "<group>";
