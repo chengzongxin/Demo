@@ -46,6 +46,12 @@
     }];
 }
 
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
+    [_iconBtn tmui_cornerDirect:UIRectCornerTopLeft radius:8];
+}
+
 - (void)setSelected:(BOOL)selected{
     [super setSelected:selected];
     
