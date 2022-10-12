@@ -25,7 +25,8 @@
 
 @property (nonatomic, strong, readwrite) NSArray *yangArray;
 
-@property (nonatomic, strong, readwrite) NSArray *cityModels;
+@property (nonatomic, strong, readwrite) NSArray <NSArray *> *cityModels;
+
 @end
 
 @implementation THKCalculateQuotationViewModel
@@ -53,13 +54,16 @@
 }
 
 - (void)createHouseTypeArray:(THKCalcConfigResponse *)x {
-    
     NSArray *arr = @[@[@"五室",@"四室",@"三室",@"二室"],
                      @[@"五厅",@"四厅",@"三厅",@"二厅"],
                      @[@"五卫",@"四卫",@"三卫",@"二卫"],
                      @[@"五阳台",@"四阳台",@"三阳台",@"二阳台"]];
     self.houseTypeArray = arr;
     
+}
+- (void)createCityModelArray:(THKCalcConfigResponse *)x {
+    NSArray *arr = @[@"深圳"];
+    self.cityModels = arr;
 }
 
 - (THKRequestCommand *)requestConfigCommand{

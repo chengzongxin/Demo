@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSArray *yangArray;
 
-@property (nonatomic, strong, readonly) NSArray *cityModels;
+@property (nonatomic, strong, readonly) NSArray <NSArray *> *cityModels;
 
 @end
 

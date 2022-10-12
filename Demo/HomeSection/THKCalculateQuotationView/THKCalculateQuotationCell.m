@@ -45,11 +45,13 @@
     }];
     
     [self.rightContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLbl.mas_right);
+        make.left.equalTo(@100);
         make.right.equalTo(self.contentView).inset(20);
         make.top.bottom.equalTo(self.contentView);
     }];
     
+//    [self.rightContentView setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+//    [self.rightContentView setContentHuggingPriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
 }
 
 - (UILabel *)titleLbl{

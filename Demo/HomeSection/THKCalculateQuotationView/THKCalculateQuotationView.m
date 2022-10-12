@@ -105,7 +105,7 @@
 
 - (void)dismiss:(BOOL)animated{
     @weakify(self);
-    [self.modalViewController hideInView:TMUI_AppWindow animated:animated completion:^(BOOL finished) {
+    [self.modalViewController hideInView:TMUIHelper.topViewController.view animated:animated completion:^(BOOL finished) {
         @strongify(self);
         self.modalViewController.contentView = nil;
     }];
@@ -124,10 +124,10 @@
     TMUIModalPresentationViewController *modalViewController = [[TMUIModalPresentationViewController alloc] init];
     modalViewController.contentView = self;
     modalViewController.dimmingView.backgroundColor = UIColorWhite;
-    modalViewController.contentViewMargins = UIEdgeInsetsZero;
+    modalViewController.contentViewMargins = UIEdgeInsetsMake(0, 0, tmui_tabbarHeight(), 0);
     // 以 UIWindow 的形式来展示
 //    [modalViewController showWithAnimated:YES completion:nil];
-    [modalViewController showInView:TMUI_AppWindow animated:YES completion:nil];
+    [modalViewController showInView:TMUIHelper.topViewController.view animated:YES completion:nil];
     
     @weakify(self);
 //    [self.cancleBtn tmui_addActionBlock:^(NSInteger tag) {
@@ -158,28 +158,35 @@
             config.type = TMUIPickerViewType_MultiColumn;
             config.title = @"请选择房屋户型";
         } numberOfColumnsBlock:^NSInteger(UIPickerView * _Nonnull pickerView) {
-            return 4;
+            return self.viewModel.houseTypeArray.count;
         } numberOfRowsBlock:^NSInteger(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSArray<NSNumber *> * _Nullable selectRows) {
-            if (columnIndex == 0) {
-                return self.viewModel.shiArray.count;
-            }else if (columnIndex == 1) {
-                return self.viewModel.tingArray.count;
-            }else if (columnIndex == 2) {
-                return self.viewModel.weiArray.count;
-            }else if (columnIndex == 3) {
-                return self.viewModel.yangArray.count;
-            }else{
-                return 0;
-            }
+            return self.viewModel.houseTypeArray[columnIndex].count;
         } scrollToRowBlock:^(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
             
         } textForRowBlock:^NSString * _Nullable(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
-            return nil;
+            return self.viewModel.houseTypeArray[columnIndex][rowIndex];
         } selectRowBlock:^(NSArray<TMUIPickerIndexPath *> * _Nonnull indexPaths, NSArray<NSString *> * _Nonnull texts) {
-            
+            textField.text = [texts tmui_reduce:^id _Nonnull(NSString * _Nonnull accumulator, NSString * _Nonnull item) {
+                return [NSString stringWithFormat:@"%@%@",accumulator,item];
+            } initial:@""];
         }];
     }else if (textField == self.cityNameTF) {
-        
+        [TMUIPickerView showPickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
+            config.type = TMUIPickerViewType_MultiColumn;
+            config.title = @"请选择所在城市";
+        } numberOfColumnsBlock:^NSInteger(UIPickerView * _Nonnull pickerView) {
+            return self.viewModel.cityModels.count;
+        } numberOfRowsBlock:^NSInteger(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSArray<NSNumber *> * _Nullable selectRows) {
+            return self.viewModel.cityModels[columnIndex].count;
+        } scrollToRowBlock:^(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
+            
+        } textForRowBlock:^NSString * _Nullable(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
+            return self.viewModel.cityModels[columnIndex][rowIndex];
+        } selectRowBlock:^(NSArray<TMUIPickerIndexPath *> * _Nonnull indexPaths, NSArray<NSString *> * _Nonnull texts) {
+            textField.text = [texts tmui_reduce:^id _Nonnull(NSString * _Nonnull accumulator, NSString * _Nonnull item) {
+                return [NSString stringWithFormat:@"%@%@",accumulator,item];
+            } initial:@""];
+        }];
     }
     return NO;
 }
@@ -222,18 +229,17 @@
             cell.titleLbl.text = @"房屋面积";
             
             TMUITextField *tf = [[TMUITextField alloc] init];
-            tf.font = UIFont(14);
+            tf.font = UIFontSemibold(15);
             tf.placeholder = @"请输入";
-            tf.textAlignment = NSTextAlignmentRight;
+            tf.textAlignment = NSTextAlignmentLeft;
             tf.placeholderColor = UIColorPlaceholder;
             tf.keyboardType = UIKeyboardTypeNumberPad;
             [cell.rightContentView addSubview:tf];
             [tf mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(-54);
-//                make.top.bottom.equalTo(cell.rightContentView);
+                make.right.mas_greaterThanOrEqualTo(-54);
                 make.centerY.equalTo(cell.rightContentView);
                 make.height.mas_equalTo(20);
-                make.width.mas_equalTo(103);
+                make.left.mas_equalTo(0);
             }];
             
             UILabel *lbl = [UILabel new];
@@ -255,18 +261,17 @@
             
             
             TMUITextField *tf = [[TMUITextField alloc] init];
-            tf.font = UIFont(14);
+            tf.font = UIFontSemibold(15);
             tf.placeholder = @"请填写";
-            tf.textAlignment = NSTextAlignmentRight;
+            tf.textAlignment = NSTextAlignmentLeft;
             tf.placeholderColor = UIColorPlaceholder;
             tf.delegate = self;
             [cell.rightContentView addSubview:tf];
             [tf mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(-54);
-//                make.top.bottom.equalTo(cell.rightContentView);
+                make.right.mas_greaterThanOrEqualTo(-54);
                 make.centerY.equalTo(cell.rightContentView);
                 make.height.mas_equalTo(20);
-                make.width.mas_equalTo(103);
+                make.left.mas_equalTo(0);
             }];
             
             self.houseTypeTF = tf;
@@ -284,18 +289,17 @@
             cell.titleLbl.text = @"所在城市";
             
             TMUITextField *tf = [[TMUITextField alloc] init];
-            tf.font = UIFont(14);
+            tf.font = UIFontSemibold(15);
             tf.placeholder = @"请填写";
-            tf.textAlignment = NSTextAlignmentRight;
+            tf.textAlignment = NSTextAlignmentLeft;
             tf.placeholderColor = UIColorPlaceholder;
             tf.delegate = self;
             [cell.rightContentView addSubview:tf];
             [tf mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.mas_equalTo(-54);
-//                make.top.bottom.equalTo(cell.rightContentView);
+                make.right.mas_greaterThanOrEqualTo(-54);
                 make.centerY.equalTo(cell.rightContentView);
                 make.height.mas_equalTo(20);
-                make.width.mas_equalTo(103);
+                make.left.mas_equalTo(0);
             }];
             
             self.cityNameTF = tf;
@@ -315,7 +319,7 @@
             THKCalculateQuotationSelectButtonView *buttonView = [THKCalculateQuotationSelectButtonView new];
             [cell.rightContentView addSubview:buttonView];
             [buttonView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.edges.mas_equalTo(UIEdgeInsetsMake(0, 20, 0, 0));
+                make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
             }];
             buttonView.datas = @[@"新房装修",@"旧房改造"];
             buttonView.tapItem = ^(NSString * _Nonnull text) {
