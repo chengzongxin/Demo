@@ -483,6 +483,7 @@
 		8FD1344828F699F500E791C9 /* THKCalcSubmitDemandResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1344728F699F500E791C9 /* THKCalcSubmitDemandResponse.m */; };
 		8FD1344B28F6A1B500E791C9 /* THKCalcConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1344A28F6A1B500E791C9 /* THKCalcConfigRequest.m */; };
 		8FD1344E28F6A1C300E791C9 /* THKCalcConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1344D28F6A1C300E791C9 /* THKCalcConfigResponse.m */; };
+		8FD1345128F6DC7B00E791C9 /* THKCalculateQuotationViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1345028F6DC7B00E791C9 /* THKCalculateQuotationViewModel.m */; };
 		D0F618EC38E0A587ED43D1B6 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF1CEF0D049285B37D7291D /* Pods_Demo.framework */; };
 		F1C681F9557B015807664FCA /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24402B93CEE47E2B7582028 /* Pods_DemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -1414,6 +1415,8 @@
 		8FD1344A28F6A1B500E791C9 /* THKCalcConfigRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalcConfigRequest.m; sourceTree = "<group>"; };
 		8FD1344C28F6A1C300E791C9 /* THKCalcConfigResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalcConfigResponse.h; sourceTree = "<group>"; };
 		8FD1344D28F6A1C300E791C9 /* THKCalcConfigResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalcConfigResponse.m; sourceTree = "<group>"; };
+		8FD1344F28F6DC7B00E791C9 /* THKCalculateQuotationViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalculateQuotationViewModel.h; sourceTree = "<group>"; };
+		8FD1345028F6DC7B00E791C9 /* THKCalculateQuotationViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalculateQuotationViewModel.m; sourceTree = "<group>"; };
 		B6DCD3B2C996E7E8DE7049E3 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		C24402B93CEE47E2B7582028 /* Pods_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BDDCFC8D775786F2019F8A /* Pods_Demo_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3481,6 +3484,8 @@
 			children = (
 				8FD1343328F64C5000E791C9 /* THKCalculateQuotationView.h */,
 				8FD1343428F64C5000E791C9 /* THKCalculateQuotationView.m */,
+				8FD1344F28F6DC7B00E791C9 /* THKCalculateQuotationViewModel.h */,
+				8FD1345028F6DC7B00E791C9 /* THKCalculateQuotationViewModel.m */,
 				8FD1343628F6609C00E791C9 /* THKCalculateQuotationCell.h */,
 				8FD1343728F6609C00E791C9 /* THKCalculateQuotationCell.m */,
 				8FD1343928F6694700E791C9 /* THKCalculateQuotationSelectButtonView.h */,
@@ -4180,6 +4185,7 @@
 				16611AC02696870F0089E41B /* GELoginTracker.m in Sources */,
 				16867A152692D76C00650023 /* TMCardComponentTool.m in Sources */,
 				16FE857628D303BA000AC352 /* THKMyHomeDesignDemandsVM.m in Sources */,
+				8FD1345128F6DC7B00E791C9 /* THKCalculateQuotationViewModel.m in Sources */,
 				16F0A67328AB679E00B0B081 /* THKOnlineDesignUploadHouseCell.m in Sources */,
 				16E5C5012682E5920024BA20 /* TRequestParameter.m in Sources */,
 				16611AB32696870F0089E41B /* UITabBarController+Godeye.m in Sources */,
@@ -4459,8 +4465,6 @@
 					"\"TMEmptyView\"",
 					"-framework",
 					"\"TMToast\"",
-					"-framework",
-					"\"TMUIKit\"",
 					"-framework",
 					"\"UIKit\"",
 					"-framework",

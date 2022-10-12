@@ -7,6 +7,7 @@
 
 #import "TMUICycleCardView.h"
 #import "TMUICycleCardViewLayout.h"
+#import <TMUITimer.h>
 @interface TMUICycleCardView () <UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;

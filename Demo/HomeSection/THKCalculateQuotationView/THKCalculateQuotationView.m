@@ -8,18 +8,19 @@
 #import "THKCalculateQuotationView.h"
 #import "THKCalculateQuotationCell.h"
 #import "THKCalculateQuotationSelectButtonView.h"
-#import "THKCalcSubmitDemandRequest.h"
-#import "THKCalcConfigRequest.h"
 
 @interface THKCalculateQuotationView ()
-<UITableViewDelegate,UITableViewDataSource>
+<UITableViewDelegate,UITableViewDataSource,TMUITextFieldDelegate>
+
+
+@property (nonatomic, strong, readwrite) THKCalculateQuotationViewModel *viewModel;
 
 @property (nonatomic, strong) UIView *view;
 
 @property (nonatomic, strong) UITableView *tableView;
 /// 面积
 @property (nonatomic, strong) TMUITextField *areaMeterTF;
-/// 所在城市
+/// 户型信息
 @property (nonatomic, strong) TMUITextField *houseTypeTF;
 /// 所在城市
 @property (nonatomic, strong) TMUITextField *cityNameTF;
@@ -33,6 +34,7 @@
 @end
 
 @implementation THKCalculateQuotationView
+@dynamic viewModel;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -68,15 +70,22 @@
         make.height.mas_equalTo(50);
         make.bottom.mas_equalTo(-tmui_safeAreaBottomInset());
     }];
+}
+
+- (void)bindViewModel{
+    [super bindViewModel];
     
-    THKCalcConfigRequest *request = [THKCalcConfigRequest new];
-    [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
-        NSLog(@"%@",x);
-    } error:^(NSError * _Nullable error) {
-        NSLog(@"%@",error);
-    } completed:^{
-        
+    @weakify(self);
+    [self.viewModel.refreshSignal subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        [self.tableView reloadData];
     }];
+    
+    [self.viewModel.errorMsgSignal subscribeNext:^(id  _Nullable x) {
+        [TMToast toast:x];
+    }];
+    
+    [self.viewModel.requestConfigCommand execute:nil];
 }
 
 - (void)layoutSubviews{
@@ -85,8 +94,8 @@
     [self.view.layer tmui_setLayerShadow:[UIColor.blackColor colorWithAlphaComponent:0.06] offset:CGSizeMake(0, -5) alpha:1 radius:10 spread:10];
 }
 
-+ (void)showAlertWithConfirmBlock:(void (^)(THKCalculateQuotationView * _Nonnull))confirmBlock cancelBlock:(void (^)(THKCalculateQuotationView * _Nonnull))cancelBlock{
-    THKCalculateQuotationView *alert = [THKCalculateQuotationView new];
++ (void)showWithViewModel:(THKViewModel *)viewModel success:(void (^)(THKCalculateQuotationView * _Nonnull))confirmBlock cancelBlock:(void (^)(THKCalculateQuotationView * _Nonnull))cancelBlock{
+    THKCalculateQuotationView *alert = [[THKCalculateQuotationView alloc] initWithViewModel:viewModel];
     [alert handleShowingConfirmBlock:confirmBlock cancelBlock:cancelBlock];
 }
 
@@ -141,6 +150,39 @@
 //    TMUIWeakObjectContainer *weakModalVC = [[TMUIWeakObjectContainer alloc] initWithObject:modalViewController];
 }
 
+
+#pragma mark - Cell event
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField == self.houseTypeTF) {
+        [TMUIPickerView showPickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
+            config.type = TMUIPickerViewType_MultiColumn;
+            config.title = @"请选择房屋户型";
+        } numberOfColumnsBlock:^NSInteger(UIPickerView * _Nonnull pickerView) {
+            return 4;
+        } numberOfRowsBlock:^NSInteger(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSArray<NSNumber *> * _Nullable selectRows) {
+            if (columnIndex == 0) {
+                return self.viewModel.shiArray.count;
+            }else if (columnIndex == 1) {
+                return self.viewModel.tingArray.count;
+            }else if (columnIndex == 2) {
+                return self.viewModel.weiArray.count;
+            }else if (columnIndex == 3) {
+                return self.viewModel.yangArray.count;
+            }else{
+                return 0;
+            }
+        } scrollToRowBlock:^(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
+            
+        } textForRowBlock:^NSString * _Nullable(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
+            return nil;
+        } selectRowBlock:^(NSArray<TMUIPickerIndexPath *> * _Nonnull indexPaths, NSArray<NSString *> * _Nonnull texts) {
+            
+        }];
+    }else if (textField == self.cityNameTF) {
+        
+    }
+    return NO;
+}
 
 #pragma mark UITableViewDelegate UITableViewDataSource
 
@@ -217,6 +259,7 @@
             tf.placeholder = @"请填写";
             tf.textAlignment = NSTextAlignmentRight;
             tf.placeholderColor = UIColorPlaceholder;
+            tf.delegate = self;
             [cell.rightContentView addSubview:tf];
             [tf mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(-54);
@@ -245,6 +288,7 @@
             tf.placeholder = @"请填写";
             tf.textAlignment = NSTextAlignmentRight;
             tf.placeholderColor = UIColorPlaceholder;
+            tf.delegate = self;
             [cell.rightContentView addSubview:tf];
             [tf mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.right.mas_equalTo(-54);

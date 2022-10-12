@@ -14,7 +14,10 @@
 #import <AFNetworking.h>
 #import <ReactiveObjC.h>
 #import <MJExtension.h>
-#import <TMUIKit.h>
+#import <TMUICore.h>
+#import <TMUIExtensions.h>
+#import <TMUIComponents.h>
+#import <ChainUI.h>
 #import <TMToast.h>
 #import <TMEmptyView.h>
 //#import <YYKit.h>

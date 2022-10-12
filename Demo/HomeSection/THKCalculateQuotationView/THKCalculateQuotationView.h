@@ -6,11 +6,14 @@
 //
 
 #import "THKView.h"
-
+#import "THKCalculateQuotationViewModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKCalculateQuotationView : THKView
-+ (void)showAlertWithConfirmBlock:(void (^)(THKCalculateQuotationView *alertView))confirmBlock cancelBlock:(void (^)(THKCalculateQuotationView *alertView))cancelBlock;
+
+@property (nonatomic, strong, readonly) THKCalculateQuotationViewModel *viewModel;
+
++ (void)showWithViewModel:(THKViewModel *)viewModel success:(void (^)(THKCalculateQuotationView * _Nonnull))confirmBlock cancelBlock:(void (^)(THKCalculateQuotationView * _Nonnull))cancelBlock;
 
 - (void)dismiss;
 

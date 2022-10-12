@@ -29,11 +29,11 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 //    [self push];
-    [THKCalculateQuotationView showAlertWithConfirmBlock:^(THKCalculateQuotationView * _Nonnull alertView) {
+    [THKCalculateQuotationView showWithViewModel:THKCalculateQuotationViewModel.new success:^(THKCalculateQuotationView * _Nonnull alertView) {
         NSLog(@"confirm");
         [alertView dismiss];
     } cancelBlock:^(THKCalculateQuotationView * _Nonnull alertView) {
-        NSLog(@"cancel");
+        NSLog(@"confirm");
         [alertView dismiss];
     }];
     
