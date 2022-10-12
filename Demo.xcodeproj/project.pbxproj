@@ -479,6 +479,10 @@
 		8FD1343B28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1343A28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m */; };
 		8FD1343E28F66E8A00E791C9 /* cal_quota_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD1343D28F66E8A00E791C9 /* cal_quota_select@2x.png */; };
 		8FD1344028F66E9300E791C9 /* cal_quota_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD1343F28F66E9200E791C9 /* cal_quota_select@3x.png */; };
+		8FD1344328F6999D00E791C9 /* THKCalcSubmitDemandRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1344228F6999D00E791C9 /* THKCalcSubmitDemandRequest.m */; };
+		8FD1344828F699F500E791C9 /* THKCalcSubmitDemandResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1344728F699F500E791C9 /* THKCalcSubmitDemandResponse.m */; };
+		8FD1344B28F6A1B500E791C9 /* THKCalcConfigRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1344A28F6A1B500E791C9 /* THKCalcConfigRequest.m */; };
+		8FD1344E28F6A1C300E791C9 /* THKCalcConfigResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1344D28F6A1C300E791C9 /* THKCalcConfigResponse.m */; };
 		D0F618EC38E0A587ED43D1B6 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF1CEF0D049285B37D7291D /* Pods_Demo.framework */; };
 		F1C681F9557B015807664FCA /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24402B93CEE47E2B7582028 /* Pods_DemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -1402,6 +1406,14 @@
 		8FD1343A28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalculateQuotationSelectButtonView.m; sourceTree = "<group>"; };
 		8FD1343D28F66E8A00E791C9 /* cal_quota_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_quota_select@2x.png"; sourceTree = "<group>"; };
 		8FD1343F28F66E9200E791C9 /* cal_quota_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_quota_select@3x.png"; sourceTree = "<group>"; };
+		8FD1344128F6999D00E791C9 /* THKCalcSubmitDemandRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalcSubmitDemandRequest.h; sourceTree = "<group>"; };
+		8FD1344228F6999D00E791C9 /* THKCalcSubmitDemandRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalcSubmitDemandRequest.m; sourceTree = "<group>"; };
+		8FD1344628F699F500E791C9 /* THKCalcSubmitDemandResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalcSubmitDemandResponse.h; sourceTree = "<group>"; };
+		8FD1344728F699F500E791C9 /* THKCalcSubmitDemandResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalcSubmitDemandResponse.m; sourceTree = "<group>"; };
+		8FD1344928F6A1B500E791C9 /* THKCalcConfigRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalcConfigRequest.h; sourceTree = "<group>"; };
+		8FD1344A28F6A1B500E791C9 /* THKCalcConfigRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalcConfigRequest.m; sourceTree = "<group>"; };
+		8FD1344C28F6A1C300E791C9 /* THKCalcConfigResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalcConfigResponse.h; sourceTree = "<group>"; };
+		8FD1344D28F6A1C300E791C9 /* THKCalcConfigResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalcConfigResponse.m; sourceTree = "<group>"; };
 		B6DCD3B2C996E7E8DE7049E3 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		C24402B93CEE47E2B7582028 /* Pods_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BDDCFC8D775786F2019F8A /* Pods_Demo_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3473,10 +3485,34 @@
 				8FD1343728F6609C00E791C9 /* THKCalculateQuotationCell.m */,
 				8FD1343928F6694700E791C9 /* THKCalculateQuotationSelectButtonView.h */,
 				8FD1343A28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m */,
+				8FD1344428F699BE00E791C9 /* Request */,
+				8FD1344528F699DA00E791C9 /* Resource */,
+			);
+			path = THKCalculateQuotationView;
+			sourceTree = "<group>";
+		};
+		8FD1344428F699BE00E791C9 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				8FD1344128F6999D00E791C9 /* THKCalcSubmitDemandRequest.h */,
+				8FD1344228F6999D00E791C9 /* THKCalcSubmitDemandRequest.m */,
+				8FD1344628F699F500E791C9 /* THKCalcSubmitDemandResponse.h */,
+				8FD1344728F699F500E791C9 /* THKCalcSubmitDemandResponse.m */,
+				8FD1344928F6A1B500E791C9 /* THKCalcConfigRequest.h */,
+				8FD1344A28F6A1B500E791C9 /* THKCalcConfigRequest.m */,
+				8FD1344C28F6A1C300E791C9 /* THKCalcConfigResponse.h */,
+				8FD1344D28F6A1C300E791C9 /* THKCalcConfigResponse.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		8FD1344528F699DA00E791C9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
 				8FD1343D28F66E8A00E791C9 /* cal_quota_select@2x.png */,
 				8FD1343F28F66E9200E791C9 /* cal_quota_select@3x.png */,
 			);
-			path = THKCalculateQuotationView;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		A2B6A7B56530DB06D858E6DE /* Frameworks */ = {
@@ -3931,6 +3967,7 @@
 				16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */,
 				16192BFD2693012100967C73 /* TCaseDetailTopBar.m in Sources */,
 				16CF07B728AC879C0072FD15 /* THKOnlineDesignHomeDetailResponse.m in Sources */,
+				8FD1344828F699F500E791C9 /* THKCalcSubmitDemandResponse.m in Sources */,
 				16192B372692E13E00967C73 /* THKAnimationPanDelegate.m in Sources */,
 				16867A172692D76C00650023 /* TMCardComponentHelper.m in Sources */,
 				16867A0E2692D76C00650023 /* TMCardLiveStatusView.m in Sources */,
@@ -4069,6 +4106,7 @@
 				16192B302692E13E00967C73 /* THKMoveViewAnimation.m in Sources */,
 				16611AAE2696870F0089E41B /* GESwizzer.m in Sources */,
 				16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */,
+				8FD1344328F6999D00E791C9 /* THKCalcSubmitDemandRequest.m in Sources */,
 				1689DECC27449F410073BA68 /* DynamicTabVC.m in Sources */,
 				16B3EA6128AA72FE00B3C791 /* THKOnlineDesignHomeConfigResponse.m in Sources */,
 				16611ABD2696870F0089E41B /* GESnsTracker.m in Sources */,
@@ -4110,6 +4148,7 @@
 				16611AB42696870F0089E41B /* UINavigationController+Godeye.m in Sources */,
 				1685A680289120DC0032E474 /* THKDecorationUpcomingListResponse.m in Sources */,
 				16611AB92696870F0089E41B /* GETrackerModel.m in Sources */,
+				8FD1344E28F6A1C300E791C9 /* THKCalcConfigResponse.m in Sources */,
 				16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				165CCBD1278E66DA00141EC0 /* THKDynamicTabsWrapperScrollView.m in Sources */,
 				16212FCD28A778420079A086 /* THKOnlineDesignSearchAreaContentView.m in Sources */,
@@ -4154,6 +4193,7 @@
 				16611B9B26969D960089E41B /* YYAnimatedImageView+OLELayer.m in Sources */,
 				16E5C4B52682DE4B0024BA20 /* THKCommonResponse.m in Sources */,
 				16192B362692E13E00967C73 /* THKTransitionAnimation.m in Sources */,
+				8FD1344B28F6A1B500E791C9 /* THKCalcConfigRequest.m in Sources */,
 				16867A132692D76C00650023 /* TMCardComponentNotSupportCell.m in Sources */,
 				16212FE228A7963E0079A086 /* THKOnlineDesignHouseTypeListVC.m in Sources */,
 				16FE858428D30CEE000AC352 /* THKHomeQueryCardRequest.m in Sources */,
@@ -4358,6 +4398,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5XB293ZE6R;
 				EXCLUDED_ARCHS = "";
@@ -4427,6 +4468,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.czx.test1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-ambiguous-macro";
 			};

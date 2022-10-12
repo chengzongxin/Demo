@@ -8,6 +8,8 @@
 #import "THKCalculateQuotationView.h"
 #import "THKCalculateQuotationCell.h"
 #import "THKCalculateQuotationSelectButtonView.h"
+#import "THKCalcSubmitDemandRequest.h"
+#import "THKCalcConfigRequest.h"
 
 @interface THKCalculateQuotationView ()
 <UITableViewDelegate,UITableViewDataSource>
@@ -67,6 +69,14 @@
         make.bottom.mas_equalTo(-tmui_safeAreaBottomInset());
     }];
     
+    THKCalcConfigRequest *request = [THKCalcConfigRequest new];
+    [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"%@",x);
+    } error:^(NSError * _Nullable error) {
+        NSLog(@"%@",error);
+    } completed:^{
+        
+    }];
 }
 
 - (void)layoutSubviews{

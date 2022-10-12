@@ -24,8 +24,8 @@
         NSString *uuid =[[[UIDevice currentDevice] identifierForVendor] UUIDString];
         self.t8t_device_id = @"CDF1E9AD-6041-49F6-BC41-C8570A1C9A95";//uuid ? uuid : @"0";
         self.version = @"2.5";
-        self.uid = 172176637;
-        self.to8to_token = @"vBM5Pe1cQUgQyLkMSR8DmzTzSLWPvbmJQN7ku_zUtE6HYUEnU9En9bQ2iuBdwzpXzRJDwgJ5OuGYAEHK1hl1yAMjct-18ytc1xZIyByuXxbxRGJw9eNOk5pPc6CDHaFA";
+        self.uid = 172182391;
+        self.to8to_token = @"-pTQebcN3szsUl0v64v_k2Y2m-49-qYEfXx4KdfrAiE3S4tiH9g5HD8mixUERj24D0uOo641rmmJmn1KfYhFYUaTLAkjacvgip7qyduhgyTxRGJw9eNOk5pPc6CDHaFA";
         self.appversion = @"9.30.1";
         self.systemversion = [[UIDevice currentDevice] systemVersion];
         self.channel = @"appstore";
