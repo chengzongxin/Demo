@@ -474,6 +474,11 @@
 		56357E1E9BDF80E3AC569360 /* Pods_Demo_DemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3BDDCFC8D775786F2019F8A /* Pods_Demo_DemoUITests.framework */; };
 		8F6B0F5B27E1BE83000B5F70 /* TMUIScrollSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6B0F5A27E1BE82000B5F70 /* TMUIScrollSearchBar.m */; };
 		8F6B0F5E27E1BF16000B5F70 /* TMUIScrollSearchContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6B0F5D27E1BF16000B5F70 /* TMUIScrollSearchContentView.m */; };
+		8FD1343528F64C5000E791C9 /* THKCalculateQuotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1343428F64C5000E791C9 /* THKCalculateQuotationView.m */; };
+		8FD1343828F6609C00E791C9 /* THKCalculateQuotationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1343728F6609C00E791C9 /* THKCalculateQuotationCell.m */; };
+		8FD1343B28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1343A28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m */; };
+		8FD1343E28F66E8A00E791C9 /* cal_quota_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD1343D28F66E8A00E791C9 /* cal_quota_select@2x.png */; };
+		8FD1344028F66E9300E791C9 /* cal_quota_select@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FD1343F28F66E9200E791C9 /* cal_quota_select@3x.png */; };
 		D0F618EC38E0A587ED43D1B6 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF1CEF0D049285B37D7291D /* Pods_Demo.framework */; };
 		F1C681F9557B015807664FCA /* Pods_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C24402B93CEE47E2B7582028 /* Pods_DemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -1389,6 +1394,14 @@
 		8F6B0F5A27E1BE82000B5F70 /* TMUIScrollSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIScrollSearchBar.m; sourceTree = "<group>"; };
 		8F6B0F5C27E1BF16000B5F70 /* TMUIScrollSearchContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIScrollSearchContentView.h; sourceTree = "<group>"; };
 		8F6B0F5D27E1BF16000B5F70 /* TMUIScrollSearchContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIScrollSearchContentView.m; sourceTree = "<group>"; };
+		8FD1343328F64C5000E791C9 /* THKCalculateQuotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalculateQuotationView.h; sourceTree = "<group>"; };
+		8FD1343428F64C5000E791C9 /* THKCalculateQuotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalculateQuotationView.m; sourceTree = "<group>"; };
+		8FD1343628F6609C00E791C9 /* THKCalculateQuotationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalculateQuotationCell.h; sourceTree = "<group>"; };
+		8FD1343728F6609C00E791C9 /* THKCalculateQuotationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalculateQuotationCell.m; sourceTree = "<group>"; };
+		8FD1343928F6694700E791C9 /* THKCalculateQuotationSelectButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalculateQuotationSelectButtonView.h; sourceTree = "<group>"; };
+		8FD1343A28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalculateQuotationSelectButtonView.m; sourceTree = "<group>"; };
+		8FD1343D28F66E8A00E791C9 /* cal_quota_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_quota_select@2x.png"; sourceTree = "<group>"; };
+		8FD1343F28F66E9200E791C9 /* cal_quota_select@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cal_quota_select@3x.png"; sourceTree = "<group>"; };
 		B6DCD3B2C996E7E8DE7049E3 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.release.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		C24402B93CEE47E2B7582028 /* Pods_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3BDDCFC8D775786F2019F8A /* Pods_Demo_DemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demo_DemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3041,6 +3054,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				8FD1343C28F66CE900E791C9 /* THKCalculateQuotationView */,
 				1627D7FD28E58C56002AE4F6 /* THKOpenWXProgramAlertView.h */,
 				1627D7FE28E58C56002AE4F6 /* THKOpenWXProgramAlertView.m */,
 				1627D7FC28E580AC002AE4F6 /* ValuePointIntroduction */,
@@ -3450,6 +3464,21 @@
 			path = TMUIScrollSearchBar;
 			sourceTree = "<group>";
 		};
+		8FD1343C28F66CE900E791C9 /* THKCalculateQuotationView */ = {
+			isa = PBXGroup;
+			children = (
+				8FD1343328F64C5000E791C9 /* THKCalculateQuotationView.h */,
+				8FD1343428F64C5000E791C9 /* THKCalculateQuotationView.m */,
+				8FD1343628F6609C00E791C9 /* THKCalculateQuotationCell.h */,
+				8FD1343728F6609C00E791C9 /* THKCalculateQuotationCell.m */,
+				8FD1343928F6694700E791C9 /* THKCalculateQuotationSelectButtonView.h */,
+				8FD1343A28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m */,
+				8FD1343D28F66E8A00E791C9 /* cal_quota_select@2x.png */,
+				8FD1343F28F66E9200E791C9 /* cal_quota_select@3x.png */,
+			);
+			path = THKCalculateQuotationView;
+			sourceTree = "<group>";
+		};
 		A2B6A7B56530DB06D858E6DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3577,6 +3606,7 @@
 				16B3EA5928AA25EF00B3C791 /* 关闭@2x.png in Resources */,
 				16FE9D99277D92260085CC07 /* diary_combo_num_4@3x.png in Resources */,
 				16B3EA4C28AA25EF00B3C791 /* 关闭@3x.png in Resources */,
+				8FD1343E28F66E8A00E791C9 /* cal_quota_select@2x.png in Resources */,
 				1685A670289120DC0032E474 /* dec_todo_unselect@3x.png in Resources */,
 				1685A665289120DC0032E474 /* dec_todo_05@3x.png in Resources */,
 				16B3EA5828AA25EF00B3C791 /* 重新上传户型@2x.png in Resources */,
@@ -3637,6 +3667,7 @@
 				16B3EA5128AA25EF00B3C791 /* od_house_search_icon@3x.png in Resources */,
 				16FE9D92277D92260085CC07 /* diary_combo_num_3@3x.png in Resources */,
 				16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */,
+				8FD1344028F66E9300E791C9 /* cal_quota_select@3x.png in Resources */,
 				16B3EA2428A9E1F400B3C791 /* od_bg_head@3x.png in Resources */,
 				1685A66D289120DC0032E474 /* dec_todo_03@2x.png in Resources */,
 				1685A662289120DC0032E474 /* dec_todo_05_black@2x.png in Resources */,
@@ -4013,6 +4044,7 @@
 				16867A012692D76C00650023 /* TMCardComponentVideoSetsCell.m in Sources */,
 				16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */,
 				16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */,
+				8FD1343B28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m in Sources */,
 				16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */,
 				16DDC098274CCA3F000DAA29 /* THKSelectMaterialHomeVC.m in Sources */,
 				16192B322692E13E00967C73 /* THKSearchAnimation+UI.m in Sources */,
@@ -4098,6 +4130,7 @@
 				16B10F2B28D98A9600561A6D /* THKGraphicDetailHeaderView.m in Sources */,
 				16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
+				8FD1343828F6609C00E791C9 /* THKCalculateQuotationCell.m in Sources */,
 				16867A032692D76C00650023 /* TMCardComponentCompanyStyleCell.m in Sources */,
 				16C8F68F28D408A70032E7CD /* THKMyHouseHeaderView.m in Sources */,
 				16A961FD274F6BDF002B6C89 /* THKMaterialCommunicateListModel.m in Sources */,
@@ -4154,6 +4187,7 @@
 				16611AD2269688C20089E41B /* TUUIDGenerator.m in Sources */,
 				16611B60269692D20089E41B /* THKMaterialKnowledgeVM.m in Sources */,
 				1677AC62274B91EE001B0F66 /* THKQuickCommentsViewModel.m in Sources */,
+				8FD1343528F64C5000E791C9 /* THKCalculateQuotationView.m in Sources */,
 				16E85815283DD4C20065D336 /* TMUICycleCardViewLayout.m in Sources */,
 				16E5C4F22682E4040024BA20 /* THKPhpUploadRequest.m in Sources */,
 				167233722886B8B700901743 /* THKNavigationAvatarTitleViewModel.m in Sources */,

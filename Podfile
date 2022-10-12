@@ -23,6 +23,7 @@ target 'Demo' do
   pod 'MJRefresh'
   pod 'MBProgressHUD'
   pod 'Lottie'
+  pod 'IQKeyboardManager'
 #  pod 'YYWebImage', '1.0.5'
 
   target 'DemoTests' do

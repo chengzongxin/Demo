@@ -8,6 +8,7 @@
 #import "ViewController.h"
 #import "THKValuePointIntroductionVC.h"
 #import "THKOpenWXProgramAlertView.h"
+#import "THKCalculateQuotationView.h"
 
 @interface ViewController ()
 
@@ -28,10 +29,10 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 //    [self push];
-    [THKOpenWXProgramAlertView showAlertWithConfirmBlock:^(THKOpenWXProgramAlertView * _Nonnull alertView) {
+    [THKCalculateQuotationView showAlertWithConfirmBlock:^(THKCalculateQuotationView * _Nonnull alertView) {
         NSLog(@"confirm");
         [alertView dismiss];
-    } cancelBlock:^(THKOpenWXProgramAlertView * _Nonnull alertView) {
+    } cancelBlock:^(THKCalculateQuotationView * _Nonnull alertView) {
         NSLog(@"cancel");
         [alertView dismiss];
     }];

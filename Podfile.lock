@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (4.0.1)
   - AFNetworking/UIKit (4.0.1):
     - AFNetworking/NSURLSession
+  - IQKeyboardManager (6.5.10)
   - LookinServer (1.0.4)
   - Lottie (2.5.3):
     - Lottie/AnimatableLayers (= 2.5.3)
@@ -299,6 +300,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - IQKeyboardManager
   - LookinServer
   - Lottie
   - MBProgressHUD
@@ -317,6 +319,7 @@ SPEC REPOS:
     - TMToast
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - IQKeyboardManager
     - LookinServer
     - Masonry
     - MBProgressHUD
@@ -336,6 +339,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
+  IQKeyboardManager: 45a1fa55c1a5b02c61ac0fd7fd5b62bb4ad20d97
   LookinServer: 743c1681771d0a8dcc38825325a080c3186404a5
   Lottie: dfaf1dd45c3221e574199cd68d87ac94f58894e3
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -348,6 +352,6 @@ SPEC CHECKSUMS:
   TMUIKit: 146adc821ea4e407e8255b44c6e302e27a70c0df
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: c262b4eaeda70db910a20aa7cabcc2daebdfe035
+PODFILE CHECKSUM: 47e3c20882e6b60db4a6494bdb4e026440365319
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.3
