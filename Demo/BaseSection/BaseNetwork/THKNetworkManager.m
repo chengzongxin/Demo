@@ -142,7 +142,7 @@
     
     // token
     [THKBaseNetworkManager sharedManager].tokenBlock = ^NSString * _Nullable{
-        return @"vBM5Pe1cQUgQyLkMSR8Dm8Qg9OOpHLLSLJbg-qoVY7xZP7moUuqPk0d3eTeAEuEf2ExBtV7tOc1-eP9r5mEJQlwQivw3yrR3WkSSR3QXtVvxRGJw9eNOk5pPc6CDHaFA";
+        return [[TRequestParameter sharedParameter] to8to_token];
     };
     
     // userAgent
@@ -177,12 +177,6 @@
         return [NSString stringWithFormat:@"%d", 172182391];
 //        return [NSString stringWithFormat:@"%d", 172175695 - (int)arc4random()%10000];
     };
-    
-    // token
-    [THKBaseNetworkManager sharedManager].tokenBlock = ^NSString * _Nullable{
-        return @"-pTQebcN3szsUl0v64v_k2Y2m-49-qYEfXx4KdfrAiE3S4tiH9g5HD8mixUERj24D0uOo641rmmJmn1KfYhFYUaTLAkjacvgip7qyduhgyTxRGJw9eNOk5pPc6CDHaFA";
-    };
-    
     
 }
 
