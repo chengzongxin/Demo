@@ -49,6 +49,7 @@
         NSLog(@"%@",x);
         if (x.status == THKStatusSuccess) {
             self.defaultArea = x.data.defaultArea;
+            self.submitRequest.square = self.defaultArea;
             self.houseConfigArray = x.data.houseTypeList;
             [self createHouseTypeArray:x.data];
             [self createCityModelArray:x.data];
@@ -69,13 +70,21 @@
         return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
             @strongify(self);
             THKCalcSubmitDemandRequest *request = self.submitRequest;
-            [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
-                [subscriber sendNext:x];
-            } error:^(NSError * _Nullable error) {
-                [subscriber sendError:error];
-            } completed:^{
-                [subscriber sendCompleted];
-            }];
+            if (request.square == 0) {
+                [subscriber sendError:[NSError errorWithDomain:@"请输入房屋面积" code:0 userInfo:nil]];
+            }else{
+                [request.rac_requestSignal subscribeNext:^(THKCalcSubmitDemandResponse * _Nullable x) {
+                    if (x.status == THKStatusSuccess) {
+                        [subscriber sendNext:x];
+                    }else{
+                        [subscriber sendError:[NSError errorWithDomain:x.errorMsg code:0 userInfo:nil]];
+                    }
+                } error:^(NSError * _Nullable error) {
+                    [subscriber sendError:[NSError errorWithDomain:k_toast_msg_weakNet code:0 userInfo:nil]];
+                } completed:^{
+                    [subscriber sendCompleted];
+                }];
+            }
             return [RACDisposable disposableWithBlock:^{
                 
             }];

@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)dismiss;
 
+@property (nonatomic, copy) void (^submitSuccessBlock)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END

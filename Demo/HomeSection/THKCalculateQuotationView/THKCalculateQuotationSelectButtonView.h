@@ -14,7 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSArray *datas;
 
 
-@property (nonatomic, copy) void (^tapItem)(NSString *text);
+@property (nonatomic, copy) void (^tapItem)(NSInteger idx,NSString *text);
+
+
+
+- (void)setDefalutIdx:(NSInteger)idx;
 
 @end
 

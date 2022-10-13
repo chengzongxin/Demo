@@ -124,10 +124,14 @@
     
     [self.collectionView reloadData];
     
+}
+
+- (void)setDefalutIdx:(NSInteger)idx{
+    
     [self layoutIfNeeded];
     
-    if (self.collectionView.numberOfSections > 0 && [self.collectionView numberOfItemsInSection:0] > 0) {
-        [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+    if (self.collectionView.numberOfSections > 0 && [self.collectionView numberOfItemsInSection:0] > idx) {
+        [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:idx inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
 }
 
@@ -169,7 +173,7 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSString *comment = self.datas[indexPath.item];
-    !_tapItem?:_tapItem(comment);
+    !_tapItem?:_tapItem(indexPath.item,comment);
 }
 
 #pragma mark - Getter && Setter

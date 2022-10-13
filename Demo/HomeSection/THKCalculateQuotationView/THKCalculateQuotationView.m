@@ -88,6 +88,18 @@
     [self.viewModel.requestConfigCommand execute:nil];
     
     self.commitButton.rac_command = self.viewModel.commitCmd;
+    
+    [self.viewModel.commitCmd.executionSignals.switchToLatest subscribeNext:^(THKCalcSubmitDemandResponse *  _Nullable x) {
+        @strongify(self);
+        // 提交成功
+        if (self.submitSuccessBlock) {
+            self.submitSuccessBlock();
+        }
+    }];
+    
+    [self.viewModel.commitCmd.errors subscribeNext:^(NSError * _Nullable x) {
+        [TMToast toast:x.domain];
+    }];
 }
 
 - (void)layoutSubviews{
@@ -114,11 +126,6 @@
 }
 
 
-- (void)commit:(UIButton *)btn{
-    
-}
-
-
 - (void)handleShowingConfirmBlock:(void (^)(THKCalculateQuotationView * _Nonnull))confirmBlock cancelBlock:(void (^)(THKCalculateQuotationView * _Nonnull))cancelBlock{
     
     
@@ -136,11 +143,15 @@
 //        @strongify(self);
 //        cancelBlock(self);
 //    } forControlEvents:UIControlEventTouchUpInside];
-
-    [self.commitButton tmui_addActionBlock:^(NSInteger tag) {
+//
+//    [self.commitButton tmui_addActionBlock:^(NSInteger tag) {
+//        @strongify(self);
+//        confirmBlock(self);
+//    } forControlEvents:UIControlEventTouchUpInside];
+    self.submitSuccessBlock = ^{
         @strongify(self);
         confirmBlock(self);
-    } forControlEvents:UIControlEventTouchUpInside];
+    };
     
     modalViewController.willHideByDimmingViewTappedBlock = ^{
         @strongify(self);
@@ -154,13 +165,17 @@
 
 
 #pragma mark - Cell event
+// 修改面积
 - (void)handleTextChangeEvent:(UITextField *)textField{
     NSLog(@"%@",textField.text);
     NSInteger area = [textField.text integerValue];
+    
     THKCalcQuataConfigHouseTypeListItem *item = [self.viewModel.houseConfigArray tmui_filter:^BOOL(THKCalcQuataConfigHouseTypeListItem * _Nonnull item) {
         return item.minArea <= area && item.maxArea >= area;
     }].firstObject;
     
+    
+    self.viewModel.submitRequest.square = area;
     if (item) {
         self.houseTypeTF.text = item.houseTypeName;
         
@@ -422,10 +437,14 @@
                 make.edges.mas_equalTo(UIEdgeInsetsMake(0, 0, 0, 0));
             }];
             buttonView.datas = @[@"新房装修",@"旧房改造"];
-            buttonView.tapItem = ^(NSString * _Nonnull text) {
-                NSLog(@"%@",text);
+            @weakify(self);
+            buttonView.tapItem = ^(NSInteger idx, NSString * _Nonnull text) {
+                @strongify(self);
+                self.viewModel.submitRequest.houseRough = idx+1;
             };
             
+            [buttonView setDefalutIdx:1];
+            self.viewModel.submitRequest.houseRough = 2;
         }
             break;;
             
@@ -473,7 +492,6 @@
         _commitButton.cornerRadius = 8;
         _commitButton.tmui_font = UIFontMedium(18);
         _commitButton.tmui_text = @"立即发送";
-        [_commitButton tmui_addTarget:self action:@selector(commit:)];
     }
     return _commitButton;
 }
