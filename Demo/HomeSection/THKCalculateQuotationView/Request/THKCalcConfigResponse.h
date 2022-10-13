@@ -6,10 +6,12 @@
 //
 
 #import "THKResponse.h"
-
+#import "THKCalcQuataConfigModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKCalcConfigResponse : THKResponse
+
+@property (nonatomic, strong) THKCalcQuataConfigModel *data;
 
 @end
 

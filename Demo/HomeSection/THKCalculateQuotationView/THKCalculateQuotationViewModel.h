@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) RACSubject *errorMsgSignal;
 
-@property (nonatomic, strong, readonly) NSArray <NSArray *> *houseTypeArray;
+@property (nonatomic, strong, readonly) NSArray <NSArray <THKCalcQuataConfigHouseBaseListItem *>*> *houseTypeArray;
 
 @property (nonatomic, strong, readonly) NSArray *shiArray;
 
@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSArray *yangArray;
 
-@property (nonatomic, strong, readonly) NSArray <NSArray *> *cityModels;
+@property (nonatomic, strong, readonly) NSArray <THKCalcQuataConfigCityListItem *> *cityModels;
 
 @end
 

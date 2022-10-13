@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong, readwrite) RACSubject *errorMsgSignal;
 
-@property (nonatomic, strong, readwrite) NSArray <NSArray *> *houseTypeArray;
+@property (nonatomic, strong, readwrite) NSArray <NSArray <THKCalcQuataConfigHouseBaseListItem *>*> *houseTypeArray;
 
 @property (nonatomic, strong, readwrite) NSArray *shiArray;
 
@@ -25,7 +25,9 @@
 
 @property (nonatomic, strong, readwrite) NSArray *yangArray;
 
-@property (nonatomic, strong, readwrite) NSArray <NSArray *> *cityModels;
+@property (nonatomic, strong, readwrite) NSArray <THKCalcQuataConfigCityListItem *> *cityModels;
+
+@property (nonatomic, assign) NSInteger defaultArea;
 
 @end
 
@@ -40,7 +42,9 @@
         @strongify(self);
         NSLog(@"%@",x);
         if (x.status == THKStatusSuccess) {
-            [self createHouseTypeArray:x];
+            self.defaultArea = x.data.defaultArea;
+            [self createHouseTypeArray:x.data];
+            [self createCityModelArray:x.data];
             [self.refreshSignal sendNext:nil];
         }else{
             [self.errorMsgSignal sendNext:x.errorMsg];
@@ -53,17 +57,24 @@
     }];
 }
 
-- (void)createHouseTypeArray:(THKCalcConfigResponse *)x {
-    NSArray *arr = @[@[@"五室",@"四室",@"三室",@"二室"],
-                     @[@"五厅",@"四厅",@"三厅",@"二厅"],
-                     @[@"五卫",@"四卫",@"三卫",@"二卫"],
-                     @[@"五阳台",@"四阳台",@"三阳台",@"二阳台"]];
-    self.houseTypeArray = arr;
+- (void)createHouseTypeArray:(THKCalcQuataConfigModel *)data {
+//    NSArray *arr = @[@[@"五室",@"四室",@"三室",@"二室"],
+//                     @[@"五厅",@"四厅",@"三厅",@"二厅"],
+//                     @[@"五卫",@"四卫",@"三卫",@"二卫"],
+//                     @[@"五阳台",@"四阳台",@"三阳台",@"二阳台"]];
+//    self.houseTypeArray = arr;
+    
+    NSArray *houseArr = @[data.fangList?:@[],
+                          data.tingList?:@[],
+                          data.weiList?:@[],
+                          data.yangtaiList?:@[],
+                          data.chuList?:@[]
+    ];
+    self.houseTypeArray = houseArr;
     
 }
-- (void)createCityModelArray:(THKCalcConfigResponse *)x {
-    NSArray *arr = @[@"深圳"];
-    self.cityModels = arr;
+- (void)createCityModelArray:(THKCalcQuataConfigModel *)data {
+    self.cityModels = data.cityList;
 }
 
 - (THKRequestCommand *)requestConfigCommand{

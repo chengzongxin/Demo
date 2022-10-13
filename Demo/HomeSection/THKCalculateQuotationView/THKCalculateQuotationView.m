@@ -164,28 +164,58 @@
         } scrollToRowBlock:^(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
             
         } textForRowBlock:^NSString * _Nullable(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
-            return self.viewModel.houseTypeArray[columnIndex][rowIndex];
+            return self.viewModel.houseTypeArray[columnIndex][rowIndex].itemName;
         } selectRowBlock:^(NSArray<TMUIPickerIndexPath *> * _Nonnull indexPaths, NSArray<NSString *> * _Nonnull texts) {
             textField.text = [texts tmui_reduce:^id _Nonnull(NSString * _Nonnull accumulator, NSString * _Nonnull item) {
                 return [NSString stringWithFormat:@"%@%@",accumulator,item];
             } initial:@""];
         }];
     }else if (textField == self.cityNameTF) {
+        if (self.viewModel.cityModels.count == 0) {
+            return NO;
+        }
+        NSArray <THKCalcQuataConfigCityListItem *> * arr = self.viewModel.cityModels;
         [TMUIPickerView showPickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
-            config.type = TMUIPickerViewType_MultiColumn;
-            config.title = @"请选择所在城市";
+            config.type = TMUIPickerViewType_MultiColumnConcatenation;
         } numberOfColumnsBlock:^NSInteger(UIPickerView * _Nonnull pickerView) {
-            return self.viewModel.cityModels.count;
-        } numberOfRowsBlock:^NSInteger(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSArray<NSNumber *> * _Nullable selectRows) {
-            return self.viewModel.cityModels[columnIndex].count;
+            return 2;
+        } numberOfRowsBlock:^NSInteger(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
+            if (columnIndex == 0) {
+                return arr.count;
+            }else{
+                NSInteger idx = selectRows.firstObject.integerValue;
+                if (idx >= arr.count) {
+                    idx = 0;
+                }
+                THKCalcQuataConfigCityListItem *cityModel = [arr tmui_safeObjectAtIndex:idx];
+                return cityModel.townList.count;
+            }
         } scrollToRowBlock:^(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
-            
+            if (columnIndex == 0) {
+                [pickerView reloadComponent:1];
+                [pickerView selectRow:0 inComponent:1 animated:YES];
+            }
         } textForRowBlock:^NSString * _Nullable(UIPickerView * _Nonnull pickerView, NSInteger columnIndex, NSInteger rowIndex, NSArray<NSNumber *> * _Nonnull selectRows) {
-            return self.viewModel.cityModels[columnIndex][rowIndex];
+            if (columnIndex == 0) {
+                THKCalcQuataConfigCityListItem *cityModel = [arr tmui_safeObjectAtIndex:rowIndex];
+                return cityModel.cityName?:@"";
+            }else{
+                NSInteger idx = selectRows.firstObject.integerValue;
+                if (idx >= arr.count) {
+                    idx = 0;
+                }
+                THKCalcQuataConfigCityListItem *cityModel = [arr tmui_safeObjectAtIndex:idx];
+                return cityModel.townList[rowIndex].townName?:@"";
+            }
         } selectRowBlock:^(NSArray<TMUIPickerIndexPath *> * _Nonnull indexPaths, NSArray<NSString *> * _Nonnull texts) {
-            textField.text = [texts tmui_reduce:^id _Nonnull(NSString * _Nonnull accumulator, NSString * _Nonnull item) {
-                return [NSString stringWithFormat:@"%@%@",accumulator,item];
-            } initial:@""];
+//            if (selectBlock) {
+                TMUIPickerIndexPath *provinceIdxPath = indexPaths.firstObject;
+                TMUIPickerIndexPath *cityIdxPath = indexPaths.lastObject;
+                THKCalcQuataConfigCityListItem *provinceModel = [arr tmui_safeObjectAtIndex:provinceIdxPath.row];
+                THKCalcQuataConfigTownListItem *cityModel = provinceModel.townList[cityIdxPath.row];
+//                selectBlock(cityModel,indexPaths);
+                textField.text = [NSString stringWithFormat:@"%@ %@",provinceModel.cityName,cityModel.townName];
+//            }
         }];
     }
     return NO;
