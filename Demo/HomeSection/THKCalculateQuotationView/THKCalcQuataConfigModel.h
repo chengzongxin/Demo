@@ -14,10 +14,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @interface THKCalcQuataConfigHouseTypeListItem :NSObject
+@property (nonatomic , assign) NSInteger              chu;
 @property (nonatomic , assign) NSInteger              maxArea;
-@property (nonatomic , copy) NSString              * houseType;
+@property (nonatomic , assign) NSInteger              ting;
+@property (nonatomic , assign) NSInteger              wei;
+@property (nonatomic , assign) NSInteger              fang;
 @property (nonatomic , assign) NSInteger              houseTypeId;
+@property (nonatomic , assign) NSInteger              yangtai;
 @property (nonatomic , assign) NSInteger              minArea;
+
+@property (nonatomic, strong, readonly) NSString *houseTypeName;
 
 @end
 

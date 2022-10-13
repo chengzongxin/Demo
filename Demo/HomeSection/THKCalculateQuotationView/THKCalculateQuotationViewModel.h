@@ -36,6 +36,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic ,strong, readonly) NSArray <THKCalcQuataConfigHouseTypeListItem *> *houseConfigArray;
 
+@property (nonatomic, strong, readonly) RACCommand *commitCmd;
+
+@property (nonatomic, strong, readonly) THKCalcSubmitDemandRequest *submitRequest;
+
 @end
 
 NS_ASSUME_NONNULL_END

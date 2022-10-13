@@ -31,6 +31,10 @@
 
 @property (nonatomic ,strong) NSArray <THKCalcQuataConfigHouseTypeListItem *> *houseConfigArray;
 
+@property (nonatomic, strong) RACCommand *commitCmd;
+
+@property (nonatomic, strong) THKCalcSubmitDemandRequest *submitRequest;
+
 @end
 
 @implementation THKCalculateQuotationViewModel
@@ -58,6 +62,26 @@
         @strongify(self);
         [self.errorMsgSignal sendNext:k_toast_msg_weakNet];
     }];
+    
+    self.submitRequest = [THKCalcSubmitDemandRequest new];
+    
+    self.commitCmd = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+            @strongify(self);
+            THKCalcSubmitDemandRequest *request = self.submitRequest;
+            [request.rac_requestSignal subscribeNext:^(id  _Nullable x) {
+                [subscriber sendNext:x];
+            } error:^(NSError * _Nullable error) {
+                [subscriber sendError:error];
+            } completed:^{
+                [subscriber sendCompleted];
+            }];
+            return [RACDisposable disposableWithBlock:^{
+                
+            }];
+        }];
+    }];
+    
 }
 
 - (void)createHouseTypeArray:(THKCalcQuataConfigModel *)data {
@@ -69,9 +93,9 @@
     
     NSArray *houseArr = @[data.fangList?:@[],
                           data.tingList?:@[],
+                          data.chuList?:@[],
                           data.weiList?:@[],
                           data.yangtaiList?:@[],
-                          data.chuList?:@[]
     ];
     self.houseTypeArray = houseArr;
     

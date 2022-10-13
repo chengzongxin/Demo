@@ -86,6 +86,8 @@
     }];
     
     [self.viewModel.requestConfigCommand execute:nil];
+    
+    self.commitButton.rac_command = self.viewModel.commitCmd;
 }
 
 - (void)layoutSubviews{
@@ -160,12 +162,21 @@
     }].firstObject;
     
     if (item) {
-        self.houseTypeTF.text = item.houseType;
+        self.houseTypeTF.text = item.houseTypeName;
+        
+        self.viewModel.submitRequest.fang = item.fang;
+        self.viewModel.submitRequest.ting = item.ting;
+        self.viewModel.submitRequest.chu = item.chu;
+        self.viewModel.submitRequest.wei = item.wei;
+        self.viewModel.submitRequest.yangtai = item.yangtai;
     }
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (textField == self.houseTypeTF) {
+        if (self.viewModel.houseTypeArray.count == 0) {
+            return NO;
+        }
         [TMUIPickerView showPickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
             config.type = TMUIPickerViewType_MultiColumn;
             config.title = @"请选择房屋户型";
@@ -181,6 +192,43 @@
             textField.text = [texts tmui_reduce:^id _Nonnull(NSString * _Nonnull accumulator, NSString * _Nonnull item) {
                 return [NSString stringWithFormat:@"%@%@",accumulator,item];
             } initial:@""];
+            
+            for (int i = 0; i < indexPaths.count; i++) {
+                TMUIPickerIndexPath *indexPath = indexPaths[i];
+                NSArray <THKCalcQuataConfigHouseBaseListItem *>* columns = [self.viewModel.houseTypeArray tmui_safeObjectAtIndex:indexPath.component];
+                THKCalcQuataConfigHouseBaseListItem *item = [columns tmui_safeObjectAtIndex:indexPath.row];
+                switch (indexPath.component) {
+                    case 0:
+                    {
+                        self.viewModel.submitRequest.fang = item.itemId;
+                    }
+                        break;
+                    case 1:
+                    {
+                        self.viewModel.submitRequest.ting = item.itemId;
+                    }
+                        break;
+                    case 2:
+                    {
+                        self.viewModel.submitRequest.chu = item.itemId;
+                    }
+                        break;
+                    case 3:
+                    {
+                        self.viewModel.submitRequest.wei = item.itemId;
+                    }
+                        break;
+                    case 4:
+                    {
+                        self.viewModel.submitRequest.yangtai = item.itemId;
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+            
         }];
     }else if (textField == self.cityNameTF) {
         if (self.viewModel.cityModels.count == 0) {
@@ -221,12 +269,16 @@
             }
         } selectRowBlock:^(NSArray<TMUIPickerIndexPath *> * _Nonnull indexPaths, NSArray<NSString *> * _Nonnull texts) {
 //            if (selectBlock) {
-                TMUIPickerIndexPath *provinceIdxPath = indexPaths.firstObject;
-                TMUIPickerIndexPath *cityIdxPath = indexPaths.lastObject;
-                THKCalcQuataConfigCityListItem *provinceModel = [arr tmui_safeObjectAtIndex:provinceIdxPath.row];
-                THKCalcQuataConfigTownListItem *cityModel = provinceModel.townList[cityIdxPath.row];
+            TMUIPickerIndexPath *cityIdxPath = indexPaths.firstObject;
+            TMUIPickerIndexPath *townIdxPath = indexPaths.lastObject;
+            THKCalcQuataConfigCityListItem *cityModel = [arr tmui_safeObjectAtIndex:cityIdxPath.row];
+            THKCalcQuataConfigTownListItem *townModel = cityModel.townList[townIdxPath.row];
 //                selectBlock(cityModel,indexPaths);
-                textField.text = [NSString stringWithFormat:@"%@ %@",provinceModel.cityName,cityModel.townName];
+            textField.text = [NSString stringWithFormat:@"%@ %@",cityModel.cityName,townModel.townName];
+            
+            self.viewModel.submitRequest.city = cityModel.cityName;
+            self.viewModel.submitRequest.cityId = cityModel.cityId;
+            self.viewModel.submitRequest.townId = townModel.townId;
 //            }
         }];
     }
