@@ -25,7 +25,7 @@
         self.t8t_device_id = @"CDF1E9AD-6041-49F6-BC41-C8570A1C9A95";//uuid ? uuid : @"0";
         self.version = @"2.5";
         self.uid = 172182391;
-        self.to8to_token = @"-pTQebcN3szsUl0v64v_k2Y2m-49-qYEfXx4KdfrAiHuC3fsFsYibjmEzg7uNdMX_D1Qt-1At8aFFUZqoW9U9QMjct-18ytc1xZIyByuXxbxRGJw9eNOk5pPc6CDHaFA";
+        self.to8to_token = @"-pTQebcN3szsUl0v64v_k2Y2m-49-qYEfXx4KdfrAiHFOzi1NMdTaWzKuVf98qAZtqNlaUOGAj8G-YE94-g1PK9Yw2-tSWMdsRKC6T2ZQgbxRGJw9eNOk5pPc6CDHaFA";
         self.appversion = @"9.30.1";
         self.systemversion = [[UIDevice currentDevice] systemVersion];
         self.channel = @"appstore";

@@ -137,7 +137,7 @@
     [TRequestParameter sharedParameter].isnew = 0;
     // 用户id
     [THKBaseNetworkManager sharedManager].userIdBlock = ^NSString * _Nullable{
-        return [NSString stringWithFormat:@"%d", 172176109];
+        return [NSString stringWithFormat:@"%zd", [[TRequestParameter sharedParameter] uid]];
     };
     
     // token
@@ -169,14 +169,9 @@
 //    [[THKAppGroupHandler shareInstane] syncFirstId:[GEEnvironmentParameter defaultParameter].first_id];
     
     ///  开发
-    [TRequestParameter sharedParameter].accountId = 172182391;//
+    [TRequestParameter sharedParameter].accountId = [[TRequestParameter sharedParameter] uid];//
     [TRequestParameter sharedParameter].first_id = @"2CC5559F-EDC1-4F2A-8192-36BAAECF573C";
     [TRequestParameter sharedParameter].isnew = 0;
-    // 用户id
-    [THKBaseNetworkManager sharedManager].userIdBlock = ^NSString * _Nullable{
-        return [NSString stringWithFormat:@"%d", 172182391];
-//        return [NSString stringWithFormat:@"%d", 172175695 - (int)arc4random()%10000];
-    };
     
 }
 
