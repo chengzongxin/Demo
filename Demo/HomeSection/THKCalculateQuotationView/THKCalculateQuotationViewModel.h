@@ -32,6 +32,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, readonly) NSArray <THKCalcQuataConfigCityListItem *> *cityModels;
 
+@property (nonatomic, assign, readonly) NSInteger defaultArea;
+
+@property (nonatomic ,strong, readonly) NSArray <THKCalcQuataConfigHouseTypeListItem *> *houseConfigArray;
+
 @end
 
 NS_ASSUME_NONNULL_END

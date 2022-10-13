@@ -152,6 +152,18 @@
 
 
 #pragma mark - Cell event
+- (void)handleTextChangeEvent:(UITextField *)textField{
+    NSLog(@"%@",textField.text);
+    NSInteger area = [textField.text integerValue];
+    THKCalcQuataConfigHouseTypeListItem *item = [self.viewModel.houseConfigArray tmui_filter:^BOOL(THKCalcQuataConfigHouseTypeListItem * _Nonnull item) {
+        return item.minArea <= area && item.maxArea >= area;
+    }].firstObject;
+    
+    if (item) {
+        self.houseTypeTF.text = item.houseType;
+    }
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     if (textField == self.houseTypeTF) {
         [TMUIPickerView showPickerWithConfigBlock:^(TMUIPickerViewConfig * _Nonnull config) {
@@ -261,8 +273,12 @@
             TMUITextField *tf = [[TMUITextField alloc] init];
             tf.font = UIFontSemibold(15);
             tf.placeholder = @"请输入";
+            if (self.viewModel.defaultArea) {
+                tf.text = @(self.viewModel.defaultArea).stringValue;
+            }
             tf.textAlignment = NSTextAlignmentLeft;
             tf.placeholderColor = UIColorPlaceholder;
+            [tf addTarget:self action:@selector(handleTextChangeEvent:) forControlEvents:UIControlEventEditingChanged];
             tf.keyboardType = UIKeyboardTypeNumberPad;
             [cell.rightContentView addSubview:tf];
             [tf mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -305,6 +321,8 @@
             }];
             
             self.houseTypeTF = tf;
+            
+            [self handleTextChangeEvent:self.areaMeterTF];
             
             UIImageView *imgV = [[UIImageView alloc] initWithImage:UIImageMake(@"od_arrow_black_icon")];
             [cell.rightContentView addSubview:imgV];

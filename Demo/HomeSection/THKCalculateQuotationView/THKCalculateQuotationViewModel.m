@@ -29,6 +29,8 @@
 
 @property (nonatomic, assign) NSInteger defaultArea;
 
+@property (nonatomic ,strong) NSArray <THKCalcQuataConfigHouseTypeListItem *> *houseConfigArray;
+
 @end
 
 @implementation THKCalculateQuotationViewModel
@@ -43,6 +45,7 @@
         NSLog(@"%@",x);
         if (x.status == THKStatusSuccess) {
             self.defaultArea = x.data.defaultArea;
+            self.houseConfigArray = x.data.houseTypeList;
             [self createHouseTypeArray:x.data];
             [self createCityModelArray:x.data];
             [self.refreshSignal sendNext:nil];
