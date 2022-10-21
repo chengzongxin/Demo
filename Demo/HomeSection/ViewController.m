@@ -77,9 +77,25 @@
 }
 
 - (void)showInputing{
-    [self tmui_bindObject:self.thk_title forKey:@"self.thk_title"];
-    self.thk_title = @"正在输入中...";
-    [self performSelector:@selector(cancelInput) withObject:nil afterDelay:5];
+    UIButton *btn = [UIButton tmui_button];
+    btn.tmui_titleColor = UIColorWhite;
+    btn.tmui_text = @"高意向";
+    btn.tmui_font = UIFont(9);
+    btn.cornerRadius = 4;
+    btn.frame = CGRectMake(0, 0, 38, 18);
+    btn.backgroundColor = UIColorGreen;
+    UIImage *img = [UIImage tmui_imageWithView:btn];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"正在输入中..."];
+    [str appendAttributedString:[NSAttributedString tmui_attributedStringWithImage:img baselineOffset:-2 leftMargin:7 rightMargin:0]];
+    self.thk_attrTitle = str;
+//    [self tmui_bindObject:self.thk_title forKey:@"self.thk_title"];
+//    self.thk_title = @"正在输入中...高意向";
+//    self.thk_navBar.titleLbl.text =  @"正在输入中...高意向";
+//    [self.thk_navBar.titleLbl tmui_clickAttrTextWithStrings:@[@"高意向"] attributes:@{NSFontAttributeName:UIFont(15),NSBackgroundColorAttributeName:UIColor.greenColor} clickAction:^(NSString * _Nonnull string, NSRange range, NSInteger index) {
+//
+//    }];
+//    self.thk_title = @"正在输入中...";
+//    [self performSelector:@selector(ca≥≥ncelInput) withObject:nil afterDelay:5];
 }
 
 - (void)cancelInput{
