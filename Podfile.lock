@@ -259,14 +259,14 @@ PODS:
     - Masonry
     - TMUICore
     - TMUIExtensions
-  - TMUICore (2.0.14)
-  - TMUIExtensions (2.0.6):
+  - TMUICore (2.0.9)
+  - TMUIExtensions (2.0.9):
     - TMUICore
-    - TMUIExtensions/Foundation (= 2.0.6)
-    - TMUIExtensions/UIKit (= 2.0.6)
-  - TMUIExtensions/Foundation (2.0.6):
+    - TMUIExtensions/Foundation (= 2.0.9)
+    - TMUIExtensions/UIKit (= 2.0.9)
+  - TMUIExtensions/Foundation (2.0.9):
     - TMUICore
-  - TMUIExtensions/UIKit (2.0.6):
+  - TMUIExtensions/UIKit (2.0.9):
     - TMUICore
     - TMUIExtensions/Foundation
   - YYKit (1.0.9):
@@ -286,8 +286,8 @@ DEPENDENCIES:
   - TMEmptyView
   - TMToast
   - TMUIComponents (from `https://github.com/chengzongxin/TMUIKit.git`)
-  - TMUICore (from `https://github.com/chengzongxin/TMUIKit.git`)
-  - TMUIExtensions (from `https://github.com/chengzongxin/TMUIKit.git`)
+  - TMUICore (= 2.0.9)
+  - TMUIExtensions (= 2.0.9)
   - YYKit
 
 SPEC REPOS:
@@ -305,25 +305,17 @@ SPEC REPOS:
     - MJExtension
     - MJRefresh
     - ReactiveObjC
+    - TMUICore
+    - TMUIExtensions
     - YYKit
 
 EXTERNAL SOURCES:
   TMUIComponents:
     :git: https://github.com/chengzongxin/TMUIKit.git
-  TMUICore:
-    :git: https://github.com/chengzongxin/TMUIKit.git
-  TMUIExtensions:
-    :git: https://github.com/chengzongxin/TMUIKit.git
 
 CHECKOUT OPTIONS:
   TMUIComponents:
-    :commit: 26b7de2add0597521669feab5c505cc2d86c145d
-    :git: https://github.com/chengzongxin/TMUIKit.git
-  TMUICore:
-    :commit: 26b7de2add0597521669feab5c505cc2d86c145d
-    :git: https://github.com/chengzongxin/TMUIKit.git
-  TMUIExtensions:
-    :commit: 26b7de2add0597521669feab5c505cc2d86c145d
+    :commit: 8dc63c112f164339bb2a833321da24e7faa307c9
     :git: https://github.com/chengzongxin/TMUIKit.git
 
 SPEC CHECKSUMS:
@@ -339,11 +331,11 @@ SPEC CHECKSUMS:
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   TMEmptyView: 8b412988dff4645b0cccab14bc81c1d0f3624eab
   TMToast: fc27b1e26653252ba220e2c208dbb73ac5abb786
-  TMUIComponents: 6cde0870d5fbedcabf511ae59d5847dd8d433d8f
-  TMUICore: b545494a4416c4a08c0bbebbff92b5f1f1c19c3a
-  TMUIExtensions: 6a8e7548208c6cc45c1d8b61202ac0320abb2745
+  TMUIComponents: fa1f9a4d00ea3f75e26419e86877c3b6e994416a
+  TMUICore: 05d70fd364414bcd3e761f6589cd49ea367bfb33
+  TMUIExtensions: feace48104ffc030425db2ba710ae633fda0bc1b
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 197cb19e3494f4afd307019b86acb0e03bc9d4ca
+PODFILE CHECKSUM: c8b7aa7a9eaddd4a8fa432f5b130c50ac672d1ee
 
 COCOAPODS: 1.10.0

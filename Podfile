@@ -18,8 +18,8 @@ target 'Demo' do
 #  pod 'MLeaksFinder', :configurations => ['Debug'] #检测内存泄漏
 #  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git'
 #  pod 'TMUIKit', :path => '~/tmuikit/TMUIKit_Debug.podspec'
-  pod 'TMUICore', :git => 'https://github.com/chengzongxin/TMUIKit.git'
-  pod 'TMUIExtensions', :git => 'https://github.com/chengzongxin/TMUIKit.git'
+  pod 'TMUICore', '2.0.9'
+  pod 'TMUIExtensions', '2.0.9'
   pod 'TMUIComponents', :git => 'https://github.com/chengzongxin/TMUIKit.git'
   pod 'ChainUIKit'
   pod 'TMEmptyView'

@@ -28,14 +28,14 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-//    [self push];
-    [THKCalculateQuotationView showWithViewModel:THKCalculateQuotationViewModel.new success:^(THKCalculateQuotationView * _Nonnull alertView) {
-        NSLog(@"confirm");
-        [alertView dismiss];
-    } cancelBlock:^(THKCalculateQuotationView * _Nonnull alertView) {
-        NSLog(@"confirm");
-        [alertView dismiss];
-    }];
+    [self push];
+//    [THKCalculateQuotationView showWithViewModel:THKCalculateQuotationViewModel.new success:^(THKCalculateQuotationView * _Nonnull alertView) {
+//        NSLog(@"confirm");
+//        [alertView dismiss];
+//    } cancelBlock:^(THKCalculateQuotationView * _Nonnull alertView) {
+//        NSLog(@"confirm");
+//        [alertView dismiss];
+//    }];
     
 }
 
