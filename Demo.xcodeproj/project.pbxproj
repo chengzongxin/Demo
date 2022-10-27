@@ -476,6 +476,8 @@
 		8F4F2BE128F7B355000AC361 /* THKCalcQuataConfigModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F4F2BE028F7B355000AC361 /* THKCalcQuataConfigModel.m */; };
 		8F6B0F5B27E1BE83000B5F70 /* TMUIScrollSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6B0F5A27E1BE82000B5F70 /* TMUIScrollSearchBar.m */; };
 		8F6B0F5E27E1BF16000B5F70 /* TMUIScrollSearchContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6B0F5D27E1BF16000B5F70 /* TMUIScrollSearchContentView.m */; };
+		8FCE6440290ADA4B00AB72D3 /* IrregularViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE643F290ADA4B00AB72D3 /* IrregularViewController.m */; };
+		8FCE6444290ADA6F00AB72D3 /* IrregularBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FCE6442290ADA6F00AB72D3 /* IrregularBtn.m */; };
 		8FD1343528F64C5000E791C9 /* THKCalculateQuotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1343428F64C5000E791C9 /* THKCalculateQuotationView.m */; };
 		8FD1343828F6609C00E791C9 /* THKCalculateQuotationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1343728F6609C00E791C9 /* THKCalculateQuotationCell.m */; };
 		8FD1343B28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD1343A28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m */; };
@@ -1405,6 +1407,10 @@
 		8F6B0F5A27E1BE82000B5F70 /* TMUIScrollSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIScrollSearchBar.m; sourceTree = "<group>"; };
 		8F6B0F5C27E1BF16000B5F70 /* TMUIScrollSearchContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMUIScrollSearchContentView.h; sourceTree = "<group>"; };
 		8F6B0F5D27E1BF16000B5F70 /* TMUIScrollSearchContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMUIScrollSearchContentView.m; sourceTree = "<group>"; };
+		8FCE643E290ADA4B00AB72D3 /* IrregularViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IrregularViewController.h; sourceTree = "<group>"; };
+		8FCE643F290ADA4B00AB72D3 /* IrregularViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IrregularViewController.m; sourceTree = "<group>"; };
+		8FCE6442290ADA6F00AB72D3 /* IrregularBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IrregularBtn.m; sourceTree = "<group>"; };
+		8FCE6443290ADA6F00AB72D3 /* IrregularBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IrregularBtn.h; sourceTree = "<group>"; };
 		8FD1343328F64C5000E791C9 /* THKCalculateQuotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalculateQuotationView.h; sourceTree = "<group>"; };
 		8FD1343428F64C5000E791C9 /* THKCalculateQuotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCalculateQuotationView.m; sourceTree = "<group>"; };
 		8FD1343628F6609C00E791C9 /* THKCalculateQuotationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCalculateQuotationCell.h; sourceTree = "<group>"; };
@@ -3075,6 +3081,9 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				8FCE6441290ADA6F00AB72D3 /* IrregularBtn */,
+				8FCE643E290ADA4B00AB72D3 /* IrregularViewController.h */,
+				8FCE643F290ADA4B00AB72D3 /* IrregularViewController.m */,
 				16FB351329096ABA005F56F1 /* THKCompareImageView.h */,
 				16FB351429096ABA005F56F1 /* THKCompareImageView.m */,
 				8FD1343C28F66CE900E791C9 /* THKCalculateQuotationView */,
@@ -3493,6 +3502,15 @@
 				8F6B0F5D27E1BF16000B5F70 /* TMUIScrollSearchContentView.m */,
 			);
 			path = TMUIScrollSearchBar;
+			sourceTree = "<group>";
+		};
+		8FCE6441290ADA6F00AB72D3 /* IrregularBtn */ = {
+			isa = PBXGroup;
+			children = (
+				8FCE6442290ADA6F00AB72D3 /* IrregularBtn.m */,
+				8FCE6443290ADA6F00AB72D3 /* IrregularBtn.h */,
+			);
+			path = IrregularBtn;
 			sourceTree = "<group>";
 		};
 		8FD1343C28F66CE900E791C9 /* THKCalculateQuotationView */ = {
@@ -4009,6 +4027,7 @@
 				16529F662745ECC6002A3B65 /* DynamicTabLevelVC.m in Sources */,
 				1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */,
 				16CF07AE28AC7D8D0072FD15 /* THKOnlineDesignHomeEditRequest.m in Sources */,
+				8FCE6440290ADA4B00AB72D3 /* IrregularViewController.m in Sources */,
 				16192B4F2692E1B100967C73 /* THKCustomRouter.m in Sources */,
 				16E5C4CE2682DE930024BA20 /* TBTNetworkPrivate.m in Sources */,
 				16192B2F2692E13E00967C73 /* THKMoveCardAnimation.m in Sources */,
@@ -4046,6 +4065,7 @@
 				16212FC728A747B60079A086 /* THKOnlineDesignSearchAreaVM.m in Sources */,
 				16FE858728D30CFA000AC352 /* THKHomeQueryCardResponse.m in Sources */,
 				16B1F51B275DFFEF00FF18C4 /* THKNewcomerHomeView.m in Sources */,
+				8FCE6444290ADA6F00AB72D3 /* IrregularBtn.m in Sources */,
 				16F0A67028AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m in Sources */,
 				1642AA5126D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m in Sources */,
 				1685A681289120DC0032E474 /* THKDecorationUpcomingEditRequest.m in Sources */,
