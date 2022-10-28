@@ -66,11 +66,14 @@
 
 
 - (void)btnAction:(UIButton *)btn{
-    
+    NSLog(@"%@",btn);
 }
 
 - (void)setImgs:(NSArray<NSString *> *)imgs{
     _imgs = imgs;
+    
+    [self.leftImgBtn setBackgroundImageWithURL:[NSURL URLWithString:imgs.firstObject] forState:UIControlStateNormal options:0];
+    [self.rightImgBtn setBackgroundImageWithURL:[NSURL URLWithString:imgs.lastObject] forState:UIControlStateNormal options:0];
 }
 
 - (void)setupCompareView{
@@ -86,7 +89,7 @@
     frame.size.width = frame.size.width / 2 + kDiff - kSpace;
     btn.frame = frame;
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundImageWithURL:[NSURL URLWithString:@"https://cdn.pixabay.com/photo/2020/03/31/19/20/dog-4988985_1280.jpg"] forState:UIControlStateNormal options:0];
+//    [btn setBackgroundImageWithURL:[NSURL URLWithString:@"https://cdn.pixabay.com/photo/2020/03/31/19/20/dog-4988985_1280.jpg"] forState:UIControlStateNormal options:0];
     // 添加路径关键点array
     NSMutableArray *pointArray = [NSMutableArray array];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, 0.f))];
@@ -107,7 +110,7 @@
     frame.origin.x = self.bounds.size.width - frame.size.width;
     btn.frame = frame;
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
-    [btn setBackgroundImageWithURL:[NSURL URLWithString:@"https://cdn.pixabay.com/photo/2022/05/21/09/30/cat-7211080_1280.jpg"] forState:UIControlStateNormal options:0];
+//    [btn setBackgroundImageWithURL:[NSURL URLWithString:@"https://cdn.pixabay.com/photo/2022/05/21/09/30/cat-7211080_1280.jpg"] forState:UIControlStateNormal options:0];
     // 添加路径关键点array
     NSMutableArray *pointArray = [NSMutableArray array];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(kDiff + kSpace, 0.f))];

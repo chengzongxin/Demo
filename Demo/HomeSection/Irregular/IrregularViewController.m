@@ -41,6 +41,11 @@
 - (void)compareView{
     THKDecorationCompareImageView *view = [[THKDecorationCompareImageView alloc] initWithFrame:CGRectMake(15, 600, TMUI_SCREEN_WIDTH - 30, 148)];
     [self.view addSubview:view];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        view.imgs = @[@"https://cdn.pixabay.com/photo/2020/03/31/19/20/dog-4988985_1280.jpg",
+                      @"https://cdn.pixabay.com/photo/2022/05/21/09/30/cat-7211080_1280.jpg"];
+    });
 }
 
 
