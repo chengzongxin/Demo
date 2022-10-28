@@ -86,11 +86,11 @@
     // 添加路径关键点array
     NSMutableArray *pointArray = [NSMutableArray array];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, 0.f))];
-    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), 0.f))];
-    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn) - kDiff - kSpace, btn.frame.size.height))];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, kViewHeight(btn)))];
+    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn) - kDiff - kSpace, btn.frame.size.height))];
+    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), 0.f))];
     
-    btn.pointArray = [pointArray mutableCopy];
+    btn.cornerPointArray = [pointArray mutableCopy];
     
     self.leftImgBtn = btn;
     [self.contentView addSubview:btn];
@@ -107,12 +107,12 @@
     // 添加路径关键点array
     NSMutableArray *pointArray = [NSMutableArray array];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(kDiff + kSpace, 0.f))];
-    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), 0.f))];
-    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), btn.frame.size.height))];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, kViewHeight(btn)))];
+    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), btn.frame.size.height))];
+    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), 0.f))];
     
     
-    btn.pointArray = [pointArray mutableCopy];
+    btn.cornerPointArray = [pointArray mutableCopy];
     
     self.rightImgBtn = btn;
     [self.contentView addSubview:btn];
@@ -131,6 +131,9 @@
 - (UIImageView *)vsIcon{
     if (!_vsIcon) {
         _vsIcon = [[UIImageView alloc] initWithImage:UIImageMake(@"graphic_vs")];
+        [_vsIcon tmui_addSingerTapWithBlock:^{
+            NSLog(@"tap vs");
+        }];
     }
     return _vsIcon;
 }

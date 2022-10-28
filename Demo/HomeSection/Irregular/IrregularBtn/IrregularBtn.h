@@ -11,5 +11,7 @@
 @interface IrregularBtn : UIButton
 
 @property (nonatomic, strong) NSArray *pointArray;
+@property (nonatomic, strong) NSArray *cornerPointArray;
+
 
 @end

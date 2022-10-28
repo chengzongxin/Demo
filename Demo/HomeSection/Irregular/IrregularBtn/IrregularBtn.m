@@ -7,6 +7,7 @@
 //
 
 #import "IrregularBtn.h"
+#import "CornerPath.h"
 
 @interface IrregularBtn()
 
@@ -29,6 +30,23 @@
             [path addLineToPoint:retrievedPoint];
         }
     }
+    [path closePath];
+    self.path = path;
+}
+
+
+- (void)setCornerPointArray:(NSArray *)pointArray
+{
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    
+    CGPoint point0 = CGPointFromString([pointArray objectAtIndex:0]);
+    CGPoint point1 = CGPointFromString([pointArray objectAtIndex:1]);
+    CGPoint point2 = CGPointFromString([pointArray objectAtIndex:2]);
+    CGPoint point3 = CGPointFromString([pointArray objectAtIndex:3]);
+    [CornerPath addArcWithLinesFrom:point0 via:point1 to:point2 radius:8 path:path];
+    [CornerPath addArcWithLinesFrom:point1 via:point2 to:point3 radius:8 path:path];
+    [CornerPath addArcWithLinesFrom:point2 via:point3 to:point0 radius:8 path:path];
+    [CornerPath addArcWithLinesFrom:point3 via:point0 to:point1 radius:8 path:path];
     [path closePath];
     self.path = path;
 }
