@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKDecorationCompareImageView : UIView
 
+@property (nonatomic, strong) NSArray <NSString *> *imgs;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -69,6 +69,10 @@
     
 }
 
+- (void)setImgs:(NSArray<NSString *> *)imgs{
+    _imgs = imgs;
+}
+
 - (void)setupCompareView{
     [self setupLeftImgBtn];
     [self setupRightImgBtn];

@@ -85,6 +85,7 @@
 		1627BAC8290B6E7600F14B0A /* graphic_no_housetype@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1627BAC4290B6E7600F14B0A /* graphic_no_housetype@2x.png */; };
 		1627BAC9290B6E7600F14B0A /* graphic_vs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1627BAC5290B6E7600F14B0A /* graphic_vs@2x.png */; };
 		1627BACE290B75DB00F14B0A /* CornerPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627BACD290B75DB00F14B0A /* CornerPath.m */; };
+		1627BAD1290B7ABD00F14B0A /* THKIrrgularImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627BAD0290B7ABD00F14B0A /* THKIrrgularImageView.m */; };
 		1630D97F274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */; };
 		1630D985274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D984274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m */; };
 		1630D98B274DD7D0009A04FA /* THKAvatarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D987274DD7D0009A04FA /* THKAvatarViewModel.m */; };
@@ -674,6 +675,8 @@
 		1627BAC5290B6E7600F14B0A /* graphic_vs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "graphic_vs@2x.png"; sourceTree = "<group>"; };
 		1627BACC290B75DB00F14B0A /* CornerPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CornerPath.h; sourceTree = "<group>"; };
 		1627BACD290B75DB00F14B0A /* CornerPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CornerPath.m; sourceTree = "<group>"; };
+		1627BACF290B7ABD00F14B0A /* THKIrrgularImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKIrrgularImageView.h; sourceTree = "<group>"; };
+		1627BAD0290B7ABD00F14B0A /* THKIrrgularImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKIrrgularImageView.m; sourceTree = "<group>"; };
 		1630D97D274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialCommunicationVC.h; sourceTree = "<group>"; };
 		1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialCommunicationVC.m; sourceTree = "<group>"; };
 		1630D983274DD66F009A04FA /* THKSelectMaterialCommunicationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialCommunicationCell.h; sourceTree = "<group>"; };
@@ -3540,8 +3543,10 @@
 		8FCE6441290ADA6F00AB72D3 /* IrregularBtn */ = {
 			isa = PBXGroup;
 			children = (
-				8FCE6442290ADA6F00AB72D3 /* IrregularBtn.m */,
 				8FCE6443290ADA6F00AB72D3 /* IrregularBtn.h */,
+				8FCE6442290ADA6F00AB72D3 /* IrregularBtn.m */,
+				1627BACF290B7ABD00F14B0A /* THKIrrgularImageView.h */,
+				1627BAD0290B7ABD00F14B0A /* THKIrrgularImageView.m */,
 			);
 			path = IrregularBtn;
 			sourceTree = "<group>";
@@ -4250,6 +4255,7 @@
 				16CF07C628AD17500072FD15 /* THKRecordAnimationView.m in Sources */,
 				16192B2D2692E13E00967C73 /* THKMoveViewInteractiveTransition.m in Sources */,
 				16B10F2B28D98A9600561A6D /* THKGraphicDetailHeaderView.m in Sources */,
+				1627BAD1290B7ABD00F14B0A /* THKIrrgularImageView.m in Sources */,
 				16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */,
 				16F3B69E2586F40600E5ADE4 /* THKViewController.m in Sources */,
 				8FD1343828F6609C00E791C9 /* THKCalculateQuotationCell.m in Sources */,
