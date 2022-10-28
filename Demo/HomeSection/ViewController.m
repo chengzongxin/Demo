@@ -9,6 +9,7 @@
 #import "THKValuePointIntroductionVC.h"
 #import "THKOpenWXProgramAlertView.h"
 #import "THKCalculateQuotationView.h"
+#import "IrregularViewController.h"
 
 @interface ViewController ()
 
@@ -21,14 +22,14 @@
     
     self.view.backgroundColor = UIColorWhite;
 
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self push];
-//    });
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self push1];
+    });
     [self showInputingStatus];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self push];
+    [self push1];
 //    [THKCalculateQuotationView showWithViewModel:THKCalculateQuotationViewModel.new success:^(THKCalculateQuotationView * _Nonnull alertView) {
 //        NSLog(@"confirm");
 //        [alertView dismiss];
@@ -37,6 +38,10 @@
 //        [alertView dismiss];
 //    }];
     
+}
+
+- (void)push1{
+    [self.navigationController pushViewController:IrregularViewController.new animated:YES];
 }
 
 - (void)push{

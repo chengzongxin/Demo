@@ -25,9 +25,9 @@
         CGPoint retrievedPoint = CGPointFromString([pointArray objectAtIndex:i]);
         if (i == 0) {
             [path moveToPoint:retrievedPoint];
-        }else
+        }else {
             [path addLineToPoint:retrievedPoint];
-        
+        }
     }
     [path closePath];
     self.path = path;

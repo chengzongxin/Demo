@@ -6,21 +6,24 @@
 //  Copyright © 2018年 LuoLi. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "IrregularViewController.h"
 #import "IrregularBtn.h"
+#import "THKDecorationCompareImageView.h"
 
 #define kViewWidth(View) CGRectGetWidth(View.frame)
 #define kViewHeight(View) CGRectGetHeight(View.frame)
 
-@interface ViewController ()
+@interface IrregularViewController ()
 
 @end
 
-@implementation ViewController
+@implementation IrregularViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    self.view.backgroundColor = UIColor.whiteColor;
 
     [self view1]; //右斜边梯形
     [self view2]; //平行四边形
@@ -31,6 +34,13 @@
 
     [self view6]; //箭头
     
+    [self compareView];
+    
+}
+
+- (void)compareView{
+    THKDecorationCompareImageView *view = [[THKDecorationCompareImageView alloc] initWithFrame:CGRectMake(15, 600, TMUI_SCREEN_WIDTH - 30, 148)];
+    [self.view addSubview:view];
 }
 
 
@@ -44,8 +54,8 @@
     [btn setTitle:@"按钮1" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
-    [btn setBackgroundImage:[UIImage imageNamed:@"timg-1.jpeg"] forState:UIControlStateNormal];
-    
+//    [btn setBackgroundImage:[UIImage imageNamed:@"timg-1.jpeg"] forState:UIControlStateNormal];
+    [btn setBackgroundImageWithURL:[NSURL URLWithString:@"https://cdn.pixabay.com/photo/2020/03/31/19/20/dog-4988985_1280.jpg"] forState:UIControlStateNormal options:0];
     // 添加路径关键点array
     NSMutableArray *pointArray = [NSMutableArray array];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, 0.f))];
@@ -69,7 +79,8 @@
     [btn setTitle:@"按钮2" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
-    [btn setBackgroundImage:[UIImage imageNamed:@"timg-2.jpeg"] forState:UIControlStateNormal];
+//    [btn setBackgroundImage:[UIImage imageNamed:@"timg-2.jpeg"] forState:UIControlStateNormal];
+    [btn setBackgroundImageWithURL:[NSURL URLWithString:@"https://cdn.pixabay.com/photo/2022/05/21/09/30/cat-7211080_1280.jpg"] forState:UIControlStateNormal options:0];
     
     
     // 添加路径关键点array

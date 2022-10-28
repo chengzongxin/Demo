@@ -79,6 +79,11 @@
 		16212FE528A799130079A086 /* THKOnlineDesignHouseTypeListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16212FE428A799130079A086 /* THKOnlineDesignHouseTypeListVM.m */; };
 		1622298B28A5EF3A005826CF /* LameTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1622298728A5EF3A005826CF /* LameTool.m */; };
 		1622298F28A5F149005826CF /* lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1622298E28A5F148005826CF /* lame.a */; };
+		1627BAC1290B687F00F14B0A /* THKDecorationCompareImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1627BAC0290B687F00F14B0A /* THKDecorationCompareImageView.m */; };
+		1627BAC6290B6E7600F14B0A /* graphic_vs@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1627BAC2290B6E7600F14B0A /* graphic_vs@3x.png */; };
+		1627BAC7290B6E7600F14B0A /* graphic_no_housetype@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1627BAC3290B6E7600F14B0A /* graphic_no_housetype@3x.png */; };
+		1627BAC8290B6E7600F14B0A /* graphic_no_housetype@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1627BAC4290B6E7600F14B0A /* graphic_no_housetype@2x.png */; };
+		1627BAC9290B6E7600F14B0A /* graphic_vs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1627BAC5290B6E7600F14B0A /* graphic_vs@2x.png */; };
 		1630D97F274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */; };
 		1630D985274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D984274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m */; };
 		1630D98B274DD7D0009A04FA /* THKAvatarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D987274DD7D0009A04FA /* THKAvatarViewModel.m */; };
@@ -447,7 +452,6 @@
 		16F84A5826E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A5726E5AEAA00192B0A /* THKDiaryBookDetailTopNaviBarView.m */; };
 		16F84A6726E5AEDF00192B0A /* THKFocusButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A6626E5AEDF00192B0A /* THKFocusButtonView.m */; };
 		16F84A7926E5B40E00192B0A /* UIView+THKDiaryAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F84A7826E5B40E00192B0A /* UIView+THKDiaryAnimation.m */; };
-		16FB351529096ABA005F56F1 /* THKCompareImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FB351429096ABA005F56F1 /* THKCompareImageView.m */; };
 		16FE857328D303B1000AC352 /* THKMyHomeDesignDemandsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857228D303B1000AC352 /* THKMyHomeDesignDemandsVC.m */; };
 		16FE857628D303BA000AC352 /* THKMyHomeDesignDemandsVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857528D303BA000AC352 /* THKMyHomeDesignDemandsVM.m */; };
 		16FE857928D30829000AC352 /* THKMyHomeDesignSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FE857828D30829000AC352 /* THKMyHomeDesignSelectCell.m */; };
@@ -661,6 +665,12 @@
 		1622298928A5EF3A005826CF /* LameTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LameTool.h; sourceTree = "<group>"; };
 		1622298D28A5F13D005826CF /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		1622298E28A5F148005826CF /* lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = lame.a; sourceTree = "<group>"; };
+		1627BABF290B687F00F14B0A /* THKDecorationCompareImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDecorationCompareImageView.h; sourceTree = "<group>"; };
+		1627BAC0290B687F00F14B0A /* THKDecorationCompareImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecorationCompareImageView.m; sourceTree = "<group>"; };
+		1627BAC2290B6E7600F14B0A /* graphic_vs@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "graphic_vs@3x.png"; sourceTree = "<group>"; };
+		1627BAC3290B6E7600F14B0A /* graphic_no_housetype@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "graphic_no_housetype@3x.png"; sourceTree = "<group>"; };
+		1627BAC4290B6E7600F14B0A /* graphic_no_housetype@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "graphic_no_housetype@2x.png"; sourceTree = "<group>"; };
+		1627BAC5290B6E7600F14B0A /* graphic_vs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "graphic_vs@2x.png"; sourceTree = "<group>"; };
 		1630D97D274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialCommunicationVC.h; sourceTree = "<group>"; };
 		1630D97E274DD2B8009A04FA /* THKSelectMaterialCommunicationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialCommunicationVC.m; sourceTree = "<group>"; };
 		1630D983274DD66F009A04FA /* THKSelectMaterialCommunicationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialCommunicationCell.h; sourceTree = "<group>"; };
@@ -1359,8 +1369,6 @@
 		16F84A6626E5AEDF00192B0A /* THKFocusButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKFocusButtonView.m; sourceTree = "<group>"; };
 		16F84A7726E5B40E00192B0A /* UIView+THKDiaryAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+THKDiaryAnimation.h"; sourceTree = "<group>"; };
 		16F84A7826E5B40E00192B0A /* UIView+THKDiaryAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+THKDiaryAnimation.m"; sourceTree = "<group>"; };
-		16FB351329096ABA005F56F1 /* THKCompareImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCompareImageView.h; sourceTree = "<group>"; };
-		16FB351429096ABA005F56F1 /* THKCompareImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCompareImageView.m; sourceTree = "<group>"; };
 		16FE857128D303B1000AC352 /* THKMyHomeDesignDemandsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsVC.h; sourceTree = "<group>"; };
 		16FE857228D303B1000AC352 /* THKMyHomeDesignDemandsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKMyHomeDesignDemandsVC.m; sourceTree = "<group>"; };
 		16FE857428D303BA000AC352 /* THKMyHomeDesignDemandsVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKMyHomeDesignDemandsVM.h; sourceTree = "<group>"; };
@@ -1836,6 +1844,22 @@
 				1622298E28A5F148005826CF /* lame.a */,
 			);
 			path = LameTool;
+			sourceTree = "<group>";
+		};
+		1627BACA290B6EA600F14B0A /* Irregular */ = {
+			isa = PBXGroup;
+			children = (
+				8FCE6441290ADA6F00AB72D3 /* IrregularBtn */,
+				8FCE643E290ADA4B00AB72D3 /* IrregularViewController.h */,
+				8FCE643F290ADA4B00AB72D3 /* IrregularViewController.m */,
+				1627BABF290B687F00F14B0A /* THKDecorationCompareImageView.h */,
+				1627BAC0290B687F00F14B0A /* THKDecorationCompareImageView.m */,
+				1627BAC4290B6E7600F14B0A /* graphic_no_housetype@2x.png */,
+				1627BAC3290B6E7600F14B0A /* graphic_no_housetype@3x.png */,
+				1627BAC5290B6E7600F14B0A /* graphic_vs@2x.png */,
+				1627BAC2290B6E7600F14B0A /* graphic_vs@3x.png */,
+			);
+			path = Irregular;
 			sourceTree = "<group>";
 		};
 		1627D7FC28E580AC002AE4F6 /* ValuePointIntroduction */ = {
@@ -3081,11 +3105,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				8FCE6441290ADA6F00AB72D3 /* IrregularBtn */,
-				8FCE643E290ADA4B00AB72D3 /* IrregularViewController.h */,
-				8FCE643F290ADA4B00AB72D3 /* IrregularViewController.m */,
-				16FB351329096ABA005F56F1 /* THKCompareImageView.h */,
-				16FB351429096ABA005F56F1 /* THKCompareImageView.m */,
+				1627BACA290B6EA600F14B0A /* Irregular */,
 				8FD1343C28F66CE900E791C9 /* THKCalculateQuotationView */,
 				16EE459E28E68B0A00F63B97 /* OpenWXProgramAlertView */,
 				1627D7FC28E580AC002AE4F6 /* ValuePointIntroduction */,
@@ -3690,10 +3710,12 @@
 				1685A67D289120DC0032E474 /* dec_todo_02@2x.png in Resources */,
 				1685A666289120DC0032E474 /* dec_todo_02_black@3x.png in Resources */,
 				16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */,
+				1627BAC8290B6E7600F14B0A /* graphic_no_housetype@2x.png in Resources */,
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
 				16CF07C028AD12120072FD15 /* lot_online_design_record.json in Resources */,
 				16B3EA5028AA25EF00B3C791 /* od_arrow_black_icon@3x.png in Resources */,
 				1685A671289120DC0032E474 /* dec_todo_unselect@2x.png in Resources */,
+				1627BAC6290B6E7600F14B0A /* graphic_vs@3x.png in Resources */,
 				1685A65F289120DC0032E474 /* dec_todo_04_black@3x.png in Resources */,
 				16B3EA3428AA1CE300B3C791 /* od_record_white@3x.png in Resources */,
 				16B3EA5328AA25EF00B3C791 /* 加号绿上传户型@2x.png in Resources */,
@@ -3729,6 +3751,7 @@
 				1685A67A289120DC0032E474 /* dec_todo_close@2x.png in Resources */,
 				1685A675289120DC0032E474 /* dec_todo_select@3x.png in Resources */,
 				16B3EA3628AA1CE300B3C791 /* od_record_white@2x.png in Resources */,
+				1627BAC9290B6E7600F14B0A /* graphic_vs@2x.png in Resources */,
 				16FE9D94277D92260085CC07 /* diary_combo_num_0@3x.png in Resources */,
 				1685A67C289120DC0032E474 /* dec_todo_01_black@2x.png in Resources */,
 				1685A677289120DC0032E474 /* dec_todo_close@3x.png in Resources */,
@@ -3746,6 +3769,7 @@
 				16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */,
 				8FD1344028F66E9300E791C9 /* cal_quota_select@3x.png in Resources */,
 				16B3EA2428A9E1F400B3C791 /* od_bg_head@3x.png in Resources */,
+				1627BAC7290B6E7600F14B0A /* graphic_no_housetype@3x.png in Resources */,
 				1685A66D289120DC0032E474 /* dec_todo_03@2x.png in Resources */,
 				1685A662289120DC0032E474 /* dec_todo_05_black@2x.png in Resources */,
 				16B3EA3728AA1CE300B3C791 /* od_record_black@2x.png in Resources */,
@@ -4174,6 +4198,7 @@
 				16699B6125D0CF5E00B7F43B /* ViewController.m in Sources */,
 				16E5C51C26830DCB0024BA20 /* THKIdentityViewModel.m in Sources */,
 				1689DE9C27449A700073BA68 /* THKTabBadgeRequest.m in Sources */,
+				1627BAC1290B687F00F14B0A /* THKDecorationCompareImageView.m in Sources */,
 				16E5C4B82682DE4B0024BA20 /* THKBaseRequest.m in Sources */,
 				16192ABF2692DE6B00967C73 /* TTagShapeColorView.m in Sources */,
 				16A961F1274F2481002B6C89 /* THKMaterialV3IndexEntranceRequest.m in Sources */,
@@ -4245,7 +4270,6 @@
 				16B2E6EB28A50AA900D385B6 /* THKOnlineDesignHouseDemandCell.m in Sources */,
 				16E5C4CC2682DE930024BA20 /* TBTRequest.m in Sources */,
 				16E5C4B72682DE4B0024BA20 /* THKUploadRequest.m in Sources */,
-				16FB351529096ABA005F56F1 /* THKCompareImageView.m in Sources */,
 				1685A68D289121E50032E474 /* TObject.m in Sources */,
 				16E5C50B2682E6F80024BA20 /* THKHttpDNSManager.m in Sources */,
 				1685A686289120DC0032E474 /* THKDecorationToDoModel.m in Sources */,
