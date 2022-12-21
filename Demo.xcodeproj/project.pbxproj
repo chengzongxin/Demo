@@ -101,17 +101,19 @@
 		163731BA2952E91A0025BF8F /* FLDefaultRadarChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731B92952E91A0025BF8F /* FLDefaultRadarChartViewController.m */; };
 		163731BE29530C7C0025BF8F /* THKDecPKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731BD29530C7C0025BF8F /* THKDecPKView.m */; };
 		163731C129530E950025BF8F /* THKDecPKSrcollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731C029530E950025BF8F /* THKDecPKSrcollView.m */; };
-		163731CE295310550025BF8F /* 上门量房按钮背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C3295310530025BF8F /* 上门量房按钮背景@3x.png */; };
-		163731CF295310550025BF8F /* PK卡片背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C4295310530025BF8F /* PK卡片背景@2x.png */; };
+		163731CE295310550025BF8F /* dec_pk_btn_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C3295310530025BF8F /* dec_pk_btn_bg@3x.png */; };
+		163731CF295310550025BF8F /* dec_pk_card_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C4295310530025BF8F /* dec_pk_card_bg@2x.png */; };
 		163731D0295310550025BF8F /* 对比背景小@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C5295310530025BF8F /* 对比背景小@2x.png */; };
-		163731D1295310550025BF8F /* PK卡片背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C6295310540025BF8F /* PK卡片背景@3x.png */; };
+		163731D1295310550025BF8F /* dec_pk_card_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C6295310540025BF8F /* dec_pk_card_bg@3x.png */; };
 		163731D2295310550025BF8F /* 对比背景小@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C7295310540025BF8F /* 对比背景小@3x.png */; };
-		163731D3295310550025BF8F /* 流程小.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C8295310540025BF8F /* 流程小.png */; };
-		163731D4295310550025BF8F /* 上门量房按钮背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C9295310540025BF8F /* 上门量房按钮背景@2x.png */; };
-		163731D5295310550025BF8F /* 流程小@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CA295310540025BF8F /* 流程小@3x.png */; };
+		163731D4295310550025BF8F /* dec_pk_btn_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C9295310540025BF8F /* dec_pk_btn_bg@2x.png */; };
+		163731D5295310550025BF8F /* dec_pk_flow_img@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CA295310540025BF8F /* dec_pk_flow_img@3x.png */; };
 		163731D6295310550025BF8F /* dec_pk_cell_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CB295310540025BF8F /* dec_pk_cell_bg@3x.png */; };
 		163731D7295310550025BF8F /* dec_pk_cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CC295310550025BF8F /* dec_pk_cell_bg@2x.png */; };
-		163731D8295310550025BF8F /* 流程小@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CD295310550025BF8F /* 流程小@2x.png */; };
+		163731D8295310550025BF8F /* dec_pk_flow_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CD295310550025BF8F /* dec_pk_flow_img@2x.png */; };
+		163731DB29532BBD0025BF8F /* dec_pk_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731D929532BBD0025BF8F /* dec_pk_arrow@2x.png */; };
+		163731DC29532BBD0025BF8F /* dec_pk_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731DA29532BBD0025BF8F /* dec_pk_arrow@3x.png */; };
+		163731DF29532DAA0025BF8F /* THKDecPKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731DE29532DAA0025BF8F /* THKDecPKViewModel.m */; };
 		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
 		16409078283378430081F089 /* CycleCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16409077283378430081F089 /* CycleCardCell.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
@@ -726,17 +728,20 @@
 		163731BD29530C7C0025BF8F /* THKDecPKView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecPKView.m; sourceTree = "<group>"; };
 		163731BF29530E950025BF8F /* THKDecPKSrcollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDecPKSrcollView.h; sourceTree = "<group>"; };
 		163731C029530E950025BF8F /* THKDecPKSrcollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecPKSrcollView.m; sourceTree = "<group>"; };
-		163731C3295310530025BF8F /* 上门量房按钮背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上门量房按钮背景@3x.png"; sourceTree = "<group>"; };
-		163731C4295310530025BF8F /* PK卡片背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PK卡片背景@2x.png"; sourceTree = "<group>"; };
+		163731C3295310530025BF8F /* dec_pk_btn_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_btn_bg@3x.png"; sourceTree = "<group>"; };
+		163731C4295310530025BF8F /* dec_pk_card_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_card_bg@2x.png"; sourceTree = "<group>"; };
 		163731C5295310530025BF8F /* 对比背景小@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "对比背景小@2x.png"; sourceTree = "<group>"; };
-		163731C6295310540025BF8F /* PK卡片背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PK卡片背景@3x.png"; sourceTree = "<group>"; };
+		163731C6295310540025BF8F /* dec_pk_card_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_card_bg@3x.png"; sourceTree = "<group>"; };
 		163731C7295310540025BF8F /* 对比背景小@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "对比背景小@3x.png"; sourceTree = "<group>"; };
-		163731C8295310540025BF8F /* 流程小.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "流程小.png"; sourceTree = "<group>"; };
-		163731C9295310540025BF8F /* 上门量房按钮背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上门量房按钮背景@2x.png"; sourceTree = "<group>"; };
-		163731CA295310540025BF8F /* 流程小@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "流程小@3x.png"; sourceTree = "<group>"; };
+		163731C9295310540025BF8F /* dec_pk_btn_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_btn_bg@2x.png"; sourceTree = "<group>"; };
+		163731CA295310540025BF8F /* dec_pk_flow_img@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_flow_img@3x.png"; sourceTree = "<group>"; };
 		163731CB295310540025BF8F /* dec_pk_cell_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_cell_bg@3x.png"; sourceTree = "<group>"; };
 		163731CC295310550025BF8F /* dec_pk_cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_cell_bg@2x.png"; sourceTree = "<group>"; };
-		163731CD295310550025BF8F /* 流程小@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "流程小@2x.png"; sourceTree = "<group>"; };
+		163731CD295310550025BF8F /* dec_pk_flow_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_flow_img@2x.png"; sourceTree = "<group>"; };
+		163731D929532BBD0025BF8F /* dec_pk_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_arrow@2x.png"; sourceTree = "<group>"; };
+		163731DA29532BBD0025BF8F /* dec_pk_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_arrow@3x.png"; sourceTree = "<group>"; };
+		163731DD29532DAA0025BF8F /* THKDecPKViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDecPKViewModel.h; sourceTree = "<group>"; };
+		163731DE29532DAA0025BF8F /* THKDecPKViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecPKViewModel.m; sourceTree = "<group>"; };
 		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
 		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
 		16409076283378430081F089 /* CycleCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleCardCell.h; sourceTree = "<group>"; };
@@ -1982,6 +1987,8 @@
 			children = (
 				163731BC29530C7C0025BF8F /* THKDecPKView.h */,
 				163731BD29530C7C0025BF8F /* THKDecPKView.m */,
+				163731DD29532DAA0025BF8F /* THKDecPKViewModel.h */,
+				163731DE29532DAA0025BF8F /* THKDecPKViewModel.m */,
 				163731BF29530E950025BF8F /* THKDecPKSrcollView.h */,
 				163731C029530E950025BF8F /* THKDecPKSrcollView.m */,
 				163731C22953103E0025BF8F /* Resource */,
@@ -1993,17 +2000,18 @@
 		163731C22953103E0025BF8F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				163731D929532BBD0025BF8F /* dec_pk_arrow@2x.png */,
+				163731DA29532BBD0025BF8F /* dec_pk_arrow@3x.png */,
 				163731CC295310550025BF8F /* dec_pk_cell_bg@2x.png */,
 				163731CB295310540025BF8F /* dec_pk_cell_bg@3x.png */,
 				163731C5295310530025BF8F /* 对比背景小@2x.png */,
 				163731C7295310540025BF8F /* 对比背景小@3x.png */,
-				163731C8295310540025BF8F /* 流程小.png */,
-				163731CD295310550025BF8F /* 流程小@2x.png */,
-				163731CA295310540025BF8F /* 流程小@3x.png */,
-				163731C9295310540025BF8F /* 上门量房按钮背景@2x.png */,
-				163731C3295310530025BF8F /* 上门量房按钮背景@3x.png */,
-				163731C4295310530025BF8F /* PK卡片背景@2x.png */,
-				163731C6295310540025BF8F /* PK卡片背景@3x.png */,
+				163731CD295310550025BF8F /* dec_pk_flow_img@2x.png */,
+				163731CA295310540025BF8F /* dec_pk_flow_img@3x.png */,
+				163731C9295310540025BF8F /* dec_pk_btn_bg@2x.png */,
+				163731C3295310530025BF8F /* dec_pk_btn_bg@3x.png */,
+				163731C4295310530025BF8F /* dec_pk_card_bg@2x.png */,
+				163731C6295310540025BF8F /* dec_pk_card_bg@3x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -3819,11 +3827,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				163731D4295310550025BF8F /* 上门量房按钮背景@2x.png in Resources */,
+				163731D4295310550025BF8F /* dec_pk_btn_bg@2x.png in Resources */,
 				16FE9D95277D92260085CC07 /* diary_combo_num_5@3x.png in Resources */,
 				1642AA3626D8C87200F5FACD /* THKDiaryBookBottomBar.xib in Resources */,
 				16FE9D97277D92260085CC07 /* diary_combo_num_×@3x.png in Resources */,
 				1685A676289120DC0032E474 /* dec_todo_04@2x.png in Resources */,
+				163731DC29532BBD0025BF8F /* dec_pk_arrow@3x.png in Resources */,
 				1685A67B289120DC0032E474 /* dec_todo_04@3x.png in Resources */,
 				16B3EA5428AA25EF00B3C791 /* od_house_search_icon@2x.png in Resources */,
 				1685A661289120DC0032E474 /* dec_todo_headbg@3x.png in Resources */,
@@ -3834,8 +3843,8 @@
 				1685A670289120DC0032E474 /* dec_todo_unselect@3x.png in Resources */,
 				1685A665289120DC0032E474 /* dec_todo_05@3x.png in Resources */,
 				16B3EA5828AA25EF00B3C791 /* 重新上传户型@2x.png in Resources */,
-				163731CF295310550025BF8F /* PK卡片背景@2x.png in Resources */,
-				163731D8295310550025BF8F /* 流程小@2x.png in Resources */,
+				163731CF295310550025BF8F /* dec_pk_card_bg@2x.png in Resources */,
+				163731D8295310550025BF8F /* dec_pk_flow_img@2x.png in Resources */,
 				1685A67D289120DC0032E474 /* dec_todo_02@2x.png in Resources */,
 				1685A666289120DC0032E474 /* dec_todo_02_black@3x.png in Resources */,
 				16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */,
@@ -3845,6 +3854,7 @@
 				16CF07C028AD12120072FD15 /* lot_online_design_record.json in Resources */,
 				16B3EA5028AA25EF00B3C791 /* od_arrow_black_icon@3x.png in Resources */,
 				1685A671289120DC0032E474 /* dec_todo_unselect@2x.png in Resources */,
+				163731DB29532BBD0025BF8F /* dec_pk_arrow@2x.png in Resources */,
 				1627BAC6290B6E7600F14B0A /* graphic_vs@3x.png in Resources */,
 				163731D2295310550025BF8F /* 对比背景小@3x.png in Resources */,
 				1685A65F289120DC0032E474 /* dec_todo_04_black@3x.png in Resources */,
@@ -3875,12 +3885,11 @@
 				1685A66E289120DC0032E474 /* dec_todo_title@3x.png in Resources */,
 				16FE9D90277D92260085CC07 /* diary_combo_num_1@3x.png in Resources */,
 				1685A678289120DC0032E474 /* dec_todo_open@2x.png in Resources */,
-				163731CE295310550025BF8F /* 上门量房按钮背景@3x.png in Resources */,
+				163731CE295310550025BF8F /* dec_pk_btn_bg@3x.png in Resources */,
 				1685A66C289120DC0032E474 /* dec_todo_select@2x.png in Resources */,
 				163731D6295310550025BF8F /* dec_pk_cell_bg@3x.png in Resources */,
 				16B3EA4F28AA25EF00B3C791 /* od_arrow_black_icon@2x.png in Resources */,
 				16FE9D96277D92260085CC07 /* diary_combo_num_7@3x.png in Resources */,
-				163731D3295310550025BF8F /* 流程小.png in Resources */,
 				16B3EA5228AA25EF00B3C791 /* od_record_close_icon@3x.png in Resources */,
 				1685A67A289120DC0032E474 /* dec_todo_close@2x.png in Resources */,
 				1685A675289120DC0032E474 /* dec_todo_select@3x.png in Resources */,
@@ -3889,7 +3898,7 @@
 				16FE9D94277D92260085CC07 /* diary_combo_num_0@3x.png in Resources */,
 				1685A67C289120DC0032E474 /* dec_todo_01_black@2x.png in Resources */,
 				1685A677289120DC0032E474 /* dec_todo_close@3x.png in Resources */,
-				163731D1295310550025BF8F /* PK卡片背景@3x.png in Resources */,
+				163731D1295310550025BF8F /* dec_pk_card_bg@3x.png in Resources */,
 				16B3EA5A28AA25EF00B3C791 /* 加号绿上传户型@3x.png in Resources */,
 				1685A663289120DC0032E474 /* dec_todo_02_black@2x.png in Resources */,
 				1685A679289120DC0032E474 /* dec_todo_open@3x.png in Resources */,
@@ -3898,7 +3907,7 @@
 				1685A667289120DC0032E474 /* dec_todo_05_black@3x.png in Resources */,
 				1685A672289120DC0032E474 /* dec_todo_01@2x.png in Resources */,
 				16B3EA5628AA25EF00B3C791 /* 重新上传户型@3x.png in Resources */,
-				163731D5295310550025BF8F /* 流程小@3x.png in Resources */,
+				163731D5295310550025BF8F /* dec_pk_flow_img@3x.png in Resources */,
 				1685A66F289120DC0032E474 /* dec_todo_01@3x.png in Resources */,
 				16B3EA5128AA25EF00B3C791 /* od_house_search_icon@3x.png in Resources */,
 				16FE9D92277D92260085CC07 /* diary_combo_num_3@3x.png in Resources */,
@@ -4360,6 +4369,7 @@
 				16B1F524275E001700FF18C4 /* THKNewcomerHomeViewModel.m in Sources */,
 				16C8F69F28D481B90032E7CD /* THKhomeSendCardRequest.m in Sources */,
 				16611AB42696870F0089E41B /* UINavigationController+Godeye.m in Sources */,
+				163731DF29532DAA0025BF8F /* THKDecPKViewModel.m in Sources */,
 				1685A680289120DC0032E474 /* THKDecorationUpcomingListResponse.m in Sources */,
 				16611AB92696870F0089E41B /* GETrackerModel.m in Sources */,
 				8FD1344E28F6A1C300E791C9 /* THKCalcConfigResponse.m in Sources */,

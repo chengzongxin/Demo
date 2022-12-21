@@ -87,7 +87,7 @@
     self.classifyTextColor = [UIColor colorWithRed:51/255.0 green:53/255.0 blue:51/255.0 alpha:255/255.0];
 ;
     
-    self.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    self.backgroundColor = [UIColor whiteColor];
 }
 
 

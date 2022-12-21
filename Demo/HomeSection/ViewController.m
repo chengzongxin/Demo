@@ -11,6 +11,7 @@
 #import "THKCalculateQuotationView.h"
 #import "IrregularViewController.h"
 #import "FLDefaultRadarChartViewController.h"
+#import "THKDecPKView.h"
 @interface ViewController ()
 @property (nonatomic, strong) UIView *bottomView;
 @end
@@ -21,6 +22,16 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColor.whiteColor;
+    
+    THKDecPKView *view = [[THKDecPKView alloc] init];
+    [view bindViewModel:[THKDecPKViewModel new]];
+    [self.view addSubview:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(100);
+        make.left.mas_equalTo(20);
+        make.right.mas_equalTo(-20);
+        make.height.mas_equalTo(584);
+    }];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
