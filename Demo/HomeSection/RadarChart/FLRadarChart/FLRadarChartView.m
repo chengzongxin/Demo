@@ -83,8 +83,9 @@
     self.lineInterval = 20;
     self.radarChartLineWidth = 1;
     self.radarChartLineColor = [UIColor colorWithRed:46/255.0 green:110/255.0 blue:242/255.0 alpha:255/255.0];
-    self.classifyTextFont = [UIFont systemFontOfSize:12.0];
-    self.classifyTextColor = [UIColor grayColor];
+    self.classifyTextFont = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
+    self.classifyTextColor = [UIColor colorWithRed:51/255.0 green:53/255.0 blue:51/255.0 alpha:255/255.0];
+;
     
     self.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
@@ -208,20 +209,83 @@
  绘制颜色描述
  */
 - (void)fl_drawRadarChartWithColorDescribe {
-    for (FLRadarChartModel *model in self.dataArray) {
-        NSInteger index = [self.dataArray indexOfObject:model];
+    
+    CGFloat textInterval = 30;
+    CGFloat potW = 7;
+    CGFloat ptInterval = 4;
+    
+    CGFloat textY = 0;
+    CGFloat potY = 0;
+    CGFloat potYOffset = 2;
+    
+    CGRect contentFrames = CGRectZero;
+    for (int i = 0; i < self.dataArray.count; i++) {
+        CGRect textFrame;
+        CGRect potFrame;
+        FLRadarChartModel *model = self.dataArray[i];
         CGSize textSize = [model.name fl_sizeForFont:self.classifyTextFont];
-        CGFloat textInterval = 5;
+        textY = self.fl_height - 11 - textSize.height;
+        potY = textY + (textSize.height - potW) / 2;
         
-        CGRect textFrame = CGRectMake(self.fl_width - textSize.width - 3 * textInterval, self.fl_height - (index + 1) * textSize.height - 2 * (index + 1) * textInterval, textSize.width, textSize.height);
-        CGRect colorCircleFrame = CGRectMake(textFrame.origin.x - textInterval - textSize.height, textFrame.origin.y, textSize.height, textSize.height);
+        CGFloat contentW = textSize.width + potW + ptInterval;
         
-        CAShapeLayer *colorCircleLayer = [self fl_getColorCircleLayerWithColor:model.strokeColor frame:colorCircleFrame];
+        
+        CGFloat x = 0;
+        if (i == 0) {
+            BOOL isOdd = self.dataArray.count % 2 == 1;
+            if (isOdd) {
+                // 居中
+                x = (self.fl_width - contentW)/2;
+                
+                contentFrames = CGRectMake(x, textY, contentW, textSize.height);
+            }else{
+                // 放左边
+                x = self.fl_width/2 - textInterval / 2 - contentW;
+                
+                contentFrames = CGRectMake(x, textY, contentW, textSize.height);
+            }
+        }else{
+            
+            if (CGRectGetCenter(contentFrames).x >= self.center.x) {
+                // 在右边，要往左填充
+                x = CGRectGetMinX(contentFrames) - textInterval - contentW;
+                
+                contentFrames = CGRectMake(x, textY, CGRectGetWidth(contentFrames) + textInterval + contentW, textSize.height);
+            }else{
+                // 在左边，要往右填充
+                x = CGRectGetMaxX(contentFrames) + textInterval;
+                
+                contentFrames = CGRectMake(CGRectGetMinX(contentFrames), textY, CGRectGetWidth(contentFrames) + textInterval + contentW, textSize.height);
+            }
+        }
+        
+        
+        potFrame = CGRectMake(x, potY + potYOffset, potW, potW);
+        textFrame = CGRectMake(x + potW + ptInterval, textY, textSize.width, textSize.height);
+        
+        CAShapeLayer *colorCircleLayer = [self fl_getColorCircleLayerWithColor:model.strokeColor frame:potFrame];
         [self.colorDescribeLayer addSublayer:colorCircleLayer];
         
         CATextLayer *colorDescribeLayer = [self fl_getTextLayerWithString:model.name backgroundColor:[UIColor clearColor] frame:textFrame];
         [self.colorDescribeLayer addSublayer:colorDescribeLayer];
+        
+        
     }
+    
+//    for (FLRadarChartModel *model in self.dataArray) {
+//        NSInteger index = [self.dataArray indexOfObject:model];
+//        CGSize textSize = [model.name fl_sizeForFont:self.classifyTextFont];
+//        CGFloat textInterval = 5;
+//
+//        CGRect textFrame = CGRectMake(self.fl_width - textSize.width - 3 * textInterval, self.fl_height - (index + 1) * textSize.height - 2 * (index + 1) * textInterval, textSize.width, textSize.height);
+//        CGRect colorCircleFrame = CGRectMake(textFrame.origin.x - textInterval - textSize.height, textFrame.origin.y, textSize.height, textSize.height);
+//
+//        CAShapeLayer *colorCircleLayer = [self fl_getColorCircleLayerWithColor:model.strokeColor frame:colorCircleFrame];
+//        [self.colorDescribeLayer addSublayer:colorCircleLayer];
+//
+//        CATextLayer *colorDescribeLayer = [self fl_getTextLayerWithString:model.name backgroundColor:[UIColor clearColor] frame:textFrame];
+//        [self.colorDescribeLayer addSublayer:colorDescribeLayer];
+//    }
     [self.layer addSublayer:self.colorDescribeLayer];
 }
 

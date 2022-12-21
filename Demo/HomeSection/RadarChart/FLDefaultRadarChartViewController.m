@@ -71,31 +71,34 @@
 }
 
 - (void)test_changeData {
+    
+    NSArray *classifyDataArray = @[@"Objective-C",@"Swift",@"Python"];
+    
     FLRadarChartModel *model_1 = [[FLRadarChartModel alloc]init];
-    model_1.name = @"啦啦啦学校平均能力";
-    model_1.valueArray = [self p_getRandomNumber:6];
-    model_1.strokeColor = [self fl_colorWithHexString:@"00A8FF"];
-    model_1.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"00A8FF" alpha:self.alphaSlider.value];
+    model_1.name = @"韩信";
+    model_1.valueArray = [self p_getRandomNumber:classifyDataArray.count];
+    model_1.strokeColor = [[self fl_colorWithHexString:@"FD6343"] colorWithAlphaComponent:0.5];
+    model_1.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"FD6343" alpha:self.alphaSlider.value];
     
     FLRadarChartModel *model_2 = [[FLRadarChartModel alloc]init];
-    model_2.name = @"啦啦啦学生个人能力";
-    model_2.valueArray = [self p_getRandomNumber:6];
-    model_2.strokeColor = [self fl_colorWithHexString:@"FED700"];
-    model_2.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"FED700" alpha:self.alphaSlider.value];
+    model_2.name = @"李白";
+    model_2.valueArray = [self p_getRandomNumber:classifyDataArray.count];
+    model_2.strokeColor = [[self fl_colorWithHexString:@"3A8EF0"] colorWithAlphaComponent:0.5];
+    model_2.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"3A8EF0" alpha:self.alphaSlider.value];
     
     FLRadarChartModel *model_3 = [[FLRadarChartModel alloc]init];
-    model_3.name = @"啦啦啦啦屌丝能力";
-    model_3.valueArray = [self p_getRandomNumber:6];
-    model_3.strokeColor = [self fl_colorWithHexString:@"FFC0CB"];
+    model_3.name = @"司马懿";
+    model_3.valueArray = [self p_getRandomNumber:classifyDataArray.count];
+    model_3.strokeColor = [[self fl_colorWithHexString:@"FFC0CB"] colorWithAlphaComponent:0.5];;
     model_3.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"FFC0CB" alpha:self.alphaSlider.value];
-    
+
     FLRadarChartModel *model_4 = [[FLRadarChartModel alloc]init];
-    model_4.name = @"好嗨呦~";
-    model_4.valueArray = [self p_getRandomNumber:6];
-    model_4.strokeColor = [self fl_colorWithHexString:@"FF0000"];
+    model_4.name = @"娜可露露";
+    model_4.valueArray = [self p_getRandomNumber:classifyDataArray.count];
+    model_4.strokeColor = [[self fl_colorWithHexString:@"FF0000"]  colorWithAlphaComponent:0.5];
     model_4.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"FF0000" alpha:self.alphaSlider.value];
     
-    self.radarChartView.classifyDataArray = @[@"Objective-C",@"Swift",@"Python",@"Java",@"C",@"C++"];
+    self.radarChartView.classifyDataArray = classifyDataArray;
     self.radarChartView.dataArray = @[model_1, model_2, model_3, model_4];
     [self.radarChartView fl_redrawRadarChart];
 }
