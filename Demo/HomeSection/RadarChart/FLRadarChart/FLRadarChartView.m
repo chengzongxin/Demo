@@ -29,14 +29,23 @@
 @property (nonatomic, assign) CGPoint chartCenter;
 
 /**
- 背景线layer
+ 背景虚线layer
  */
 @property (nonatomic, strong) CAShapeLayer *backgroundLineLayer;
 
+/**
+ 背景边框线layer
+ */
 @property (nonatomic, strong) CAShapeLayer *backgroundBorderLineLayer;
 
+/**
+ 背景边界圆点layer
+ */
 @property (nonatomic, strong) CAShapeLayer *backgroundBorderCircleLayer;
 
+/**
+ 背景边界横线layer
+ */
 @property (nonatomic, strong) CAShapeLayer *backgroundValueLineLayer;
 
 /**
@@ -70,9 +79,8 @@
 - (void)p_setupDefaultRadarChart {
     self.minValue = 0;
     self.maxValue = 100;
-    self.allowOverflow = YES;
+    self.allowOverflow = NO;
     self.lineInterval = 20;
-    //    self.backgroundColor = [UIColor whiteColor];
     self.radarChartLineWidth = 1;
     self.radarChartLineColor = [UIColor colorWithRed:46/255.0 green:110/255.0 blue:242/255.0 alpha:255/255.0];
     self.classifyTextFont = [UIFont systemFontOfSize:12.0];

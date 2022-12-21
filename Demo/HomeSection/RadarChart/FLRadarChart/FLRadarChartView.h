@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat maxValue;
 
 /**
- 是否允许数据溢出 默认：YES
+ 是否允许数据溢出 默认：NO
  */
 @property (nonatomic, assign) BOOL allowOverflow;
 

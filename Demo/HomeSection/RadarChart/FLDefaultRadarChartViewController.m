@@ -75,25 +75,25 @@
     model_1.name = @"啦啦啦学校平均能力";
     model_1.valueArray = [self p_getRandomNumber:6];
     model_1.strokeColor = [self fl_colorWithHexString:@"00A8FF"];
-    model_1.fillColor = self.colorFillSwitch.isOn ? [self fl_colorWithHexString:@"00A8FF" alpha:self.alphaSlider.value] : [UIColor clearColor];
+    model_1.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"00A8FF" alpha:self.alphaSlider.value];
     
     FLRadarChartModel *model_2 = [[FLRadarChartModel alloc]init];
     model_2.name = @"啦啦啦学生个人能力";
     model_2.valueArray = [self p_getRandomNumber:6];
     model_2.strokeColor = [self fl_colorWithHexString:@"FED700"];
-    model_2.fillColor = self.colorFillSwitch.isOn ? [self fl_colorWithHexString:@"FED700" alpha:self.alphaSlider.value] : [UIColor clearColor];
+    model_2.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"FED700" alpha:self.alphaSlider.value];
     
     FLRadarChartModel *model_3 = [[FLRadarChartModel alloc]init];
     model_3.name = @"啦啦啦啦屌丝能力";
     model_3.valueArray = [self p_getRandomNumber:6];
     model_3.strokeColor = [self fl_colorWithHexString:@"FFC0CB"];
-    model_3.fillColor = self.colorFillSwitch.isOn ? [self fl_colorWithHexString:@"FFC0CB" alpha:self.alphaSlider.value] : [UIColor clearColor];
+    model_3.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"FFC0CB" alpha:self.alphaSlider.value];
     
     FLRadarChartModel *model_4 = [[FLRadarChartModel alloc]init];
     model_4.name = @"好嗨呦~";
     model_4.valueArray = [self p_getRandomNumber:6];
     model_4.strokeColor = [self fl_colorWithHexString:@"FF0000"];
-    model_4.fillColor = self.colorFillSwitch.isOn ? [self fl_colorWithHexString:@"FF0000" alpha:self.alphaSlider.value] : [UIColor clearColor];
+    model_4.fillColor = self.colorFillSwitch.isOn ? [UIColor clearColor] : [self fl_colorWithHexString:@"FF0000" alpha:self.alphaSlider.value];
     
     self.radarChartView.classifyDataArray = @[@"Objective-C",@"Swift",@"Python",@"Java",@"C",@"C++"];
     self.radarChartView.dataArray = @[model_1, model_2, model_3, model_4];
@@ -161,7 +161,7 @@
         _radarChartView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         _radarChartView.minValue = 0.0;
         _radarChartView.maxValue = 100.0;
-        _radarChartView.allowOverflow = YES;
+        _radarChartView.allowOverflow = NO;
         
     }
     return _radarChartView;
