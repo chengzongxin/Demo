@@ -94,6 +94,11 @@
 		1630D992274DDD11009A04FA /* THKSelectMaterialCommunicationCellVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D991274DDD11009A04FA /* THKSelectMaterialCommunicationCellVM.m */; };
 		1630D996274DE78D009A04FA /* THKTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D993274DE78D009A04FA /* THKTableViewCell.m */; };
 		1630D9DC274E66BD009A04FA /* THKSelectMaterialTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1630D9DB274E66BD009A04FA /* THKSelectMaterialTopBar.m */; };
+		163731B42952E8F80025BF8F /* UIView+FLFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731AB2952E8F70025BF8F /* UIView+FLFrame.m */; };
+		163731B52952E8F80025BF8F /* NSString+FLTextSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731AC2952E8F70025BF8F /* NSString+FLTextSize.m */; };
+		163731B62952E8F80025BF8F /* FLRadarChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731B02952E8F80025BF8F /* FLRadarChartModel.m */; };
+		163731B72952E8F80025BF8F /* FLRadarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731B12952E8F80025BF8F /* FLRadarChartView.m */; };
+		163731BA2952E91A0025BF8F /* FLDefaultRadarChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731B92952E91A0025BF8F /* FLDefaultRadarChartViewController.m */; };
 		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
 		16409078283378430081F089 /* CycleCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16409077283378430081F089 /* CycleCardCell.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
@@ -694,6 +699,16 @@
 		1630D995274DE78D009A04FA /* THKTableViewCellProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THKTableViewCellProtocol.h; sourceTree = "<group>"; };
 		1630D9DA274E66BD009A04FA /* THKSelectMaterialTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKSelectMaterialTopBar.h; sourceTree = "<group>"; };
 		1630D9DB274E66BD009A04FA /* THKSelectMaterialTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKSelectMaterialTopBar.m; sourceTree = "<group>"; };
+		163731AB2952E8F70025BF8F /* UIView+FLFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FLFrame.m"; sourceTree = "<group>"; };
+		163731AC2952E8F70025BF8F /* NSString+FLTextSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FLTextSize.m"; sourceTree = "<group>"; };
+		163731AD2952E8F70025BF8F /* UIView+FLFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FLFrame.h"; sourceTree = "<group>"; };
+		163731AE2952E8F70025BF8F /* NSString+FLTextSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FLTextSize.h"; sourceTree = "<group>"; };
+		163731B02952E8F80025BF8F /* FLRadarChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRadarChartModel.m; sourceTree = "<group>"; };
+		163731B12952E8F80025BF8F /* FLRadarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLRadarChartView.m; sourceTree = "<group>"; };
+		163731B22952E8F80025BF8F /* FLRadarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRadarChartView.h; sourceTree = "<group>"; };
+		163731B32952E8F80025BF8F /* FLRadarChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRadarChartModel.h; sourceTree = "<group>"; };
+		163731B82952E91A0025BF8F /* FLDefaultRadarChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLDefaultRadarChartViewController.h; sourceTree = "<group>"; };
+		163731B92952E91A0025BF8F /* FLDefaultRadarChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLDefaultRadarChartViewController.m; sourceTree = "<group>"; };
 		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
 		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
 		16409076283378430081F089 /* CycleCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleCardCell.h; sourceTree = "<group>"; };
@@ -1899,6 +1914,39 @@
 				1630D991274DDD11009A04FA /* THKSelectMaterialCommunicationCellVM.m */,
 			);
 			path = THKSelectMaterialCommunicationCell;
+			sourceTree = "<group>";
+		};
+		163731A92952E8E20025BF8F /* RadarChart */ = {
+			isa = PBXGroup;
+			children = (
+				163731B82952E91A0025BF8F /* FLDefaultRadarChartViewController.h */,
+				163731B92952E91A0025BF8F /* FLDefaultRadarChartViewController.m */,
+				163731AA2952E8F70025BF8F /* Category */,
+				163731AF2952E8F80025BF8F /* FLRadarChart */,
+			);
+			path = RadarChart;
+			sourceTree = "<group>";
+		};
+		163731AA2952E8F70025BF8F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				163731AE2952E8F70025BF8F /* NSString+FLTextSize.h */,
+				163731AC2952E8F70025BF8F /* NSString+FLTextSize.m */,
+				163731AD2952E8F70025BF8F /* UIView+FLFrame.h */,
+				163731AB2952E8F70025BF8F /* UIView+FLFrame.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		163731AF2952E8F80025BF8F /* FLRadarChart */ = {
+			isa = PBXGroup;
+			children = (
+				163731B32952E8F80025BF8F /* FLRadarChartModel.h */,
+				163731B02952E8F80025BF8F /* FLRadarChartModel.m */,
+				163731B22952E8F80025BF8F /* FLRadarChartView.h */,
+				163731B12952E8F80025BF8F /* FLRadarChartView.m */,
+			);
+			path = FLRadarChart;
 			sourceTree = "<group>";
 		};
 		165CCBBF278E66DA00141EC0 /* DynamicTabs */ = {
@@ -3120,6 +3168,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				163731A92952E8E20025BF8F /* RadarChart */,
 				1627BACA290B6EA600F14B0A /* Irregular */,
 				8FD1343C28F66CE900E791C9 /* THKCalculateQuotationView */,
 				16EE459E28E68B0A00F63B97 /* OpenWXProgramAlertView */,
@@ -3957,6 +4006,7 @@
 				1622298B28A5EF3A005826CF /* LameTool.m in Sources */,
 				16212FD928A77AFC0079A086 /* THKOnlineDesignSearchAreaListView.m in Sources */,
 				16212FE528A799130079A086 /* THKOnlineDesignHouseTypeListVM.m in Sources */,
+				163731BA2952E91A0025BF8F /* FLDefaultRadarChartViewController.m in Sources */,
 				1669C1B02680667C0059E9B0 /* UIView+Frame.m in Sources */,
 				16834F0B26DC820D0082268C /* THKDiaryCircle.m in Sources */,
 				1689DEC527449B530073BA68 /* THKTabClearBadgeResponse.m in Sources */,
@@ -3995,6 +4045,7 @@
 				16E5C592268330280024BA20 /* MLeaksMessenger+HookAlert.m in Sources */,
 				16192B272692E13E00967C73 /* THKTextComponentView.m in Sources */,
 				16611ABC2696870F0089E41B /* GEStorage.m in Sources */,
+				163731B72952E8F80025BF8F /* FLRadarChartView.m in Sources */,
 				16E5C4B62682DE4B0024BA20 /* THKDownloadRequest.m in Sources */,
 				16212FC428A747AD0079A086 /* THKOnlineDesignSearchAreaVC.m in Sources */,
 				1656463D279E8B1A005845BF /* Tab2ViewController.m in Sources */,
@@ -4062,6 +4113,7 @@
 				16DDC0A5274CF059000DAA29 /* THKEntranceViewCell.m in Sources */,
 				165CCBD7278E66DB00141EC0 /* THKImageTabSegmentControl.m in Sources */,
 				16867A1B2692D76C00650023 /* TMCardComponentBaseListView.m in Sources */,
+				163731B62952E8F80025BF8F /* FLRadarChartModel.m in Sources */,
 				16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */,
 				168679952692B8AC00650023 /* THKMaterialRecommendKnowledgeRequest.m in Sources */,
 				168679A12692B8BA00650023 /* THKMaterialHotListRequest.m in Sources */,
@@ -4112,6 +4164,7 @@
 				16F0A67028AB677C00B0B081 /* THKOnlineDesignUploadHouseHeader.m in Sources */,
 				1642AA5126D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m in Sources */,
 				1685A681289120DC0032E474 /* THKDecorationUpcomingEditRequest.m in Sources */,
+				163731B52952E8F80025BF8F /* NSString+FLTextSize.m in Sources */,
 				1630D985274DD66F009A04FA /* THKSelectMaterialCommunicationCell.m in Sources */,
 				1689DED52744DA220073BA68 /* DynamicTabChildVC.m in Sources */,
 				1644D3CF276AF7EC00E91C66 /* TestViewController.m in Sources */,
@@ -4172,6 +4225,7 @@
 				16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */,
 				16DDC098274CCA3F000DAA29 /* THKSelectMaterialHomeVC.m in Sources */,
 				16192B322692E13E00967C73 /* THKSearchAnimation+UI.m in Sources */,
+				163731B42952E8F80025BF8F /* UIView+FLFrame.m in Sources */,
 				16192B212692E13E00967C73 /* THKPushPopTransitionManager.m in Sources */,
 				16867A322692D9B200650023 /* TRouterConfig.m in Sources */,
 				16B2E6DB28A4B4CB00D385B6 /* THKOnlineDesignModel.m in Sources */,

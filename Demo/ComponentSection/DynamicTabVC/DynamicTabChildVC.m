@@ -53,22 +53,23 @@
             [self.tableView reloadData];
         });
     }];
-    self.bottomView = [[UIView alloc] init];
+    self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(20, 200, self.view.width - 40, 100)];
     self.bottomView.backgroundColor = [UIColor redColor];
+    
     [self.view addSubview:self.bottomView];
-    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(20);
-        make.right.mas_equalTo(-20);
-        make.bottom.mas_equalTo(-40);
-        make.height.mas_equalTo(100);
-    }];
+//    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(20);
+//        make.right.mas_equalTo(-20);
+//        make.bottom.mas_equalTo(-40);
+//        make.height.mas_equalTo(100);
+//    }];
 }
 
 // 遵守wrapper滑动协议联动，这里回调的是最终值，不受交互偏移影响
 - (void)wrapperScrollViewDidScroll:(THKDynamicTabsWrapperScrollView *)wrapperScrollView{
-    [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(-40 + wrapperScrollView.contentOffset.y);
-    }];
+//    [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.bottom.mas_equalTo(-40 + wrapperScrollView.contentOffset.y);
+//    }];
 }
 #pragma mark UITableViewDelegate UITableViewDataSource
 
