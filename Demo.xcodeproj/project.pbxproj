@@ -99,6 +99,19 @@
 		163731B62952E8F80025BF8F /* FLRadarChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731B02952E8F80025BF8F /* FLRadarChartModel.m */; };
 		163731B72952E8F80025BF8F /* FLRadarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731B12952E8F80025BF8F /* FLRadarChartView.m */; };
 		163731BA2952E91A0025BF8F /* FLDefaultRadarChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731B92952E91A0025BF8F /* FLDefaultRadarChartViewController.m */; };
+		163731BE29530C7C0025BF8F /* THKDecPKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731BD29530C7C0025BF8F /* THKDecPKView.m */; };
+		163731C129530E950025BF8F /* THKDecPKSrcollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731C029530E950025BF8F /* THKDecPKSrcollView.m */; };
+		163731CE295310550025BF8F /* 上门量房按钮背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C3295310530025BF8F /* 上门量房按钮背景@3x.png */; };
+		163731CF295310550025BF8F /* PK卡片背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C4295310530025BF8F /* PK卡片背景@2x.png */; };
+		163731D0295310550025BF8F /* 对比背景小@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C5295310530025BF8F /* 对比背景小@2x.png */; };
+		163731D1295310550025BF8F /* PK卡片背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C6295310540025BF8F /* PK卡片背景@3x.png */; };
+		163731D2295310550025BF8F /* 对比背景小@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C7295310540025BF8F /* 对比背景小@3x.png */; };
+		163731D3295310550025BF8F /* 流程小.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C8295310540025BF8F /* 流程小.png */; };
+		163731D4295310550025BF8F /* 上门量房按钮背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731C9295310540025BF8F /* 上门量房按钮背景@2x.png */; };
+		163731D5295310550025BF8F /* 流程小@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CA295310540025BF8F /* 流程小@3x.png */; };
+		163731D6295310550025BF8F /* dec_pk_cell_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CB295310540025BF8F /* dec_pk_cell_bg@3x.png */; };
+		163731D7295310550025BF8F /* dec_pk_cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CC295310550025BF8F /* dec_pk_cell_bg@2x.png */; };
+		163731D8295310550025BF8F /* 流程小@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731CD295310550025BF8F /* 流程小@2x.png */; };
 		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
 		16409078283378430081F089 /* CycleCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16409077283378430081F089 /* CycleCardCell.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
@@ -709,6 +722,21 @@
 		163731B32952E8F80025BF8F /* FLRadarChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLRadarChartModel.h; sourceTree = "<group>"; };
 		163731B82952E91A0025BF8F /* FLDefaultRadarChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLDefaultRadarChartViewController.h; sourceTree = "<group>"; };
 		163731B92952E91A0025BF8F /* FLDefaultRadarChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLDefaultRadarChartViewController.m; sourceTree = "<group>"; };
+		163731BC29530C7C0025BF8F /* THKDecPKView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDecPKView.h; sourceTree = "<group>"; };
+		163731BD29530C7C0025BF8F /* THKDecPKView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecPKView.m; sourceTree = "<group>"; };
+		163731BF29530E950025BF8F /* THKDecPKSrcollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDecPKSrcollView.h; sourceTree = "<group>"; };
+		163731C029530E950025BF8F /* THKDecPKSrcollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecPKSrcollView.m; sourceTree = "<group>"; };
+		163731C3295310530025BF8F /* 上门量房按钮背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上门量房按钮背景@3x.png"; sourceTree = "<group>"; };
+		163731C4295310530025BF8F /* PK卡片背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PK卡片背景@2x.png"; sourceTree = "<group>"; };
+		163731C5295310530025BF8F /* 对比背景小@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "对比背景小@2x.png"; sourceTree = "<group>"; };
+		163731C6295310540025BF8F /* PK卡片背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PK卡片背景@3x.png"; sourceTree = "<group>"; };
+		163731C7295310540025BF8F /* 对比背景小@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "对比背景小@3x.png"; sourceTree = "<group>"; };
+		163731C8295310540025BF8F /* 流程小.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "流程小.png"; sourceTree = "<group>"; };
+		163731C9295310540025BF8F /* 上门量房按钮背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上门量房按钮背景@2x.png"; sourceTree = "<group>"; };
+		163731CA295310540025BF8F /* 流程小@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "流程小@3x.png"; sourceTree = "<group>"; };
+		163731CB295310540025BF8F /* dec_pk_cell_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_cell_bg@3x.png"; sourceTree = "<group>"; };
+		163731CC295310550025BF8F /* dec_pk_cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_cell_bg@2x.png"; sourceTree = "<group>"; };
+		163731CD295310550025BF8F /* 流程小@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "流程小@2x.png"; sourceTree = "<group>"; };
 		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
 		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
 		16409076283378430081F089 /* CycleCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleCardCell.h; sourceTree = "<group>"; };
@@ -1949,6 +1977,37 @@
 			path = FLRadarChart;
 			sourceTree = "<group>";
 		};
+		163731BB29530C400025BF8F /* DecPKView */ = {
+			isa = PBXGroup;
+			children = (
+				163731BC29530C7C0025BF8F /* THKDecPKView.h */,
+				163731BD29530C7C0025BF8F /* THKDecPKView.m */,
+				163731BF29530E950025BF8F /* THKDecPKSrcollView.h */,
+				163731C029530E950025BF8F /* THKDecPKSrcollView.m */,
+				163731C22953103E0025BF8F /* Resource */,
+				163731A92952E8E20025BF8F /* RadarChart */,
+			);
+			path = DecPKView;
+			sourceTree = "<group>";
+		};
+		163731C22953103E0025BF8F /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				163731CC295310550025BF8F /* dec_pk_cell_bg@2x.png */,
+				163731CB295310540025BF8F /* dec_pk_cell_bg@3x.png */,
+				163731C5295310530025BF8F /* 对比背景小@2x.png */,
+				163731C7295310540025BF8F /* 对比背景小@3x.png */,
+				163731C8295310540025BF8F /* 流程小.png */,
+				163731CD295310550025BF8F /* 流程小@2x.png */,
+				163731CA295310540025BF8F /* 流程小@3x.png */,
+				163731C9295310540025BF8F /* 上门量房按钮背景@2x.png */,
+				163731C3295310530025BF8F /* 上门量房按钮背景@3x.png */,
+				163731C4295310530025BF8F /* PK卡片背景@2x.png */,
+				163731C6295310540025BF8F /* PK卡片背景@3x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		165CCBBF278E66DA00141EC0 /* DynamicTabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -3168,7 +3227,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				163731A92952E8E20025BF8F /* RadarChart */,
+				163731BB29530C400025BF8F /* DecPKView */,
 				1627BACA290B6EA600F14B0A /* Irregular */,
 				8FD1343C28F66CE900E791C9 /* THKCalculateQuotationView */,
 				16EE459E28E68B0A00F63B97 /* OpenWXProgramAlertView */,
@@ -3760,6 +3819,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				163731D4295310550025BF8F /* 上门量房按钮背景@2x.png in Resources */,
 				16FE9D95277D92260085CC07 /* diary_combo_num_5@3x.png in Resources */,
 				1642AA3626D8C87200F5FACD /* THKDiaryBookBottomBar.xib in Resources */,
 				16FE9D97277D92260085CC07 /* diary_combo_num_×@3x.png in Resources */,
@@ -3774,15 +3834,19 @@
 				1685A670289120DC0032E474 /* dec_todo_unselect@3x.png in Resources */,
 				1685A665289120DC0032E474 /* dec_todo_05@3x.png in Resources */,
 				16B3EA5828AA25EF00B3C791 /* 重新上传户型@2x.png in Resources */,
+				163731CF295310550025BF8F /* PK卡片背景@2x.png in Resources */,
+				163731D8295310550025BF8F /* 流程小@2x.png in Resources */,
 				1685A67D289120DC0032E474 /* dec_todo_02@2x.png in Resources */,
 				1685A666289120DC0032E474 /* dec_todo_02_black@3x.png in Resources */,
 				16E5C51D26830DCB0024BA20 /* V_Identity_Config.json in Resources */,
+				163731D0295310550025BF8F /* 对比背景小@2x.png in Resources */,
 				1627BAC8290B6E7600F14B0A /* graphic_no_housetype@2x.png in Resources */,
 				160106EF2553DD8000FE4B77 /* LaunchScreen.storyboard in Resources */,
 				16CF07C028AD12120072FD15 /* lot_online_design_record.json in Resources */,
 				16B3EA5028AA25EF00B3C791 /* od_arrow_black_icon@3x.png in Resources */,
 				1685A671289120DC0032E474 /* dec_todo_unselect@2x.png in Resources */,
 				1627BAC6290B6E7600F14B0A /* graphic_vs@3x.png in Resources */,
+				163731D2295310550025BF8F /* 对比背景小@3x.png in Resources */,
 				1685A65F289120DC0032E474 /* dec_todo_04_black@3x.png in Resources */,
 				16B3EA3428AA1CE300B3C791 /* od_record_white@3x.png in Resources */,
 				16B3EA5328AA25EF00B3C791 /* 加号绿上传户型@2x.png in Resources */,
@@ -3811,9 +3875,12 @@
 				1685A66E289120DC0032E474 /* dec_todo_title@3x.png in Resources */,
 				16FE9D90277D92260085CC07 /* diary_combo_num_1@3x.png in Resources */,
 				1685A678289120DC0032E474 /* dec_todo_open@2x.png in Resources */,
+				163731CE295310550025BF8F /* 上门量房按钮背景@3x.png in Resources */,
 				1685A66C289120DC0032E474 /* dec_todo_select@2x.png in Resources */,
+				163731D6295310550025BF8F /* dec_pk_cell_bg@3x.png in Resources */,
 				16B3EA4F28AA25EF00B3C791 /* od_arrow_black_icon@2x.png in Resources */,
 				16FE9D96277D92260085CC07 /* diary_combo_num_7@3x.png in Resources */,
+				163731D3295310550025BF8F /* 流程小.png in Resources */,
 				16B3EA5228AA25EF00B3C791 /* od_record_close_icon@3x.png in Resources */,
 				1685A67A289120DC0032E474 /* dec_todo_close@2x.png in Resources */,
 				1685A675289120DC0032E474 /* dec_todo_select@3x.png in Resources */,
@@ -3822,6 +3889,7 @@
 				16FE9D94277D92260085CC07 /* diary_combo_num_0@3x.png in Resources */,
 				1685A67C289120DC0032E474 /* dec_todo_01_black@2x.png in Resources */,
 				1685A677289120DC0032E474 /* dec_todo_close@3x.png in Resources */,
+				163731D1295310550025BF8F /* PK卡片背景@3x.png in Resources */,
 				16B3EA5A28AA25EF00B3C791 /* 加号绿上传户型@3x.png in Resources */,
 				1685A663289120DC0032E474 /* dec_todo_02_black@2x.png in Resources */,
 				1685A679289120DC0032E474 /* dec_todo_open@3x.png in Resources */,
@@ -3830,6 +3898,7 @@
 				1685A667289120DC0032E474 /* dec_todo_05_black@3x.png in Resources */,
 				1685A672289120DC0032E474 /* dec_todo_01@2x.png in Resources */,
 				16B3EA5628AA25EF00B3C791 /* 重新上传户型@3x.png in Resources */,
+				163731D5295310550025BF8F /* 流程小@3x.png in Resources */,
 				1685A66F289120DC0032E474 /* dec_todo_01@3x.png in Resources */,
 				16B3EA5128AA25EF00B3C791 /* od_house_search_icon@3x.png in Resources */,
 				16FE9D92277D92260085CC07 /* diary_combo_num_3@3x.png in Resources */,
@@ -3838,6 +3907,7 @@
 				16B3EA2428A9E1F400B3C791 /* od_bg_head@3x.png in Resources */,
 				1627BAC7290B6E7600F14B0A /* graphic_no_housetype@3x.png in Resources */,
 				1685A66D289120DC0032E474 /* dec_todo_03@2x.png in Resources */,
+				163731D7295310550025BF8F /* dec_pk_cell_bg@2x.png in Resources */,
 				1685A662289120DC0032E474 /* dec_todo_05_black@2x.png in Resources */,
 				16B3EA3728AA1CE300B3C791 /* od_record_black@2x.png in Resources */,
 				1685A67E289120DC0032E474 /* dec_todo_02@3x.png in Resources */,
@@ -3976,6 +4046,7 @@
 				16F0A66D28AB4B7C00B0B081 /* THKOnlineDesignUploadHouseVM.m in Sources */,
 				1669C1B32680667C0059E9B0 /* UIColor+HexString.m in Sources */,
 				16B2E6E828A50A8800D385B6 /* THKOnlineDesignHouseBudgetCell.m in Sources */,
+				163731BE29530C7C0025BF8F /* THKDecPKView.m in Sources */,
 				168679942692B8AC00650023 /* THKMaterialRecommendRankRequest.m in Sources */,
 				16867A0D2692D76C00650023 /* TMCardComponentOldTopicAndQaStyleCell.m in Sources */,
 				16E5C54C268325E20024BA20 /* THKRequestCommand.m in Sources */,
@@ -4069,6 +4140,7 @@
 				16C8F68B28D4079B0032E7CD /* THKMyHomeDesignDemandsSendView.m in Sources */,
 				16192B2A2692E13E00967C73 /* THKDiaryDetailLoadingAnimationView.m in Sources */,
 				16FE857928D30829000AC352 /* THKMyHomeDesignSelectCell.m in Sources */,
+				163731C129530E950025BF8F /* THKDecPKSrcollView.m in Sources */,
 				1669C1B22680667C0059E9B0 /* UIViewController+Convenient.m in Sources */,
 				16611B74269692D20089E41B /* THKMaterialHotRankVC.m in Sources */,
 				1672336F2886B8B700901743 /* UIViewController+THKNavigationBar.m in Sources */,
