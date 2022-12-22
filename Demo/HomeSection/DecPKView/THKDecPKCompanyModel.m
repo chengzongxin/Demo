@@ -12,5 +12,7 @@
 @end
 
 @implementation THKDecPKModel
-
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"companyInfoList":[THKDecPKCompanyModel class]};
+}
 @end

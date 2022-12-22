@@ -12,6 +12,7 @@
 #import "IrregularViewController.h"
 #import "FLDefaultRadarChartViewController.h"
 #import "THKDecPKView.h"
+#import "TIMCompanyPKRoomDetailRequest.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -30,8 +31,20 @@
     
     [self.view addSubview:self.tableView];
     
+    TIMCompanyPKRoomDetailRequest *request = [TIMCompanyPKRoomDetailRequest new];
+    [request sendSuccess:^(TIMCompanyPKRoomDetailResponse * _Nonnull response) {
+        [self addView:response.data];
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+    
+}
+
+- (void)addView:(THKDecPKModel *)model{
+    
     THKDecPKView *view = [[THKDecPKView alloc] init];
-    [view bindViewModel:[THKDecPKViewModel new]];
+    THKDecPKViewModel *viewModel = [[THKDecPKViewModel alloc] initWithModel:model];
+    [view bindViewModel:viewModel];
 //    [self.view addSubview:view];
     [self.tableView addSubview:view];
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,6 +56,7 @@
     }];
     
     self.tableView.contentInset = UIEdgeInsetsMake(584, 0, 0, 0);
+    [self.tableView setContentOffset:CGPointMake(0, -self.tableView.contentInset.top) animated:YES];
     
     self.pkView = view;
 }

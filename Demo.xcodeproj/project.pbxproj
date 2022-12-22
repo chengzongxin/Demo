@@ -211,6 +211,7 @@
 		1677D11125A2FE2800F3E6C8 /* InjectionIIIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1677D11025A2FE2800F3E6C8 /* InjectionIIIHelper.m */; };
 		167D49D7295439DF00EBAB17 /* THKDecPKSmallView.m in Sources */ = {isa = PBXBuildFile; fileRef = 167D49D6295439DF00EBAB17 /* THKDecPKSmallView.m */; };
 		167D49DA29543F5F00EBAB17 /* THKDecPKCompanyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 167D49D929543F5F00EBAB17 /* THKDecPKCompanyModel.m */; };
+		167D49E0295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 167D49DF295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.m */; };
 		16834F0B26DC820D0082268C /* THKDiaryCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F0A26DC820D0082268C /* THKDiaryCircle.m */; };
 		16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F1026DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m */; };
 		16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */; };
@@ -942,6 +943,8 @@
 		167D49D6295439DF00EBAB17 /* THKDecPKSmallView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecPKSmallView.m; sourceTree = "<group>"; };
 		167D49D829543F5F00EBAB17 /* THKDecPKCompanyModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDecPKCompanyModel.h; sourceTree = "<group>"; };
 		167D49D929543F5F00EBAB17 /* THKDecPKCompanyModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecPKCompanyModel.m; sourceTree = "<group>"; };
+		167D49DE295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TIMCompanyPKRoomDetailRequest.h; sourceTree = "<group>"; };
+		167D49DF295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TIMCompanyPKRoomDetailRequest.m; sourceTree = "<group>"; };
 		16834F0926DC820D0082268C /* THKDiaryCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryCircle.h; sourceTree = "<group>"; };
 		16834F0A26DC820D0082268C /* THKDiaryCircle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryCircle.m; sourceTree = "<group>"; };
 		16834F0F26DCA4FC0082268C /* THKDiaryDirectoryServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryDirectoryServiceCell.h; sourceTree = "<group>"; };
@@ -2001,6 +2004,8 @@
 				167D49D6295439DF00EBAB17 /* THKDecPKSmallView.m */,
 				167D49D829543F5F00EBAB17 /* THKDecPKCompanyModel.h */,
 				167D49D929543F5F00EBAB17 /* THKDecPKCompanyModel.m */,
+				167D49DE295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.h */,
+				167D49DF295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.m */,
 				163731C22953103E0025BF8F /* Resource */,
 				163731A92952E8E20025BF8F /* RadarChart */,
 			);
@@ -4126,6 +4131,7 @@
 				16867A052692D76C00650023 /* TMCardComponentScrollAdsIndicatorView.m in Sources */,
 				16F0A68828ABC72200B0B081 /* THKOnlineDesignSearchHouseResponse.m in Sources */,
 				16192B4C2692E1B100967C73 /* THKBackPushRouter.m in Sources */,
+				167D49E0295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.m in Sources */,
 				16B2E6CC28A490EF00D385B6 /* THKOnlineDesignDispatchVC.m in Sources */,
 				16B10EF828D9614200561A6D /* THKMeituDetailv2Response.m in Sources */,
 				16611B67269692D20089E41B /* THKMaterialClassificationRecommendRankCell.m in Sources */,

@@ -30,18 +30,6 @@ static NSInteger const kUnfoldTag = 999;
 
 @property (nonatomic, strong) NSMutableArray <UIView *> *hiddenViews;
 
-//secondContent : [
-//    decName
-//    decIcon
-//    score(text)
-//    caseNum(text)
-//    consultNum(text)
-//]
-//bigButtonTip(router)
-//bottomTipIcon
-//bottomTip(router)
-
-
 @end
 
 @implementation THKDecPKView
@@ -180,15 +168,34 @@ static NSInteger const kUnfoldTag = 999;
     self.secondTitle.text = viewModel.secondTitle;
     [self.secondButtonTip setTitle:viewModel.secondButtonTip forState:UIControlStateNormal];
     
-    self.pkView.model = @[@[viewModel.secondContent[0],viewModel.secondContent[1]],
-                          @[viewModel.secondContent[0],viewModel.secondContent[2]],
-                          @[viewModel.secondContent[1],viewModel.secondContent[2]]
-    ];
-    
+    self.pkView.model = viewModel.secondContent;
     self.pkSmallView.texts = viewModel.companyTexts;
     
     [self.bottomButton setTitle:viewModel.bigButtonTip forState:UIControlStateNormal];
     [self.bottomTipBtn setTitle:viewModel.bottomTip forState:UIControlStateNormal];
+}
+
+
+#pragma mark - Actions
+
+- (void)firstButtonTipClick:(UIButton *)btn{
+    [self push:self.viewModel.firstButtonTipRouter];
+}
+
+- (void)secondButtonTipClick:(UIButton *)btn{
+    [self push:self.viewModel.secondButtonTipRouter];
+}
+
+- (void)bottomButtonClick:(UIButton *)btn{
+    [self push:self.viewModel.bigButtonTipRouter];
+}
+
+- (void)bottomTipBtnClick:(UIButton *)btn{
+    [self push:self.viewModel.bottomTipRouter];
+}
+
+- (void)push:(NSString *)routerUrl{
+    [[TRouterManager sharedManager] performRouter:[TRouter routerFromUrl:routerUrl]];
 }
 
 - (void)didScrollToDecs:(NSArray<THKDecPKCompanyModel *> *)models{
@@ -240,6 +247,7 @@ static NSInteger const kUnfoldTag = 999;
         [_firstButtonTip setImage:[UIImage imageNamed:@"dec_pk_arrow"] forState:UIControlStateNormal];
         _firstButtonTip.titleLabel.font = [UIFont systemFontOfSize:12];
         [_firstButtonTip setTitleColor:UIColorHexString(@"333533") forState:UIControlStateNormal];
+        [_firstButtonTip addTarget:self action:@selector(firstButtonTipClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _firstButtonTip;
 }
@@ -269,6 +277,7 @@ static NSInteger const kUnfoldTag = 999;
         [_secondButtonTip setImage:[UIImage imageNamed:@"dec_pk_arrow"] forState:UIControlStateNormal];
         _secondButtonTip.titleLabel.font = [UIFont systemFontOfSize:12];
         [_secondButtonTip setTitleColor:UIColorHexString(@"333533") forState:UIControlStateNormal];
+        [_secondButtonTip addTarget:self action:@selector(secondButtonTipClick:) forControlEvents:UIControlEventTouchUpInside];
         _secondButtonTip.tag = kUnfoldTag;
     }
     return _secondButtonTip;
@@ -308,6 +317,7 @@ static NSInteger const kUnfoldTag = 999;
     if (!_bottomButton) {
         _bottomButton = [[UIButton alloc] init];
         [_bottomButton setBackgroundImage:[UIImage imageNamed:@"dec_pk_btn_bg"] forState:UIControlStateNormal];
+        [_bottomButton addTarget:self action:@selector(bottomButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _bottomButton;
 }
@@ -317,6 +327,7 @@ static NSInteger const kUnfoldTag = 999;
         _bottomTipBtn = [[UIButton alloc] init];
         _bottomTipBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [_bottomTipBtn setTitleColor:UIColorHexString(@"AFB2AF") forState:UIControlStateNormal];
+        [_bottomTipBtn addTarget:self action:@selector(bottomTipBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _bottomTipBtn;
 }

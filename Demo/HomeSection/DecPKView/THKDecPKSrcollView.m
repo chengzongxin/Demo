@@ -155,7 +155,7 @@
 
 @property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
 
-@property (nonatomic, assign) NSInteger selectIndex;
+//@property (nonatomic, assign) NSInteger selectIndex;
 
 
 //标记滑动前的页数
@@ -187,17 +187,23 @@
 - (void)setModel:(NSArray *)model{
     _model = model;
     
-    self.selectIndex = -1;
+    if (model.count == 0) {
+        return;
+    }
+    
+//    self.selectIndex = -1;
     
     [self.collectionView reloadData];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.selectIndex = 0;
-        
-        if (self.didScrollToDecs) {
-            self.didScrollToDecs(self.model[self.selectIndex]);
-        }
-    });
+    
+    if (self.didScrollToDecs) {
+        self.didScrollToDecs(self.model.firstObject);
+    }
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        self.selectIndex = 0;
+//
+//    });
     
 }
 
@@ -262,13 +268,13 @@
 }
 
 
-- (void)setSelectIndex:(NSInteger)selectIndex{
-    if (_selectIndex == selectIndex) {
-        return;
-    }
-    _selectIndex = selectIndex;
-    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:selectIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
-}
+//- (void)setSelectIndex:(NSInteger)selectIndex{
+//    if (_selectIndex == selectIndex) {
+//        return;
+//    }
+//    _selectIndex = selectIndex;
+//    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:selectIndex inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+//}
 
 
 #pragma mark - UICollectionViewDataSource
