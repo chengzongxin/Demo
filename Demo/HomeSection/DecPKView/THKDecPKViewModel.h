@@ -41,9 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *decName;
 @property (nonatomic, strong) NSString *decIcon;
-@property (nonatomic, strong) int score;
-@property (nonatomic, strong) int caseNum;
-@property (nonatomic, strong) int consultNum;
+@property (nonatomic, assign) int score;
+@property (nonatomic, assign) int caseNum;
+@property (nonatomic, assign) int consultNum;
 @property (nonatomic, strong) NSString *scoreText;
 @property (nonatomic, strong) NSString *caseNumText;
 @property (nonatomic, strong) NSString *consultNumText;

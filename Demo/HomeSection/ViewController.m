@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = UIColor.whiteColor;
+    self.view.backgroundColor = UIColor.groupTableViewBackgroundColor;
     
     THKDecPKView *view = [[THKDecPKView alloc] init];
     [view bindViewModel:[THKDecPKViewModel new]];

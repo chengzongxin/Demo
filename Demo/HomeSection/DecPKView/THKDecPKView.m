@@ -8,6 +8,7 @@
 #import "THKDecPKView.h"
 #import "THKDecPKSrcollView.h"
 #import "FLRadarChartView.h"
+#import "FLRadarChartModel.h"
 @interface THKDecPKView ()
 
 @property (nonatomic, strong) THKDecPKViewModel *viewModel;
@@ -48,6 +49,7 @@
 }
 
 - (void)setupViews{
+    self.backgroundColor = UIColor.whiteColor;
     self.layer.cornerRadius = 8;
     self.layer.masksToBounds = YES;
     [self addSubview:self.topBgImgV];
@@ -127,11 +129,36 @@
     self.secondTitle.text = viewModel.secondTitle;
     [self.secondButtonTip setTitle:viewModel.secondButtonTip forState:UIControlStateNormal];
     
-    self.pkView.model = viewModel.secondContent;
-    self.radarView.dataArray = viewModel.secondContent;
+    self.pkView.model = @[@[viewModel.secondContent[0],viewModel.secondContent[1]],
+                          @[viewModel.secondContent[0],viewModel.secondContent[2]],
+                          @[viewModel.secondContent[1],viewModel.secondContent[2]]
+    ];
     
     [self.bottomButton setTitle:viewModel.bigButtonTip forState:UIControlStateNormal];
     [self.bottomTipBtn setTitle:viewModel.bottomTip forState:UIControlStateNormal];
+}
+
+- (void)didScrollToDecs:(NSArray<THKDecPKCompanyModel *> *)models{
+    THKDecPKCompanyModel *com1 = models.firstObject;
+    THKDecPKCompanyModel *com2 = models.lastObject;
+    
+    NSArray *classifyDataArray = @[com1.scoreText,com1.caseNumText,com1.consultNumText];
+    
+    FLRadarChartModel *chartM1 = [[FLRadarChartModel alloc] init];
+    chartM1.name = com1.decName;
+    chartM1.valueArray = @[@(com1.score),@(com1.caseNum),@(com1.consultNum)];
+    chartM1.strokeColor = [UIColorHexString(@"FD6343") colorWithAlphaComponent:0.5];
+    chartM1.fillColor = [UIColorHexString(@"FD6343") colorWithAlphaComponent:0.5];
+    
+    FLRadarChartModel *chartM2 = [[FLRadarChartModel alloc] init];
+    chartM2.name = com2.decName;
+    chartM2.valueArray = @[@(com2.score),@(com2.caseNum),@(com2.consultNum)];;
+    chartM2.strokeColor = [UIColorHexString(@"3A8EF0") colorWithAlphaComponent:0.5];
+    chartM2.fillColor = [UIColorHexString(@"3A8EF0") colorWithAlphaComponent:0.5];
+    
+    self.radarView.classifyDataArray = classifyDataArray;
+    self.radarView.dataArray = @[chartM1, chartM2];
+    [self.radarView fl_redrawRadarChart];
 }
 
 
@@ -195,6 +222,11 @@
 - (THKDecPKSrcollView *)pkView{
     if (!_pkView) {
         _pkView = [[THKDecPKSrcollView alloc] init];
+        @weakify(self);
+        _pkView.didScrollToDecs = ^(NSArray<THKDecPKCompanyModel *> * _Nonnull models) {
+            @strongify(self);
+            [self didScrollToDecs:models];
+        };
     }
     return _pkView;
 }
@@ -202,6 +234,10 @@
 - (FLRadarChartView *)radarView{
     if (!_radarView) {
         _radarView = [[FLRadarChartView alloc] init];
+        _radarView.backgroundColor = [UIColor whiteColor];
+        _radarView.minValue = 0.0;
+        _radarView.maxValue = 100.0;
+        _radarView.allowOverflow = NO;
     }
     return _radarView;
 }

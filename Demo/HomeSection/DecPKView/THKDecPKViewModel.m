@@ -30,25 +30,34 @@
 //    NSMutableArray *arr = [NSMutableArray array];
     
     THKDecPKCompanyModel *m1 = [THKDecPKCompanyModel new];
-    m1.decIcon = @"";
+    m1.decIcon = @"https://pic.to8to.com/live/day_211008/20211008_449e6f68fd7c5501365a307Bg24AJYBH.jpg";
     m1.decName = @"居众装饰";
-    m1.score = 4;
-    m1.consultNum = 100;
-    m1.caseNum = 210;
+    m1.score = 40;
+    m1.consultNum = 70;
+    m1.caseNum = 60;
+    m1.scoreText = @"评分";
+    m1.caseNumText = @"发布\n案例数";
+    m1.consultNumText = @"近半年\n咨询人数";
     
     THKDecPKCompanyModel *m2 = [THKDecPKCompanyModel new];
-    m2.decIcon = @"";
+    m2.decIcon = @"https://pic.to8to.com/live/day_211008/20211008_449e6f68fd7c5501365a307Bg24AJYBH.jpg";
     m2.decName = @"东易日盛";
-    m2.score = 5;
-    m2.consultNum = 110;
-    m2.caseNum = 230;
+    m2.score = 60;
+    m2.consultNum = 50;
+    m2.caseNum = 80;
+    m2.scoreText = @"评分";
+    m2.caseNumText = @"发布\n案例数";
+    m2.consultNumText = @"近半年\n咨询人数";
     
     THKDecPKCompanyModel *m3 = [THKDecPKCompanyModel new];
-    m3.decIcon = @"";
+    m3.decIcon = @"https://img.to8to.com/newheadphoto/v2/100/176.jpg?1654855200";
     m3.decName = @"星艺装饰";
-    m3.score = 6;
-    m3.consultNum = 130;
-    m3.caseNum = 220;
+    m3.score = 20;
+    m3.consultNum = 30;
+    m3.caseNum = 80;
+    m3.scoreText = @"评分";
+    m3.caseNumText = @"发布\n案例数";
+    m3.consultNumText = @"近半年\n咨询人数";
     
     self.secondContent = @[m1,m2,m3];
 }

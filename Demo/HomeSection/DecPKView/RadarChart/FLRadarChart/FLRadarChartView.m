@@ -119,7 +119,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     //上下预留30的间距，做文字和颜色描述描述
-    self.chartRadius = MIN(self.fl_width, self.fl_height) / 2  - 60;
+    self.chartRadius = MIN(self.fl_width, self.fl_height) / 2  - 40;
     //    self.chartCenter = CGPointMake(MIN(self.fl_width, self.fl_height)/2, MIN(self.fl_width, self.fl_height)/2);
     //    self.chartCenter = CGPointMake(MAX(self.fl_width, self.fl_height)/2, MAX(self.fl_width, self.fl_height)/2);
     self.chartCenter = CGPointMake(self.fl_width / 2, self.fl_height / 2);
@@ -414,6 +414,10 @@
         NSString *text = self.classifyDataArray[j];
         //文字大小
         CGSize textSize = [text fl_sizeForFont:self.classifyTextFont];
+        
+        if (textSize.height > self.classifyTextFont.pointSize * 2) {
+            textSize.height += 4;// 换行需要多加
+        }
         //文字的间隔
         CGFloat textInterval = 10;
         //多加一个判断条件
