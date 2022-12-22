@@ -33,6 +33,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *bottomTip;//(router)
 
 
+
+@property (nonatomic, strong) NSArray <NSString *> *companyTexts;
+
 @end
 
 

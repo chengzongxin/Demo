@@ -9,6 +9,9 @@
 #import "THKDecPKSrcollView.h"
 #import "FLRadarChartView.h"
 #import "FLRadarChartModel.h"
+#import "THKDecPKSmallView.h"
+
+static NSInteger const kUnfoldTag = 999;
 @interface THKDecPKView ()
 
 @property (nonatomic, strong) THKDecPKViewModel *viewModel;
@@ -19,10 +22,14 @@
 @property (nonatomic, strong) UIImageView *firstContentImgV;
 @property (nonatomic, strong) UILabel *secondTitle;
 @property (nonatomic, strong) UIButton *secondButtonTip;
+@property (nonatomic, strong) THKDecPKSmallView *pkSmallView;
 @property (nonatomic, strong) THKDecPKSrcollView *pkView;
 @property (nonatomic, strong) FLRadarChartView *radarView;
 @property (nonatomic, strong) UIButton *bottomButton;
 @property (nonatomic, strong) UIButton *bottomTipBtn;
+
+@property (nonatomic, strong) NSMutableArray <UIView *> *hiddenViews;
+
 //secondContent : [
 //    decName
 //    decIcon
@@ -58,6 +65,7 @@
     [self addSubview:self.firstContentImgV];
     [self addSubview:self.secondTitle];
     [self addSubview:self.secondButtonTip];
+    [self addSubview:self.pkSmallView];
     [self addSubview:self.pkView];
     [self addSubview:self.radarView];
     [self addSubview:self.bottomButton];
@@ -86,13 +94,20 @@
     }];
     
     [self.secondTitle mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.firstContentImgV.mas_bottom).offset(18);
+        make.top.mas_equalTo(110);
         make.left.mas_equalTo(16);
     }];
     
     [self.secondButtonTip mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.secondTitle);
         make.right.mas_equalTo(-15);
+    }];
+    
+    [self.pkSmallView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.secondTitle.mas_bottom).offset(16);
+        make.left.mas_equalTo(16);
+        make.right.mas_equalTo(-16);
+        make.height.mas_equalTo(46);
     }];
     
     [self.pkView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -118,6 +133,41 @@
         make.top.equalTo(self.bottomButton.mas_bottom).offset(10);
         make.centerX.equalTo(self);
     }];
+    
+    [self.hiddenViews addObjectsFromArray:@[self.topBgImgV,self.firstTitle,self.firstButtonTip,self.firstContentImgV,self.pkView,self.radarView,self.bottomButton,self.bottomTipBtn]];
+}
+
+- (void)setFold:(BOOL)fold{
+    if (_fold == fold) {
+        return;
+    }
+    
+    _fold = fold;
+    
+    [self.hiddenViews enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        obj.hidden = fold;
+    }];
+    
+    self.pkSmallView.hidden = !fold;
+    
+    if (fold) {
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(121);
+        }];
+        
+        [self.secondTitle mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(20);
+        }];
+    }else{
+        [self mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(584);
+        }];
+        
+        [self.secondTitle mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(110);
+        }];
+    }
+    
 }
 
 - (void)bindViewModel:(THKDecPKViewModel *)viewModel{
@@ -133,6 +183,8 @@
                           @[viewModel.secondContent[0],viewModel.secondContent[2]],
                           @[viewModel.secondContent[1],viewModel.secondContent[2]]
     ];
+    
+    self.pkSmallView.texts = viewModel.companyTexts;
     
     [self.bottomButton setTitle:viewModel.bigButtonTip forState:UIControlStateNormal];
     [self.bottomTipBtn setTitle:viewModel.bottomTip forState:UIControlStateNormal];
@@ -204,6 +256,7 @@
         _secondTitle = [[UILabel alloc] init];
         _secondTitle.font = [UIFont systemFontOfSize:16 weight:UIFontWeightSemibold];
         _secondTitle.textColor = UIColorHexString(@"111111");
+        _secondTitle.tag = kUnfoldTag;
     }
     return _secondTitle;
 }
@@ -215,8 +268,16 @@
         [_secondButtonTip setImage:[UIImage imageNamed:@"dec_pk_arrow"] forState:UIControlStateNormal];
         _secondButtonTip.titleLabel.font = [UIFont systemFontOfSize:12];
         [_secondButtonTip setTitleColor:UIColorHexString(@"333533") forState:UIControlStateNormal];
+        _secondButtonTip.tag = kUnfoldTag;
     }
     return _secondButtonTip;
+}
+
+- (THKDecPKSmallView *)pkSmallView{
+    if (!_pkSmallView) {
+        _pkSmallView = [[THKDecPKSmallView alloc] init];
+    }
+    return _pkSmallView;
 }
 
 - (THKDecPKSrcollView *)pkView{
@@ -259,5 +320,11 @@
     return _bottomTipBtn;
 }
 
+- (NSMutableArray<UIView *> *)hiddenViews {
+    if (!_hiddenViews) {
+        _hiddenViews = [NSMutableArray array];
+    }
+    return _hiddenViews;
+}
 
 @end

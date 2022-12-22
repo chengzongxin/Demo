@@ -60,6 +60,9 @@
     m3.consultNumText = @"近半年\n咨询人数";
     
     self.secondContent = @[m1,m2,m3];
+    
+    self.companyTexts = @[m1.decName,m2.decName,m3.decName];
+    
 }
 
 @end
