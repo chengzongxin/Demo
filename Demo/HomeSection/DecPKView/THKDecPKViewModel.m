@@ -30,44 +30,39 @@
 //    NSMutableArray *arr = [NSMutableArray array];
     
     THKDecPKCompanyModel *m1 = [THKDecPKCompanyModel new];
-    m1.decIcon = @"https://pic.to8to.com/live/day_211008/20211008_449e6f68fd7c5501365a307Bg24AJYBH.jpg";
-    m1.decName = @"居众装饰";
-    m1.score = 40;
-    m1.consultNum = 70;
+    m1.authorAvatar = @"https://pic.to8to.com/live/day_211008/20211008_449e6f68fd7c5501365a307Bg24AJYBH.jpg";
+    m1.authorName = @"居众装饰";
+    m1.goodRate = 40;
+    m1.consultantNum = 70;
     m1.caseNum = 60;
-    m1.scoreText = @"评分";
+    m1.goodRateText = @"评分";
     m1.caseNumText = @"发布\n案例数";
-    m1.consultNumText = @"近半年\n咨询人数";
+    m1.consultantNumText = @"近半年\n咨询人数";
     
     THKDecPKCompanyModel *m2 = [THKDecPKCompanyModel new];
-    m2.decIcon = @"https://pic.to8to.com/live/day_211008/20211008_449e6f68fd7c5501365a307Bg24AJYBH.jpg";
-    m2.decName = @"东易日盛";
-    m2.score = 60;
-    m2.consultNum = 50;
+    m2.authorAvatar = @"https://pic.to8to.com/live/day_211008/20211008_449e6f68fd7c5501365a307Bg24AJYBH.jpg";
+    m2.authorName = @"东易日盛";
+    m2.goodRate = 60;
+    m2.consultantNum = 50;
     m2.caseNum = 80;
-    m2.scoreText = @"评分";
+    m2.goodRateText = @"评分";
     m2.caseNumText = @"发布\n案例数";
-    m2.consultNumText = @"近半年\n咨询人数";
+    m2.consultantNumText = @"近半年\n咨询人数";
     
     THKDecPKCompanyModel *m3 = [THKDecPKCompanyModel new];
-    m3.decIcon = @"https://img.to8to.com/newheadphoto/v2/100/176.jpg?1654855200";
-    m3.decName = @"星艺装饰";
-    m3.score = 20;
-    m3.consultNum = 30;
+    m3.authorAvatar = @"https://img.to8to.com/newheadphoto/v2/100/176.jpg?1654855200";
+    m3.authorName = @"星艺装饰";
+    m3.goodRate = 20;
+    m3.consultantNum = 30;
     m3.caseNum = 80;
-    m3.scoreText = @"评分";
+    m3.goodRateText = @"评分";
     m3.caseNumText = @"发布\n案例数";
-    m3.consultNumText = @"近半年\n咨询人数";
+    m3.consultantNumText = @"近半年\n咨询人数";
     
     self.secondContent = @[m1,m2,m3];
     
-    self.companyTexts = @[m1.decName,m2.decName,m3.decName];
+    self.companyTexts = @[m1.authorName,m2.authorName,m3.authorName];
     
 }
-
-@end
-
-
-@implementation THKDecPKCompanyModel
 
 @end

@@ -73,11 +73,11 @@
 
 - (void)setModel1:(THKDecPKCompanyModel *)model1 model2:(THKDecPKCompanyModel *)model2 {
     
-    [self.iconImgV1 setImageWithURL:[NSURL URLWithString:model1.decIcon] options:0];
-    self.titleLbl1.text = model1.decName;
+    [self.iconImgV1 setImageWithURL:[NSURL URLWithString:model1.authorAvatar] options:0];
+    self.titleLbl1.text = model1.authorName;
     
-    [self.iconImgV2 setImageWithURL:[NSURL URLWithString:model2.decIcon] options:0];
-    self.titleLbl2.text = model2.decName;
+    [self.iconImgV2 setImageWithURL:[NSURL URLWithString:model2.authorAvatar] options:0];
+    self.titleLbl2.text = model2.authorName;
 }
 
 - (void)setModel:(NSArray<THKDecPKCompanyModel *> *)model{

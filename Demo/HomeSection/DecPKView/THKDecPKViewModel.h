@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "THKDecPKCompanyModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @class THKDecPKCompanyModel;
@@ -21,13 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *secondButtonTip;//(router)
 
 @property (nonatomic, strong) NSArray <THKDecPKCompanyModel *> *secondContent;
-//secondContent : [
-//    decName
-//    decIcon
-//    score(text)
-//    caseNum(text)
-//    consultNum(text)
-//]
+
 @property (nonatomic, strong) NSString *bigButtonTip;//(router)
 @property (nonatomic, strong) NSString *bottomTipIcon;
 @property (nonatomic, strong) NSString *bottomTip;//(router)
@@ -38,19 +32,5 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
-
-@interface THKDecPKCompanyModel : NSObject
-
-@property (nonatomic, strong) NSString *decName;
-@property (nonatomic, strong) NSString *decIcon;
-@property (nonatomic, assign) int score;
-@property (nonatomic, assign) int caseNum;
-@property (nonatomic, assign) int consultNum;
-@property (nonatomic, strong) NSString *scoreText;
-@property (nonatomic, strong) NSString *caseNumText;
-@property (nonatomic, strong) NSString *consultNumText;
-
-@end
 
 NS_ASSUME_NONNULL_END

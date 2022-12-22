@@ -134,6 +134,7 @@ static NSInteger const kUnfoldTag = 999;
         make.centerX.equalTo(self);
     }];
     
+    self.pkSmallView.hidden = YES;
     [self.hiddenViews addObjectsFromArray:@[self.topBgImgV,self.firstTitle,self.firstButtonTip,self.firstContentImgV,self.pkView,self.radarView,self.bottomButton,self.bottomTipBtn]];
 }
 
@@ -194,17 +195,17 @@ static NSInteger const kUnfoldTag = 999;
     THKDecPKCompanyModel *com1 = models.firstObject;
     THKDecPKCompanyModel *com2 = models.lastObject;
     
-    NSArray *classifyDataArray = @[com1.scoreText,com1.caseNumText,com1.consultNumText];
+    NSArray *classifyDataArray = @[com1.goodRateText,com1.caseNumText,com1.consultantNumText];
     
     FLRadarChartModel *chartM1 = [[FLRadarChartModel alloc] init];
-    chartM1.name = com1.decName;
-    chartM1.valueArray = @[@(com1.score),@(com1.caseNum),@(com1.consultNum)];
+    chartM1.name = com1.authorName;
+    chartM1.valueArray = @[@(com1.goodRate),@(com1.caseNum),@(com1.consultantNum)];
     chartM1.strokeColor = [UIColorHexString(@"FD6343") colorWithAlphaComponent:0.5];
     chartM1.fillColor = [UIColorHexString(@"FD6343") colorWithAlphaComponent:0.5];
     
     FLRadarChartModel *chartM2 = [[FLRadarChartModel alloc] init];
-    chartM2.name = com2.decName;
-    chartM2.valueArray = @[@(com2.score),@(com2.caseNum),@(com2.consultNum)];;
+    chartM2.name = com2.authorName;
+    chartM2.valueArray = @[@(com2.goodRate),@(com2.caseNum),@(com2.consultantNum)];;
     chartM2.strokeColor = [UIColorHexString(@"3A8EF0") colorWithAlphaComponent:0.5];
     chartM2.fillColor = [UIColorHexString(@"3A8EF0") colorWithAlphaComponent:0.5];
     
