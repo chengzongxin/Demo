@@ -29,6 +29,10 @@ static CGFloat const kCycleViewMaxCountMultiple = 1000;
 
 @property (nonatomic, assign) BOOL isAutoScrolling;
 
+
+//标记滑动前的页数
+@property (nonatomic, assign) NSInteger draggingStartPage;
+
 @end
 
 @implementation THKDecPKCycleView
@@ -55,14 +59,11 @@ static CGFloat const kCycleViewMaxCountMultiple = 1000;
 
 - (void)setupSubviews {
     [self addSubview:self.collectionView];
-    [self addSubview:self.pageControl];
+//    [self addSubview:self.pageControl];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
-    self.collectionView.frame = self.bounds;
-    self.flowLayout.itemSize = self.bounds.size;
     
     CGFloat y = self.bounds.size.height - 5.0 - kPageControlBottom;
     _pageControl.frame = CGRectMake(0, y, self.bounds.size.width, 5.0);
@@ -163,6 +164,13 @@ static CGFloat const kCycleViewMaxCountMultiple = 1000;
         [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.currentNumberOfItem inSection:0]
                                     atScrollPosition:UICollectionViewScrollPositionNone
                                             animated:NO];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            if (self.scrollCell) {
+                NSInteger idx = [self pageAt:self.collectionView.contentOffset.x] % self.numbers;
+                self.scrollCell(self, idx);
+            }
+        });
     });
     
 //    [self.collectionView setContentOffset:CGPointMake(self.currentNumberOfItem * self.frame.size.width, 0) animated:NO];
@@ -194,9 +202,12 @@ static CGFloat const kCycleViewMaxCountMultiple = 1000;
     }
     
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex inSection:0]
-                                atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
+                                atScrollPosition:UICollectionViewScrollPositionNone
                                         animated:YES];
 //    [self.collectionView setContentOffset:CGPointMake(toIndex * self.width, 0) animated:YES];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self scrollViewDidEndDecelerating:self.collectionView];
+    });
 }
 
 // 后台进前台通知
@@ -241,55 +252,93 @@ static CGFloat const kCycleViewMaxCountMultiple = 1000;
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if (self.numbers == 0) return;
-    
-    CGFloat pageWidth = scrollView.frame.size.width;
-    if (pageWidth == 0) {
-        return;
-    }
-    NSInteger currentNumberOfItem = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    
-    // 还没布局，layoutsubview 会到这里，会更新current，需要在这里返回，以免初始化滚动到中间不执行
-    if (currentNumberOfItem == 0) {
-        return;
-    }
-    
-    if (currentNumberOfItem == self.currentNumberOfItem) {
-        return;
-    }
-    
-    self.currentNumberOfItem = currentNumberOfItem;
-    
-    NSInteger index = self.currentNumberOfItem % self.numbers;
-    self.pageControl.currentPage = index;
-    
-    !_scrollCell?:_scrollCell(self,index);
-}
-
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self removeTimer];
+    
+    self.draggingStartPage = [self pageAt:self.collectionView.contentOffset.x];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     [self addTimer];
 }
 
+
+/// 若要显示第idx索引位置的卡片，需要设置的offset.x值
+- (CGFloat)offsetXOfItemAtIndex:(NSInteger)idx {
+    if (idx == 0) {
+        return 0;
+    }
+    return self.flowLayout.sectionInset.left + (self.flowLayout.itemSize.width + self.flowLayout.minimumLineSpacing) * idx - self.flowLayout.minimumLineSpacing - (self.collectionView.contentInset.left - self.flowLayout.minimumInteritemSpacing);
+}
+#pragma mark - ScrollViewDelegate
+
+- (CGPoint)nearestTargetOffsetForOffset:(CGPoint)offset offsetPage:(NSInteger)offsetPage {
+    NSInteger page = [self pageAt:offset.x] + offsetPage;
+    if ([self.collectionView numberOfItemsInSection:0] > 0) {
+        page = MAX(page, 0);
+        page = MIN(page, [self.collectionView numberOfItemsInSection:0] - 1);
+    }
+    CGFloat targetX = [self offsetXOfItemAtIndex:page];
+    targetX = MIN(targetX, self.collectionView.contentSize.width - self.collectionView.bounds.size.width);
+    // 滑动到第一个或者最后一个额外增加contentInset的边距
+    if (page == 0) {
+        targetX -= self.collectionView.contentInset.left;
+    }else if (page == [self.collectionView numberOfItemsInSection:0] - 1) {
+        targetX += self.collectionView.contentInset.right;
+    }
+    return CGPointMake(targetX, offset.y);
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    CGPoint targetOffset = [self nearestTargetOffsetForOffset:*targetContentOffset offsetPage:0];
+    //将要滑到的页数
+    NSInteger toPage = [self pageAt:targetOffset.x];
+    //当‘将滑动的页数’没变，并且手指速度很快直接滑动旁边格子（否则会滑回原来位置发生抖动）
+    if (velocity.x != 0 && fabs(velocity.x) < 1.5 && self.draggingStartPage == toPage) {
+        targetOffset = [self nearestTargetOffsetForOffset:*targetContentOffset offsetPage:(velocity.x > 0 ? 1: -1)];
+    }
+
+    targetContentOffset->x = targetOffset.x;
+    targetContentOffset->y = targetOffset.y;
+}
+
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+//    self.draggingStartPage = [self pageAt:self.collectionView.contentOffset.x];
+//}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSInteger page = [self pageAt:self.collectionView.contentOffset.x];
+    if ([self.collectionView numberOfItemsInSection:0] > 0) {
+        page = MIN(page, [self.collectionView numberOfItemsInSection:0] - 1);
+    }
+    self.currentNumberOfItem = page;
+    
+    if (self.scrollCell) {
+        self.scrollCell(self, page);
+    }
+}
+
+- (NSInteger)pageAt:(CGFloat)contentOffsetX {
+    CGFloat pageWidth = self.flowLayout.itemSize.width + self.flowLayout.minimumLineSpacing;
+    return roundf((contentOffsetX - self.flowLayout.sectionInset.left) / pageWidth);
+}
+
+
 #pragma mark - lazy
 
 - (UICollectionView *)collectionView {
     
     if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:self.flowLayout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width - 20 * 2, 100) collectionViewLayout:self.flowLayout];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.showsHorizontalScrollIndicator = NO;
         _collectionView.showsVerticalScrollIndicator = NO;
-        _collectionView.pagingEnabled = YES;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
         _collectionView.contentInset = UIEdgeInsetsMake(0, 20, 0, 20);
         [_collectionView registerClass:[THKDecPKSrcollCell class]
             forCellWithReuseIdentifier:NSStringFromClass([THKDecPKSrcollCell class])];
+        _collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
     }
     
     return _collectionView;

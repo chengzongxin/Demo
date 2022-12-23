@@ -31,13 +31,17 @@
     
     [self.view addSubview:self.tableView];
     
+    [self request];
+}
+
+- (void)request{
+    
     TIMCompanyPKRoomDetailRequest *request = [TIMCompanyPKRoomDetailRequest new];
     [request sendSuccess:^(TIMCompanyPKRoomDetailResponse * _Nonnull response) {
         [self addView:response.data];
     } failure:^(NSError * _Nonnull error) {
         
     }];
-    
 }
 
 - (void)addView:(THKDecPKModel *)model{
