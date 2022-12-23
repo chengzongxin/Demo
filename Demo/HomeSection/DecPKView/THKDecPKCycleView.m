@@ -226,6 +226,9 @@ static CGFloat const kCycleViewMaxCountMultiple = 1000;
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (self.numbers <= 1) {
+        return self.numbers;
+    }
     return (self.numbers * kCycleViewMaxCountMultiple);
 }
 
