@@ -6,7 +6,7 @@
 //
 
 #import "THKDecPKView.h"
-#import "THKDecPKSrcollView.h"
+#import "THKDecPKCycleView.h"
 #import "FLRadarChartView.h"
 #import "FLRadarChartModel.h"
 #import "THKDecPKSmallView.h"
@@ -23,7 +23,7 @@ static NSInteger const kUnfoldTag = 999;
 @property (nonatomic, strong) UILabel *secondTitle;
 @property (nonatomic, strong) UIButton *secondButtonTip;
 @property (nonatomic, strong) THKDecPKSmallView *pkSmallView;
-@property (nonatomic, strong) THKDecPKSrcollView *pkView;
+@property (nonatomic, strong) THKDecPKCycleView *pkView;
 @property (nonatomic, strong) FLRadarChartView *radarView;
 @property (nonatomic, strong) UIButton *bottomButton;
 @property (nonatomic, strong) UIButton *bottomTipBtn;
@@ -168,7 +168,7 @@ static NSInteger const kUnfoldTag = 999;
     self.secondTitle.text = viewModel.secondTitle;
     [self.secondButtonTip setTitle:viewModel.secondButtonTip forState:UIControlStateNormal];
     
-    self.pkView.model = viewModel.secondContent;
+    self.pkView.datas = viewModel.secondContent;
     self.pkSmallView.texts = viewModel.companyTexts;
     
     [self.bottomButton setTitle:viewModel.bigButtonTip forState:UIControlStateNormal];
@@ -290,14 +290,18 @@ static NSInteger const kUnfoldTag = 999;
     return _pkSmallView;
 }
 
-- (THKDecPKSrcollView *)pkView{
+- (THKDecPKCycleView *)pkView{
     if (!_pkView) {
-        _pkView = [[THKDecPKSrcollView alloc] init];
+        _pkView = [[THKDecPKCycleView alloc] init];
         @weakify(self);
-        _pkView.didScrollToDecs = ^(NSArray<THKDecPKCompanyModel *> * _Nonnull models) {
+        _pkView.scrollCell = ^(THKDecPKCycleView * _Nonnull cycleView, NSInteger index) {
             @strongify(self);
-            [self didScrollToDecs:models];
+            [self didScrollToDecs:[cycleView objectInDatasAtIndex:index]];
         };
+//        _pkView.didScrollToDecs = ^(NSArray<THKDecPKCompanyModel *> * _Nonnull models) {
+//            @strongify(self);
+//            [self didScrollToDecs:models];
+//        };
     }
     return _pkView;
 }
