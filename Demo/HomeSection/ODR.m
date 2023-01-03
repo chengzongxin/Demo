@@ -83,6 +83,17 @@ typedef void(^ODRError)(NSError *);
     ];
 }
 
+- (void)dealloc{
+    
+   // Stop observing fractionCompleted to stop tracking the progress
+   [self.resourceRequest.progress removeObserver:self
+                                  forKeyPath:@"fractionCompleted"
+                                  context:@"observeForrestLoad"
+   ];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (void)addObserver{
     
@@ -93,11 +104,6 @@ typedef void(^ODRError)(NSError *);
                                    context:@"observeForrestLoad"
     ];
      
-    // Stop observing fractionCompleted to stop tracking the progress
-    [self.resourceRequest.progress removeObserver:self
-                                   forKeyPath:@"fractionCompleted"
-                                   context:@"observeForrestLoad"
-    ];
     
     // Register to call self.lowDiskSpace when the notification occurs
     [[NSNotificationCenter defaultCenter]
