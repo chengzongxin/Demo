@@ -61,7 +61,13 @@ static NSInteger const kUnfoldTag = 999;
     
     [self.topBgImgV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.mas_equalTo(0);
-        make.height.mas_equalTo(self.topBgImgV.image.size.height / self.topBgImgV.image.size.width * (UIScreen.mainScreen.bounds.size.width - 40));
+        if (self.topBgImgV.image) {
+            
+            make.height.mas_equalTo(self.topBgImgV.image.size.height / self.topBgImgV.image.size.width * (UIScreen.mainScreen.bounds.size.width - 40));
+        }else{
+            
+            make.height.mas_equalTo(110 / 335 * (UIScreen.mainScreen.bounds.size.width - 40));
+        }
     }];
     
     [self.firstTitle mas_makeConstraints:^(MASConstraintMaker *make) {

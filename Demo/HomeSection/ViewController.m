@@ -13,11 +13,14 @@
 #import "FLDefaultRadarChartViewController.h"
 #import "THKDecPKView.h"
 #import "TIMCompanyPKRoomDetailRequest.h"
+#import "ODR.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) THKDecPKView *pkView;
+
+@property (nonatomic, strong) ODR *resourceRequest;
 
 
 @end
@@ -27,11 +30,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self request];
+    
     self.view.backgroundColor = UIColor.groupTableViewBackgroundColor;
     
     [self.view addSubview:self.tableView];
     
-    [self request];
+    self.resourceRequest = [[ODR alloc] initWithTags:[NSSet setWithObject:@"pk"] completion:^(BOOL resourcesAvailable) {
+        NSLog(@"%d",resourcesAvailable);
+    } error:^(NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 - (void)request{
