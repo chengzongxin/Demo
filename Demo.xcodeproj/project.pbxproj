@@ -2049,6 +2049,15 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		1654A88129652700008C3810 /* ODR */ = {
+			isa = PBXGroup;
+			children = (
+				1647FBBD296419FF003815C6 /* ODR.h */,
+				1647FBBE296419FF003815C6 /* ODR.m */,
+			);
+			path = ODR;
+			sourceTree = "<group>";
+		};
 		165CCBBF278E66DA00141EC0 /* DynamicTabs */ = {
 			isa = PBXGroup;
 			children = (
@@ -3268,8 +3277,7 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
-				1647FBBD296419FF003815C6 /* ODR.h */,
-				1647FBBE296419FF003815C6 /* ODR.m */,
+				1654A88129652700008C3810 /* ODR */,
 				163731BB29530C400025BF8F /* DecPKView */,
 				1627BACA290B6EA600F14B0A /* Irregular */,
 				8FD1343C28F66CE900E791C9 /* THKCalculateQuotationView */,
