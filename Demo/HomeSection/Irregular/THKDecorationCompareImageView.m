@@ -9,8 +9,9 @@
 #import "IrregularBtn.h"
 #define kViewWidth(View) CGRectGetWidth(View.frame)
 #define kViewHeight(View) CGRectGetHeight(View.frame)
-#define kDiff 32
-#define kSpace 14
+
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+
 @interface THKDecorationCompareImageView ()
 
 @property (nonatomic, strong) UIView *contentView;
@@ -40,6 +41,9 @@
 
 
 - (void)setupSubviews{
+    self.space = 8;
+    self.degree = 75;
+    self.isRightSperateStyle = YES;
     [self addSubview:self.contentView];
     [self addSubview:self.vsIcon];
     [self addSubview:self.leftLbl];
@@ -84,9 +88,18 @@
 //右斜边梯形
 - (void)setupLeftImgBtn
 {
-    IrregularBtn * btn = [IrregularBtn buttonWithType:UIButtonTypeCustom];
+    
+    CGFloat space = self.space;
     CGRect frame = self.contentView.bounds;
-    frame.size.width = frame.size.width / 2 + kDiff - kSpace;
+    CGFloat fullW = frame.size.width;
+    CGFloat fullH = frame.size.height;
+    CGFloat diff = fullH / tanf(DEGREES_TO_RADIANS(self.degree));
+    CGFloat shortX = (fullW - diff - space) / 2;
+    CGFloat btnW = shortX + diff;
+    
+    IrregularBtn * btn = [IrregularBtn buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = UIColorRed;
+    frame.size.width = btnW;
     btn.frame = frame;
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
 //    [btn setBackgroundImageWithURL:[NSURL URLWithString:@"https://cdn.pixabay.com/photo/2020/03/31/19/20/dog-4988985_1280.jpg"] forState:UIControlStateNormal options:0];
@@ -94,8 +107,13 @@
     NSMutableArray *pointArray = [NSMutableArray array];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, 0.f))];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, kViewHeight(btn)))];
-    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn) - kDiff - kSpace, btn.frame.size.height))];
-    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), 0.f))];
+    if (self.isRightSperateStyle) {
+        [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), btn.frame.size.height))];
+        [pointArray addObject:NSStringFromCGPoint(CGPointMake(shortX, 0.f))];
+    }else{
+        [pointArray addObject:NSStringFromCGPoint(CGPointMake(shortX, btn.frame.size.height))];
+        [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), 0.f))];
+    }
     
     btn.cornerPointArray = [pointArray mutableCopy];
     
@@ -104,20 +122,32 @@
 }
 
 - (void)setupRightImgBtn{
-    IrregularBtn * btn = [IrregularBtn buttonWithType:UIButtonTypeCustom];
+    CGFloat space = self.space;
     CGRect frame = self.contentView.bounds;
-    frame.size.width = frame.size.width / 2 + kDiff - kSpace;
+    CGFloat fullW = frame.size.width;
+    CGFloat fullH = frame.size.height;
+    CGFloat diff = fullH / tanf(DEGREES_TO_RADIANS(self.degree));
+    CGFloat shortX = (fullW - diff - space) / 2;
+    CGFloat btnW = shortX + diff;
+    
+    IrregularBtn * btn = [IrregularBtn buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = UIColorGreen;
+    frame.size.width = btnW;
     frame.origin.x = self.bounds.size.width - frame.size.width;
     btn.frame = frame;
     [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
 //    [btn setBackgroundImageWithURL:[NSURL URLWithString:@"https://cdn.pixabay.com/photo/2022/05/21/09/30/cat-7211080_1280.jpg"] forState:UIControlStateNormal options:0];
     // 添加路径关键点array
     NSMutableArray *pointArray = [NSMutableArray array];
-    [pointArray addObject:NSStringFromCGPoint(CGPointMake(kDiff + kSpace, 0.f))];
-    [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, kViewHeight(btn)))];
+    if (self.isRightSperateStyle) {
+        [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, 0.f))];
+        [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn) - shortX, kViewHeight(btn)))];
+    }else{
+        [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn) - shortX, 0.f))];
+        [pointArray addObject:NSStringFromCGPoint(CGPointMake(0.f, kViewHeight(btn)))];
+    }
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), btn.frame.size.height))];
     [pointArray addObject:NSStringFromCGPoint(CGPointMake(kViewWidth(btn), 0.f))];
-    
     
     btn.cornerPointArray = [pointArray mutableCopy];
     

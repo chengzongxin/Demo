@@ -26,7 +26,7 @@
 
 
 - (void)push{
-    [self.navigationController pushViewController:THKDecPKViewController.new animated:YES];
+    [self.navigationController pushViewController:[NSClassFromString(@"IrregularViewController") new] animated:YES];
 }
 
 
