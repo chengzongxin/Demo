@@ -125,6 +125,7 @@
 		1642AA5126D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA5026D8EE9100F5FACD /* THKDiraryDirectoryServiceVC.m */; };
 		1642AA5726D8F6D700F5FACD /* THKDiaryDirectoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA5626D8F6D700F5FACD /* THKDiaryDirectoryCell.m */; };
 		1644D3CF276AF7EC00E91C66 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1644D3CE276AF7EC00E91C66 /* TestViewController.m */; };
+		164722E329A6024A005F6124 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 164722E229A6024A005F6124 /* DemoViewController.m */; };
 		1647FBBF296419FF003815C6 /* ODR.m in Sources */ = {isa = PBXBuildFile; fileRef = 1647FBBE296419FF003815C6 /* ODR.m */; };
 		1647FBC229642B64003815C6 /* THKDecPKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1647FBC129642B64003815C6 /* THKDecPKViewController.m */; };
 		1649086F26983FFB004DC831 /* THKPageContentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1649086E26983FFB004DC831 /* THKPageContentScrollView.m */; };
@@ -770,6 +771,8 @@
 		1642AA5626D8F6D700F5FACD /* THKDiaryDirectoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryDirectoryCell.m; sourceTree = "<group>"; };
 		1644D3CD276AF7EC00E91C66 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		1644D3CE276AF7EC00E91C66 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		164722E129A6024A005F6124 /* DemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		164722E229A6024A005F6124 /* DemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 		1647FBBD296419FF003815C6 /* ODR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ODR.h; sourceTree = "<group>"; };
 		1647FBBE296419FF003815C6 /* ODR.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ODR.m; sourceTree = "<group>"; };
 		1647FBC029642B64003815C6 /* THKDecPKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDecPKViewController.h; sourceTree = "<group>"; };
@@ -3277,6 +3280,8 @@
 			children = (
 				16699B5F25D0CF5E00B7F43B /* ViewController.h */,
 				16699B6025D0CF5E00B7F43B /* ViewController.m */,
+				164722E129A6024A005F6124 /* DemoViewController.h */,
+				164722E229A6024A005F6124 /* DemoViewController.m */,
 				1654A88129652700008C3810 /* ODR */,
 				163731BB29530C400025BF8F /* DecPKView */,
 				1627BACA290B6EA600F14B0A /* Irregular */,
@@ -4243,6 +4248,7 @@
 				16E5C51A26830DCB0024BA20 /* THKIdentityConfigManager.m in Sources */,
 				16DDC0A5274CF059000DAA29 /* THKEntranceViewCell.m in Sources */,
 				165CCBD7278E66DB00141EC0 /* THKImageTabSegmentControl.m in Sources */,
+				164722E329A6024A005F6124 /* DemoViewController.m in Sources */,
 				16867A1B2692D76C00650023 /* TMCardComponentBaseListView.m in Sources */,
 				163731B62952E8F80025BF8F /* FLRadarChartModel.m in Sources */,
 				16DDC06A274C77EA000DAA29 /* THKSelectMaterialTabVC.m in Sources */,
@@ -4685,6 +4691,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "Demo/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4695,6 +4702,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = pk;
+				OTHER_CFLAGS = "-fsanitize-coverage=trace-pc-guard";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -4766,6 +4774,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "Demo/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4775,6 +4784,7 @@
 					"$(PROJECT_DIR)/Demo/HomeSection/OnlineDesign/LameTool",
 				);
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = pk;
+				OTHER_CFLAGS = "-fsanitize-coverage=trace-pc-guard";
 				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
