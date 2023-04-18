@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 source 'https://github.com/CocoaPods/Specs.git'        #官方仓库地址
-#source 'git@repo.we.com:ios/tspecsrepo.git'       #私有仓库地址
+source 'git@repo.we.com:ios/tspecsrepo.git'       #私有仓库地址
 #source 'http://repo.we.com/ios/tspecsrepo.git'
 
 target 'Demo' do
@@ -9,18 +9,15 @@ target 'Demo' do
   use_frameworks!
 
   # Pods for Demo
-#  pod 'Masonry'
+  pod 'Masonry'
   pod 'AFNetworking'
   pod 'ReactiveObjC'
   pod 'MJExtension'
   pod 'YYKit'
   pod 'LookinServer', :configurations => ['Debug'] #界面查看工具
-#  pod 'MLeaksFinder', :configurations => ['Debug'] #检测内存泄漏
-#  pod 'TMUIKit', :git => 'https://github.com/chengzongxin/TMUIKit.git'
-#  pod 'TMUIKit', :path => '~/tmuikit/TMUIKit_Debug.podspec'
-  pod 'TMUICore', '2.0.9'
-  pod 'TMUIExtensions', '2.0.9'
-  pod 'TMUIComponents', :git => 'https://github.com/chengzongxin/TMUIKit.git'
+  pod 'TMUICore', '2.0.25'
+  pod 'TMUIExtensions', '2.0.25'
+  pod 'TMUIComponents', '2.0.25'
   pod 'ChainUIKit'
   pod 'TMEmptyView'
   pod 'TMToast'
@@ -38,5 +35,14 @@ target 'Demo' do
   target 'DemoUITests' do
     # Pods for testing
   end
+  
+  post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '11.0'
+      end
+    end
+  end
+
 
 end

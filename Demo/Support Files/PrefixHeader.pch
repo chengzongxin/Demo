@@ -14,9 +14,9 @@
 #import <AFNetworking.h>
 #import <ReactiveObjC.h>
 #import <MJExtension.h>
-#import <TMUICore.h>
-#import <TMUIExtensions.h>
-#import <TMUIComponents.h>
+#import <TMUICore/TMUICore.h>
+#import <TMUIExtensions/TMUIExtensions.h>
+#import <TMUIComponents/TMUIComponents.h>
 #import <ChainUI.h>
 #import <TMToast.h>
 #import <TMEmptyView.h>
