@@ -15,7 +15,6 @@
 
 @property (nonatomic, strong) UIButton *saveBtn;
 
-@property (nonatomic, strong) LeePhotoOrAlbumImagePicker *myPicker;
 
 @end
 
