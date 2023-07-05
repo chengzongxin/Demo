@@ -4700,6 +4700,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Demo/HomeSection/OnlineDesign/LameTool",
 				);
+				MY_CUSTOM_FLAG = TRUE;
 				ONLY_ACTIVE_ARCH = YES;
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = pk;
 				OTHER_CFLAGS = "-fsanitize-coverage=trace-pc-guard";
@@ -4753,7 +4754,7 @@
 					"-framework",
 					"\"YYKit\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.czx.test1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.czx.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4769,7 +4770,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Demo/Demo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G2L3993CXH;
+				DEVELOPMENT_TEAM = 5XB293ZE6R;
 				EXCLUDED_ARCHS = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Demo/Support Files/PrefixHeader.pch";
 				INFOPLIST_FILE = "Demo/Support Files/Info.plist";
@@ -4783,9 +4784,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Demo/HomeSection/OnlineDesign/LameTool",
 				);
+				MY_CUSTOM_FLAG = TRUE;
 				ON_DEMAND_RESOURCES_PREFETCH_ORDER = pk;
 				OTHER_CFLAGS = "-fsanitize-coverage=trace-pc-guard";
-				PRODUCT_BUNDLE_IDENTIFIER = com.czx.demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.czx.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "-Wno-ambiguous-macro";
@@ -4805,6 +4807,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MY_CUSTOM_FLAG = TRUE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tu8tu.DemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4825,6 +4828,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MY_CUSTOM_FLAG = TRUE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tu8tu.DemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4843,6 +4847,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MY_CUSTOM_FLAG = TRUE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tu8tu.DemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4861,6 +4866,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MY_CUSTOM_FLAG = TRUE;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tu8tu.DemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

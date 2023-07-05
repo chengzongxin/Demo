@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) UIButton *saveBtn;
 
+@property (nonatomic, strong) LeePhotoOrAlbumImagePicker *myPicker;
+
 @end
 
 @implementation DemoViewController
@@ -49,12 +51,24 @@
         make.height.mas_equalTo(48);
     }];
     
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem tmui_itemWithTitle:@"remove" target:self action:@selector(deletePic:)];
+}
+
+- (void)deletePic:(id)sender{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 5.f;
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager DELETE:@"http://localhost:8080/test/remove/jpg/2.0.0" parameters:@{@"name":@"jpg",@"version":@"1.0.0"} headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@",responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 - (void)saveBtnClick:(UIButton *)btn{
     
 }
-
 
 - (TMUITextField *)textField{
     if (!_textField) {
