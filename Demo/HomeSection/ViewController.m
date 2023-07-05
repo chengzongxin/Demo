@@ -27,7 +27,7 @@
 
 
 - (void)push{
-    [self.navigationController pushViewController:[NSClassFromString(@"DemoViewController") new] animated:YES];
+    [self.navigationController pushViewController:[NSClassFromString(@"THKReferenPictureListVC") new] animated:YES];
 }
 
 
