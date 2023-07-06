@@ -6,7 +6,7 @@
 //
 
 #import "THKCommonBaseRequest.h"
-
+#import "THKReferenPictureListResponse.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKReferenPictureListRequest : THKCommonBaseRequest

@@ -14,49 +14,34 @@
 
 @interface THKReferenPictureListVC () <UICollectionViewDelegate,UICollectionViewDataSource,THKReferenPictureListLayoutDelegate>
 
+@property (nonatomic, strong) THKReferenPictureListVM *viewModel;
+
 @property (nonatomic, strong) UICollectionView *collectionView;
 
 @property (nonatomic, strong) THKReferenPictureListLayout *layout;
 
-@property (nonatomic, strong) NSMutableArray *datas;
-
 @end
 
 @implementation THKReferenPictureListVC
+@dynamic viewModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = UIColorWhite;
     
-    
-    self.datas = [NSMutableArray array];
-    
-    for (int i = 0; i < 50; i++) {
-        [self.datas addObject:@(i)];
-    }
-    
     [self.view addSubview:self.collectionView];
-    
-    
-    [self addRefreshFooter];
 }
 
-- (void)addRefreshFooter{
-    @weakify(self);
-    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        @strongify(self);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            [self.collectionView.mj_footer endRefreshing];
-            for (int i = 0; i < 50; i++) {
-                [self.datas addObject:@(i)];
-            }
-            [self.collectionView reloadData];
-        });
-    }];
+- (void)bindViewModel {
+    [super bindViewModel];
+    
+    [self.viewModel bindStatusWithView:self.view scrollView:self.collectionView];
+    
+    [self.viewModel addRefreshFooter];
+    
+    [self.viewModel.requestCommand execute:@1];
 }
-
 
 
 #pragma mark UICollectionViewDataSource
@@ -117,13 +102,13 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.datas.count;
+    return self.viewModel.data.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     THKReferenPictureListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKReferenPictureListCell.class) forIndexPath:indexPath];
 //    cell.backgroundColor = UIColor.tmui_randomColor;
-    [cell.coverImgView loadImageWithUrlStr:@"https://test-pic.to8to.com/company/20220401/f232023c8cc7996ee47862020c5d548c.jpg"];
+    [cell.coverImgView loadImageWithUrlStr:self.viewModel.data[indexPath.item]];
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
