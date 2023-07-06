@@ -62,7 +62,6 @@
             [self addPopGestureOfPercentDrivenInteractiveTransition];
             //增加返回手势是否应该处理返回逻辑的回调
             [self.pushPopTransitionManager setEnablePopGestureOfPercentDrivenInteractiveTransitionBlock:^BOOL{
-                @strongify(self);
                 return YES;
             }];
 //        }

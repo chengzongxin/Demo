@@ -63,10 +63,10 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.item % 10) {
         case 0:
-            return CGSizeMake([self widthRatio:3], [self widthRatio:3]);
+            return CGSizeMake([self widthRatio:3], [self heightRatio:3]);
             break;
         case 1:
-            return CGSizeMake([self widthRatio:2], [self widthRatio:2]);
+            return CGSizeMake([self widthRatio:2], [self heightRatio:2]);
             break;
         case 2:
         case 3:
@@ -76,7 +76,7 @@
         case 7:
         case 8:
         case 9:
-            return CGSizeMake([self widthRatio:1], [self widthRatio:1]);
+            return CGSizeMake([self widthRatio:1], [self heightRatio:1]);
             break;
             
         default:
@@ -92,6 +92,25 @@
     return itemW * ratio + addW;
 }
 
+- (CGFloat)heightRatio:(NSInteger)ratio{
+    CGFloat h = 0;
+    switch (ratio) {
+        case 1:
+            h = 145/124.0 * [self widthRatio:ratio];
+            break;
+        case 2:
+//            h = 292/249.0 * [self widthRatio:ratio];
+            h = [self heightRatio:1] * 2 + self.layout.minimumLineSpacing;
+            break;
+        case 3:
+            h = 280/375.0 * [self widthRatio:ratio];
+            break;
+        default:
+            break;
+    }
+    return h;
+}
+
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -103,7 +122,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     THKReferenPictureListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKReferenPictureListCell.class) forIndexPath:indexPath];
-    cell.backgroundColor = UIColor.tmui_randomColor;
+//    cell.backgroundColor = UIColor.tmui_randomColor;
     [cell.coverImgView loadImageWithUrlStr:@"https://test-pic.to8to.com/company/20220401/f232023c8cc7996ee47862020c5d548c.jpg"];
     return cell;
 }
@@ -112,6 +131,49 @@
 }
 
 #pragma mark - Private
+- (void)pushToBigPicVC {
+//    THKImageBrowserProVC *vc = [[THKImageBrowserProVC alloc] initWithStyle:THKImageBrowserVCStyle_Dot];
+//    vc.customData = model.imgList;
+//    vc.blockPraseDataImgUrl = ^NSString * _Nonnull(THKBrandEvaluationImgModel * _Nonnull data) {
+//        return data.filePath ? : data.url;
+//    };
+//    vc.blockPraseDataThumbImgUrl = ^NSString * _Nonnull(THKBrandEvaluationImgModel * _Nonnull data) {
+//        return data.thumbnailUrl;
+//    };
+//    vc.blockPraseDataAnimationView = ^UIView * _Nonnull(THKBrandEvaluationImgModel * _Nonnull data, NSIndexPath * _Nonnull indexPath) {
+//        return [imageViews safeObjectAtIndex:indexPath.row];
+//    };
+//    vc.blockPraseDataAnimationOutScreen = ^BOOL(id  _Nonnull data, NSIndexPath * _Nonnull indexPath) {
+//        @strongify(self)
+//        UIImageView *imgView = [imageViews safeObjectAtIndex:indexPath.row];
+//        CGRect rect = [imgView convertRect:imgView.bounds toView:self.view.window];
+//        CGFloat offset = 0;
+//        CGRect viewRect = [self.view convertRect:self.view.bounds toView:self.view.window];
+//
+//        if (!CGRectEqualToRect(CGRectZero, rect) && (rect.origin.y + rect.size.height) > viewRect.origin.y - offset && rect.origin.y < viewRect.origin.y + viewRect.size.height - offset) {
+//            return NO;
+//        }
+//        return YES;
+//    };
+//    vc.blockWillDisplayCell = ^(TMImageData * _Nonnull data, NSIndexPath * _Nonnull indexPath, UIView *_cell) {
+//        @strongify(self);
+//        if (data.tag) {
+//            return;
+//        }
+//        data.tag = 1;
+//        GEWidgetResource *resource = [GEWidgetResource resourceWithWidget:_cell];
+//        resource.geWidgetUid = @"view_photo";
+//        [resource addEntries:@{
+//            @"widget_target":@(self.viewModel.categoryId),
+//            @"widget_index":[NSString stringWithFormat:@"%zd", indexPath.row]
+//        }];
+//        [[GEWidgetCustomEvent eventWithResource:resource eventName:@"photoView"] report];
+//    };
+//    vc.indexPathScrollTo = [NSIndexPath indexPathForRow:idx_ inSection:0];
+//    
+//    [vc show];
+}
+
 - (void)pushToBigPicVC:(THKReferenPictureListCell *)cardCell {
     THKReferenBigPictureVC *vc = [[THKReferenBigPictureVC alloc] initWithViewModel:THKReferenBigPictureVM.new];
     //加点击跳转转场动效逻辑
@@ -177,9 +239,9 @@
 - (THKReferenPictureListLayout *)layout{
     if (!_layout) {
         _layout = [[THKReferenPictureListLayout alloc] init];
-        _layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5); // item 间距
-        _layout.minimumLineSpacing = 5;  // 两行之间间隔
-        _layout.minimumInteritemSpacing = 5; // 两列之间间隔
+        _layout.sectionInset = UIEdgeInsetsZero; // item 间距
+        _layout.minimumLineSpacing = 2;  // 两行之间间隔
+        _layout.minimumInteritemSpacing = 2; // 两列之间间隔
     }
     return _layout;
 }
@@ -187,7 +249,7 @@
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.layout];
-        _collectionView.backgroundColor = UIColorHex(#DEEEFF);
+        _collectionView.backgroundColor = UIColor.blackColor;
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);

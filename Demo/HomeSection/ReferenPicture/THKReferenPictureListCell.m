@@ -37,6 +37,7 @@
     if (!_coverImgView) {
         _coverImgView = [[UIImageView alloc] init];
         _coverImgView.contentMode = UIViewContentModeScaleAspectFill;
+        _coverImgView.layer.masksToBounds = YES;
     }
     return _coverImgView;
 }
