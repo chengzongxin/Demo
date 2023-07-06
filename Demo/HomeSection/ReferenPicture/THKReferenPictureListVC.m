@@ -43,9 +43,9 @@
     @weakify(self);
     self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            
+            [self.collectionView.mj_footer endRefreshing];
             for (int i = 0; i < 50; i++) {
                 [self.datas addObject:@(i)];
             }
@@ -58,9 +58,6 @@
 
 #pragma mark UICollectionViewDataSource
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    CGFloat column = 4;
-//    CGFloat width = floor((TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - (self.layout.minimumInteritemSpacing)*(column - 1))/column);
-//    return CGSizeMake(width, 50);
     switch (indexPath.item % 10) {
         case 0:
             return CGSizeMake([self widthRatio:3], [self widthRatio:3]);
@@ -86,7 +83,10 @@
 }
 
 - (CGFloat)widthRatio:(NSInteger)ratio{
-    return (TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - (3 - ratio) * self.layout.minimumInteritemSpacing) / 3 * ratio;
+    NSInteger column = 3;
+    CGFloat itemW = (TMUI_SCREEN_WIDTH - UIEdgeInsetsGetHorizontalValue(self.layout.sectionInset) - (column - 1) * self.layout.minimumInteritemSpacing) / 3.0;
+    CGFloat addW = (ratio - 1) * self.layout.minimumLineSpacing;
+    return itemW * ratio + addW;
 }
 
 
@@ -113,9 +113,9 @@
 - (THKReferenPictureListLayout *)layout{
     if (!_layout) {
         _layout = [[THKReferenPictureListLayout alloc] init];
-        _layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10); // item 间距
-        _layout.minimumLineSpacing = 10;  // 两行之间间隔
-        _layout.minimumInteritemSpacing = 10; // 两列之间间隔
+        _layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5); // item 间距
+        _layout.minimumLineSpacing = 5;  // 两行之间间隔
+        _layout.minimumInteritemSpacing = 5; // 两列之间间隔
     }
     return _layout;
 }

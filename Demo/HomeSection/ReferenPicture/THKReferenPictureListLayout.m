@@ -9,23 +9,8 @@
 
 @interface THKReferenPictureListLayout ()
 
-@property (nonatomic, strong) NSMutableArray *itemAttributes;
-/// Array to store height for each column
-@property (nonatomic, strong) NSMutableArray *columnHeights;
 /// Array to store attributes for all items includes headers, cells, and footers
 @property (nonatomic, strong) NSMutableArray <UICollectionViewLayoutAttributes *>*allItemAttributes;
-/// 记录高度
-@property (nonatomic, assign) CGFloat lastY;
-/// 记录宽度
-@property (nonatomic, assign) CGFloat lastX;
-
-@property (nonatomic, assign) CGFloat lastXstate;
-
-@property (nonatomic, assign) CGFloat maxHeight;
-
-@property (nonatomic, strong) UICollectionViewLayoutAttributes *maxXattributes;
-
-@property (nonatomic, strong) UICollectionViewLayoutAttributes *maxYattributes;
 
 @end
 
@@ -35,85 +20,46 @@
     //必须调用super
     [super prepareLayout];
     
-    self.maxHeight = 0;
-    self.maxXattributes = nil;
-    self.maxYattributes = nil;
-    NSInteger section = 0;
-    NSInteger numberOfSections = [self.collectionView numberOfSections];
     
-    for (NSInteger section = 0; section < numberOfSections; section++) {
-        NSInteger columnCount = 3;
-      NSMutableArray *sectionColumnHeights = [NSMutableArray arrayWithCapacity:columnCount];
-      for (int idx = 0; idx < columnCount; idx++) {
-        [sectionColumnHeights safeAddObject:@(0)];
-      }
-      [self.columnHeights safeAddObject:sectionColumnHeights];
-    }
 
-    self.lastX = self.sectionInset.left;
-    self.lastY = self.sectionInset.top;
-    self.lastXstate = 0;
+    CGFloat lastX = self.sectionInset.left;
+    CGFloat lastY = self.sectionInset.top;
+    CGFloat maxHeight = 0;
+    UICollectionViewLayoutAttributes *bigLayoutAttr = nil;
     
-    /*
-     * 3. Section items
-     */
-    
+    NSInteger section = 0;
     NSInteger itemCount = [self.collectionView numberOfItemsInSection:section];
     NSMutableArray *itemAttributes = [NSMutableArray arrayWithCapacity:itemCount];
 
-    // Item will be put into shortest column.
     for (int idx = 0; idx < itemCount; idx++) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:idx inSection:section];
-//        NSUInteger columnIndex = [self nextColumnIndexForItem:idx inSection:section];
-//        CGFloat xOffset = self.sectionInset.left + (itemWidth + self.minimumInteritemSpacing) * columnIndex;
-//        CGFloat yOffset = [self.columnHeights[section][columnIndex] floatValue];
-//        CGPoint point = [self nextPoint];
-        CGPoint point = CGPointMake(self.lastX, self.lastY);
-        CGSize itemSize = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:indexPath];
         
-//        CGFloat itemHeight = 0;
-//        if (itemSize.height > 0 && itemSize.width > 0) {
-//            itemHeight = CHTFloorCGFloat1(itemSize.height * itemWidth / itemSize.width);
-//        }
+        CGPoint point = CGPointMake(lastX, lastY);
+        CGSize itemSize = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:indexPath];
         
         UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
         attributes.frame = CGRectMake(point.x, point.y, itemSize.width, itemSize.height);
         [itemAttributes safeAddObject:attributes];
         [self.allItemAttributes safeAddObject:attributes];
         
-        if (CGRectGetMaxY(attributes.frame) > self.maxHeight) {
-            self.maxHeight = CGRectGetMaxY(attributes.frame);
-            self.maxXattributes = attributes;
+        if (CGRectGetMaxY(attributes.frame) > maxHeight) {
+            maxHeight = CGRectGetMaxY(attributes.frame);
+            bigLayoutAttr = attributes;
         }
         
         BOOL reach = CGRectGetMaxX(attributes.frame) >= self.collectionView.width - self.sectionInset.right - 20;
         if (reach) {
-            if (self.maxHeight > CGRectGetMaxY(attributes.frame) + 20) {
-                self.lastX = CGRectGetMaxX(self.maxXattributes.frame) + self.minimumInteritemSpacing;
-                self.lastY = CGRectGetMaxY(attributes.frame) + self.minimumLineSpacing / 2;
+            if (maxHeight > CGRectGetMaxY(attributes.frame) + 20) {
+                lastX = CGRectGetMaxX(bigLayoutAttr.frame) + self.minimumInteritemSpacing;
+                lastY = CGRectGetMaxY(attributes.frame) + self.minimumLineSpacing;
             }else{
-                self.lastX = self.sectionInset.left;
-                self.lastY = CGRectGetMaxY(attributes.frame) + self.minimumLineSpacing ;
+                lastX = self.sectionInset.left;
+                lastY = CGRectGetMaxY(attributes.frame) + self.minimumLineSpacing ;
             }
         }else{
-            self.lastX = CGRectGetMaxX(attributes.frame) + self.minimumInteritemSpacing;
-            self.lastY = CGRectGetMinY(attributes.frame);
+            lastX = CGRectGetMaxX(attributes.frame) + self.minimumInteritemSpacing;
+            lastY = CGRectGetMinY(attributes.frame);
         }
-        
-        
-//        self.lastX +=  (itemSize.width + self.sectionInset.right);
-//        if (0) {
-//            if (self.lastXstate != self.sectionInset.left) {
-//
-//            }else {
-//                self.lastX = self.sectionInset.left;
-//            }
-//
-//
-//            self.lastY += (itemSize.height);
-//        }
-//        self.lastXstate = self.lastX;
-//        self.columnHeights[section][columnIndex] = @(CGRectGetMaxY(attributes.frame) + self.minimumInteritemSpacing);
     }
     
     for ( UICollectionViewLayoutAttributes *attributes in self.allItemAttributes) {
@@ -142,20 +88,6 @@
     return nextX;
 }
 
-
-
-
-//- (void)findLastXY{
-//    for (NSInteger i = self.allItemAttributes.count - 1; i > 0; i--) {
-//        UICollectionViewLayoutAttributes *attributes = self.allItemAttributes[i];
-//        if (CGRectGetMaxX(attributes.frame) > CGRectGetMaxX(self.maxXattributes)) {
-//            self.maxXattributes = attributes;
-//        }
-//        if (CGRectGetMaxY(attributes.frame) > CGRectGetMaxY(self.maxYattributes)) {
-//            self.maxYattributes = attributes;
-//        }
-//    }
-//}
 
 
 - (CGPoint)nextPoint{
@@ -223,38 +155,6 @@
 
 #pragma mark - Private Methods
 
-/**
- *  Find the shortest column.
- *
- *  @return index for the shortest column
- */
-- (NSUInteger)shortestColumnIndexInSection:(NSInteger)section {
-  __block NSUInteger index = 0;
-  __block CGFloat shortestHeight = MAXFLOAT;
-
-  [self.columnHeights[section] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    CGFloat height = [obj floatValue];
-    if (height < shortestHeight) {
-      shortestHeight = height;
-      index = idx;
-    }
-  }];
-
-  return index;
-}
-
-/**
- *  Find the index for the next column.
- *
- *  @return index for the next column
- */
-- (NSUInteger)nextColumnIndexForItem:(NSInteger)item inSection:(NSInteger)section {
-    NSUInteger index = 0;
-    NSInteger columnCount = 3;
-    index = [self shortestColumnIndexInSection:section];
-    return index;
-}
-
 CGFloat CHTFloorCGFloat1(CGFloat value) {
   CGFloat scale = [UIScreen mainScreen].scale;
   return floor(value * scale) / scale;
@@ -262,13 +162,6 @@ CGFloat CHTFloorCGFloat1(CGFloat value) {
 
 - (id <THKReferenPictureListLayoutDelegate> )delegate {
   return (id <THKReferenPictureListLayoutDelegate> )self.collectionView.delegate;
-}
-
-- (NSMutableArray *)columnHeights {
-  if (!_columnHeights) {
-    _columnHeights = [NSMutableArray array];
-  }
-  return _columnHeights;
 }
 
 - (NSMutableArray *)allItemAttributes {
