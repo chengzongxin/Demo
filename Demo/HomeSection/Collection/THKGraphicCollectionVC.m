@@ -52,7 +52,22 @@
     [super bindViewModel];
     
     RAC(self.titleLbl,text) = [RACObserve(self.viewModel, titleStr) ignore:nil];
-    RAC(self.briefIntroductionLbl,text) = [RACObserve(self.viewModel, briefStr) ignore:nil];
+    
+    @weakify(self);
+    [RACObserve(self.viewModel, briefStr) subscribeNext:^(id  _Nullable x) {
+        @strongify(self);
+        if (tmui_isNullString(x)) {
+            [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(48);
+            }];
+        }else{
+            [self.tableView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(66);
+            }];
+            self.briefIntroductionLbl.text = x;
+        }
+        
+    }];
     
     [self.viewModel bindStatusWithView:self.view scrollView:self.tableView];
     

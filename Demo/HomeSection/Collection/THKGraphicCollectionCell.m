@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
+//@property (strong, nonatomic) TInteractiveToolBar    *interactiveToolBar; //互动组件
+
 
 @end
 
