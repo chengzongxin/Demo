@@ -97,7 +97,7 @@
 - (UIButton *)closeBtn{
     if (!_closeBtn) {
         _closeBtn = [UIButton tmui_button];
-        _closeBtn.tmui_image = UIImageMake(@"diary_book_close_icon");
+        _closeBtn.tmui_image = UIImageMake(@"present_close_black");
         [_closeBtn tmui_addTarget:self action:@selector(clickCloseBtn)];
     }
     return _closeBtn;
