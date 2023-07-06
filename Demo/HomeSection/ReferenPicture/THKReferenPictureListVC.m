@@ -11,6 +11,7 @@
 #import "THKReferenBigPictureVC.h"
 #import "THKReferenPictureListCell.h"
 #import "THKPushPopTransitionManager.h"
+#import "THKModalPresentVC.h"
 
 @interface THKReferenPictureListVC () <UICollectionViewDelegate,UICollectionViewDataSource,THKReferenPictureListLayoutDelegate>
 
@@ -127,7 +128,11 @@
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self pushToBigPicVC:(THKReferenPictureListCell *)[collectionView cellForItemAtIndexPath:indexPath]];
+//    [self pushToBigPicVC:(THKReferenPictureListCell *)[collectionView cellForItemAtIndexPath:indexPath]];
+    
+    THKModalPresentVC *vc = [[THKModalPresentVC alloc] init];
+    vc.viewHeight = 600;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - Private
@@ -170,7 +175,7 @@
 //        [[GEWidgetCustomEvent eventWithResource:resource eventName:@"photoView"] report];
 //    };
 //    vc.indexPathScrollTo = [NSIndexPath indexPathForRow:idx_ inSection:0];
-//    
+//
 //    [vc show];
 }
 

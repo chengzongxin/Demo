@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "THKDecPKViewController.h"
+#import "THKModalPresentVC.h"
 #import <dlfcn.h>
 @interface ViewController ()
 
@@ -27,6 +27,7 @@
 
 
 - (void)push{
+    NSLog(@"111");
     [self.navigationController pushViewController:[NSClassFromString(@"THKReferenPictureListVC") new] animated:YES];
 }
 
