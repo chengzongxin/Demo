@@ -22,13 +22,6 @@
     self = [super init];
     if (self) {
         self.aniamtion = [[BTCoverVerticalTransition alloc] initPresentViewController:self withRragDismissEnabal:YES];
-        @weakify(self);
-        _aniamtion.dismissBlock = ^{
-            @strongify(self);
-            if (self.backBlock) {
-                self.backBlock();
-            }
-        };
 //        self.modalPresentationStyle = UIModalPresentationCustom;
         self.transitioningDelegate = self.aniamtion;
     }

@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initPresentViewController:(UIViewController*)viewController withRragDismissEnabal:(BOOL)enabel;
 
-@property (nonatomic, copy) void (^dismissBlock)(void);
-
 @end
 
 NS_ASSUME_NONNULL_END

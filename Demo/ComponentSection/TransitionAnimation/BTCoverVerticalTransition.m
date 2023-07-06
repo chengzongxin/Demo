@@ -10,9 +10,6 @@
 
 @interface MKPresentationController : UIPresentationController
 @property (nonatomic, strong) UIButton *dimmingView;
-
-@property (nonatomic, copy) void (^dismissBlock)(void);
-
 @end
 
 @implementation MKPresentationController
@@ -71,9 +68,7 @@
 }
 
 - (void)dismissAction:(UIButton*)sender{
-    !_dismissBlock?:_dismissBlock();
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
 - (void)presentationTransitionWillBegin{
@@ -114,9 +109,6 @@
 @interface MKInteractiveTransition : UIPercentDrivenInteractiveTransition<UIGestureRecognizerDelegate>
 @property (nonatomic, weak) UIViewController *viewController;
 @property (nonatomic, assign) BOOL interative;
-
-@property (nonatomic, copy) void (^dismissBlock)(void);
-
 @end
 
 @implementation MKInteractiveTransition
@@ -151,7 +143,6 @@
             self.interative = NO;
             if (persent > 0.5 || speed.y > 920) {
                 [self finishInteractiveTransition];
-                !_dismissBlock?:_dismissBlock();
             }else{
                 [self cancelInteractiveTransition];
             }
@@ -198,14 +189,6 @@
         viewController.modalPresentationStyle = UIModalPresentationCustom;
         if (enabel == YES) {
             MKInteractiveTransition * interactive = [[MKInteractiveTransition alloc]initWithViewController:viewController];
-//            interactive.dismissBlock = self.dismissBlock;
-            @weakify(self);
-            interactive.dismissBlock = ^{
-                @strongify(self);
-                if (self.dismissBlock) {
-                    self.dismissBlock();
-                }
-            };
             self.interactive = interactive;
         }
     }
@@ -266,14 +249,6 @@
 
 - (nullable UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(nullable UIViewController *)presenting sourceViewController:(UIViewController *)source NS_AVAILABLE_IOS(8_0){
     MKPresentationController * vc = [[MKPresentationController alloc]initWithPresentedViewController:presented presentingViewController:presenting];
-//    vc.dismissBlock = self.dismissBlock;
-    @weakify(self);
-    vc.dismissBlock = ^{
-        @strongify(self);
-        if (self.dismissBlock) {
-            self.dismissBlock();
-        }
-    };
     return vc;
 }
 @end

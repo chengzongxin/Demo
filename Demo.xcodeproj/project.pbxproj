@@ -32,8 +32,6 @@
 		160F63272A568D7500FCE5CA /* THKCommonBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63252A568D7500FCE5CA /* THKCommonBaseRequest.m */; };
 		160F632B2A568DE400FCE5CA /* THKReferenPictureListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F632A2A568DE400FCE5CA /* THKReferenPictureListRequest.m */; };
 		160F632E2A568DF800FCE5CA /* THKReferenPictureListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F632D2A568DF800FCE5CA /* THKReferenPictureListResponse.m */; };
-		160F63352A56927100FCE5CA /* BTCoverHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63322A56927100FCE5CA /* BTCoverHorizontalTransition.m */; };
-		160F63362A56927100FCE5CA /* BTCoverVerticalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63332A56927100FCE5CA /* BTCoverVerticalTransition.m */; };
 		160F633A2A5692F200FCE5CA /* THKGraphicCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63392A5692F200FCE5CA /* THKGraphicCollectionVC.m */; };
 		160F633D2A56930500FCE5CA /* THKGraphicCollectionVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F633C2A56930500FCE5CA /* THKGraphicCollectionVM.m */; };
 		160F63412A5693B300FCE5CA /* THKModalPresentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63402A5693B300FCE5CA /* THKModalPresentVC.m */; };
@@ -130,6 +128,9 @@
 		163731DB29532BBD0025BF8F /* dec_pk_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731D929532BBD0025BF8F /* dec_pk_arrow@2x.png */; settings = {ASSET_TAGS = (pk, ); }; };
 		163731DC29532BBD0025BF8F /* dec_pk_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163731DA29532BBD0025BF8F /* dec_pk_arrow@3x.png */; settings = {ASSET_TAGS = (pk, ); }; };
 		163731DF29532DAA0025BF8F /* THKDecPKViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 163731DE29532DAA0025BF8F /* THKDecPKViewModel.m */; };
+		163E4BEE2A569E23003F9904 /* BTCoverHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BEB2A569E23003F9904 /* BTCoverHorizontalTransition.m */; };
+		163E4BEF2A569E23003F9904 /* BTCoverVerticalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BEC2A569E23003F9904 /* BTCoverVerticalTransition.m */; };
+		163E4BF22A569E9A003F9904 /* THKPresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BF12A569E9A003F9904 /* THKPresentViewController.m */; };
 		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
 		16409078283378430081F089 /* CycleCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16409077283378430081F089 /* CycleCardCell.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
@@ -610,11 +611,6 @@
 		160F632A2A568DE400FCE5CA /* THKReferenPictureListRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKReferenPictureListRequest.m; sourceTree = "<group>"; };
 		160F632C2A568DF800FCE5CA /* THKReferenPictureListResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKReferenPictureListResponse.h; sourceTree = "<group>"; };
 		160F632D2A568DF800FCE5CA /* THKReferenPictureListResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKReferenPictureListResponse.m; sourceTree = "<group>"; };
-		160F63302A56927100FCE5CA /* BTTransitionAnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTransitionAnimationDelegate.h; sourceTree = "<group>"; };
-		160F63312A56927100FCE5CA /* BTCoverVerticalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverVerticalTransition.h; sourceTree = "<group>"; };
-		160F63322A56927100FCE5CA /* BTCoverHorizontalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCoverHorizontalTransition.m; sourceTree = "<group>"; };
-		160F63332A56927100FCE5CA /* BTCoverVerticalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCoverVerticalTransition.m; sourceTree = "<group>"; };
-		160F63342A56927100FCE5CA /* BTCoverHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverHorizontalTransition.h; sourceTree = "<group>"; };
 		160F63382A5692F200FCE5CA /* THKGraphicCollectionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKGraphicCollectionVC.h; sourceTree = "<group>"; };
 		160F63392A5692F200FCE5CA /* THKGraphicCollectionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKGraphicCollectionVC.m; sourceTree = "<group>"; };
 		160F633B2A56930500FCE5CA /* THKGraphicCollectionVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKGraphicCollectionVM.h; sourceTree = "<group>"; };
@@ -797,6 +793,13 @@
 		163731DA29532BBD0025BF8F /* dec_pk_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dec_pk_arrow@3x.png"; sourceTree = "<group>"; };
 		163731DD29532DAA0025BF8F /* THKDecPKViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDecPKViewModel.h; sourceTree = "<group>"; };
 		163731DE29532DAA0025BF8F /* THKDecPKViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDecPKViewModel.m; sourceTree = "<group>"; };
+		163E4BE92A569E23003F9904 /* BTTransitionAnimationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTransitionAnimationDelegate.h; sourceTree = "<group>"; };
+		163E4BEA2A569E23003F9904 /* BTCoverVerticalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverVerticalTransition.h; sourceTree = "<group>"; };
+		163E4BEB2A569E23003F9904 /* BTCoverHorizontalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCoverHorizontalTransition.m; sourceTree = "<group>"; };
+		163E4BEC2A569E23003F9904 /* BTCoverVerticalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCoverVerticalTransition.m; sourceTree = "<group>"; };
+		163E4BED2A569E23003F9904 /* BTCoverHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverHorizontalTransition.h; sourceTree = "<group>"; };
+		163E4BF02A569E9A003F9904 /* THKPresentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPresentViewController.h; sourceTree = "<group>"; };
+		163E4BF12A569E9A003F9904 /* THKPresentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPresentViewController.m; sourceTree = "<group>"; };
 		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
 		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
 		16409076283378430081F089 /* CycleCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleCardCell.h; sourceTree = "<group>"; };
@@ -1716,18 +1719,6 @@
 			path = ReferenPictureRequest;
 			sourceTree = "<group>";
 		};
-		160F632F2A56927100FCE5CA /* TransitionAnimation */ = {
-			isa = PBXGroup;
-			children = (
-				160F63302A56927100FCE5CA /* BTTransitionAnimationDelegate.h */,
-				160F63312A56927100FCE5CA /* BTCoverVerticalTransition.h */,
-				160F63322A56927100FCE5CA /* BTCoverHorizontalTransition.m */,
-				160F63332A56927100FCE5CA /* BTCoverVerticalTransition.m */,
-				160F63342A56927100FCE5CA /* BTCoverHorizontalTransition.h */,
-			);
-			path = TransitionAnimation;
-			sourceTree = "<group>";
-		};
 		160F63372A5692C400FCE5CA /* Collection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1744,6 +1735,8 @@
 			children = (
 				160F633F2A5693B200FCE5CA /* THKModalPresentVC.h */,
 				160F63402A5693B300FCE5CA /* THKModalPresentVC.m */,
+				163E4BF02A569E9A003F9904 /* THKPresentViewController.h */,
+				163E4BF12A569E9A003F9904 /* THKPresentViewController.m */,
 			);
 			path = ModalPresentVC;
 			sourceTree = "<group>";
@@ -2165,6 +2158,18 @@
 				163731C6295310540025BF8F /* dec_pk_card_bg@3x.png */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		163E4BE82A569E23003F9904 /* TransitionAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				163E4BE92A569E23003F9904 /* BTTransitionAnimationDelegate.h */,
+				163E4BEA2A569E23003F9904 /* BTCoverVerticalTransition.h */,
+				163E4BEB2A569E23003F9904 /* BTCoverHorizontalTransition.m */,
+				163E4BEC2A569E23003F9904 /* BTCoverVerticalTransition.m */,
+				163E4BED2A569E23003F9904 /* BTCoverHorizontalTransition.h */,
+			);
+			path = TransitionAnimation;
 			sourceTree = "<group>";
 		};
 		1654A88129652700008C3810 /* ODR */ = {
@@ -3021,7 +3026,7 @@
 				16976FC627795A5F00D477DA /* ComponentViewController.h */,
 				16976FC727795A5F00D477DA /* ComponentViewController.m */,
 				160F633E2A56938C00FCE5CA /* ModalPresentVC */,
-				160F632F2A56927100FCE5CA /* TransitionAnimation */,
+				163E4BE82A569E23003F9904 /* TransitionAnimation */,
 				160F63242A568D7500FCE5CA /* CommonBaseNetwork */,
 				16B10EF228D95FD700561A6D /* GraphicDetail */,
 				16FE857A28D30BFB000AC352 /* THKMyHomeDesignDemands */,
@@ -4250,7 +4255,6 @@
 				16E5C4BA2682DE4B0024BA20 /* THKCommonJavaRequest.m in Sources */,
 				160F63172A55405900FCE5CA /* THKReferenPictureListVM.m in Sources */,
 				16CF07BA28ACBDD20072FD15 /* THKOnlineDesignHouseStyleTagRequest.m in Sources */,
-				160F63362A56927100FCE5CA /* BTCoverVerticalTransition.m in Sources */,
 				1618293828E2A30A00875943 /* THKCeterAlignLayout.m in Sources */,
 				16CEA54B28AE0E1400A02A0E /* THKOnlineDesignDistributeAnimationView.m in Sources */,
 				16F2854328DADAFA000500A4 /* THKGraphicDetailSpaceView.m in Sources */,
@@ -4489,6 +4493,7 @@
 				8FD1343B28F6694700E791C9 /* THKCalculateQuotationSelectButtonView.m in Sources */,
 				16611AB22696870F0089E41B /* UIScrollView+Godeye.m in Sources */,
 				16DDC098274CCA3F000DAA29 /* THKSelectMaterialHomeVC.m in Sources */,
+				163E4BEE2A569E23003F9904 /* BTCoverHorizontalTransition.m in Sources */,
 				16192B322692E13E00967C73 /* THKSearchAnimation+UI.m in Sources */,
 				163731B42952E8F80025BF8F /* UIView+FLFrame.m in Sources */,
 				16192B212692E13E00967C73 /* THKPushPopTransitionManager.m in Sources */,
@@ -4531,6 +4536,7 @@
 				160981E126D7A16500E1364F /* THKDiaryCircleView.m in Sources */,
 				16FE858128D30C88000AC352 /* THKHouseCardConfigResponse.m in Sources */,
 				1630D98F274DD7F9009A04FA /* THKSelectMaterialCommunicationVM.m in Sources */,
+				163E4BEF2A569E23003F9904 /* BTCoverVerticalTransition.m in Sources */,
 				16867A112692D76C00650023 /* THKTextTagLabel.m in Sources */,
 				16192B3C2692E13E00967C73 /* THKPushPopBaseTransition.m in Sources */,
 				168679FE2692D76C00650023 /* TMCardComponentCollectionViewLayout.m in Sources */,
@@ -4560,7 +4566,6 @@
 				163731DF29532DAA0025BF8F /* THKDecPKViewModel.m in Sources */,
 				1685A680289120DC0032E474 /* THKDecorationUpcomingListResponse.m in Sources */,
 				16611AB92696870F0089E41B /* GETrackerModel.m in Sources */,
-				160F63352A56927100FCE5CA /* BTCoverHorizontalTransition.m in Sources */,
 				8FD1344E28F6A1C300E791C9 /* THKCalcConfigResponse.m in Sources */,
 				16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */,
 				165CCBD1278E66DA00141EC0 /* THKDynamicTabsWrapperScrollView.m in Sources */,
@@ -4573,6 +4578,7 @@
 				16B3EA5E28AA72F300B3C791 /* THKOnlineDesignHomeConfigRequest.m in Sources */,
 				16192B4D2692E1B100967C73 /* TRouterManager+Config.m in Sources */,
 				167233712886B8B700901743 /* THKNavigationSearchTitleViewModel.m in Sources */,
+				163E4BF22A569E9A003F9904 /* THKPresentViewController.m in Sources */,
 				165CCBD5278E66DB00141EC0 /* THKDynamicTabsPageVC.m in Sources */,
 				16611AB02696870F0089E41B /* GEProcessor+GodeyePrivate.m in Sources */,
 				16529F6C2745F220002A3B65 /* DynamicTabDemoList.m in Sources */,
