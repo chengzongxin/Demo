@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "THKModalPresentVC.h"
+#import "THKGraphicCollectionVC.h"
 #import <dlfcn.h>
 @interface ViewController ()
 
@@ -28,7 +28,10 @@
 
 - (void)push{
     NSLog(@"111");
-    [self.navigationController pushViewController:[NSClassFromString(@"THKReferenPictureListVC") new] animated:YES];
+    
+    THKGraphicCollectionVC *vc = [[THKGraphicCollectionVC alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
+//    [self.navigationController pushViewController:[NSClassFromString(@"THKReferenPictureListVC") new] animated:YES];
 }
 
 

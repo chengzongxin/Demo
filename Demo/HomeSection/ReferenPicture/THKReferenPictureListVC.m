@@ -11,8 +11,6 @@
 #import "THKReferenBigPictureVC.h"
 #import "THKReferenPictureListCell.h"
 #import "THKPushPopTransitionManager.h"
-#import "THKModalPresentVC.h"
-#import "THKPresentViewController.h"
 
 @interface THKReferenPictureListVC () <UICollectionViewDelegate,UICollectionViewDataSource,THKReferenPictureListLayoutDelegate>
 
@@ -129,11 +127,7 @@
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    [self pushToBigPicVC:(THKReferenPictureListCell *)[collectionView cellForItemAtIndexPath:indexPath]];
-    
-    THKPresentViewController *vc = [[THKPresentViewController alloc] init];
-//    vc.viewHeight = 600;
-    [self presentViewController:vc animated:YES completion:nil];
+    [self pushToBigPicVC:(THKReferenPictureListCell *)[collectionView cellForItemAtIndexPath:indexPath]];
 }
 
 #pragma mark - Private

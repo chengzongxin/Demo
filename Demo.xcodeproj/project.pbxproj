@@ -34,7 +34,6 @@
 		160F632E2A568DF800FCE5CA /* THKReferenPictureListResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F632D2A568DF800FCE5CA /* THKReferenPictureListResponse.m */; };
 		160F633A2A5692F200FCE5CA /* THKGraphicCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63392A5692F200FCE5CA /* THKGraphicCollectionVC.m */; };
 		160F633D2A56930500FCE5CA /* THKGraphicCollectionVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F633C2A56930500FCE5CA /* THKGraphicCollectionVM.m */; };
-		160F63412A5693B300FCE5CA /* THKModalPresentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63402A5693B300FCE5CA /* THKModalPresentVC.m */; };
 		1618293828E2A30A00875943 /* THKCeterAlignLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1618293728E2A30A00875943 /* THKCeterAlignLayout.m */; };
 		16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */; };
 		16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AAD2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m */; };
@@ -131,6 +130,7 @@
 		163E4BEE2A569E23003F9904 /* BTCoverHorizontalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BEB2A569E23003F9904 /* BTCoverHorizontalTransition.m */; };
 		163E4BEF2A569E23003F9904 /* BTCoverVerticalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BEC2A569E23003F9904 /* BTCoverVerticalTransition.m */; };
 		163E4BF22A569E9A003F9904 /* THKPresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BF12A569E9A003F9904 /* THKPresentViewController.m */; };
+		163E4BF52A56A07B003F9904 /* THKLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BF42A56A07B003F9904 /* THKLeftViewController.m */; };
 		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
 		16409078283378430081F089 /* CycleCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16409077283378430081F089 /* CycleCardCell.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
@@ -615,8 +615,6 @@
 		160F63392A5692F200FCE5CA /* THKGraphicCollectionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKGraphicCollectionVC.m; sourceTree = "<group>"; };
 		160F633B2A56930500FCE5CA /* THKGraphicCollectionVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKGraphicCollectionVM.h; sourceTree = "<group>"; };
 		160F633C2A56930500FCE5CA /* THKGraphicCollectionVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKGraphicCollectionVM.m; sourceTree = "<group>"; };
-		160F633F2A5693B200FCE5CA /* THKModalPresentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKModalPresentVC.h; sourceTree = "<group>"; };
-		160F63402A5693B300FCE5CA /* THKModalPresentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKModalPresentVC.m; sourceTree = "<group>"; };
 		1618293628E2A30A00875943 /* THKCeterAlignLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCeterAlignLayout.h; sourceTree = "<group>"; };
 		1618293728E2A30A00875943 /* THKCeterAlignLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCeterAlignLayout.m; sourceTree = "<group>"; };
 		16192AA22692DB6300967C73 /* TSearchContentHighlightKeyWordsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchContentHighlightKeyWordsDefine.h; sourceTree = "<group>"; };
@@ -800,6 +798,8 @@
 		163E4BED2A569E23003F9904 /* BTCoverHorizontalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCoverHorizontalTransition.h; sourceTree = "<group>"; };
 		163E4BF02A569E9A003F9904 /* THKPresentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPresentViewController.h; sourceTree = "<group>"; };
 		163E4BF12A569E9A003F9904 /* THKPresentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPresentViewController.m; sourceTree = "<group>"; };
+		163E4BF32A56A07B003F9904 /* THKLeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKLeftViewController.h; sourceTree = "<group>"; };
+		163E4BF42A56A07B003F9904 /* THKLeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKLeftViewController.m; sourceTree = "<group>"; };
 		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
 		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
 		16409076283378430081F089 /* CycleCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleCardCell.h; sourceTree = "<group>"; };
@@ -1733,10 +1733,10 @@
 		160F633E2A56938C00FCE5CA /* ModalPresentVC */ = {
 			isa = PBXGroup;
 			children = (
-				160F633F2A5693B200FCE5CA /* THKModalPresentVC.h */,
-				160F63402A5693B300FCE5CA /* THKModalPresentVC.m */,
 				163E4BF02A569E9A003F9904 /* THKPresentViewController.h */,
 				163E4BF12A569E9A003F9904 /* THKPresentViewController.m */,
+				163E4BF32A56A07B003F9904 /* THKLeftViewController.h */,
+				163E4BF42A56A07B003F9904 /* THKLeftViewController.m */,
 			);
 			path = ModalPresentVC;
 			sourceTree = "<group>";
@@ -4341,6 +4341,7 @@
 				16F0A67628AB7E8F00B0B081 /* THKOnlineDesignUploadNoHouseTypeView.m in Sources */,
 				16611B68269692D20089E41B /* THKMaterialClassificationRecommendCellFooter.m in Sources */,
 				16B10EF528D9610B00561A6D /* THKMeituDetailv2Request.m in Sources */,
+				163E4BF52A56A07B003F9904 /* THKLeftViewController.m in Sources */,
 				16611B69269692D20089E41B /* THKMaterialClassificationRecommendNormalHeader.m in Sources */,
 				160107722553EA3400FE4B77 /* THKViewModel.m in Sources */,
 				16E5C4B32682DE4B0024BA20 /* THKBaseNetworkManager.m in Sources */,
@@ -4585,7 +4586,6 @@
 				16611B80269693DA0089E41B /* THKPageContentViewController.m in Sources */,
 				16CF07C628AD17500072FD15 /* THKRecordAnimationView.m in Sources */,
 				16192B2D2692E13E00967C73 /* THKMoveViewInteractiveTransition.m in Sources */,
-				160F63412A5693B300FCE5CA /* THKModalPresentVC.m in Sources */,
 				16B10F2B28D98A9600561A6D /* THKGraphicDetailHeaderView.m in Sources */,
 				1627BAD1290B7ABD00F14B0A /* THKIrrgularImageView.m in Sources */,
 				16E5C4F42682E4040024BA20 /* THKNetworkManager.m in Sources */,

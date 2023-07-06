@@ -7,14 +7,21 @@
 
 #import "THKPresentViewController.h"
 #import "BTCoverVerticalTransition.h"
+#import "BTTransitionAnimationDelegate.h"
 
-@interface THKPresentViewController ()
+@interface THKPresentViewController ()<BTTransitionAnimationDelegate>
 
 @property (nonatomic, strong) BTCoverVerticalTransition *aniamtion;
+
+@property (nonatomic, strong) UIButton *closeBtn;
 
 @end
 
 @implementation THKPresentViewController
+
+- (instancetype)initWithViewModel:(THKViewModel *)viewModel {
+    return [super initWithViewModel:viewModel];
+}
 
 
 - (instancetype)init{
@@ -28,13 +35,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor.greenColor colorWithAlphaComponent:1];
+    self.view.backgroundColor = UIColor.whiteColor;
     [self updatePreferredContentSizeWithTraitCollection:self.traitCollection];
+    [self.view tmui_cornerDirect:UIRectCornerTopLeft|UIRectCornerTopRight radius:12];
+    
+    [self.view addSubview:self.closeBtn];
+    [self.closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(15);
+        make.right.mas_equalTo(-15);
+    }];
 }
 
-- (IBAction)sliderAction:(UISlider *)sender {
-    self.preferredContentSize = CGSizeMake(self.view.bounds.size.width, sender.value);
-}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 //    [self dismissViewControllerAnimated:YES completion:nil];
@@ -42,7 +53,7 @@
 
 - (void)updatePreferredContentSizeWithTraitCollection:(UITraitCollection *)traitCollection {
     // 适配屏幕，横竖屏
-    self.preferredContentSize = CGSizeMake(self.view.bounds.size.width, traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact ? 270 : 420);
+    self.preferredContentSize = CGSizeMake(self.view.bounds.size.width, traitCollection.verticalSizeClass == UIUserInterfaceSizeClassCompact ? 270 : (self.viewHeight?:TMUI_SCREEN_HEIGHT * 0.8));
 }
 
 
@@ -56,6 +67,23 @@
 
 - (void)dealloc{
     NSLog(@"!!~~");
+}
+
+
+#pragma mark - Event Respone
+
+- (void)clickCloseBtn{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    !_backBlock?:_backBlock();
+}
+
+- (UIButton *)closeBtn{
+    if (!_closeBtn) {
+        _closeBtn = [UIButton tmui_button];
+        _closeBtn.tmui_image = UIImageMake(@"diary_book_close_icon");
+        [_closeBtn tmui_addTarget:self action:@selector(clickCloseBtn)];
+    }
+    return _closeBtn;
 }
 
 @end
