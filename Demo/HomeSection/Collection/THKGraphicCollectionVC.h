@@ -7,10 +7,13 @@
 
 #import "THKViewController.h"
 #import "THKPresentViewController.h"
+#import "THKGraphicCollectionVM.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface THKGraphicCollectionVC : THKPresentViewController
+
+@property (nonatomic, strong, readonly) THKGraphicCollectionVM *viewModel;
 
 @end
 

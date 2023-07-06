@@ -28,6 +28,10 @@ typedef enum : NSUInteger {
 /// 子类重写
 - (THKBaseRequest *)requestWithInput:(id)input;
 
+@optional
+/// 返回需要拼接的数据
+- (NSArray *)appendData:(THKResponse *)response;
+
 @end
 
 typedef NSArray *_Nullable(^AppendDataBlock)(THKResponse *);
@@ -37,6 +41,11 @@ typedef NSArray *_Nullable(^AppendDataBlock)(THKResponse *);
 @property (nonatomic, strong, readonly) THKRequestCommand *requestCommand;
 /// 数据源
 @property (nonatomic, readonly, nullable) NSArray *data;
+
+/// VM内部集成刷新控件、空视图、加载状态等控件, 使用这个方法必须实现
+/// @param view vc的view
+/// @param scrollView 列表控件，tableView或者collectionView
+- (void)bindStatusWithView:(UIView *)view scrollView:(UIScrollView *)scrollView;
 
 /// VM内部集成刷新控件、空视图、加载状态等控件
 /// @param view vc的view

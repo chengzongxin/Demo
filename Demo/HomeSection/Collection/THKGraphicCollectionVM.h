@@ -6,10 +6,16 @@
 //
 
 #import "THKViewModel.h"
-
+#import "THKStateMechanismsViewModel.h"
+#import "THKGraphicCollectionRequest.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface THKGraphicCollectionVM : THKViewModel
+@interface THKGraphicCollectionVM : THKStateMechanismsViewModel
+
+@property (nonatomic, strong, readonly) NSString *titleStr;
+
+@property (nonatomic, strong, readonly) NSString *briefStr;
+
 
 @end
 

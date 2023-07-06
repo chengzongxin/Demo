@@ -31,9 +31,11 @@
 
 @implementation THKStateMechanismsViewModel
 
+- (void)bindStatusWithView:(UIView *)view scrollView:(UIScrollView *)scrollView {
+    [self bindWithView:view scrollView:scrollView appenBlock:nil];
+}
 
-
-- (void)bindWithView:(UIView *)view scrollView:(UIScrollView *)scrollView appenBlock:(NSArray * _Nonnull (^)(THKResponse * _Nonnull))appendBlock{
+- (void)bindWithView:(UIView *)view scrollView:(UIScrollView *)scrollView appenBlock:(NSArray * (^)(THKResponse *))appendBlock{
     @weakify(self);
     self.vcView = view;
     self.vcScrollView = scrollView;
@@ -47,11 +49,14 @@
         NSArray *newData = nil;
         if (self.appendBlock) {
             newData = self.appendBlock(x);
-            if (input == 1) {
-                self.data = newData;
-            }else if (newData.count){
-                self.data = [self.data arrayByAddingObjectsFromArray:newData];
-            }
+        }else{
+            newData = [self appendData:x];
+        }
+        
+        if (input == 1) {
+            self.data = newData;
+        }else if (newData.count){
+            self.data = [self.data arrayByAddingObjectsFromArray:newData];
         }
         // 刷新界面
         if ([self.vcScrollView respondsToSelector:@selector(reloadData)]) {

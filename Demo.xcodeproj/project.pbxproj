@@ -131,6 +131,8 @@
 		163E4BEF2A569E23003F9904 /* BTCoverVerticalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BEC2A569E23003F9904 /* BTCoverVerticalTransition.m */; };
 		163E4BF22A569E9A003F9904 /* THKPresentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BF12A569E9A003F9904 /* THKPresentViewController.m */; };
 		163E4BF52A56A07B003F9904 /* THKLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BF42A56A07B003F9904 /* THKLeftViewController.m */; };
+		163E4BF92A56A73A003F9904 /* THKGraphicCollectionRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BF82A56A73A003F9904 /* THKGraphicCollectionRequest.m */; };
+		163E4BFF2A56A7FB003F9904 /* THKGraphicCollectionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4BFE2A56A7FB003F9904 /* THKGraphicCollectionResponse.m */; };
 		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
 		16409078283378430081F089 /* CycleCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16409077283378430081F089 /* CycleCardCell.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
@@ -800,6 +802,10 @@
 		163E4BF12A569E9A003F9904 /* THKPresentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPresentViewController.m; sourceTree = "<group>"; };
 		163E4BF32A56A07B003F9904 /* THKLeftViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKLeftViewController.h; sourceTree = "<group>"; };
 		163E4BF42A56A07B003F9904 /* THKLeftViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKLeftViewController.m; sourceTree = "<group>"; };
+		163E4BF72A56A73A003F9904 /* THKGraphicCollectionRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKGraphicCollectionRequest.h; sourceTree = "<group>"; };
+		163E4BF82A56A73A003F9904 /* THKGraphicCollectionRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKGraphicCollectionRequest.m; sourceTree = "<group>"; };
+		163E4BFD2A56A7FB003F9904 /* THKGraphicCollectionResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKGraphicCollectionResponse.h; sourceTree = "<group>"; };
+		163E4BFE2A56A7FB003F9904 /* THKGraphicCollectionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKGraphicCollectionResponse.m; sourceTree = "<group>"; };
 		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
 		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
 		16409076283378430081F089 /* CycleCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleCardCell.h; sourceTree = "<group>"; };
@@ -1726,6 +1732,7 @@
 				160F63392A5692F200FCE5CA /* THKGraphicCollectionVC.m */,
 				160F633B2A56930500FCE5CA /* THKGraphicCollectionVM.h */,
 				160F633C2A56930500FCE5CA /* THKGraphicCollectionVM.m */,
+				163E4BF62A56A727003F9904 /* GraphicCollectionRequest */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -2170,6 +2177,17 @@
 				163E4BED2A569E23003F9904 /* BTCoverHorizontalTransition.h */,
 			);
 			path = TransitionAnimation;
+			sourceTree = "<group>";
+		};
+		163E4BF62A56A727003F9904 /* GraphicCollectionRequest */ = {
+			isa = PBXGroup;
+			children = (
+				163E4BF72A56A73A003F9904 /* THKGraphicCollectionRequest.h */,
+				163E4BF82A56A73A003F9904 /* THKGraphicCollectionRequest.m */,
+				163E4BFD2A56A7FB003F9904 /* THKGraphicCollectionResponse.h */,
+				163E4BFE2A56A7FB003F9904 /* THKGraphicCollectionResponse.m */,
+			);
+			path = GraphicCollectionRequest;
 			sourceTree = "<group>";
 		};
 		1654A88129652700008C3810 /* ODR */ = {
@@ -4228,6 +4246,7 @@
 			files = (
 				16DDC07B274C9417000DAA29 /* THKSelectMaterialHeaderView.m in Sources */,
 				16A961F7274F5828002B6C89 /* THKMaterialV3CommunicateListRequest.m in Sources */,
+				163E4BF92A56A73A003F9904 /* THKGraphicCollectionRequest.m in Sources */,
 				1685A68E289121E50032E474 /* TObject+TNSCodingHelp.m in Sources */,
 				167D49DA29543F5F00EBAB17 /* THKDecPKCompanyModel.m in Sources */,
 				16F0A66D28AB4B7C00B0B081 /* THKOnlineDesignUploadHouseVM.m in Sources */,
@@ -4415,6 +4434,7 @@
 				168679922692B8AC00650023 /* THKMaterialRecommendGoodsGrassResponse.m in Sources */,
 				1685A684289120DC0032E474 /* THKDecorationToDoHeaderView.m in Sources */,
 				161C4CDC2728F6C400C660DC /* THKDirDetailDiaryPageRequest.m in Sources */,
+				163E4BFF2A56A7FB003F9904 /* THKGraphicCollectionResponse.m in Sources */,
 				16867A362692D9B200650023 /* TPushRouter.m in Sources */,
 				16B10F0C28D96CB600561A6D /* THKGraphicDetailCell.m in Sources */,
 				16611B70269692D20089E41B /* THKMaterialClassificationRecommendCellLayout.m in Sources */,

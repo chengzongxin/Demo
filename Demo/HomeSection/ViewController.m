@@ -28,8 +28,8 @@
 
 - (void)push{
     NSLog(@"111");
-    
-    THKGraphicCollectionVC *vc = [[THKGraphicCollectionVC alloc] init];
+    THKGraphicCollectionVM *vm = [[THKGraphicCollectionVM alloc] init];
+    THKGraphicCollectionVC *vc = [[THKGraphicCollectionVC alloc] initWithViewModel:vm];
     [self presentViewController:vc animated:YES completion:nil];
 //    [self.navigationController pushViewController:[NSClassFromString(@"THKReferenPictureListVC") new] animated:YES];
 }

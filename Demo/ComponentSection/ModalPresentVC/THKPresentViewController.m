@@ -19,18 +19,31 @@
 
 @implementation THKPresentViewController
 
-- (instancetype)initWithViewModel:(THKViewModel *)viewModel {
-    return [super initWithViewModel:viewModel];
-}
-
-
+/// init时会调用
 - (instancetype)init{
     self = [super init];
     if (self) {
-        _aniamtion = [[BTCoverVerticalTransition alloc]initPresentViewController:self withRragDismissEnabal:YES];
-        self.transitioningDelegate = _aniamtion;
+        [self thk_initialize];
     }
     return self;
+}
+
+
+/// initWithVM时会调用，这里需要重写，因为父类会重新设置弹出样式，导致无法半屏
+/// - Parameter viewModel: vm
+- (instancetype)initWithViewModel:(THKViewModel *)viewModel {
+    self = [super initWithViewModel:viewModel];
+    if (self) {
+        [self thk_initialize];
+    }
+    return self;
+}
+
+- (void)thk_initialize {
+    [super thk_initialize];
+    
+    _aniamtion = [[BTCoverVerticalTransition alloc]initPresentViewController:self withRragDismissEnabal:YES];
+    self.transitioningDelegate = _aniamtion;
 }
 
 - (void)viewDidLoad {
@@ -69,6 +82,10 @@
     NSLog(@"!!~~");
 }
 
+
+- (void)setModalPresentationStyle:(UIModalPresentationStyle)modalPresentationStyle {
+    [super setModalPresentationStyle:modalPresentationStyle];
+}
 
 #pragma mark - Event Respone
 
