@@ -54,6 +54,10 @@
     RAC(self.briefIntroductionLbl,text) = [RACObserve(self.viewModel, briefStr) ignore:nil];
     
     [self.viewModel bindStatusWithView:self.view scrollView:self.tableView];
+    
+    [self.viewModel addRefreshFooter];
+    
+    [self.viewModel.requestCommand execute:@1];
 }
 
 #pragma mark - Event Respone

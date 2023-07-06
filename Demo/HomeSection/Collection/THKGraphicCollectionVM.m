@@ -25,9 +25,10 @@
 }
 
 - (NSArray *)appendData:(THKGraphicCollectionResponse *)response{
-    self.titleStr = @"123";
-    self.briefStr = @"456";
-    return response.data;
+    THKGraphicCollectionModel *model = response.data;
+    self.titleStr = model.title;
+    self.briefStr = model.brief;
+    return model.list;
 }
 
 @end

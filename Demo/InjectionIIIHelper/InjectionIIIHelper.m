@@ -23,7 +23,8 @@
     //    //给uiview 注册injected 方法
     //    class_addMethod([UIView class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
     //    //统一添加 injected 方法
-        class_addMethod([NSObject class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
+#warning 先注释，现在经常崩溃
+//        class_addMethod([NSObject class], NSSelectorFromString(@"injected"), (IMP)injected, "v@:");
     });
 }
 

@@ -7,6 +7,19 @@
 
 #import "THKGraphicCollectionResponse.h"
 
+@implementation THKGraphicCollectionModelList
+
+
+@end
+
+
+@implementation THKGraphicCollectionModel
+
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"list":THKGraphicCollectionModelList.class};
+}
+@end
+
 @implementation THKGraphicCollectionResponse
 
 @end
