@@ -35,6 +35,9 @@
     //必须调用super
     [super prepareLayout];
     
+    self.maxHeight = 0;
+    self.maxXattributes = nil;
+    self.maxYattributes = nil;
     NSInteger section = 0;
     NSInteger numberOfSections = [self.collectionView numberOfSections];
     
