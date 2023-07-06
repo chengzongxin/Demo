@@ -139,6 +139,7 @@
 		163E4C132A56B6D7003F9904 /* graphic_collection_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163E4C072A56B6D6003F9904 /* graphic_collection_icon@2x.png */; };
 		163E4C142A56B6D7003F9904 /* present_close_black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163E4C082A56B6D6003F9904 /* present_close_black@2x.png */; };
 		163E4C172A56B6D7003F9904 /* 右剪头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 163E4C0B2A56B6D7003F9904 /* 右剪头@2x.png */; };
+		163E4C1B2A56C84A003F9904 /* THKGraphicCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 163E4C1A2A56C84A003F9904 /* THKGraphicCollectionCell.m */; };
 		16401C18275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */; };
 		16409078283378430081F089 /* CycleCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16409077283378430081F089 /* CycleCardCell.m */; };
 		1642AA3126D8BFB200F5FACD /* THKDiaryBookBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1642AA3026D8BFB200F5FACD /* THKDiaryBookBottomBar.m */; };
@@ -818,6 +819,8 @@
 		163E4C072A56B6D6003F9904 /* graphic_collection_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "graphic_collection_icon@2x.png"; sourceTree = "<group>"; };
 		163E4C082A56B6D6003F9904 /* present_close_black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "present_close_black@2x.png"; sourceTree = "<group>"; };
 		163E4C0B2A56B6D7003F9904 /* 右剪头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "右剪头@2x.png"; sourceTree = "<group>"; };
+		163E4C192A56C84A003F9904 /* THKGraphicCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKGraphicCollectionCell.h; sourceTree = "<group>"; };
+		163E4C1A2A56C84A003F9904 /* THKGraphicCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKGraphicCollectionCell.m; sourceTree = "<group>"; };
 		16401C16275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKNewcomerHomeSelectStageHeaderView.h; sourceTree = "<group>"; };
 		16401C17275EEEF80049D8BF /* THKNewcomerHomeSelectStageHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKNewcomerHomeSelectStageHeaderView.m; sourceTree = "<group>"; };
 		16409076283378430081F089 /* CycleCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CycleCardCell.h; sourceTree = "<group>"; };
@@ -1744,6 +1747,8 @@
 				160F63392A5692F200FCE5CA /* THKGraphicCollectionVC.m */,
 				160F633B2A56930500FCE5CA /* THKGraphicCollectionVM.h */,
 				160F633C2A56930500FCE5CA /* THKGraphicCollectionVM.m */,
+				163E4C192A56C84A003F9904 /* THKGraphicCollectionCell.h */,
+				163E4C1A2A56C84A003F9904 /* THKGraphicCollectionCell.m */,
 				163E4C002A56B6C9003F9904 /* GraphicImages */,
 				163E4BF62A56A727003F9904 /* GraphicCollectionRequest */,
 			);
@@ -4660,6 +4665,7 @@
 				16E5C5012682E5920024BA20 /* TRequestParameter.m in Sources */,
 				16611AB32696870F0089E41B /* UITabBarController+Godeye.m in Sources */,
 				1669C187268066200059E9B0 /* THKSegmentControl.m in Sources */,
+				163E4C1B2A56C84A003F9904 /* THKGraphicCollectionCell.m in Sources */,
 				1689DECF27449F4D0073BA68 /* DynamicTabVM.m in Sources */,
 				160F63142A55404600FCE5CA /* THKReferenPictureListVC.m in Sources */,
 				16611AB52696870F0089E41B /* UIView+Godeye.m in Sources */,

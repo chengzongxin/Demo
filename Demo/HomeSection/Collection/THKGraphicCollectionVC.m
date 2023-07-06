@@ -7,6 +7,7 @@
 
 #import "THKGraphicCollectionVC.h"
 #import "THKStateMechanismsViewModel.h"
+#import "THKGraphicCollectionCell.h"
 
 @interface THKGraphicCollectionVC () <UITableViewDelegate,UITableViewDataSource>
 
@@ -71,20 +72,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.viewModel.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
+    THKGraphicCollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(THKGraphicCollectionCell.class) forIndexPath:indexPath];
+    cell.model = self.viewModel.data[indexPath.item];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 77;
 }
 
 #pragma mark - Private
@@ -123,7 +125,7 @@
         _tableView.estimatedRowHeight = 0;
         _tableView.estimatedSectionHeaderHeight = 0;
         _tableView.estimatedSectionFooterHeight = 0;
-        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
+        [_tableView registerClass:THKGraphicCollectionCell.class forCellReuseIdentifier:NSStringFromClass(THKGraphicCollectionCell.class)];
     }
     return _tableView;
 }
