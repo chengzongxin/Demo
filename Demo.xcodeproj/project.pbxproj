@@ -26,6 +26,9 @@
 		160F63142A55404600FCE5CA /* THKReferenPictureListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63132A55404600FCE5CA /* THKReferenPictureListVC.m */; };
 		160F63172A55405900FCE5CA /* THKReferenPictureListVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63162A55405900FCE5CA /* THKReferenPictureListVM.m */; };
 		160F631A2A55546C00FCE5CA /* THKReferenPictureListLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63192A55546C00FCE5CA /* THKReferenPictureListLayout.m */; };
+		160F631D2A565F3C00FCE5CA /* THKReferenBigPictureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F631C2A565F3C00FCE5CA /* THKReferenBigPictureVC.m */; };
+		160F63202A565F4A00FCE5CA /* THKReferenBigPictureVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F631F2A565F4A00FCE5CA /* THKReferenBigPictureVM.m */; };
+		160F63232A56603400FCE5CA /* THKReferenPictureListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 160F63222A56603400FCE5CA /* THKReferenPictureListCell.m */; };
 		1618293828E2A30A00875943 /* THKCeterAlignLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1618293728E2A30A00875943 /* THKCeterAlignLayout.m */; };
 		16192AA92692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AA82692DBA900967C73 /* MultiStylesCollectionViewWaterfallLayout.m */; };
 		16192AAF2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 16192AAD2692DBE200967C73 /* CHTCollectionViewWaterfallLayout.m */; };
@@ -587,6 +590,12 @@
 		160F63162A55405900FCE5CA /* THKReferenPictureListVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKReferenPictureListVM.m; sourceTree = "<group>"; };
 		160F63182A55546C00FCE5CA /* THKReferenPictureListLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKReferenPictureListLayout.h; sourceTree = "<group>"; };
 		160F63192A55546C00FCE5CA /* THKReferenPictureListLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKReferenPictureListLayout.m; sourceTree = "<group>"; };
+		160F631B2A565F3C00FCE5CA /* THKReferenBigPictureVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKReferenBigPictureVC.h; sourceTree = "<group>"; };
+		160F631C2A565F3C00FCE5CA /* THKReferenBigPictureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKReferenBigPictureVC.m; sourceTree = "<group>"; };
+		160F631E2A565F4A00FCE5CA /* THKReferenBigPictureVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKReferenBigPictureVM.h; sourceTree = "<group>"; };
+		160F631F2A565F4A00FCE5CA /* THKReferenBigPictureVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKReferenBigPictureVM.m; sourceTree = "<group>"; };
+		160F63212A56603400FCE5CA /* THKReferenPictureListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKReferenPictureListCell.h; sourceTree = "<group>"; };
+		160F63222A56603400FCE5CA /* THKReferenPictureListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKReferenPictureListCell.m; sourceTree = "<group>"; };
 		1618293628E2A30A00875943 /* THKCeterAlignLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKCeterAlignLayout.h; sourceTree = "<group>"; };
 		1618293728E2A30A00875943 /* THKCeterAlignLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKCeterAlignLayout.m; sourceTree = "<group>"; };
 		16192AA22692DB6300967C73 /* TSearchContentHighlightKeyWordsDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSearchContentHighlightKeyWordsDefine.h; sourceTree = "<group>"; };
@@ -1647,10 +1656,16 @@
 			children = (
 				160F63122A55404600FCE5CA /* THKReferenPictureListVC.h */,
 				160F63132A55404600FCE5CA /* THKReferenPictureListVC.m */,
+				160F63212A56603400FCE5CA /* THKReferenPictureListCell.h */,
+				160F63222A56603400FCE5CA /* THKReferenPictureListCell.m */,
 				160F63152A55405900FCE5CA /* THKReferenPictureListVM.h */,
 				160F63162A55405900FCE5CA /* THKReferenPictureListVM.m */,
 				160F63182A55546C00FCE5CA /* THKReferenPictureListLayout.h */,
 				160F63192A55546C00FCE5CA /* THKReferenPictureListLayout.m */,
+				160F631B2A565F3C00FCE5CA /* THKReferenBigPictureVC.h */,
+				160F631C2A565F3C00FCE5CA /* THKReferenBigPictureVC.m */,
+				160F631E2A565F4A00FCE5CA /* THKReferenBigPictureVM.h */,
+				160F631F2A565F4A00FCE5CA /* THKReferenBigPictureVM.m */,
 			);
 			path = ReferenPicture;
 			sourceTree = "<group>";
@@ -4216,6 +4231,7 @@
 				160106E12553DD8000FE4B77 /* AppDelegate.m in Sources */,
 				8F4F2BE128F7B355000AC361 /* THKCalcQuataConfigModel.m in Sources */,
 				16611AC62696870F0089E41B /* GEScrollViewExposeManger.m in Sources */,
+				160F63232A56603400FCE5CA /* THKReferenPictureListCell.m in Sources */,
 				16FE859A28D32D5B000AC352 /* THKMyHomeDesignDemandsModel.m in Sources */,
 				16A96200274F72A1002B6C89 /* THKSelectMaterialConst.m in Sources */,
 				1630D98B274DD7D0009A04FA /* THKAvatarViewModel.m in Sources */,
@@ -4380,6 +4396,7 @@
 				16DDC0A2274CEFFE000DAA29 /* THKEntranceViewModel.m in Sources */,
 				16DDC09F274CEFF2000DAA29 /* THKEntranceView.m in Sources */,
 				16212FCA28A74B150079A086 /* THKOnlineDesignHouseSearchAreaCell.m in Sources */,
+				160F631D2A565F3C00FCE5CA /* THKReferenBigPictureVC.m in Sources */,
 				16E5C52426830E5C0024BA20 /* NSData+Common.m in Sources */,
 				16867A012692D76C00650023 /* TMCardComponentVideoSetsCell.m in Sources */,
 				16F516C926D4F986002500F7 /* THKDiaryBookCellVM.m in Sources */,
@@ -4391,6 +4408,7 @@
 				163731B42952E8F80025BF8F /* UIView+FLFrame.m in Sources */,
 				16192B212692E13E00967C73 /* THKPushPopTransitionManager.m in Sources */,
 				16867A322692D9B200650023 /* TRouterConfig.m in Sources */,
+				160F63202A565F4A00FCE5CA /* THKReferenBigPictureVM.m in Sources */,
 				16B2E6DB28A4B4CB00D385B6 /* THKOnlineDesignModel.m in Sources */,
 				8F6B0F5E27E1BF16000B5F70 /* TMUIScrollSearchContentView.m in Sources */,
 				16611AAF2696870F0089E41B /* GELocation.m in Sources */,

@@ -8,6 +8,9 @@
 #import "THKReferenPictureListVC.h"
 #import "THKReferenPictureListLayout.h"
 #import "MJRefresh.h"
+#import "THKReferenBigPictureVC.h"
+#import "THKReferenPictureListCell.h"
+#import "THKPushPopTransitionManager.h"
 
 @interface THKReferenPictureListVC () <UICollectionViewDelegate,UICollectionViewDataSource,THKReferenPictureListLayoutDelegate>
 
@@ -99,14 +102,75 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class) forIndexPath:indexPath];
+    THKReferenPictureListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKReferenPictureListCell.class) forIndexPath:indexPath];
     cell.backgroundColor = UIColor.tmui_randomColor;
+    [cell.coverImgView loadImageWithUrlStr:@"https://test-pic.to8to.com/company/20220401/f232023c8cc7996ee47862020c5d548c.jpg"];
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self pushToBigPicVC:(THKReferenPictureListCell *)[collectionView cellForItemAtIndexPath:indexPath]];
 }
 
 #pragma mark - Private
+- (void)pushToBigPicVC:(THKReferenPictureListCell *)cardCell {
+    THKReferenBigPictureVC *vc = [[THKReferenBigPictureVC alloc] initWithViewModel:THKReferenBigPictureVM.new];
+    //加点击跳转转场动效逻辑
+    if (vc && cardCell) {
+        UIImageView *sourceView = cardCell.coverImgView;
+        UIImage *sourceImage = cardCell.coverImgView.image;
+        if (sourceView) {
+//            TImmersiveBrowseDataDefaultConfig *config = vc.config;
+//            NSInteger toIndex = config.currentPageIndex;
+            
+            THKPushPopTransitionManager *pushPopTransitionManager = [[THKPushPopTransitionManager alloc] init];
+            pushPopTransitionManager.pushPopTransition = ({
+                THKPushPopAsLocationToListSimulationTransition *transition = [[THKPushPopAsLocationToListSimulationTransition alloc] init];
+                transition.pushFromSourceView = sourceView;
+                transition.pushFromSourceImage = sourceImage;
+                transition.pushFromCornerRadius = 4;
+                transition.getPopToCornerRadiusBlock = ^CGFloat{
+                    return 4;
+                };
+                @weakify(sourceView);
+                transition.getPopToSourceRectBlock = ^CGRect{
+                    @strongify(sourceView);
+//                    if (config.currentPageIndex == toIndex) {
+//                        //返回CGRectZero，pop动画会按push记录的起始作为返回的目标位置
+//                        return CGRectZero;
+//                    }
+                    
+//                    TMCardComponentBaseAbstractCell *popToCell = [self popToCellOfIdStr:config.datas[config.currentPageIndex].idStr];
+//                    if (popToCell) {
+//                        UIImageView *imgView = popToCell.coverImgView;
+//                        CGRect rt = [imgView convertRect:imgView.bounds toView:imgView.window];
+//                        if (!CGRectEqualToRect(CGRectZero, rt)) {
+//                            return rt;
+//                        }
+//                    }
+                    if (sourceView) {
+                        CGRect rt = [sourceView convertRect:sourceView.bounds toView:sourceView.window];
+                        if (!CGRectEqualToRect(CGRectZero, rt)) {
+                            return rt;
+                        }
+                    }
+                    
+//                    if (config.currentPageIndex > toIndex) {
+//                        return popToRectDownOfCurrentScreen();
+//                    }else {
+                        return popToRectUpOfCurrentScreen();
+//                    }
+                };
+                //
+                transition;
+            });
+            pushPopTransitionManager.navigationController = self.navigationController;
+            vc.pushPopTransitionManager = pushPopTransitionManager;
+            
+        }
+    }
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 #pragma mark - Getters and Setters
 
@@ -132,7 +196,7 @@
         } else {
             self.automaticallyAdjustsScrollViewInsets = NO;
         }
-        [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class)];
+        [_collectionView registerClass:THKReferenPictureListCell.class forCellWithReuseIdentifier:NSStringFromClass(THKReferenPictureListCell.class)];
     }
     return _collectionView;
 }
