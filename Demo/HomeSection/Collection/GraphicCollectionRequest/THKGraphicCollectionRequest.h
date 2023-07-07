@@ -11,7 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKGraphicCollectionRequest : THKCommonBaseRequest
 
-@property (nonatomic, strong) NSArray *data;
+@property (nonatomic, assign) NSInteger page;
+
+@property (nonatomic, assign) NSInteger size;
 
 @end
 

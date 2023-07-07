@@ -46,26 +46,93 @@
 
 #pragma mark UICollectionViewDataSource
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    switch (indexPath.item % 10) {
-        case 0:
-            return CGSizeMake([self widthRatio:3], [self heightRatio:3]);
-            break;
-        case 1:
-            return CGSizeMake([self widthRatio:2], [self heightRatio:2]);
-            break;
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-            return CGSizeMake([self widthRatio:1], [self heightRatio:1]);
-            break;
-            
-        default:
-            break;
+    return [self itemSizeForIndexPath:indexPath];
+}
+
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.viewModel.data.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    THKReferenPictureListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKReferenPictureListCell.class) forIndexPath:indexPath];
+//    cell.backgroundColor = UIColor.tmui_randomColor;
+    [cell.coverImgView loadImageWithUrlStr:self.viewModel.data[indexPath.item]];
+    return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [self pushToBigPicVC:(THKReferenPictureListCell *)[collectionView cellForItemAtIndexPath:indexPath]];
+}
+
+#pragma mark - Private
+
+- (CGSize)itemSizeForIndexPath:(NSIndexPath *)indexPath {
+    // 是最后10个
+    NSInteger lastCount = self.viewModel.data.count % 10;
+    BOOL isLastGroup = (self.viewModel.data.count / 10 == indexPath.item / 10);
+    
+    if (lastCount == 0 || !isLastGroup) {
+        switch (indexPath.item % 10) {
+            case 0:
+                return CGSizeMake([self widthRatio:3], [self heightRatio:3]);
+                break;
+            case 1:
+                return CGSizeMake([self widthRatio:2], [self heightRatio:2]);
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                return CGSizeMake([self widthRatio:1], [self heightRatio:1]);
+                break;
+        }
+        return CGSizeZero;
+    }else if (lastCount < 4) {
+        return CGSizeMake([self widthRatio:3], [self heightRatio:3]);
+    }else if (lastCount < 7) {
+        switch (indexPath.item % 10) {
+            case 0:
+            case 4:
+            case 5:
+                return CGSizeMake([self widthRatio:3], [self heightRatio:3]);
+                break;
+            case 1:
+                return CGSizeMake([self widthRatio:2], [self heightRatio:2]);
+                break;
+            case 2:
+            case 3:
+                return CGSizeMake([self widthRatio:1], [self heightRatio:1]);
+                break;
+        }
+        return CGSizeZero;
+    }else if (lastCount < 10) {
+        switch (indexPath.item % 10) {
+            case 0:
+            case 7:
+            case 8:
+                return CGSizeMake([self widthRatio:3], [self heightRatio:3]);
+                break;
+            case 1:
+                return CGSizeMake([self widthRatio:2], [self heightRatio:2]);
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                return CGSizeMake([self widthRatio:1], [self heightRatio:1]);
+                break;
+                
+        }
+        return CGSizeZero;
     }
     return CGSizeZero;
 }
@@ -97,25 +164,6 @@
 }
 
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.viewModel.data.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    THKReferenPictureListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(THKReferenPictureListCell.class) forIndexPath:indexPath];
-//    cell.backgroundColor = UIColor.tmui_randomColor;
-    [cell.coverImgView loadImageWithUrlStr:self.viewModel.data[indexPath.item]];
-    return cell;
-}
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self pushToBigPicVC:(THKReferenPictureListCell *)[collectionView cellForItemAtIndexPath:indexPath]];
-}
-
-#pragma mark - Private
 - (void)pushToBigPicVC {
 //    THKImageBrowserProVC *vc = [[THKImageBrowserProVC alloc] initWithStyle:THKImageBrowserVCStyle_Dot];
 //    vc.customData = model.imgList;

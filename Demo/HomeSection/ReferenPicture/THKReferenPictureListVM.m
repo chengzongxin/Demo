@@ -10,8 +10,11 @@
 
 @implementation THKReferenPictureListVM
 
-- (THKBaseRequest *)requestWithInput:(id)input {
-    return [[THKReferenPictureListRequest alloc] init];
+- (THKBaseRequest *)requestWithInput:(NSNumber *)input {
+    THKReferenPictureListRequest *request = [[THKReferenPictureListRequest alloc] init];
+    request.page = input.integerValue;
+    request.size = 100;
+    return request;
 }
 
 - (NSArray *)appendData:(THKReferenPictureListResponse *)response {

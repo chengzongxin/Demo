@@ -11,6 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface THKReferenPictureListRequest : THKCommonBaseRequest
 
+@property (nonatomic, assign) NSInteger page;
+
+@property (nonatomic, assign) NSInteger size;
+
 @end
 
 NS_ASSUME_NONNULL_END
