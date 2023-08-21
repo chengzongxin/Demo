@@ -11,10 +11,12 @@
 #import "THKDiaryBookDetailTopNaviBarView.h"
 #import <MJRefresh.h>
 #import "THKPKPlanDetailTabView.h"
+#import "THKPKPlanDetailReceivePlanView.h"
 @interface DemoViewController ()<THKDynamicTabsManagerDelegate>
 @property (nonatomic, strong) THKDiaryBookDetailTopNaviBarView *topBar;
-@property (nonatomic, strong) THKPKPlanDetailTabView *tabView;
 @property (nonatomic, strong) THKDynamicTabsManager *dynamicTabsManager;
+@property (nonatomic, strong) THKPKPlanDetailTabView *tabView;
+@property (nonatomic, strong) THKPKPlanDetailReceivePlanView *receiveView;
 // 私有头部
 @property (nonatomic, strong) UIView *headerView;
 @end
@@ -44,29 +46,13 @@
         make.edges.mas_equalTo(UIEdgeInsetsMake(NavigationContentTop+50, 0, 0, 0));
     }];
     
-    @weakify(self);
-    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            // 这里必须要先设置头部刷新结束，再设置新的头部高度，否则会引起inset问题，怀疑是MJRefresh内部逻辑导致的
-            [self.dynamicTabsManager.wrapperScrollView.mj_header endRefreshing];
-            CGFloat oldH = self.dynamicTabsManager.viewModel.headerContentViewHeight;
-            self.dynamicTabsManager.viewModel.headerContentViewHeight = arc4random()%200 + 100;
-            CGFloat newH = self.dynamicTabsManager.viewModel.headerContentViewHeight;
-            self.dynamicTabsManager.wrapperScrollView.mj_header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + self.dynamicTabsManager.viewModel.sliderBarHeight;
-            UILabel *lbl =(UILabel *)[self.headerView viewWithTag:999];
-            lbl.text = [NSString stringWithFormat:@"头部高度：%f",self.dynamicTabsManager.viewModel.headerContentViewHeight];
-            
-            if (newH > oldH) {
-                // 头部变高，需要置顶
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self.dynamicTabsManager.wrapperScrollView tmui_scrollToTopAnimated:YES];
-                });
-            }
-        });
+    [self.view addSubview:self.receiveView];
+    [self.receiveView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.left.right.equalTo(self.view);
+        make.height.mas_equalTo(tmui_safeAreaBottomInset()+97);
     }];
-    header.ignoredScrollViewContentInsetTop = self.dynamicTabsManager.viewModel.headerContentViewHeight + self.dynamicTabsManager.viewModel.sliderBarHeight;
-    self.dynamicTabsManager.wrapperScrollView.mj_header = header;
+    
+    
     NSArray *vcs = @[DynamicTabChildVC.new,DynamicTabChildVC.new,DynamicTabChildVC.new];
     NSArray *titles = @[@"12",@"12",@"12"];
     
@@ -148,6 +134,23 @@
         };
     }
     return _tabView;
+}
+
+- (THKPKPlanDetailReceivePlanView *)receiveView {
+    if (!_receiveView) {
+        _receiveView = [[THKPKPlanDetailReceivePlanView alloc] init];
+        _receiveView.backgroundColor = UIColorWhite;
+        @weakify(self);
+        _receiveView.tapBtn = ^(UIButton * _Nonnull btn) {
+            @strongify(self);
+            NSLog(@"%@",btn);
+        };
+        _receiveView.tapCloseBtn = ^(UIButton * _Nonnull btn) {
+            @strongify(self);
+            [self.receiveView removeFromSuperview];
+        };
+    }
+    return _receiveView;
 }
 
 @end
