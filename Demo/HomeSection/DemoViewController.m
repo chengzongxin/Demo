@@ -47,10 +47,11 @@
     }];
     
     [self.view addSubview:self.receiveView];
-    [self.receiveView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.left.right.equalTo(self.view);
-        make.height.mas_equalTo(tmui_safeAreaBottomInset()+97);
-    }];
+//    [self.receiveView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.right.equalTo(self.view);
+//        make.height.mas_equalTo(tmui_safeAreaBottomInset()+97);
+//        make.bottom.mas_equalTo((tmui_safeAreaBottomInset()+97));
+//    }];
     
     
     NSArray *vcs = @[DynamicTabChildVC.new,DynamicTabChildVC.new,DynamicTabChildVC.new];
@@ -77,6 +78,16 @@
 
 - (void)selectPageVC:(NSInteger)idx {
     [self.dynamicTabsManager.pageContainerVC setSelectedPageIndex:idx];
+    
+    [self showReciveView];
+}
+
+- (void)showReciveView{
+    [UIView animateWithDuration:0.2 animations:^{
+        CGRect rt = self.receiveView.frame;
+        rt.origin.y = self.view.height - rt.size.height;
+        self.receiveView.frame = rt;
+    }];
 }
 
 - (THKDynamicTabsManager *)dynamicTabsManager {
@@ -138,7 +149,8 @@
 
 - (THKPKPlanDetailReceivePlanView *)receiveView {
     if (!_receiveView) {
-        _receiveView = [[THKPKPlanDetailReceivePlanView alloc] init];
+        CGFloat height = tmui_safeAreaBottomInset()+97;
+        _receiveView = [[THKPKPlanDetailReceivePlanView alloc] initWithFrame:CGRectMake(0, self.view.height, self.view.width, height)];
         _receiveView.backgroundColor = UIColorWhite;
         @weakify(self);
         _receiveView.tapBtn = ^(UIButton * _Nonnull btn) {

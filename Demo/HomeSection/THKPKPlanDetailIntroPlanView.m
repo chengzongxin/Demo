@@ -115,7 +115,7 @@ TMUI_PropertyLazyLoad(UIView, bottomView);
 //        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, TMUI_SCREEN_WIDTH, 82)];
 //        [view tmui_gradientWithColors:@[UIColorHex(FFFFFF),[UIColorHex(F6F8F6) colorWithAlphaComponent:0]] gradientType:TMUIGradientTypeTopToBottom locations:@[@0.3]];
 //        [_effectView.contentView addSubview:view];
-        _effectView.alpha = 0.5;
+        _effectView.alpha = 0.8;
     }
     return _effectView;
 }
