@@ -22,9 +22,11 @@
         self.borderColor = UIColorGreen;
         self.borderWidth = 1;
         self.titleLbl.font = UIFontMedium(14);
+        self.backgroundColor = UIColorWhite;
     }else {
         self.borderWidth = 0;
         self.titleLbl.font = UIFont(12);
+        self.backgroundColor = UIColorBackgroundLight;
     }
 }
 
@@ -152,8 +154,10 @@
     
     btn.selected = YES;
     
+    
+    CGFloat width = (TMUI_SCREEN_WIDTH - 16 * 2 - 16 * 2) / 3;
     [self.lastBtn mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(50 + [self.lastBtn.titleLbl.text tmui_widthForFont:self.lastBtn.titleLbl.font]);
+        make.width.mas_equalTo(width);
     }];
     
     [btn mas_updateConstraints:^(MASConstraintMaker *make) {
