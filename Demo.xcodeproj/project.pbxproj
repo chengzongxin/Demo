@@ -250,6 +250,7 @@
 		167D49E0295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 167D49DF295459C300EBAB17 /* TIMCompanyPKRoomDetailRequest.m */; };
 		16807CE02A93473400ED3EEF /* THKPKPlanDetailTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16807CDF2A93473400ED3EEF /* THKPKPlanDetailTabView.m */; };
 		16807CE32A935C8E00ED3EEF /* THKPKPlanDetailReceivePlanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16807CE22A935C8E00ED3EEF /* THKPKPlanDetailReceivePlanView.m */; };
+		16807CE92A93641400ED3EEF /* THKPKPlanDetailIntroPlanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16807CE82A93641400ED3EEF /* THKPKPlanDetailIntroPlanView.m */; };
 		16834F0B26DC820D0082268C /* THKDiaryCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F0A26DC820D0082268C /* THKDiaryCircle.m */; };
 		16834F1226DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16834F1026DCA4FC0082268C /* THKDiaryDirectoryServiceCell.m */; };
 		16834F1326DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16834F1126DCA4FC0082268C /* THKDiaryDirectoryServiceCell.xib */; };
@@ -1054,6 +1055,8 @@
 		16807CDF2A93473400ED3EEF /* THKPKPlanDetailTabView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPKPlanDetailTabView.m; sourceTree = "<group>"; };
 		16807CE12A935C8E00ED3EEF /* THKPKPlanDetailReceivePlanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPKPlanDetailReceivePlanView.h; sourceTree = "<group>"; };
 		16807CE22A935C8E00ED3EEF /* THKPKPlanDetailReceivePlanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPKPlanDetailReceivePlanView.m; sourceTree = "<group>"; };
+		16807CE72A93641400ED3EEF /* THKPKPlanDetailIntroPlanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKPKPlanDetailIntroPlanView.h; sourceTree = "<group>"; };
+		16807CE82A93641400ED3EEF /* THKPKPlanDetailIntroPlanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKPKPlanDetailIntroPlanView.m; sourceTree = "<group>"; };
 		16834F0926DC820D0082268C /* THKDiaryCircle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryCircle.h; sourceTree = "<group>"; };
 		16834F0A26DC820D0082268C /* THKDiaryCircle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = THKDiaryCircle.m; sourceTree = "<group>"; };
 		16834F0F26DCA4FC0082268C /* THKDiaryDirectoryServiceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = THKDiaryDirectoryServiceCell.h; sourceTree = "<group>"; };
@@ -3514,6 +3517,8 @@
 				16807CDF2A93473400ED3EEF /* THKPKPlanDetailTabView.m */,
 				16807CE12A935C8E00ED3EEF /* THKPKPlanDetailReceivePlanView.h */,
 				16807CE22A935C8E00ED3EEF /* THKPKPlanDetailReceivePlanView.m */,
+				16807CE72A93641400ED3EEF /* THKPKPlanDetailIntroPlanView.h */,
+				16807CE82A93641400ED3EEF /* THKPKPlanDetailIntroPlanView.m */,
 				1661828F2A8F165A00AEE6F8 /* PKPlanDetail */,
 				160F63372A5692C400FCE5CA /* Collection */,
 				160F63112A55403400FCE5CA /* ReferenPicture */,
@@ -4653,6 +4658,7 @@
 				16DDC06D274C780D000DAA29 /* THKSelectMaterialTabVM.m in Sources */,
 				16867A042692D76C00650023 /* TMCardComponentScrollAdsCell.m in Sources */,
 				160D60B22A8F7F970033A5FA /* THKPKPlanDetailContainerVM.m in Sources */,
+				16807CE92A93641400ED3EEF /* THKPKPlanDetailIntroPlanView.m in Sources */,
 				168679FF2692D76C00650023 /* TMCardComponentBaseAbstractCell.m in Sources */,
 				1685A658289120DC0032E474 /* THKDecorationToDoVC.m in Sources */,
 				1601076C2553EA2800FE4B77 /* THKView.m in Sources */,

@@ -10,11 +10,16 @@
 #import "TestViewController.h"
 #import "THKDynamicTabsProtocol.h"
 #import "THKDynamicTabsManager.h"
+
+#import "THKPKPlanDetailIntroPlanView.h"
+
 @interface DynamicTabChildVC ()<UITableViewDelegate,UITableViewDataSource,THKDynamicTabsManagerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, assign) NSInteger count;
+
+@property (nonatomic, strong) THKPKPlanDetailIntroPlanView *planView;
 
 @end
 
@@ -32,6 +37,12 @@
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
+    }];
+    
+    [self.view addSubview:self.planView];
+    [self.planView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self.view);
+        make.height.mas_equalTo(412);
     }];
     
     @weakify(self);
@@ -84,6 +95,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(UITableViewCell.class) forIndexPath:indexPath];
     cell.textLabel.text = @(indexPath.row).stringValue;
+    cell.backgroundColor = UIColor.tmui_randomColor;
     return cell;
 }
 
@@ -93,7 +105,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 200;
 }
 
 - (UITableView *)tableView {
@@ -109,6 +121,13 @@
         [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:NSStringFromClass(UITableViewCell.class)];
     }
     return _tableView;
+}
+
+- (THKPKPlanDetailIntroPlanView *)planView {
+    if (!_planView) {
+        _planView = [[THKPKPlanDetailIntroPlanView alloc] init];
+    }
+    return _planView;
 }
 
 
