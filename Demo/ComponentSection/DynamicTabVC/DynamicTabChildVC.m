@@ -53,10 +53,10 @@
             [self.tableView reloadData];
         });
     }];
-    self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(20, 200, self.view.width - 40, 100)];
-    self.bottomView.backgroundColor = [UIColor redColor];
-    
-    [self.view addSubview:self.bottomView];
+//    self.bottomView = [[UIView alloc] initWithFrame:CGRectMake(20, 200, self.view.width - 40, 100)];
+//    self.bottomView.backgroundColor = [UIColor redColor];
+//
+//    [self.view addSubview:self.bottomView];
 //    [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.left.mas_equalTo(20);
 //        make.right.mas_equalTo(-20);

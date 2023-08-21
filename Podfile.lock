@@ -50,6 +50,7 @@ PODS:
   - MJExtension (3.4.1)
   - MJRefresh (3.7.5)
   - ReactiveObjC (3.1.1)
+  - SSZipArchive (2.4.3)
   - TMEmptyView (1.0.1):
     - Masonry (= 1.1.0)
     - TMEmptyView/Content (= 1.0.1)
@@ -277,6 +278,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - ReactiveObjC
+  - SSZipArchive
   - TMEmptyView
   - TMToast
   - TMUIComponents (= 2.0.25)
@@ -302,6 +304,7 @@ SPEC REPOS:
     - MJExtension
     - MJRefresh
     - ReactiveObjC
+    - SSZipArchive
     - YYKit
 
 SPEC CHECKSUMS:
@@ -315,13 +318,14 @@ SPEC CHECKSUMS:
   MJExtension: 21c5f6f8c4d5d8844b7ae8fbae08fed0b501f961
   MJRefresh: fdf5e979eb406a0341468932d1dfc8b7f9fce961
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   TMEmptyView: 2ffc9272b50dfa0ba2d9715e08099d7f68f35096
   TMToast: c7f6ea21916db3b89483f3c8689c306bab30589b
-  TMUIComponents: 7677af1d9d5b81760c8a5b82cfafcd9f2f60a605
+  TMUIComponents: f697acde1678bdcee681426e95f4da7e284d8120
   TMUICore: 5c664a7d3c8f953aaff566c7def17f5397d49b7c
   TMUIExtensions: 4740294ab5709c4922372d0353a4db0ab9df86c3
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: db7b20d57f4581321c45a39ff7e108c656b54a6c
+PODFILE CHECKSUM: 4694eb988f1e1b4a9a04b466c1283869a37ef462
 
-COCOAPODS: 1.12.0
+COCOAPODS: 1.12.1

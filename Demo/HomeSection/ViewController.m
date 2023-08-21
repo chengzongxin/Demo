@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#import "THKReferenPictureListVC.h"
+#import "THKPKPlanDetailContainerVC.h"
 #import <dlfcn.h>
 @interface ViewController ()
 
@@ -28,11 +28,11 @@
 
 - (void)push{
     NSLog(@"111");
-    THKReferenPictureListVM *vm = [[THKReferenPictureListVM alloc] init];
-    THKReferenPictureListVC *vc = [[THKReferenPictureListVC alloc] initWithViewModel:vm];
-    [self.navigationController pushViewController:vc animated:YES];
+//    THKPKPlanDetailContainerVM *vm = [[THKPKPlanDetailContainerVM alloc] init];
+//    THKPKPlanDetailContainerVC *vc = [[THKPKPlanDetailContainerVC alloc] initWithViewModel:vm];
+//    [self.navigationController pushViewController:vc animated:YES];
 //    [self presentViewController:vc animated:YES completion:nil];
-//    [self.navigationController pushViewController:[NSClassFromString(@"THKReferenPictureListVC") new] animated:YES];
+    [self.navigationController pushViewController:[NSClassFromString(@"DemoViewController") new] animated:YES];
 }
 
 

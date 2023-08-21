@@ -25,6 +25,7 @@ target 'Demo' do
   pod 'MBProgressHUD'
   pod 'Lottie'
   pod 'IQKeyboardManager'
+  pod 'SSZipArchive'
 #  pod 'YYWebImage', '1.0.5'
 
   target 'DemoTests' do
